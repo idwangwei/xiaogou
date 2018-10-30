@@ -1,0 +1,108 @@
+<div class="bg" style="display: flex;display: -webkit-flex;-webkit-box-orient: horizontal;">
+
+    <div class="edit-section" class="flex_1" style="display: block;height: 600px">
+        <div class="editor editor-for-title"
+             style="padding: 10px;border-radius: 10px;box-shadow:inset 50px 50px 450px #dddddd;">
+            <div class="row">
+                <div class="col">
+                    <div style="text-align: center">
+                        <label>
+                            <span>
+                                <span style="color: #0044cc;font-size: larger">{{userName}}</span>同学在<span
+                                    style="color: #0044cc;">志宏班</span>的作业
+                                <span style="color: #0044cc;font-size: larger">“第一次作业”</span>
+                                提交日期:
+                                    <span style="color: #0044cc;">2015-08-15</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label style="float: right"> 游戏总数：<span style="color: #0044cc;">2个</span>
+                    </label>
+
+                </div>
+                <div class="col">
+                    <div class="progressDiv" style="float: left">
+                        <div style="float:left; display:inline">
+                            <label style="margin-left:20px ">整体进度：</label>
+                        </div>
+                        <div class="progress" style="margin-bottom: 0px;width: 97px  ">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                60%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div style="text-align: center;float: right">
+                        <label> 累计用时：<span style="color: #0044cc;">82分钟</span></label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label style="margin-left: 20px;float: left"> 累计练习次数：<span style="color: #0044cc;">17次</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor editor-for-pad" style="overflow-y: auto"
+             style="padding: 10px;border-radius: 10px;overflow: hidden">
+            <auto-box-con>
+                <auto-box-row column="{{(2-rowArray.length%2)%2}}" ng-repeat="rowArray in passesList" style="height: 130px">
+                    <auto-box-block ng-repeat="col in rowArray"
+                                    style="background-color: lightgoldenrodyellow;align-items:center;
+                                            justify-content: center;" class="com_align_item com_justify-content">
+                        <div class="workConten">
+                            <div class="workLeft" ng-if="$index==0">
+                                  <img src="./sImages/other/allRight.png" />
+                            </div>
+                            <div class="workLeft" ng-if="$index==1">
+                                <img src="./sImages/other/error.png" />
+                            </div>
+                            <div class="workCenter ">
+                                <div class="center">
+                                    <div class="first">
+                                        <span style="color: #006dcc;"> {{col.fullName}}</span>
+                                    </div>
+                                    <div class="second">
+                                        <span >最近一次正确率：100%</span>
+                                    </div>
+                                    <div class="second">
+                                        <span >最近一次熟练度：85%</span>
+                                    </div>
+                                    <div class="second">
+                                        <span >累计用时：8分钟</span>
+                                    </div>
+                                    <div class="second">
+                                        <span >练习次数：2次</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </auto-box-block>
+                </auto-box-row>
+            </auto-box-con>
+        </div>
+
+    </div>
+    <div style="position: fixed;bottom: 8px;left: 0;width: 100%;text-align: center">
+        <div class="button-group">
+            <div class="button button-primary button-3d" style="display: inline-block" ui-sref="work_detail_game">
+                <i class="fa fa-mail-reply" ></i>游戏列表
+            </div>
+            <div class="button button-primary button-3d" style="display: inline-block" ui-sref="work_list">
+                <i class="fa fa-mail-reply" ></i>作业列表
+            </div>
+            <div class="button button-primary button-3d" style="display: inline-block"
+                 ui-sref="home"><i class="fa fa-home"></i>主界面
+            </div>
+        </div>
+    </div>
+</div>
+

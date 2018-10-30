@@ -1,0 +1,137 @@
+<style type="text/css">
+    .pub_game_list .item-avatar .item-content {
+        padding-left: 95px;
+        padding-right: 5px;
+        padding-top: 20px;
+    }
+    .pub_game_list .item-avatar .item-content>img:first-child {
+        top:5px;
+        max-width: 70px;
+        max-height: 70px;
+    }
+</style>
+<ion-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear"ui-sref="game_lib">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title">我的作业</h1>
+        <div class="buttons">
+            <button class="button button-clear icon ion-navicon-round" ng-click="settingToggle()"></button>
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="pub_game_list">
+        <ion-item class="item-divider"  style="margin: 10px auto;color: #28a54c" ng-click="clazzSelectModal.show()">
+            {{pubGameClazz.name}}<span style="margin-left: 5px;" class="icon ion-ios-arrow-right"></span>
+        </ion-item>
+        <div class="item item-input block-input" style="height: 40px;" ng-show="pubGames.length<=0&&retFlag">
+            <input type="text"
+                   ng-model="tip"
+                   readonly="readonly"
+                   style="font-size: 18px;rgb(6, 6, 6);"
+                    />
+        </div>
+        <ion-list show-delete="showSetting" show-reorder="showSetting" ng-if="pubGames.length>0&&retFlag">
+            <ion-item ng-repeat="game in pubGames |orderBy:'seq'"
+                      ng-click="showLevels(game)"
+                      class="item item-avatar">
+                <img src="{{$root.loadImg('game_icon/'+game.games[0].gameGuid+'.png')}}" alt=""/>
+                <div class="display-flex">
+                    <div style="flex:1;-webkit-flex:3">
+                        <h2>{{game.games[0].name}}</h2>
+                        <p>{{game.games[0].tb.tbName}}</p>
+                    </div>
+                    <div style="flex:1;-webkit-flex:2 ">
+                        <p>{{game.createdTime.substr(0,11)}}</p>
+                    </div>
+                </div>
+                <ion-reorder-button class="ion-navicon"
+                                    on-reorder="moveGame(game,$fromIndex,$toIndex)">
+                </ion-reorder-button>
+                <ion-option-button
+                        class="button-assertive icon ion-minus-circled"
+                        ng-click="delGame(game.id,$index)">删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+
+
+
+
+        <!--<div ng-repeat="game in pubGames" ng-init="idx=$index">-->
+        <!--<ion-item class="item-divider" ng-show="game.length>0">{{pubGameClazz.name}}</ion-item>-->
+        <!--<ion-list show-delete="showSetting" show-reorder="showSetting">-->
+        <!--<ion-item ng-repeat="game in list |orderBy:'seq'"-->
+
+        <!--class="item item-avatar ">-->
+        <!--<img ng-src="sImages/game_icon/{{game.games[0].gameGuid}}.png" alt=""/>-->
+        <!--<div class="display-flex">-->
+        <!--<div style="flex:1;-webkit-flex:3">-->
+        <!--<h2>{{game.games[0].name}}</h2>-->
+        <!--<p>{{game.games[0].tb.tbName}}</p>-->
+        <!--<p>{{list.clazz.name}}</p>-->
+        <!--</div>-->
+        <!--<div style="flex:1;-webkit-flex:2 ">-->
+        <!--<p>{{game.createdTime.substr(0,11)}}</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<ion-reorder-button class="ion-navicon"-->
+        <!--on-reorder="moveGame(game,$fromIndex,$toIndex,idx)">-->
+        <!--</ion-reorder-button>-->
+        <!--<ion-option-button-->
+        <!--class="button-assertive icon ion-minus-circled"-->
+        <!--ng-click="delGame(game.id,$index,idx)">删除</ion-option-button>-->
+        <!--</ion-item>-->
+        <!--</ion-list>-->
+        <!--</div>注：获取所有游戏-->
+
+
+    </ion-content>
+
+</ion-view>
+
+<script id="level-select.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced">
+            <button class="button back-button buttons  button-clear header-item" ng-click="levelSelectModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title">{{selectedGame.games[0].name}}</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <li  ng-repeat="list in selectedGame.games[0].levels"
+                     ng-click="go(selectedGame,list)"
+                     class="item item-avatar  item-complex item-right-editable">
+                    <div class="item-content">
+                        <img src="{{$root.loadImg('game_icon/'+selectedGame.games[0].gameGuid+'.png')}}" alt=""/>
+                        <h2>{{list.name}}(第{{list.num}}关)</h2>
+                        <p>{{list.desc}}</p>
+                    </div>
+
+                </li>
+            </ul>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="clazz-select.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <button class="button back-button buttons  button-clear header-item" ng-click="clazzSelectModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center">请选择班级</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <li ng-repeat="clazz in clazzList"
+                    class="item" ng-click="selectClazz(clazz)">
+                    {{clazz.name}}
+                </li>
+            </ul>
+        </ion-content>
+    </ion-modal-view>
+</script>

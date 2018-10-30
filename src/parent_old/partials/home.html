@@ -1,0 +1,182 @@
+<style type="text/css">
+    .badgeStyle {
+        background-color: red !important;
+        top: 0 !important;
+        opacity: .8 !important;
+    }
+</style>
+<ion-tabs class="tabs-icon-top tabs-stable home">
+
+    <ion-tab title="作业" icon="icon ion-document-text" ui-sref="home.work_list">
+        <ion-nav-view name="work_list"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="游戏" icon="icon ion-ios-game-controller-b" ui-sref="home.game_list">
+        <ion-nav-view name="game_list"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="孩子" icon="icon ion-android-contact" ui-sref="home.child_index">
+        <ion-nav-view name="child_index"></ion-nav-view>
+    </ion-tab>
+    <!--<ion-tab title="消息" icon="icon ion-android-chat" ui-sref="home.msg" badge="unRead.count" badge-style="badgeStyle">-->
+        <!--<ion-nav-view name="message_list"></ion-nav-view>-->
+    <!--</ion-tab>-->
+    <ion-tab title="我" icon="icon ion-android-person" ui-sref="home.person_index">
+        <ion-nav-view name="person_index"></ion-nav-view>
+    </ion-tab>
+    <!--<ion-tab title="公众号" icon="icon ion-person"  ui-sref="home.official_accounts">-->
+        <!--<ion-nav-view name="official_accounts"></ion-nav-view>-->
+    <!--</ion-tab>-->
+    <!--<a class="tab-item">-->
+        <!--<i class="icon ion-eye"></i>-->
+        <!--<span class="tab-title ng-binding">护眼</span>-->
+    <!--</a>-->
+</ion-tabs>
+<div class="work-backdrop "  ng-if="$root.showWinterWorkFlag"   >
+    <!--<div class="backdrop-content"  >
+        <i class="icon ion-close" ng-click="hideWinterAd()"></i>
+        <div class="snowflakes">
+            <div class="snowflake snowflake1"></div>
+            <div class="snowflake snowflake2"></div>
+            <div class="snowflake snowflake3"></div>
+            <div class="snowflake snowflake4"></div>
+            <div class="snowflake snowflake5"></div>
+            <div class="snowflake snowflake6"></div>
+            <div class="snowflake snowflake7"></div>
+            <div class="snowflake snowflake8"></div>
+            <div class="snowflake snowflake9"></div>
+            <div class="snowflake snowflake10"></div>
+        </div>
+        <div class="ad-title">
+            <img ng-src="{{$root.loadImg('work/winter-work/christ-ad-title.png')}}" >
+        </div>
+
+        <div class="ad-content-wrap">
+            <div class="ad-content">
+                <h5>全面系统，温故知新</h5>
+                <h5>自动批改，及时改进</h5>
+                <h5>营造气氛，激发兴趣</h5>
+                <h5>过程监控，科学分析</h5>
+                 <p class="remark">
+                     将从放假之日起，每3天自动布置一套，老师定期检查作业结果，敬请期待。
+                 </p>
+            </div>
+        </div>
+        <div class="christ-house">
+            <img ng-src="{{$root.loadImg('work/winter-work/christ-house.png')}}" >
+        </div>
+    </div>-->
+    <div class="backdrop-content-02"  >
+        <i class="icon ion-close" ng-click="hideWinterAd()"></i>
+        <div class="snowflakes">
+            <div class="snowflake snowflake1"></div>
+            <div class="snowflake snowflake2"></div>
+            <div class="snowflake snowflake3"></div>
+            <div class="snowflake snowflake4"></div>
+            <div class="snowflake snowflake5"></div>
+            <div class="snowflake snowflake6"></div>
+            <div class="snowflake snowflake7"></div>
+            <div class="snowflake snowflake8"></div>
+            <div class="snowflake snowflake9"></div>
+            <div class="snowflake snowflake10"></div>
+        </div>
+        <div class="fireworks">
+            <div class="firework firework1"></div>
+            <div class="firework firework2"></div>
+            <div class="firework firework3"></div>
+        </div>
+        <div class="ad-title">
+            <img ng-src="{{$root.loadImg('work/winter-work/ad-text-02.png')}}" >
+        </div>
+
+        <div class="ad-content-wrap">
+            <div class="ad-content">
+                <h5>全面系统，温故知新</h5>
+                <h5>自动批改，及时改进</h5>
+                <h5>营造气氛，激发兴趣</h5>
+                <h5>过程监控，科学分析</h5>
+
+                <p class="remark">
+                    将从放假之日起，每2天自动布置一套，老师定期检查作业结果。
+                </p>
+            </div>
+        </div>
+        <div class="christ-house">
+            <img ng-src="{{$root.loadImg('work/winter-work/christ-xiaogou-02.png')}}" class="christ-xiaogou-02">
+            <img ng-src="{{$root.loadImg('work/winter-work/ad-fu-dao.png')}}" class="ad-fu-dao">
+            <img ng-src="{{$root.loadImg('work/winter-work/christ-xiaogou-partner.png')}}" class="christ-xiaogou-partner">
+        </div>
+    </div>
+</div>
+<div class="work-backdrop "  ng-if="$root.showWinterBroadcast">
+    <div class="backdrop-content-03">
+        <div class="broadcast-content-box">
+            <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-bg.png')}}">
+            <div class="broadcast-content">
+
+                <div class="scroll-block" ng-if="$root.winterBroadcastLoading">
+                    <span>正在获取数据...</span>
+                </div>
+                <div class="scroll-block" ng-if="!$root.winterBroadcastLoading && $root.winterBroadcastData === 'error'">
+                    <span>获取数据失败，请关闭重试...</span>
+                </div>
+                <marquee class="scroll-block" direction=up scrollAmount=2 style="height: 100%"
+                         ng-if="!isIos && !$root.winterBroadcastLoading"
+                         onclick="this.flag=!this.flag;this.flag?this.stop():this.start()">
+                    <div ng-repeat="item in $root.winterBroadcastData" class="broadcast-content-item">
+
+                        <broadcast-msg-item msg-item="item" line-count="{{msgItemLine}}"></broadcast-msg-item>
+
+                        <!-- <p>
+                            <i class="icon ion-volume-high"></i>
+                            <span class="left-title" ng-bind="item.createTime+', '"></span>
+                            <span class="left-title" ng-bind="item.studentName+ '('"></span>
+                            <span ng-bind="item.schoolName" class="school school-normal"
+                                  ng-class = "{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+                                </span>
+                            <span ng-bind="')'"></span>
+                        </p>
+                        <p class="second-p">
+                            <span class="content-text" ng-bind="'完成'+item.scheduleDeliverName+', 正确率'"></span>
+                            <i ng-bind="item.scoreRate" class="accuracy school-normal"
+                               ng-class = "{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+                            </i>
+                        </p>-->
+                    </div>
+                </marquee>
+                <div class="scroll-block" ng-if="isIos && !$root.winterBroadcastLoading" style="height: 100%"
+                     allere-marquee ng-click="pauseOrResumeMarquee()">
+
+                    <div ng-repeat="item in $root.winterBroadcastData"  class="broadcast-content-item">
+                        <broadcast-msg-item msg-item="item" line-count="{{msgItemLine}}"></broadcast-msg-item>
+
+
+                        <!-- <p>
+                            <i class="icon ion-volume-high"></i>
+                            <span class="left-title" ng-bind="item.createTime+', '"></span>
+                            <span class="left-title" ng-bind="item.studentName+ '('"></span>
+                            <span ng-bind="item.schoolName" class="school school-normal"
+                                  ng-class = "{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+                                </span>
+                            <span ng-bind="')'"></span>
+                        </p>
+                        <p class="second-p">
+                            <span class="content-text" ng-bind="'完成'+item.scheduleDeliverName+', 正确率'"></span>
+                            <i ng-bind="item.scoreRate" class="accuracy school-normal"
+                               ng-class = "{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+                            </i>
+                        </p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <i class="icon ion-close" ng-click="hideWinterBroadcast()"></i>
+    </div>
+</div>
+<competition-alert-box></competition-alert-box>
+
+<reward-add></reward-add>
+
+<!-- 假期作业广告 注释掉后不要删除, 每个假期都会使用 -->
+<holiday-homework-ad show-flag="$root.isShowHolidayHomeworkAdFlag"></holiday-homework-ad>
+

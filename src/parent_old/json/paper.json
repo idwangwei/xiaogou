@@ -1,0 +1,317 @@
+{"code": 200, "msg": "正常", "paper": {
+    "studentScorePoints": [
+        {
+            "id": "07ab9931-921c-4bf1-9b34-dd7d2ebede24",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "a0ce19f6-4dda-484e-ab28-081a95d07e6b",
+            "examId": "test4"
+        },
+        {
+            "id": "10e19d47-d985-4d28-b327-28e1a700c8a6",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "d8e654ab-58dc-4fed-a3e5-43dd2a695bce",
+            "examId": "test4"
+        },
+        {
+            "id": "498240f0-406b-48a9-bc93-7d0ba28bf5c9",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "a6a5bc25-ffdc-4b1b-8ed3-5bbd02d91ceb",
+            "examId": "test4"
+        },
+        {
+            "id": "4f85671d-293e-48db-b548-6c4f1e1a4847",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "4c137ac0-29de-4608-9336-4183419ddad4",
+            "examId": "test4"
+        },
+        {
+            "id": "5ab6d415-df70-49d3-a6c3-f7e61527a724",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "03a5ff4e-6ed1-4031-b93e-8c25d8509a20",
+            "examId": "test4"
+        },
+        {
+            "id": "606d4a94-1405-459c-a8c5-e1c53bf745d3",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "5fa07656-1103-4dba-be46-1315a71f6fa2",
+            "examId": "test4"
+        },
+        {
+            "id": "75b5f9a4-9a4c-48cc-b789-1f4f5b468e1f",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "8fe40694-0c4c-41b8-b2cb-1620bdc3de20",
+            "examId": "test4"
+        },
+        {
+            "id": "78b816b6-722e-4956-b758-42876afb0d4c",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "07747d3c-72ab-4964-9a79-55e11f0f9933",
+            "examId": "test4"
+        },
+        {
+            "id": "795fa348-8540-40cc-9e50-a6c53634412b",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "dd48709e-2477-4b95-a607-899a3a6f28af",
+            "examId": "test4"
+        },
+        {
+            "id": "83b248c5-7eaa-4cdd-8987-b8407a2fc91e",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "47e4badc-f41c-4463-8e91-43377ad103fd",
+            "examId": "test4"
+        },
+        {
+            "id": "84299f4d-a068-4004-b890-531447510044",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "7c8ace68-2cde-426c-8056-8eea5b8ceef0",
+            "examId": "test4"
+        },
+        {
+            "id": "946dbda2-eaf4-4749-8a2f-365fa39fe39f",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "e3a014b4-cb7a-4650-af69-b69e022fde7c",
+            "examId": "test4"
+        },
+        {
+            "id": "ba2ff6d3-b476-4c4e-b556-6e18a2cd2932",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "ae8e89fa-154d-490e-83c4-7d6401ac0e83",
+            "examId": "test4"
+        },
+        {
+            "id": "ce66efcf-a1d3-46e1-a43f-4fbbe5d80ad9",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "944686c5-1959-4e6b-b3a3-5f245069ee9b",
+            "examId": "test4"
+        },
+        {
+            "id": "d1999371-e1d7-404a-912c-6944ccd65de5",
+            "answer": "{\"ansExpr\":\",\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "da464701-6100-49a4-a2e6-8130a1a08ff1",
+            "examId": "test4"
+        },
+        {
+            "id": "dbdaf6e2-e1d6-4bfc-9ff8-a9a9c7e0395a",
+            "answer": "{\"ansExpr\":\",,,,,\"}",
+            "score": 0.0,
+            "status": 0,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "7fe16ce8-b392-473e-b6d2-86e2354f40fd",
+            "examId": "test4"
+        },
+        {
+            "id": "f0f43d58-81da-4096-9d53-f3e4cb92a245",
+            "answer": "{\"ansExpr\":\"\"}",
+            "score": 0.0,
+            "status": -1,
+            "studentId": "5e4f041f-a128-4621-88ba-003c8f6b6dc0",
+            "scorePointId": "d1826105-f1f6-4223-96dd-2d51ad169232",
+            "examId": "test4"
+        }
+    ],
+    "qsTitles": [
+        {
+            "snum": 1,
+            "id": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+            "title": "填空题一",
+            "qsList": [
+                {
+                    "qContext": "[{\"type\":\"fillblanks\",\"$$hashKey\":\"object:1372\",\"inputPoints\":[{\"uid\":\"fd71d1fe-d75b-4920-9e8d-61d00ac876bc\",\"label\":1,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"a313e623-4ef8-45b1-b650-23f6e6971fa8\",\"label\":2,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"c9c4154e-40ad-4a05-8b2f-0630937415b8\",\"label\":3,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"28bb93d7-e299-40b5-9e1e-b61a38e6502a\",\"label\":4,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"f292cf0d-709b-4d3e-a94b-b67b789cec3d\",\"label\":5,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"2a8fa804-a4a3-4601-999f-ceb308ef554f\",\"label\":6,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"bceb00fd-3bff-4e2f-908f-7669beb777b2\",\"label\":7,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"bff52c45-3010-46dd-aff4-305f85c85e21\",\"label\":8,\"type\":\"square\",\"inputLimitPattern\":null}],\"previewData\":\"<table><tbody><tr class=\\\"firstRow\\\"><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">3×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"fd71d1fe-d75b-4920-9e8d-61d00ac876bc\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×7=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"a313e623-4ef8-45b1-b650-23f6e6971fa8\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">6×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"c9c4154e-40ad-4a05-8b2f-0630937415b8\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×8=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"28bb93d7-e299-40b5-9e1e-b61a38e6502a\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">5×9=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"f292cf0d-709b-4d3e-a94b-b67b789cec3d\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">5×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"2a8fa804-a4a3-4601-999f-ceb308ef554f\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"bceb00fd-3bff-4e2f-908f-7669beb777b2\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×1=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"bff52c45-3010-46dd-aff4-305f85c85e21\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td></tr></tbody></table><p><br></p><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 49.640625px; top: -6.5px; background-color: rgb(14, 145, 210);\\\">1</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 282.640625px; top: -6.5px; background-color: rgb(14, 145, 210);\\\">2</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 515.640625px; top: -6.5px; background-color: rgb(14, 145, 210);\\\">3</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 748.640625px; top: -6.5px; background-color: rgb(14, 145, 210);\\\">4</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 49.640625px; top: 18.5px; background-color: rgb(14, 145, 210);\\\">5</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 282.640625px; top: 18.5px; background-color: rgb(14, 145, 210);\\\">6</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 515.640625px; top: 18.5px; background-color: rgb(14, 145, 210);\\\">7</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 748.640625px; top: 18.5px; background-color: rgb(14, 145, 210);\\\">8</span>\",\"scorePoints\":[{\"label\":\"得分点1\",\"id\":\"47e4badc-f41c-4463-8e91-43377ad103fd\",\"inputPoints\":[{\"uid\":\"fd71d1fe-d75b-4920-9e8d-61d00ac876bc\",\"label\":\"1\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"6\"}],\"$$hashKey\":\"object:1380\"},{\"label\":\"得分点2\",\"id\":\"5fa07656-1103-4dba-be46-1315a71f6fa2\",\"inputPoints\":[{\"uid\":\"a313e623-4ef8-45b1-b650-23f6e6971fa8\",\"label\":\"2\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"14\"}],\"$$hashKey\":\"object:1426\"},{\"label\":\"得分点3\",\"id\":\"4c137ac0-29de-4608-9336-4183419ddad4\",\"inputPoints\":[{\"uid\":\"c9c4154e-40ad-4a05-8b2f-0630937415b8\",\"label\":\"3\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"12\"}],\"$$hashKey\":\"object:1469\"},{\"label\":\"得分点4\",\"id\":\"a6a5bc25-ffdc-4b1b-8ed3-5bbd02d91ceb\",\"inputPoints\":[{\"uid\":\"28bb93d7-e299-40b5-9e1e-b61a38e6502a\",\"label\":\"4\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"16\"}],\"$$hashKey\":\"object:1509\"},{\"label\":\"得分点5\",\"id\":\"ae8e89fa-154d-490e-83c4-7d6401ac0e83\",\"inputPoints\":[{\"uid\":\"f292cf0d-709b-4d3e-a94b-b67b789cec3d\",\"label\":\"5\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"45\"}],\"$$hashKey\":\"object:1546\"},{\"label\":\"得分点6\",\"id\":\"d1826105-f1f6-4223-96dd-2d51ad169232\",\"inputPoints\":[{\"uid\":\"2a8fa804-a4a3-4601-999f-ceb308ef554f\",\"label\":\"6\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"10\"}],\"$$hashKey\":\"object:1580\"},{\"label\":\"得分点7\",\"id\":\"07747d3c-72ab-4964-9a79-55e11f0f9933\",\"inputPoints\":[{\"uid\":\"bceb00fd-3bff-4e2f-908f-7669beb777b2\",\"label\":\"7\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"4\"}],\"$$hashKey\":\"object:1611\"},{\"label\":\"得分点8\",\"id\":\"03a5ff4e-6ed1-4031-b93e-8c25d8509a20\",\"inputPoints\":[{\"uid\":\"bff52c45-3010-46dd-aff4-305f85c85e21\",\"label\":\"8\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"2\"}],\"$$hashKey\":\"object:1648\"}],\"uid\":\"4ae774fa-2b3d-4829-bf44-1f49b465417b\",\"html\":\"<table><tbody><tr class=\\\"firstRow\\\"><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">3×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"fd71d1fe-d75b-4920-9e8d-61d00ac876bc\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×7=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"a313e623-4ef8-45b1-b650-23f6e6971fa8\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">6×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"c9c4154e-40ad-4a05-8b2f-0630937415b8\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×8=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"28bb93d7-e299-40b5-9e1e-b61a38e6502a\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">5×9=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"f292cf0d-709b-4d3e-a94b-b67b789cec3d\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">5×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"2a8fa804-a4a3-4601-999f-ceb308ef554f\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×2=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"bceb00fd-3bff-4e2f-908f-7669beb777b2\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\">2×1=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://localhost:3000/images/square.png\\\" id=\\\"bff52c45-3010-46dd-aff4-305f85c85e21\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td></tr></tbody></table><p><br></p>\"}]",
+                    "id": "24182a0c-4d5c-46e1-969f-3511ab24e76d"
+                }
+            ]
+        },
+        {
+            "snum": 2,
+            "id": "a8fa802d-19e5-4370-9cd9-eed7ee131cca",
+            "title": "填空二",
+            "qsList": [
+                {
+                    "qContext": "[{\"type\":\"fillblanks\",\"$$hashKey\":\"object:1184\",\"inputPoints\":[{\"uid\":\"bf5b5d47-0fc5-4300-a410-f18c4723488e\",\"label\":1,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"eccc1baf-8771-4233-ae67-5cdd0dfec803\",\"label\":2,\"type\":\"circle\",\"inputLimitPattern\":null},{\"uid\":\"9520c862-7ebb-4270-af5c-3a2f29d98193\",\"label\":3,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"eb531c1a-e18c-4e42-a167-2b429f943ae1\",\"label\":4,\"type\":\"circle\",\"inputLimitPattern\":null},{\"uid\":\"b2681ecf-50af-4fbb-80e8-394d896df09a\",\"label\":5,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"d8dddb3e-dc1f-4850-bec6-78673e50203a\",\"label\":6,\"type\":\"square\",\"inputLimitPattern\":null}],\"previewData\":\"\",\"scorePoints\":[{\"label\":\"得分点1\",\"id\":\"7fe16ce8-b392-473e-b6d2-86e2354f40fd\",\"inputPoints\":[{\"uid\":\"bf5b5d47-0fc5-4300-a410-f18c4723488e\",\"label\":\"1\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"eccc1baf-8771-4233-ae67-5cdd0dfec803\",\"label\":\"2\",\"type\":\"circle\",\"inputLimitPattern\":null},{\"uid\":\"9520c862-7ebb-4270-af5c-3a2f29d98193\",\"label\":\"3\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"eb531c1a-e18c-4e42-a167-2b429f943ae1\",\"label\":\"4\",\"type\":\"circle\",\"inputLimitPattern\":null},{\"uid\":\"b2681ecf-50af-4fbb-80e8-394d896df09a\",\"label\":\"5\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"d8dddb3e-dc1f-4850-bec6-78673e50203a\",\"label\":\"6\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"50,-,26,+22,46\"}],\"$$hashKey\":\"object:1192\"}],\"uid\":\"3deb865b-2a93-4027-9b68-2af106945151\",\"html\":\"<p style=\\\"margin-bottom: 1.6rem; line-height: 25.6000003814697px; white-space: normal;\\\">商店运进50箱饮料，卖出了26箱，又运进22箱,商店现在有多少箱饮料？</p><p style=\\\"margin-top: 1.6rem; margin-bottom: 1.6rem; line-height: 25.6000003814697px; white-space: normal;\\\"><img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" id=\\\"bf5b5d47-0fc5-4300-a410-f18c4723488e\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"><img input-box=\\\"circle\\\" circle-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/circle.png\\\" id=\\\"eccc1baf-8771-4233-ae67-5cdd0dfec803\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"><img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" id=\\\"9520c862-7ebb-4270-af5c-3a2f29d98193\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"><img input-box=\\\"circle\\\" circle-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/circle.png\\\" id=\\\"eb531c1a-e18c-4e42-a167-2b429f943ae1\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"><img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" id=\\\"b2681ecf-50af-4fbb-80e8-394d896df09a\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\">=<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" id=\\\"d8dddb3e-dc1f-4850-bec6-78673e50203a\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\"></p><p style=\\\"margin-top: 1.6rem; margin-bottom: 1.6rem; line-height: 25.6000003814697px; white-space: normal;\\\"><br></p><p><br></p>\"}]",
+                    "id": "34e6e170-8005-4ebf-a8eb-821e719fc54c"
+                }
+            ]
+        },
+        {
+            "snum": 3,
+            "id": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+            "title": "填空三",
+            "qsList": [
+                {
+                    "qContext": "[{\"type\":\"fillblanks\",\"$$hashKey\":\"object:110\",\"inputPoints\":[{\"uid\":\"614f8eb2-02fe-4e7e-8bf8-378b36501619\",\"label\":1,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"03cdcdcf-9855-4814-b465-bb0798b7d695\",\"label\":2,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"bb71f456-062d-4c0e-b41a-37c3569c807f\",\"label\":3,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"039ac3a0-af07-4860-ab5c-8890a7799617\",\"label\":4,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"38d8ac7c-ac55-4bd8-9789-a8b27bffbaf8\",\"label\":5,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"c33179b4-93d5-4269-8f6e-6ebb5fbacde9\",\"label\":6,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"1c71cc4c-a7b8-4862-b7c5-d395a593838e\",\"label\":7,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"b6727430-d1ea-4ca8-9849-f364117691d1\",\"label\":8,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"f969d9a8-5850-4cb9-930b-b977eb16c74a\",\"label\":9,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"24004144-875a-4469-8e16-a7bdbf5e5528\",\"label\":10,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"01c18abf-d639-44c3-9f5f-2f4920119b9a\",\"label\":11,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"6cfc4ce3-ee63-46bb-a365-ae9d1d53f769\",\"label\":12,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"31990eb2-cb3a-457d-831d-716e01b60aa4\",\"label\":13,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"7761aa48-7c9b-4ecd-bf0c-cdd2a8033888\",\"label\":14,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"7d3da046-b35c-4b9c-9f4b-0cfd0e476218\",\"label\":15,\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"9c09753e-29bb-4746-8591-c310f8c87185\",\"label\":16,\"type\":\"square\",\"inputLimitPattern\":null}],\"previewData\":\"<table><tbody><tr class=\\\"firstRow\\\"><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;9 &nbsp; &nbsp; &nbsp; &nbsp; 7</p><p>— &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; 8</p><p>——————</p><p>&nbsp; &nbsp; &nbsp; &nbsp;<img style=\\\"display: inline;width: 21px;height: 21px;vertical-align: bottom\\\" input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"images/square.png\\\" id=\\\"614f8eb2-02fe-4e7e-8bf8-378b36501619\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img style=\\\"display: inline;width: 21px;height: 21px;vertical-align: bottom\\\" input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"images/square.png\\\" id=\\\"03cdcdcf-9855-4814-b465-bb0798b7d695\\\"></p><p>— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 4</p><p>——————</p><p>&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; white-space: normal; display: inline; width: 21px; height: 21px;\\\" id=\\\"bb71f456-062d-4c0e-b41a-37c3569c807f\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; white-space: normal; display: inline; width: 21px; height: 21px;\\\" id=\\\"039ac3a0-af07-4860-ab5c-8890a7799617\\\"></p></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p><span style=\\\"background-color: transparent; font-size: 1.6rem; line-height: 1.6;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;6 &nbsp; &nbsp; &nbsp; &nbsp; 0</span><br></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 6</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"38d8ac7c-ac55-4bd8-9789-a8b27bffbaf8\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"c33179b4-93d5-4269-8f6e-6ebb5fbacde9\\\"></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 4</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"1c71cc4c-a7b8-4862-b7c5-d395a593838e\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"b6727430-d1ea-4ca8-9849-f364117691d1\\\"></p><p><br></p></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;7 &nbsp; &nbsp; &nbsp; &nbsp; 7</p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 8</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"f969d9a8-5850-4cb9-930b-b977eb16c74a\\\">&nbsp;&nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"24004144-875a-4469-8e16-a7bdbf5e5528\\\"></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp; &nbsp; 5</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"01c18abf-d639-44c3-9f5f-2f4920119b9a\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"6cfc4ce3-ee63-46bb-a365-ae9d1d53f769\\\"></p><p style=\\\"white-space: normal;\\\"><br></p></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; 0</p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style=\\\"background-color: transparent; font-size: 1.6rem; line-height: 1.6;\\\">&nbsp;</span><span style=\\\"background-color: transparent; font-size: 1.6rem; line-height: 1.6;\\\">4 &nbsp; &nbsp; &nbsp; &nbsp; 8</span></p><p style=\\\"white-space: normal;\\\">—————————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"31990eb2-cb3a-457d-831d-716e01b60aa4\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"7761aa48-7c9b-4ecd-bf0c-cdd2a8033888\\\"></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp; &nbsp; 7</p><p style=\\\"white-space: normal;\\\">—————————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"7d3da046-b35c-4b9c-9f4b-0cfd0e476218\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"9c09753e-29bb-4746-8591-c310f8c87185\\\"></p><p style=\\\"white-space: normal;\\\"><br></p></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><br></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td></tr></tbody></table><p><br></p><p><br></p><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 41.171875px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">1</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 88.46875px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">2</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 41.171875px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">3</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 88.46875px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">4</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 274.171875px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">5</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 321.46875px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">6</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 274.171875px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">7</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 321.46875px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">8</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 507.171875px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">9</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 554.46875px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">10</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 507.171875px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">11</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 554.46875px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">12</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 792.765625px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">13</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 840.0625px; top: 68.5px; background-color: rgb(14, 145, 210);\\\">14</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 792.765625px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">15</span><span style=\\\"display: inline-block; width: 15px; height: 15px; text-align: center; font-size: 10px; color: white; position: absolute; left: 840.0625px; top: 143.5px; background-color: rgb(14, 145, 210);\\\">16</span>\",\"scorePoints\":[{\"label\":\"得分点1\",\"id\":\"d8e654ab-58dc-4fed-a3e5-43dd2a695bce\",\"inputPoints\":[{\"uid\":\"614f8eb2-02fe-4e7e-8bf8-378b36501619\",\"label\":\"1\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"03cdcdcf-9855-4814-b465-bb0798b7d695\",\"label\":\"2\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"4,9\"}],\"$$hashKey\":\"object:118\"},{\"label\":\"得分点1\",\"id\":\"a0ce19f6-4dda-484e-ab28-081a95d07e6b\",\"inputPoints\":[{\"uid\":\"bb71f456-062d-4c0e-b41a-37c3569c807f\",\"label\":\"3\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"039ac3a0-af07-4860-ab5c-8890a7799617\",\"label\":\"4\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"2,5\"}],\"$$hashKey\":\"object:205\"},{\"label\":\"得分点2\",\"id\":\"944686c5-1959-4e6b-b3a3-5f245069ee9b\",\"inputPoints\":[{\"label\":\"5\"},{\"uid\":\"c33179b4-93d5-4269-8f6e-6ebb5fbacde9\",\"label\":\"6\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"3,4\"}],\"$$hashKey\":\"object:292\"},{\"label\":\"得分点3\",\"id\":\"7c8ace68-2cde-426c-8056-8eea5b8ceef0\",\"inputPoints\":[{\"uid\":\"1c71cc4c-a7b8-4862-b7c5-d395a593838e\",\"label\":\"7\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"b6727430-d1ea-4ca8-9849-f364117691d1\",\"label\":\"8\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"1,0\"}],\"$$hashKey\":\"object:379\"},{\"label\":\"得分点4\",\"id\":\"dd48709e-2477-4b95-a607-899a3a6f28af\",\"inputPoints\":[{\"uid\":\"f969d9a8-5850-4cb9-930b-b977eb16c74a\",\"label\":\"9\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"24004144-875a-4469-8e16-a7bdbf5e5528\",\"label\":\"10\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"4,9\"}],\"$$hashKey\":\"object:541\"},{\"label\":\"得分点5\",\"id\":\"e3a014b4-cb7a-4650-af69-b69e022fde7c\",\"inputPoints\":[{\"uid\":\"01c18abf-d639-44c3-9f5f-2f4920119b9a\",\"label\":\"11\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"6cfc4ce3-ee63-46bb-a365-ae9d1d53f769\",\"label\":\"12\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"1,4\"}],\"$$hashKey\":\"object:651\"},{\"label\":\"得分点6\",\"id\":\"da464701-6100-49a4-a2e6-8130a1a08ff1\",\"inputPoints\":[{\"uid\":\"31990eb2-cb3a-457d-831d-716e01b60aa4\",\"label\":\"13\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"7761aa48-7c9b-4ecd-bf0c-cdd2a8033888\",\"label\":\"14\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"5,2\"}],\"$$hashKey\":\"object:719\"},{\"label\":\"得分点7\",\"id\":\"8fe40694-0c4c-41b8-b2cb-1620bdc3de20\",\"inputPoints\":[{\"uid\":\"7d3da046-b35c-4b9c-9f4b-0cfd0e476218\",\"label\":\"15\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"9c09753e-29bb-4746-8591-c310f8c87185\",\"label\":\"16\",\"type\":\"square\",\"inputLimitPattern\":null}],\"possibleAns\":[{\"ansExpr\":\"1,5\"}],\"$$hashKey\":\"object:775\"}],\"uid\":\"c86f73d6-2a02-463e-ad9e-251404909ee4\",\"html\":\"<table><tbody><tr class=\\\"firstRow\\\"><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;9 &nbsp; &nbsp; &nbsp; &nbsp; 7</p><p>— &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; 8</p><p>——————</p><p>&nbsp; &nbsp; &nbsp; &nbsp;<img style=\\\"display: inline;width: 21px;height: 21px;vertical-align: bottom\\\" input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"images/square.png\\\" id=\\\"614f8eb2-02fe-4e7e-8bf8-378b36501619\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img style=\\\"display: inline;width: 21px;height: 21px;vertical-align: bottom\\\" input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"images/square.png\\\" id=\\\"03cdcdcf-9855-4814-b465-bb0798b7d695\\\"></p><p>— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 4</p><p>——————</p><p>&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; white-space: normal; display: inline; width: 21px; height: 21px;\\\" id=\\\"bb71f456-062d-4c0e-b41a-37c3569c807f\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; white-space: normal; display: inline; width: 21px; height: 21px;\\\" id=\\\"039ac3a0-af07-4860-ab5c-8890a7799617\\\"></p></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p><span style=\\\"background-color: transparent; font-size: 1.6rem; line-height: 1.6;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;6 &nbsp; &nbsp; &nbsp; &nbsp; 0</span><br></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 6</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"38d8ac7c-ac55-4bd8-9789-a8b27bffbaf8\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"c33179b4-93d5-4269-8f6e-6ebb5fbacde9\\\"></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 4</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"1c71cc4c-a7b8-4862-b7c5-d395a593838e\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"b6727430-d1ea-4ca8-9849-f364117691d1\\\"></p><p><br></p></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;7 &nbsp; &nbsp; &nbsp; &nbsp; 7</p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; 8</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"f969d9a8-5850-4cb9-930b-b977eb16c74a\\\">&nbsp;&nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"24004144-875a-4469-8e16-a7bdbf5e5528\\\"></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp; &nbsp; 5</p><p style=\\\"white-space: normal;\\\">——————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"01c18abf-d639-44c3-9f5f-2f4920119b9a\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"6cfc4ce3-ee63-46bb-a365-ae9d1d53f769\\\"></p><p style=\\\"white-space: normal;\\\"><br></p></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; &nbsp; 0</p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style=\\\"background-color: transparent; font-size: 1.6rem; line-height: 1.6;\\\">&nbsp;</span><span style=\\\"background-color: transparent; font-size: 1.6rem; line-height: 1.6;\\\">4 &nbsp; &nbsp; &nbsp; &nbsp; 8</span></p><p style=\\\"white-space: normal;\\\">—————————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"31990eb2-cb3a-457d-831d-716e01b60aa4\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"7761aa48-7c9b-4ecd-bf0c-cdd2a8033888\\\"></p><p style=\\\"white-space: normal;\\\">— &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp; &nbsp; 7</p><p style=\\\"white-space: normal;\\\">—————————</p><p style=\\\"white-space: normal;\\\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"7d3da046-b35c-4b9c-9f4b-0cfd0e476218\\\">&nbsp; &nbsp; &nbsp;&nbsp;<img input-box=\\\"square\\\" square-input-box=\\\"\\\" src=\\\"http://192.168.0.141:3000/images/square.png\\\" style=\\\"vertical-align: bottom; display: inline; width: 21px; height: 21px;\\\" id=\\\"9c09753e-29bb-4746-8591-c310f8c87185\\\"></p><p style=\\\"white-space: normal;\\\"><br></p></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\" style=\\\"word-break: break-all;\\\"><br></td></tr><tr><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td><td width=\\\"233\\\" valign=\\\"top\\\"><br></td></tr></tbody></table><p><br></p><p><br></p>\"}]",
+                    "id": "629fdab2-a5d9-405f-9dc0-5005066ace98"
+                }
+            ]
+        }
+    ],
+    "title": {
+        "name": "2014-2015 学年度上期",
+        "description": "测试4"
+    },
+    "rightAns": [
+        {
+            "id": "03a5ff4e-6ed1-4031-b93e-8c25d8509a20",
+            "inputPoints": "[{\"uid\":\"bff52c45-3010-46dd-aff4-305f85c85e21\",\"label\":\"8\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"2\"}]"
+        },
+        {
+            "id": "07747d3c-72ab-4964-9a79-55e11f0f9933",
+            "inputPoints": "[{\"uid\":\"bceb00fd-3bff-4e2f-908f-7669beb777b2\",\"label\":\"7\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"4\"}]"
+        },
+        {
+            "id": "47e4badc-f41c-4463-8e91-43377ad103fd",
+            "inputPoints": "[{\"uid\":\"fd71d1fe-d75b-4920-9e8d-61d00ac876bc\",\"label\":\"1\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"6\"}]"
+        },
+        {
+            "id": "4c137ac0-29de-4608-9336-4183419ddad4",
+            "inputPoints": "[{\"uid\":\"c9c4154e-40ad-4a05-8b2f-0630937415b8\",\"label\":\"3\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"12\"}]"
+        },
+        {
+            "id": "5fa07656-1103-4dba-be46-1315a71f6fa2",
+            "inputPoints": "[{\"uid\":\"a313e623-4ef8-45b1-b650-23f6e6971fa8\",\"label\":\"2\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"14\"}]"
+        },
+        {
+            "id": "7c8ace68-2cde-426c-8056-8eea5b8ceef0",
+            "inputPoints": "[{\"uid\":\"1c71cc4c-a7b8-4862-b7c5-d395a593838e\",\"label\":\"7\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"b6727430-d1ea-4ca8-9849-f364117691d1\",\"label\":\"8\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"1,0\"}]"
+        },
+        {
+            "id": "7fe16ce8-b392-473e-b6d2-86e2354f40fd",
+            "inputPoints": "[{\"uid\":\"bf5b5d47-0fc5-4300-a410-f18c4723488e\",\"label\":\"1\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"eccc1baf-8771-4233-ae67-5cdd0dfec803\",\"label\":\"2\",\"type\":\"circle\",\"inputLimitPattern\":null},{\"uid\":\"9520c862-7ebb-4270-af5c-3a2f29d98193\",\"label\":\"3\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"eb531c1a-e18c-4e42-a167-2b429f943ae1\",\"label\":\"4\",\"type\":\"circle\",\"inputLimitPattern\":null},{\"uid\":\"b2681ecf-50af-4fbb-80e8-394d896df09a\",\"label\":\"5\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"d8dddb3e-dc1f-4850-bec6-78673e50203a\",\"label\":\"6\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 20.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"50,-,26,+22,46\"}]"
+        },
+        {
+            "id": "8fe40694-0c4c-41b8-b2cb-1620bdc3de20",
+            "inputPoints": "[{\"uid\":\"7d3da046-b35c-4b9c-9f4b-0cfd0e476218\",\"label\":\"15\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"9c09753e-29bb-4746-8591-c310f8c87185\",\"label\":\"16\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"1,5\"}]"
+        },
+        {
+            "id": "944686c5-1959-4e6b-b3a3-5f245069ee9b",
+            "inputPoints": "[{\"label\":\"5\"},{\"uid\":\"c33179b4-93d5-4269-8f6e-6ebb5fbacde9\",\"label\":\"6\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"3,4\"}]"
+        },
+        {
+            "id": "a0ce19f6-4dda-484e-ab28-081a95d07e6b",
+            "inputPoints": "[{\"uid\":\"bb71f456-062d-4c0e-b41a-37c3569c807f\",\"label\":\"3\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"039ac3a0-af07-4860-ab5c-8890a7799617\",\"label\":\"4\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"2,5\"}]"
+        },
+        {
+            "id": "a6a5bc25-ffdc-4b1b-8ed3-5bbd02d91ceb",
+            "inputPoints": "[{\"uid\":\"28bb93d7-e299-40b5-9e1e-b61a38e6502a\",\"label\":\"4\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"16\"}]"
+        },
+        {
+            "id": "ae8e89fa-154d-490e-83c4-7d6401ac0e83",
+            "inputPoints": "[{\"uid\":\"f292cf0d-709b-4d3e-a94b-b67b789cec3d\",\"label\":\"5\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"45\"}]"
+        },
+        {
+            "id": "d1826105-f1f6-4223-96dd-2d51ad169232",
+            "inputPoints": "[{\"uid\":\"2a8fa804-a4a3-4601-999f-ceb308ef554f\",\"label\":\"6\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"10\"}]"
+        },
+        {
+            "id": "d8e654ab-58dc-4fed-a3e5-43dd2a695bce",
+            "inputPoints": "[{\"uid\":\"614f8eb2-02fe-4e7e-8bf8-378b36501619\",\"label\":\"1\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"03cdcdcf-9855-4814-b465-bb0798b7d695\",\"label\":\"2\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"4,9\"}]"
+        },
+        {
+            "id": "da464701-6100-49a4-a2e6-8130a1a08ff1",
+            "inputPoints": "[{\"uid\":\"31990eb2-cb3a-457d-831d-716e01b60aa4\",\"label\":\"13\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"7761aa48-7c9b-4ecd-bf0c-cdd2a8033888\",\"label\":\"14\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"5,2\"}]"
+        },
+        {
+            "id": "dd48709e-2477-4b95-a607-899a3a6f28af",
+            "inputPoints": "[{\"uid\":\"f969d9a8-5850-4cb9-930b-b977eb16c74a\",\"label\":\"9\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"24004144-875a-4469-8e16-a7bdbf5e5528\",\"label\":\"10\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"4,9\"}]"
+        },
+        {
+            "id": "e3a014b4-cb7a-4650-af69-b69e022fde7c",
+            "inputPoints": "[{\"uid\":\"01c18abf-d639-44c3-9f5f-2f4920119b9a\",\"label\":\"11\",\"type\":\"square\",\"inputLimitPattern\":null},{\"uid\":\"6cfc4ce3-ee63-46bb-a365-ae9d1d53f769\",\"label\":\"12\",\"type\":\"square\",\"inputLimitPattern\":null}]",
+            "score": 5.0,
+            "type": "fillblanks",
+            "possibleAns": "[{\"ansExpr\":\"1,4\"}]"
+        }
+    ]
+}}

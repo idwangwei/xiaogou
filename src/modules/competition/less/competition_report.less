@@ -1,0 +1,193 @@
+.competition_report {
+  background-color: #fcd053;
+  .myHeader {
+    background-color: #83dcf5 !important;
+  }
+  .test {
+    border: none;
+    color: #000000;
+    width: 360px;
+    height: 560px;
+    background-size: 100% 100%;
+  }
+  .flex_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .flex_display_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+  .flex_display_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  .report-content {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+    border: none;
+    border-radius: 5px;
+    //height: 300px;
+    background-color: #fff8df;
+
+    hr {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: #E4B8BC;
+      height: 1px;
+      border: none;
+    }
+  }
+
+  .paper-info {
+    .flex_display(column);
+    .flex_display_align(center);
+    .flex_display_justify(center);
+    padding: 5px 0px;
+    color: #c25c5f;
+    .title {
+      font-size: 16px;
+      font-weight: bolder;
+      padding: 10px;
+    }
+    span {
+      color: #ff655a;
+    }
+
+  }
+
+  .competition-info {
+    .flex_display(column);
+    .flex_display_align(center);
+    .flex_display_justify(center);
+    padding: 5px 0px;
+    color: #c25c5f;
+    width: 100%;
+    .title {
+      font-size: 16px;
+      font-weight: bolder;
+      padding: 10px;
+    }
+    .table-head {
+      width: 95%;
+      .flex_display(row);
+      .flex_display_align(center);
+      .flex_display_justify(space-around);
+      margin-bottom: 8px;
+    }
+
+    .competition-data {
+      width: 95%;
+      .flex_display(row);
+      .flex_display_align(center);
+      .flex_display_justify(space-around);
+      span {
+        color: #ff655a;
+      }
+    }
+    .cell_01 {
+      text-align: center;
+      width: 35%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .cell_02 {
+      text-align: center;
+      width: 30%;
+    }
+    .cell_03 {
+      text-align: center;
+      width: 35%;
+    }
+
+  }
+  .result-analyze {
+    padding: 5px 0px;
+    .title {
+      width: 100%;
+      font-size: 16px;
+      font-weight: bolder;
+      padding: 5px;
+      text-align: center;
+      color: #c25c5f;
+    }
+    .subtitle {
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      color: #1E446A;
+    }
+    .analyze-data {
+      width: 100%;
+      color: #1E446A;
+      .flex_display(row);
+      .flex_display_align(center);
+      .flex_display_justify(center);
+      .info {
+        .flex_display(column);
+        .flex_display_align(flex-start);
+        .flex_display_justify(center);
+        pre {
+          font-family: inherit;
+          display: inline-block;
+        }
+        div {
+          margin: 2px 0px;
+        }
+      }
+
+    }
+
+  }
+
+  .diagnose-entry {
+    position: relative;
+    width: 96%;
+    margin-top: 10%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border: solid 2px #C25C5F;
+    border-radius: 6px;
+    overflow: inherit;
+    background-color: #FFF8DF;
+    padding: 10px;
+    .diagnose_add {
+      margin-left: 10%;
+      width: 50%;
+      color: #c25c5f;
+      .flex_display(column);
+      .flex_display_align(center);
+      .flex_display_justify(space-around);
+      .mybutton {
+        width: 120px;
+        height: 40px;
+        background: url("../images/ad-see.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .diagnose-pic-content {
+      position: absolute;
+      width: 50%;
+      height: 145px;
+      bottom: 0;
+      right: -40px;
+      overflow: hidden;
+      .diagnose-pic {
+        width: 155px;
+        height: 200px;
+        background: url("../images/report_girl.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
+  }
+;
+}

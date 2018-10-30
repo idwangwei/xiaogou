@@ -1,0 +1,118 @@
+
+#live-course-fee-paper{
+  @main-color: #ca75ea;//定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .enter-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      font-weight: bold;
+    }
+    .item-back{
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+  }
+  .fee-paper-content{
+    background-color: #e9e8ee;
+    .section-1{
+      background: #fff;
+      width: 100%;
+      padding-bottom: 30px;
+      position: relative;
+      .fee-mark{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 176px;
+        opacity: .6;
+      }
+    }
+    .content-header{
+      padding: 60px 0 30px;
+      .display-flex(row,center,center);
+      .paper-img{
+        width: 80px;
+      }
+      .paper-right{
+        margin-left: 20px;
+        .display-flex(column,center,flex-start);
+        span{
+          font-size: 16px;
+          font-weight: bold;
+          color: #716c8c;
+          i{
+            font-size: 20px;
+            margin-left: 5px;
+          }
+        }
+        .text-bold{
+          font-weight: bold;
+        }
+      }
+    }
+    .content-info{
+      font-size: 16px;
+      color: #716c8c;
+      width: 300px;
+      margin: 0 auto;
+      &>div{
+        margin-bottom: 5px;
+      }
+    }
+    .btn-box{
+      margin-top: 40px;
+      .display-flex(column,center,center);
+      .notice{
+        font-size: 16px;
+        color: #f80302;
+        margin-bottom: 8px;
+        img{
+          height: 34px;
+          vertical-align: middle;
+          margin-top: -10px;
+          margin-right: 4px;
+        }
+      }
+      &>img{
+        height: 40px;
+      }
+    }
+    .notice-box{
+      background: #e9e8ee;
+      width: 100%;
+      padding: 15px 0;
+      .display-flex(column,flex-start,center);
+      color: #716c8c;
+      font-size: 16px;
+      .notice-title{
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .notice-text{
+        font-size: 14px;
+        width: 300px;
+        line-height: 20px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+}

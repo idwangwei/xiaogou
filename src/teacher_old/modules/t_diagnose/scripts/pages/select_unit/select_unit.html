@@ -1,0 +1,81 @@
+<ion-view hide-nav-bar="true" class="select-unit-file">
+    <ion-header-bar align-title="center" style="background: #d2f7ef!important;"
+                    class="bar-balanced" >
+        <div class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title"  style="color:#4a6b9d;font-weight: bold;font-size: 20px;">选择单元</h1>
+       <!-- <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.hideAllData()">
+                <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>-->
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true" class="select_unit_content">
+        <div class="bank_content">
+            <div class="list" ng-show="ctrl.textbook">
+                <div class="item item-divider item-for-img" ng-click="ctrl.openModal('标签',1)" style="background:none!important;">
+                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                    <span ng-bind="ctrl.textbook.name" class="first-text"></span>
+                    <span style="margin-left: 5px;" class="icon ion-ios-arrow-right"></span>
+                </div>
+                <div ng-repeat="chapter in ctrl.textbook.subTags">
+                    <li class="item lesson_bg" ng-click="ctrl.clickUnit(chapter,$event,$index)">
+                        <!--<span class="icon "
+                              ng-class="chapter.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>-->
+                        {{chapter.text}}
+                    </li>
+                    <!--<div class="list" style="margin-left: 10px;" ng-show="chapter.isOpened">
+                        <li class="item lesson_bg" ng-show="!chapter.subTags.length">这个单元还没有课时哦！</li>
+
+                        <div ng-repeat="unit in chapter.subTags">
+                            <li ng-click="ctrl.showDetailUnit(chapter, unit)" class="item lesson_bg">
+                                {{unit.text}}
+                            </li>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <script id="textbookSelect.html" type="text/ng-template">
+        <ion-modal-view class="select-unit-file">
+            <ion-header-bar align-title="center" style="background: #d2f7ef!important;"
+                            class="bar-balanced" >
+                <div class="button back-button buttons  button-clear header-item" ng-click="ctrl.closeModal()">
+                    <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="color:#4a6b9d;font-weight: bold">请选择教材年级</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list">
+                    <div ng-repeat="version in ctrl.textbooks">
+                        <li class="item unit_bg" ng-click="version.isOpened = !version.isOpened">
+                        <span class="icon"
+                              ng-class="version.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{version.text}}
+                        </li>
+
+                        <div class="list" style="margin-left: 10px;" ng-show="version.isOpened">
+                            <div ng-repeat="book in version.subTags | filter:search | orderBy:'content.length'">
+                                <li ng-click="ctrl.selectCurrentTextbook(book)" class="item lesson_bg item-for-img">
+                                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                                    <span class="first-text" style="font-weight: bold;margin-right: 5px"></span>
+                                    {{book.text}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+</ion-view>
+
+

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@import "./../include/_mixins";
+
+.accordion{
+  .row-link {
+    cursor: pointer;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+  }
+  .row-icon{
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+  }
+}
+.accordion.open{
+  .row-icon{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+}
+
+

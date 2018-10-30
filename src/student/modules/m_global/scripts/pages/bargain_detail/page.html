@@ -1,0 +1,68 @@
+<ion-view id="bargain_detail">
+    <ion-header-bar class="bar-balanced title-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">砍价进度</h1>
+    </ion-header-bar>
+    <ion-content padding="false" delegate-handle="bargain_detail">
+        <div class="content-box">
+            <div class="content-header">
+                <div class="header-time" ng-if="ctrl.resetBargainDetail.status==0">
+                    活动进行中：还剩<span> {{ctrl.countDownTxt}} </span>结束
+                </div>
+                <div class="header-time" ng-if="ctrl.resetBargainDetail.status==1">
+                    活动已结束
+                </div>
+                <div class="header-box">
+                    <div class="star">
+                        <span>人气值：</span>
+                        <img ng-src="{{$root.loadImg('bargain/bargain_finger.png')}}" ng-repeat="v in ctrl.starArr track by $index">
+                    </div>
+                    <div class="des">
+                        {{ctrl.starText}}！已获 <span>{{ctrl.resetBargainDetail.totalInvitors}}</span> 人为你助力
+                    </div>
+                </div>
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_img1.png')}}" class="box-img-1">
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_img1.png')}}" class="box-img-1-1">
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_img2.png')}}" class="box-img-2">
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_img3.png')}}" class="box-img-3">
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_img4.png')}}" class="box-img-4">
+            </div>
+            <div class="content-price">
+                <div class="type-name">{{ctrl.resetBargainDetail.goodsName}}</div>
+                <div class="price-box">
+                    <span class="old-price">原价：<span>{{ctrl.resetBargainDetail.oldTotal/100}}元</span></span>
+                    <span class="bargain-price">共砍掉：<span>{{ctrl.resetBargainDetail.totalMoney/100}}元</span></span>
+                </div>
+            </div>
+            <div class="content-pay">
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_pay_btn.png')}}" class="pay-btn" ng-click="ctrl.goToPay()">
+                <span>{{ctrl.resetBargainDetail.newTotal/100}}元</span>
+            </div>
+            <div class="people-list">
+                <div class="list-title">
+                    好友助力榜
+                </div>
+                <div class="list-item" ng-repeat="v in ctrl.resetBargainList track by $index">
+                    <span class="item-mark mark-{{$index+1}}" ng-show="$index<=2">
+
+                    </span>
+                    <span class="item-mark" ng-show="$index>2">{{$index+1}}</span>
+                    <span class="item-name">{{v.nickName}}</span>
+                    <span class="item-money"><span>{{v.totalDiscount/100}}</span>元</span>
+                </div>
+                <div class="load-more" ng-if="!ctrl.isLoadFinish" ng-click="ctrl.loadMore()">
+                    点击加载更多..
+                </div>
+                <div class="load-more" ng-if="ctrl.isLoadFinish&&ctrl.resetBargainList.length>0">
+                    已经加载完了
+                </div>
+                <div class="load-more" ng-if="ctrl.resetBargainList.length==0">
+                    暂无好友帮你助力
+                </div>
+            </div>
+            <img ng-src="{{$root.loadImg('bargain/bargain_index_share_btn1.png')}}" class="share-btn" ng-click="ctrl.showShare()">
+        </div>
+    </ion-content>
+</ion-view>

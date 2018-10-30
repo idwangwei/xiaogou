@@ -1,0 +1,41 @@
+.expand-item{
+  border-bottom: 1px solid #ddd;
+  .hide-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mtitle{
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 0;
+    padding: 10px 30px 10px 10px;
+    position: relative;
+    background-color: #fff;
+    >span{
+      font-weight: bold;
+    }
+  }
+  .mcontent{
+    max-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    >li{
+      padding: 3px 10px;
+    }
+  }
+  .marrow{
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    color: #999;
+  }
+}
+.expand-item.expanded{
+  .mcontent{
+    max-height: 300px;
+  }
+  .mtitle{
+    background-color: #e6edee;
+  }
+}

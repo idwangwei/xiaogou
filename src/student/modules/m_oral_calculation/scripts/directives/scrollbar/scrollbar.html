@@ -1,0 +1,18 @@
+<div class="oral-scrollbar-container" ng-style="{height:h+'px',top:top+'px'}">
+    <div class="oral-scroll-up" ng-click="scrollUp()">
+        <img ng-src="{{scrollUpImg}}"/>
+    </div>
+    <div class="oral-scroll">
+        <div class="oral-scroll-inner-top"></div>
+        <div class="oral-scroll-inner-center"></div>
+        <div class="oral-scroll-inner-bottom"></div>
+        <div class="oral-scroll-handle"
+             ng-style="{top:handleBarPosition+'px',height:handleBarHeight+'px'}"
+             on-drag-start="dragStart($event)"
+             on-drag-end="dragEnd($event)"
+             on-drag="drag($event)"></div>
+    </div>
+    <div class="oral-scroll-down" ng-click="scrollDown()">
+        <img ng-src="{{scrollDownImg}}"/>
+    </div>
+</div>

@@ -1,0 +1,206 @@
+<ion-view title="统计分析" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">统计分析</h1>
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="false" on-scroll="ctrl.getScrollPosition()" class="work_statistics_file">
+        <!--顶部试卷提交状况-->
+        <div id="paper">
+            <!--竞赛试卷标题-->
+            <competition-add-tip-teacher></competition-add-tip-teacher>
+            <!--试卷名称-->
+            <div class="item  item-label work-paper-title" style="font-weight: bold;" ng-if="!ctrl.isCompetitionPaper">
+                <span ng-bind="(ctrl.isFinalAccess?ctrl.currentWork.paperName+'测试':ctrl.workAnalysis.paper.basic.title)+'('+ctrl.workAnalysis.paper.basic.score+'分)'"></span>
+            </div>
+            <!--提交人数情况-->
+            <div class="row">
+                <div class="col left-col">
+                    <span ng-bind="'作业发给：'+(ctrl.workAnalysis.totalNum||0)+'人'"></span>
+                </div>
+                <div class="col right-col">
+                    <span ng-bind="'统计人数：'+(ctrl.workAnalysis.first.gradedNum||0)+'人'"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--试卷整体得分情况-->
+        <div class="">
+            <div class="work-paper-big-q">
+                <div class="card-header">
+                    <label class="text-title" ng-bind="'作业整体情况'"></label>
+                    </br>
+                </div>
+            </div>
+            <div class="card table-container card-better">
+                <div class="row table-header">
+                    <div class="col ">整个作业</div>
+                    <div class="col " style="display: inline-block">平均得分</div>
+                    <div class="col " style="display: inline-block">平均得分率</div>
+                    <div class="col " style="display: inline-block"> 全对人数</div>
+                </div>
+                <div class="row my-table-row" style="margin-top:-1px ">
+                    <div class="col">
+                        <a ng-bind="'首次做'" ng-if="!ctrl.isCompetitionPaper"></a>
+                        <a ng-bind="'单次做'" ng-if="ctrl.isCompetitionPaper"></a>
+                    </div>
+                    <div class="col">
+                        <span>
+                              <span class="actual-score" ng-bind="ctrl.workAnalysis.first.average"></span>
+                        </span>
+                    </div>
+                    <div class="col" ng-bind="ctrl.workAnalysis.first.averageRate"></div>
+                    <div class="col">
+                        <a ng-bind="ctrl.workAnalysis.first.fullScoreNum"></a>
+                    </div>
+                </div>
+                <div class="row my-table-row" style="margin-top:-1px "
+                     ng-style="{background:$index%2==1?'rgb(254, 251, 245)':''}"
+                     ng-if="!ctrl.isCompetitionPaper">
+                    <div class="col ">
+                        <a ng-bind="'改错后'"></a>
+                    </div>
+                    <div class="col">
+                        <span>
+                            <span class="actual-score" ng-bind="ctrl.workAnalysis.latest.average"></span>
+                        </span>
+                    </div>
+                    <div class="col" ng-bind="ctrl.workAnalysis.latest.averageRate"></div>
+                    <div class="col ">
+                        <a ng-bind="ctrl.workAnalysis.latest.fullScoreNum"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-repeat="bigQ in ctrl.workAnalysis.bigQList track by $index" ng-init="bigQIndex=$index">
+            <div class="work-paper-big-q" ng-if="bigQ.qsList && bigQ.qsList.length>0">
+                <div class="card-header">
+                    <label class="text-title" ng-bind="bigQ.showNum+'、'+bigQ.title+'('+bigQ.score+'分)'">
+                    </label>
+                    </br>
+                </div>
+            </div>
+            <div class="card table-container card-better" ng-if="bigQ.qsList && bigQ.qsList.length>0">
+                <div class="row table-header">
+                    <div class="col col-10" style="min-width: 40px">题号</div>
+                    <div class="col " style="display: inline-block">时间</div>
+                    <div class="col " style="display: inline-block">出错学生</div>
+                    <div class="col " style="display: inline-block">平均得分</div>
+                    <div class="col col-10" style="min-width: 50px"></div>
+
+                </div>
+
+                <div class="table-list-row" ng-repeat="smallQ in bigQ.qsList track by $index"
+                     ng-init="smallQIndex=$index">
+                    <div class="row my-table-row-2 " style="margin-top:-1px ">
+                        <div class="col col-10" style="min-width: 40px">
+                            <a ng-bind="smallQ.seqNum+1" style="font-weight:bold;"></a>
+                            <span>
+                            <img ng-src="{{$root.loadImg('other/icon_yes_s.png')}}"
+                                 width="15" height="15" ng-show="smallQ.passFlag==2">
+                            <img ng-src="{{$root.loadImg('other/icon_yes2.png')}}"
+                                 width="15" height="15" ng-show="smallQ.passFlag==1">
+                            <img ng-src="{{$root.loadImg('other/icon_no.png')}}"
+                                 width="15" height="15" ng-show="smallQ.passFlag==0">
+                        </span>
+                        </div>
+                        <div class="col ">
+                            <div class="row " ng-repeat="(key,stat) in smallQ.statList track by $index"
+                                 ng-init="statIndex=$index"
+                                 ng-if="(key!=1 && ctrl.isCompetitionPaper) || (!ctrl.isCompetitionPaper)">
+                                <div class="col my-table-row">
+                                    <a ng-bind="stat.showText" ng-if="!ctrl.isCompetitionPaper"></a>
+                                    <a ng-bind="'单次做'" ng-if="ctrl.isCompetitionPaper"></a>
+                                </div>
+                                <div class="col table-col" ng-click="ctrl.goErrorStudentList(smallQ,bigQ,stat)"
+                                     ng-if="stat.wrongNum>0">
+                                    <a ng-bind="((stat.wrongNum)||0)+'人'"></a>
+                                </div>
+                                <div class="col my-table-row" ng-if="stat.wrongNum==0">
+                                    <a ng-bind="((stat.wrongNum)||0)+'人'"></a>
+                                </div>
+                                <div class="col my-table-row">
+                             <span>
+                                  <span class="actual-score" ng-bind="stat.averageScore"></span>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-10 display-flex" style="min-width: 50px; padding-right: 15px;" ng-click="ctrl.showQuesDetail(smallQ)">
+                            <button class="button">
+                                <i class="ion-chevron-down" ng-if="!smallQ.showQuesFlag"></i>
+                                <i class="ion-chevron-up" ng-if="smallQ.showQuesFlag"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row my-table-row-2" ng-if="smallQ.showQuesFlag">
+                        <div class="image-type-question">
+                            <div class="question-content">
+                                <div id="{{bigQ.id+smallQ.id}}"
+                                     class="paper-small-q">
+                                    <div style="font-size: 16px;">
+                                        <span ng-bind="'第'+(smallQ.seqNum+1)+'小题('+smallQ.score+'分)'"></span>
+                                    </div>
+
+                                </div>
+                                <div ng-bind="ctrl.showKnowledgeAndDifficulty(smallQ)" ng-if="!ctrl.isCompetitionPaper"
+                                     style="background-color: #B8E4FC;color:#565555;text-align: left"></div>
+
+                                <div compile-html="smallQ.qContext" current-q-input="smallQ.inputList"
+                                     class="q-context"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--以下为试卷内容-->
+       <!-- <div class="paper_title_2">
+            <img ng-src="{{$root.loadImg('work/work_detail_bg.png')}}" width="100%" height="100%">
+            <img ng-src="{{$root.loadImg('work/work_detail_bg_1.png')}}" class="bg_t_photo">
+            <img ng-src="{{$root.loadImg('work/work_detail_bg_2.png')}}" class="bg_file">
+            <div class="inner-text-box">
+                <span>附：试卷</span>
+            </div>
+        </div>
+        <div ng-repeat="bigQ in ctrl.workAnalysis.bigQList track by $index" ng-init="bigQIndex=$index">
+            <div id="{{bigQ.id}}" class="paper-big-q">
+                <div>
+                    <label style="font-size: 16px;"
+                           ng-bind="bigQ.showNum+'、'+bigQ.title+'(包含  '+bigQ.smallQCount+'个小题 共'+bigQ.score+'分)'">
+                    </label>
+                </div>
+            </div>
+            <div ng-repeat="record in bigQ.qsList" class="card  card-better small_q_bg">
+                <div class="image-type-question">
+                    <div class="question-content">
+                        <div id="{{bigQ.id+record.id}}"
+                             class="paper-small-q">
+                            <div style="font-size: 16px;">
+                                <span ng-bind="'第'+(record.seqNum+1)+'小题('+record.score+'分)'"></span>
+                            </div>
+
+                        </div>
+                        <div ng-bind="ctrl.showKnowledgeAndDifficulty(record)" ng-if="!ctrl.isCompetitionPaper"
+                             style="background-color: #B8E4FC;color:#565555"></div>
+
+                        <div compile-html="record.qContext" current-q-input="record.inputList" class="q-context"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>-->
+    </ion-content>
+    <ion-footer-bar style="background: #BCFCF8 !important;" ng-if="ctrl.currentWork.publishType!=4&&ctrl.currentWork.publishType!=5 && ctrl.currentWork.publishType!=10">
+        <img style="height: 90%" ng-src="{{$root.loadImg('workStuList/send_msg_to_student.png')}}" ng-click="ctrl.sendMsgTostu()">
+    </ion-footer-bar>
+
+    <loading-processing load-top="100"></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+</ion-view>

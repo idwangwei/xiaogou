@@ -1,0 +1,92 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar-better">
+        <!--<task-top-bar ng-if="!ctrl.isAdmin"></task-top-bar>-->
+    </ion-header-bar>
+    <ion-side-menus class="rapid-calc-count">
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="has-header game_clazz_select" padding="true" style="top:105px!important;">
+                <div class="game_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-style="{'margin-bottom':$last?'60px':'0px'}">
+                    <div class="clazz-item" ng-click="ctrl.changeClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadImg('other/class.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <ion-side-menu-content>
+            <ion-header-bar>
+                <div class="btn-wrap">
+                    <div class="select-clazz" ng-click="ctrl.showLeftMenu()">
+                        <span ng-bind="ctrl.selectedClazz.name || '没有班级'"></span>
+                        <span class="icon ion-ios-arrow-right"></span>
+
+                    </div>
+                    <div class="try-play" ng-click="ctrl.tryPlayGame()">
+                        <span>试玩</span>
+                        <span class="icon ion-ios-arrow-right"></span>
+                    </div>
+                </div>
+                <div class="select-grade" ng-show="ctrl.countList.length > 0">
+                    <div class="mbtn">
+                        <div class="mback" ng-click="ctrl.mback()"></div>
+                        <div>{{ctrl.showGrade()}}</div>
+                        <div class="mforward" ng-click="ctrl.mforward()"></div>
+                    </div>
+                </div>
+                <div style="border: none;"
+                     class="item item-input block-input item-input—height"
+                     ng-if="ctrl.countList.length === 0 && ctrl.selectedClazz.id !== 0 && ctrl.retFlag">
+                    <input type="text"
+                           value="本班暂无速算统计数据"
+                           readonly="readonly"
+                    />
+                </div>
+                <div style="padding: 10px 0px 0px 10px;" ng-if="ctrl.selectedClazz.id === 0">
+                    您还没有创建班级，请点击下方的“班级”，然后再点击“+”创建班级。
+
+                </div>
+            </ion-header-bar>
+            <ion-content overflow-scroll="false" delegate-handle="mainScroll">
+                <!--排行榜-->
+                <!--<div class="compute-fighter-rank-wrap" ng-click="ctrl.showComputeFighterRank()">-->
+                    <!--<div class="compute-fighter-rank">-->
+                        <!--<div class="compute-fighter-rank-text">-->
+                            <!--<span style="line-height: 22px">速算斗士榜</span>-->
+                            <!--<i style="margin-left: 16px;font-size: 16px;" class="icon ion-ios-arrow-right"></i>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--下拉刷新-->
+                <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()" spinner="ios"
+                               ng-if="ctrl.selectedClazz.id !== 0"></ion-refresher>
+                <div class="list-content" style="padding-bottom: 49px;">
+                    <a class="r-item" ng-repeat="item in ctrl.countList track by $index" ng-class-odd="'odd'"
+                       ui-sref="stuPassLevels({grade: ctrl.grade,stuName: item.name, classId: ctrl.selectedClazz.id ,passLevels: item.passLevel})">
+                        <div class="people-wrap">
+                            <img ng-src="{{item.gender == 1 ? ctrl.boyIcon : ctrl.girlIcon}}"/>
+                            <span ng-bind="item.name"></span>
+                        </div>
+                        <div class="status-wrap">
+                            <div style="font-size: 16px;">
+                                {{ctrl.calcPassLevelPercent(item.passLevel, item.totalLevel)}}
+                            </div>
+                            <div class="status-outer-bar">
+                                <div class="status-inner-bar"
+                                     ng-style="{'width': (item.passLevel)/(item.totalLevel)*100 + '%'}"></div>
+                            </div>
+                        </div>
+                        <div class="right-info">
+                            <span><em ng-bind="item.passLevel"></em>/{{item.totalLevel}} 关</span>
+                            <i class="icon ion-chevron-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </ion-content>
+        </ion-side-menu-content>
+    </ion-side-menus>
+
+</ion-view>

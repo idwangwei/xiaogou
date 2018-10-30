@@ -1,0 +1,58 @@
+<ion-view title="班级详情" hide-nav-bar="true" class="child_class_detail_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">班级详情</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <div class="list card card-better">
+            <div class="item card-title">
+                <img src="{{$root.loadImg('class.svg')}}" alt="" widt="50px" height="50px"  style="float: left"/>
+                <div style="margin-top: 6px;padding-left: 60px;">
+                    <h2>班级号：<span ng-bind="selectedClazz.id"></span></h2>
+                    <div ng-bind="clazzInfo.name" style="font-size: 0.875em;"></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <span>详细地址：</span>
+                <span>{{clazzInfo.provinceName+clazzInfo.cityName+clazzInfo.districtName}}</span>
+            </div>
+
+            <div class="item item-even">
+                <span>学校名称：</span>
+                <span>{{clazzInfo.schoolName}}</span>
+            </div>
+
+            <div class="item ">
+                <span>年级名称：</span>
+                <span>{{clazzInfo.gradeName}}</span>
+            </div>
+
+            <div class="item ">
+                <span>班级名称：</span>
+                <span>{{clazzInfo.className}}</span>
+            </div>
+
+            <div class="item item-even">
+                <span>教师名称：</span>
+                <span>{{clazzInfo.teacher}}</span>
+            </div>
+
+            <div class="item">
+                <span>班级人数：</span>
+                <span>{{clazzInfo.studentCount}}</span>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar style="background: #e6e9ec" ng-if="clazzInfo">
+        <div class="button button-clear bg-calm  bar-item flex_1 ccd_footer_title"
+                ng-click="deleteClazz()"
+                style="font-weight: bold;color: white;">
+            <i class="icon ion-ios-trash-outline"></i>
+            删除班级
+        </div>
+    </ion-footer-bar>
+    <loading-processing></loading-processing>
+</ion-view>

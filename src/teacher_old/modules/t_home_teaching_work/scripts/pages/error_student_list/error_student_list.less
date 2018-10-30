@@ -1,0 +1,101 @@
+@charset "UTF-8";
+@import "./../../../../t_boot/less/theme02/include/_mixins";
+
+/*添加样式使之与出题端保持一致*/
+.image-type-question{
+  img {
+    vertical-align: middle;
+  }
+  p {
+    margin: 0 !important;
+  }
+}
+.error_student_list_file{
+
+  auto-list-con auto-list auto-list-content {
+    border: none;
+  }
+  .center-span  {
+    span{
+      color: #293d69 !important;
+    }
+  }
+  .block-content{
+    div{
+      color: #293d69 !important;
+    }
+  }
+  .name {
+    color: #293d69 !important;
+    text-align: center;
+  }
+  .work-paper-title{
+    font-size: 18px;
+  }
+  .list-content_stu {
+    background: none!important;
+  }
+
+  .smallq-title{
+    background: #accbf9;
+  }
+
+  .q-context{
+    margin-top: 0px;
+    padding-top: 20px;
+  }
+
+  .show-q-img{
+    width: 26px;
+    height:26px;
+    border-radius: 50%;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+    position: absolute;right:5px;bottom:5px;
+  }
+
+  .item{
+    border: none;
+  }
+
+  .checkbox input:after, .checkbox-icon:after {
+    -webkit-transition: opacity 0.05s ease-in-out;
+    transition: opacity 0.05s ease-in-out;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 33%;
+    left: 25%;
+    display: table;
+    width: 14px;
+    height: 6px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-right: 0;
+    content: ' ';
+    opacity: 0;
+  }
+  .qff_content input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+    background: #4BD937;
+    border-color: #4BD937;
+  }
+
+
+  @media screen and(max-width:384px){
+    .my-check-box{
+      padding-left: 35px !important;
+      margin:0 !important;
+      font-size: 15px;
+
+      .checkbox-icon{
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+
+    .item-checkbox .checkbox{
+      left:0 !important;
+    }
+  }
+
+}

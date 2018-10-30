@@ -1,0 +1,129 @@
+.platform-ios.platform-cordova:not(.fullscreen) .final-sprint-pay .padding {
+  padding: 0 !important;
+}
+
+.final-sprint-pay {
+  background-color: #e4e4ed;
+  .myHeader {
+    //background: rgba(252, 111, 86, 0) !important;
+    background-color: #52b6f1 !important;
+    border: none;
+    .button i {
+      color: #e5e5ec !important;
+    }
+  }
+  .padding {
+    padding: 0 !important;
+  }
+  .final-sprint-pay-content {
+    .pay-title {
+      width: 100%;
+      text-align: center;
+      background-color: #52b6f1;
+      position: relative;
+      overflow: hidden;
+      padding: 0 0 20px;
+      //padding: 15px;
+      .title-word {
+        width: 80%;
+      }
+      .pay-title-bg {
+        width: 24%;
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: -16%;
+        margin: auto;
+        @media screen  and (min-width: 600px) {
+          width: 20%;
+          bottom: -18%;
+        }
+      }
+    }
+    .pay-goods-list {
+      padding: 0px 2% 60px 2%;
+      text-align: center;
+      width: 100%;
+      .goods-item-change-bg {
+        .background_change(#a457dc, #da66d8);
+      }
+      .goods-item {
+        width: 100%;
+        background-color: #ffffff;
+        .display-flex(row, space-around, center);
+        margin: 10px 0;
+        border-radius: 3px;
+        padding: 15px;
+        p {
+          margin: 0;
+        }
+
+        .item01 {
+          color: #51b5f0;
+          text-align: left;
+          flex: 3;
+          -webkit-flex: 3;
+          max-width: 350px;
+          min-width: 225px;
+          font-size: 16px;
+          @media screen  and (max-width: 320px) {
+            min-width: 205px;
+            font-size: 14px;
+          }
+        }
+        .item02 {
+          color: #ff0d0d;
+          flex: 1;
+          -webkit-flex: 1;
+          text-align: right;
+          font-weight: 600;
+          font-size: 16px;
+          max-width: 120px;
+          min-width: 40px;
+        }
+        .item03 {
+          text-align: left;
+          flex: 1;
+          -webkit-flex: 1;
+          font-size: 22px;
+          min-width: 50px;
+          height: 100%;
+          line-height: 100%;
+          i {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+  }
+  .pay-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    height: 60px;
+    background-color: #D98EE1;
+    background-image: none !important;
+    img {
+      height: 58px;
+      padding: 5px 0 5px 0;
+    }
+  }
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+}

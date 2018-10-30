@@ -1,0 +1,36 @@
+.mFormRadio{
+  background-color: #fff;
+  display: flex;
+  display: -webkit-flex;
+  .radioWrap{
+    position: relative;
+    line-height: 2rem;
+    .mRadio{
+      display: inline-block;
+      width: 100%;
+      border-radius: 5px;
+      padding: 5px 10px 5px 35px;
+      background-color: #c8c8c8;
+      color: #666;
+    }
+    .mCircle{
+      position: absolute;
+      top: 5px;
+    }
+    .mCircle::before{
+      content: url('./radio-default.svg');
+    }
+  }
+  .radioWrap:last-child{
+    margin-left: 20px;
+  }
+  .radioWrap.active{
+    .mRadio{
+      background-color: #5a7ce2;
+      color: #fff;
+    }
+    .mCircle::before{
+      content: url('./radio-selected.svg');
+    }
+  }
+}

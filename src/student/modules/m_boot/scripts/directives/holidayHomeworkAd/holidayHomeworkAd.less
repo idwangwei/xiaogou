@@ -1,0 +1,140 @@
+@import "../../../less/theme01/include/_mixins";
+.platform-ios.platform-cordova:not(.fullscreen) .holiday-homework-ad .back-btn{
+  top:20px!important;
+}
+.holiday-homework-ad{
+  .back-btn{
+    position: fixed;
+    top: 0px;
+    height: 44px;
+    line-height: 44px;
+    left: 10px;
+    font-weight: 300;
+    font-size: 17px;
+    color: #4a6b9d;
+    z-index: 1111;
+  }
+  .holiday-homework-ad-backdrop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #6fddf8;
+    background: -webkit-linear-gradient(#6fddf8, #62f0cd 30%);
+    background: linear-gradient(#6fddf8, #62f0cd 30%);
+
+    z-index: 999;
+    .display-flex;
+
+    .holiday-homework-ad-content{
+      position: relative;
+      z-index : 1000;
+      .display-flex;
+      .com_flex-direction_column;
+      border-radius: 10px;
+      width: 100%;
+      //max-width: 600px;
+      //max-height: 800px;
+      overflow: hidden;
+      img{
+        display:inline-block;
+      }
+      .content-top{
+        .display-flex;
+        width: 100%;
+        background: url("./holiday_wok_summer_ad_0.png");
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        margin-top: 100px;
+        background-size: 100% 100%;
+        img{
+          width: 80%;
+          max-width: 600px;
+        }
+        img:first-child{
+          margin-top: -50px;
+        }
+      }
+      .content-middle{
+        //.display-flex-pure;
+        //.com_flex-direction_column;
+        //-webkit-justify-content:space-around;
+        //justify-content: space-around;
+        max-width: 800px;
+        overflow: scroll;
+        padding-top: 20px;
+        .flex_1;
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px;
+        color: #5877c0;
+        .ad_word_1,.ad_word_2{
+          .display-flex-pure;
+          //.com_justify-content;
+          font-weight:bold;
+          font-size: 15px;
+          i{
+            color: #66c1ed;
+          }
+          div:first-child{
+            padding: 0 10px;
+          }
+          p{
+            padding-right: 10px;
+          }
+          span{
+            color: #FF3D4A;
+          }
+        }
+        .ad_word_3{
+          border-radius: 10px;
+          border:2px solid #6ec4ed;
+          font-size: 13px;
+          margin: 10px;
+          padding: 10px;
+        }
+      }
+      .content-bottom{
+        height: 74px;
+        width: 100%;
+        position: relative;
+        .content-bottom-layer-1{
+          height: 100%;
+          .display-flex-pure;
+          .com_align_item_end;
+          .com_justify-content;
+          .cloud_1{
+            .flex_1;
+          }
+          .cloud_2{
+            .flex_1;
+            text-align: right;
+          }
+          img{
+            width: 80%;
+          }
+        }
+        .content-bottom-layer-2{
+          position: absolute;
+          .display-flex-pure;
+          .com_align_item_end;
+          img{width: 100%}
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+        .content-bottom-layer-3{
+          position: absolute;
+          right: -10px;
+          width: 100px;
+          height: 100px;
+
+          top: -20px;
+          bottom: 0;
+          img{height: 100%}
+        }
+      }
+
+    }
+  }
+}

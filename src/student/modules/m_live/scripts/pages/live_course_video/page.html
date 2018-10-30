@@ -1,0 +1,20 @@
+<ion-view id="live-course-video" cache-view="false">
+    <ion-header-bar class="bar-balanced enter-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">直播课程回放</h1>
+    </ion-header-bar>
+    <ion-content padding="false" class="video-content">
+        <video
+                controls="controls"
+                autoplay
+                id="backVideo"
+                width="100%"
+        ></video>
+        <div class="loading-box" ng-show="ctrl.showLoading">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_course_loading.gif')}}">
+            <span>视频加载中...</span>
+        </div>
+    </ion-content>
+</ion-view>

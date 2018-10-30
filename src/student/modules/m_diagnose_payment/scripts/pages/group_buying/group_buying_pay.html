@@ -1,0 +1,55 @@
+<ion-view hide-nav-bar=true class="group_buying_pay">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">支付</h1>
+    </ion-header-bar>
+    <div class="wxPay_pay_bg">
+        <div class="wxPay_pay_bg_bottom">
+            <div class="wxPay_pay_bg_bottom_left"></div>
+            <div class="wxPay_pay_bg_bottom_right"></div>
+        </div>
+    </div>
+    <ion-content class="wxPay-ion-content">
+        <div class="wxPayContent">
+            <div class="productDetails">
+                <p class="details_title">{{ctrl.payTitle}}</p>
+                <div class="describe">
+                    <ul>
+                        <li ng-repeat="item in ctrl.productDescribe">
+                            <span>{{item}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="money">
+                <p>合计:<span class="moneyNum">￥{{ctrl.productShowFee/100}}</span></p>
+            </div>
+            <div class="payBtn">
+                <div class="display-flex btn {{ctrl.iscreateAppOrder==false?'clicked':''}}"
+                     ng-click="ctrl.createOrderWxPayApp()">
+                    <img ng-src="{{$root.loadImg('weixin_pay/wechat.ico')}}">
+                    <span> 微信支付（本机）</span>
+                </div>
+                <div class="display-flex btn {{ctrl.iscreateScanOrder==false?'clicked':''}}"
+                     ng-click="ctrl.createOrderWxPayScan()">
+                    <img class="imgQr" ng-src="{{$root.loadImg('weixin_pay/wxqrCode.png')}}">
+                    <span> 微信扫码支付（可找人代付）</span>
+                </div>
+                <div class="protocol">
+                  <span class="checkbox">
+                        <i ng-class="ctrl.btnReadProtocol==true?
+                                    'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"
+                           ng-click="ctrl.toggleReadBtn()">
+                       </i>
+                       <span>购买前我已阅读：</span>
+                      <!--<u ui-sref="weixin_pay_protocol">《用户须知条款》</u>-->
+                       <u ng-click="ctrl.gotoProtocol()">《用户须知条款》</u>
+                  </span>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,285 @@
+@import "./../../../../m_boot/less/theme01/include/_mixins";
+.year-card-pay-file {
+  .display_flex(@dir,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+    align-items: @align;
+    -webkit-align-items: @align;
+  }
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  background:#CCA8E0;
+
+  .year-card-pay-header{
+    background:initial;
+    border-bottom:none;
+    .title, .button{
+      color: white;
+    }
+  }
+  .year-card-pay-content{
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+    width: 100%;
+    .scroll{
+      height: 100%;
+    }
+    .pay-content{
+      .display_flex(column,center,center);
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      .pay-content-top-warp{
+        width: 80%;
+        padding: 0 20px;
+        max-width: 800px;
+        .flex_1;
+        .display-flex-pure;
+        .pay-content-top{
+          background-color: white;
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+          .flex_1;
+          .display_flex(column,center,center);
+          .pay-content-info{
+            padding: 6px 20px;
+            width: 100%;
+            color: #2b4b7d;
+            height: 30px;
+            text-align: center;
+            background-color: white;
+            position: relative;
+            z-index: 10;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            top:0;
+          }
+
+          .pay-content-scroll{
+            .flex_1;
+            color: #2b4b7d;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            .desc-title{
+              p{
+                font-size: 12px;
+                padding-left: 57px;
+                color: #2c58bf;
+              }
+            }
+            .desc-detail{
+              margin-top: 10px;
+              .desc-detail-prePrice{
+                position: relative;
+                img{
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .desc-detail-disabled{
+                background-color: #dddddd;
+              }
+            }
+            .item{
+              border:none;
+              font-size: 14px;
+              margin: 0;
+              padding-top: 6px;
+              padding-bottom: 6px;
+              color: #2b4b7d;
+              .item-content{
+                overflow: initial;
+                text-overflow: initial;
+                white-space: normal;
+                .display-flex-pure;
+                .com_align_item;
+
+                span:first-child{
+                  .flex_1;
+                }
+                span:nth-child(2){
+                  margin: 0 10px;
+                }
+                span:nth-child(3){
+                  color: #D80000;
+                }
+                span:last-child{
+                  margin-right: -16px;
+                  margin-left: 4px;
+                  color: #0054ff;
+                }
+              }
+              .checkbox-icon:before{
+                border-radius: 6px;
+              }
+              .checkbox-icon:after{
+                border-width: 2px;
+              }
+              .item-checkbox .checkbox{
+                left: 0;
+                right: 0;
+              }
+            }
+            .item[disabled=disabled]{
+              .checkbox-icon:before{
+                background-color:#dddddd;
+              }
+              .checkbox-icon:after{
+                border-color: #03bb03;
+              }
+            }
+            .scroll-bar .scroll-bar-indicator.scroll-bar-fade-out {
+              opacity: 1;
+            }
+          }
+
+        }
+
+      }
+      .top-price{
+        text-align: end;
+        padding: 10px 20px 0 20px;
+        font-size: 17px;
+        color: #2b4b7d;
+        width: 80%;
+        max-width: 800px;
+        span{
+          color: red;
+        }
+      }
+      .pay-content-middle{
+        width: 80%;
+        max-width: 800px;
+        margin: auto;
+        padding: 4px 20px;
+        color: #2b4b7d;
+        font-size: 14px;
+        .middle-desc-box{
+          color: #193156;
+        }
+        .middle-input-box{
+          .display-flex;
+          background: white;
+          border-radius: 6px;
+          input{
+            .flex_1;
+            border-radius: 6px;
+            padding: 0 10px;
+          }
+          div{
+            height: 30px;
+            line-height: 26px;
+            font-size: 16px;
+            margin-right: 10px;
+
+            width: 110px;
+            background-color: #00b700;
+            text-align: center;
+            border-radius: 6px;
+            margin-left: 10px;
+            border: 2px solid #10b122;
+            color: white;
+          }
+        }
+        .middle-check-info{
+          font-size: 12px;
+          height: 51px;
+          .check-info-right{
+            div:first-child{
+              color: #D80000;
+            }
+            div:last-child{
+              text-align: end;
+              font-size: 17px;
+              span{
+                color: #D80000;
+              }
+            }
+          }
+          .check-info-wrong{
+            color: #c58000;
+            p:first-child{
+              color: #D80000;
+            }
+            p:last-child{
+              span{
+                color: #D80000;
+              }
+            }
+          }
+        }
+      }
+      .pay-content-bottom{
+        width: 80%;
+        max-width: 800px;
+        margin: auto;
+        padding: 10px 20px;
+        //min-height: 150px;
+        max-height: 350px;
+        color: #2b4b7d;
+        .display-flex {
+          display: flex;
+          display: -webkit-flex;
+          justify-content: flex-start;
+          -webkit-justify-content: flex-start;
+          -webkit-align-items: center;
+          align-items: center;
+          flex-flow: row;
+          -webkit-flex-flow: row;
+        }
+
+        .clicked {
+          background: #d1cdcd !important;
+        }
+        .btn {
+          font-size: 16px;
+          padding: 8px 0 8px 10%;
+          width: 100%;
+          margin-bottom: 10px;
+          border-radius: 7px;
+          background: #fff;
+
+          span {
+            margin-left: 5px;
+          }
+
+          .imgQr {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        .protocol {
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+    }
+    .pay-content-ios{
+      padding-top: 15px;
+    }
+  }
+
+
+  @media screen and (max-width: 768px){
+    .year-card-pay-content .pay-content{
+      .pay-content-top-warp,.pay-content-bottom,.pay-content-middle,.top-price{
+        width: 100%;
+      }
+
+      .pay-content-top-warp .pay-content-top .pay-content-scroll .item{
+        font-size: 12px;
+      }
+
+    }
+  }
+}

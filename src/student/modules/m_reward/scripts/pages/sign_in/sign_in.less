@@ -1,0 +1,344 @@
+.sign-in {
+  .myHeader {
+    background-color: #83dcf5 !important;
+    button {
+      margin-left: 85%;
+    }
+  }
+
+  /*.sign-content {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+
+    .sign-info-seven {
+      margin-right: 25%;
+      margin-left: 25%;
+    }
+
+    .sign-info {
+      .flex_display(column);
+      .flex_display_align(center);
+      .flex_display_justify(center);
+      width: 50%;
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .item-head {
+        background-color: #6E48AA;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 4px 15px 4px 15px;
+
+      }
+      .item-content {
+        color: #000000;
+        font-size: 16px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .item-foot {
+        button {
+          color: #ffffff;
+          font-size: 14px;
+          height: 25px;
+          line-height: 25px;
+          background-color: #b564d1;
+          min-height: 20px !important;
+        }
+
+      }
+      .item-mark {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 75px;
+        height: 63px;
+        background: url("../../../reward_images/sign_yes.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  }
+*/
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+
+  .sign-in-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    .sign-in-bg-head {
+      position: relative;
+      width: 100%;
+      height: 30%;
+      //min-height: 160px;
+      background-image: radial-gradient(ellipse farthest-corner at 50% 50%, #ace5fa 5%, #76c7fa 100%, transparent 10%);
+
+      .all_cloud {
+        position: relative;
+        height: 100%;
+        .cloud1 {
+          position: absolute;
+          bottom: 15px;
+          left: -111px;
+          background: url('../../../reward_images/signIn/cloud1.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          z-index: 110;
+          width: 180px;
+          height: 100px;
+        }
+        .cloud2 {
+          width: 140px;
+          height: 60px;
+          position: absolute;
+          bottom: 10px;
+          left: -41px;
+          background: url('../../../reward_images/signIn/cloud2.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          z-index: 111;
+        }
+        .cloud3 {
+          width: 150px;
+          height: 60px;
+          position: absolute;
+          bottom: 5px;
+          right: -71px;
+          background: url('../../../reward_images/signIn/cloud3.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          z-index: 112;
+        }
+        .cloud4 {
+          width: 80px;
+          height: 35px;
+          position: absolute;
+          top: 30%;
+          left: 35%;
+          background: url('../../../reward_images/signIn/cloud3.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          z-index: 113;
+        }
+      }
+      .grassland {
+        background: url('../../../reward_images/signIn/sign_grassland.png') 0px 0px no-repeat;
+        background-size: 100% 100%;
+        z-index: 150;
+        width: 100%;
+        height: 45px;
+        position: absolute;
+        bottom: -2px;
+      }
+
+    }
+    .sign-in-bg-content {
+      position: absolute;
+      bottom: 0;
+      z-index: 160;
+      width: 100%;
+      height: 70%;
+      background-image: radial-gradient(ellipse farthest-corner at 50% 50%, #abe75a 25%, #6dd759 100%, transparent 10%);
+    }
+
+    .sign-in-head {
+      position: absolute;
+      width: 100%;
+      height: 45%;
+      top: 0;
+      min-height: 235px;
+      z-index: 180;
+      .sign-in-head-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .color-flags {
+          height: 45px;
+          .flex_display(row);
+          .flex_display_align(center);
+          .flex_display_justify(center);
+          .left-flags {
+            position: absolute;
+            width: 50%;
+            height: 50px;
+            left: 0px;
+            top: 0px;
+            background: url('../../../reward_images/signIn/colour_flags.png') 0px 0px no-repeat;
+            background-size: 100% 100%;
+            transform: rotateY(180deg);
+            z-index: 190;
+          }
+          .right-flags {
+            position: absolute;
+            width: 50%;
+            height: 50px;
+            right: 0px;
+            top: 0px;
+            background: url('../../../reward_images/signIn/colour_flags.png') 0px 0px no-repeat;
+            background-size: 100% 100%;
+            z-index: 190;
+          }
+        }
+        //height: 235px;
+        .sign-head-content {
+          position: absolute;
+          width: 100%;
+          height: 235px;
+          bottom: 0;
+
+          .pet-area {
+            position: relative;
+            height: 140px;
+            .flex_display(row);
+            .flex_display_align(center);
+            .flex_display_justify(center);
+            .left-pet {
+              background: url('../../../reward_images/signIn/sign_pet.png') 0px 0px no-repeat;
+              background-size: 100% 100%;
+              height: 80px;
+              width: 125px;
+              position: absolute;
+              left: 10%;
+              bottom: 0px;
+            }
+            .right-pet {
+              background: url('../../../reward_images/signIn/sign_logo.png') 0px 0px no-repeat;
+              background-size: 100% 100%;
+              height: 120px;
+              width: 140px;
+              position: absolute;
+              right: 0px;
+              bottom: 0px;
+
+            }
+          }
+
+          .title-area {
+            position: absolute;
+            height: 50px;
+            width: 100%;
+            .flex_display(row);
+            .flex_display_align(center);
+            .flex_display_justify(center);
+            .title-img {
+              width: 350px;
+              height: 50px;
+              background: url('../../../reward_images/signIn/sign_title.png') 0px 0px no-repeat;
+              background-size: 100% 100%;
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+  .sign-content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 220;
+    .back-butn {
+      position: absolute;
+      top: 25px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      z-index: 300;
+    }
+    .sign-in-content-top {
+      width: 100%;
+      height: 40%;
+      min-height: 200px;
+    }
+    .sign-in-content {
+      width: 100%;
+      height: 60%;
+      position: relative;
+      //overflow: scroll;
+      .mt-scroll-content {
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        .sign-info {
+          .flex_display(column);
+          .flex_display_align(center);
+          .flex_display_justify(center);
+          width: 33%;
+          position: relative;
+          margin-top: 10px;
+          margin-bottom: 10px;
+
+          .item-head {
+            //background-color: #6E48AA;
+            color: #428Caa;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 4px 15px 4px 15px;
+
+          }
+          .item-content {
+            background-color: #ffffff;
+            box-shadow: 3px 2px 0px #429C99;
+            border-radius: 10px;
+            color: #000000;
+            font-size: 16px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: visible !important;
+            padding: 10px;
+            .flex_display(column);
+            .flex_display_align(center);
+            .flex_display_justify(center);
+            .signMark {
+              position: absolute;
+              top: -10px;
+              right: -25px;
+              width: 60px;
+              height: 33px;
+            }
+            label {
+              font-weight: bold;
+              font-size: 16px;
+              color: #38bbfa;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  .flex_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .flex_display_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+  .flex_display_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+}

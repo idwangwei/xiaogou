@@ -1,0 +1,170 @@
+<ion-view class="smart-training-camp">
+    <div class="smart-training-camp-head" ng-class="ctrl.isIos()? 'smart-training-camp-head-ios': 'smart-training-camp-head-normal'">
+       <div class="smart-training-camp-head-bg">
+           <div class="smart-training-camp-head-animal">
+               <img class="head-animal-cloud" ng-src="{{$root.loadImg('smartTrainingCamp/bg_cloud.png')}}">
+               <img class="head-animal" ng-src="{{$root.loadImg('smartTrainingCamp/bg_animal.png')}}">
+               <img class="head-man-cloud" ng-src="{{$root.loadImg('smartTrainingCamp/bg_cloud.png')}}">
+               <img class="head-man" ng-src="{{$root.loadImg('smartTrainingCamp/bg_man.png')}}">
+           </div>
+           <div class="smart-training-camp-head-word">
+               <img ng-src="{{$root.loadImg('smartTrainingCamp/bg_word.png')}}">
+           </div>
+       </div>
+
+        <button class="button buttons button-clear header-item" ng-click="ctrl.back()"
+                ng-style="{'top': ctrl.isIos() ? '20px': '0'}"
+                style="position: absolute;">
+            <i class="ion-ios-arrow-back my-back-btn" style="font-size: 35px !important;"></i>&nbsp;&nbsp;
+        </button>
+    </div>
+
+    <ion-content class="ion-smart-training-camp-content" ng-class="ctrl.isIos()? 'smart-training-camp-content-ios': 'smart-training-camp-content-normal'">
+        <div class="start-time-area">
+            <p>加入时间：{{ctrl.joinTime}}</p>
+        </div>
+       <!-- <div class="get-btn-area">
+            <div class="btn-get-reward">
+                <div class="btn-get-reward-img-area">
+                    <img class="btn-get-reward-img" ng-src="{{$root.loadImg('smartTrainingCamp/reward_get_img1.png')}}">
+                    <span class="reward-money">￥{{ctrl.ShowMoney}}</span>
+                </div>
+                <div class="btn-get-reward-btn-area">
+                    <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_smart.png')}}"
+                         ng-click="ctrl.showSmartAlert()"
+                         ng-if="!ctrl.studyRewardFlag && !ctrl.progressRewardFlag">
+                    <span class="gray-btn" ng-if="ctrl.studyRewardFlag && !ctrl.progressRewardFlag">学霸训练奖已领</span>
+                    <span class="gray-btn" ng-if="!ctrl.studyRewardFlag && ctrl.progressRewardFlag">两奖不同叠加申领</span>
+                </div>
+            </div>
+            <div class="btn-get-reward">
+                <div class="btn-get-reward-img-area">
+                    <img class="btn-get-reward-img" ng-src="{{$root.loadImg('smartTrainingCamp/reward_get_img2.png')}}">
+                    <span class="reward-money">￥{{ctrl.ShowMoney}}</span>
+                </div>
+                <div class="btn-get-reward-btn-area">
+                    <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_improve.png')}}"
+                         ng-click="ctrl.showImproveAlert()"
+                         ng-if="!ctrl.studyRewardFlag && !ctrl.progressRewardFlag">
+                    <span class="gray-btn" ng-if="!ctrl.studyRewardFlag && ctrl.progressRewardFlag">共同进步奖已领</span>
+                    <span class="gray-btn" ng-if="ctrl.studyRewardFlag && !ctrl.progressRewardFlag">两奖不同叠加申领</span>
+                </div>
+            </div>
+        </div>-->
+
+        <div class="reward-btn-area">
+            <div class="reward-btn-content">
+                <div class="reward-card">
+                    <img class="btn-get-reward-img" ng-src="{{$root.loadImg('smartTrainingCamp/reward_get_img1.png')}}">
+                    <span class="reward-card-title">学霸训练奖 ￥{{ctrl.ShowMoney}}</span>
+                    <span class="reward-cut" ng-if="ctrl.saleMoney > 0">(入营时已领取{{ctrl.saleMoney}}元)</span>
+                    <div class="btn-get-reward-area"  ng-if="!ctrl.studyRewardFlag && !ctrl.progressRewardFlag">
+                        <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_get_reward.png')}}"
+                             ng-click="ctrl.showSmartAlert()">
+                    </div>
+                    <div class="btn-get-reward-area gray-btn-area" ng-if="ctrl.studyRewardFlag || ctrl.progressRewardFlag">
+                        <span class="gray-btn" ng-if="ctrl.studyRewardFlag && !ctrl.progressRewardFlag">学霸训练奖已领</span>
+                        <span class="gray-btn" ng-if="!ctrl.studyRewardFlag && ctrl.progressRewardFlag">两奖不可叠加申领</span>
+                    </div>
+                </div>
+                <div class="reward-text">
+                    <span>{{ctrl.smartInfoDetails}}</span>
+                </div>
+            </div>
+            <div class="reward-btn-content">
+                <div class="reward-card">
+                    <img class="btn-get-reward-img" ng-src="{{$root.loadImg('smartTrainingCamp/reward_get_img2.png')}}">
+                    <span class="reward-card-title">共同进步奖￥{{ctrl.ShowMoney}}</span>
+                    <span class="reward-cut" ng-if="ctrl.saleMoney > 0">(入营时已领取{{ctrl.saleMoney}}元)</span>
+                    <div class="btn-get-reward-area"  ng-if="!ctrl.studyRewardFlag && !ctrl.progressRewardFlag">
+                        <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_get_reward.png')}}"
+                             ng-click="ctrl.showImproveAlert()">
+                    </div>
+                    <div class="btn-get-reward-area gray-btn-area" ng-if="ctrl.studyRewardFlag || ctrl.progressRewardFlag">
+                        <span class="gray-btn" ng-if="ctrl.progressRewardFlag && !ctrl.studyRewardFlag">共同进步奖已领</span>
+                        <span class="gray-btn" ng-if="!ctrl.progressRewardFlag && ctrl.studyRewardFlag">两奖不可叠加申领</span>
+                    </div>
+                </div>
+                <div class="reward-text">
+                    <span>{{ctrl.improveInfoDetails}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="invite-stu-info">
+            <div class="invite-code">
+                <p>邀请他人加入时，请给ta邀请码（即您的账号）：   </p>
+                <p>{{ctrl.loginName}}</p>
+            </div>
+            <div class="invite-stu-msg">
+                <p>您已邀请{{ctrl.stuList ? ctrl.stuList.length:'0'}}人成功加入学霸培养计划</p>
+            </div>
+            <div class="invite-stu-table">
+                <div class="invite-stu-table-tr">
+                    <div class="invite-stu-table-td invite-stu-cell-title">小伙伴姓名</div>
+                    <div class="invite-stu-table-td invite-stu-cell-title">ta的账号</div>
+                </div>
+                <div class="invite-stu-table-tr" ng-repeat="item in ctrl.stuList">
+                    <div class="invite-stu-table-td invite-stu-cell">{{item.name}}</div>
+                    <div class="invite-stu-table-td invite-stu-cell">{{item.loginName}}</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <!--<div class="btn-buy-cheap">
+        <img  ng-src="{{$root.loadImg('smartTrainingCamp/btn_buy_cheap.png')}}" ng-click="ctrl.buyCheap()">
+    </div>-->
+
+    <div class="smart-training-camp-prompt" ng-if="ctrl.showPromptAlert">
+        <div class="smart-training-camp-backdrop">
+            <div class="smart-training-camp-content "
+                 ng-if="ctrl.currentPromoteType === ctrl.promoteType.SMART_SUCCESS">
+                <div class="content-title">申领学霸训练奖</div>
+                <div class="content-word">
+                    <p> 您的申领已受理，正在审核中... </p>
+                    <p>3—5个工作日就发放到您的原微信付费账号</p>
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_know.png')}}"
+                         alt="" ng-click="ctrl.hidePromote()">
+                </div>
+            </div>
+            <div class="smart-training-camp-content "
+                 ng-if="ctrl.currentPromoteType === ctrl.promoteType.SMART_FAIL">
+                <div class="content-title">申领学霸训练奖</div>
+                <div class="content-word">
+                    领“学霸训练奖”的时间还没到哦，{{ctrl.endTime}}就可以领奖啦
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_know.png')}}"
+                         alt="" ng-click="ctrl.hidePromote()">
+                </div>
+            </div>
+
+            <div class="smart-training-camp-content"
+                 ng-if="ctrl.currentPromoteType === ctrl.promoteType.IMPROVE_SUCCESS">
+                <div class="content-title">申领共同进步奖</div>
+                <div class="content-word">
+                    <p> 您的申领已受理，正在审核中... </p>
+                    <p>3—5个工作日就发放到您的原微信付费账号</p>
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_know.png')}}"
+                         alt="" ng-click="ctrl.hidePromote()">
+                </div>
+            </div>
+            <div class="smart-training-camp-content" ng-if="ctrl.currentPromoteType === ctrl.promoteType.IMPROVE_FAIL">
+                <div class="content-title">申领共同进步奖</div>
+                <div class="content-word">
+                    <p>再邀请{{ctrl.stuList ? 2-ctrl.stuList.length:'2'}}个小伙伴加入</p>
+                    <p>“学霸培养计划”就可以领奖啦</p>
+
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadImg('smartTrainingCamp/btn_know.png')}}"
+                         alt="" ng-click="ctrl.hidePromote()">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ion-view>

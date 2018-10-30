@@ -1,0 +1,41 @@
+<style>
+    .level ion-item{
+        padding: 5px 0px;
+        border: 0px;
+    }
+    .level .item-content > img:first-child{
+        top:5px;
+        left: 10px;
+        max-width: 80px;
+        max-height: 80px;
+        position: absolute;
+    }
+    .level .item-content .margin{
+        margin-left: 110px;
+    }
+    .level .item-content{
+        min-height: 80px;
+        padding: 10px 0;
+    }
+</style>
+<ion-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">{{ctrl.selectPubGame.name}}</h1>
+    </ion-header-bar>
+    <ion-content class="level">
+        <ion-list>
+            <ion-item ng-repeat="level in ctrl.selectPubGame.levels" ng-click="gameStatistics(ctrl.selectPubGame,level)">
+                <div class="item-content" style="display: relative">
+                    <img ng-src="{{$root.loadImg('game_icon/'+ctrl.selectPubGame.gameGuid+'.png')}}" alt=""/>
+                    <h2 style="margin-left: 110px!important;">第{{level.num}}关</h2>
+                    <p class="margin">{{level.kdName}}</p>
+                    <p class="margin"><span style="font-size: 18px;font-weight: bold;color: #003366">{{level.passedNum}}</span>/{{level.totalNum}}人</p>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <loading-processing></loading-processing>
+</ion-view>

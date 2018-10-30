@@ -1,0 +1,58 @@
+open-class-02{
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+
+  canvas{
+    width:100%;
+    touch-action:initial !important
+  }
+}
+
+.open-class-02-area{
+  z-index: 1000;
+  position: absolute;
+  background: #d9d9d5;
+  width:100%;
+  height:100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+
+  .open-class-02-width{
+    width:100%;
+    max-width: 700px;
+    max-height: 700px;
+  }
+
+  .open-class-02-height{
+    height: 100%;
+    max-width: 800px;
+    max-height: 800px;
+  }
+
+  .close-btn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 1000;
+    top: 10px;
+    right: 10px;
+
+    @media screen and(max-width:320px){
+      width: 20px;
+      height: 20px;
+    }
+    @media screen and(max-width:420px) and(min-width:321px){
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+

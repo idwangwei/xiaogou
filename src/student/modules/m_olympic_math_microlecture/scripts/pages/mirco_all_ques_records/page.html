@@ -1,0 +1,65 @@
+<ion-view hide-nav-bar="true" class="mirco_all_ques_records" cache-view="false">
+    <ion-header-bar style="background-color: #ca75ea" align-title="center">
+        <button class="button back-button buttons  button-clear header-item common-back-btn"
+                ng-click="ctrl.back()"
+                style="color: #ffffff;">
+            <i class="icon ion-ios-arrow-back" style="color: #ffffff;"></i>
+        </button>
+        <h1 class="title"
+            style="color:#ffffff;font-weight: bold;font-size: 20px;left: 0px;right: 76px;"
+            ng-bind="ctrl.examSelectPoint.groupName+'例'+ctrl.examSelectPoint.num">
+        </h1>
+    </ion-header-bar>
+    <ion-content has-header="false"  overflow-scroll="true" ng-style="{bottom:ctrl.showBottomFlag?'44px':''}">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+        <div class="top-title">
+            <img ng-src="{{$root.loadMicrolectureImg('do_ques/mirc_do_ques_title.png')}}">
+            <p>你已完成举一反三的练习啦！</p>
+
+        </div>
+        <div ng-repeat="record in ctrl.qRecords " ng-init="smallQIndex = $index">
+            <div class="image-type-question">
+                <div class="question-content card card-better small_q_bg">
+                    <!--改错列-->
+                    <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index" ng-init="doneIndex=$index;doneLast=$last">
+                        <div class="smallq-title" ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}">
+                            <div class="text-div-adapt" ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                <div class="text-adapt">
+                                    <span ng-bind="'第'+(smallQIndex+1)+'题'" ng-class="{'done-more':doneIndex>=1}"></span>
+                                    <span ng-if="doneIndex==0" ng-bind="'首次做 '"></span>
+                                    <span ng-if="doneIndex>=1" ng-bind="'改错后'"></span>
+                                    <span  ng-bind="doneInfo.createTime"></span>
+                                    <span class="correct-icons">
+                                        <img ng-show="doneInfo.passFlag==0" ng-src="{{$root.loadImg('other/icon_no.png')}}">
+                                        <img ng-show="doneInfo.passFlag==1" ng-src="{{$root.loadImg('other/icon_yes2.png')}}">
+                                        <img ng-show="doneInfo.passFlag==2" ng-src="{{$root.loadImg('other/icon_yes3.png')}}">
+                                        <img ng-show="doneInfo.passFlag==3" ng-src="{{$root.loadImg('other/grading-icon.png')}}">
+                                    </span>
+                                </div>
+                                <div class="record-type"><span ng-bind="doneInfo.keyValuePairs.key==='1'?'( 该记录来自作业 )':'( 该记录来自单题 )'"></span></div>
+                            </div>
+                            <div class="img-align-right">
+                                <span ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                    <img ng-src="{{!doneInfo.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}"
+                                    >
+                                </span>
+                            </div>
+                        </div>
+
+                        <div compile-html="record.question" show-type="correct" current-q-input="doneInfo.inputList"
+                             ng-if="doneInfo.showQFlag" class="qcontext">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="ctrl.fetchQRecordsWithLoadMore();"
+                             distance="1%" ng-if="ctrl.moreFlag">
+        </ion-infinite-scroll>
+
+        <div class="tip" ng-if="ctrl.hasNoRecords()">
+            <span>暂无做题记录。</span>
+        </div>
+    </ion-content>
+    <loading-processing ng-if="ctrl.firstLoading"></loading-processing>
+</ion-view>

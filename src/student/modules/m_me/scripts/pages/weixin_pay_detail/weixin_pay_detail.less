@@ -1,0 +1,53 @@
+.weixin_pay_detail {
+  width: 100%;
+  .myHeader {
+    background-color: #0a9dc7 !important;
+  }
+
+  .detail_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .detail_display_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+
+  .detail_justify_content(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+  .details_list {
+    .scroll{
+      width: 100%;
+    }
+
+    .detail_display(row);
+    .detail_justify_content(space-between);
+    .details_list_item_left {
+      .detail_display(column);
+      .detail_justify_content(space-between);
+      .detail_display_align(flex-start);
+      p {
+        color: #a7a2a2;
+        font-size: 12px;
+      }
+
+    }
+    .details_list_item_right {
+      .detail_display(column);
+      .detail_justify_content(space-between);
+      p {
+        color: #a7a2a2;
+        font-size: 14px;
+      }
+      .fee {
+        color: #ff3b30;
+      }
+    }
+
+  }
+
+}

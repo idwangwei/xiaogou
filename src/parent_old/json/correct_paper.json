@@ -1,0 +1,189 @@
+[
+    {
+        "possibleAns": "[{\"ansExpr\":\"6\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "47e4badc-f41c-4463-8e91-43377ad103fd",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "d9042c2f-f055-42dc-80d7-d7d61f4aed3d",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"14\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "5fa07656-1103-4dba-be46-1315a71f6fa2",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "fbd324f4-e17c-4429-91b1-706e4ffba3c5",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"12\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "4c137ac0-29de-4608-9336-4183419ddad4",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "c08810d3-49af-4e03-97b4-9fa6d3e58bf5",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"16\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "a6a5bc25-ffdc-4b1b-8ed3-5bbd02d91ceb",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "5f2e3cd0-273a-4050-8014-235460d3f404",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"45\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "ae8e89fa-154d-490e-83c4-7d6401ac0e83",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "6a69a9d5-5306-421e-bd67-dfd03c6d3967",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"10\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "d1826105-f1f6-4223-96dd-2d51ad169232",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "a8d579e1-193a-4cbe-8206-187fbbb4376b",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"4\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "07747d3c-72ab-4964-9a79-55e11f0f9933",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "76e73833-be25-4401-9162-444f3da1a969",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"2\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\"\"}",
+        "scorePointId": "03a5ff4e-6ed1-4031-b93e-8c25d8509a20",
+        "qsTitleId": "0d837c6a-c000-49a9-afc2-1ec40cd2a6e4",
+        "qsId": "24182a0c-4d5c-46e1-969f-3511ab24e76d",
+        "id": "6b091af0-ced6-47fa-b7b3-add814026d67",
+        "totalScore": 5.0,
+        "status": -1
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"50,-,26,+22,46\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",,,,,\"}",
+        "scorePointId": "7fe16ce8-b392-473e-b6d2-86e2354f40fd",
+        "qsTitleId": "a8fa802d-19e5-4370-9cd9-eed7ee131cca",
+        "qsId": "34e6e170-8005-4ebf-a8eb-821e719fc54c",
+        "id": "2275a200-4eca-457b-a4b9-732a63591bf4",
+        "totalScore": 20.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"4,9\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "d8e654ab-58dc-4fed-a3e5-43dd2a695bce",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "cc666b2f-2771-472b-a1ca-7a4e43a878c1",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"2,5\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "a0ce19f6-4dda-484e-ab28-081a95d07e6b",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "3c610b4f-026b-4a4b-bfd1-7b6a7785a2ef",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"3,4\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "944686c5-1959-4e6b-b3a3-5f245069ee9b",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "a1f3b18c-092a-4bc3-b150-26c6af1c94d8",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"1,0\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "7c8ace68-2cde-426c-8056-8eea5b8ceef0",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "78287515-57fa-4495-826f-0b879b42d057",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"4,9\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "dd48709e-2477-4b95-a607-899a3a6f28af",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "ce0c9fa3-5729-43be-b3f3-5fe140098d24",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"1,4\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "e3a014b4-cb7a-4650-af69-b69e022fde7c",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "65e0d06c-1a3f-420e-890a-20533d0b5a9a",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"5,2\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "da464701-6100-49a4-a2e6-8130a1a08ff1",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "a86fdd43-28b9-42b3-a3c0-0aba60cd5cee",
+        "totalScore": 5.0,
+        "status": 0
+    },
+    {
+        "possibleAns": "[{\"ansExpr\":\"1,5\"}]",
+        "score": 0.0,
+        "answer": "{\"ansExpr\":\",\"}",
+        "scorePointId": "8fe40694-0c4c-41b8-b2cb-1620bdc3de20",
+        "qsTitleId": "12911eec-c585-41b2-80e0-6bcc43240fc0",
+        "qsId": "629fdab2-a5d9-405f-9dc0-5005066ace98",
+        "id": "b4b9d5ea-c661-40ef-a82c-437c332facf3",
+        "totalScore": 5.0,
+        "status": 0
+    }
+]

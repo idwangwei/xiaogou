@@ -1,0 +1,59 @@
+<div class="oral-guide-backdrop" ng-if="$root.showOralCalculationGuideFlag" ng-click="hideGuide()">
+    <div class="oral-guide-content">
+        <div class="oral-guide-top">
+            <img ng-if="isTeacher" ng-src={{titelTeacher}}>
+            <img ng-if="!isTeacher" ng-src={{titelStudent}}>
+        </div>
+        <div class="oral-guide-middle">
+            <button ng-click="showPreGuide($event)" ng-show="!isFirstGuide"
+                    class="button button-clear arrow-btn-left">
+                <i class="icon ion-ios-arrow-back"></i>
+            </button>
+            <button ng-click="showNextGuide($event)" ng-show="!isLastGuide"
+                    class="button button-clear arrow-btn-right">
+                <i class="icon ion-ios-arrow-right"></i>
+            </button>
+
+            <ion-slide-box style="height:270px" delegate-handle="oral-guide-slide-box" does-continue="true"
+                           auto-play="true"
+                           show-pager="false"
+                           on-slide-changed="slideHasChanged($index)"
+                           slide-interval = 4000>
+                <ion-slide>
+                    <div class="oral-guide-slide-content">
+                        <div class="oral-guide-slide-title">
+                            <span>1.手写输入</span>
+                        </div>
+                        <div class="oral-guide-slide-act">
+                            <div class="oral-guide-step1"></div>
+                        </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="oral-guide-slide-content">
+                        <div class="oral-guide-slide-title">
+                            <span>2.如何修改</span>
+                        </div>
+                        <div class="oral-guide-slide-act">
+                            <div class="oral-guide-step2"></div>
+                        </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="oral-guide-slide-content">
+                        <div class="oral-guide-slide-title">
+                            <span>3.自动批改</span>
+                        </div>
+                        <div class="oral-guide-slide-act">
+                            <div class="oral-guide-step3"></div>
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+        <div class="oral-guide-bottom" ng-if="isTeacher">
+            <div class="oral_guide_btn_area"><img ng-src="{{loadOralImg('oral_guid_btn_pub.png')}}" ng-click="guideCallback()"></div>
+            <div class="oral_guide_btn_area" ng-click="hideGuide()"><span>下次再说</span></div>
+        </div>
+    </div>
+</div>

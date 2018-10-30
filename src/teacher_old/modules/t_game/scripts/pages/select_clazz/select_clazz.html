@@ -1,0 +1,18 @@
+<ion-view title="选择查看班级" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button button-clear icon ion-navicon-round" ng-click="$root.toggleRightMenu()"></button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">选择查看班级</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="row pass-list" ng-repeat="row in ctrl.clazzArray">
+            <!--   <div class="pass-block bg-balanced" ng-repeat="clazz in row" ng-click="goPubGame(clazz)">
+                   <img src="./tImages/class.svg" alt=""/>
+                   <div>{{clazz.clazzName}}</div>
+               </div>-->
+            <div class="pass-block bg-balanced" ng-repeat="clazz in row" ng-click="ctrl.goPubedWork(clazz)">
+                <img src="./../../../../t_boot/tImages/class.svg" alt=""/>
+                <div>{{clazz.clazzName}}</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

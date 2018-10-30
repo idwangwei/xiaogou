@@ -1,0 +1,130 @@
+<ion-view  hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button buttons  button-clear header-item" ng-click="back()" style="padding: 0 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">间接粉丝</h1>
+
+    </ion-header-bar>
+    <div class="promote_person_content-nav has-header">
+        <div class="flex_1_2" style="-webkit-justify-content: flex-start;justify-content: flex-start">
+            &nbsp;&nbsp;姓名
+        </div>
+        <div class="flex_2">
+            账号
+        </div>
+        <div class="flex_1" >
+            付费
+        </div>
+        <div class="flex_2">
+            粉丝数
+        </div>
+    </div>
+    <ion-content class="promote_person_content">
+        <!--<ion-list class="promote_person_list">-->
+            <ion-list class="promote_person_list">
+                <ion-item class="personItem" ng-repeat="person in promotePersonList">
+                    <!--<div class="personDetails">-->
+                        <!--<div class="itemDiv flex_1_2 details_name">-->
+                            <!--<p>-->
+                                <!--<span ng-if="person.teacherId">&nbsp;&nbsp;</span>-->
+                                <!--{{person.userName}}-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="itemDiv flex_2 details_id" style="text-align: center">-->
+                            <!--<span>&nbsp;&nbsp;{{person.userAccount}}</span>-->
+                        <!--</div>-->
+                        <!--<div class="itemDiv flex_1" style="text-align: center">-->
+                            <!--&lt;!&ndash;<span>{{person.isPay ? '已付费' : '未付费'}}</span>&ndash;&gt;-->
+                            <!--<span ng-if="person.payMoney == 0">&#45;&#45;</span>-->
+                            <!--<span ng-if="person.payMoney != 0"> {{person.payMoney}}元</span>-->
+                        <!--</div>-->
+                        <!--<div class="itemDiv flex_2 details_num" >-->
+                            <!--<p ng-if="person.directExtCount>0" style="text-align: center">粉丝{{person.directExtCount}}人</p>-->
+                            <!--<p ng-if="person.directExtCount==0" style="text-align: center">&#45;&#45;</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<ion-item class="studentItem stuItem" ng-if="person.fans" ng-repeat="stu in person.fans">-->
+                        <!--<div class="personDetails">-->
+                            <!--<div class="itemDiv flex_1_2 details_name">-->
+                                <!--<p style="margin-left: -8px">-->
+                                    <!--<span>&nbsp;&nbsp;{{stu.userName}}</span>-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="itemDiv flex_2 details_id" style="text-align: center">-->
+                                <!--<span>&nbsp;&nbsp;&nbsp;&nbsp;{{stu.userAccount}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="itemDiv flex_1" style="text-align: center">-->
+                                <!--&lt;!&ndash;<span>{{person.isPay ? '已付费' : '未付费'}}</span>&ndash;&gt;-->
+                                <!--<span ng-if="stu.payMoney == 0">&#45;&#45;</span>-->
+                                <!--<span ng-if="stu.payMoney != 0"> {{stu.payMoney}}元</span>-->
+                            <!--</div>-->
+                            <!--<div class="itemDiv flex_2 details_num" >-->
+                                <!--<p ng-if="stu.directExtCount>0" style="text-align: center">粉丝{{stu.directExtCount}}人</p>-->
+                                <!--<p ng-if="stu.directExtCount==0" style="text-align: center">&#45;&#45;</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+
+                    <!--</ion-item>-->
+                    <div class="personDetails">
+                        <div class="itemDiv flex_1_2 details_name">
+                            <p style="margin-left: -8px;">
+                                &nbsp;&nbsp;{{person.userName}}
+                            </p>
+                        </div>
+                        <div class="itemDiv flex_2 details_id" style="text-align: center">
+                            <span>{{person.userAccount}}</span>
+                        </div>
+                        <div class="itemDiv flex_1" style="text-align: center">
+                            <!--<span>{{person.isPay ? '已付费' : '未付费'}}</span>-->
+                            <span ng-if="person.payMoney != 0">{{person.payMoney}}元</span>
+                            <span ng-if="person.payMoney == 0">--</span>
+                        </div>
+                        <div class="itemDiv flex_2 details_num" style="text-align: center">
+                        <span class="personNum" ng-click="goToIndirectPage(person)" ng-if="person.directExtCount>0" style="text-align: center">
+                            粉丝{{person.directExtCount}}人
+                            <!--<i class="icon ion-chevron-right"></i>-->
+                        </span>
+                            <span class="personNum"
+                                  ng-if="person.directExtCount == 0" style="text-align: center">--</span>
+                        </div>
+                    </div>
+
+
+                    <ion-item class="studentItem stuItem" ng-if="person.fans" ng-repeat="stu in person.fans">
+                        <div class="personDetails">
+                            <div class="itemDiv flex_1_2 details_name">
+                                <p style="margin-left: -8px">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{stu.userName}}</span>
+                                </p>
+                            </div>
+                            <div class="itemDiv flex_2 details_id" style="text-align: center">
+                                <span>{{stu.userAccount}}</span>
+                            </div>
+                            <div class="itemDiv flex_1" style="text-align: center">
+                                <!--<span>{{person.isPay ? '已付费' : '未付费'}}</span>-->
+                                <span ng-if="stu.payMoney == 0">--</span>
+                                <span ng-if="stu.payMoney != 0">{{stu.payMoney}}元</span>
+                            </div>
+                            <div class="itemDiv flex_2 details_num" style="text-align: center">
+                            <span class="personNum" ng-click="goToIndirectPage(stu)" ng-if="stu.directExtCount>0" style="text-align: center">
+                                粉丝{{stu.directExtCount}}人
+                                <!--<i class="icon ion-chevron-right"></i>-->
+                            </span>
+                                <span class="personNum" ng-if="stu.directExtCount==0" style="text-align: center">--</span>
+                            </div>
+                        </div>
+                    </ion-item>
+
+
+                </ion-item>
+            </ion-list>
+
+        <!--</ion-list>-->
+
+        <ion-infinite-scroll on-infinite="loadMore()" distance="10%" ng-if="canLoadMore"></ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

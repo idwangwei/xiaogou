@@ -1,0 +1,70 @@
+<ion-view hide-nav-bar="true" class="oral-check-answer" cache-view="false">
+    <div class="bar bar-header " style="background: #d2f7ef!important;">
+        <button ng-click="checkCtrl.back()" class="button buttons  button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i>&nbsp;返回
+        </button>
+
+        <div class="title header-bar">
+            检查书写
+        </div>
+    </div>
+    <ion-content class="has-header" delegate-handle="oral-question-content">
+        <p class="tip1">你已完成计算和计时</p>
+        <div class="tip2">
+            <img class="tip2-image" ng-src="{{checkCtrl.tip}}"/>
+            <img class="tip2-xiaogou-image" ng-src="{{checkCtrl.xiaogou}}"/>
+        </div>
+        <div class="content-wrapper">
+            <div class="header">
+                <div class="check-item-left"></div>
+                <div class="check-item-center">
+                    我的书写
+                </div>
+                <div class="check-item-arrow"></div>
+                <div class="check-item-right">
+                    识别结果
+                </div>
+            </div>
+            <div class="ques-item" ng-repeat="item in checkCtrl.inputBoxList">
+                <div class="check-item-left">{{'第'+item.seqNum+'题'}}</div>
+                <div class="check-item-center">
+                    <div class="img-container">
+                        <img class="img-stroke" ng-if="item.base64Img" ng-src="{{item.base64Img}}"/>
+                        <div class="img-stroke" ng-if="!item.base64Img" style="color:#3d598d">未做</div>
+                        <!--<div class="img-arrow-con" ng-if="item.base64Img">-->
+                        <!--<img class="img-arrow" ng-src="{{checkCtrl.arrow}}">-->
+                        <!--</div>-->
+                    </div>
+                </div>
+                <div class="check-item-arrow">
+                        <img class="img-arrow" ng-if="item.base64Img" ng-src="{{checkCtrl.arrow}}">
+                </div>
+                <div class="check-item-right">
+                    <span ng-if="item.base64Img" style="color:black" id="{{item.id}}"
+                          class="appTextarea input-area oral-input" show-type="doQuestion"></span>
+                    <span ng-if="item.base64Img"><a href="" style="color:#026CE1;margin-left:10px;" ng-click="checkCtrl.modify(item.id)">点击修改</a></span>
+                </div>
+            </div>
+        </div>
+        <p class="tip1 subTip">请点击方框，弹出键盘，进行修正</p>
+        <p class="tip1 writing-tip">常见书写不规范示例</p>
+        <img class="errorTip" ng-src="{{checkCtrl.errorTip}}" alt="">
+    </ion-content>
+    <!--<ion-footer-bar class="page_footer" style="background: #e6e9ec">-->
+    <!--<button style="color:#627482"-->
+    <!--class="button-clear bg-calm  bar-item flex_1 button" ng-click="checkCtrl.submit()">-->
+    <!--<i class="icon ion-paper-airplane"></i>-->
+    <!--提交作业-->
+    <!--</button>-->
+    <!--</ion-footer-bar>-->
+    <div class="bar bar-footer footer-butn">
+        <div class="bar-item" style="background-color: #65baed;border-radius: 20px;margin: auto;"
+             ng-click="checkCtrl.submit()">
+            <button class="button buttons  button-clear" style="width: 85px;color: #ffffff;"> 提交作业
+            </button>
+        </div>
+    </div>
+    <div class="keyboard" style="z-index: 5000"></div>
+
+
+</ion-view>

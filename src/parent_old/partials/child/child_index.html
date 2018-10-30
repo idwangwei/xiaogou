@@ -1,0 +1,101 @@
+<ion-view hide-nav-bar=true class="child_index_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+       <!-- <button class="button back-button buttons  button-clear header-item" ui-sref="home.child_index">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </button>-->
+        <button class="button button-clear icon ion-plus" style="position: absolute;right: 0px"
+                ng-click="add_child()"></button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">我的孩子</h1>
+    </ion-header-bar>
+    <ion-content padding="false">
+        <div style="" class="common-help-div-wrap" ng-click="help1()" >
+            <div >
+                <p style="margin: 0"><i class="icon ion-information-circled common-help-bar-icon" ></i>
+                    孩子加错了班级，怎么办？
+                </p>
+            </div>
+        </div>
+
+        <!--<div style="" class="common-help-div-wrap" ng-click="help2()" >-->
+            <!--<div >-->
+                <!--<p style="margin: 0"><i class="icon ion-information-circled common-help-bar-icon" ></i>-->
+                    <!--老师错误拒绝了申请，如何重新申请？-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="item item-input block-input" style="height: 40px;" ng-if="studentList.length<=0 && flag">
+            <input type="text"
+                   ng-model="tip"
+                   readonly="readonly"
+                   style="font-size: 18px;color: rgb(6, 6, 6);"
+                    />
+        </div>
+        <div class="list card card-better" ng-repeat="student in studentList"
+             ng-init="student.headImg=student.gender=='0'?'person/student-f.png':'person/student-m.png';studentIndex=$index">
+            <div class="item  item-avatar item-icon-right card-title" ng-click="showStuSettings(student)">
+                <img class="thumbnail-left"
+                     ng-src="{{$root.loadImg(student.headImg)}}"
+                     alt="">
+                <h2 ng-bind="student.name"></h2>
+                <p ng-bind="'学生账号: '+student.loginName"></p>
+                <i class="icon ion-chevron-right"></i>
+            </div>
+            <div class="add-class-wrap" ng-click="clickResetPassword(student)" style="border-bottom: 1px solid white">
+                <i class="icon ion-plus ion-wrench" style="font-size: 21px"></i><span class="add-class-text">重置孩子密码</span>
+            </div>
+            <div class="add-class-wrap" ui-sref="child_class_apply({sid:student.id})">
+                <i class="icon ion-plus add-class-icon"></i><span class="add-class-text">添加班级</span>
+            </div>
+            <div class="list " ng-repeat="clazz in student.clazzs" ng-if="student.clazzs.length>0">
+                <div class="item  item-avatar card-title item-icon-right " ng-click="goClazzDetail(student,clazz.id,$index,clazz)"
+                     ng-class="$index%2===1?'odd-bg':'even-bg'" style="padding-left: 65px;">
+                    <img class="thumbnail-left"
+                         ng-src="{{$root.loadImg('class.svg')}}"
+                         alt=""  style="top:45px">
+                    <h2>班号: <span>{{clazz.id}}</span></h2>
+                    <p>班名：<span>{{clazz.name}}</span></p>
+                    <p>状态：<span style="color: red">{{clazz.auditStatusName}}</span></p>
+                    <p>年级：<span >{{clazz.gradeName}}</span></p>
+                    <p>班级人数：<span >{{clazz.studentCount||0}}</span></p>
+                    <div class="nav-clazz-info-icon" ng-if="clazz.type == 200">奥数</div>
+                    <i class="icon ion-chevron-right"></i>
+                </div>
+               <!-- <div class="delete-class-wrap"  ng-click="delStuClass(student,clazz.id,$index,clazz)"
+                     ng-class="$index%2===1?'odd-bg':'even-bg'">
+                    <div class="delete-class"  class="button button-clear"><span class="icon ion-ios-trash-outline">
+                  </span>删除班级</div>
+                </div>-->
+            </div>
+        </div>
+    </ion-content>
+
+    <loading-processing></loading-processing>
+</ion-view>
+<script id="reset_child_password.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <button class="button back-button buttons  button-clear header-item"
+                    ng-click="resetChildPasswordModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center">重置孩子密码</h1>
+        </ion-header-bar>
+        <ion-content scroll="false">
+            <ng-form novalidate="novalidate" name="resetPassForm" class="list" style="margin-top: 20px" >
+                <div class="card card-better card-adpat">
+                    <common-password password-setting="passwordSetting" ></common-password>
+                    <common-password password-setting="passwordConfirmSetting"></common-password>
+                    <div class="button button-block btn-adapt"
+                         type="submit" ng-click="handlePwd()" style="color: #fff;background-color: #3f93ef;">
+                        保存
+                    </div>
+                </div>
+
+            </ng-form>
+        </ion-content>
+        <loading-processing load-top="100"></loading-processing>
+    </ion-modal-view>
+</script>

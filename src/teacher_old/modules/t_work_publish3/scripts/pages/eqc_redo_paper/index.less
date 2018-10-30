@@ -1,0 +1,99 @@
+@charset "UTF-8";
+@import "../../../../t_boot/less/theme02/include/_mixins";
+
+.eqc_redo_paper_file{
+  .eqc_redo_paper_header{
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .eqc_redo_paper_content{
+
+    .paper_content_big_q {
+      min-height: 40px;
+      line-height: 40px;
+      color: #293d69;
+      padding-left: 10px;
+      .big-q-title {
+        font-size: 22px;
+        margin-bottom: 5px;
+        font-weight: 400;
+      }
+    }
+
+    .question-content{
+      background: #daf5fe;
+      .question-content-title{
+        color: #293d69;
+        width: 100%;
+        background-color: #accbf9;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        align-items: center;
+        -webkit-align-items: center;
+        .question-content-title-left{
+          .flex_1;
+          .display-flex-pure;
+          align-items: center;
+          -webkit-align-items: center;
+        }
+        .question-content-title-right{
+          color: white;
+          .display-flex;
+          img{height: 100%}
+        }
+
+        @media screen and (max-width: 320px) {
+          min-height: 40px;
+          font-size: 15px;
+        }
+        @media screen and (min-width: 321px) and (max-width: 767px){
+          min-height: 50px;
+          font-size: 17px;
+        }
+        @media screen and (min-width: 768px){
+          min-height: 60px;
+          font-size: 20px;
+        }
+      }
+      .question_content_knowledge_text{
+        background-color: #B8E4FC;
+        color:#565555;
+      }
+    }
+  }
+
+
+
+  .footer_box_main{
+    display: flex;
+    flex-direction: column;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    .footer_box_main_down{
+      display: flex;
+      justify-content: space-around;
+      display: -webkit-flex;
+      -webkit-justify-content: space-around;
+      width: 100%;
+      height: 44px;
+      .footer_click_btn.button{
+        .flex_1;
+        margin: 0;
+        height: 100%;
+        font-size: 17px;
+        background: #3e8ad0;
+        color: #fff;
+      }
+      .footer_click_btn.button.activated{
+        background: #336899;
+      }
+
+    }
+  }
+}

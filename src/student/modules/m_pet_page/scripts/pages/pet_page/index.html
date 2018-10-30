@@ -1,0 +1,261 @@
+<ion-view class="pet-page-file" ng-click="ctrl.hideHandGuide()">
+    <ion-header-bar class="pet-page-header" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>&nbsp;&nbsp;
+        </button>
+        <div class="title pet-page-header-title" >
+            <div>
+                <img ng-src="{{$root.loadImg('pet_page/pet_title_bar.png')}}" alt="">
+                <span ng-if="ctrl.hasHatchEggs && ctrl.petArr[ctrl.currentShowPetIndex].phase"
+                      ng-bind="ctrl.user.name +'的'+ ctrl.petArr[ctrl.currentShowPetIndex].name"></span>
+
+                <span ng-if="ctrl.hasHatchEggs && !ctrl.petArr[ctrl.currentShowPetIndex].phase"
+                      ng-bind="ctrl.petArr[ctrl.currentShowPetIndex].name"></span>
+            </div>
+        </div>
+        <div class="pet-help-btn">
+            <img ng-src="{{$root.loadImg('pet_page/pet_page_help_btn.png')}}" alt="" ng-click="ctrl.showHelp()">
+            <img ng-src="{{$root.loadImg('pet_page/pet_page_share_btn.png')}}"
+                 ng-if="ctrl.isShowInvite()"
+                 alt="" ng-click="ctrl.showShare()">
+        </div>
+    </ion-header-bar>
+    <ion-content scroll="false" padding="false" ng-if="ctrl.hasHatchEggs">
+        <div class="pet-page-content-bg">
+            <div class="content-bg-top">
+                <img class="bg-top-1" ng-src="{{$root.loadImg('pet_page/pet_bg_cloud_2.png')}}" alt="">
+                <img class="bg-top-2" ng-src="{{$root.loadImg('pet_page/pet_bg_cloud_1.png')}}" alt="">
+                <img class="bg-top-3" ng-src="{{$root.loadImg('pet_page/pet_bg_house.png')}}" alt="">
+                <img class="bg-top-4" ng-src="{{$root.loadImg('pet_page/pet_bg_tree.png')}}" alt="">
+            </div>
+            <div class="content-bg-bottom">
+                <img ng-src="{{$root.loadImg('pet_page/pet_bg_grass.png')}}" alt="">
+            </div>
+        </div>
+
+        <div class="pet-page-content">
+
+            <div class="pet-page-content-top">
+
+                <div class="pet-box-warp">
+                    <img class="pet-slide-btn pet-slide-btn1" ng-if="!ctrl.isFirstPet"
+                         ng-click="ctrl.showPrePet()"
+                         ng-src="{{$root.loadImg('pet_page/pet_slide_btn.png')}}" alt="">
+
+                    <img class="pet-slide-btn pet-slide-btn2" ng-if="!ctrl.isLastPet"
+                         ng-click="ctrl.showNextPet()"
+                         ng-src="{{$root.loadImg('pet_page/pet_slide_btn.png')}}" alt="">
+
+                    <!--<div class="pet-slide-bg">-->
+                        <!--<img ng-src="{{$root.loadImg('pet_page/pet_slide_bg.png')}}" alt="">-->
+                    <!--</div>-->
+                    <div class="pet-level-up">
+                        <pet-level-up show-animation="ctrl.petLevelUp"></pet-level-up>
+                    </div>
+
+                    <ion-slide-box class="pet-box-slide"
+                                   delegate-handle="pet-box-slide"
+                                   on-slide-changed="ctrl.slideHasChanged($index)"
+                                   does-continue="false"
+                                   auto-play="false"
+                                   show-pager="false">
+
+                        <ion-slide ng-repeat="pet in ctrl.petArr">
+                            <pet-img-animation pet-type="{{pet.type}}" pet-phase="{{pet.phase}}"
+                                               pet-growth-value="{{pet.growthValue}}">
+                            </pet-img-animation>
+                            <div class="pet-bubble-pic">
+                                <img ng-src="{{$root.loadImg('pet_page/pet_bubble_pic'+pet.type+'.png')}}"
+                                     ng-if="ctrl.petArr[ctrl.currentShowPetIndex].type == pet.type&&ctrl.showBubble == 1"
+                                     alt="">
+                                <img ng-src="{{$root.loadImg('pet_page/pet_bubble_pic'+pet.type+'_v2.png')}}"
+                                     ng-if="ctrl.petArr[ctrl.currentShowPetIndex].type == pet.type&&ctrl.showBubble == 2"
+                                     alt="">
+                            </div>
+                        </ion-slide>
+
+                    </ion-slide-box>
+
+                </div>
+                <div class="content-top-process" ng-class="{'process-opacity-0':!ctrl.petArr[ctrl.currentShowPetIndex].phase}">
+                    <div class="process-name" ng-bind="ctrl.petArr[ctrl.currentShowPetIndex].text"></div>
+                    <div class="process-bar">
+                        <div class="process-bar-box">
+                            <span ng-class="{'process-max-bg':ctrl.petArr[ctrl.currentShowPetIndex].phase == 4}"
+                                  ng-style="{'transform':'translateX('+ctrl.petArr[ctrl.currentShowPetIndex].process+')'}"></span>
+
+                        </div>
+                        <span class="process-bar-desc" ng-if="ctrl.petArr[ctrl.currentShowPetIndex].phase != 4"
+                              ng-bind="ctrl.petArr[ctrl.currentShowPetIndex].growthValue+'/'+ctrl.petArr[ctrl.currentShowPetIndex].growthLimit"></span>
+                        <span class="process-bar-desc" ng-if="ctrl.petArr[ctrl.currentShowPetIndex].phase == 4"
+                              ng-bind="ctrl.petArr[ctrl.currentShowPetIndex].growthValue"></span>
+                    </div>
+                    <div>&emsp;&emsp;&emsp;</div>
+                </div>
+
+            </div>
+            <div class="pet-page-content-bottom" ng-if="ctrl.petArr[ctrl.currentShowPetIndex].phase !== 0">
+                <img class="content-food-bg" ng-src="{{$root.loadImg('pet_page/pet_food_bg.png')}}" alt="">
+                <div  class="content-food-title" >
+                    <img ng-src="{{$root.loadImg('pet_page/pet_food_bg_2.png')}}" alt="">
+                </div>
+                <div class="content-food-warp">
+                    <div class="content-food-item" ng-repeat="food in ctrl.foodArr" >
+                        <img class="feed-hand-guide" ng-if="$index == 0 && ctrl.showGuideHand"
+                             ng-src="{{$root.loadImg('guide_hand1.png')}}"
+                             ng-click="ctrl.feedPet($event,food)" alt="">
+
+                        <img ng-src="{{$root.loadImg('pet_page/pet_food'+food.id+'.png')}}"
+                             ng-click="ctrl.feedPet($event,food)" alt="">
+                        <span>{{food.count}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pet-page-content-bottom pet-is-egg" ng-if="ctrl.petArr[ctrl.currentShowPetIndex].phase === 0">
+                <div class="pet-own-pay">
+                    <img ng-src="{{$root.loadImg('reward_system/reward_money.png')}}" alt="">
+                    <span ng-bind="'300'"></span>
+                </div>
+                <div class="pet-pay-btn" ng-click="ctrl.hatchPet()">
+                    <img ng-src="{{$root.loadImg('pet_page/pet_hatch.png')}}" alt="">
+                </div>
+                <div class="pet-has-energy">
+                    <span ng-bind="'我的能量：'"></span>
+                    <img ng-src="{{$root.loadImg('reward_system/reward_money.png')}}" alt="">
+                    <span ng-bind="ctrl.rewardBase.credits"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+    <!--第一次进入宠物喂养页面，选择一个宠物蛋孵化-->
+    <div class="first-choose-eggs-wrap" ng-if="ctrl.initCtrl && !ctrl.hasHatchEggs && !ctrl.fetchFlag">
+        <div class="first-choose-eggs" ng-class="{'first-choose-eggs-opacity':!!ctrl.hasSelectedFirstEgg}">
+            <div class="eggs-row-1">
+                <div class="egg-box" ng-click="ctrl.firstSelectEgg(2)">
+                    <img ng-src="{{$root.loadImg('pet_page/pet_2_0.png')}}" alt="">
+                </div>
+            </div>
+            <div class="eggs-row-2">
+                <div class="egg-box" ng-click="ctrl.firstSelectEgg(3)">
+                    <img ng-src="{{$root.loadImg('pet_page/pet_3_0.png')}}" alt="">
+                </div>
+                <div class="egg-box" ng-click="ctrl.firstSelectEgg(1)">
+                    <img ng-src="{{$root.loadImg('pet_page/pet_1_0.png')}}" alt="">
+                </div>
+            </div>
+            <div class="eggs-intro" ng-bind="'选择一个宠物蛋，开始孵化吧！'"></div>
+        </div>
+
+        <div class="show-selected-pet" ng-show="ctrl.hasSelectedFirstEgg">
+            <div class="select-info-title">恭喜获得</div>
+            <div class="select-info-name" ng-bind="ctrl.petArr[ctrl.currentShowPetIndex].name"></div>
+            <div class="select-info-img">
+                <div class="hatch-first-pet-animation">
+                    <pet-level-up show-animation="ctrl.showHatchFirstPetAnimation"></pet-level-up>
+                </div>
+                <img ng-src="{{$root.loadImg('pet_page/pet_pic_pet'+ctrl.firstEggId+'.png')}}" alt="">
+            </div>
+            <div class="select-info-btn" ng-click="ctrl.gotoFeedPet($event)">去喂养</div>
+        </div>
+    </div>
+
+    <!--分享图片元素-->
+    <div class="share-pet-float-warp" ng-if="ctrl.initCtrl">
+        <div class="share-pet-float">
+            <div>
+                <img ng-src="{{$root.loadImg('qrCodeImages/xiaogou_official_accounts.png')}}" alt="">
+                <p>
+                    {{ctrl.user.name}}的
+                    <span>{{ctrl.petArr[ctrl.currentShowPetIndex].name}}</span>
+                </p>
+
+            </div>
+
+            <img ng-src="{{ctrl.getSharePic()}}" alt="" style="max-width: 100%;">
+
+            <div>
+                <p>您也快去“诊断提分”领养一只吧！</p>
+            </div>
+        </div>
+    </div>
+
+    <!--帮助按钮弹出框-->
+    <div class="pet-help-dialog-wrap" ng-if="ctrl.isShowHelpDialog" ng-click="ctrl.closeHelpDialog($event)">
+        <div class="pet-help-dialog">
+            <div class="pet-help-dialog-title">
+                <img ng-src="{{$root.loadImg('pet_page/pet_help_dialog_title.png')}}" alt="">
+            </div>
+            <div class="pet-help-dialog-food" ng-repeat="food in ctrl.foodArr">
+                <div class="help-dialog-food-icon">
+                    <img ng-src="{{$root.loadImg('pet_page/pet_food'+food.id+'.png')}}" alt="">
+                </div>
+                <div class="help-dialog-food-info">
+                    <span ng-bind="food.name + '：'"></span>
+                    <span ng-bind="'使用后增加 '+food.experience+' 点成长值'"></span>
+                </div>
+            </div>
+            <p class="pet-help-dialog-desc" ng-bind="'（“能量中心”也可以兑换以上道具哦）'"></p>
+            <button class="button-clear pet-help-dialog-btn" ng-click="ctrl.hideHelp($event)">
+                <img ng-src="{{$root.loadImg('pet_page/pet_help_dialog_btn.png')}}" alt="">
+            </button>
+        </div>
+    </div>
+
+    <!--分享按钮弹出框-->
+    <div class="pet-share-dialog-wrap" ng-if="ctrl.isShowShareDialog" ng-click="ctrl.closeShareDialog($event)">
+        <div class="pet-share-dialog">
+            <img ng-src="{{$root.loadImg('pet_page/pet_share_bg.png')}}" alt="">
+            <div class="pet-share-dialog-top" ng-bind="'宠物好可爱啊，让小伙伴们都来围观吧！'"></div>
+            <div  class="pet-share-dialog-middle">
+                <span>首次分享奖励：</span>
+                <div class="pet-share-reward-box-warp"
+                     ng-click="ctrl.gotoGetShareReward()">
+
+                    <img class="pet-share-reward-box-bg" ng-if="ctrl.sharePetSuccess&&ctrl.canGetReward"
+                         ng-src="{{$root.loadImg('pet_page/rewardPromptBg.png')}}">
+
+                    <img ng-src="{{$root.loadImg('pet_page/pet_share_box_v2.png')}}"
+                         ng-if="ctrl.sharePetSuccess&&ctrl.canGetReward" style="width: 60px" alt="">
+                    <img ng-src="{{$root.loadImg('pet_page/pet_share_box.png')}}"
+                         ng-if="!ctrl.sharePetSuccess||!ctrl.canGetReward" alt="">
+                </div>
+                <span ng-bind="ctrl.canGetReward?'':'（已领取）'"></span>
+            </div>
+            <button class="button-clear pet-share-dialog-bottom" ng-click="ctrl.hideShare($event)">
+                <img ng-src="{{$root.loadImg('pet_page/pet_share_btn.png')}}" alt="">
+            </button>
+        </div>
+    </div>
+
+    <pet-get-food food-type="'all'" show-food="ctrl.getRewardSuccess"></pet-get-food>
+
+    <div class="pet-help-dialog-wrap" ng-if="ctrl.isNoFeedDialog" ng-click="ctrl.closeNoFoodDialog($event)">
+        <div class="pet-help-dialog">
+            <div class="pet-help-dialog-title" style="margin:20px">
+                <img ng-src="{{$root.loadImg('pet_page/pet_no_food_dialog_title.png')}}" alt=""
+                     style="height: initial;width: 80%">
+            </div>
+            <p class="pet-help-dialog-desc" ng-bind="'去掌握考点，获得一个勋章，可领取一个成长道具'"></p>
+            <button class="button-clear pet-help-dialog-btn" ng-click="ctrl.gotoDoQuestion($event)">
+                <img ng-src="{{$root.loadImg('pet_page/pet_no_food_dialog_btn.png')}}" alt="">
+            </button>
+        </div>
+    </div>
+
+    <div class="pet-help-dialog-wrap" ng-if="ctrl.isPetLevelMax" ng-click="ctrl.closePetLevelMaxDialog($event)">
+        <div class="pet-help-dialog" style="padding: 30px">
+            <p class="pet-help-dialog-desc"
+               ng-bind="'恭喜你，'+ctrl.petArr[ctrl.currentShowPetIndex].name+'已经长大了，'"></p>
+            <p class="pet-help-dialog-desc"
+               ng-bind="'去喂养一下其他宠物吧！'"></p>
+
+            <button class="button-clear pet-help-dialog-btn" ng-click="ctrl.hideDialog()">
+                <img ng-src="{{$root.loadImg('pet_page/pet_help_dialog_btn.png')}}" alt="">
+            </button>
+        </div>
+    </div>
+
+</ion-view>

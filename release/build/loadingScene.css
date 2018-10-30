@@ -1,0 +1,24 @@
+.loadingScene {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    background: white;
+}
+
+.loadingSceneShow {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.loadingSceneHide {
+    display: none;
+}

@@ -1,0 +1,54 @@
+<div class="reward-dialog" ng-show="$root.showRewardDialogFlag && $root.dialogType">
+    <div class="reward-dialog_backdrop" ng-click="hideRewardDialog($event)">
+        <div class="reward-dialog_content" ng-if="$root.dialogType=='level'">
+            <i class="icon ion-close dialog_close" ng-click="hideRewardDialog($event)"></i>
+            <div class="level-dialog-head">
+                <img ng-src="{{loadImg('levelDialogImg.png')}}">
+            </div>
+            <div class="level-dialog-content">
+                <div class="level-progress">
+                    <label>Lv.{{currentLevel}}</label>
+                    <div class="level-progress-bar">
+                        <div class="level-done-bar"
+                             ng-style="{'width': getWidth()+ '%'}">
+                        </div>
+                    </div>
+                    <label>Lv.{{nextLevel}}</label>
+                </div>
+                <div class="level-pre">
+                    <label>{{experience}}/{{levelUp}}经验</label>
+                </div>
+            </div>
+
+            <div class="level-dialog-desc">
+                <p>
+                    做作业、玩游戏、通速算、驯萌宠都可以获得经验提升等级哟。
+                </p>
+            </div>
+        </div>
+
+        <div class="reward-dialog_content" ng-if="$root.dialogType=='credits'">
+            <i class="icon ion-close dialog_close" ng-click="hideRewardDialog($event)"></i>
+            <div class="credits-dialog-head">
+                <img ng-src="{{loadImg('creditsDialogImg.png')}}">
+            </div>
+            <div class="credits-dialog-content">
+                <img ng-src="{{loadImg('rewardDialogMoney.png')}}">
+                <label>{{credits}}</label>
+            </div>
+            <div class="credits-dialog-desc">
+               <p>
+                   签到、完成每日任务或者去家长端推广智算365可获得能量。
+               </p>
+            </div>
+            <div class="credits-dialog-btn">
+                <div class="dialog-btn" ng-click="gotoSrote($event)">
+                    <p>前往每日任务</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

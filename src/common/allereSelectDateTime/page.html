@@ -1,0 +1,58 @@
+<div class="allere-select-date-time" ng-if="$root.selectDateTimeFlag" ng-mouseleave="hideDiagnose()">
+    <div class="date-time-top">
+        <button ng-click="selectDateTimeBack()">取消</button>
+        <div class="top-content">
+            <i class="ion-arrow-left-b" style="font-size: 26px;" ng-click="changeYear('pre')"></i>
+            <span ng-bind="dateTime.year"></span>
+            <i class="ion-arrow-right-b" style="font-size: 26px;" ng-click="changeYear('next')"></i>
+        </div>
+        <button ng-click="selectDateTimeDone()">完成</button>
+    </div>
+    <div class="date-time-content">
+        <div class="date-item">
+            <i class="ion-plus-circled" ng-click="selectDateTimeValue('mouth','up')"></i>
+            <button ng-bind="dateTime.mouth+'月'"></button>
+            <i class="ion-minus-circled" ng-click="selectDateTimeValue('mouth','down')"></i>
+            <!--<div class="select-options" ng-if="showMouthFlag">
+                <div ng-repeat="m in mouthArr" ng-click="selectDateTimeValue('mouth',m)" class="select-item"
+                     ng-style="{'background-color':$index%2==0?'rgb(214, 220, 247)':'rgb(227, 241, 247)'}"
+                     ng-bind="m+'月'">
+                </div>
+            </div>-->
+        </div>
+        <div class="date-item">
+            <i class="ion-plus-circled" ng-click="selectDateTimeValue('date','up')"></i>
+            <button ng-bind="dateTime.date+'日'"></button>
+            <i class="ion-minus-circled" ng-click="selectDateTimeValue('date','down')"></i>
+            <!--<div class="select-options" ng-if="showDateFlag">
+                <div ng-repeat="d in dateArr" ng-click="selectDateTimeValue('date',d)" class="select-item"
+                     ng-style="{'background-color':$index%2==0?'rgb(214, 220, 247)':'rgb(227, 241, 247)'}"
+                     ng-bind="d+'日'">
+                </div>
+            </div>-->
+        </div>
+        <div class="date-item">
+            <i class="ion-plus-circled" ng-click="selectDateTimeValue('hour','up')"></i>
+            <button ng-bind="dateTime.hour"></button>
+            <i class="ion-minus-circled" ng-click="selectDateTimeValue('hour','down')"></i>
+            <!--<div class="select-options" ng-if="showHourFlag">
+                <div ng-repeat="h in hourArr" ng-click="selectDateTimeValue('hour',h)" class="select-item"
+                     ng-style="{'background-color':$index%2==0?'rgb(214, 220, 247)':'rgb(227, 241, 247)'}" ng-bind="h">
+                </div>
+            </div>-->
+        </div>
+        <span>:</span>
+        <div class="date-item">
+            <i class="ion-plus-circled" ng-click="selectDateTimeValue('minutes','up')"></i>
+            <button ng-bind="dateTime.minutes"></button>
+            <i class="ion-minus-circled" ng-click="selectDateTimeValue('minutes','down')"></i>
+            <!-- <div class="select-options" ng-if="showMinutesFlag">
+                 <div ng-repeat="mm in minutesArr" ng-click="selectDateTimeValue('minutes',mm)" class="select-item"
+                      ng-style="{'background-color':$index%2==0?'rgb(214, 220, 247)':'rgb(227, 241, 247)'}"
+                      ng-bind="mm>9?mm:'0'+mm">
+                 </div>
+             </div>-->
+        </div>
+    </div>
+
+</div>

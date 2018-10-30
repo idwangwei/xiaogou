@@ -1,0 +1,40 @@
+<style type="text/css">
+    #top_checkbox_container .item-checkbox {
+         background: #5BDB8B;
+         /*padding-left: 0;*/
+         text-align: center;
+         /*padding-top: 25px;*/
+    }
+</style>
+<ion-view hide-nav-bar="true" class="feedback q_feedback_file">
+
+    <ion-header-bar align-title="center" class="bar-balanced qff_header">
+        <div class="button back-button buttons  button-clear header-item qFeedbackBtn" ng-click="ctrl.hideModal()">
+            <i class="icon ion-ios-arrow-back"></i>&nbsp;&nbsp;</div>
+        <h1 class="title qqFeedbackTitle">试题报错</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true" class="qff_content">
+        <div class="qff_content_text">
+            <div class="item item-text-wrap qff_content_text_1">
+                <div  ng-repeat="sel in ctrl.selections" >
+                   <ion-checkbox class="item-checkbox-right item-content-left qff_content_tips" ng-model="sel.selected"> {{sel.val}}</ion-checkbox>
+                </div>
+            </div>
+
+            <div class="item item-text-wrap qff_content_text_2">
+                <textarea ng-model="ctrl.other" class="item-input qff_content_word" rows="10" placeholder="描述...."> </textarea>
+            </div>
+        </div>
+    </ion-content>
+
+    <loading-processing></loading-processing>
+
+    <ion-footer-bar class="bg-balanced display-flex">
+        <button class="button-clear bg-calm  bar-item qFeedBackFootBtn" ng-click="ctrl.sendFeedback()">
+            <i class="icon ion-ios-checkmark"></i>提交
+        </button>
+    </ion-footer-bar>
+
+</ion-view>
+

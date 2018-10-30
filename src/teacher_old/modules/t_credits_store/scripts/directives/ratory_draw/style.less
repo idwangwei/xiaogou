@@ -1,0 +1,104 @@
+.rotary-draw{
+  background-color: #f89b3f !important;
+  z-index: 2000 !important;
+  text-align: center;
+  overflow-y: scroll;
+  position: absolute;
+  .title{
+    height:80px;
+    line-height: 80px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    .num{
+      color: #ffff00;
+      display: inline-block;
+      margin: 0 4px;
+    }
+  }
+  .content{
+    position: relative;
+    overflow: hidden;
+    .wheel{
+      width: 310px;
+      height: 310px;
+      position: relative;
+      box-sizing: border-box;
+      margin: 0 auto;
+      text-align: center;
+      background: #fdbf82;
+      border-radius: 50%;
+      z-index:1;
+      pointer-events: none;
+    }
+    .circle{
+      display: block;
+      position: absolute;
+      z-index: 1;
+      width: 310px;
+      height: 310px;
+    }
+    .pointer{
+      position: absolute;
+      left:50%;
+      margin-left: -38px;
+      top: 50%;
+      margin-top: -65px;
+      display: block;
+      width: 76px;
+      height: 98.5px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      color: #0a0a0a;
+      z-index: 10;
+      pointer-events: auto;
+      background: url("../../../images/rotary_draw/icon-point.png") center/cover no-repeat;
+      &.active{
+        //TODO 灰色按钮样式
+        background-image: url("../../../images/rotary_draw/icon-point-active.png");
+      }
+    }
+    #wheelCanvas{
+      width: 310px;
+      height: 310px;
+    }
+  }
+  .tips{
+    font-size: 14px;
+    color: #fff;
+    font-weight: normal;
+    margin-top: 30px;
+    opacity: .9;
+    .tip{
+      display: block;
+      text-align: center;
+      line-height: 22px;
+    }
+  }
+  .hide-btn{
+    display: block;
+    margin: 30px auto 0;
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #97f569;
+    color: #407b68;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    -webkit-box-shadow:  1px 1px 2px #666;
+    -moz-box-shadow:  1px 1px 2px #666;
+    box-shadow:  1px 1px 2px #666;
+  }
+  .close-btn{
+    font-size: 22px;
+    opacity: 0.5;
+    position: absolute;
+    right: 20px;
+    top:20px;
+  }
+}

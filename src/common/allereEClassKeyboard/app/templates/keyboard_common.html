@@ -1,0 +1,79 @@
+<div class="left" style="overflow: hidden">
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="">+</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">1</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">2</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">3</div>
+    </div>
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="">-</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">4</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">5</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">6</div>
+    </div>
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="\times">×</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">7</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">8</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">9</div>
+    </div>
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="\div">÷</div>
+        <div class="item" ng-click="handleClickNum($event)">=</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">0</div>
+        <div class="item" ng-click="handleClickNum($event)" value="."><span class="mathMark" ng-bind="'.'+' (小数点)'"></span></div>
+        <!--<div class="item" ng-click="handleClickNum($event)" value="\lt">＜</div>-->
+    </div>
+    <div class="itemRow">
+        <!--<div class="item" ng-click="handleClickNum($event)">=</div>-->
+        <div class="item " ng-click="handleClickFractionInput($event,'fraction1')" style="flex: 1;-webkit-flex:1;">
+            <div style="position: relative;display: flex;display: -webkit-flex">
+                <img src="images/fraction1.png" width="20px"/>
+                <img src="images/go-top.png" class="show-top" ng-if="showFracTop"/>
+                <img src="images/go-bottom.png" class="show-bottom" ng-if="showFracBottom"/>
+               <!-- <i class="icon ion-arrow-left-c show-top" ng-if="showFracTop"></i>
+                <i class="icon ion-arrow-left-c show-bottom"  ng-if="showFracBottom"></i>-->
+            </div>
+            <span class="mathMark">&nbsp;(分数)</span>
+        </div>
+        <div class="item " ng-click="handleClickNum($event)" value="\var{x}" style="flex: 1;-webkit-flex:1;">
+            <span mathjax-parser value="x"></span>
+        </div>
+        <div class="item" ng-click="handleClickNum($event)" value="\remain" style="flex: 1;-webkit-flex:1;">
+            <span class="mathMark" style="  overflow: hidden;text-overflow: initial;white-space: nowrap;">······&nbsp;(余)</span>
+        </div>
+        <div class="item" ng-click="handleClickNum($event)" value="\vdotdot" style="flex: 1;-webkit-flex:1;">
+            <span class="mathMark">:&nbsp;(比)</span>
+        </div>
+        <!--<div class="item" ng-click="handleClickNum($event)" value="\gt">＞</div>-->
+    </div>
+</div>
+
+<div class="right">
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)" style="color: #fe6948;">
+        <img src="images/del.png" width="35px" alt=""/>
+    </div>
+    <div class="item greenItem" style="flex:1;-webkit-flex:1;font-size: 15px;color: #fe6948;"
+         ng-click="findNextInput($event)" ng-if="showFindNextInputFlag">
+        <span style="display: block;width: 35px;color:white;margin-left: -8px">下一空</span>
+    </div>
+    <div class="item greenItem" style="flex:1;-webkit-flex:2" ng-click="enter($event)" style="color: #fe6948;">
+        <img src="images/newline.png" width="35px" alt=""/>
+    </div>
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleAnswer($event)" ng-if="wordAnswer">
+        <span style="display: block;width: 35px;color:white">答</span>
+    </div>
+    <div class="item greenItem"
+         style="flex:1;-webkit-flex:1"
+         ng-click="handleClickNum($event,'comment')"
+         value="\comment{}"
+         ng-show="keyboardStatus.isAppTextarea&&!keyboardStatus.isCommentBox">
+        <span style="display: block;width: 35px;color:white">文</span>
+    </div>
+    <div class="item greenItem"
+         style="flex:1;-webkit-flex:1"
+         ng-click="handleClickCommentDone($event)"
+         ng-show="keyboardStatus.isCommentBox">
+        <span style="display: block;color:white">完成</span>
+    </div>
+</div>

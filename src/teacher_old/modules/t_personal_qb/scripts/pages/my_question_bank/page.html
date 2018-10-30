@@ -1,0 +1,33 @@
+<ion-view hide-nav-bar="true" class="my_question_bank">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" style="padding-left: 10px" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;返回
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">我的题库</h1>
+    </ion-header-bar>
+    <ion-content class="question_bank" delegate-handle="questionBankScroll">
+        <div class="module_type add_question_module" ng-click="ctrl.gotoAddQues()">
+            <div class="left-part">
+                <img ng-src="{{$root.loadPersonalQBImg('qb_img01.png')}}">
+            </div>
+
+            <div class="center-part">
+                <p class="title">我要出题</p>
+                <p>好题加进来，建设我的题库</p>
+            </div>
+            <i class="ion-chevron-right right-part"></i>
+        </div>
+        <div class="module_type pub_question_module" ng-click="ctrl.gotoPubQues()">
+            <div class="left-part">
+                <img style="margin-left: 0 !important;" ng-src="{{$root.loadPersonalQBImg('qb_img02.png')}}">
+            </div>
+
+            <div class="center-part">
+                <p class="title">发给学生</p>
+                <p class="add-count" ng-bind="'已出题：'+ctrl.addQuesCount+'道'"></p>
+                <p>把上传成功的题目布置给学生</p>
+            </div>
+            <i class="ion-chevron-right right-part"></i>
+        </div>
+    </ion-content>
+</ion-view>

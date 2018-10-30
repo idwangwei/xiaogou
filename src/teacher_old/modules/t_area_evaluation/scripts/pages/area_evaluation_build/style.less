@@ -1,0 +1,81 @@
+.display-flex(@direction,@justify,@align) {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: @direction;
+  -webkit-flex-direction: @direction;
+  align-items: @align;
+  -webkit-align-items: @align;
+  justify-content: @justify;
+  -webkit-justify-content: @justify;
+}
+.area_evaluation_build {
+  .bar-balanced {
+    .title{
+      font-weight: bold;
+    }
+  }
+  .area_content{
+    background-color: #e8e8ee !important;
+    .my-form-content{
+      .display-flex(column,flex-start,center);
+      padding-top: 25px;
+      .my-form-control{
+        .display-flex(row,flex-start,center);
+        width: 94%;
+        height: 40px;
+        padding:0 7px 0 22px;
+        background: #fff;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        position: relative;
+        .my-form-title{
+          font-size: 14px;
+          color: #9d9bb0;
+          width: 75px;
+          &.large{
+            width:100px;
+          }
+        }
+        .my-form-input,.my-form-select{
+          display: block;
+          flex: 1;
+          -webkit-flex: 1;
+          height: 30px;
+          line-height: 30px;
+          box-sizing: border-box;
+          color: #333;
+          border: none;
+          background: transparent;
+          font-size: 14px;
+          padding: 0;
+        }
+        .my-form-select{
+          select{
+            left: 0;
+            max-width: 100%;
+            padding-left: 0;
+            width: 100%;
+            direction: ltr;
+          }
+        }
+        .my-form-btn{
+          .display-flex(row,center,center);
+          font-size: 12px;
+          color: #fff;
+          background: #07c9fa;
+          height: 32px;
+          width: 74px;
+          border-radius: 16px;
+          text-decoration: none;
+          position: absolute;
+          right: 3px;
+          pointer-events: none;
+          z-index: 10;
+          i{
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+}

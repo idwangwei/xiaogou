@@ -1,0 +1,40 @@
+
+<ion-view title="错题学生列表" hide-nav-bar="true" class="eqc_student_list_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding:0 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title eqc_detail_header" ng-bind="'错题学生列表'"></h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+        <div ng-if="!ctrl.studentList && ctrl.retFlag">获取失败，请返回重试</div>
+
+        <ion-list class="list eqc_sl_content">
+            <ion-item ng-repeat="stu in ctrl.studentList" class="item list_item_stu_box">
+
+                <!--学生图标-->
+                <div class="list_item_stu" ng-click="ctrl.showStudentErrorInfo(stu)"
+                     ng-class="{'current_click_student':stu.studentId == ctrl.workListService.eqcCurrentClickStudent}">
+
+                    <div class="list_item_stu_left">
+                        <div class="list_item_stu_left_icon"><img ng-src="{{$root.loadImg(stu.gender == '1' ?'person/student-m.png':'person/student-f.png')}}"/></div>
+                        <div class="list_item_stu_left_name" ng-bind="stu.name"></div>
+                    </div>
+
+                    <div class="list_item_stu_right">
+                        <div class="list_item_stu_right_info">
+                            <span ng-bind="'出错次数：'+stu.totalErrorTimes+'次'"></span>
+                            <span ng-bind="'最后一次'+stu.lastStatus"></span>
+                        </div>
+                        <div style="padding: 0 10px; font-size: 28px">
+                            <span class="icon ion-ios-arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <loading-processing load-top="200" ng-if="!ctrl.retFlag"></loading-processing>
+</ion-view>
+

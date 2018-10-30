@@ -1,0 +1,152 @@
+<ion-view hide-nav-bar="true" class="exercise_exam_do_question" cache-view="false">
+    <ion-header-bar style="background-color: #ca75ea" align-title="center">
+        <button class="button back-button buttons  button-clear header-item common-back-btn"
+                ng-click="doQCtrl.back()"
+                style="color: #ffffff;">
+            <i class="icon ion-ios-arrow-back" style="color: #ffffff;"></i>
+        </button>
+        <h1 class="title"
+            style="color:#ffffff;font-weight: bold;font-size: 20px;left: 0px;right: 76px;"
+            ng-bind="doQCtrl.examSelectPoint.groupName+'例'+doQCtrl.examSelectPoint.num">
+        </h1>
+        <div class="report-btn" ng-click="doQCtrl.handleDraft()">
+            <img ng-src="{{$root.loadImg('diagnose/draft-new.png')}}">
+            草稿本
+        </div>
+    </ion-header-bar>
+    <!--草稿本指令-->
+    <draft style="position: relative;"></draft>
+    <!--键盘指令-->
+    <div class="keyboard" style="z-index: 5000"></div>
+    <!--弹框指令-->
+    <diagnose-dialog ng-if="doQCtrl.showDiaglog"></diagnose-dialog>
+    <!-- 圆圈loading -->
+    <div ng-if="doQCtrl.isLoadingProcessing"
+         class="dot_processing loading-wrap">
+        <ion-spinner icon="ios"></ion-spinner>
+        <p ng-if="doQCtrl.loadingNewQText">{{doQCtrl.loadingNewQText}}<span class="dotting"></span></p>
+    </div>
+    <!--提交loading-->
+    <div ng-if="doQCtrl.quesSubmitProcessing"
+         class="dot_processing loading-wrap">
+        <ion-spinner icon="ios"></ion-spinner>
+        <p ng-if="doQCtrl.submitText">{{doQCtrl.submitText}}<span class="dotting"></span></p>
+    </div>
+    <div style="width: 100%;height: 100%;position: relative;">
+        <ion-content class="do_question_content do_question_content-bg">
+
+            <div class="do_ques_processing">
+                <img class="title-img" ng-src="{{$root.loadMicrolectureImg('do_ques/mirc_do_ques_title.png')}}">
+                <div class="ques_processing">
+                    <div class="step-process">
+                        <div class="in-progress" ng-if="doQCtrl.doneQuesCount>1">
+                            <div class="in-progress-bar"
+                                 ng-class="doQCtrl.doneQuesCount>1?'in-progress-change':''"></div>
+                        </div>
+                        <img class="step-num01"
+                             ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_process_out01.png')}}">
+                        <img class="step-num02" ng-if="doQCtrl.doneQuesCount>1"
+                             ng-class="doQCtrl.doneQuesCount>1?'step-num02-change':''"
+                             ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_process01.png')}}">
+                    </div>
+                    <div class="step-process">
+                        <div class="in-progress" ng-if="doQCtrl.doneQuesCount>2">
+                            <div class="in-progress-bar"
+                                 ng-class="doQCtrl.doneQuesCount>2?'in-progress-change':''"></div>
+                        </div>
+                        <img class="step-num01"
+                             ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_process_out02.png')}}">
+                        <img class="step-num02" ng-if="doQCtrl.doneQuesCount>2"
+                             ng-class="doQCtrl.doneQuesCount>2?'step-num02-change':''"
+                             ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_process02.png')}}">
+                    </div>
+                    <div class="step-process">
+                        <div class="in-progress" ng-if="doQCtrl.doneQuesCount>3">
+                            <div class="in-progress-bar"
+                                 ng-class="doQCtrl.doneQuesCount>3?'in-progress-change':''"></div>
+                        </div>
+                        <img class="step-num01"
+                             ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_process_out03.png')}}">
+                        <img class="step-num02" ng-if="doQCtrl.doneQuesCount>3"
+                             ng-class="doQCtrl.doneQuesCount>3?'step-num02-change':''"
+                             ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_process03.png')}}">
+                    </div>
+                </div>
+            </div>
+            <!-- 做题记录按钮 -->
+            <div class="top-btns-wrap">
+                <img ng-src="{{$root.loadImg('diagnose/diagnose-error-record-btn.png')}}"
+                     ng-click="doQCtrl.showErrorRecords()"
+                     ng-if="doQCtrl.isSubmitted"
+                     style="width: 40%;max-width: 200px;min-width: 140px;">
+            </div>
+            <!--题目内容-->
+            <div class="edit-section do-question-area">
+                <!--未提交前题目的显示 show-type="doQuestion"-->
+                <!--show-type:展示类型为=> 做题:'doQuestion', 批改:'correct', 其他:undefined   -->
+                <div ng-if="!doQCtrl.isSubmitted&&doQCtrl.questionInfo.question&&!doQCtrl.hasCorrect">
+                    <div class="editor for-content do_question_text"
+                         compile-html="doQCtrl.questionInfo.question"
+                         current_q_input="doQCtrl.questionInfo.inputList"
+                         possible-units="doQCtrl.questionInfo.possibleUnits"
+                         show-type="doQuestion">
+                    </div>
+                </div>
+                <!--提交后题目的显示 show-type="correct"-->
+                <div ng-if="doQCtrl.isSubmitted&&doQCtrl.questionInfo.question||doQCtrl.hasCorrect">
+                    <div class="editor for-content do_question_text"
+                         compile-html="doQCtrl.questionInfo.question"
+                         current_q_input="doQCtrl.questionInfo.inputListForCorrect"
+                         possible-units="doQCtrl.questionInfo.possibleUnits"
+                         show-type="correct">
+                    </div>
+                </div>
+                <!--提交后显示题目解析 按钮-->
+                <div class="cheats-btn-wrap" ng-click="doQCtrl.showAnalysis()" ng-if="doQCtrl.isSubmitted">
+                    <span ng-bind="'查看解析'"></span>
+                    <i class="icon ion-chevron-down"></i>
+                </div>
+                <!--点击题目解析按钮后显示  解析内容--->
+                <div class="analysis-wrap " ng-if="doQCtrl.showAnalysisFlag">
+                    <!-- 解答题参考答案 -->
+                   <!-- <div class="analysis-title">答案：
+                        <div class="savant-btn" ng-click="doQCtrl.getReferAns($event)"
+                             ng-if="doQCtrl.questionInfo.questionTypeKey==='subjective'">
+                            学霸解答
+                        </div>
+                    </div>
+                    &lt;!&ndash;竖式的答案&ndash;&gt;
+                    <div ng-if="doQCtrl.isVertical&&doQCtrl.referAnswers.vertical" class="vertical-tip">
+                        <span ng-bind="doQCtrl.referAnswers.vertical"></span>
+                    </div>
+                    <div compile-html="doQCtrl.smallQ.qContext" refer-answers="doQCtrl.questionInfo.referAnswers"
+                         ng-if="doQCtrl.questionInfo.referAnswers&&doQCtrl.showCorrectFlag&&!doQCtrl.parsedInputList"
+                         class="q-context" style="pointer-events: none;">
+                    </div>
+                    <div compile-html="doQCtrl.smallQ.qContext" refer-answers="doQCtrl.questionInfo.referAnswers"
+                         ng-if="doQCtrl.questionInfo.referAnswers&&doQCtrl.showCorrectFlag&&doQCtrl.parsedInputList"
+                         current-q-input="doQCtrl.parsedInputList"
+                         class="q-context" style="pointer-events: none;">
+                    </div>-->
+                    <!--有解析的显示解析   解析时一张图片-->
+                    <div style="width: 100%" ng-if="doQCtrl.questionInfo.doc&&doQCtrl.questionInfo.doc[0]" >
+                        <div class="analysis-title">解析：</div>
+                        <div style="width: 100%;font-size: 18px" compile-html='doQCtrl.questionInfo.doc[0]'>解析：</div>
+                    </div>
+                </div>
+                <div class="place-holder"></div>
+            </div>
+        </ion-content>
+    </div>
+    <ion-footer-bar class=" bar bar-footer page_footer">
+        <div class="page_button" ng-click="doQCtrl.submitQ()">
+            <!-- <img ng-src="{{$root.loadImg('diagnose/tame-btn-icon-new.png')}}" >-->
+            <span ng-if="!doQCtrl.isSubmitted&&!doQCtrl.hasCorrect">提交答案</span>
+            <span ng-if="doQCtrl.isSubmitted&&doQCtrl.doneQuesCount!=4&&!doQCtrl.showNextQFlag||doQCtrl.hasCorrect"
+                  ng-bind="'改错'"></span>
+            <span ng-if="doQCtrl.isSubmitted&&doQCtrl.doneQuesCount!=4&&doQCtrl.showNextQFlag&&!doQCtrl.hasCorrect" ng-bind="'下一题'"></span>
+            <span ng-if="doQCtrl.isSubmitted&&doQCtrl.doneQuesCount===4" ng-bind="'完成练习'"></span>
+        </div>
+    </ion-footer-bar>
+</ion-view>
+

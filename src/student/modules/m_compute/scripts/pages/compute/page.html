@@ -1,0 +1,204 @@
+
+<ion-view hide-nav-bar="true" class="compute_file" hide-tab="false">
+    <ion-header-bar align-title="center" class="bar-better">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 2px">首页</span>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4b61b4" ng-bind="'速算'"></h1>
+    </ion-header-bar>
+
+    <ion-side-menus>
+        <!--左侧滑出的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="has-header game_clazz_select cf_clazz_content" padding="true">
+                <div class="col-md-12 col-xs-12 game_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-show="clazz.status==1">
+                    <div class="clazz-item" ng-click="ctrl.selectClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadComputeImg('compute_clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--指定班级的显示内容-->
+        <ion-side-menu-content>
+            <!--班级名称显示框-->
+            <div class="select-content-wrap has-header">
+                <div class="select-clazz-bar" ng-click="ctrl.showMenu()" >
+                    <div class="content-wrap">
+                        <img ng-src="{{$root.loadComputeImg('compute_clazz_icon.png')}}">
+                        <span ng-if="ctrl.currentClazz.type!==900" ng-bind="ctrl.currentClazz.name||'没有班级'"></span>
+                        <span ng-if="ctrl.currentClazz.type == 900"
+                              ng-bind="ctrl.currentClazz.gradeName.slice(-4, -1) + ctrl.currentClazz.name"></span>
+                    </div>
+                    <div class="arrow-right-wrap"><i class="icon ion-ios-arrow-right"></i></div>
+                </div>
+            </div>
+
+            <ion-content class="has-header cf_content"  style="top:104px">
+                <!--排行榜-->
+                <div class="compute-fighter-rank-wrap"  ng-click="ctrl.showComputeFighterRank()">
+                    <div class="compute-fighter-rank">
+                        <div class="compute-fighter-rank-text">
+                            <span style="line-height: 22px">速算斗士榜</span>
+                            <i style="margin-left: 16px;font-size: 16px;" class="icon ion-ios-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!--没有班级提示-->
+                <div class="item item-input block-input item-input—height" ng-if="ctrl.clazzList&&ctrl.clazzList.length == 0">
+                    <span>想要玩速算游戏，<br>请家长帮你申请班级吧！</span>
+                </div>
+
+                <div class="cf-bg-wrap" ng-if="ctrl.currentClazz.id">
+                    <!--速算进入图标-->
+                    <div class="stars">
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star1 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star2 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star3 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star4 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star5 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star6 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star7 animated flash"/>
+                        <img ng-src="{{$root.loadComputeImg('compute-white-star.png')}}" class="star star8 animated flash"/>
+                    </div>
+                    <div class="dots">
+                        <div class="dot dot1"></div>
+                        <div class="dot dot2"></div>
+                        <div class="dot dot3"></div>
+                        <div class="dot dot4"></div>
+                        <div class="dot dot5"></div>
+                        <div class="dot dot6"></div>
+                        <div class="dot dot7"></div>
+                        <div class="dot dot8"></div>
+                        <div class="dot dot9"></div>
+                        <div class="dot dot10"></div>
+                        <div class="dot dot11"></div>
+                    </div>
+                    <div class="xiaogou-text-wrap ">
+                        <div class="xiaogou-text animated fadeInRight"></div>
+                    </div>
+
+                    <div class="xiaogou-ship-wrap">
+                        <div class="xiaogou-ship"></div>
+                    </div>
+                    <div class="start-btn-wrap" ng-click="ctrl.enterGame()">
+                        <div class="start-btn">
+                        </div>
+                    </div>
+                    <div class="rc-count" ng-show="ctrl.RapidCalcInfo.length > 0">
+                        <div class="bg-board">
+                            <div class="select-grade">
+                                <div class="mbtn">
+                                    <div class="mback" ng-click="ctrl.mback()"></div>
+                                    <div>{{ctrl.showGrade()}}</div>
+                                    <div class="mforward" ng-click="ctrl.mforward()"></div>
+                                </div>
+                            </div>
+                            <a class="rc-wrap"
+                               ui-sref="stuPassLevels({grade: ctrl.grade,stuName: '速算通关信息',classId: ctrl.compute_selected_clazz.id ,passLevels: ctrl.RapidCalcInfo[ctrl.grade].passLevel})">
+                                <div class="status-wrap">
+                                    <div>
+                                        {{ctrl.calcPassLevelPercent(ctrl.RapidCalcInfo[ctrl.grade].passLevel, ctrl.RapidCalcInfo[ctrl.grade].totalLevel)}}
+                                    </div>
+                                    <div class="status-outer-bar">
+                                        <div class="status-inner-bar"
+                                             ng-style="{'width': (ctrl.RapidCalcInfo[ctrl.grade].passLevel)/(ctrl.RapidCalcInfo[ctrl.grade].totalLevel)*100 + '%'}"></div>
+                                    </div>
+                                </div>
+                                <div class="right-info">
+                                    <span><em>{{ctrl.RapidCalcInfo[ctrl.grade].passLevel}}</em>/{{ctrl.RapidCalcInfo[ctrl.grade].totalLevel}} 关</span>
+                                    <i class="icon ion-chevron-right" style="font-size: 18px;position: relative;top: 2px;left: 5px;"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ion-content>
+
+        </ion-side-menu-content>
+
+    </ion-side-menus>
+
+    <!--作业列表显示的作业奖杯排行榜显示框-->
+    <div class="work-backdrop" ng-if="ctrl.isShowComputeFighterRank" ng-click="ctrl.closeComputeFighterRankData($event)">
+        <div class="compute_fighter_rank_data">
+            <!--速算斗士榜背景-->
+            <div class="top_bg_wrap bg_wrap_fighter">
+                <div class="bg_wrap_fighter_layer_2">
+                    <img ng-src="{{$root.loadComputeImg('compute_fighter_bg2.png')}}" alt="" class="top_bg_fighter_left">
+                    <img ng-src="{{$root.loadComputeImg('compute_fighter_bg3.png')}}" alt="" class="top_bg_fighter_right">
+                </div>
+                <div class="bg_wrap_fighter_layer_1">
+                    <img ng-src="{{$root.loadImg('msg/msg_fighter_icon.png')}}" alt="" class="top_bg_fighter_middle">
+                </div>
+            </div>
+
+            <!--斗士排行列表表头-->
+            <div class="fighter_rank_header">
+                <div class="fighter_rank_header_left"></div>
+                <div class="fighter_rank_header_right">
+                    <div class="frh_right_div frh_right_1">
+                        击败<br>高手
+                    </div>
+                    <div class="frh_right_div frh_right_2">
+                        击败<br>熟手
+                    </div>
+                    <div class="frh_right_div frh_right_3">
+                        击败<br>新手
+                    </div>
+                    <div class="frh_right_div frh_right_4">
+                        <div style="width: 100%;max-width: 40px">击败总数</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--斗士排行列表-->
+            <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+                <div ng-if="!ctrl.currentClazz||!ctrl.currentClazz.id" style="padding: 20px">您还没有申请班级！</div>
+
+                <div class="fighter_rank_list_box" ng-if="ctrl.currentClazz && ctrl.currentClazz.id">
+
+                    <div ng-if="!ctrl.isFighterLoading && !ctrl.fighterRankData.length" class="rank_list_content_none">该班暂时没有速算斗士排行信息</div>
+                    <div ng-if="ctrl.isFighterLoading && !ctrl.fighterRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+
+                    <!--具体列表信息-->
+                    <div class="item fighter_rank_list" ng-repeat="item in ctrl.fighterRankData"
+                         ng-class="{'fighter_rank_list_user':item.userId == ctrl.user.userId}">
+
+
+                        <!--左边学生信息-->
+                        <div class="fighter_rank_list_left">
+                            <!--排名-->
+                            <div class="fr_list_index">
+                                <span ng-bind="item.rank"> </span>
+                            </div>
+
+                            <!--用户信息-->
+                            <div class="fr_list_info">
+                                <div class="fr_list_student_name">{{item.userName}}</div>
+                            </div>
+                        </div>
+
+                        <!--右侧数量信息-->
+                        <div class="fighter_rank_list_right">
+                            <div class="fr_list_num" ng-bind="item.goldMedal"></div>
+                            <div class="fr_list_num" ng-bind="item.sliverMedal"></div>
+                            <div class="fr_list_num" ng-bind="item.copperMedal"></div>
+                            <div class="fr_list_num" ng-bind="item.defeatPeopleAmount"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </ion-scroll>
+        </div>
+    </div>
+
+</ion-view>

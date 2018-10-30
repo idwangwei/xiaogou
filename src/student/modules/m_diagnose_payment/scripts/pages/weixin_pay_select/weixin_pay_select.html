@@ -1,0 +1,110 @@
+<ion-view hide-nav-bar="true" class="wxPay_select">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+    </ion-header-bar>
+    <div class="wxPay-select_ad">
+        <div class="wxPay-select_ad_bg" >
+            <div class="wxPay-select_ad_bg_top">
+
+            </div>
+            <div class="wxPay-select_ad_bg_bottom">
+                <div class="wxPay-select_ad_bg_bottom_left"></div>
+                <div class="wxPay-select_ad_bg_bottom_right"></div>
+            </div>
+        </div>
+    </div>
+    <ion-content overflow-scroll="true" class="wxPay_select_content" ng-style="{'top':'20px'}">
+        <div class="wxPay-select_pay_content">
+            <div class="wxPay-select_pay_pet_content">
+                <div class="wxPay-select_pay_pet">
+                    <img style="position: absolute;z-index: 20;left: 0;right: 0;margin: auto;height: 100%"
+                         ng-src="{{$root.loadImg('weixin_pay/GTA0004.png')}}">
+                    <div class="wxPay-select_pay_pet_baby">
+                        <img style="display: inherit;height: 75%"
+                             ng-src="{{$root.loadImg('weixin_pay/GTA0002.png')}}">
+                        <img style="display: inherit;height: 75%"
+                             ng-src="{{$root.loadImg('weixin_pay/GTA0003.png')}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="productDetails">
+                <p ng-bind="'开通驯宠记即可获得：'"></p>
+                <div class="describe">
+                    <ul>
+                        <li ng-repeat="item in ctrl.goodsDescription">
+                            <span>{{item}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wxPay-select_versions_content">
+                <div class="wxPay-select_versions" ng-repeat="item in ctrl.diagnoseGoodsMenusList">
+
+                    <div class="item_version {{item.selected==true?'version_color1':'version_color'}}"
+                         ng-click="ctrl.selectGoodClick($index)"
+                         ng-if="item.desc.circleOfFriends === ctrl.shareFlag">
+
+                        <div class="version_content">
+                            <div class="version_content_left">
+                                <div style="font-weight: bolder"
+                                     ng-style="{'font-size':item.desc.title.length>=8?'14px':'18px'}">
+                                    {{item.desc.title}}
+                                </div>
+                                <div style="font-size: 16px;margin-top: 5px;"
+                                     ng-style="{'font-size':item.desc.title.length>=8?'12px':'16px'}">
+                                    {{item.desc.subTitle}}
+                                </div>
+                            </div>
+                            <div class="version_content_right">
+                                <!--<div class="version_content_share"
+                                     ng-if="!item.desc.circleOfFriends&&!ctrl.shareFlag"
+                                     ng-click="ctrl.shareForFavorable($event)"
+                                     ng-style="{'background-color':item.selected==true?'#4a53bb':'#58586b'}">
+                                    <img ng-src="{{ctrl.friendCircle}}" style="width: 20px">
+                                    <p>分享立减{{$index%3==0?'20':$index%3==1?'50':'100'}}</p>
+                                    <i class="ion-chevron-right"></i>
+                                </div>-->
+                                <div class="version_content_num submit_button">
+                                    <div class="version_content_old_num"
+                                         ng-if="item.desc.circleOfFriends&&ctrl.shareFlag&&!item.desc.saleFee">
+                                        <img ng-src="{{$root.loadImg('weixin_pay/wxpayRedLine.png')}}">
+                                        <div class="cost_money">
+                                            <i class="ion-social-yen"></i>{{ctrl.calculateOriginalPrice(item,$index%3==0?'20':$index%3==1?'50':'100')}}
+                                        </div>
+                                    </div>
+                                    <div class="version_content_new_num" ng-class="{'version_content_new_num_sale':item.desc.circleOfFriends&&ctrl.shareFlag&&item.desc.saleFee}">
+                                        <div ng-if="item.desc.saleFee" style="color: #feff3e;font-size: 14px;margin-right: 10px;">
+                                            {{item.desc.saleMsg+'：'}}<i class="ion-social-yen"></i>{{item.desc.saleFee}}
+                                        </div>
+                                        <div style="display: flex;display: -webkit-flex">
+                                            <div class="cost_money" style="position: relative">
+                                                <img ng-if="item.desc.saleFee"
+                                                     style="position: absolute;height: 100%;width: 100%;"
+                                                     ng-src="{{$root.loadImg('weixin_pay/wxpayRedLine.png')}}">
+                                                <i class="ion-social-yen"></i>{{item.desc.fee}}
+                                            </div>
+                                            <i style="margin-left: 10px;"
+                                               class="{{item.selected==true?'ion-checkmark-circled balanced white':'ion-record stable'}}"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wxPay_select_foot" ng-if="!!ctrl.diagnoseGoodsMenusList">
+                <img ng-src="{{$root.loadImg('bargain/bargain_global_btn.png')}}"
+                     ng-click="ctrl.gotoBargainIndex()" ng-if="ctrl.bargainData.status==-1&&ctrl.diagnoseGoodsMenusList[0].selected!==undefined" class="bargain-btn">
+                <img ng-src="{{$root.loadImg('bargain/bargain_global_detail_btn.png')}}"
+                     ng-click="ctrl.gotoBargainDetail()" ng-if="(ctrl.bargainData.status==0||ctrl.bargainData.status==1)&&ctrl.diagnoseGoodsMenusList[0].selected!==undefined" class="bargain-btn">
+                <button class="button button-energized submit_button" ng-click="ctrl.selectGood()">
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

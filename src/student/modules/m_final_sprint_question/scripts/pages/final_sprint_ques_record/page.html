@@ -1,0 +1,81 @@
+<ion-view hide-nav-bar="true" class="work_report_ques_record">
+    <ion-header-bar align-title="center" class="bar-better" style="background: #FCF3CB;">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title"
+            style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+            ng-bind="'考点'+ (ctrl.pointIndex == '-1' ? '':ctrl.pointIndex) +'诊断报告'">
+            做题记录
+        </h1>
+    </ion-header-bar>
+    <ion-content has-header="false" overflow-scroll="true">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+        <div class="records-title" ng-if="ctrl.qRecords&&ctrl.qRecords.length">
+            <b>{{'考点'+(ctrl.pointIndex == '-1' ? '':ctrl.pointIndex)}}</b>：{{ctrl.getKnowledgeTxt()}}
+        </div>
+        <div ng-repeat="record in ctrl.qRecords " ng-init="smallQIndex = $index"
+             ng-style="{'margin-bottom':$last&&bigLast?'140px':''}">
+            <div class="image-type-question">
+                <div class="question-content card card-better small_q_bg">
+                    <!--改错列-->
+                    <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index"
+                         ng-init="doneIndex=$index;doneLast=$last">
+                        <div class="smallq-title"
+                             ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}">
+                            <div class="text-div-adapt" ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                <div class="text-adapt">
+                                     <span ng-bind="'第'+(smallQIndex+1)+'题'"
+                                           ng-class="{'done-more':doneIndex>=1}"></span>
+                                    <!--<span ng-class="{'done-more':doneIndex>=1}">{{ctrl.checkThisPaperQues(record,smallQIndex+1)}}</span>-->
+                                    <span ng-if="doneIndex==0" ng-bind="'首次做 '"></span>
+                                    <span ng-if="doneIndex>=1" ng-bind="'改错后'"></span>
+                                    <span ng-bind="doneInfo.createTime"></span>
+                                    <span class="correct-icons">
+                                        <img ng-show="doneInfo.passFlag==0"
+                                             ng-src="{{$root.loadImg('other/icon_no.png')}}">
+                                        <img ng-show="doneInfo.passFlag==1"
+                                             ng-src="{{$root.loadImg('other/icon_yes2.png')}}">
+                                        <img ng-show="doneInfo.passFlag==2"
+                                             ng-src="{{$root.loadImg('other/icon_yes3.png')}}">
+                                        <img ng-show="doneInfo.passFlag==3"
+                                             ng-src="{{$root.loadImg('other/grading-icon.png')}}">
+                                    </span>
+                                </div>
+                                <div class="record-type">
+                                    <!--<span ng-bind="doneInfo.keyValuePairs.key==='0'?'( 该记录来自单题 )':ctrl.checkQuesFromThisPaper(record)?'( 该记录来自本次作业 '+ctrl.checkThisPaperQues(record,smallQIndex+1)+')':'( 该记录来自作业 )'"></span>-->
+                                    <!--<span ng-bind="doneInfo.keyValuePairs.key==='1'?'( 该记录来自其他作业 )':!ctrl.checkQuesFromThisPaper(record)?'(该记录来自学霸驯宠记)':'( 该记录来自本次作业 '+ctrl.checkThisPaperQues(record,smallQIndex+1)+')'"></span>-->
+                                    <!--<span ng-bind="ctrl.checkQuesFromThisPaper(record,doneIndex)==1?'( 该记录来自学霸驯宠记 )':ctrl.checkQuesFromThisPaper(record,doneIndex)==2?'( 该记录来自本次作业 '+ctrl.checkThisPaperQues(record,smallQIndex+1)+')':'( 该记录来自其他作业 )'"></span>-->
+                                    <span ng-bind="doneInfo.keyValuePairs.key!=='1'?'( 该记录来自学霸驯宠记 )':ctrl.checkQuesFromThisPaper(record)?'( 该记录来自本次作业 '+ctrl.checkThisPaperQues(record,smallQIndex+1)+')':'( 该记录来自'+ctrl.formText+' )'"></span>
+                                </div>
+                            </div>
+                            <div class="img-align-right">
+                                <span ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                    <img ng-src="{{!doneInfo.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}"
+                                    >
+                                </span>
+                            </div>
+                        </div>
+
+                        <div compile-html="record.question" show_type="correct" current_q_input="doneInfo.inputList"
+                             ng-if="doneInfo.showQFlag" class="qcontext">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="ctrl.fetchQRecordsWithLoadMore();"
+                             distance="1%" ng-if="ctrl.moreFlag">
+        </ion-infinite-scroll>
+
+        <div class="tip" ng-if="ctrl.hasNoRecords()">
+            <span>该知识点下，暂无做题记录。</span>
+        </div>
+    </ion-content>
+    <loading-processing ng-if="ctrl.firstLoading"></loading-processing>
+    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/final_sprint_check.png')}}"
+         class="final_sprint_check"
+         ng-click="ctrl.closeFinalSprintCheck()"
+         ng-if="ctrl.isFinalSprintCheckFlag"
+    >
+</ion-view>

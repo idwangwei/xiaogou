@@ -1,0 +1,46 @@
+<ion-view id="live-course-fee-paper">
+    <ion-header-bar class="bar-balanced enter-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">入学诊断</h1>
+    </ion-header-bar>
+    <ion-content padding="false" class="fee-paper-content">
+        <div class="section-1">
+            <div class="content-header">
+                <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_fee_paper.png')}}" class="paper-img">
+                <div class="paper-right" ng-click="ctrl.goToPaper()" ng-if="ctrl.selectCourse.paperInfo.status==4">
+                    <span>{{ctrl.selectCourse.paperInfo.score}}%</span>
+                    <span>查看试卷详情<i class="ion-ios-arrow-right item-content-arrow"></i></span>
+                </div>
+                <div class="paper-right" ng-if="ctrl.selectCourse.paperInfo.status==2">
+                    <span class="text-bold">进行中</span>
+                </div>
+                <div class="paper-right" ng-if="ctrl.selectCourse.paperInfo.status==1">
+                    <span class="text-bold">未开始</span>
+                </div>
+            </div>
+            <div class="content-info">
+                <div>考试名称：{{ctrl.selectCourse.paperInfo.enrollPreviewPaperName}}</div>
+                <div>考试限时：{{ctrl.selectCourse.paperInfo.enrollPreviewLimitTime}}分钟</div>
+                <div ng-if="ctrl.selectCourse.paperInfo.status!=4">分数线：{{ctrl.selectCourse.paperInfo.enrollPreviewScoreLevel}}分</div>
+                <div ng-if="ctrl.selectCourse.paperInfo.status==4">考试成绩：{{ctrl.selectCourse.paperInfo.score}}分</div>
+                <div ng-if="ctrl.selectCourse.paperInfo.status==2">剩余时间：{{ctrl.thisTimer}}</div>
+            </div>
+            <div class="btn-box">
+                <span class="notice" ng-if="ctrl.selectCourse.paperInfo.status==4&&ctrl.selectCourse.paperInfo.score<ctrl.selectCourse.paperInfo.enrollPreviewScoreLevel">考试未达标，建议报名其他课程</span>
+                <span class="notice" ng-if="ctrl.selectCourse.paperInfo.status==4&&ctrl.selectCourse.paperInfo.score>=ctrl.selectCourse.paperInfo.enrollPreviewScoreLevel"><img
+                        ng-src="{{$root.loadLiveImg('live_course_enter/live_course_fee_award.png')}}" alt="">恭喜你，获得报名资格！</span>
+                <img ng-src="{{$root.loadLiveImg(ctrl.btnUrl)}}" ng-if="ctrl.btnUrl" ng-click="ctrl.btnClick()">
+            </div>
+            <img class="fee-mark" ng-src="{{$root.loadLiveImg('live_course_enter/live_course_fee_mark.png')}}" ng-if="ctrl.selectCourse.type==1">
+        </div>
+        <div class="notice-box">
+            <div class="notice-title">考试须知</div>
+            <div class="notice-text">1.本测试为直播课入学诊断，满分100分，答题时间{{ctrl.selectCourse.paperInfo.enrollPreviewLimitTime}}分钟。</div>
+            <div class="notice-text">2.本测试是为了帮助我们定位学生的学习情况。</div>
+            <div class="notice-text">3.考试成绩以首次提交为准，请仔细答题。</div>
+            <div class="notice-text">4.考试成绩需要达到{{ctrl.selectCourse.paperInfo.enrollPreviewScoreLevel}}分才可报名该课程。</div>
+        </div>
+    </ion-content>
+</ion-view>

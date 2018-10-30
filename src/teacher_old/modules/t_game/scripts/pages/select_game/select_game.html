@@ -1,0 +1,54 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">布置游戏</h1>
+        <button class="button button-clear" ng-click="ctrl.rule()">
+            <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+        </button>
+    </ion-header-bar>
+
+    <ion-content style="margin-bottom: 24px">
+        <div class="card game-box">
+            <div class="item game-box-content">
+                <div class="game-img-box">
+                    <div class="game_word"><img ng-src="{{$root.loadImg('game_icon/'+game.gameGuid+'_word.png')}}" alt=""/></div>
+                    <div class="game_img"> <img ng-src="{{$root.loadImg('game_icon/'+game.gameGuid+'.png')}}" alt=""/></div>
+                    <div class="game_name"><img ng-src="{{$root.loadImg('game_icon/'+game.gameGuid+'_name.png')}}" alt=""/></div>
+                </div>
+                <div class="game-info">
+                    <p>游戏描述:&nbsp;{{game.gameDesc}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row pass-list" ng-repeat="row in ctrl.levelArray" style="padding: 0px 5px;">
+            <div  ng-class="level.isClicked?'pass-block select':'pass-block noSelect'" ng-repeat="level in row" ng-click="ctrl.handleClick()">
+
+                <div class="play-game" ng-click="ctrl.playGame(game,level)">
+                    <img ng-src="{{$root.loadImg('game/play_game.png')}}" alt="">
+                    </div>
+                <div>第{{level.num}}关</div>
+                <div>{{level.kdName}}</div>
+                <div class="check" >
+                    <div class="tool-bar-item" ng-show="!level.isClicked">
+                        <i class="icon ion-android-checkbox-outline-blank"></i>
+                    </div>
+                    <div class="tool-bar-item" ng-show="level.isClicked">
+                        <i class="icon ion-android-checkbox-outline"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <div class="bar bar-footer bar-balanced">
+        <button
+                class="bar-item button-clear"
+                ng-click="ctrl.goPub()"
+                ng-disabled="ctrl.isDisabled"
+                style="{{disOpcity}}">
+            <i class="icon ion-plus-circled"></i>
+            布置游戏</button>
+    </div>
+</ion-view>

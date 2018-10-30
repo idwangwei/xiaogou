@@ -1,0 +1,258 @@
+// import game_list from './reducers/game_list';
+import app_info from './reducers/app_info';
+import feedback from './reducers/feedback';
+
+import wl_clazz_list_with_works from './reducers/work_list/clazz_list_with_works';
+import wl_is_fetch_status_loading from './reducers/work_list/wl_is_fetch_status_loading';
+import wl_pagination_info from './reducers/work_list/pagination_info';
+import wl_selected_clazz from './reducers/work_list/selected_clazz';
+import wl_selected_work from './reducers/work_list/selected_work';
+import wl_is_worklist_loading from './reducers/work_list/is_worklist_loading';
+import wl_class_with_pagination_info from './reducers/work_list/wl_class_with_pagination_info';
+import wl_is_fetch_paper_loading from './reducers/work_detail/is_fetch_paper_loading';
+import wl_is_fetch_doPaper_loading from './reducers/work_detail/is_fetch_doPaper_loading';
+import wl_is_paper_submitting from './reducers/do_paper/is_paper_submitting';
+import wl_is_post_answer_loading from './reducers/do_paper/is_post_answer_loading';
+import wl_is_student_praise_loading from './reducers/do_paper/is_student_praise_loading';
+
+
+import wl_is_local_ans_changed from './reducers/do_paper/is_local_ans_changed.js';
+
+
+import profile_achievement from './reducers/profile/achievement';
+import profile_clazz from './reducers/profile/clazz';
+import profile_user_auth from './reducers/profile/user_auth';
+import clazz_with_study_stati from './reducers/study_stati/clazz_with_study_stati';
+import fetch_study_stati_processing from './reducers/study_stati/fetch_study_stati_processing';
+import study_statis_params from './reducers/study_stati/study_statis_params';
+
+
+import diagnose_selected_grade from './reducers/diagnose/diagnose_selected_grade';
+import diagnose_selected_textbook from './reducers/diagnose/diagnose_selected_textbook';
+import fetch_home_stati_processing from './reducers/diagnose/fetch_home_stati_processing';
+import diagnose_home_with_statistic from './reducers/diagnose/diagnose_home_with_statistic';
+import home_select_chapter from './reducers/diagnose/home_select_chapter';
+import chapter_select_point from './reducers/diagnose/chapter_select_point';
+import fetch_chapter_diagnose_processing from './reducers/diagnose/fetch_chapter_diagnose_processing';
+import knowledge_with_question from './reducers/diagnose/knowledge_with_question';
+import knowledge_with_report from './reducers/diagnose/knowledge_with_report';
+import fetch_diagnose_report_processing from './reducers/diagnose/fetch_diagnose_report_processing';
+
+import unit from './reducers/unit';
+import unit_with_diagnose_stati from './reducers/diagnose/unit_with_diagnose_stati';
+import diagnose_selected_clazz from './reducers/diagnose/diagnose_selected_clazz';
+import fetch_unit_stati_processing from './reducers/diagnose/fetch_unit_stati_processing';
+import fetch_unit_knowledge_stati_processing from './reducers/diagnose/fetch_unit_knowledge_stati_processing';
+import unit_select_knowledge from './reducers/diagnose/unit_select_knowledge';
+import fetch_q_records_processing from './reducers/diagnose/fetch_q_records_processing';
+import q_records_pagination_info from './reducers/diagnose/q_records_pagination_info';
+import fetch_diagnose_question_processing from './reducers/diagnose/fetch_diagnose_question_processing';
+import go_to_do_question from './reducers/diagnose/go_to_do_question';
+import diagnose_submit_q_processing from './reducers/diagnose/diagnose_submit_q_processing';
+import knowledge_with_diagnose_stati from './reducers/diagnose/knowledge_with_diagnose_stati';
+import q_with_error_records from './reducers/diagnose/q_with_error_records';
+import knowledge_selected_q from './reducers/diagnose/knowledge_selected_q';
+import wl_paper_answer from './reducers/do_paper/wl_paper_answer';
+import trophy_selected_clazz from './reducers/info/trophy_selected_clazz';
+import fetch_trophy_rank_data_processing from './reducers/info/fetch_trophy_rank_data_processing';
+import clazz_year_with_trophy_rank from './reducers/info/clazz_year_with_trophy_rank';
+import trophy_selected_time from './reducers/info/trophy_selected_time';
+// import compute_selected_clazz from './reducers/compute/selected_clazz';
+import diagnose_clazz_with_unit from './reducers/diagnose/diagnose_clazz_with_unit';
+import fetch_goods_menus_processing from './reducers/diagnose/fetch_goods_menus_processing';
+import diagnose_goods_menus_list from './reducers/diagnose/diagnose_goods_menus_list';
+
+import olympic_math_selected_clazz from './reducers/olympic_math/olympic_math_selected_clazz';
+import olympic_math_selected_grade from './reducers/olympic_math/olympic_math_selected_grade';
+import work_list_route from './reducers/olympic_math/work_list_route';
+
+import fetch_diagnose_textbook_processing from './reducers/diagnose/fetch_diagnose_textbook_processing';
+import fetch_chapter_stati_processing from './reducers/diagnose/fetch_chapter_stati_processing';
+import unit_select_chapter from './reducers/diagnose/unit_select_chapter';
+import chapter_with_diagnose_stati from './reducers/diagnose/chapter_with_diagnose_stati';
+import clazz_with_game_star_rank_data from './reducers/info/clazz_with_game_star_rank_data';
+import fetch_game_star_rank_data_processing from './reducers/info/fetch_game_star_rank_data_processing';
+import clazz_with_fighter_rank_data from './reducers/info/clazz_with_fighter_rank_data';
+import fetch_fighter_rank_data_processing from './reducers/info/fetch_fighter_rank_data_processing';
+import selected_good from './reducers/profile/selected_good.js';
+import wxpay_created_order_info from './reducers/weixin_pay/wxpay_created_order_info';
+import wxpay_create_order_info_processing from './reducers/weixin_pay/wxpay_create_order_info_processing';
+import wxpay_query_order_processing from './reducers/weixin_pay/wxpay_query_order_processing';
+import wxpay_detail_fetch_processing from './reducers/weixin_pay/wxpay_detail_fetch_processing';
+import wxpay_detail_list from './reducers/weixin_pay/wxpay_detail_list';
+import group_buying_goods_list from './reducers/weixin_pay/group_buying_goods_list';
+import group_buying_goods_list_fetch_processing from './reducers/weixin_pay/group_buying_goods_list_fetch_processing';
+import group_buying_selected_good from './reducers/weixin_pay/group_buying_selected_good';
+import group_buying_created_order_info from './reducers/weixin_pay/group_buying_created_order_info';
+import group_buying_create_order_info_processing from './reducers/weixin_pay/group_buying_create_order_info_processing';
+import query_group_buying_order_processing from './reducers/weixin_pay/query_group_buying_order_processing';
+import fetch_wei_xin_pay_02_goods_processing from './reducers/weixin_pay_02/fetch_wei_xin_pay_02_goods_processing';
+import fetch_wei_xin_pay_02_create_order_processing from './reducers/weixin_pay_02/fetch_wei_xin_pay_02_create_order_processing';
+import fetch_wei_xin_pay_02_order_processing from './reducers/weixin_pay_02/fetch_wei_xin_pay_02_order_processing';
+import wei_xin_pay_02_select_good from './reducers/weixin_pay_02/wei_xin_pay_02_select_good';
+import wei_xin_pay_02_created_order_info from './reducers/weixin_pay_02/wei_xin_pay_02_created_order_info';
+import mo_goods_menus_list from './reducers/weixin_pay_02/mo_goods_menus_list';
+import wei_xin_pay_02_select_grade from './reducers/weixin_pay_02/wei_xin_pay_02_select_grade';
+
+
+import growing_get_pub_msg from './reducers/growing/growing_get_pub_msg';
+import growing_get_myself_record_list_processing  from './reducers/growing/growing_get_myself_record_list_processing';
+import growing_myself_record_list from './reducers/growing/growing_myself_record_list';
+import growing_get_classmate_record_list_processing  from './reducers/growing/growing_get_classmate_record_list_processing';
+import growing_classmate_record_list from './reducers/growing/growing_classmate_record_list';
+import growing_selected_clazz  from './reducers/growing/growing_change_selected_clazz';
+import growing_selected_classmate_list  from './reducers/growing/growing_selected_classmate_list';
+import growing_get_selected_classmate_list_processing  from './reducers/growing/growing_get_selected_classmate_list_processing';
+import growing_get_impeach_reason_processing  from './reducers/growing/growing_get_impeach_reason_processing';
+import growing_impeach_reason from './reducers/growing/growing_impeach_reason';
+import growing_pub_msg_processing from './reducers/growing/growing_pub_msg_processing';
+import growing_one_clazz_record_info from './reducers/growing/growing_get_one_clazz_record_info';
+import growing_one_clazz_record_info_processing from './reducers/growing/growing_get_one_clazz_record_info_processing';
+import sharding_clazz from './reducers/sharding_clazz/sharding_clazz';
+
+import user_reward_base from './reducers/profile/user_reward_base'
+import get_user_reward_base_processing from './reducers/profile/get_user_reward_base_processing'
+import fetch_level_name_list_processing  from './reducers/profile/fetch_level_name_list_processing'
+import level_name_list  from './reducers/profile/level_name_list'
+import update_user_reward_base_processing  from './reducers/profile/update_user_reward_base_processing'
+
+import work_report_info from './reducers/work_report/work_report_info'
+import ques_record from './reducers/work_report/ques_record'
+import select_work_knowledge from './reducers/work_report/select_work_knowledge'
+import diagnose_ad_dialog_flag from './reducers/work_report/diagnose_ad_dialog_flag'
+import smart_training_camp_info from './reducers/training_camp/smart_training_camp_info'
+import get_smart_training_camp_reward_processing from './reducers/training_camp/get_smart_training_camp_reward_processing'
+import diagnose_camp_goods from './reducers/xly/diagnose_camp_goods';
+import fetch_diagnose_camp_goods_processing from './reducers/xly/fetch_diagnose_camp_goods_processing';
+import pet_info from './reducers/pet_info/pet_info';
+import teacher_create_msg_info from './reducers/teacher_msg/teacher_create_msg_info';
+import oral_calculation_limittime from './reducers/do_paper/oral_calculation_limittime';
+import final_access_limittime from './reducers/do_paper/final_access_limittime';
+import profile_show_flag from './reducers/profile/profile_show_flag';
+import increase_score_goods_menus_list from './reducers/diagnose/increase_score_goods_menus_list';
+import first_submit_work_after_update from './reducers/diagnose/first_submit_work_after_update';
+const rootReducer = {
+    // game_list,
+    app_info,
+    feedback,
+    wl_clazz_list_with_works,
+    wl_is_worklist_loading,
+    wl_is_fetch_status_loading,
+    wl_is_fetch_paper_loading,
+    wl_is_fetch_doPaper_loading,
+    wl_is_paper_submitting,
+    wl_is_post_answer_loading,
+    wl_is_student_praise_loading,
+    wl_is_local_ans_changed,
+    wl_pagination_info,
+    wl_selected_clazz,
+    wl_selected_work,
+    wl_class_with_pagination_info,
+    profile_achievement,
+    profile_clazz,
+    profile_user_auth,
+    clazz_with_study_stati,
+    fetch_study_stati_processing,
+    study_statis_params,
+    diagnose_selected_grade,
+    diagnose_selected_textbook,
+    unit,
+    unit_with_diagnose_stati,
+    diagnose_selected_clazz,
+    fetch_unit_stati_processing,
+    fetch_unit_knowledge_stati_processing,
+    unit_select_knowledge,
+    fetch_q_records_processing,
+    q_records_pagination_info,
+    fetch_diagnose_question_processing,
+    go_to_do_question,
+    diagnose_submit_q_processing,
+    knowledge_with_diagnose_stati,
+    q_with_error_records,
+    knowledge_selected_q,
+    wl_paper_answer,
+    trophy_selected_clazz,
+    fetch_trophy_rank_data_processing,
+    clazz_year_with_trophy_rank,
+    trophy_selected_time,
+    // compute_selected_clazz,
+    diagnose_clazz_with_unit,
+    fetch_diagnose_textbook_processing,
+    fetch_chapter_stati_processing,
+    unit_select_chapter,
+    clazz_with_game_star_rank_data,
+    fetch_game_star_rank_data_processing,
+    clazz_with_fighter_rank_data,
+    fetch_fighter_rank_data_processing,
+    fetch_goods_menus_processing,
+    diagnose_goods_menus_list,
+    selected_good,
+    wxpay_created_order_info,
+    wxpay_create_order_info_processing,
+    wxpay_query_order_processing,
+    wxpay_detail_fetch_processing,
+    wxpay_detail_list,
+    group_buying_goods_list,
+    group_buying_goods_list_fetch_processing,
+    group_buying_selected_good,
+    group_buying_created_order_info,
+    group_buying_create_order_info_processing,
+    query_group_buying_order_processing,
+    fetch_home_stati_processing,
+    diagnose_home_with_statistic,
+    olympic_math_selected_clazz,
+    olympic_math_selected_grade,
+    work_list_route,
+    home_select_chapter,
+    chapter_select_point,
+    /*   chapter_with_diagnose_stati,*/
+    fetch_chapter_diagnose_processing,
+    knowledge_with_question,
+    knowledge_with_report,
+    fetch_diagnose_report_processing,
+    growing_get_pub_msg,
+    growing_get_myself_record_list_processing,
+    growing_myself_record_list,
+    growing_get_classmate_record_list_processing,
+    growing_classmate_record_list,
+    growing_selected_clazz,
+    growing_selected_classmate_list,
+    growing_get_selected_classmate_list_processing,
+    growing_get_impeach_reason_processing,
+    growing_impeach_reason,
+    growing_pub_msg_processing,
+    growing_one_clazz_record_info,
+    growing_one_clazz_record_info_processing,
+
+    fetch_wei_xin_pay_02_goods_processing,
+    fetch_wei_xin_pay_02_create_order_processing,
+    fetch_wei_xin_pay_02_order_processing,
+    wei_xin_pay_02_select_good,
+    wei_xin_pay_02_created_order_info,
+    mo_goods_menus_list,
+    wei_xin_pay_02_select_grade,
+    sharding_clazz,
+    user_reward_base,
+    get_user_reward_base_processing,
+    fetch_level_name_list_processing,
+    level_name_list,
+    update_user_reward_base_processing,
+
+    work_report_info,
+    ques_record,
+    select_work_knowledge,
+    diagnose_ad_dialog_flag,
+    smart_training_camp_info,
+    get_smart_training_camp_reward_processing,
+    diagnose_camp_goods,
+    fetch_diagnose_camp_goods_processing,
+    pet_info,
+    teacher_create_msg_info,
+    oral_calculation_limittime,
+    final_access_limittime,
+    profile_show_flag,
+    increase_score_goods_menus_list,
+    first_submit_work_after_update
+
+};
+export default rootReducer;

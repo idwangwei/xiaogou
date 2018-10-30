@@ -1,0 +1,124 @@
+<ion-view hide-nav-bar="true" class="work_paper_edit_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</button>
+        <h1 class="title title-right-set" style="font-family: 'Microsoft YaHei';" ng-bind="ctrl.paper.basic.title"></h1>
+
+        <div class="buttons">
+            <img style="height: 30px;"
+                 ng-src="{{$root.loadImg('pub_work_type/pub_type_butn02.png')}}"
+                 ng-click="ctrl.saveEdit()">
+        </div>
+    </ion-header-bar>
+
+    <div style="" class="knowledge_box_main_top" ng-class="{'set_top_ios':ctrl.isIOS}">
+        <ion-checkbox ng-model="ctrl.isShowKAD">显示考点及能力层次</ion-checkbox>
+    </div>
+
+    <ion-content overflow-scroll="false" class="has-header has-footer set_top_86"
+                 ng-class="{'set_top_106':ctrl.isIOS}"
+                 on-scroll="ctrl.getScrollPosition()">
+
+        <!--获取试卷失败提示信息-->
+        <div ng-if="!ctrl.paper && !ctrl.isLoadingProcessing" style="padding: 16px">网络状态差，没有获取到作业，请返回重试</div>
+
+        <div class="row" ng-if="ctrl.paper">
+            <div class="col left-col " ng-click="ctrl.workSet()" >
+                <img ng-src="{{$root.loadImg('other/setting.png')}}" class="img-btn">
+                <span ng-bind="'整卷设置 '" class="margin-right-setting text-vertical-align"></span>
+            </div>
+            <div class="col right-col" ng-click="ctrl.addBigQ()">
+                <img ng-src="{{$root.loadImg('other/add.png')}}" class="img-btn margin-left-setting">
+                <span ng-bind="'新增大题 '" class="text-vertical-align"></span>
+            </div>
+        </div>
+        <div ng-repeat="qt in ctrl.paper.qsTitles track by $index+qt.id" ng-init="idx=$index" class="qt-list">
+            <div class="big-q-setting">
+                <div class="big-q-title">
+                    <span ng-bind="ctrl.getBigQText(qt)+'('+qt.score+'分)'"></span>
+                </div>
+                <div class="row">
+                    <div class="col" ng-click="ctrl.editBigQ(qt,$index)">
+                        <img ng-src="{{$root.loadImg('other/setting.png')}}" class="img-btn">
+                        <span ng-bind="'大题设置 '" class="text-vertical-align"></span>
+                    </div>
+                    <div class="col" ng-click="ctrl.addSmallQ($index)">
+                        <img ng-src="{{$root.loadImg('other/add.png')}}" class="img-btn">
+                        <span ng-bind="'新增小题 '" class="text-vertical-align"></span>
+                    </div>
+                    <div class="col" ng-click="ctrl.delBigQ(qt)">
+                        <img ng-src="{{$root.loadImg('other/work_del.png')}}" class="img-btn">
+                        <span ng-bind="'移除大题 '" class="text-vertical-align"></span>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="record in qt.qsList track by $index+record.id" id="{{record.id}}">
+                <div class="image-type-question">
+                    <div class="question-content card card-better small_q_bg">
+                        <div class="smallq-title smallq-title-first" style="padding-bottom: 6px;">
+                            <div class="smallq-title-top">
+                                <div class="smallq-seq-text-box">
+                                 <span ng-bind="'第'+(+record.seqNum+1)+'题'" class="smallq-seq-text">
+                                    </span>
+                                    <span class="actual-score" ng-bind="record.score"></span>
+                                    <span class="score-text" ng-bind="'分'"></span>
+                                </div>
+                            </div>
+
+                            <div class="img-btns">
+                                <span ng-click="ctrl.editQList(qt,record)" class="img-btn-left-01">
+                                       <img ng-src="{{$root.loadImg('other/setting.png')}}" class="img-btn">
+                                       <span ng-bind="'小题设置 '" class="text-vertical-align"></span>
+                                </span>
+                                <span ng-click="ctrl.delSmallQ(record,qt)" class="img-btn-left-02">
+                                        <img ng-src="{{$root.loadImg('other/work_del.png')}}" class="img-btn">
+                                        <span ng-bind="'移除小题 '" class="text-vertical-align"></span>
+                                </span>
+
+                                <span q-correct-ans
+                                      paper-id="ctrl.paper.basic.id"
+                                      big-q="qt"
+                                      small-q="record"
+                                      book-mark-id="bookMarkId"
+                                      class="img-btn-right-02">
+                                    <img ng-src="{{$root.loadImg('other/ans1.png')}}" class="img-btn">
+                                </span>
+
+                                <span ng-click="ctrl.goQFeedbackPage(record.id)" class="img-btn-right-01">
+                                    <img ng-src="{{$root.loadImg('other/report.png')}}" class="img-btn">
+                                </span>
+
+                            </div>
+                        </div>
+
+
+                        <div ng-show="ctrl.isShowKAD" class="question_content_knowledge_text"
+                             ng-bind="ctrl.showKnowledgeAndDifficulty(record)"
+                             style="background-color: #B8E4FC;color:#565555"></div>
+
+                        <div compile-html="record.qContext"  current-q-input="record.inputList" class="q-context" style="pointer-events: none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 50px;"></div>
+    </ion-content>
+    <loading-processing load-top="200"></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+    <div class="bar bar-footer bar-balanced footer_box_main" >
+
+        <div class="footer_box_main_down">
+            <div ng-click="ctrl.testPoints()" class="footer_click_btn">
+                <span>考点</span>
+            </div>
+            <div ng-click="ctrl.workPub()" class="footer_click_btn">
+                <span style="font-size: 20px">布置</span>
+            </div>
+            <div ng-click="ctrl.paperPrint()" class="footer_click_btn">
+                <span>打印</span>
+            </div>
+        </div>
+
+    </div>
+</ion-view>

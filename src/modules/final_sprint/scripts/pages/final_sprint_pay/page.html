@@ -1,0 +1,39 @@
+<ion-view class="final-sprint-pay">
+    <ion-header-bar class="bar-balanced bar-new myHeader" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">期末冲刺月</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="final-sprint-pay-content">
+        <!--下拉刷新-->
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()" spinner="ios"></ion-refresher>
+
+        <div class="pay-title">
+            <img class="title-word" ng-src="{{$root.loadFinalSprintImg('pay_img/final_sprint_img01.png')}}">
+            <img class="pay-title-bg" ng-src="{{$root.loadFinalSprintImg('pay_img/final_sprint_img03.png')}}">
+        </div>
+        <div class="pay-goods-list" ng-show="ctrl.fetchProcessing">
+            <div class="goods-item" ng-repeat="item in ctrl.goodsList track by $index"
+                 ng-click="ctrl.selectGoods($event,item,$index)">
+                <div class="item01">
+                    <p ng-bind="item.title" style="font-weight: 600;font-size: 18px;margin: 5px 0"></p>
+                    <p ng-repeat="desc in item.goodsDesc" ng-bind="desc"></p>
+                </div>
+                <p class="item02">
+                    <i class="ion-social-yen"></i>{{item.fee}}
+                </p>
+                <p class="item03">
+                    <i class="ion-ios-circle-outline" style="color: #a9a9a9;"></i>
+                    <i class="ion-checkmark-circled" style="display: none;color: #52b6f1;"></i>
+                    <em class="pay_vip_mark" style="display: none;font-size: 12px">（已购）</em>
+                </p>
+            </div>
+
+        </div>
+    </ion-content>
+    <div class="pay-footer" ng-if="ctrl.isVipGoods.length < 4">
+        <img ng-src="{{$root.loadFinalSprintImg('pay_img/final_sprint_img02.png')}}"
+             ng-click="ctrl.gotoFinalSprintWeixinPay()">
+    </div>
+</ion-view>

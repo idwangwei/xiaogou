@@ -1,0 +1,117 @@
+<ion-view class="wc_train">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #1e446a"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="color: #1e446a">诊断提分</h1>
+    </ion-header-bar>
+    <div class="current-task-desc">
+        <img class="task-desc-bg" ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home06.png')}}">
+        <div class="task-desc-video-word">
+            <div class="task-desc-video-butn" ng-click="ctrl.playAudio()">
+                <i class="ion-social-rss"></i>
+                <div class="auto-mark" ng-show="!ctrl.hasPlayEd"></div>
+                <div class="right-arrow"></div>
+            </div>
+            <audio src="{{ctrl.audioSrc}}" id="task-desc-video-diagnose" style="display: none"></audio>
+            <p>以下考点测评来自你的互动课堂和随堂练习，快去做到掌握吧~~</p>
+        </div>
+        <img class="task-desc-role-img" ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home19.png')}}">
+
+    </div>
+    <ion-content padding="true" class="work-report-content" delegate-handle="work-report-content">
+        <div class="statistics-tabel">
+            <!--<div class="table-container">-->
+            <!--<div class="row table-header" style="margin-left: 0px;margin-right: 0px;">
+                <div class="col " style="display: inline-block">考点</div>
+                <div class="col " style="display: inline-block">掌握程度</div>
+                <div class="col " style="display: inline-block;padding: 5px 0;">提分方案</div>
+            </div>-->
+            <div class="unit-header">
+                <span class="header-item" style="max-width:280px;">考点</span>
+                <span class="header-item">掌握程度</span>
+                <span class="header-item">提分方案</span>
+            </div>
+            <div class="unit-box">
+                <div class="unit-list">
+                    <div class="list-item" ng-repeat="x in ctrl.resetKnowledgeInfo track by $index">
+                        <div class="item-text"
+                             style="align-items: flex-start !important;-webkit-align-items:  flex-start !important;max-width:280px;"
+                             ng-click="ctrl.goToQuesRecord(x)">
+                            考点：<br/> <span>{{x.knowledgeTxt}}</span>
+                        </div>
+
+                        <div class="item-progress {{ctrl.dicObj[x.level].class}}">
+                            <div class="progress-title">{{ctrl.dicObj[x.level].name}}</div>
+                            <div class="progress-box">
+                                <div class="progress-inner"></div>
+                            </div>
+                        </div>
+                        <div class="item-text item-text2"  ng-click="ctrl.goToKnowledge(x)">
+                            <img style="width: 100%;max-width: 120px;" ng-show="ctrl.dicObj[x.level].id==1"
+                                 ng-src="{{$root.loadImg('work_report/correct_error_btn.png')}}"><!-- 去掌握=》去提分-->
+                            <img style="width: 100%;max-width: 120px;" ng-show="ctrl.dicObj[x.level].id==2"
+                                 ng-src="{{$root.loadImg('work_report/upgrade_level_btn.png')}}"><!-- 去强化-->
+                            <img style="width: 100%;max-width: 120px;" ng-show="ctrl.dicObj[x.level].id==3"
+                                 ng-src="{{$root.loadImg('work_report/expand_level_btn.png')}}"><!-- 去拓展-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="row table-row " style="margin-top:-1px;" ng-if="ctrl.allPoints&&ctrl.fetchFlag"
+                 ng-repeat="item in ctrl.getAllPointsQuesList()" ng-style="{'background-color':$index%2==0?'#ebecf1':'#f5f5f8'}">
+                <div class="col">
+                    <div class="row ">
+                        <div class="col" ng-click="ctrl.gotoQuesRecord(item,$index)" style="color: #0765b3;overflow-x: hidden;word-break: keep-all;text-align: left">
+                            <span style="margin: 0 0 3px; !important; font-weight: 700"><u>考点</u>{{item.num=='-1'?'':item.num}}:</span>
+                            <u>{{item.knowledgeAndQues}}</u>
+                        </div>
+                        <div class="col" ng-click="ctrl.gotoQuesRecord(item,$index)">
+                            <div ng-if="item.masterStatus==4" class="col-status" style="color:#4acb3d;">
+                                &lt;!&ndash;<i class="ion-record"></i>掌握&ndash;&gt;
+                                <p>掌握</p>
+                                <div style=" width: 90%;max-width:160px;height: 10px;border-radius: 10px;background-color: #bdbec2;margin: 5px">
+                                    <div style="width: 100%;height: 10px;border-radius: 10px;background-color: #4acb3d;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="item.masterStatus==3" class="col-status" style="color:#faa958;">
+                                &lt;!&ndash;<i class="ion-record"></i>不牢固&ndash;&gt;
+                                <p>不牢固</p>
+                                <div style=" width: 90%;max-width:160px;height: 10px;border-radius: 10px;background-color: #bdbec2;margin: 5px">
+                                    <div style="width: 65%;height: 10px;border-radius: 10px;background-color: #faa958;">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div ng-if="item.masterStatus==2" class="col-status" style="color:#f85a5a;">
+                                &lt;!&ndash;<i class="ion-record"></i>未掌握&ndash;&gt;
+                                <p>未掌握</p>
+                                <div style=" width: 90%;max-width:160px;height: 10px;border-radius: 10px;background-color: #bdbec2;margin: 5px">
+                                    <div style="width: 30%;height: 10px;border-radius: 10px;background-color: #f85a5a;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col tabel-butn" ng-click="ctrl.gotoDiagnose(item)" style="overflow: hidden;">
+                            <div ng-if="item.masterStatus==4" class="col-butn">
+                                &lt;!&ndash;<i class="ion-checkmark-round" style="color:#4acb3d;"></i>&ndash;&gt;
+                                <img ng-src="{{$root.loadImg('work_report/expand_level_btn.png')}}">
+                            </div>
+                            <div ng-if="item.masterStatus==3" class="col-butn">
+                                &lt;!&ndash;<p>变式强化></p>&ndash;&gt;
+                                <img ng-src="{{$root.loadImg('work_report/upgrade_level_btn.png')}}">
+                            </div>
+                            <div ng-if="item.masterStatus==2" class="col-butn">
+                                <img ng-src="{{$root.loadImg('work_report/correct_error_btn.png')}}">
+                                &lt;!&ndash; <p>改错&同类练习></p>&ndash;&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!--</div>-->
+        </div>
+
+    </ion-content>
+</ion-view>

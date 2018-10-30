@@ -1,0 +1,40 @@
+<ion-view title="添加班级申请" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">添加班级申请</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <!--班级申请信息表单 start-->
+        <ng-form novalidate name="classApplyForm" class="list" style="margin-top: 20px">
+            <div class="item item-input block-input">
+                <i class="ion ion-person-stalker" style="font-size: 20px;margin-right: 5px"></i>
+                <input type="text"
+                       placeholder="请输入班级号(例如:610000)"
+                       required
+                       name="classNumber"
+                       ng-change="justNumber()"
+                       ng-model="formData.classNumber"/>
+            </div>
+            <div class="row  img-validate-block">
+                <div class="item item-input">
+                    <input type="text"
+                           placeholder="图形验证码"
+                           required
+                           name="vCode"
+                           ng-model="formData.vCode"/>
+                </div>
+                <img src="{{validateImageUrl}}"/>
+                <i class="button icon ion-refresh button-clear"
+                        ng-click="getValidateImage()"></i>
+            </div>
+        </ng-form>
+        <!--班级申请信息表单 end-->
+        <div class="button button-block  button-bg"
+             ng-click="handleSubmit()" style="color: #fff">
+            申请加入
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+</ion-view>

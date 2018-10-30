@@ -1,0 +1,272 @@
+.display-flex {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+
+.con_flex-align-direction(@dir) {
+  align-items: @dir;
+  -webkit-align-items: @dir;
+}
+
+.con_flex-justify-direction(@dir) {
+  justify-content: @dir;
+  -webkit-justify-content: @dir;
+}
+
+.com_flex-direction (@direction) {
+  flex-direction: @direction;
+  -webkit-flex-direction: @direction;
+}
+
+.flex_1{
+  flex: 1;
+  -webkit-flex: 1;
+}
+
+
+.oral-guide-backdrop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  .display-flex;
+
+  .oral-guide-content {
+    position: relative;
+    z-index: 1000;
+    background: #98E1F3;
+    border-radius: 10px;
+    width: 300px;
+    height: 400px;
+    min-height: 350px;
+    overflow: hidden;
+    max-width: 500px;
+    color: #2150bc;
+
+    .oral-guide-top{
+      width:100%;
+      .display-flex;
+        img{
+          width:80%
+        }
+    }
+
+    .oral-guide-middle{
+      width:100%;
+
+      .arrow-btn-common{
+        z-index: 1000;
+        position: absolute;
+        top: 50px;
+        bottom: 0;
+        margin: auto;
+        color: #6D85D3 !important;
+      }
+
+      .arrow-btn-right{
+        .arrow-btn-common;
+        right: 0;
+      }
+
+      .arrow-btn-left{
+        .arrow-btn-common;
+        left: 0;
+      }
+
+
+      .oral-guide-slide-content{
+        height:100%;
+        .oral-guide-slide-title{
+          width:100%;
+          padding: 10px;
+          .display-flex;
+          font-size: 20px;
+        }
+
+        .oral-guide-slide-act{
+          padding: 10px;
+          .display-flex;
+          .oral-guide-step1 {
+            width: 200px;
+            height:200px;
+            background-size: 100% 100% !important;
+            animation: guideMove1 1.5s infinite;
+            -moz-animation: guideMove1 1.5s infinite; /*Firefox*/
+            -webkit-animation: guideMove1 1.5s infinite; /*Safari and Chrome*/
+            @keyframes guideMove1 {
+              from {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide1.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              35% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide2.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              70% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide3.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              to {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide4.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+
+            @-moz-keyframes guideMove1 {
+              /*Firefox*/
+              from {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide1.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              35% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide2.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              70% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide3.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              to {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide4.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+
+            @-webkit-keyframes guideMove1 {
+              /*Safari and Chrome*/
+              from {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide1.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              35% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide2.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              70% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide3.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              to {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide4.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+
+          }
+
+          .oral-guide-step2 {
+            width: 200px;
+            height:200px;
+            background-size: 100% 100% !important;
+            animation: guideMove2 1.5s infinite;
+            -moz-animation: guideMove2 1.5s infinite; /*Firefox*/
+            -webkit-animation: guideMove2 1.5s infinite; /*Safari and Chrome*/
+            @keyframes guideMove2 {
+              from {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide5.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              25% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide6.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              50% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide7.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              75% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide8.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              to {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide9.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+
+            @-moz-keyframes guideMove2 {
+              /*Firefox*/
+              from {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide5.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              25% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide6.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              50% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide7.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              75% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide8.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              to {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide9.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+
+            @-webkit-keyframes guideMove2 {
+              /*Safari and Chrome*/
+              from {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide5.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              25% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide6.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              50% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide7.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              75% {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide8.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+              to {
+                background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide9.png") 100% 100% no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+          }
+
+          .oral-guide-step3{
+            width: 200px;
+            height:200px;
+            background: url("./../../../oral_calculation_images/oral_calculation_guide/oral_guide10.png") 100% 100% no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+      }
+
+    }
+
+    .oral-guide-bottom{
+      width: 80%;
+      margin-left: 10%;
+      .display-flex;
+      .oral_guide_btn_area{
+        .display-flex;
+        .flex_1;
+        width:100%;
+        img{
+          width: 120px;
+        }
+      }
+
+
+    }
+
+  }
+
+
+
+}

@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+/*==============公用的==============*/
+@import "include/_bgcolor";
+@import "include/_mixins";
+@import "include/common";
+@import "include/_hack";
+@import "include/_print";
+@import "include/common_animation";
+
+/*==============组件==============*/
+@import "components/_auto_box";
+@import "components/_auto_list";
+@import "components/_sub_header";
+@import "components/_bar_footer";
+@import "components/_image_type_question";
+@import "components/_form";
+@import "components/_common_list";
+@import "components/_ion_list";
+@import "components/date_time_picker";
+@import "components/tool_tips";
+@import "components/_layout_box";
+@import "components/_modal";
+@import "components/_sub_header";
+@import "components/set-edit-area";
+@import "components/input-checkbox";
+@import "components/share";
+@import "components/accordion";
+@import "components/dot_processing";
+@import "components/new_header";
+
+
+/*==============页面==============*/
+@import "page/_send_class_pass_select";
+@import "page/_search_form";
+@import "page/_stu_list";
+@import "page/_praise";
+@import "page/_work_statistics";
+@import "page/_add_clazz";
+@import "page/_reset";
+@import "page/student_list";
+@import "page/game_sty";
+@import "page/work_correct";
+//@import "../../../t_home_teaching_work/scripts/pages/score_distribution/score_distribution";
+//@import "../../../t_home_teaching_work/scripts/pages/work_praise_detail/work_praise_detail";
+//@import "page/game_remove";
+@import "../../../t_user_auth/scripts/pages/login/system_login";
+@import "page/register_success";
+@import "page/work_generate_paper";
+//@import "page/game_repo";
+//@import "../../../t_game/scripts/pages/game_pub/game_pub";
+
+/**
+ * Action Sheets for Android
+ * --------------------------------------------------
+ */
+.platform-android .action-sheet-backdrop {
+  -webkit-transition: background-color 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.platform-android .action-sheet-backdrop.active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.platform-android .action-sheet-wrapper {
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+  transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.platform-android .action-sheet-up {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.platform-android .action-sheet {
+  margin-left: 8px;
+  margin-right: 8px;
+  width: auto;
+  z-index: 11;
+  overflow: hidden;
+}
+
+.platform-android .action-sheet .button {
+  display: block;
+  padding: 1px;
+  width: 100%;
+  border-radius: 0;
+  border-color: #d1d3d6;
+  background-color: transparent;
+  color: #007aff;
+  font-size: 21px;
+}
+
+.platform-android .action-sheet .button:hover {
+  color: #007aff;
+}
+
+.platform-android .action-sheet .button.destructive {
+  color: #ff3b30;
+}
+
+.platform-android .action-sheet .button.destructive:hover {
+  color: #ff3b30;
+}
+
+.platform-android .action-sheet .button.active, .platform-android .action-sheet .button.activated {
+  box-shadow: none;
+  border-color: #d1d3d6;
+  color: #007aff;
+  background: #e4e5e7;
+}
+
+.platform-android .action-sheet-has-icons .icon {
+  position: absolute;
+  left: 16px;
+}
+
+.platform-android .action-sheet-title {
+  padding: 16px;
+  color: #8f8f8f;
+  text-align: center;
+  font-size: 13px;
+}
+
+.platform-android .action-sheet-group {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.platform-android .action-sheet-group .button {
+  border-width: 1px 0px 0px 0px;
+}
+
+.platform-android .action-sheet-group .button:first-child:last-child {
+  border-width: 0;
+}
+
+.platform-android .action-sheet-options {
+  background: #f1f2f3;
+}
+
+.platform-android .action-sheet-cancel .button {
+  font-weight: 500;
+}
+
+.platform-android .action-sheet-open {
+  pointer-events: none;
+}
+
+.platform-android .action-sheet-open.modal-open .modal {
+  pointer-events: none;
+}
+
+.platform-android .action-sheet-open .action-sheet-backdrop {
+  pointer-events: auto;
+}
+
+.platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button {
+  text-align: center;
+}
+
+.platform-android .action-sheet-cancel {
+  display: block;
+}

@@ -1,0 +1,61 @@
+alr-select-date-time {
+  position: absolute;
+  z-index: 9999;
+  .allere-select-date-time {
+    background-color: aliceblue;
+    width: 245px;
+    height: 185px;
+    padding: 2px 15px 2px 5px;
+    border: #bbcbcb solid 1px;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #778477;
+    .date-time-top {
+      .display-flex(row, space-around, center);
+      .top-content {
+        .display-flex(row, center, center);
+        span {
+          margin: 0 5px;
+        }
+      }
+
+    }
+    .date-time-content {
+      .display-flex(row, space-around, center);
+      .date-item {
+        position: relative;
+        .display-flex(column, center, center);
+        i{font-size: 32px}
+        /*.select-options {
+          position: absolute;
+          left: -5px;
+          top: 42px;
+          right: 0;
+          margin: auto;
+          .display-flex(column, flex-start, center);
+          overflow-y: scroll;
+          height: 80px;
+          width: 55px;
+          .select-item {
+            width: 38px;
+            height: 35px;
+            min-height: 35px;
+            line-height: 35px;
+            text-align: center;
+          }
+        }*/
+      }
+    }
+
+    //使用flex布局
+    .display-flex (@dir,@justify,@align) {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: @dir;
+      -webkit-flex-direction: @dir;
+      justify-content: @justify;
+      -webkit-justify-content: @justify;
+      align-items: @align;
+      -webkit-align-items: @align;
+    }
+  }
+}

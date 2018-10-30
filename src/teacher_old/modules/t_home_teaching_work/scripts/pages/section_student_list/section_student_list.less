@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@import "../../../../t_boot/less/theme02/include/_mixins";
+
+.section_student_list_file{
+  .second, .name {
+    color: black !important;
+  }
+
+  .name {
+    text-align: center;
+    color: #553333 !important;
+  }
+
+  auto-list:nth-child(2n+1) auto-list-content {
+    background: #FDF8EE !important;
+    border: none !important;
+    /*border-bottom : 1 px solid #dddddd !important;*/
+  }
+
+  .list-left_stu i {
+    color: #333 !important;
+  }
+
+  .center-span span {
+    color: #553333 !important;
+  }
+
+  .bg-calm {
+    background-color: lightyellow;
+  }
+
+  .block-content div {
+    color: #553333 !important;
+  }
+
+  .block-content img {
+    width: 60px;
+    margin-left: 20px;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  auto-list-content {
+    border-bottom: none !important;
+  }
+
+  .list-content_stu {
+    background: none !important;
+  }
+
+  auto-list-con auto-list auto-list-content {
+    border: none;
+  }
+
+  .item {
+    border: none !important;
+  }
+
+  .col-md-3, .col-xs-6 {
+    padding: 5px;
+    float: left;
+  }
+
+  @media screen and (min-width: 600px) {
+    .col-md-3 {
+      width: 25%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .col-xs-6 {
+      width: 50%;
+    }
+  }
+
+  .col-md-2, .col-xs-4 {
+    padding: 5px;
+    float: left;
+  }
+  @media screen and (min-width: 600px) {
+    .col-md-2 {
+      width: 20%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .col-xs-4 {
+      width: 33%;
+    }
+  }
+
+  .easy-show-not-sub-stu{
+    width: 98%;
+    border-radius: 10px;
+    background: #d2f7ef;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+    .time-show{
+      @media screen and (max-width: 600px) {
+        font-size: 80%;
+      }
+    }
+
+  }
+
+}
+

@@ -1,0 +1,50 @@
+<ion-view id="live-course-verify">
+    <ion-header-bar class="bar-balanced enter-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">报名公开课</h1>
+        <button class="button buttons button-clear item-call"  ng-click="ctrl.callPhone()">
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_call_btn.png')}}" class="pay-water">
+        </button>
+    </ion-header-bar>
+    <ion-content padding="false" class="enter-content">
+        <div class="banner">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_course_verify_banner.png')}}" alt="">
+        </div>
+        <div class="form">
+            <div class="form-ctrl">
+                <div class="ctrl-label">请输入学生名称：</div>
+                <div class="input-box">
+                    <input type="text" ng-model="ctrl.form.userName">
+                </div>
+            </div>
+            <div class="form-ctrl">
+                <div class="ctrl-label">请输入您的手机号码：</div>
+                <div class="input-box">
+                    <input type="text" ng-model="ctrl.form.telephone">
+                </div>
+            </div>
+            <div class="form-ctrl">
+                <div class="ctrl-label">请输入短信验证码：</div>
+                <div class="input-box code">
+                    <input type="text" maxlength="6" ng-model="ctrl.form.telVC">
+                    <span ng-click="ctrl.sendCode()" ng-class="ctrl.timeStatus==0?'':'active'">{{ctrl.sendText}}</span>
+                </div>
+            </div>
+        </div>
+        <img ng-src="{{$root.loadLiveImg('live_home/live_course_verify_enter_btn.png')}}" alt="" class="enter-btn" ng-click="ctrl.submitForm()">
+    </ion-content>
+    <div class="success-modal" ng-if="ctrl.showSuccessModal">
+        <div class="modal-inner">
+            <div class="modal-title">恭喜！报名成功！</div>
+            <div class="modal-text-box">
+                <p class="title">上课流程：</p>
+                <p>1、完成预习作业</p>
+                <p>2、课前15分钟检查设备并登录</p>
+                <p>3、点击：直播—我的任务—线上课堂开始上课</p>
+            </div>
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_success_btn.png')}}" alt="" class="modal-btn" ng-click="ctrl.closeModal()">
+        </div>
+    </div>
+</ion-view>

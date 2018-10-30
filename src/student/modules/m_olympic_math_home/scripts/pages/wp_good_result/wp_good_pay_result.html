@@ -1,0 +1,37 @@
+<ion-view hide-nav-bar=true class="wp_good_pay_result">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button ng-show="!ctrl.retFlag && !ctrl.isSuccessFlag" class="button buttons  button-clear header-item"
+                ui-sref="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">支付结果</h1>
+    </ion-header-bar>
+    <ion-content class="payResult">
+        <div class="result" ng-show="ctrl.retFlag && ctrl.isSuccessFlag">
+            <div class="pic">
+                <img ng-src="{{$root.loadImg('weixin_pay/successFlag.png')}}">
+            </div>
+            <div class="text">
+                <span>支付成功</span>
+            </div>
+            <div class="successBtn" ng-click="ctrl.paySuccessStart()">
+                <img ng-src="{{$root.loadImg('weixin_pay/groupBuy06.png')}}">
+            </div>
+        </div>
+
+        <div class="result" ng-show="ctrl.retFlag && !ctrl.isSuccessFlag">
+            <div class="pic">
+                <img ng-src="{{$root.loadImg('weixin_pay/failFlag.png')}}">
+            </div>
+            <div class="text">
+                <span>支付失败</span>
+                <p>{{ctrl.failTip}}</p>
+            </div>
+            <div class="failBtn" ng-click="ctrl.payFailBack()"><span>返  回</span></div>
+        </div>
+
+        <div class="check" ng-show="!ctrl.retFlag && !ctrl.isSuccessFlag" ng-click="ctrl.queryOrderInfo()">
+            <span>查询订单失败，</span><u>刷新</u><span>试试吧</span>
+        </div>
+    </ion-content>
+</ion-view>

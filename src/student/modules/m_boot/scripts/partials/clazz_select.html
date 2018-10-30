@@ -1,0 +1,14 @@
+
+<ion-view hide-nav-bar="true">
+    <ion-content  class="bg">
+        <div>
+            <div class="clazz-list-con" ng-repeat="clazz in clazzList">
+                <div class="clazz-block" ng-click="handleClazzSelect(clazz.id)">
+                    <img ng-src="{{$root.loadImg('other/class.svg')}}">
+                    <div>{{clazz.name}}</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+

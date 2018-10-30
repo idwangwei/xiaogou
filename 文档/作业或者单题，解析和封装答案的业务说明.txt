@@ -1,0 +1,343 @@
+拿到一个作业或者单题，怎么解析和封装答案？
+
+作业的数据结构如下（会处理了作业，单题就更没有问题了）：
+试题组（qb）+做题情况（qbu）
+试题组：
+｛
+	大题id+其他属性
+	｛
+		小题id
+
+		answerKey 参考答案，包含一个题的所有得分点信息，而得分点信息就包含了输入框的信息，同时也是解析答案的入口。answerKey数据结构请见底部说明。
+
+		qContext  试题内容html字符串
+	｝
+｝
+
+做题情况（qbu）
+{
+	其他属性如作业状态、用时等
+	id2QuestionGroupScore｛  //大题组封装对象
+		大题id 对应上面试题组的大题id
+		id2QuestionScore｛   //小题封装对象
+			每次改错情况（对象map）重点关注id2ScorePointScore 得分点对象
+			createTime
+			ignore
+			keyValuePairs
+			passFlag
+			score
+			totalScore
+
+			id2ScorePointScore｛
+				answer       保存的答案
+				application  如果是应用题、脱式、解方程 就会有该字段，用于处理
+				             打勾打叉的
+				correctness  正确率
+				id           得分点id
+				score        得分
+
+			｝
+		｝
+	｝
+}
+
+上面最重要的字段有3个：answerKey、qContext、id2ScorePointScore
+
+下面说下解析情况（拿到之前保存的答案进行页面展示）：
+
+1.首先我们需要在展示的地方插入如下代码：
+
+<div compile-html="qContext"
+                         current_q_input="inputList"
+                         possible-units="possibleUnits"
+                         show-type="doQuestion">
+     </div>
+
+这是一个compileHtml指令，
+最主要传入两个参数，qContext（试题内容html字符串）和inputList（封装的得分点对象数组）。
+而possible-units表示在渲染完毕后，点击特定空，弹出键盘是否要显示单位列表页面，只有应用题才会有。
+show-type表示展示类型，为correct则为批改，其他则为做题。只有为correct，才出发打勾打叉指令。
+
+2.解析情况（拿到之前保存的答案进行展示）：
+			从answerKey中拿到scorePoints得分点数组，解析时需要对应qbu给过来的scorePoints得分点数组，组装一个inputList。这是用于渲染的得分点数组，一个题出的时候有多少个得分点，这个inputList就有几个对象，区别在于每一个对象都包含了目标输入框和答案。inputList数据结构请见底部说明。
+            具体实现解析的方法请参见学生端的paperService.js
+            关键方法：
+            smallQListParse，主要处理qContext所有空格;找到对应小题的做题情况。
+            answerParse，主要解析答案，构造inputList对象数组。
+            referAnswer，主要处理输入框和答案匹配了，特殊类型题的答案特殊处理也在该方法内，比如连线题、开放性题。
+            
+3.封装答案（页面填入答案了，需要保存到后台）：
+           如果页面内使用了‘ion-slide-box’，那么取页面答案一定需要获取对应的slideBox内的答案。
+           这块入口就是页面内展示的inputList，根据每一个得分点，遍历其含有的输入框答案，然后针对每一种题型进行答案组装。
+           最终封装的格式请见底部说明。
+           具体实现封装答案的方法请参见学生端的do_question_ctrl.js
+           关键方法：
+           getAndSaveCurrentQNewAns
+
+
+
+
+4.答案中或者qContext含有特殊符号，如x,y等显示细节，防止抖动等问题,需要看公共模块的allereEclassAppTextarea。（to do）
+
+5.打勾打叉处理说明。 （to do）
+
+封装给后端保存答案的数据结构：
+
+subjectId:43d87993-42aa-4935-bcf8-8897aca054af
+paperInstanceId:7ebced80-58c3-45bc-9e0b-3e59004ddebd
+subjectType:1
+answer:[{"currentQIdInPaper":"e820a0b9-400e-4759-9f7c-4i35507519bd","questionId":"5934c87e-5eed-4b00-b28d-48d995e961f2","workStatus":2,"answers":[{"answer":"5","uuid":"c7c78592-5580-4405-b528-5a8ab348ef1c"},{"answer":"6","uuid":"02700cb0-1f10-4a97-884c-c60884a3fcbb"}],"ansVersion":1486717722919}]
+intervalTime:10000
+
+
+
+
+inputList对象具体说明如下：
+[
+    {
+        "index": "8",
+        "scorePointId": "ed1cq123-1d8f-47db-a8fa-1o25f295f31e", //得分点id
+        "correctness": 1,//正确率，1为正确，0为错误，-2为忽略打勾打叉
+        "score": 1.6,  //得分
+        "answer": "右#两位#32",  //整个得分点的答案，其中有三个空，依次填入‘右’、‘两位’、‘32’
+        "spList": [ //输入框对象列表
+            {
+                "inputBoxStuAns": "右",  //目标输入框的答案
+                "inputBoxUuid": "1q1cda05-1d8f-47db-a8fa-1o25f295f31e", //目标输入框id
+                "scorePointId": "ed1cq123-1d8f-47db-a8fa-1o25f295f31e",//其得分点id
+                "scorePointQbuId": "cc8a43eb-92f2-43df-8f30-c811893946f3",//qbu数据库的主键，在做题调用‘保存’、‘提交’接口，需要封装答案时，把该字段回传给后端。
+                "currentQSelectItem": [ //如果是选择题，就会有这个字段，表示选择项
+                    {
+                        "expr": "一位"
+                    },
+                    {
+                        "expr": "两位"
+                    }
+                ]
+            },
+            {
+                "inputBoxStuAns": "两位",
+                "inputBoxUuid": "2q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointId": "ed1cq123-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointQbuId": "cc8a43eb-92f2-43df-8f30-c811893946f3",
+                "currentQSelectItem": [
+                    {
+                        "expr": "一位"
+                    },
+                    {
+                        "expr": "两位"
+                    }
+                ]
+            },
+            {
+                "inputBoxStuAns": "32",
+                "inputBoxUuid": "3q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointId": "ed1cq123-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointQbuId": "cc8a43eb-92f2-43df-8f30-c811893946f3",
+                "currentQSelectItem": [
+                    {
+                        "expr": "一位"
+                    },
+                    {
+                        "expr": "两位"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": "8",
+        "scorePointId": "ed1cdq45-1d8f-47db-a8fa-1o25f295f31e",
+        "correctness": 0,
+        "score": 0,
+        "answer": "#",
+        "spList": [
+            {
+                "inputBoxStuAns": "",
+                "inputBoxUuid": "4q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointId": "ed1cdq45-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointQbuId": "cb0034ff-4ce7-4a85-b433-a4b9bb7a85df",
+                "currentQSelectItem": [
+                    {
+                        "expr": "两位"
+                    },
+                    {
+                        "expr": "一位"
+                    }
+                ]
+            },
+            {
+                "inputBoxStuAns": "",
+                "inputBoxUuid": "5q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointId": "ed1cdq45-1d8f-47db-a8fa-1o25f295f31e",
+                "scorePointQbuId": "cb0034ff-4ce7-4a85-b433-a4b9bb7a85df",
+                "currentQSelectItem": [
+                    {
+                        "expr": "两位"
+                    },
+                    {
+                        "expr": "一位"
+                    }
+                ]
+            }
+        ]
+    }
+]
+
+answerKey具体说明如下：
+
+[
+    {
+        "type": "standalone",
+        "scorePoints": [
+            {
+                "referInputBoxes": [
+                    {
+                        "label": "Q1",
+                        "uuid": "1q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                        "info": {
+                            "type": {
+                                "name": "blank",
+                                "val": "无边框"
+                            },
+                            "selectItem": [
+                                {
+                                    "expr": "左"
+                                },
+                                {
+                                    "expr": "右"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "label": "Q2",
+                        "uuid": "2q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                        "info": {
+                            "type": {
+                                "name": "blank",
+                                "val": "无边框"
+                            },
+                            "selectItem": [
+                                {
+                                    "expr": "一位"
+                                },
+                                {
+                                    "expr": "两位"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "label": "Q3",
+                        "uuid": "3q1cda05-1d8f-47db-a8fa-1o25f295f31e"
+                    }
+                ],
+                "answerList": [
+                    {
+                        "expr": "右#两位#32"
+                    }
+                ],
+                "openStyle": 0,
+                "uuid": "ed1cq123-1d8f-47db-a8fa-1o25f295f31e",
+                "label": "得分点1"
+            },
+            {
+                "referInputBoxes": [
+                    {
+                        "label": "Q4",
+                        "uuid": "4q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                        "info": {
+                            "type": {
+                                "name": "blank",
+                                "val": "无边框"
+                            },
+                            "selectItem": [
+                                {
+                                    "expr": "左"
+                                },
+                                {
+                                    "expr": "右"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "label": "Q5",
+                        "uuid": "5q1cda05-1d8f-47db-a8fa-1o25f295f31e",
+                        "info": {
+                            "type": {
+                                "name": "blank",
+                                "val": "无边框"
+                            },
+                            "selectItem": [
+                                {
+                                    "expr": "两位"
+                                },
+                                {
+                                    "expr": "一位"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "answerList": [
+                    {
+                        "expr": "右#两位"
+                    }
+                ],
+                "openStyle": 0,
+                "uuid": "ed1cdq45-1d8f-47db-a8fa-1o25f295f31e",
+                "label": "得分点2"
+            },
+            {
+                "uuid": "ed1cdaq6-1d8f-47db-a8fa-1o25f295f31e",
+                "referInputBoxes": [
+                    {
+                        "label": "Q6",
+                        "uuid": "6q1cda05-1d8f-47db-a8fa-1o25f295f31e"
+                    }
+                ],
+                "answerList": [
+                    {
+                        "expr": "0"
+                    }
+                ],
+                "openStyle": 0,
+                "label": "得分点3"
+            },
+            {
+                "uuid": "ed1cdaq7-1d8f-47db-a8fa-1o25f295f31e",
+                "referInputBoxes": [
+                    {
+                        "label": "Q7",
+                        "uuid": "7q1cda05-1d8f-47db-a8fa-1o25f295f31e"
+                    }
+                ],
+                "answerList": [
+                    {
+                        "expr": "15"
+                    }
+                ],
+                "openStyle": 0,
+                "label": "得分点4"
+            },
+            {
+                "uuid": "ed1cdaq8-1d8f-47db-a8fa-1o25f295f31e",
+                "referInputBoxes": [
+                    {
+                        "label": "Q8",
+                        "uuid": "8q1cda05-1d8f-47db-a8fa-1o25f295f31e"
+                    }
+                ],
+                "answerList": [
+                    {
+                        "expr": "0"
+                    }
+                ],
+                "openStyle": 0,
+                "label": "得分点5"
+            }
+        ]
+    }
+]

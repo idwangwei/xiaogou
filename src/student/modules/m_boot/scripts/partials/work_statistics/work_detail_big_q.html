@@ -1,0 +1,40 @@
+<ion-view title="{{wData.workDetail.paperName}}">
+    <ion-content class="has-header">
+        <auto-list-con>
+            <auto-list ng-repeat="bigQ in data.paper.bigQArray">
+                <auto-list-content class="bg-calm"
+                                   style="min-height: 105px;"
+                                   ng-click="showSmallQ(bigQ)">
+                    <div stat-circle
+                         refer-text="bigQ.bigQStuScore+'分'"
+                         refer-percent="bigQ.bigQStuScore/bigQ.score*100"
+                         data-dimension="95"
+                         class="thumbnail-left"
+                         style="  width: 100px;height: 100px;float: left">
+                    </div>
+                    <div class="first" style="margin-left: 25px"><label>{{"第"+bigQ.bigQVoIndex+"大题，"+bigQ.title}}</span>
+                    </label></div>
+                    <div class="first" style="margin-left: 25px">
+                        <label>大题得分：{{bigQ.bigQStuScore}}分/{{bigQ.score}}分</label>
+                    </div>
+                    <div class="first" style="margin-left: 25px"><label>小题个数：{{bigQ.qsListLength}}个 </label>
+                    </div>
+                </auto-list-content>
+            </auto-list>
+        </auto-list-con>
+    </ion-content>
+    <div class="bar bar-footer bar-balanced">
+        <button class="bar-item  button-clear flex_1"  style="font-weight: bold;color: white" ui-sref="work_detail">
+            <i class="icon   ion-ios-paperplane "></i>
+            查看整个作业详情
+        </button>
+        <button class="bar-item  button-clear flex_1"  style="font-weight: bold;color: white" ng-click="redoWork()">
+            <i class="icon   ion-ios-paperplane "></i>
+            改错
+        </button>
+    </div>
+</ion-view>
+
+
+
+

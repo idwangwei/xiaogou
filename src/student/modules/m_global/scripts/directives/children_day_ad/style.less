@@ -1,0 +1,62 @@
+.children-day-ad-page{
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom:0;
+  padding: 0 15px;
+  .background_change(@direct,@color1,@color2) {
+    background: -webkit-linear-gradient(@direct,@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@direct,@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@direct,@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@direct,@color1, @color2); /* 标准的语法 */
+  }
+  .background_change(bottom,#fa8528,#f93e3e);
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  .display-flex(column,flex-start,center);
+  .children-head{
+    width: 300px;
+  }
+  .children-content{
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px 22px;
+    width: 100%;
+    margin-top: -50px;
+    .content-title{
+      font-size: 16px;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .content-banner{
+      width: 100%;
+      margin-bottom: 25px;
+    }
+    .content-text{
+      font-size: 14px;
+      color: #999;
+      .red{
+        color: red;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .mr-20{
+        margin-right: 20px;
+      }
+    }
+  }
+  .children-btn{
+    height: 50px;
+    margin-top: 26px;
+  }
+}

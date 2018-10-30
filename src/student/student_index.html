@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,  maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+</head>
+<body>
+
+<ion-nav-view>
+</ion-nav-view>
+
+
+<!--加载loadingScene-->
+<script src="{loading}"></script>
+<script>
+        loadingScene.loadCordova();
+</script>
+<script src="jquery/dist/jquery.js"></script>
+<script src="handleError.js"></script>
+<!--加载app-->
+<!--<script src="{common_ispt}"></script>-->
+<script src="{common_spt}"></script>
+<script src="logger_bundle.js"></script>
+<script src="tasks_bundle.js"></script>
+<script src="{bundle}"></script>
+<!-- 黑屏 -->
+<!--<black-page ng-if="$root.isBlankScreen"></black-page>-->
+
+<!--加载MathJax-->
+<script src="MathJax/MathJax.js"></script>
+<script src="MathJax/config/TeX-AMS-MML_SVG.js"></script>
+
+<audio src="./audio/level_bg_music.mp3" loop="loop" id="level_bg_music"></audio>
+<audio src="./audio/diagnoseChampionBgMusic.mp3" loop="loop" id="diagnose_champion_bg_music"></audio>
+<audio src="./audio/hatchPetBgMusic.mp3" id="increase_score_hatch_pet_music"></audio>
+<audio src="./audio/feedPetBgMusic.mp3" id="increase_score_feed_pet_music"></audio>
+<audio src="./audio/petPageBgMusic.mp3" loop="loop" id="pet_page_bg_music"></audio>
+<audio src="./audio/petEatMusic1.mp3" id="pet_eat_music_1"></audio>
+<audio src="./audio/petEatMusic2.mp3" id="pet_eat_music_2"></audio>
+<audio src="./audio/petEatMusic3.mp3" id="pet_eat_music_3"></audio>
+
+</body>
+
+
+</html>

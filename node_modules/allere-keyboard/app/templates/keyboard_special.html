@@ -1,0 +1,99 @@
+<div class="left">
+    <div class="fractionContainer" ng-if="currentPanel==PANEL_LIST.FRACTION1">
+        <input type="text"
+               ng-model="fraction1Model.top.val"
+               ng-click="focusInput($event)"
+               id="fraction1InputTop"
+               ng-class="fraction1Model.top.isFocused?'inputFocus':''"
+               readonly>
+
+        <div class="fractionSeparator"></div>
+        <input type="text"
+               ng-model="fraction1Model.bottom.val"
+               id="fraction1InputBottom"
+               ng-click="focusInput($event)"
+               ng-class="fraction1Model.bottom.isFocused?'inputFocus':''"
+               readonly>
+    </div>
+    <div class="fractionContainer2" ng-if="currentPanel==PANEL_LIST.FRACTION2">
+        <div class="leftSide">
+            <input type="text"
+                   ng-model="fraction2Model.left.val"
+                   id="fraction2InputLeft"
+                   ng-click="focusInput($event)"
+                   ng-class="fraction2Model.left.isFocused?'inputFocus':''"
+                   readonly/>
+        </div>
+        <div class="rightSide">
+            <input type="text"
+                   ng-model="fraction2Model.top.val"
+                   id="fraction2InputTop"
+                   ng-click="focusInput($event)"
+                   ng-class="fraction2Model.top.isFocused?'inputFocus':''"
+                   readonly>
+
+            <div class="fractionSeparator"></div>
+            <input type="text"
+                   ng-model="fraction2Model.bottom.val"
+                   id="fraction2InputBottom"
+                   ng-click="focusInput($event)"
+                   ng-class="fraction2Model.bottom.isFocused?'inputFocus':''"
+                   readonly>
+        </div>
+
+    </div>
+</div>
+<div class="right">
+    <div ng-show="!currentFoucus">
+        <div class="itemRow">
+            <div class="item" ng-click="currentPanel=PANEL_LIST.FRACTION1;fractinInputMode=true">
+                <img src="images/fraction1.png" width="28px"/>
+                <span>分数</span>
+            </div>
+        </div>
+        <div class="itemRow">
+            <div class="item" ng-click="currentPanel=PANEL_LIST.FRACTION2;fractinInputMode=true">
+                <img src="images/fraction2.png" width="38px">
+                <span>带分数</span>
+            </div>
+        </div>
+        <div class="itemRow">
+            <div class="item">
+                <img src="images/radicals.png" width="35px"/>
+                <span>根号</span>
+            </div>
+        </div>
+        <div class="itemRow">
+            <div class="item"><img src="images/log.png" width="30px"/></div>
+        </div>
+        <div class="itemRow">
+            <div class="item"><img src="images/ln.png" width="32px"/></div>
+        </div>
+    </div>
+    <div ng-show="currentFoucus">
+        <div class="itemRow">
+            <div class="item" ng-click="handleClickNum($event)">1</div>
+            <div class="item" ng-click="handleClickNum($event)">2</div>
+            <div class="item" ng-click="handleClickNum($event)">3</div>
+        </div>
+        <div class="itemRow">
+            <div class="item" ng-click="handleClickNum($event)">4</div>
+            <div class="item" ng-click="handleClickNum($event)">5</div>
+            <div class="item" ng-click="handleClickNum($event)">6</div>
+        </div>
+        <div class="itemRow">
+            <div class="item" ng-click="handleClickNum($event)">7</div>
+            <div class="item" ng-click="handleClickNum($event)">8</div>
+            <div class="item" ng-click="handleClickNum($event)">9</div>
+        </div>
+        <div class="itemRow">
+            <div class="item" ng-click="handleClickNum($event)" style="flex: 2;-webkit-flex:2;">0</div>
+            <div class="item" ng-click="handleClickNum($event)">.</div>
+        </div>
+        <div class="itemRow">
+            <div class="item" ng-click="handleDel($event)">删除</div>
+            <div class="item" ng-click="handlePressOk()" style="flex: 2;-webkit-flex:2;">确定</div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="sign-warn" ng-if="showSignInWarnAlert && canSignIn">
+    <div class="sign-warn-backdrop"  ng-click="hideSignWarn()">
+        <div class="sign-warn-content">
+            <div class="sign-warn-head">
+                <img ng-src="{{signWarn}}">
+            </div>
+           <!-- <div class="sign-warn-content">
+               &lt;!&ndash; <img ng-src="{{loadImg('rewardDialogMoney.png')}}">
+                <label>{{credits}}</label>&ndash;&gt;
+            </div>-->
+            <div class="sign-warn-desc">
+                <p>
+                    今日还未签到
+                </p>
+                <p>
+                    赶紧去签到吧
+                </p>
+            </div>
+            <div class="sign-warn-btn">
+                <div class="warn-btn" ng-click="gotoSignIn($event)">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

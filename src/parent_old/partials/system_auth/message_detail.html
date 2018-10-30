@@ -1,0 +1,32 @@
+<ion-view  class="statisstics" hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title">{{msgData.senderName}}</h1>
+    </ion-header-bar>
+    <ion-content padding="false" style="padding-bottom: 20px">
+        <div style="margin-top: 20px;" ng-repeat="msgDetail in msgData.msgDetail.msgList">
+            <div style="text-align: center">
+                <label style="font-size: 10px" ng-bind="msgDetail.msgDateTime"></label>
+            </div>
+            <div class="message_content"  >
+                <div class="face ">
+                    <img src="{{$root.loadImg(msgData.senderImgUrl)}}" />
+                    <!--    <div class="name" style="text-align: center;" ng-bind="msgData.msgDetail.sendName">
+
+                        </div>-->
+                </div>
+
+                <div class="message" style="min-height: 50px;"  ng-if="msgDetail.senderId==1">
+                    <label ng-bind="msgDetail.msgContent"  ></label>
+                </div>
+                <div class="message" style="min-height: 50px;" ng-click="msgHandle(msgDetail)" ng-if="msgDetail.senderId !=1">
+                    <label ng-bind="msgDetail.msgContent" style="font-size: 16px;text-decoration:underline" ></label>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>
+

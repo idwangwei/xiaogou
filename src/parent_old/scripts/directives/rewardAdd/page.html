@@ -1,0 +1,52 @@
+<div class="reward-add-backdrop" ng-if="$root.showRewardAdFlag">
+    <div class="reward-add">
+        <i class="icon ion-close" ng-click="hideRewardAd()"></i>
+        <div class="color-bar-con">
+            <div class="color-bar color-bar1"></div>
+            <div class="color-bar color-bar2"></div>
+            <div class="color-bar color-bar3"></div>
+            <div class="color-bar color-bar4"></div>
+            <div class="color-bar color-bar5"></div>
+            <div class="color-bar color-bar6"></div>
+            <div class="color-bar color-bar7"></div>
+            <img class="color-bar8" ng-src={{colorLeft}}>
+            <img class="color-bar9" ng-src={{colorRight}}>
+        </div>
+        <div class="reward-add-title">
+            <div class="add-share">
+                <img ng-src={{addShare}}>
+            </div>
+            <div class="add-share-content">
+                <img style="width:90%" ng-src={{addShareContent}}>
+            </div>
+        </div>
+        <div class="reward-add-content no-scroll-class" >
+            <div class="content">
+                <p class="content-tip content1">{{content1}}</p>
+                <p class="content-tip">{{content2}}</p>
+                <p class="content-tip">{{content3}}</p>
+            </div>
+            <div class="reward-add-tip">
+               <p ng-repeat="tip in tipContent">{{tip}}</p>
+            </div>
+        </div>
+
+        <div class="reward-add-content scroll-class" >
+            <ion-scroll zooming="true" direction="y" class="reward-scroll-bar">
+                <div class="content">
+                    <p class="content-tip content1">{{content1}}</p>
+                    <p class="content-tip">{{content2}}</p>
+                    <p class="content-tip">{{content3}}</p>
+                </div>
+                <div class="reward-add-tip">
+                    <p ng-repeat="tip in tipContent">{{tip}}</p>
+                </div>
+            </ion-scroll>
+        </div>
+
+        <div class="reward-add-share-btn" ng-if="isShowShareBtn()"
+             ng-click="showShareBtn()">
+            <span>立即分享</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,305 @@
+@charset "UTF-8";
+@import '../../../../m_boot/less/theme01/include/_mixins';
+
+
+.olympic_math_home{
+  font-family: 'microsoft yahei'!important;
+  .bar-better{
+    background: #CA75EA!important;
+    .common-back-btn{
+      color: white!important;
+    }
+    .title{
+      color: white;
+    }
+  }
+  .clouds-01{
+    position: absolute;
+    top: 49%;
+    left: 0px;
+    z-index: 880;
+  }
+  .marquee-clouds-01{
+    position: absolute;
+    top: 49%;
+    left: 0px;
+    z-index: 880;
+    .clouds-01{
+      width: 85px;
+      opacity: 0.9;
+    }
+  }
+
+  .marquee-clouds-02{
+    position: absolute;
+    top: 30%;
+    left: 0px;
+    z-index: 880;
+    .clouds-02{
+      width: 66px;
+      opacity: 0.9;
+    }
+  }
+
+
+  .scroll-content{
+    bottom: 44px;
+  }
+  .home-content{
+    padding-bottom: 40px;
+    background:  linear-gradient(to bottom, #CA75EA 0%, #956BE4 100%);
+    background: linear-webkit-gradient(to bottom, #CA75EA 0%,#956BE4 100%);
+  }
+
+  .net-tip {
+    display: block;
+    background: #fbf2f2;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #dddddd;
+    box-shadow: 3px 2px 5px #ddd;
+    text-align: center;
+    color: #ef473a;
+  }
+
+
+
+  /**----------- 广告 start-------------**/
+  .ad-wrap{
+    @media screen  and (max-width: 600px)   {
+      height: 100px;
+      .vip-list-scroll-wrap{
+        height: 100px;
+      }
+    }
+    @media screen  and (min-width: 601px)   {
+      height: 150px;
+      .vip-list-scroll-wrap{
+        height: 150px;
+        .vip-list{
+          margin-bottom: 10px;
+          p{
+            margin: 0;
+            font-size: 17px;
+          }
+          .the-num{
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    width: 100%;
+    background: url("../../../../m_global/sImages/olympic-math/olympic-math-bar-bg.png");
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background-repeat: round;
+    overflow: hidden;
+    .display-flex;
+
+    .show-content-wrap{
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      .display-flex-pure;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      .vip-list-wrap{
+        .display-flex;
+        .flex_2;
+        .vip-list-scroll-wrap{
+          width: 80%;
+          max-width: 280px;
+          margin-left: 20%;
+
+          padding: 10px 0;
+          .vip-list-scroll{
+            height: 100%;
+            background-color: #EFA534;
+            border-radius: 20px;
+            padding: 5px 0px 5px 0px;
+            color: white;
+            .vip-list{
+              margin-bottom: 10px;
+              p{
+                margin: 0;
+                text-align: center;
+              }
+              .the-num{
+                font-size: 15px;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+
+      }
+
+      .left-boy-wrap,.middle-text-wrap,.right-girl-wrap{
+        position: relative;
+      }
+      .left-boy-wrap,.right-girl-wrap{
+        .display-flex-pure;
+        align-items: flex-end;
+        -webkit-align-items: flex-end;
+        .flex_1
+      }
+      .left-boy-wrap{
+        justify-content: flex-start;
+        -webkit-justify-content: flex-start;
+
+        img{
+          height: 145%;
+          bottom: -49%;
+          left: -4%;
+          width: auto;
+          animation: fadeInLeft 1s;
+          -webkit-animation: fadeInLeft 1s;
+        }
+      }
+      .right-girl-wrap{
+        justify-content: flex-end;
+        -webkit-justify-content: flex-end;
+        img{
+          height: 220%;
+          bottom: -91%;
+          right: -29px;
+          width: auto;
+         /* animation: fadeInRight 1s;
+          -webkit-animation: fadeInRight 1s;*/
+          position: absolute;
+          z-index: 100;
+        }
+      }
+      .middle-text-wrap {
+        .display-flex;
+        .flex_2;
+        .olympic-math-goto-pay{
+          width: 80%;
+          max-width: 280px;
+          margin-left: 20%;
+          /*animation: bounceIn 1s 1s;
+          -webkit-animation: bounceIn 1s 1s;*/
+        }
+      }
+    }
+  }
+  .flash{
+    animation: flash 3.5s infinite;
+    -webkit-animation: flash 3.5s infinite;;
+  }
+  .rubberBand{
+    animation: bounceIn 4s 3.5s infinite;
+    -webkit-animation: bounceIn 4s 3.5s infinite;
+  }
+  /**----------- 广告 end-------------**/
+
+ .select-bar-wrap{
+   padding: 10px;
+   font-size: 17px;
+   top: 2px;
+   color: #1E446A;
+   .bar-row{
+     position: relative;
+     .display-flex-pure;
+     .select-material{
+       margin-right: 5px;
+       .flex_1;
+     }
+     .select-grade{
+       margin-left: 5px;
+       .flex_1;
+     }
+   }
+   .select-bar{
+     position: relative;
+     background-color: white;
+     padding: 5px 10px;
+     border-radius: 5px;
+     min-height: 34px;
+     .position-right{
+       position: absolute;
+       font-size: 22px;
+       top: 2px;
+       right: 10px;
+       color: #9BA0B0;
+     }
+   }
+ }
+
+  .img-box-wrap{
+    padding: 20px 10px 30px 10px;
+    .img-box-row{
+      .display-flex-pure;
+      margin-bottom: 20px;
+      .grayscale-img-100{
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+      }
+      .img-box-col{
+        .flex_1;
+        text-align: center;
+        .box-img-wrap{
+          width: 80%;
+          display: inline-block;
+          position: relative;
+          max-width: 235px;
+          .box-img-bg{
+            width: 100%;
+          }
+          .cover-img-wrap{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top:0;
+            left: 0;
+            .display-flex;
+            .box-img{
+              height: 95%;
+            }
+          }
+        }
+        h4{
+          font-size: 20px;
+          color: white;
+          font-weight: bold;
+        }
+      }
+      .img-box-col:first-child{
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+
+.olympic-math-home-select-modal{
+  ion-header-bar{
+    background: #B569E7!important;
+    .ion-ios-arrow-back,.title{
+      color: white;
+    }
+  }
+  .bank_content{
+    background-color: #E3DDE6;
+  }
+  .list{
+    padding-bottom: 20px;
+    .unit_bg{
+      background: #FFFFFF;
+      margin-left: 10px;
+      margin-top: 10px;
+      height: 44px;
+      padding: 10px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      color: #1E446A;
+      margin-right: 10px;
+      border: none;
+    }
+  }
+
+}

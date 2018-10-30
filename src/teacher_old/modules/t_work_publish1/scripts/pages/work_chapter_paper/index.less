@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+.work_chapter_paper_file{
+  .bar_top_points{
+    display: flex;
+    display: -webkit-flex;
+    line-height: 55px;
+    box-shadow: 0px 1px 8px #aaa;
+    height: 55px;
+    color: #239d69;
+    margin: 60px 10px 10px 10px;
+    background-color: #aff1e1;
+    align-items: center;
+    -webkit-align-items: center;
+    i{
+      margin-left:36px;
+      margin-right: 10px;
+      font-size: 24px;
+    }
+  }
+  .bar_top_points_ios{margin-top: 70px}
+  .paper_bg{
+    margin-top: 10px;
+    height: 44px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #2e3969;
+    margin-right: 10px;
+    margin-left: 23px;
+    background: #D2F7EF;
+    img{
+      width: 30px;
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      vertical-align: middle;
+    }
+  }
+
+  .list{
+    .item:nth-child(odd){
+      background: #FEFAF1;
+    }
+    .item .item-content{
+      background: inherit;
+    }
+    //.item:nth-child(odd) .item-content{
+    //  background: #FEFAF1;
+    //}
+
+    .item{
+      border: none;
+      .img-content{
+        border-radius: 0!important;
+      }
+      .last-content{
+        margin-bottom: 60px;
+      }
+    }
+  }
+
+  .wcp_list_content{
+    padding-top: 40px;
+    .scroll-bar-indicator{margin-top: 40px}
+    .last_selected_paper{background: #b3dbff!important;}
+  }
+
+  .chapter_footer-content{
+    //width: initial;
+    //left: 10px;
+    //right: 10px;
+    //height: 55px;
+    //background-color: #fbb0bb!important;
+    //bottom: 10px;
+    //box-shadow: 0px 1px 8px #aaa;
+
+    width: initial;
+    left: 10px;
+    right: 10px;
+    height: 86px;
+    bottom: 51px;
+    position: absolute;
+
+
+    .wcp_prompt_msg{
+      position: absolute;
+      //top: -86px;
+      //color: #6B94D6;
+      width: 100%;
+      //overflow: hidden;
+      //text-overflow: ellipsis;
+      //white-space: nowrap;
+      color: #9ea7c4;
+    }
+    .chapter_footer-content_title{
+      height: 55px;;
+      line-height: 55px;
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      align-items: center;
+      display: -webkit-flex;
+      -webkit-justify-content: space-around;
+      -webkit-align-items: center;
+      i{
+        margin-left:36px;
+        margin-right:10px;
+        color: #4b1818!important;
+        font-size: 24px;
+      }
+    }
+  }
+}

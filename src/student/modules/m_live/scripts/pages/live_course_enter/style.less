@@ -1,0 +1,286 @@
+
+#live-course-enter{
+  @main-color: #ca75ea;//定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .enter-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      font-weight: bold;
+    }
+    .item-back{
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+    .item-call{
+      img{
+        width: 70px;
+      }
+    }
+  }
+  .enter-content{
+    background-color: @main-color;
+    .content-title{
+      .display-flex(row,center,center);
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      position: relative;
+      z-index: 1000;
+      width:100px;
+      height: 38px;
+      background: url("../../../images/live_course_enter/live_course_title_bg.png") no-repeat;
+      background-size: 100% 100%;
+      margin: 0 auto 5px;
+    }
+    .content-banner{
+      background: #f9d251 url("../../../images/live_home/live_home_banner_bg.png") repeat;
+      height:234px;
+      position: relative;
+      padding-top: 10px;
+      overflow: hidden;
+      .banner-box-bg{
+        position: absolute;
+        z-index: 0;
+        width: 400px;
+        height: 280px;
+        left: 50%;
+        margin-left: -172px;
+        top: 50%;
+        margin-top: -111px;
+      }
+      .text-box{
+        .display-flex(column,center,flex-start);
+        position: relative;
+        z-index: 2;
+        width: 270px;
+        height: 180px;
+        font-size: 12px;
+        margin: 0 auto;
+        color: #bf4e16;
+        padding-right: 80px;
+        .star-box{
+          img{
+            width: 12px;
+            margin-right: 2px;
+          }
+        }
+        .name{
+          img{
+            height: 30px;
+            margin: 6px 0;
+          }
+        }
+        .normal{
+          line-height: 16px;
+          margin-bottom: 3px;
+        }
+      }
+      .banner-teacher{
+        position: absolute;
+        z-index: 1;
+        width: 110px;
+        left: 50%;
+        margin-left: 52px;
+        top: 53px;
+      }
+    }
+    .content-section-2{
+      background: #fff;
+      padding: 10px 10px 1px;
+      margin-top: 10px;
+      .normal-box{
+        border:1px solid #efefef;
+        border-radius: 6px;
+        padding: 10px 30px;
+        margin-bottom: 10px;
+        .title{
+          font-size: 16px;
+          color: #716c8c;
+          margin-bottom: 8px;
+          font-weight: bold;
+        }
+        .text{
+          font-size: 14px;
+          color: #716c8c;
+          line-height: 20px;
+          .text-margin{
+            margin-right: 20px;
+          }
+          .text-margin-2{
+            margin-right: 40px;
+          }
+          .star{
+            img{
+              width: 12px;
+              margin-right: 2px;
+            }
+          }
+        }
+      }
+    }
+    .content-section-3{
+      background: #fff;
+      padding: 10px 40px 20px;
+      margin-top: 10px;
+      .normal-box{
+        font-size: 14px;
+        color: #716c8c;
+        line-height: 20px;
+        margin-top: 20px;
+      }
+    }
+    .content-section-4{
+      background: #fff;
+      padding: 10px 17px 60px;
+      margin-top: 10px;
+      .display-flex(column,flex-start,center);
+      .normal-box{
+        .display-flex(row,center,flex-start);
+        padding-top: 20px;
+        .box-item{
+          .display-flex(column,center,flex-start);
+          width: 80px;
+          font-size: 12px;
+          color: #716c8c;
+          &.step-arrow{
+            width: 40px;
+            .header{
+              img{
+                width: 30px;
+              }
+            }
+          }
+          &.step-1{
+            .header{
+              img{
+                width: 51px;
+              }
+            }
+          }
+          &.step-2{
+            width: 100px;
+            .header{
+              img{
+                width: 51px;
+              }
+            }
+          }
+          .header{
+            width: 100%;
+            height: 95px;
+            .display-flex(row,center,center);
+            img{
+              width: 50px;
+            }
+          }
+          .bottom{
+            width: 100%;
+            p{
+              margin-bottom: 3px;
+            }
+            text-align: center;
+          }
+        }
+      }
+      .erweima{
+        width: 120px;
+        margin: 10px 0;
+      }
+      .notice{
+        width: 280px;
+        font-size: 12px;
+        color: #716c8c;
+      }
+    }
+  }
+  .live-course-bottom{
+    position: fixed;
+    z-index: 11000;
+    height: 40px;
+    background: #f59e3f;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    img{
+      width: 186px;
+      position: relative;
+      top:-8px;
+    }
+    .btn-text{
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      line-height: 40px;
+    }
+  }
+  .success-modal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    background: rgba(0,0,0,.5);
+    .modal-inner{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top:0;
+      margin: auto;
+      width: 94%;
+      max-width: 400px;
+      height: 290px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px 0 10px;
+    .display-flex(column,space-between,center);
+    }
+    .modal-title{
+      font-size: 20px;
+      color: #2eaf58;
+      font-weight: bold;
+    }
+    .modal-text-box{
+      padding:0  40px;
+      font-size: 14px;
+      color: #726c8c;
+      .title{
+        font-weight: bold;
+      }
+      p{
+        line-height: 20px;
+      }
+    }
+    .modal-btn{
+      width: 160px;
+    }
+  }
+}
+.live_course_phone{
+  font-size: 14px;
+  color: #ccc;
+  padding: 15px 55px;
+  text-decoration: none;
+  span{
+    color: red;
+    font-size: 16px;
+
+  }
+}

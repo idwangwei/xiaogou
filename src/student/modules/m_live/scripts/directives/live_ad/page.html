@@ -1,0 +1,30 @@
+<div class="live-ad-page">
+    <ion-scroll class="ad-content">
+        <i class="icon ion-ios-arrow-back" ng-click="hideAd()"><span>返回</span></i>
+        <div class="content-top">
+            <img class="top-img-1" ng-src="{{$root.loadLiveImg('live_home/live_course_ad_top.png')}}" alt="">
+        </div>
+        <div class="content-middle">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_course_ad_title.png')}}" class="content-title">
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_1.png')}}">
+                <span>互动直播授课，在家即可享受优质教学</span>
+            </div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_2.png')}}">
+                <span>小升初名师辅导，全程陪伴式学习</span>
+            </div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_3.png')}}">
+                <span>配套精品习题，边学边练，巩固提升</span>
+            </div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_4.png')}}">
+                <span>回放任意看，随时随地温故知新</span>
+            </div>
+        </div>
+    </ion-scroll>
+    <div class="content-bottom">
+        <img ng-click="gotoLiveHome($event)" ng-src="{{$root.loadLiveImg('live_home/live_course_ad_btn.png')}}" alt="" src="images/winter_camp_ad_btn.png">
+    </div>
+</div>

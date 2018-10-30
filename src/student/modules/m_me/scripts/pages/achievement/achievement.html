@@ -1,0 +1,34 @@
+<ion-view hide-nav-bar=true class="achievement" >
+    <ion-header-bar class="bar-better" align-title="center">
+        <button class="button buttons  button-clear common-back-btn" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4A6b9d">表扬记录</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+        <ion-item class="item-divider select-content">
+            <select ng-model="termData.nowTerm"
+                    ng-options ="item for item in termData.terms"
+                    ng-change="ctrl.getAchievementList()" class="select-options">
+            </select>
+        </ion-item>
+
+        <div class="col-md-6 col-xs-6 box-text-align" ng-repeat="ach in ctrl.achievements">
+            <div class="achievement-item" ng-style="ach.achStyle">
+                <h4 class="overflow-ellipsis achievement-title">{{ach.text}}</h4>
+                <div style="position: relative">
+                    <img ng-src="{{$root.loadImg(ach.imgUrl)}}" alt="" style="width: 100px"/>
+                </div>
+                <p class="overflow-ellipsis"
+                   style="font-size: 24px;margin:0 auto;padding-bottom: 10px;color: #fff" >
+                    ×&nbsp;{{ach.num}}</p>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>
+
+
+

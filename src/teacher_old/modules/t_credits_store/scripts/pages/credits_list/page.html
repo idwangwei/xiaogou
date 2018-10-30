@@ -1,0 +1,63 @@
+<ion-view class="tea-score-list">
+    <ion-header-bar class="bar-balanced bar-new" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            <span>返回</span>
+        </button>
+        <h1 class="title">智慧币记录</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="tea-score-content">
+        <ion-refresher
+                pulling-text="下拉刷新..."
+                on-refresh="ctrl.initData()">
+        </ion-refresher>
+        <p class="content-score">当前总智慧币: {{ctrl.score_all}}</p>
+       <!-- <div class="content-item">
+            <div class="img img-2"></div>
+            <p class="text">2017.10.30成功邀请1位老师</p>
+            <div class="item-right">
+                <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-score.png')}}">
+                <p class="num">+5000</p>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="img img-1"></div>
+            <p class="text">2017.10.30创建班级满20人 <br />（三年二班：610030）</p>
+            <div class="item-right">
+                <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-score.png')}}">
+                <p class="num">+2000</p>
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="img img-3"></div>
+            <p class="text">2017.10.30创建班级满20人</p>
+            <div class="item-right">
+                <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-score.png')}}">
+                <p class="num">+2000</p>
+            </div>
+        </div>-->
+        <div class="content-item" ng-class="{true: 'reduce'}[v.type==2]" ng-repeat="v in ctrl.score_list">
+            <div class="img img-{{v.subType}}"></div>
+            <p class="text">{{v.detail}}</p>
+            <div class="item-right">
+                <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-score.png')}}">
+                <span class="num">{{v.type==2?"-":"+"}}{{v.credits}}</span>
+            </div>
+        </div>
+        <ion-infinite-scroll
+                ng-if="!ctrl.isFinish"
+                on-infinite="ctrl.loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+   <!-- <ion-footer-bar class="bar-assertive myFooter"  align-title="center">
+        <div class="item-score" ng-click="ctrl.goCreditsTask()">
+            <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-score.png')}}">
+            <span>赚取智慧币</span>
+        </div>
+        <div class="item-shop" ng-click="ctrl.goCreditsStore()">
+            <span>智慧勾商城</span>
+            <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-shop.png')}}">
+        </div>
+    </ion-footer-bar>-->
+</ion-view>

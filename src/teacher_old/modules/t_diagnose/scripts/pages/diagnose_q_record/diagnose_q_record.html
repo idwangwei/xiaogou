@@ -1,0 +1,96 @@
+<ion-view hide-nav-bar="true" class="diagnose_q_records_file">
+    <ion-header-bar style="background: #C2EDF8" align-title="center">
+    <button class="button back-button buttons  button-clear header-item common-back-btn"
+            ng-click="ctrl.back()"
+            style="color: #4a6b9d;">
+        <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+    </button>
+    <h1 class="title"
+        style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+        ng-bind="ctrl.diagnose_unit_select_stu.name+' | 做题记录'">
+    </h1>
+    <div class="buttons">
+        <button class="button button-clear" ng-click="ctrl.hideAllQ()">
+            <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+        </button>
+    </div>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" overflow-scroll="true">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+
+        <div class="knowledge-title-wrap">
+            <span ng-bind="ctrl.diagnose_unit_select_stu.knowledgePoint.knowledgeName"></span>
+        </div>
+
+        <div class="diagnose-report-wrap" >
+
+            <div class="top-wrap" >
+                <div class="img-wrap">
+                    <!--<img ng-src="{{$root.loadImg('diagnose/signal_one.png')}}"/>-->
+                    <!--   <img ng-src="{{$root.loadImg(ctrl.knowledgeWithDiagnose.signalGraph.value)}}"/>-->
+                    <i class="icon ion-record level-one" ng-if="!ctrl.stuWithRecordsDiagnose.signalGraph.levelValue||ctrl.stuWithRecordsDiagnose.signalGraph.levelValue==='1'"></i>
+                    <i class="icon ion-record level-two" ng-if="ctrl.stuWithRecordsDiagnose.signalGraph.levelValue==='2'"></i>
+                    <i class="icon ion-record level-three" ng-if="ctrl.stuWithRecordsDiagnose.signalGraph.levelValue==='3'"></i>
+                    <i class="icon ion-record level-four" ng-if="ctrl.stuWithRecordsDiagnose.signalGraph.levelValue==='4'"></i>
+                    <!--<span ng-bind="ctrl.stuWithRecordsDiagnose.signalGraph.showTextStr"></span>-->
+                    <span ng-bind="ctrl.levelValueArr[ctrl.stuWithRecordsDiagnose.signalGraph.levelValue-1]"></span>
+                </div>
+            </div>
+
+            <div class="report-row">
+                <span ng-bind="ctrl.stuWithRecordsDiagnose.signalGraph.showTextStr"></span>
+            </div>
+        </div>
+       <div ng-if="ctrl.stuWithRecordsDiagnose.qRecords.length" style="margin-bottom: 80px;padding-bottom: 80px">
+           <h2 class="q-records-tip">做题记录：</h2>
+           <div ng-repeat="record in ctrl.stuWithRecordsDiagnose.qRecords " ng-init="smallQIndex = $index"
+                ng-style="{'margin-bottom':$last?'140px':''}">
+               <div class="image-type-question">
+                   <div class="question-content card card-better small_q_bg">
+                       <!--改错列-->
+                       <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index" ng-init="doneIndex=$index;doneLast=$last">
+                           <div class="smallq-title" ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}">
+                               <div class="text-div-adapt" ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                   <label class="text-adapt">
+                                       <span ng-bind="'第'+(smallQIndex+1)+'题'" ng-class="{'done-more':doneIndex>=1}"></span>
+                                       <span ng-if="doneIndex==0" ng-bind="'首次做 '"></span>
+                                       <span ng-if="doneIndex>=1" ng-bind="'改错后'"></span>
+                                       <span  ng-bind="doneInfo.createTime"></span>
+                                    <span class="correct-icons">
+                                        <img ng-show="doneInfo.passFlag==0" ng-src="{{$root.loadImg('other/icon_no.png')}}">
+                                        <img ng-show="doneInfo.passFlag==1" ng-src="{{$root.loadImg('other/icon_yes2.png')}}">
+                                        <img ng-show="doneInfo.passFlag==2" ng-src="{{$root.loadImg('other/icon_yes3.png')}}">
+                                        <img ng-show="doneInfo.passFlag==3" ng-src="{{$root.loadImg('other/grading-icon.png')}}">
+                                    </span>
+                                   </label>
+                               </div>
+                               <div class="img-align-right">
+                                <span ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                    <img ng-src="{{!doneInfo.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}"
+                                    >
+                                </span>
+                               </div>
+                               <div class="record-type"><span ng-bind="doneInfo.keyValuePairs.key==='1'?'( 该记录来自作业 )':'( 该记录来自单题 )'"></span></div>
+                           </div>
+                           <div compile-html="record.question" show_type="correct" current_q_input="doneInfo.inputList"
+                                ng-if="doneInfo.showQFlag" class="qcontext" style="pointer-events: none">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+        <ion-infinite-scroll on-infinite="ctrl.fetchQRecordsWithLoadMore();"
+                             distance="1%" ng-if="ctrl.moreFlag">
+        </ion-infinite-scroll>
+
+        <div class="tip" ng-if="ctrl.hasNoRecords()">
+            <span>该知识点下，该学生暂未做题。</span>
+        </div>
+    </ion-content>
+    <loading-processing ng-if="ctrl.firstLoading"></loading-processing>
+    <recommend-training from-url="home.diagnose_q_record"></recommend-training>
+    <bottom_ask_btn background-color="#fff"></bottom_ask_btn>
+</ion-view>

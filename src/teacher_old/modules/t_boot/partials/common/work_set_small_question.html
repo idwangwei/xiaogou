@@ -1,0 +1,14 @@
+
+    <label>小题分数</label>
+    <input type='number' placeholder='(如:2)' ng-model='ctrl.editSmallQ.score' style="border: 1px solid #999" pattern="^[0-9]*[1-9][0-9]*$">
+    <label>设置题号</label>
+    <br/>
+    <select ng-model="ctrl.editSmallQ.newBigQId"
+            ng-options ="item.id as item.title for item in ctrl.allBigQTitle"
+            style="width: 100%"
+            ng-change="ctrl.getSmallNumList(ctrl.editSmallQ.newBigQId)">
+    </select>
+    <select ng-model="ctrl.editSmallQ.seqNum" ng-options="item.seqNum as item.seqNum+1 for item in ctrl.editSmallList" style="width: 100%;margin-top: 10px;">
+    </select>
+    <br/>
+

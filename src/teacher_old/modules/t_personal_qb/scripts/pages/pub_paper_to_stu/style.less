@@ -1,0 +1,119 @@
+@charset "UTF-8";
+@import "./../../../../t_boot/less/theme02/include/_mixins";
+@import "./../../../../t_boot/less/theme02/include/common";
+
+.pub_paper_to_stu {
+  .clazz_margin_bottom {
+    margin-bottom: 15px;
+  }
+
+  .clazz_margin_bottom_last {
+    margin-bottom: 20px;
+  }
+  .padding-better {
+    padding-left: 10px;
+  }
+
+  .pub-content {
+    padding-top: 20px;
+    font-size: 17px;
+    color: #293d69;
+    background-color: #E9EDF3;
+    .paper-title-wrap {
+      height: 55px;
+      line-height: 55px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      .paper-name {
+        float: left;
+      }
+      .paper-title {
+        text-align: center;
+      }
+    }
+    .pub-conctroll-wrap {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 2px 2px 0px #aaaaaa;
+      height: 55px;
+      line-height: 55px;
+      padding-right: 10px;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      align-items: center;
+      -webkit-align-items: center;
+      margin: 10px 0;
+      select {
+        height: 50px;
+        float: right;
+        border: none;
+        width: 100%;
+        font-size: 16px;
+        color: #293d69;
+        background-color: #ffffff;
+      }
+      .pub-right-now {
+        position: absolute;
+        //z-index: 30;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        pointer-events: none;
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        background-color: #fff;
+        border: solid 1px #566093;
+        border-left: solid 2px #566093;
+        border-right: solid 2px #566093;
+      }
+      .pub-right-now-win {
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        align-items: center;
+        -webkit-align-items: center;
+      }
+    }
+    .pub-list-wrap {
+      .has-no-clazz {
+        margin-top: 20px;
+      }
+      .item {
+        border: none;
+      }
+      .clazz-even {
+        background-color: #FEFAF1;
+      }
+      .pub-clazz-name-wrap {
+        height: 40px;
+        line-height: 40px;
+        margin-top: 20px
+      }
+      .clazz-name-wrap {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: #aff1e1;
+        .clazz-name {
+
+        }
+      }
+
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,132 @@
+<ion-view hide-nav-bar="true" class="olympic_math_home" >
+    <ion-header-bar align-title="center" class="bar-better">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 2px">首页</span>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';left: 76px;right: 76px;" ng-bind="'奥数魔法城'"></h1>
+    </ion-header-bar>
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+
+    <!--侧边栏-->
+    <ion-side-menus has-header="false" >
+
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="clazz_select" padding="true" style="top:44px!important;padding-bottom: 44px">
+            </ion-content>
+        </ion-side-menu>
+
+        <!--试卷列表-->
+        <ion-side-menu-content>
+
+            <ion-content class="has-header home-content" >
+                <div class="ad-wrap" ng-click="ctrl.showOlympicMathAd()">
+                    <div class="show-content-wrap">
+
+                        <div class="middle-text-wrap" ng-if="ctrl.initCtrl&&!ctrl.hasVip">
+                            <img class="olympic-math-goto-pay"
+                                 ng-src="{{$root.loadImg('olympic-math/olympic-math-goto-pay.png')}}">
+                        </div>
+                        <div class="vip-list-wrap" ng-if="ctrl.initCtrl&&ctrl.hasVip">
+                            <div class="vip-list-scroll-wrap">
+                                <ion-scroll direction="y" delegate-handle="namePicScroll" class="vip-list-scroll">
+                                    <div ng-repeat="(key,value) in ctrl.olympicVip track by $index" class="vip-list">
+                                        <p ng-bind="ctrl.formatVipTitle(key,value)"></p>
+                                        <p><span>剩余天数：</span><span class="the-num" ng-bind="value"></span><span>天</span>
+                                        </p>
+                                    </div>
+                                </ion-scroll>
+                            </div>
+
+                        </div>
+                        <div class="right-girl-wrap">
+                            <img ng-src="{{$root.loadImg('olympic-math/olympic-math-girl.png')}}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="img-box-wrap">
+                    <div class="img-box-row">
+
+                        <div class="img-box-col">
+                            <div class="box-img-wrap" ng-click="ctrl.goSWorkList()">
+                                <img class="box-img-bg"
+                                     ng-src="{{$root.loadImg('olympic-math/olympic-math-box-bg.png')}}">
+                                <div class="cover-img-wrap">
+                                    <img class="box-img"
+                                         ng-src="{{$root.loadImg('olympic-math/olympic-math-s-work.png')}}">
+                                </div>
+                            </div>
+                            <h4>自主训练</h4>
+                        </div>
+                        <div class="img-box-col">
+                            <div class="box-img-wrap" ng-click="ctrl.goTWorkList()"
+                                 ng-class="ctrl.canEnterMagicTask?'':'grayscale-img-100'">
+
+                                <img class="box-img-bg"
+                                     ng-src="{{$root.loadImg('olympic-math/olympic-math-box-bg.png')}}">
+
+                                <div class="cover-img-wrap">
+                                    <img class="box-img"
+                                         ng-src="{{$root.loadImg('olympic-math/olympic-math-t-work.png')}}">
+                                </div>
+                            </div>
+                            <h4>魔法任务</h4>
+                            <p style="color: white;">（课外奥数培训班）</p>
+                        </div>
+                    </div>
+                    <div class="img-box-row">
+                        <div class="img-box-col ">
+                            <div class="box-img-wrap grayscale-img-100" ng-click="ctrl.showWaitMsg()">
+                                <img class="box-img-bg"
+                                     ng-src="{{$root.loadImg('olympic-math/olympic-math-box-bg.png')}}">
+                                <div class="cover-img-wrap">
+                                    <img class="box-img"
+                                         ng-src="{{$root.loadImg('olympic-math/olympic-math-error-work-gray.png')}}">
+                                </div>
+                            </div>
+                            <h4>奥数错题集</h4>
+                        </div>
+                        <div class="img-box-col ">
+                            <div class="box-img-wrap grayscale-img-100" ng-click="ctrl.showWaitMsg()">
+                                <img class="box-img-bg"
+                                     ng-src="{{$root.loadImg('olympic-math/olympic-math-box-bg.png')}}">
+                                <div class="cover-img-wrap">
+                                    <img class="box-img"
+                                         ng-src="{{$root.loadImg('olympic-math/olympic-math-competition.png')}}"
+                                         style="height: 83%;">
+                                </div>
+                                <!-- <img class="box_img" ng-src="{{$root.loadImg('olympic-math/olympic-math-t-work.png')}}">-->
+                            </div>
+                            <h4>奥数竞赛</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-content>
+            <loading-processing load-top="300"></loading-processing>
+        </ion-side-menu-content>
+    </ion-side-menus>
+    <script id="gradesSelect.html" type="text/ng-template">
+        <ion-modal-view class="olympic-math-home-select-modal" style="{{ctrl.modalStyle}}">
+            <ion-header-bar align-title="center"
+                            class="bar-balanced" >
+                <div class="button back-button buttons  button-clear header-item" ng-click="ctrl.closeGradesSelectModal()">
+                    <i class="icon ion-ios-arrow-back" ></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="font-weight: bold">选择年级</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list" >
+                    <div ng-repeat="grade in ctrl.Grades">
+                        <li class="item unit_bg" ng-click="ctrl.olympicMathSelectGrade(grade)">
+                            <span ng-bind="grade.name"></span>
+                        </li>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+</ion-view>

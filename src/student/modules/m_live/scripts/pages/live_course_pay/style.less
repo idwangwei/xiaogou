@@ -1,0 +1,288 @@
+
+#live-course-pay{
+  @main-color: #ca75ea;//定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  .weixin_pay_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .weixin_pay_display_vc (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+
+  .weixin_pay_justify_content(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+  background-color: @main-color;
+  .enter-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      font-weight: bold;
+    }
+    .item-back{
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+  }
+  .header-box{
+    width: 94%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    .list-item{
+      background: #ae61e1;
+      border-radius: 8px;
+    }
+    .item-header{
+      padding: 18px 17px 10px;
+      .item-title{
+        .display-flex(row,flex-start,center);
+        height: 30px;
+        font-size: 14px;
+        color: #fff;
+        font-weight: bold;
+        img{
+          width: 20px;
+          margin-right: 4px;
+        }
+        &>span{
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+      .item-star{
+        font-size: 12px;
+        color: #fff;
+        img{
+          width: 12px;
+          margin-right: 2px;
+        }
+      }
+      .item-time{
+        font-size: 12px;
+        color: #fff;
+        margin: 4px 0;
+      }
+      .item-teacher{
+        margin-top: 14px;
+        .display-flex(row,flex-start,flex-start);
+        .teacher-box{
+          .display-flex(row,flex-start,center);
+          color: #fff;
+          img{
+            width: 46px;
+            margin-right: 5px;
+            border-radius: 50%;
+          }
+          p{
+            margin: 0;
+          }
+          .teacher-type{
+            font-size: 10px;
+          }
+          .teacher-name{
+            font-size: 14px;
+            font-weight: bold;
+          }
+          margin-right: 20px;
+          position: relative;
+        }
+      }
+      .item-notice{
+        border-radius: 8px;
+        background: #8f42c2;
+        text-align: center;
+        color: #fff62b;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 10px;
+        font-size: 10px;
+        i{
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .enter-content {
+    background: #ca75ea;
+    padding-top: 10px;
+
+    .scroll {
+      width: 100%;
+      height: 100%;
+    }
+
+    .screen-font-size(@font){
+      @media screen and(min-width:768px){
+        font-size:@font;
+      }
+    }
+
+    .wxPayContent {
+      height: 100%;
+      background: rgba(252, 111, 86, 0) !important;
+
+      .productDetails {
+        background: #fff;
+        color: #4d4264;
+        width: 90%;
+        height: 35%;
+        min-height: 230px;
+        margin: 0 5% 4% 5%;
+        //font-size: 16px;
+        border-radius: 7px;
+        padding-top: 10px;
+        .screen-font-size(20px);
+
+        @media screen and(min-width:414px){
+          height: 40%;
+        }
+
+        .weixin_pay_display(column);
+        .weixin_pay_display_vc(center);
+        .weixin_pay_justify_content(center);
+
+        .details_title {
+          font-size: 24px;
+          font-weight: bolder;
+          margin: 0;
+          color: #3c7cc9;
+          .screen-font-size(30px);
+        }
+        .details_sub_title {
+
+        }
+        .details_goods_desc{
+          padding: 10px 20px;
+          @media screen and(min-width:414px)and(max-width:765px){
+            padding: 10px 40px;
+          }
+          @media screen and(min-width:768px){
+            padding: 10px 100px;
+          }
+        }
+        .describe {
+          //width: 90%;
+          //height: 100%;
+          ul {
+            padding-left: 5%;
+          }
+          li {
+            color:  #734E9C;
+            list-style-type: disc;
+            padding-bottom: 1%;
+          }
+
+          span {
+            color: #4d4264;
+            white-space: nowrap;
+          }
+        }
+
+      }
+
+      .money {
+        width: 90%;
+        height: 10%;
+        min-height: 45px;
+        text-align: right;
+        //margin: 3% 2%;
+        margin: 3% 2% 1% 2%;
+        .weixin_pay_display(column);
+        .weixin_pay_justify_content(flex-end);
+        p {
+          margin: 0px;
+        }
+
+        .moneyAll{
+          font-size: 16px;
+          color:#fff;
+          font-weight: bold;
+          .screen-font-size(25px);
+        }
+        .moneyNum {
+          color: #fdec05;
+          font-size: 30px;
+          font-weight: bold;
+          .screen-font-size(35px);
+        }
+      }
+
+      //支付按钮
+      .payBtn {
+        width: 90%;
+        height: 35%;
+        min-height: 150px;
+        max-height: 350px;
+        margin-left: 5%;
+        color: #4d4264;
+        .screen-font-size(20px);
+
+        .display-flex {
+          display: flex;
+          display: -webkit-flex;
+          justify-content: flex-start;
+          -webkit-justify-content: flex-start;
+          -webkit-align-items: center;
+          align-items: center;
+          flex-flow: row;
+          -webkit-flex-flow: row;
+        }
+
+        .clicked {
+          background: #d1cdcd !important;
+        }
+        .btn {
+          font-size: 16px;
+          padding: 8px 0 8px 10%;
+          width: 100%;
+          margin-bottom: 10px;
+          border-radius: 7px;
+          background: #fff;
+
+          span {
+            margin-left: 5px;
+          }
+
+          .imgQr {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        .protocol {
+          color:#fff;
+          text-align: center;
+          font-size: 16px;
+          @media screen and(max-width:320px){
+            font-size: 13px;
+          }
+          .my-checkBox{
+            @media screen and(max-height:500px){
+              padding: 0 !important;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

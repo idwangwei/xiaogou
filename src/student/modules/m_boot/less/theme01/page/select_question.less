@@ -1,0 +1,122 @@
+@charset "UTF-8";
+@import "../include/_mixins";
+
+.select_question_file {
+
+  ion-content{
+    top:44px!important;
+  }
+
+  color: #344872;
+  font-family: "Microsoft YaHei";
+  .loading-wrap {
+    position: absolute;
+    /*text-align: center;*/
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    .display-flex;
+    .com_justify-content;
+    .com_align_item;
+
+  }
+  .page_header { //页面头部
+    background: #d2f7ef;
+    .page_header_btn_back { //返回按钮
+      .page_header_btn_back_i {
+        color: #4a6b9d
+      }
+    }
+    .page_header_content { //试卷标题文字
+      color: #4a6b9d;
+      font-weight: bold;
+      left: 0 !important;
+      right: 0 !important;
+    }
+  }
+
+  .offline-alert-container {
+    width: 98%;
+    background: #83e7ff;
+    border-radius: 2px;
+    text-align: center;
+    color: #ff4f4c;
+    margin: 5px auto 5px auto;
+    font-size: 16px;
+    padding: 3px;
+  }
+
+  .page_content { //页面内容
+    .page_content_box { //题目框
+      box-shadow: none;
+      padding: 3px;
+      .page_content_bigTitle { //本大题的标题
+        font-size: 20px;
+        width: 100%;
+        //text-align: center;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
+      .page_content_list { //本大题中的小题列表
+        border-width: 1px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0px 0px 6px #aaaaaa;
+        .page_content_list_cell {
+          .display-flex-pure;
+          border-width: 0
+        }
+        a { //小题
+          padding-left: 10px;
+          .page_content_list_left { //小题标题
+            .flex_1;
+            line-height: 30px;
+          }
+          .page_content_list_right { //小题做题状态
+            padding: 5px;
+            border-radius: 6px;
+            box-shadow: 0px 0px 6px #aaaaaa;
+          }
+          .page_content_list_right_todo {
+            background: #F06262;
+            color: white
+          }
+          //未做
+          .page_content_list_right_check {
+            background: #FFBC5B;
+            color: white;
+          }
+          //未检查
+          .page_content_list_right_ok {
+            background: #1DDA44;
+            color: white;
+          }
+          //检查好了
+          .page_content_list_right_modify {
+            background: #F06262;
+            color: white
+          }
+          //未改
+
+        }
+        a:nth-child(odd) {
+          background: #daf5fe;
+        }
+        a:nth-child(even) {
+          background: #eefcff;
+        }
+      }
+    }
+  }
+
+  .page_footer { //页面底部
+    background: #e6e9ec;
+    .button {
+      font-weight: bold;
+      color: #627482;
+    }
+  }
+}

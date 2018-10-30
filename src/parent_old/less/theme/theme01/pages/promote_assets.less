@@ -1,0 +1,142 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+
+.promote_assets{
+  background: #E9EDF3;
+  height: 100%;
+  width: 100%;
+
+  .promote_common_btn{
+    background: #E36262;
+    border-style: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .promote_assets_head{
+    margin-top:5%;
+    width:90%;
+    margin-left:5%;;
+    font-size: 18px;
+    background: #ffffff;
+    border-radius: 10px;
+
+    .item {
+      border-style: none !important;
+    }
+
+    .promote_assets_user{
+      background: #9CD5EF !important;
+      border-radius: 10px 10px 0 0;
+      padding-top: 25px;
+    }
+
+    .userName{
+      margin-right: 10px;
+    }
+
+    .promote_assets_money{
+      padding: 20px;
+      text-align: center;
+    }
+
+    .promote_assets_get{
+      text-align: right;
+      padding: 0 20px 20px;
+    }
+
+  }
+
+  .promote_assets_details{
+    width: 95%;
+    margin-left: 2.5%;
+    padding-top: 10%;
+    text-align: center;
+
+    .details{
+      font-size: 16px;
+    }
+
+    .details_table {
+      color: #2E344B;
+      width: 100%;
+      margin-top: 10px;
+      text-align: center;
+
+      .details_col {
+        padding: 10px 0;
+        margin-bottom: 5px;
+      }
+
+      .details_top_line {
+        border-style: solid;
+        border-top-width: 1px;
+        border-top-color: #c8c4c4 !important;
+      }
+
+      .col_color1_1 {
+        color: #ffffff;
+        background: #506FC0;
+      }
+
+      .col_color1_2 {
+        color: #ffffff;
+        background: #537DC4;
+      }
+
+      .col_color2 {
+        background: #EEEEEE;
+      }
+
+      .col_color3 {
+        background: #FFFFFF;
+      }
+    }
+  }
+
+  .promote_details_btn{
+    text-align: center;
+    @media screen  and (max-width: 600px)   {
+      padding: 25px;
+    }
+    @media screen  and (min-width: 601px)   {
+      padding: 60px 25px;
+    }
+
+    .details_btn{
+      background: #83b3d9;
+    }
+  }
+
+  .promote_query{
+    .display-flex;
+    flex-direction: row;
+    -webkit-flex-direction:row;
+    padding: 5px;
+    width: 90%;
+    margin-left: 5%;
+
+    .promote_query_input{
+      width: 80%;
+      border-style: solid;
+      border-color: #d5d9df;
+      border-radius: 2px;
+    }
+
+    .promote_query_btn{
+      width: 60px;
+      height: 30px;
+      border-radius: 10px;
+      border-style: none;
+      background: #E36262;
+      color: #fff;
+    }
+  }
+}
+
+.promote_btn_gray{
+    background: #8b8f94 !important;
+}

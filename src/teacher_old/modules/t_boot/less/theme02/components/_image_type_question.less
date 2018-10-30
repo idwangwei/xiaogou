@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@import "./../include/_mixins";
+
+//图片类型的问题
+
+.image-type-question {
+  width: 100%;
+  layout-box{
+    font-size: 20px;
+  }
+  .num-checkbox-container{
+    border-bottom: 1px solid #DDDDDD;
+    padding: 5px 16px;
+    position: relative;
+    .num-checkbox{
+      font-size: 30px;
+      color: #999999;
+    }
+    .num{
+      position: absolute;
+      top: 12px;
+      left: 60px;
+    }
+  }
+
+  .question-content {
+    //margin: 5px 8px 0 8px;
+    .question-title {
+      .white-bold(140, 14px, black);
+      line-height: 25px;
+      margin-bottom: 10px;
+      border: 1px solid gold;
+    }
+    img {
+      //width: 100%;
+    }
+  }
+  .sub-toolbar {
+    border: 2px solid #DDDDDD;
+    .display-flex;
+    .tool-item {
+      height: 30px;
+      .flex_1;
+      border-left: 1px solid #DDDDDD;
+      border-right: 1px solid #DDDDDD;
+      text-align: center;
+      padding-top: 5px;
+      .white-bold(140, 15px, rgb(20, 98, 210));
+      &:first-child {
+        border-left: none;
+      }
+      &:last-child {
+        border-right: none
+      }
+      i {
+        font-size: 17px;
+        padding-right: 3px;
+      }
+    }
+  }
+}

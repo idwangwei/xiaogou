@@ -1,0 +1,186 @@
+@import './../../../less/theme02/include/_mixins';
+//排行榜弹出显示框
+.compute_fighter_rank_data{
+  background: #fe6a5a;
+  border-radius: 10px;
+  width: 90%;
+  height: 70%;
+  overflow: hidden;
+  .display-flex-pure;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+
+
+  -webkit-animation: superScaleIn 0.2s ease-in-out;
+  -webkit-animation-fill-mode:both;
+  animation: superScaleIn 0.2s ease-in-out;
+  animation-fill-mode:both;
+
+  /*斗士榜顶部背景*/
+  .bg_wrap_fighter{
+    background: #2f325e url("../../../tImages/msg/msg_fighter_bg.png") 0 0 no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    padding-bottom: 10px;
+    .bg_wrap_fighter_layer_1{
+      height: 100%;
+      width: 100%;
+      .display-flex;
+      align-items: flex-start;
+      -webkit-align-items: flex-start;
+      padding-top: 6px;
+
+      .top_bg_fighter_middle{
+        height: 80px;
+      }
+    }
+    .bg_wrap_fighter_layer_2{
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      .display-flex-pure;
+      justify-content: space-between;
+      align-items: flex-end;
+      -webkit-justify-content: space-between;
+      -webkit-align-items: flex-end;
+      .top_bg_fighter_left{
+        height: 80px;
+      }
+      .top_bg_fighter_right{
+        height: 80px;
+      }
+    }
+  }
+
+  /*斗士榜表头*/
+  .fighter_rank_header{
+    display: flex;
+    display: -webkit-flex;
+    margin: 4px 10px;
+    padding: 0 16px;
+    .fighter_rank_header_left{width: 50%}
+    .fighter_rank_header_right{
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      display: -webkit-flex;
+      -webkit-justify-content: space-around;
+      .frh_right_div{
+        width: 25%;
+        .display-flex;
+        color: #fff;
+        text-align: center;
+        img{height: 36px}
+        font-size: 12px;
+        line-height: 13px;
+
+        @media screen and(min-width: 321px){
+          padding: 2px;
+          margin: 2px;
+        }
+
+        @media screen and(min-width: 360px){
+          font-size: 13px;
+          line-height: 14px;
+        }
+        @media screen and(min-width: 414px){
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+      .frh_right_1{
+        background-color: #df3e3e;
+      }
+      .frh_right_2{
+        background-color: #469fe8;
+      }
+      .frh_right_3{
+        background-color: #e287d7;
+      }
+
+    }
+  }
+
+  /*斗士榜排行信息*/
+  .fighter_rank_list_box{
+    overflow: hidden;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    margin: 0 10px 30px 10px;
+    .item{padding: 4px 16px}
+    .fighter_rank_list{
+      .display-flex-pure;
+      border: none;
+      border-bottom-style: dashed;
+      border-bottom-width: 2px;
+      border-bottom-color: #ddd;
+
+      .fighter_rank_list_left{
+        width: 50%;
+        .display-flex-pure;
+        .fr_list_index{
+          width: 40px;
+          line-height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .fr_list_info{
+          .display-flex-pure;
+          .flex_1;
+          flex-direction: column;
+          -webkit-flex-direction: column;
+          justify-content: center;
+          -webkit-justify-content: center;
+
+          .fr_list_student_name{color: #666666}
+          .fr_list_clazz_name{font-size: 12px;color: #999999}
+        }
+      }
+      .fighter_rank_list_right{
+        width: 50%;
+        .display-flex-pure;
+        .fr_list_num{
+          width: 25%;
+          .display-flex;
+          color: #666666;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+    .fighter_rank_list_user{
+      color: #811701;
+      .fighter_rank_list_left{
+        .fr_list_info{
+          .fr_list_student_name{color: #811701}
+          .fr_list_clazz_name{color: #811701}
+        }
+      }
+      .fighter_rank_list_right{
+        .fr_list_num{color: #811701}
+      }
+
+    }
+    .fighter_rank_list:nth-child(1){
+      .fr_list_num{color: #fcb118!important;}
+      .fr_list_student_name{color: #fcb118!important;}
+    }
+    .fighter_rank_list:nth-child(1),.fighter_rank_list:nth-child(2),.fighter_rank_list:nth-child(3){
+      .fr_list_index{
+        color: red;
+      }
+    }
+    .fighter_rank_list:last-child{
+      border-bottom-width: 0!important;
+    }
+  }
+  @media screen  and (min-width: 768px)   {
+    width: 70%;
+  }
+  @media screen  and (min-width: 1024px)   {
+    width: 50%;
+  }
+
+}

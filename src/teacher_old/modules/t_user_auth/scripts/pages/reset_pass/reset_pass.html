@@ -1,0 +1,18 @@
+<ion-view title="" align-title="center" hide-nav-bar="true">
+    <div class="bar bar-header defined_bg">
+        <button class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()" style="color: #fff">
+            <i class="icon ion-ios-arrow-back" style="color: #fff"></i>
+            &nbsp;&nbsp;
+        </button>
+        <div class="title title-center header-item">重置密码申请</div>
+    </div>
+    <ion-content padding="true" class="has-header" >
+        <ng-form novalidate="novalidate" name="CellPhoneForm" class="list" >
+            <div class="item item-input block-input">
+                <input type="text" placeholder="请输入要找回的账号" ng-model="ctrl.formData.loginName" name="loginName" required>
+            </div>
+            <button class="button button-block defined_bg" type="submit" ng-click="ctrl.submitCellPhoneForm()">下一步
+            </button>
+        </ng-form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,141 @@
+<style>
+    .work_detail_for_stat_file .big-q{
+        border: none;
+    }
+    .work_detail_for_stat_file .small-q{
+        border: none;
+        margin: 10px 5px 10px 5px;
+        position: relative;
+        background:#E2FEDA;
+    }
+    .work_detail_for_stat_file .item{
+        border: none;
+        background:#FBF7DB ;
+    }
+    .work_detail_for_stat_file .first{
+        margin-top: 10px;
+    }
+    .work_detail_for_stat_file .item-label{
+        padding: 5px;
+    }
+    .work_detail_for_stat_file .two{
+        margin-top: 3px;
+    }
+    .work_detail_for_stat_file .paper-title-box{
+        background-color:#FBF7DB ;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .work_detail_for_stat_file .card{
+        margin: 10px 10px;
+    }
+</style>
+<ion-view title="作业批改结果" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">作业批改结果</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="true"
+                 on-scroll="getScrollPosition()"
+                 class="work_detail_for_stat_file"
+            >
+        <div class="paper-title-box">
+            <div class="item  item-label work-paper-title first" id="paper">
+                <span ng-bind="data.paper.title+'('+data.paper.paperScore+'分)'"></span>
+            </div>
+            <div class="item  item-label work-paper-title two" style="font-size: 18px">
+                <span ng-bind="wData.currentWork.sName"></span>
+            </div>
+            <div class="item  item-label work-paper-title" style="font-size:16px ">
+                <span>
+                    <span class="deserve-score" ng-bind="'首次做得分: '"></span>
+                    <span class="actual-score" ng-bind="data.paper.firstScore"></span>
+                    <span class="deserve-score" ng-bind="'分'"></span>
+                </span>
+            </div>
+            <div class="item  item-label work-paper-title" style="font-size:16px ">
+                <span>
+                    <span class="deserve-score" ng-bind="'改错后得分: '"></span>
+                    <span class="actual-score" ng-bind="data.paper.latestScore"></span>
+                    <span class="deserve-score" ng-bind="'分'"></span>
+                </span>
+            </div>
+        </div>
+
+        <div ng-repeat="bigQ in data.paper.bigQList track by $index" ng-init="bigIndex=$index">
+            <div class="big-q">
+                <div style="background:#b8cfe4 ">
+                    <label style="font-size: 16px">
+                        {{bigQ.bigQVoIndex}}、{{bigQ.title}}&nbsp;
+                        <span>
+                            <span ng-bind="'('+bigQ.score+'分)'"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div ng-repeat="record in bigQ.qsList track by record.id"
+                 ng-init="smallQIndex=$index"
+                 class="card">
+                <div class="image-type-question">
+                    <div class="question-content">
+                        <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index"
+                             ng-init="doneIndex=$index;doneLast=$last">
+                            <span ng-if="doneIndex==0">{{'第'+(record.seqNum+1)+'题'}}</span>
+
+                            <div class="small-q" id="{{record.id+key+'|paper'}}"
+                                 ng-click="showQ(doneInfo,$event)">
+                                <label style="font-size: 15px;width: 100%;"
+                                       ng-click="showQ(doneInfo,$event)">
+                                    <span ng-if="doneIndex==0">{{'首次做: '}}</span>
+                                <span ng-if="doneIndex>=1" style="color: red;font-size: 15px;">{{'改错后: '}}
+                                </span>
+                            <span>
+                            <span class="actual-score" ng-bind="doneInfo.score"></span>
+                             <span class="deserve-score" ng-bind="'/'+record.score+'分'">  </span>
+
+                                </span>
+                                <span>
+                                    <img ng-src="{{$root.loadImg('other/icon_yes.png')}}" style="width:15px;height: 15px "
+                                         ng-show="doneInfo.passFlag==2">
+                                        <img ng-src="{{$root.loadImg('other/icon_yes2.png')}}"
+                                             style="width:15px;height: 15px "
+                                             ng-show="doneInfo.passFlag==1">
+                                        <img ng-src="{{$root.loadImg('other/icon_no.png')}}"
+                                             style="width:15px;height: 15px "
+                                             ng-show="doneInfo.passFlag==0">
+                                </span>
+
+                                </label>
+                                <i ng-class="!doneInfo.showQFlag==true?
+                                'ion ion-ios-arrow-down':'ion ion-ios-arrow-up'"
+                                   ng-click="showQ(doneInfo,$event)"
+                                   style="color: green;font-size: 30px;  position: absolute;right: 0;  bottom: 0px;">
+                                </i>
+                            </div>
+                            <div compile-html="record.qContext" show_type="correct"
+                                 current_q_input="doneInfo.inputList" ng-if="doneInfo.showQFlag"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+    <div class="scrollToTop" ng-click="scrollTop()"></div>
+    <!--<ion-footer-bar class="bg-balanced">
+
+        <button class="button-clear bg-calm  bar-item"
+                style="flex: 1;font-weight: bold;color: white"
+                ng-click="goTopBtnClick()">
+            <i class="icon ion-arrow-up-c">
+            </i>
+            去顶部
+        </button>
+    </ion-footer-bar>-->
+</ion-view>
+

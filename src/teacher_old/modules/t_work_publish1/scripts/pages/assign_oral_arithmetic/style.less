@@ -1,0 +1,126 @@
+.assign_oral_arithmetic {
+  .oral_arithmetic_setting {
+    background-color: #e8e8ee;
+    .paper-title{
+      font-size: 1rem;
+      color: #666666;
+      background-color: #ffffff;
+      padding: 6px 16px 6px 28px;
+    }
+  }
+
+  .oral_arithmetic_setting_count {
+    margin: 6px 0;
+    background-color: #fff;
+    //.display_flex(column, space-between, center);
+    .count-title {
+      height: 34px;
+      line-height: 34px;
+      color: #bcbcbc;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 0 28px;
+    }
+    .count-setting {
+      border-bottom: 1px solid #dbdbdb;
+      border-top: 1px solid #dbdbdb;
+      color: #666666;
+      padding: 5px 16px 5px 28px;
+      font-size: 16px;
+      .count-setting-item{
+        .display_flex(row, flex-start, center);
+        .count-setting-item-diy{
+          .display_flex(row,flex-start,center);
+          flex: 1;
+          -webkit-flex: 1;
+        }
+      }
+      .ion-ios-checkmark{
+        color: #4984df;
+      }
+
+      i{
+        margin: 0 10px 0 0;
+        font-size: 25px;
+      }
+      input {
+        margin: 0 5px;
+        height: 24px;
+        width: 45px;
+      }
+    }
+  }
+  .oral_arithmetic_setting_Time {
+    margin: 0 0 6px 0;
+    background-color: #fff;
+    .time-title {
+      height: 34px;
+      line-height: 34px;
+      color: #bcbcbc;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 0 16px 0 28px;
+    }
+    .time-setting {
+      border-bottom: 1px solid #dbdbdb;
+      border-top: 1px solid #dbdbdb;
+      color: #666666;
+      padding: 5px 16px 5px 28px;
+      font-size: 16px;
+      .time-setting-item{
+        .display_flex(row, flex-start, center);
+        .time-setting-item-diy{
+          .display_flex(row, flex-start, center);
+
+          flex: 1;
+          -webkit-flex: 1;
+        }
+      }
+      .ion-ios-checkmark{
+        color: #4984df;
+      }
+
+      i{
+          margin: 0 10px 0 0;
+          font-size: 25px;
+        }
+      input {
+        //border: solid 1px #8b8c8b;
+        margin: 0 5px;
+        height: 24px;
+        width: 45px;
+      }
+    }
+  }
+  .oral_arithmetic_setting_handwrite{
+    .handwrite-title{
+      height: 34px;
+      line-height: 34px;
+      color: #bcbcbc;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 0 16px 0 28px;
+      background-color: #fff;
+
+    }
+    .item.item-toggle{padding-left: 28px;}
+
+  }
+  .display_flex(@dir:row,@justify:center,@align:center) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+    align-items: @align;
+    -webkit-align-items: @align;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type="number"]{
+    -moz-appearance: textfield;
+  }
+}

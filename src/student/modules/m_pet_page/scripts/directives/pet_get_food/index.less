@@ -1,0 +1,166 @@
+
+@import "./../../../../m_boot/less/theme01/include/_mixins";
+.pet-get-food-warp{
+  position: absolute;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  .display-flex;
+  .pet-get-food-box{
+    width: 100%;
+    .display-flex;
+    .com_flex-direction_column;
+
+    .animation-content-top{
+      height: 250px;
+      width: 100%;
+      .display-flex;
+      position: relative;
+      .animation-bg {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        img{
+          height: 100%;
+        }
+
+        -webkit-animation: rotate-bg 6s linear infinite;
+      }
+      .animation-target {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        .target_img {
+          width: 40%;
+          max-width: 120px;
+        }
+
+        .animation-star1 {
+          position: absolute;
+          left: 30%;
+          top:40%;
+          width: 8%;
+          min-width: 16px;
+          max-width: 30px;
+          display: inherit;
+          z-index: 11;
+          -webkit-animation: star-glitter 1s linear infinite;
+        }
+        .animation-star2 {
+          position: absolute;
+          right: 28%;
+          top: 55%;
+          width: 5%;
+          min-width: 12px;
+          max-width: 20px;
+          display: inherit;
+          z-index: 11;
+          -webkit-animation: star-glitter 1.7s linear infinite;
+        }
+
+      }
+
+    }
+    .animation-content-middle{
+      position: relative;
+      z-index: 100;
+      width: 80%;
+      max-width: 300px;
+      margin-top: -58px;
+      .display-flex;
+      img{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      div{
+        .display-flex;
+        height: 40px;
+        color: #ffde4d;
+        font-size: 18px;
+        margin-top: 24px;
+      }
+    }
+    .animation-content-bottom{
+      display: flex;
+      display: -webkit-flex;
+      padding: 20px;
+      margin-top: 25px;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      img{
+        height: 40px;
+      }
+    }
+  }
+
+  @keyframes star-glitter {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+
+  @-webkit-keyframes star-glitter /*Safari and Chrome*/
+  {
+    0% {
+      opacity: 1;
+      -webkit-opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+      -webkit-opacity: 0.6;
+    }
+    100% {
+      opacity: 0.1;
+      -webkit-opacity: 0.1;
+    }
+  }
+
+  @keyframes rotate-bg {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes rotate-bg /*Safari and Chrome*/
+  {
+    0% {
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+
+
+}
+
+.pet-get-food-warp.ng-enter{
+  animation: fadeIn 0.2s;
+}

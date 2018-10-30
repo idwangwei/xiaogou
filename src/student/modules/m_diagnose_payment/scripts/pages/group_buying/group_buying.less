@@ -1,0 +1,193 @@
+@import '../../../../m_boot/less/theme01/include/_mixins';
+
+.group_buying {
+
+  .myHeader {
+    background: rgba(252, 111, 86, 0) !important;
+    border: none;
+    .title, .button i {
+      color: #fff !important;
+    }
+    z-index: 10 !important;
+  }
+  .myHeaderBack {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10 !important;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  background-color: #EBECF1 !important;
+  //.has-header {
+  //  top: 0px !important;
+  //}
+  .group_content_title {
+    //position: absolute;
+    //top: -44px;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    .background_change(#5185F3, #7bE2EE);
+
+    .group_content_title_bg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .group_content_title_word {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        z-index: 15;
+        width: 50%;
+        height: 35%;
+        max-width: 300px;
+        max-height: 240px;
+      }
+      .group_content_title_bg_top {
+        background: url("../../../../m_global/sImages/weixin_pay/GTA0001.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        height: 100%;
+        width: 60%;
+        //min-height: 300px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        z-index: 10;
+      }
+      .group_content_title_bg_bottom {
+        position: absolute;
+        bottom: -30px;
+        width: 100%;
+        height: 85%;
+        z-index: 12;
+
+        //min-height: 300px;
+        .group_content_title_bg_bottom_left {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0005.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 100%;
+          width: 35%;
+          left: 0px;
+          bottom: 0px;
+          z-index: 13;
+        }
+        .group_content_title_bg_bottom_right {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0006.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 80%;
+          width: 30%;
+          right: 0px;
+          bottom: 0px;
+          z-index: 13;
+        }
+      }
+
+    }
+
+  }
+  .group_buying_content {
+    //top: 0px !important;
+    z-index: 8 !important;
+
+    .group_content_item {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+
+      //position: absolute;
+      //top: 76px;
+      .group_content_item_list {
+        padding: 4%;
+        .list_item {
+          .list_type {
+            color: #3F51B5;
+            font-size: 14px;
+            margin-left: -16px;
+            margin-right: 5px;
+          }
+
+          @media screen and (max-height: 625px) {
+            padding: 3% 5%;
+            font-size: 16px;
+          }
+          @media screen and (min-height: 625px) {
+            padding: 4% 5%;
+            font-size: 18px;
+          }
+          span {
+            color: #484868;
+            white-space: normal;
+          }
+        }
+      }
+      .group_buying_item_des {
+        text-align: center;
+        p {
+          color: #9E9EB1;
+          font-size: 14px;
+        }
+      }
+    }
+
+    //.group_buying_foot {
+    //  text-align: center;
+    //  margin-top: 5%;
+    //  .submit_button {
+    //    border: none;
+    //    color: #000000;
+    //    width: 160px;
+    //    height: 60px;
+    //    background: url("../../../sImages/weixin_pay/groupBuy01.png") 0px 0px no-repeat;
+    //    background-size: 100% 100%;
+    //  }
+    //
+    //}
+
+  }
+  .group_buying_foot {
+
+    height: 70px;
+    background-color: #ebecf1;
+    background-size: 0;
+    .foot_div {
+      width: 100%;
+      text-align: center;
+      .submit_button {
+        border: none;
+        color: #000000;
+        width: 160px;
+        height: 60px;
+        background: url("../../../../m_global/sImages/weixin_pay/groupBuy01.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
+  }
+
+}

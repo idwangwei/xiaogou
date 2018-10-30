@@ -1,0 +1,165 @@
+﻿<ion-view title="" hide-nav-bar="true" cache-view="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'"
+            ng-bind="ctrl.sectionData.label" ng-if="!ctrl.isCompetitionPaper"></h1>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'"
+            ng-bind="'成绩在<60内'" ng-if="ctrl.isCompetitionPaper"></h1>
+
+    </ion-header-bar>
+
+    <ion-content padding="false" class="section_student_list_file"
+                 style="margin-bottom: 38px;"  on-scroll="ctrl.rememberScrollPosition()">
+        <!--竞赛试卷标题-->
+        <competition-add-tip-teacher></competition-add-tip-teacher>
+        <!--试卷名称-->
+        <div class="item  item-label work-paper-title"
+             ng-show="ctrl.data.stu.correctedStus.length && !ctrl.isCompetitionPaper"
+             id="paper">
+            <span ng-bind="ctrl.wData.currentWork.paperName+(ctrl.isFinalAccess?'测试':'')+'('+ctrl.data.stu.totalScore+'分)'"></span>
+        </div>
+
+
+        <auto-list-con >
+            <auto-list ng-repeat="correctedStu in ctrl.showData.stuList " item="item">
+                <auto-list-content class="list-content_stu">
+                    <div class="list-left_stu" ng-if="correctedStu.gender!='-1'&&ctrl.showSelectedFlag"
+                         ng-click="correctedStu.selected=!correctedStu.selected">
+                        <i ng-class="correctedStu.selected==true?
+                        'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'">
+                        </i>
+                    </div>
+                    <div class="list-center-stu" ng-click="ctrl.goWorkDetail(correctedStu)" id="{{correctedStu.id}}"
+                         ng-init="correctedStu.stuImg=(correctedStu.gender=='-1'?'person/delete-student.png':(correctedStu.gender=='0'?'person/student-f.png':'person/student-m.png'))"
+                         ng-style="{'padding-bottom':isCompetitionPaper ? '8px' : '0'}">
+                        <div class="left-img">
+
+                            <img ng-src="{{$root.loadImg(correctedStu.stuImg)}}"
+                                 alt="" ng-click="ctrl.goWorkDetail(correctedStu)"/>
+
+                            <div class="name">{{correctedStu.name}}</div>
+                        </div>
+
+                        <div class="center-span">
+                            <div class="second position-set">
+                                <span>
+                                      <i ng-class="ctrl.data.workSort.showFirstDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                                         style="color:rgb(56, 234, 56);"
+                                         ng-show="ctrl.data.workSort.showFirstFlag">
+                                      </i>
+                                </span>
+                                <span style="margin-left: 12px" ng-show="!ctrl.data.workSort.showFirstFlag"></span>
+                                <span ng-bind="'得分: '"></span>
+                                <span style="color: rgb(53, 69, 207)!important;font-size: 20px"
+                                      ng-bind="correctedStu.first"></span>
+                            </div>
+                            <div class="second position-set">
+                                <span>
+                                      <i ng-class="ctrl.data.workSort.showElapseDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                                         style="color:rgb(56, 234, 56);"
+                                         ng-show="ctrl.data.workSort.showElapseFlag">
+                                      </i>
+                                </span>
+                                <span style="margin-left: 12px" ng-show="!ctrl.data.workSort.showElapseFlag"></span>
+                                <span ng-bind="correctedStu.elapse.seconds===0?'用时: '+correctedStu.elapse.minutes+'分钟':'用时: '+correctedStu.elapse.minutes+'分'+correctedStu.elapse.seconds+'秒'"></span>
+                            </div>
+
+                            <div class="second position-set" ng-if="correctedStu.reworkTimesVo==0 && !ctrl.isCompetitionPaper">
+                               <span>
+                                      <i ng-class="ctrl.data.workSort.showLastDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                                         style="color:rgb(56, 234, 56);"
+                                         ng-show="ctrl.data.workSort.showLastFlag">
+                                      </i>
+                                </span>
+                                <span style="margin-left: 12px" ng-show="!ctrl.data.workSort.showLastFlag"></span>
+                                <span ng-bind="'改错后: -'"></span>
+                            </div>
+                            <div class="second position-set" ng-if="correctedStu.reworkTimesVo>0 && !ctrl.isCompetitionPaper">
+                               <span>
+                                      <i ng-class="data.workSort.showLastDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                                         style="color:rgb(56, 234, 56);"
+                                         ng-show="ctrl.data.workSort.showLastFlag">
+                                      </i>
+                                </span>
+                                <span style="margin-left: 12px" ng-show="!ctrl.data.workSort.showLastFlag"></span>
+                                <span ng-bind="'改错后: '"></span>
+                                <span style="color:  rgb(53, 69, 207)!important;font-size: 20px"
+                                      ng-bind="correctedStu.last">
+                                </span>
+                            </div>
+                            <div class="second position-set">
+                                <span>
+                                      <i ng-class="ctrl.data.workSort.showLastSubTimeDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                                         style="color:rgb(56, 234, 56);"
+                                         ng-show="ctrl.data.workSort.showLastSubTimeFlag">
+                                      </i>
+                                </span>
+                                <span style="margin-left: 12px" ng-show="!ctrl.data.workSort.showLastSubTimeFlag"></span>
+                                 <span ng-bind="correctedStu.simLatestSubmitTime">
+                                 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-right_stu" ng-if="!ctrl.isCompetitionPaper">
+                        <div class="tool-bar-item">
+                            <div>
+                                <img ng-src="{{$root.loadImg(correctedStu.studentPraise.img)}}"
+                                     ng-click="ctrl.showPraiseDetail(correctedStu,1)"
+                                     ng-if="correctedStu.studentPraise">
+                            </div>
+                            <div>
+                                <img ng-src="{{$root.loadImg(correctedStu.teacherPraise.img)}}"
+                                     ng-click="ctrl.editPraise(correctedStu)"
+                                     ng-if="correctedStu.teacherPraise">
+                                <img ng-src="{{$root.loadImg('praise/praise.png')}}"
+                                     ng-click="ctrl.editPraise(correctedStu)"
+                                     ng-if="!correctedStu.teacherPraise">
+                            </div>
+                            <div>
+                                <img ng-src="{{$root.loadImg(correctedStu.parentPraise.img)}}"
+                                     ng-click="ctrl.showPraiseDetail(correctedStu,3)"
+                                     ng-if="correctedStu.parentPraise">
+
+                            </div>
+                        </div>
+                    </div>
+                </auto-list-content>
+            </auto-list>
+        </auto-list-con>
+
+
+    </ion-content>
+    <loading-processing load-top="100" ng-hide="isRefresh"></loading-processing>
+    <ion-footer-bar class="bg-balanced" ng-if="!ctrl.showSelectedFlag && !ctrl.isCompetitionPaper">
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.handlePraiseBtnClick(false)" >
+            <i class="icon ion-ios-color-wand"></i>
+            评价
+        </button>
+    </ion-footer-bar>
+    <ion-footer-bar style=" background: #5c6761 !important;"
+                    ng-if="ctrl.showSelectedFlag">
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.handleSureBtnClick()">
+            <i class="icon ion-document-text"></i>
+            确定
+        </button>
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.handlePraiseAllBtnClick()">
+            <i class="icon ion-checkmark-round"></i>
+            {{selectStuAllFlag==true?'全选':'取消全选'}}
+        </button>
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.handlePraiseUndoBtnClick()">
+            <i class="icon ion-forward"></i>
+            取消
+        </button>
+    </ion-footer-bar>
+</ion-view>

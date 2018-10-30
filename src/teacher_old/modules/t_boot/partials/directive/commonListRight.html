@@ -1,0 +1,17 @@
+
+<div ng-show="showCheckbox">
+    <div class="tool-bar-item" ng-show="!list.isClicked" ng-click="handleClick()">
+        <i class="icon ion-android-checkbox-outline-blank"></i>
+    </div>
+    <div class="tool-bar-item" ng-show="list.isClicked" ng-click="handleClick()">
+        <i class="icon ion-android-checkbox-outline"></i>
+    </div>
+</div>
+
+<div class="tool-bar-item" ng-click="rightFun()" ng-show="showRightItem">
+    <i class="icon {{rightIcon}}"></i>
+</div>
+
+
+
+

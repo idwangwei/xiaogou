@@ -1,0 +1,60 @@
+<ion-view hide-nav-bar="true" class="group_buying">
+    <!--<ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+    </ion-header-bar>-->
+    <div class="myHeaderBack" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+    </div>
+    <!--<div class="group_content_title">
+        <div class="group_content_title_bg">
+            <img class="group_content_title_word" src="{{$root.loadImg('weixin_pay/groupBuy04.png')}}"/>
+
+            <div class="group_content_title_bg_top">
+            </div>
+            <div class="group_content_title_bg_bottom">
+                <div class="group_content_title_bg_bottom_left"></div>
+                <div class="group_content_title_bg_bottom_right"></div>
+            </div>
+        </div>
+    </div>-->
+    <ion-content overflow-scroll="true" class="group_buying_content">
+        <div class="group_content_title">
+            <div class="group_content_title_bg">
+                <img class="group_content_title_word" src="{{$root.loadImg('weixin_pay/groupBuy04.png')}}"/>
+
+                <div class="group_content_title_bg_top">
+                </div>
+                <div class="group_content_title_bg_bottom">
+                    <div class="group_content_title_bg_bottom_left"></div>
+                    <div class="group_content_title_bg_bottom_right"></div>
+                </div>
+            </div>
+        </div>
+        <!--<div style="height:120px"></div>-->
+        <div class="group_content_item">
+            <div class="group_content_item_list">
+                <div class="list_item" ng-repeat="item in ctrl.goodsDescriptionList">
+                    <i class="ion-record list_type"></i>
+                    <span>{{item}}</span>
+                </div>
+                <div class="group_buying_item_des">
+                    <p>注：优惠额度仅用于一次性消费，不退现，不找零。</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </ion-content>
+    <ion-footer-bar class="group_buying_foot">
+        <div class="foot_div">
+            <button class="button button-energized submit_button" ng-click="ctrl.createTeam()">
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

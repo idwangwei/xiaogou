@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+span {
+    border: none;
+}
+
+app-textarea {
+    display: inline-block;
+    width: 315px !important;
+    min-height: 150px;
+    border: 1px solid #959191;
+    /*background: hsl(188, 75%, 81%);*/
+    background: #FAFAD2;
+    border-radius: 5px;
+    /*开启后试题框有滚动，那么滚动查看试题，会出现打勾打叉被遮挡的情况*/
+    /*overflow: auto !important;*/ 
+}
+
+app-textarea[correctedflag=true] .comment {
+    background: none;
+    border: none;
+}
+
+app-textarea[correctedflag=true]  [word-answer-input-box] {
+    border-bottom: none !important;
+}
+
+.appTextarea {
+    /*设置最小区域是为了当区域为空时也可以接受点击事件*/
+    display: inline-block;
+    min-width: 25px;
+    min-height: 15px;
+    /*background: hsl(188, 75%, 81%);*/
+    background: #FAFAD2;
+    border-radius: 5px;
+    line-height: 30px;
+    position:relative;
+    /*vertical-align: baseline;*/
+}
+
+/*解题步骤说明框*/
+.comment {
+    line-height: 30px;
+    min-height: 30px;
+    background: #C2F8F5;
+    display: block;/*解析换行问题*/
+    /*vertical-align: top;*/
+}
+
+.commentPlaceHolderRight {
+    width: 20px;
+    min-height: 30px;
+    display: none;/*解析换行问题*/
+    /*background: #8FBDDE;*/
+}
+.variable-comment .commentPlaceHolderRight{
+    display: inline-block!important;/*方程式的文不换行*/
+}
+.variable-comment .comment{
+    display: inline-block!important;/*方程式的文不换行*/
+}
+
+/*光标*/
+.cursor {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    height: 18px;
+}
+
+.newline:after {
+    content: ' ';
+    display: block;
+}
+
+.cursorShow {
+    border-right: 1px solid #000000;
+}
+
+.cursorHide {
+    border-right: 1px solid #ffffff;
+}
+
+.input-area {
+    /*background: hsl(188, 75%, 81%);*/
+    background: #FAFAD2;
+    border-radius: 5px;
+}
+
+.img-input-area {
+   /* background: hsl(188, 75%, 81%);*/
+    background: #FAFAD2;
+    border-radius: 5px;
+}
+
+
+

@@ -1,0 +1,55 @@
+<ion-view hide-nav-bar="true" class="submit-exchange-goods">
+    <ion-header-bar>
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i><span style="color: #4A6B9D!important;">商品</span>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';font-weight: 800;">填写地址</h1>
+    </ion-header-bar>
+    <ion-content class="submit-goods-content">
+        <div class="goods-info">
+            <div class="goods-img-big">
+                <img ng-src="{{ctrl.selectGoods.imgUrl}}">
+            </div>
+            <p class="goods-item" ng-bind="ctrl.selectGoods.name"></p>
+            <div class="goods-item-credits">
+                <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                <p style="margin: 0" ng-bind="'智慧币：'+ctrl.selectGoods.credits"></p>
+            </div>
+            <!--<p ng-bind="'参考价：'+ctrl.selectGoods.price"></p>-->
+        </div>
+        <div style="width: 100%;margin-bottom: 100px">
+            <ng-form name="receiverInfoForm"
+                     class="input-address"
+                     novalidate style="width: 100%">
+                <input type="text" ng-model="ctrl.currentReceiver.name" placeholder="请填写收货人" class="input-name"
+                       ng-readonly="!!ctrl.selectGoods.isOrder">
+                <input type="text" ng-model="ctrl.currentReceiver.phone" placeholder="请填写联系电话"
+                       class="input-phone-num" pattern="^1[0-9]{10}$"
+                       ng-readonly="!!ctrl.selectGoods.isOrder">
+                <textarea rows="6" id="receiver_address" placeholder="请填写详细地址，省、市、区、街道、单位或小区，以保证您能正常收到物品"
+                          class="input-address-detail"
+                          ng-readonly="!!ctrl.selectGoods.isOrder">
+            </textarea>
+                <div class="set-default-butn">
+                    设为默认
+                    <div class="on-off-button"
+                         ng-style="{'background-color':ctrl.onOrOffFlag?'rgb(12, 206, 89)':'#959b9a'}"
+                         ng-click="ctrl.onOrOffClickEvent()">
+                        <div class="on-off"
+                             ng-style="{'transform':ctrl.onOrOffFlag?'translate3d(40px, 0, 0)':'translate3d(0, 0, 0)','-webkit-transform':ctrl.onOrOffFlag?'translate3d(40px, 0, 0)':'translate3d(0, 0, 0)'}">
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+
+        </div>
+    </ion-content>
+    <div class="goods-exchange-butn">
+        <div class="exchange-butn" ng-if="!ctrl.selectGoods.isOrder"
+             ng-style="{'background-color': ctrl.selectGoods.hasStock?'#97f569':'#92a987'}"
+             ng-click="ctrl.submitGoodsForOrder()">提交
+        </div>
+        <div class="exchange-butn" ng-if="ctrl.selectGoods.isOrder" ng-click="ctrl.submitFinishOrder()">确认收货</div>
+        <span>提交后，有关于商品兑换的问题，可致电：028-86956907</span>
+    </div>
+</ion-view>

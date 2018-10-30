@@ -1,0 +1,35 @@
+<ion-view hide-nav-bar=true class="clazz_manage_class_list">
+    <ion-header-bar class="bar-better" align-title="center">
+        <a class="button buttons  button-clear common-back-btn"
+                ng-click="ctrl.back()"
+                nav-direction="back">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </a>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">班级</h1>
+    </ion-header-bar>
+    <ion-content padding="false"  >
+   <!--     <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>-->
+        <div class="list card" ng-repeat="clazz in ctrl.clazzList">
+            <div class="item item-divider item-avatar item-icon-right" ng-click="ctrl.goToClazzDetail(clazz)">
+                <img class="thumbnail-left" ng-src="{{$root.loadImg('class.svg')}}" alt=""
+                     ng-style="{'top':clazz.type === 200 ? '26px':'16px'}">
+
+                <h2 style="text-align: left;font-family: 'Microsoft YaHei'">{{'班级号:&nbsp;'+clazz.id}}</h2>
+                <p style="text-align: left">{{clazz.name}}</p>
+                <p ng-if="clazz.type === 200">课外奥数培训班</p>
+                <div class="nav-clazz-info-icon" ng-if="clazz.type == 200">奥数</div>
+                <i class="icon ion-chevron-right"></i>
+            </div>
+            <div class="item item-text-wrap" style="text-align: left">
+                <div>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:&nbsp;{{clazz.gradeName}}</div>
+             <!--    <div>所属学校:{{clazz.schoolName}}</div>
+                <div>创建时间:{{clazz.createdTime}}</div> -->
+                <div>申请状态:&nbsp;{{clazz.auditStatusName}}</div>
+                <div>班级人数:&nbsp;{{clazz.studentCount}}</div>
+                <!-- <pre>{{clazz|json}}</pre> -->
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+</ion-view>

@@ -1,0 +1,113 @@
+<style type="text/css">
+    .tip_first{
+        margin-top: 15px;
+    }
+    .tip_second {
+        margin-left: 50px;
+    }
+    .register_success_file .card{
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+    .register_success_file .bg{
+        background-color:#d2f7ef!important;color: black!important;
+    }
+    .register_success_file p{
+        color: black!important;
+    }
+</style>
+<ion-view title="注册成功" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <a class="button button-clear" style="display: block;" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </a>
+        <h1 class="title " style="font-family: 'Microsoft YaHei'">注册成功</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="register_success_file">
+        <h3 class="tip_first register-title"> 恭喜你，注册成功！</h3>
+        <div class="text-title card">
+            <div class="list ">
+                <div class="item item-divider bg" >
+                    家长的账号是:
+                </div>
+                <div class="item tip_second">
+                    <div class="row-margin" style="margin-top: 10px">
+                         <span style="font-size: 22px">
+                             <span >
+                                 <span ng-bind="loginName.substring(0,11)">
+                                 </span>
+                                 <i style="color:red;margin-left:-4px" ng-bind="loginName.substring(11,loginName.length)"></i>
+                             </span>
+
+                         </span>
+                    </div>
+                    <div class="row-margin" style="margin-top: 10px">
+                        <span >注意家长的账号是：
+                            <span style="color: red">手机号+<i ng-bind="loginName.substring(11,loginName.length)"></i>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" >
+            <div class="list ">
+                <div class="item item-divider bg"  >
+                    学生的账号是:
+                </div>
+                <div ng-repeat="student in $root.students" class="item tip_second">
+                    <div class="row-margin" style="margin-top: 10px">
+                         <span style="font-size: 22px">
+                             <span >
+                                 <span ng-bind="student.loginName.substring(0,11)">
+                                 </span>
+                                 <i style="color:red;margin-left:-4px" ng-bind="student.loginName.substring(11,student.loginName.length)"></i>
+                             </span>
+
+                         </span>
+                    </div>
+                    <div class="row-margin" style="margin-top: 10px">
+                        <span >注意学生的账号是：
+                            <span style="color: red">手机号+<i ng-bind="student.loginName.substring(11,student.loginName.length)"></i>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="font-size: 16px;margin-top: 20px;text-align: left;color: #3f93ef;padding: 10px;display: flex;display: -webkit-flex">
+            <span style="color: red;white-space: normal">重要提示：</span>
+            <span>在手机、平板和电脑上，均可用此账号登录智算365</span>
+        </div>
+        <div class="center-tip-box" style="margin-top: 20px" ng-if="flag==='system_login'">
+            <button  ng-click="goToLoginStu()"
+                     class="button  button-block "
+                     style="width: 160px">
+                马上去学生端体验
+            </button>
+        </div>
+        <div class="center-tip-box" style="margin-top: 20px">
+            <div class=" tip-box" >
+                <div class=" tip ">
+                   <!-- <p class="tip-title" >通过家长手机端，可以：</p>
+                    <div class="tips">
+                        <div class="center-tip-box">
+                            <div class="text-align-left">
+                                <p>1.查看学生成绩排行榜</p>
+                                <p>2.查看试题参考答案</p>
+                                <p>3.给学生的学习表现评奖</p>
+                            </div>
+                        </div>
+                    </div>-->
+                    <img  ng-src="{{$root.loadImg('logo_tip/register_success_tip.png')}}" width="100%">
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

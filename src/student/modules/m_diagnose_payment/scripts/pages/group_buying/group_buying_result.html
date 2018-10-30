@@ -1,0 +1,88 @@
+<ion-view hide-nav-bar=true class="group_buying_result">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button ng-show="!ctrl.retFlag && !ctrl.isSuccessFlag" class="button buttons  button-clear header-item"
+                ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">支付结果</h1>
+    </ion-header-bar>
+    <ion-content class="payResult">
+        <div class="result" ng-show="ctrl.retFlag && ctrl.isSuccessFlag">
+            <div class="pic">
+                <img ng-src="{{$root.loadImg('weixin_pay/successFlag.png')}}">
+            </div>
+            <div class="text">
+                <span>支付成功</span>
+            </div>
+            <!--列表begin-->
+            <div class="group_create_content_body_planner">
+                <div class="leader_table_header">
+                    <div class="table_col table_col_01">团主账号</div>
+                    <div class="table_col table_col_02">学生姓名</div>
+                    <div class="table_col table_col_03">选择版本</div>
+                    <div class="table_col table_col_04">优惠价</div>
+                </div>
+                <div class="leader_table_content">
+                    <div class="table_col table_col_01">
+                        <span>{{ctrl.leader.name}}</span>
+                    </div>
+                    <div class="table_col table_col_02">
+                        <span>{{ctrl.leader.loginName}}</span>
+                    </div>
+                    <div class="table_col table_col_03 form_select_type">
+                        <span>{{ctrl.leader.type}}</span>
+                    </div>
+                    <div class="table_col table_col_04">
+                        <span>￥{{ctrl.leader.price/100}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="group_create_content_body_member" ng-if="ctrl.memberList.length>0">
+                <div class="member_table_header">
+                    <div class="table_col table_col_01">团员账号</div>
+                    <div class="table_col table_col_02">学生姓名</div>
+                    <div class="table_col table_col_03">选择版本</div>
+                    <div class="table_col table_col_04">优惠价</div>
+                </div>
+                <div class="member_table_content">
+                    <div class="member_table_content_list" ng-repeat="item in ctrl.memberList">
+                        <div class="table_col table_col_01">
+                            <span>{{item.name}}</span>
+                        </div>
+                        <div class="table_col table_col_02">
+                            <span>{{item.loginName}}</span>
+                        </div>
+                        <div class="table_col table_col_03 form_select_type">
+                            <span>{{item.type}}</span>
+                        </div>
+                        <div class="table_col table_col_04">
+                            <span>￥{{item.price/100}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--列表end-->
+            </div>
+
+            <div class="successBtn" ng-click="ctrl.paySuccessStart()">
+                <img ng-src="{{$root.loadImg('weixin_pay/groupBuy06.png')}}">
+            </div>
+        </div>
+
+        <div class="result" ng-show="ctrl.retFlag && !ctrl.isSuccessFlag">
+            <div class="pic">
+                <img ng-src="{{$root.loadImg('weixin_pay/failFlag.png')}}">
+            </div>
+            <div class="text">
+                <span>支付失败</span>
+                <p>{{ctrl.failTip}}</p>
+            </div>
+            <div class="failBtn" ng-click="ctrl.payFailBack()"><span>返  回</span></div>
+        </div>
+
+        <div class="check" ng-show="!ctrl.retFlag && !ctrl.isSuccessFlag" ng-click="ctrl.queryOrderInfo()">
+            <span>查询订单失败，</span><u>刷新</u><span>试试吧</span>
+        </div>
+    </ion-content>
+</ion-view>

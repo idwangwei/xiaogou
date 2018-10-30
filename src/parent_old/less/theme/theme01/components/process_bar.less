@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+@import "./../include/_mixins";
+
+.progress {
+  height: 20px;
+  background: #ebebeb;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  //border-radius: 3px;
+  display: block;
+  span {
+    content: '';
+    position: absolute;
+
+    //top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 20px;
+    background: url("/pImages/progress.png") 0 0 repeat-x;
+    //border-radius: 3px;
+  }
+  .red {
+    background: #db3a27;
+    border-color: #c73321 #b12d1e #8e2418;
+    background-image: -webkit-linear-gradient(top, #ea8a7e 0%, #e15a4a 70%, #db3a27 100%);
+    background-image: -moz-linear-gradient(top, #ea8a7e 0%, #e15a4a 70%, #db3a27 100%);
+    background-image: -o-linear-gradient(top, #ea8a7e 0%, #e15a4a 70%, #db3a27 100%);
+    background-image: linear-gradient(to bottom, #ea8a7e 0%, #e15a4a 70%, #db3a27 100%);
+  }
+}

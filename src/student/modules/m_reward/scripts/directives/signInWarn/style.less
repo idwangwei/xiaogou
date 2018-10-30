@@ -1,0 +1,133 @@
+.sign-warn {
+  .sign-warn-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    .display-flex;
+    .sign-warn-content {
+      position: relative;
+      z-index: 1000;
+      background: #ffffff;
+      border-radius: 10px;
+      width: 85%;
+      height: 40%;
+      max-width: 320px;
+      max-height: 270px;
+      @media all and (orientation: landscape) {
+        height: 56%;
+      }
+      background-image: radial-gradient(ellipse farthest-corner at 50% 50%, #abe75a 25%, #6dd759 100%, transparent 10%);
+      //overflow: hidden;
+      .sign-warn-close {
+        z-index: 1000;
+        position: absolute;
+        color: #c5c5c5;
+        right: 5px;
+        top: 0px;
+        font-size: 28px;
+      }
+      .sign-warn-head {
+        text-align: center;
+        position: relative;
+        overflow: visible;
+        height: 25%;
+        width: 100%;
+        min-height: 60px;
+        img {
+          position: absolute;
+          left: 0px;
+          right: 0px;
+          top: -90%;
+          margin: auto;
+          width: 80%;
+          @media all and(max-height: 374px) and (orientation: landscape) {
+            width: 200px;
+            top: -70px;
+          }
+          @media all and(min-height: 374px) and (orientation: landscape) {
+            width: 300px;
+            top: -100px;
+          }
+        }
+      }
+      .sign-warn-desc {
+        .display-flex;
+        .com_flex-direction(column);
+        width: 100%;
+        min-height: 30px;
+        p {
+          font-size: 20px;
+          font-weight: bold;
+          color: #346848;
+        }
+        height: 40%;
+        @media all and(max-width: 350px) {
+          p {
+            font-size: 18px;
+          }
+        }
+        @media all and(max-height: 413px) and (orientation: landscape) {
+          height: auto;
+        }
+      }
+      .sign-warn-btn {
+        width: 100%;
+        height: 25%;
+        @media all and(max-height: 413px) and (orientation: landscape) {
+          height: auto;
+        }
+        .display-flex;
+        .com_flex-direction(row);
+        .warn-btn {
+          display: inline-block;
+          //text-align: center;
+          //height: 45px;
+          //min-height: 45px;
+          width: 143px;
+          height: 40px;
+          min-width: 143px;
+          min-height: 40px;
+          background: url('./signWarnImg/gotSignButn.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          /* background-color: #54aaf1;
+           border-radius: 30px;
+           .display-flex;
+           .com_flex-direction(row);
+           p {
+             color: #fff;
+             font-size: 28px;
+             margin: 0px;
+             font-weight: bolder;
+           }*/
+        }
+      }
+    }
+  }
+
+  .display-flex {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+  }
+
+  .con_flex-align-direction(@dir) {
+    align-items: @dir;
+    -webkit-align-items: @dir;
+  }
+
+  .con_flex-justify-direction(@dir) {
+    justify-content: @dir;
+    -webkit-justify-content: @dir;
+  }
+
+  .com_flex-direction (@direction) {
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+  }
+
+}

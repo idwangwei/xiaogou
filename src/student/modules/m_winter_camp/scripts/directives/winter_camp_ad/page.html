@@ -1,0 +1,36 @@
+<div class="winter-camp-ad-page">
+
+    <div class="ad-backdrop ">
+        <div class="ad-content">
+            <div class="content-top">
+                <i class="icon ion-ios-arrow-back" ng-click="hideAd()"><span>返回</span></i>
+                <img ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_title.png')}}" alt="">
+                <span ng-show="$root.autoShowWinterCampAdTime >= 0" class="timer-box" ng-bind="$root.autoShowWinterCampAdTime"></span>
+            </div>
+            <div class="content-middle">
+                <div class="content-bottom-layer content-bottom-layer-1">
+                    <img class="ad_word" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_word1.png')}}" alt="">
+                    <img class="ad_img" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_1.png')}}" alt="">
+                </div>
+                <div class="content-bottom-layer content-bottom-layer-2">
+                    <img class="ad_word" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_word2.png')}}" alt="">
+                    <img class="ad_img" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_2.png')}}" alt="">
+                </div>
+                <div class="content-bottom-layer content-bottom-layer-3">
+                    <img class="ad_word" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_word3.png')}}" alt="">
+                    <img class="ad_img" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_3.png')}}" alt="">
+                </div>
+                <div class="content-bottom-layer content-bottom-layer-4">
+                    <img class="ad_word" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_word4.png')}}" alt="">
+                    <img class="ad_img" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_4.png')}}" alt="">
+                </div>
+                <img style="width: 100%;margin-bottom: 50px" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_end.png')}}">
+
+            </div>
+
+        </div>
+        <div class="content-bottom">
+            <img ng-click="gotoWinterCampHome($event)" ng-src="{{$root.loadWinterCampImg('winter_camp_ad/winter_camp_ad_btn.png')}}" alt="">
+        </div>
+    </div>
+</div>

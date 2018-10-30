@@ -1,0 +1,25 @@
+<ion-view hide-nav-bar="true" class="stu-pass-levels">
+    <ion-header-bar align-title="center" class="">
+        <i class="icon ion-ios-arrow-back back-icon" ng-click="ctrl.back()"> </i>
+        <h1 class="title" ng-bind="ctrl.stuName"></h1>
+        <!--<div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.help()" style="position: absolute;right: -3px;">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>
+        </div>-->
+
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header" overflow-scroll="true">
+        <!--ng-class="$index+1 <= ctrl.passLevels ? 'pass' : 'notPass'"-->
+       <ul style="margin-top: -5px;">
+           <li ng-if="ctrl.passLevels >= 1" style="color: #2f463e;height: 30px;margin-bottom: 0;font-size:18px;">已通关知识点：</li>
+           <li ng-repeat="level in ctrl.levelsName.slice(0, ctrl.passLevels)" class="pass">
+               <span ng-bind="level.num + '.' + level.knowledgePoint"></span>
+           </li>
+           <li ng-if="ctrl.passLevels < ctrl.levelsName.length" style="color: #798995;height: 30px;margin-bottom: 0;font-size:18px;">未通关知识点：</li>
+           <li ng-repeat="level in ctrl.levelsName.slice(ctrl.passLevels)" class="notPass">
+               <span ng-bind="level.num + '.' + level.knowledgePoint"></span>
+           </li>
+       </ul>
+    </ion-content>
+</ion-view>

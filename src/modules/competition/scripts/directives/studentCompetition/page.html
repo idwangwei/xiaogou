@@ -1,0 +1,96 @@
+<div class="stu-comp-work" ng-click="doWork()">
+    <div class="m-main">
+        <header>
+            <p>{{$root.competitionSchoolTitle}}</p>
+            <p><span ng-show="$root.wlSelectedClazz.grade">{{convertToChinese($root.wlSelectedClazz.grade)}}</span>年级{{competitionType}}试卷</p>
+        </header>
+        <section>
+            <!--paper.status == 3有四种映射为3的状态（realStatus.progress == 2/3 ; realStatus.racing == 2/4）
+            当realStatus.progress == 3 &&　realStatus.racing == 4 （竞赛结束用户超时未提交）的这种状态特殊提示-->
+            <div class="before-end middle-wrap"
+                 ng-if="competition.paper.status <= 3 || competition.paper.status == 5">
+                 <!--ng-if="(competition.paper.status <= 3 || competition.paper.status == 5) && !(competition.realStatus.progress == 3&&competition.realStatus.racing == 4)">-->
+                <div class="m-row">
+                    <div class="m-info"><span>题量:</span><em>{{competition.paper.questionNumber}}道</em></div>
+                    <div class="m-info"><span>限时:</span><em>{{competition.paper.limitTime}}分钟</em></div>
+                    <div class="m-info"><span>总分:</span><em>{{competition.paper.totalScore}}分</em></div>
+                </div>
+                <div class="m-row">
+                    <div class="m-info"><span>比赛时间:</span><em>{{competition.paper.startTime + '-' +
+                        competition.paper.endTime}}</em></div>
+                </div>
+            </div>
+            <div class="m-congratulation middle-wrap" ng-if="competition.paper.status == 7">
+                <div class="m-con-img">
+                    <img ng-src="{{scSuccess}}"/>
+                </div>
+                <div class="m-report" ng-click="goReport($event)">
+                    <img ng-src="{{scReport}}"/>
+                    <span>比赛报告</span>
+                </div>
+            </div>
+            <div class="m-congratulation middle-wrap" ng-if="competition.paper.status == 8">
+                <div class="m-report" ng-click="goReport($event)">
+                    <img ng-src="{{scReport}}"/>
+                    <span>比赛报告</span>
+                </div>
+            </div>
+            <!--paper.status == 3有四种映射为3的状态（realStatus.progress == 2/3 ; realStatus.racing == 2/4）
+            当realStatus.progress == 3 &&　realStatus.racing == 4 （竞赛结束用户超时未提交）的这种状态特殊提示-->
+            <div class="after-end middle-wrap"
+                 ng-if="competition.paper.status == 4 || competition.paper.status >=6">
+                 <!--ng-if="(competition.paper.status == 4 || competition.paper.status >=6)||(competition.realStatus.progress == 3&&competition.realStatus.racing == 4) ">-->
+                <div class="m-row">
+                    <div><span>得分:</span><em>{{competition.paper.score + '分'}}</em></div>
+                </div>
+                <div class="m-row">
+                    <div><span>用时:</span><em>{{competition.paper.wasteTime}}</em></div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <!--paper.status == 3有四种映射为3的状态（realStatus.progress == 2/3 ; realStatus.racing == 2/4）
+            当realStatus.progress == 3 &&　realStatus.racing == 4 （竞赛结束用户超时未提交）的这种状态特殊提示-->
+            <!--<div class="expectation" ng-if="competition.realStatus.racing == 4 && competition.realStatus.progress == 3">-->
+                <!--你没有提交试卷，系统0分处理！-->
+            <!--</div>-->
+
+            <!--paper.status == 3有四种映射为3的状态（realStatus.progress == 2/3 ; realStatus.racing == 2/4）
+            当realStatus.progress == 3 &&　realStatus.racing == 4 （竞赛结束用户超时未提交）的这种状态特殊提示-->
+            <div class="m-btn-wrap"
+                 ng-if="competition.paper.status <= 3">
+                 <!--ng-if="competition.paper.status <= 3 && (competition.realStatus.progress != 3 || competition.realStatus.racing!=4)">-->
+                <!--<div class="m-btn-wrap" ng-if="competition.paper.status <= 3">-->
+                <img ng-src="{{bkBtn}}"/>
+                <div class="over-info">
+                    <div class="m-left-img">
+                        <img ng-src="{{scFlag}}">
+                    </div>
+                    <div class="right-info" ng-if="competition.paper.status === 1">
+                        <p>离比赛开始还剩:</p>
+                        <p>{{countDown}}</p>
+                    </div>
+                    <div class="right-info" ng-if="competition.paper.status == 2">
+                        <p>比赛火热进行中</p>
+                        <p>赶紧加入！</p>
+                    </div>
+                    <div class="right-info" ng-if="competition.paper.status == 3">
+                        <p>你的答题时间:</p>
+                        <p>还剩<span>{{countDown}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="expectation" ng-if="competition.paper.status == 4 || competition.paper.status == 6">
+                晋级结果，敬请期待！
+            </div>
+            <div class="expectation" ng-if="competition.paper.status == 5">
+                比赛已结束，你没有参加比赛！
+            </div>
+            <div class="expectation" ng-if="competition.paper.status == 8">
+                <!--  很遗憾，没有晋级...-->
+            </div>
+
+        </footer>
+    </div>
+
+</div>

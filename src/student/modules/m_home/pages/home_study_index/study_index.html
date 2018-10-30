@@ -1,0 +1,319 @@
+<ion-view hide-nav-bar="true" class="study-index-file">
+    <!--页面背景山峰、云朵、气球-->
+    <div class="content-list-bg-warp">
+        <div class="content-list-bg content-list-bg-01">
+            <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_content_bg_02.png')}}">
+        </div>
+        <div class="content-list-bg content-list-bg-02">
+            <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_content_bg_02.png')}}">
+        </div>
+        <div class="content-list-bg content-list-bg-03">
+            <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_content_bg_03.png')}}">
+        </div>
+        <div class="content-list-bg content-list-bg-04">
+            <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_content_bg_04.png')}}">
+        </div>
+        <div class="content-list-bg content-list-bg-05">
+            <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_content_bg_04.png')}}">
+        </div>
+    </div>
+
+    <!-- 切换头像-->
+    <reward-dialog ng-if="$root.showRewardDialogFlag" current-level="{{ctrl.rewardBase.level}}"
+                   level-up="{{ctrl.rewardBase.levelUp}}"
+                   experience="{{ctrl.rewardBase.experience}}" credits="{{ctrl.rewardBase.credits}}"></reward-dialog>
+
+    <div class="reward-box" ng-class="{'windows-height':ctrl.isWin}"
+         ng-style="{'padding-bottom':ctrl.isIos?'5px':'15px'}">
+        <div class="reward-head-box">
+            <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator()+'.png')}}"
+                 alt="" class="user-head" ng-click="ctrl.changeHead()" ng-if="ctrl.rewardBase">
+            <div class="user-name">
+                <p>{{ctrl.name}}</p>
+                <div class="level-name" ng-click="ctrl.levelDialog()"><label ng-if="ctrl.rewardBase">Lv.{{ctrl.rewardBase.level}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="reward-progress-box">
+            <div class="reward-progress" ng-click="ctrl.gotoLevelName()"
+                 ng-if="ctrl.rewardBase&&ctrl.rewardBase.currenLevelName">
+                <img ng-src="{{$root.loadImg('levelName/'+'group'+(!ctrl.rewardBase.title?'1':ctrl.rewardBase.title)+'LevelName'+ctrl.rewardBase.currenLevelImgIndex+'.png')}}">
+                <label>{{ctrl.rewardBase.currenLevelName}}</label>
+            </div>
+        </div>
+        <div class="reward-credits-box">
+            <div class="reward-credits" ng-if="ctrl.rewardBase" ng-click="ctrl.creditsDialog()">
+                <!--<i class="ion-heart" style="color: #f6f906;font-size: 18px;"></i>-->
+                <img ng-src="{{$root.loadImg('reward_system/reward_money.png')}}">
+                <p>{{ctrl.rewardBase.credits}}</p>
+            </div>
+        </div>
+
+    </div>
+    <!--顶部轮播广告-->
+    <div class="winter-holidays-box" ng-style="">
+        <ion-slide-box class="winter-holidays-box-slide"
+                       delegate-handle="winter-holidays-box"
+                       does-continue="true"
+                       auto-play="true"
+                       show-pager="true"
+                       slide-interval=5000>
+
+
+        <!--假期作业横幅广告-->
+        <!--<ion-slide>-->
+            <!--<div class="holiday-work-ad-wrap slide-mark" data-mark="holidayWork">-->
+                <!--<img class="img-left" ng-src="{{$root.loadImg('study_index_v2/holiday_wok_summer_ad_1.png')}}">-->
+                <!--<img class="img-right" ng-src="{{$root.loadImg('study_index_v2/holiday_wok_summer_ad_2.png')}}">-->
+            <!--</div>-->
+        <!--</ion-slide>-->
+
+
+            <!-- 大数据测评广告 -->
+        <ion-slide ng-if="ctrl.hasMonitor">
+          <div class="monitor-ad-wrap slide-mark" data-mark="monitor">
+            <img class="img-middle" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_monitor_2.png')}}">
+          </div>
+        </ion-slide>
+        <!-- 期末冲刺广告 -->
+        <!--<ion-slide>-->
+            <!--<div class="final-sprint-ad-wrap slide-mark" data-mark="finalSprint">-->
+                <!--<img class="img-left" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_final_sprint_1.png')}}">-->
+                <!--<img class="img-right" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_final_sprint_2.png')}}">-->
+            <!--</div>-->
+        <!--</ion-slide>-->
+        <!-- 直播广告 -->
+        <!--<ion-slide>-->
+            <!--<div class="live-ad-wrap slide-mark" data-mark="live">-->
+                <!--&lt;!&ndash;<img class="img-left" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_live_1.png')}}">&ndash;&gt;-->
+                <!--<img class="img-middle" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_live_2.png')}}">-->
+                <!--<img class="img-right" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_live_3.png')}}">-->
+                <!--&lt;!&ndash;<span class="live-text">{{ctrl.liveStartTime}}</span>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</ion-slide>-->
+        <!-- 奥数微课横幅广告 -->
+        <ion-slide>
+            <div class="microlecture-ad-wrap slide-mark" data-mark="microlecture">
+                <img class="img-left" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_microlecture_1.png')}}">
+                <img class="img-middle" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_microlecture_2.png')}}">
+                <img class="img-right" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_microlecture_3.png')}}">
+            </div>
+        </ion-slide>
+
+        <!--寒假新知堂横幅广告-->
+        <ion-slide>
+            <div class="winter-camp-ad-wrap slide-mark" data-mark="winter-camp">
+                <img class="img-left" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_winter_camp_ad_1.png')}}">
+                <img class="img-right" ng-src="{{$root.loadImg('study_index_v2/stu_study_index_winter_camp_ad_2.png')}}">
+            </div>
+        </ion-slide>
+
+        <!-- 实况直播 -->
+        <ion-slide>
+            <div class="winter-holidays-wrap-03 slide-mark" data-mark="winter-holidays">
+                <div class="broadcast_page_fireworks">
+                    <div class="broadcast_fireworks broadcast_fireworks_01"></div>
+                    <div class="broadcast_fireworks broadcast_fireworks_02"></div>
+                    <div class="broadcast_fireworks broadcast_fireworks_03"></div>
+                    <div class="broadcast_fireworks broadcast_fireworks_04"></div>
+                    <div class="broadcast_fireworks broadcast_fireworks_05"></div>
+                </div>
+                <div class="broadcast_page_left">
+                    <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-left.png')}}">
+                </div>
+                <div class="broadcast_page_middle">
+                    <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-middle.png')}}">
+                </div>
+                <div class="broadcast_page_right">
+                    <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-right.png')}}">
+                </div>
+            </div>
+        </ion-slide>
+
+        </ion-slide-box>
+    </div>
+
+    <!--<div class="slide-down-notice" ng-if="ctrl.isShowArrow()">
+        <i class="ion-chevron-down notice-arrow"></i>
+    </div>-->
+    <ion-content class="study-index-file-content" ng-class="{'ion-content-windows':ctrl.isWin}" on-scroll="ctrl.getScrollPosition()">
+        <!--内容列表-->
+        <div class="study-index-content-list"  ng-if="!ctrl.isWin">
+            <div class="content-list-warp content-list-warp-100 area_evaluation_warp" ng-click="ctrl.goToAEWorkList()" ng-show="$root.hasAreaEvaluation">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_area_evaluation.png')}}">
+                <div class="area-evaluation-warp-box">
+                    <div class="title">{{ctrl.userConfig.AreaAssessmentTitle}} <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_icon_right.png')}}"></div>
+                    <div class="des" ng-if="ctrl.userConfig.AreaAssessmentSchool.length<8">{{ctrl.userConfig.AreaAssessmentSchool}} • {{ctrl.userConfig.AreaAssessmentSubTitle}}</div>
+                    <div class="des" ng-if="ctrl.userConfig.AreaAssessmentSchool.length>=8">{{ctrl.userConfig.AreaAssessmentSchool}}</div>
+                    <div class="des" ng-if="ctrl.userConfig.AreaAssessmentSchool.length>=8">{{ctrl.userConfig.AreaAssessmentSubTitle}}</div>
+                </div>
+            </div>
+            <div class="content-list-warp content-list-warp-100 has-hot-mark" ng-click="ctrl.gotoOlympicMathMicrolecture()">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_olympic_math_phone.png')}}">
+                <img ng-src="{{$root.loadImg('tabs/study_index/hot-mark.png')}}" class="hot-mark">
+            </div>
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToWorkPage()">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work.png')}}">
+            </div>
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToQED()">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_question_every_day.png')}}">
+            </div>
+            <!--<div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToHolidayWorkList()" ng-show="ctrl.isShowHolidayWork">-->
+                <!--<img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_holiday3.png')}}">-->
+            <!--</div>-->
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToOralCalculation()" ng-show="$root.hasOralCalculation">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_oral_work.png')}}">
+            </div>
+
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToDiagnosePage(true)">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_increase_score_phone.png')}}">
+            </div>
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToGamePage()">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_game_phone.png')}}">
+            </div>
+
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToGameGoodsSelect()">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_magic_phone.png')}}">
+            </div>
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToComputePage()">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_compute_phone.png')}}">
+            </div>
+
+            <div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToXLY()" ng-show="ctrl.isXlyVip">
+                <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_xly_phone.png')}}">
+            </div>
+            <!--<div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToOlympicMathPage()" ng-show="ctrl.showOlympicMath">-->
+                <!--<img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_olympic.png')}}">-->
+            <!--</div>-->
+            <!--<div class="content-list-warp content-list-warp-48" ng-click="ctrl.goToXlyV2()">-->
+                <!--<img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_olympic.png')}}">-->
+            <!--</div>-->
+
+        </div>
+
+      <!--  <div class="content-list-windows" ng-if="ctrl.isWin && !ctrl.hasFinalAccess">
+            <div class="content-list-window-top">
+                <div class="content-list-warp-win content-list-warp-01-win" ng-click="ctrl.goToFinalSprint()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_final_sprint_v2.png')}}">
+                </div>
+                <div class="content-list-warp-win content-list-warp-01-win" ng-click="ctrl.goToHolidayWorkList()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_holiday.png')}}">
+                </div>
+
+                <div class="content-list-warp-win content-list-warp-01-win" ng-click="ctrl.goToWorkPage()">
+                    <img ng-if="!$root.hasOralCalculation"
+                         ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_phone.png')}}">
+                    <img ng-if="$root.hasOralCalculation"
+                         ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work.png')}}">
+                </div>
+                <div ng-if="$root.hasOralCalculation" class="content-list-warp-win"
+                     ng-click="ctrl.goToOralCalculation()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_oral_work.png')}}">
+                </div>
+            </div>
+            <div class="content-list-window-bottom">
+                <div class="content-list-warp-win" ng-click="ctrl.goToGamePage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_game_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win " ng-click="ctrl.goToDiagnosePage(true)">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_increase_score_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win"
+                     ng-click="ctrl.goToGameGoodsSelect()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_magic_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win " ng-click="ctrl.goToComputePage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_compute_phone.png')}}">
+                </div>
+                &lt;!&ndash; <div class="content-list-warp-win" ng-click="ctrl.openMoreModule()">
+                     <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_more_module_win.png')}}">
+                 </div>&ndash;&gt;
+            </div>
+
+            <div class="content-list-window-bottom">
+                <div class="content-list-warp-win" ng-click="ctrl.goToDiagnosePage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_diagnose_on_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win " ng-click="ctrl.goToOlympicMathPage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_olympic_math_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win" ng-click="ctrl.goToXLY()"
+                     ng-class="{'content-list-warp-win-hide': !ctrl.isXlyVip}">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_xly_phone_win.png')}}">
+                </div>
+            </div>
+            <div class="content-list-bottom" ng-click="ctrl.goToWinterCamp()">
+                <div class="content-list-warp content-list-warp-03">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_xly_phone.png')}}">
+                </div>
+            </div>
+        </div>
+        <div class="content-list-windows" ng-if="ctrl.isWin && ctrl.hasFinalAccess">
+            <div class="content-list-window-top">
+                <div class="content-list-warp-win" ng-click="ctrl.goToHolidayWorkList()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_holiday2.png')}}">
+                </div>
+
+                <div class="content-list-warp-win content-list-warp-01-win" ng-click="ctrl.goToWorkPage()">
+                    <img ng-if="!$root.hasOralCalculation"
+                         ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_phone.png')}}">
+                    <img ng-if="$root.hasOralCalculation"
+                         ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work.png')}}">
+                </div>
+                <div ng-if="$root.hasOralCalculation" class="content-list-warp-win"
+                     ng-click="ctrl.goToOralCalculation()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_oral_work.png')}}">
+                </div>
+            </div>
+            <div class="content-list-window-bottom">
+                <div class="content-list-warp-win content-list-warp-01-win" ng-click="ctrl.goToFinalSprint()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_final_sprint_v2.png')}}">
+                </div>
+                <div class="content-list-warp-win content-list-warp-01-win" ng-click="ctrl.goToFinalAccess()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_final_access.png')}}">
+                </div>
+
+
+                <div class="content-list-warp-win"
+                     ng-click="ctrl.goToGameGoodsSelect()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_magic_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win " ng-click="ctrl.goToComputePage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_compute_phone.png')}}">
+                </div>
+            </div>
+
+            <div class="content-list-window-bottom">
+                <div class="content-list-warp-win" ng-click="ctrl.goToGamePage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_game_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win " ng-click="ctrl.goToDiagnosePage(true)">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_increase_score_phone.png')}}">
+                </div>
+
+
+                <div camp-packs-connect class="content-list-warp-win"
+                     ng-class="{'content-list-warp-win-hide': !ctrl.isXlyVip}">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_xly_phone_win.png')}}">
+                </div>
+            </div>
+            <div class="content-list-window-bottom">
+                <div class="content-list-warp-win" ng-click="ctrl.goToDiagnosePage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_diagnose_on_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win " ng-click="ctrl.goToOlympicMathPage()">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_olympic_math_phone.png')}}">
+                </div>
+                <div class="content-list-warp-win "></div>
+                <div class="content-list-warp-win "></div>
+            </div>
+            <div class="content-list-bottom" ng-click="ctrl.goToWinterCamp()">
+                <div class="content-list-warp content-list-warp-03">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_work_xly_phone.png')}}">
+                </div>
+            </div>
+        </div>-->
+    </ion-content>
+    <img class="children-day-gift" ng-if="ctrl.hasChildrenDay" ng-click="ctrl.showChildrenDayAd()" ng-src="{{$root.loadImg('children_day/children_day_gift.png')}}">
+</ion-view>
+

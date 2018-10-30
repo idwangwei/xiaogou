@@ -1,0 +1,162 @@
+<ion-view hide-nav-bar="true" class="holiday_work_list_file">
+    <ion-header-bar align-title="center" class="bar-better">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 10px">首页</span>
+        </button>
+
+    </ion-header-bar>
+
+    <!--假期作业列表背景-->
+    <div class="list-background-box-warp">
+        <div class="list-background-box">
+            <img class="holiday-work-list-house1"
+                 ng-src="{{$root.loadImg('holiday_work_list/holiday_work_list_house1.png')}}" alt="">
+            <img class="holiday-work-list-house2"
+                 ng-src="{{$root.loadImg('holiday_work_list/holiday_work_list_house2.png')}}" alt="">
+        </div>
+    </div>
+
+    <!--假期作业底部浮在作业之上的雪条-->
+    <div class="list-title">
+        <img class="holiday-work-list-title"
+             ng-src="{{$root.loadImg('holiday_work_list/holiday_work_list_title.png')}}" alt="">
+        <div class="list-title-work">
+            开放时间：7月1日~9月15日
+        </div>
+    </div>
+
+    <ion-content class="holiday_work_list_content" overflow-scroll="false">
+
+        <!--下拉刷新-->
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+
+        <!--没有班级提示-->
+        <div class="item item-input block-input item-input—height" style="width: 100%"
+             ng-if="ctrl.clazzList && ctrl.clazzList.length == 0">
+            <span>没有班级，不能收到寒假作业！<br>请到家长端去添加班级吧！</span>
+        </div>
+
+        <!--没有作业提示-->
+        <div class=""
+             ng-if="!ctrl.vacation && ctrl.retFlag && ctrl.clazzList && ctrl.clazzList.length && ctrl.selectedClazz">
+            <img style="height: 200px" ng-src="{{$root.loadImg('holiday_work_list/holiday_work_list_none.png')}}" alt="">
+        </div>
+        <!--假期作业还没有到开放时间的提示-->
+        <!--<div style="width: 100%;color: #26418e;font-size: 16px;font-weight: bold;text-align: center;"-->
+             <!--ng-if="ctrl.vacation && ctrl.retFlag && ctrl.clazzList && ctrl.clazzList.length && ctrl.selectedClazz && ctrl.systemTime<ctrl.openingTime">-->
+            <!--<span>暑假作业7月1号开放</span>-->
+        <!--</div>-->
+
+        <!--假期作业列表-->
+        <div class="work-list-wrap" ng-if="ctrl.vacation && ctrl.retFlag && ctrl.workList && ctrl.workList.length">
+            <div ng-repeat="listItem in ctrl.workList track by $index" style="padding: 0px 10px"
+                 ng-if="ctrl.workList.length!=0&&listItem.paperInfo.publishType==4">
+
+                <h5 ng-if="ctrl.ifShow($index)" class="row"
+                    style="padding-left: 10px; margin: 10px -50px 10px -10px;color: white;background-color: #e36c8d;width: 120%;display: inline-block;">
+
+                    <span style="font-size: 1rem;">{{listItem.paperInfo.publishWeek}}</span>
+                </h5>
+
+                <div>
+                <div class="col-md-3 col-xs-6 work-list">
+                    <div class="work-item"
+                         ng-class="listItem.paperInfo.status != 4 ? 'my-work-item-no-btn' : 'my-work-item-has-btn'"
+                         ng-click="ctrl.showWorkDetail(listItem,$index);">
+
+                        <div class="work-header">
+                            <span ng-bind="listItem.paperInfo.paperName || '&nbsp;'" class="clazz-title"></span>
+                        </div>
+                        <div class="work-content">
+                            <div class="left-img"></div>
+                            <div class="main-img">
+                                <div class="img-box">
+                                    <img ng-src="{{$root.loadImg(listItem.paperInfo.img)}}">
+                                </div>
+
+                            </div>
+                            <div class="right-img">
+                                <div>
+                                    <div ng-click="ctrl.goPraise(listItem.paperInfo,$index,$event)">
+                                        <img ng-if="listItem.paperInfo.studentPraise"
+                                             ng-src="{{$root.loadImg(listItem.paperInfo.studentPraise.img ||'praise/praise.png')}}">
+                                        <img ng-if="!listItem.paperInfo.studentPraise"
+                                             ng-src="{{$root.loadImg('praise/praise.png')}}">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div ng-click="ctrl.showPraiseDetail(listItem.paperInfo,2,$event)"
+                                         ng-if="listItem.paperInfo.teacherPraise">
+                                        <img ng-src="{{$root.loadImg(listItem.paperInfo.teacherPraise.img)}}">
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <div ng-click="ctrl.showPraiseDetail(listItem.paperInfo,3,$event)"
+                                         ng-if="listItem.paperInfo.parentPraise">
+                                        <img ng-src="{{$root.loadImg(listItem.paperInfo.parentPraise.img)}}">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="work-footer" style="margin-bottom: 0px;">
+                            <p style=" margin-top: -5px;margin-bottom: 2px;">
+                            <span ng-bind="'未开始'"
+                                  style="font-size: 14px;font-weight: bold" ng-if="listItem.paperInfo.status==1">
+                            </span>
+                                <span ng-bind="'进行中'"
+                                      style="font-size: 14px;font-weight: bold"
+                                      ng-if="listItem.paperInfo.status==2">
+                            </span>
+                                <span ng-bind="'已提交'"
+                                      style="font-size: 14px;font-weight: bold"
+                                      ng-if="listItem.paperInfo.status==3">
+                            </span>
+                                <span ng-bind="listItem.paperInfo.processBar"
+                                      style="font-size: 14px;font-weight: bold"
+                                      ng-if="listItem.paperInfo.status==4">
+                            </span>
+                            </p>
+                            <p style="margin-bottom: 2px;"><span ng-bind="listItem.paperInfo.publishStr"></span></p>
+                        </div>
+                        <div class="work-report-btn"
+                             ng-if="listItem.paperInfo.status==4"
+                             ng-click="ctrl.gotoWorkReport(listItem,$event)">
+
+                            <div class="work-report-btn-bg" ng-class="ctrl.getReportBtnBg(listItem.paperInfo)">
+                                <div ng-if="listItem.paperInfo.masterStatus == 4"></div>
+                                <div ng-if="listItem.paperInfo.masterStatus == 2">
+                                    <span ng-bind="'有 '+listItem.paperInfo.masterNum+' 个考点未掌握'"></span>
+                                    <span class="report-btn-arrow-1"></span>
+                                    <span class="report-btn-arrow-2"></span>
+                                </div>
+                                <div ng-if="listItem.paperInfo.masterStatus == 3">
+                                    <span ng-bind="'有 '+listItem.paperInfo.masterNum+' 个考点不牢固'"></span>
+                                    <span class="report-btn-arrow-1"></span>
+                                    <span class="report-btn-arrow-2"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<ion-infinite-scroll on-infinite="ctrl.fetWorkListWithLoadMore()" immediate-check="false"-->
+                                 <!--spinner="ios" distance="1%" ng-if="ctrl.moreFlag">-->
+            <!--</ion-infinite-scroll>-->
+
+    </ion-content>
+
+    <!--假期作业底部浮在作业之上的雪条-->
+    <div class="list-snow-box">
+        <img class="holiday-work-list-footer"
+             ng-src="{{$root.loadImg('holiday_work_list/holiday_work_list_footer.png')}}" alt="">
+    </div>
+
+</ion-view>

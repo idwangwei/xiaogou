@@ -1,0 +1,105 @@
+<ion-view class="micro-example-detail">
+    <ion-header-bar class="bar-balanced example-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">{{ctrl.selectExampleItem.groupName}} 例{{ctrl.selectExampleItem.num}}</h1>
+        <button class="button buttons button-clear item-pay">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-energy.png')}}" class="pay-energy">
+            <span>{{ctrl.rewardBase.credits}}</span>
+        </button>
+    </ion-header-bar>
+    <ion-content padding="false" class="micro-example-content">
+        <div class="content-box">
+            <div class="star-box">
+              <span>难度系数：</span>
+              <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/micro-star-'+item+'.png')}}" alt="" ng-repeat="item in ctrl.selectExampleItem.starArr track by $index">
+            </div>
+            <div class="teacher-box-outer">
+              <div class="teacher-box">
+                <div class="photo-box" ng-click="ctrl.alertInfo()">
+                  <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-user-photo.png')}}" >
+                </div>
+                <p class="teacher-name">小慧老师</p>
+              </div>
+              <div class="first-dialog">
+                {{ctrl.noticeText}}
+              </div>
+            </div>
+            <div class="content-step mark">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-step-one.png')}}" class="step-img" ng-click="ctrl.goToStepDetail(1)">
+                <div
+                        class="gift-box"
+                        ng-if="ctrl.resetExampleDetail.awardList[0].state!==3"
+                        ng-class="{'disable':ctrl.resetExampleDetail.awardList[0].state==1,'enable':ctrl.resetExampleDetail.awardList[0].state==2}"
+                        ng-click="ctrl.showEnergyPopups(0)">
+                    <span class="gift-item gift-mark" style="display: none"></span>
+                </div>
+            </div>
+            <div class="content-step">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-step-two.png')}}" class="step-img" ng-click="ctrl.goToStepDetail(2)">
+                <div class="step-mask" ng-if="ctrl.resetExampleDetail.state==0"></div>
+                <div class="progress-box" ng-if="ctrl.resetExampleDetail.awardList[1].state==1">
+                    <div class="progress-num">
+                        <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-energy.png')}}" alt="">
+                        <span>x{{ctrl.resetExampleDetail.awardList[1].credits}}</span>
+                    </div>
+                    <div class="progress-outer">
+                        <div class="progress-inner" ng-style="{'height':ctrl.resetExampleDetail.videoProgress}"></div>
+                    </div>
+                </div>
+                <div
+                        class="gift-box enable"
+                        ng-if="ctrl.resetExampleDetail.awardList[1].state==2"
+                        ng-click="ctrl.showEnergyPopups(1)">
+                    <span class="gift-item"></span>
+                </div>
+            </div>
+            <div class="content-step">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-step-three.png')}}" class="step-img" ng-click="ctrl.goToStepDetail(3)">
+                <div class="step-mask" ng-if="!(ctrl.resetExampleDetail.rightQuestion>=1&&ctrl.resetExampleDetail.isWatch)"></div>
+                <div class="progress-box" ng-if="ctrl.resetExampleDetail.awardList[2].state==1">
+                    <div class="progress-num">
+                        <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-energy.png')}}" alt="">
+                        <span>x{{ctrl.resetExampleDetail.awardList[2].credits}}</span>
+                    </div>
+                    <div class="progress-outer">
+                        <div class="progress-inner" ng-style="{'height':ctrl.resetExampleDetail.stepThreeProgress}"></div>
+                    </div>
+                </div>
+                <div
+                        class="gift-box enable"
+                        ng-if="ctrl.resetExampleDetail.awardList[2].state==2"
+                        ng-click="ctrl.showEnergyPopups(2)">
+                    <span class="gift-item"></span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="micro-example-img">
+        <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-cloud.png')}}" alt="" class="cloud-1">
+        <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-cloud.png')}}" alt="" class="cloud-2">
+        <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-castle-purple.png')}}" alt="" class="castle-purple">
+        <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-cloud-purple.png')}}" alt="" class="cloud-purple">
+    </div>
+    <div class="micro-sign-in-reward-prompt" ng-if="$root.showRewardPrompt">
+        <reward-prompt type="reward" show-num="{{ctrl.showNum}}"></reward-prompt>
+    </div>
+    <div class="alert-modal" ng-if="ctrl.isAlertModalShowFlag">
+        <div class="pay-modal-content">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_example_detail/unit-user-photo.png')}}" alt="" class="modal-content-header">
+            <div class="header-box">小提示</div>
+            <div class="text-box">
+                <p  ng-bind-html="ctrl.alertMsg"></p>
+            </div>
+            <div class="btn-box">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/confirm-btn.png')}}" alt="" ng-click="ctrl.hideAlert()">
+                <!--<img ng-src="{{$root.loadMicrolectureImg('micro_example_list/cancel-btn.png')}}" >-->
+            </div>
+        </div>
+    </div>
+
+    <div class="finger-box">
+
+    </div>
+</ion-view>

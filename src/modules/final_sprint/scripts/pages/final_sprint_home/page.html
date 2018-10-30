@@ -1,0 +1,85 @@
+<ion-view id="final-sprint-home">
+    <loading-processing-v2></loading-processing-v2>
+    <ion-header-bar class="bar-balanced home-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">期末冲刺月</h1>
+    </ion-header-bar>
+    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/header-pay-btn.png')}}" alt="" class="item-pay" ng-click="ctrl.goToPay()">
+    <div class="home-subtitle">量身定制提分方案</div>
+    <div class="home-tab">
+        <span
+                class="home-tab-item"
+                ng-click="ctrl.changeWeek($index)"
+                ng-class="{'visited':v.isOpen,'active':ctrl.currentWeekIndex==$index}"
+                ng-repeat="v in ctrl.resetPaperInfo track by $index">{{v.name}}
+        </span>
+        <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-free.png')}}" class="home-tab-free" ng-class="{'active':ctrl.isStepOneDoingFlag===false}">
+    </div>
+    <ion-content padding="true" class="home-content">
+        <div class="home-inner-box">
+            <img src="{{$root.loadFinalSprintImg('final_sprint_home/icon-home-bg-1.png')}}" alt="" class="home-bg-1">
+            <img src="{{$root.loadFinalSprintImg('final_sprint_home/icon-home-bg-2.png')}}" alt="" class="home-bg-2">
+            <p class="content-time"><span>第{{ctrl.numArr[ctrl.currentWeekIndex]}}周</span> 开始时间: {{ctrl.startTime}}</p>
+            <div class="home-step home-step-one" ng-class="{'active':ctrl.resetPaperInfo[ctrl.currentWeekIndex].isOpen==true}">
+                <div class="step-box">
+                    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-one.png')}}" class="box-item-one">
+                    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-one-active.png')}}" class="box-item-two">
+                </div>
+                <div class="step-line" ng-class="{'active':ctrl.resetPaperInfo[ctrl.currentWeekIndex].isStepOneFinish==true}"></div>
+                <div class="step-content">
+                    <img src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-mark.png')}}" alt="" class="step-content-mark">
+                    <div class="step-content-title">提分第1步：<b>密卷测评</b></div>
+                    <div class="step-content-text">期末全真模拟密卷（{{ctrl.numArr[ctrl.currentWeekIndex]}}）</div>
+                    <div class="step-content-text">
+                        本套密卷分为<span class="text-red">四部分</span>完成
+                    </div>
+                    <div class="step-content-paper">
+                        <div
+                                class="paper-item type-{{v.status}}"
+                                ng-click="ctrl.goDoPaper($index)"
+                                ng-repeat="v in ctrl.currentPaperInfo  track by $index"
+                        ><span>{{$index+1}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-step home-step-two" ng-class="{'active':ctrl.resetPaperInfo[ctrl.currentWeekIndex].isStepOneFinish==true}">
+                <div class="step-box">
+                    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-two.png')}}" class="box-item-one">
+                    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-two-active.png')}}" class="box-item-two">
+                </div>
+                <div class="step-line" ng-class="{'active':ctrl.resetPaperInfo[ctrl.currentWeekIndex].isStepOneFinish==true}"></div>
+                <div class="step-content">
+                    <div class="step-content-title">提分第2步：<b>考点诊断</b></div>
+                    <div class="step-content-text">查看测评结果，定位<span class="text-red">薄弱考点</span></div>
+                    <div class="step-content-btn check-btn" ng-click="ctrl.goToCheck()"></div>
+                </div>
+            </div>
+            <div class="home-step home-step-three" ng-class="{'active':ctrl.resetPaperInfo[ctrl.currentWeekIndex].isStepOneFinish==true}">
+                <div class="step-box">
+                    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-three.png')}}" class="box-item-one">
+                    <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/icon-step-three-active.png')}}" class="box-item-two">
+                </div>
+                <div class="step-content">
+                    <div class="step-content-title">提分第3步：<b>变式训练</b></div>
+                    <div class="step-content-text">考点举一反三，助你<span class="text-red">拿高分</span></div>
+                    <div class="step-content-btn train-btn" ng-click="ctrl.goToTrain()"></div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="pay-modal" ng-if="ctrl.isPayModalShow">
+        <div class="pay-modal-content diagnose-popup-bounce" ng-if="ctrl.isPayModalShowFlag">
+            <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/pay-modal-header.png')}}" alt="" class="modal-content-header">
+            <div class="text-box">
+                <p>马上开通，获得量身定制的</p>
+                <p>提分方案，助你期末拿高分！</p>
+            </div>
+            <div class="btn-box">
+                <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/pay-modal-btn.png')}}" alt="" ng-click="ctrl.goToPay()">
+                <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/pay-modal-btn2.png')}}" alt="" ng-click="ctrl.hidePayModal()">
+            </div>
+        </div>
+    </div>
+</ion-view>

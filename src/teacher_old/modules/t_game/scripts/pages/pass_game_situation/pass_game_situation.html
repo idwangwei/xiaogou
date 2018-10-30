@@ -1,0 +1,72 @@
+
+<style>
+    .pull-icon-img{
+        background: rgba(15, 121, 89, 0.26);
+        font-size: 18px;
+        height: 25px;
+        text-align: center;
+       /* line-height: 25px;*/
+    }
+
+</style>
+<ion-view hide-nav-bar="true" class="statisstics pass_game_situation_file">
+    <ion-header-bar align-title="center" class="bar-balanced" id="ionHeaderBar">
+        <div class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title" ng-if="ctrl.clazzOrStu==1">全班&nbsp;|&nbsp;错误类型统计</h1>
+        <h1 class="title" ng-if="ctrl.clazzOrStu==2">{{ctrl.stuName}}&nbsp;|&nbsp;错误类型统计</h1>
+       <!-- <div class="buttons" style="text-align: center">
+            <button class="button button-clear" ng-click="isFresh()" ng-if="!isOpen">{{showFreshText}}</button>
+            <label  ng-if="!isFreshflag&&isOpen" style="font-size: 17px;margin-right: 20px;  line-height: 34px;">{{freshTime}}</label>
+            <label  ng-if="isFreshflag&&isOpen"  style="font-size: 17px;margin-right: 20px;line-height: 34px;">已刷新</label>
+        </div>-->
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>
+            <button class="button button-clear icon ion-refresh" ng-click="ctrl.doRefresh()"></button>
+        </div>
+    </ion-header-bar>
+   <ion-content   scroll="false"  id="situationContent">
+       <loading-processing></loading-processing>
+        <div row-auto-height style="position: relative" id="mainContent">
+            <div  style="overflow-y: auto;height: 50%;" id="topContent">
+                <table>
+                    <tr>
+                        <th ng-repeat="title in ctrl.data.tabTitle">{{title.name}}</th>
+                    </tr>
+                    <tr ng-if="ctrl.data.tabData.length<=0">
+                        <td colspan="3" style="color: red">没有完成游戏或没有错误</td>
+                    </tr>
+                    <tr ng-repeat="info in ctrl.data.tabData">
+                        <td class="name">{{info.position}}</td>
+                        <td>{{info.description}}</td>
+                        <td>{{info.num}}</td>
+                    </tr>
+                </table>
+                <br/>
+            </div>
+            <div  style="position: absolute;width: 100%;height: 50%;"  id="bottomContent">
+                <div class="pull-icon-img" ng-click="ctrl.handleOpenImg();" id="pullBar">
+                    <i ng-class="ctrl.openFlag==true?'ion ion-ios-arrow-down':'ion ion-ios-arrow-up'" >
+                    </i>
+                </div>
+                <!--edit by zl 2016-9-28 begin-->
+                <div style="width: 100%;height: 100%;padding-bottom: 60px;overflow-y: auto">
+                    <img img-src="ctrl.data.total.imgUrl"  width="100%" alt="" ng-click="ctrl.showErrorImg()"/>
+                </div>
+                <!--edit by zl 2016-9-28 end-->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<div class="myBackdrop" ng-show="ctrl.showErrorImgFlag" my-backdrop contentId="situationContent"></div>
+<!--edit by zl 2016-9-28 begin-->
+<div class="myModal" ng-show="ctrl.showErrorImgFlag" ng-click="ctrl.hideErrorImg()" my-backdrop  contentId="situationContent">
+    <ion-scroll zooming="true" style="width: 100%;height: 97%;" direction="xy"  delegate-handle="imgScroll">
+        <img img-src="ctrl.data.total.imgUrl" id="errorImg" style=" width: 100%;height: auto;">
+    </ion-scroll>
+</div>
+
+<!--edit by zl 2016-9-28 end-->

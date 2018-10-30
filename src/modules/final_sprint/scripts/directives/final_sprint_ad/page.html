@@ -1,0 +1,50 @@
+<ion-view class="final-sprint-ad" ng-if="$root.finalSprintAdFlag">
+    <ion-header-bar class="bar-balanced bar-new myHeader" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="hideFinalSprintAdDialog()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content padding="true"
+                 class="final-sprint-ad-content"
+                 delegate-handle="sprint_scroll"
+                 on-scroll="hideUpMark()"
+                 overflow-scroll='false'
+                 on-scroll-complete="showUpMark()">
+
+        <div class="ad-content">
+            <div class="ad-title">
+                <img class="img01" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd04.png')}}">
+                <img class="img02" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd05.png')}}">
+            </div>
+            <div class="steps step01">
+                <img class="img01" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd06.png')}}">
+               <!-- <p class="word01"><em>权威密卷</em>测评</p>
+                <p class="word02">涵盖本学期所有考点</p>-->
+                <img class="img02" style="max-width: 769px" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd09.png')}}">
+            </div>
+            <div class="steps step02">
+                <img class="img01" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd10.png')}}">
+                <!--<p class="word01">查看<em>测评结果</em></p>
+                <p class="word02">定位重难点，修正错题</p>-->
+                <img class="img02" style="max-width: 618px" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd03.png')}}">
+            </div>
+            <div class="steps step03">
+                <img class="img01" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd02.png')}}">
+               <!-- <p class="word01">智能<em>变式训练</em></p>
+                <p class="word02">掌握所有考点，轻松拿高分</p>-->
+                <img class="img02" style="max-width: 623px" ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd01.png')}}">
+            </div>
+        </div>
+    </ion-content>
+    <div class="ad-footer">
+        <div class="ad-footer-content">
+            <div class="up-mark">
+                <i class="ion-chevron-up up-mark-animation"></i>
+                <p style="font-size: 14px">向上滑动</p>
+            </div>
+
+            <img ng-src="{{$root.loadFinalSprintImg('ad_img/finalSprintAd08.png')}}" ng-click="gotoFinalSprintPage()">
+        </div>
+
+    </div>
+</ion-view>

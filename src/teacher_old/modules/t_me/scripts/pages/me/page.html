@@ -1,0 +1,222 @@
+<ion-view hide-nav-bar="true" class="side_menu_style">
+    <ion-header-bar align-title="center" class="bar-balanced" style="border-bottom: 1px solid #ddd">
+        <div></div>
+        <h1 class="title" style="font-weight: bold">我</h1>
+
+    </ion-header-bar>
+    <ion-content style="font-size: 15px">
+        <div class="side-menu-box user-info" ui-sref="basic_info_manage">
+            <div class="side-menu-left user-content">
+                <img ng-src="{{$root.loadImg('me/t-photo.png')}}" alt="">
+
+                <div class="user-text-info">
+                    <p ng-bind="ctrl.name"></p>
+                    <p ng-bind="ctrl.loginName.toUpperCase()"></p>
+                </div>
+
+            </div>
+            <span class="icon ion-ios-arrow-right"></span>
+
+        </div>
+        <div class="shop-info" ng-if="!ctrl.isAdmin">
+            <div class="side-menu-box" ng-click="ctrl.gotoCreditsList()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('credits_store_img/creditsStoreImg02.png')}}" alt="">
+
+                    <div class="user-text-info">
+                        <span>智慧币</span>
+                    </div>
+
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <div class="side-menu-box" ng-click="ctrl.gotoCreditsStore()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-shop-icon.png')}}" alt="">
+
+                    <div class="user-text-info">
+                        <span>智慧勾商城</span>
+                    </div>
+
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <div class="side-menu-box" ng-click="ctrl.gotoMyTask()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-work-icon.png')}}" alt="">
+
+                    <div class="user-text-info">
+                        <span>我的任务</span>
+                    </div>
+
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+
+        </div>
+        <div class="list-info">
+            <div class="side-menu-box" ng-click="ctrl.showInvite()"
+                 ng-if="$root.platform.isMobile()&&$root.weChatPluginInstalled && ctrl.isShowIosShare()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-invite.png')}}" alt="">
+                    <div class="user-text-info">
+                        <span>邀请老师</span>
+                    </div>
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <!--<div class="side-menu-box" ui-sref="about">-->
+                <!--<div class="side-menu-left">-->
+                    <!--<img ng-src="{{$root.loadImg('me/me-t-xiaogou.png')}}" alt="">-->
+                    <!--<div class="user-text-info">-->
+                        <!--<span>关于智算365</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<span class="icon ion-ios-arrow-right"></span>-->
+            <!--</div>-->
+            <!--<div class="side-menu-box" ng-click="ctrl.goCommonProblem()">-->
+                <!--<div class="side-menu-left">-->
+                    <!--<img ng-src="{{$root.loadImg('me/qq-help.png')}}" alt="">-->
+                    <!--<div class="user-text-info">-->
+                        <!--<span>微信客服</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<span class="icon ion-ios-arrow-right"></span>-->
+            <!--</div>-->
+            <div class="side-menu-box" ng-click="ctrl.gotoOnlineTeachingIndexPage()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-help.png')}}" alt="">
+                    <div class="user-text-info">
+                        <span>线上辅导</span>
+                    </div>
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <div class="side-menu-box" ui-sref="clear_local_data">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-t-clear.png')}}" alt="">
+                    <div class="user-text-info">
+                        <span>清除缓存</span>
+                    </div>
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <div class="side-menu-box" ng-if="ctrl.isAdmin" ng-click="ctrl.goToTeachingGroup()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-teacher-group.png')}}" alt="">
+                    <div class="user-text-info">
+                        <span>教研圈</span>
+                    </div>
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <div class="side-menu-box" style="margin-top: 10px"  ng-click="ctrl.logOutToStudent()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/t-login-out-stu.png')}}" alt="">
+                    <div class="user-text-info">
+                        <span>去学生端</span>
+                    </div>
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+            <div class="side-menu-box" ng-click="ctrl.logOut()">
+                <div class="side-menu-left">
+                    <img ng-src="{{$root.loadImg('me/me-login-out.png')}}" alt="">
+                    <div class="user-text-info">
+                        <span>退出登录</span>
+                    </div>
+                </div>
+                <span class="icon ion-ios-arrow-right"></span>
+            </div>
+
+        </div>
+
+    </ion-content>
+
+
+
+
+    <!-- <div class="bg-content-wrap">
+         <div class="photo-wrap">
+             <img ng-src="{{$root.loadImg('me/t-photo.png')}}"
+                  alt="" class="photo" ui-sref="basic_info_manage">
+             <div class="self-info-bar">
+                 <div ui-sref="basic_info_manage">
+                     <p class="name" ng-bind="ctrl.name"></p>
+                     <p class="login-name" ng-bind="ctrl.loginName.toUpperCase()"></p>
+                 </div>
+             </div>
+             <div class="total-credits" ng-click="ctrl.gotoCreditsList()">
+                 <img style="width: 18px" ng-src="{{$root.loadImg('credits_store_img/creditsStoreImg02.png')}}">
+                 <p style="margin: 0 5px">智慧币</p>
+                 <p style="margin: 0;color:#f8fd06">{{ctrl.currentCredits}}</p>
+             </div>
+
+         </div>
+
+     </div>-->
+    <!--
+
+        <ion-content class="me-bg me">
+            <div class="middle-btn" ng-if="!ctrl.isAdmin">
+                <div class="bar-better-task" ng-click="ctrl.gotoMyTask()">
+                    <img ng-src="{{$root.loadImg('credits_store_img/creditsStoreImg01.png')}}">
+                    <span>我的任务</span>
+                </div>
+                <div class="bar-better-credits" ng-click="ctrl.gotoCreditsStore()">
+                    <span>智慧勾商城</span>
+                    <img ng-src="{{$root.loadImg('credits_store_img/creditsStoreImg03.png')}}">
+                </div>
+            </div>
+            <ul class="list">
+                <li class="menu-list-item"
+                    ng-if="$root.platform.isMobile()&&$root.weChatPluginInstalled && ctrl.isShowIosShare()">
+                    <a ng-click="ctrl.showInvite()">
+                        <span><img ng-src="{{$root.loadImg('me/me-invite.png')}}"></span>
+                        <span>邀请老师</span>
+                    </a>
+                </li>
+                <div class="menu-list-item" ng-if="ctrl.isAdmin">
+                    <a ng-click="ctrl.goToTeachingGroup()">
+                        <span><img ng-src="{{$root.loadImg('me/me-teacher-group.png')}}"></span>
+                        <span>教研圈</span>
+                    </a>
+                </div>
+                <li class="menu-list-item">
+                    <a ui-sref="about">
+                        <span><img ng-src="{{$root.loadImg('me/me-xiaogou.png')}}"></span>
+                        <span>关于智算365</span>
+                    </a>
+                </li>
+
+                <li class="menu-list-item">
+                    <a ng-click="ctrl.goCommonProblem()">
+                        <span><img ng-src="{{$root.loadImg('me/qq-help.png')}}"></span>
+                        <span>微信客服</span>
+                    </a>
+                </li>
+
+                <li class="menu-list-item">
+                    <a ui-sref="clear_local_data">
+                        <span><img ng-src="{{$root.loadImg('me/me-clear.png')}}"></span>
+                        <span>清除缓存</span>
+                    </a>
+                </li>
+
+                <li class="menu-list-item">
+                    <a ng-click="ctrl.logOutToStudent()">
+                        <span><img ng-src="{{$root.loadImg('me/me-stu-login-out-parent.png')}}"></span>
+                        <span>去学生端</span>
+                    </a>
+                </li>
+
+                <li class="menu-list-item">
+                    <a ng-click="ctrl.logOut()">
+                        <span><img ng-src="{{$root.loadImg('me/me-login-out.png')}}"></span>
+                        <span>退出登录</span>
+                    </a>
+                </li>
+            </ul>
+        </ion-content>
+    -->
+</ion-view>

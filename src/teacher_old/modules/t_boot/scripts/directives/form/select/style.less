@@ -1,0 +1,106 @@
+
+
+.mFormSelect{
+  position: relative;
+  outline: none;
+  user-select: none;
+  box-sizing: border-box;
+  display: block;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  /*max-width: 50%; */   /*删除了*/
+  width: 48%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  color: #666;
+  text-decoration: none;
+  font-size: 16px;
+  .currentSelected{
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    span{
+      @media all and (max-width: 320px){
+        font-size: 14px;
+      }
+    }
+    .mIcon{
+      display: inline-block;
+
+      /*position: absolute;
+      right: 5px;*/
+      width: 7px;
+      height: 7px;
+      border-top: 1px solid #666;
+      border-right: 1px solid #666;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+  }
+  .options-wrap{
+    position: absolute;
+    left: -999px;
+    top: -999px;
+    /*opacity: 0;*/
+   /* max-height: 0;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;*/
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+
+    -webkit-transform-origin: top;
+    transform-origin: top;
+
+    -webkit-transition: -webkit-transform 0.26s ease-out;
+    transition: transform 0.26s ease;
+
+    .option{
+      padding: 10px 0 10px 9px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .option.selected{
+      background-color: #f7f7f7;
+      font-weight: bold;
+    }
+  }
+}
+.mFormSelect:focus{
+  border-color: #40a5ed;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(16, 142, 233, 0.2);
+}
+.mFormSelect.active{
+  .currentSelected{
+    .mIcon{
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+  }
+  .options-wrap{
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    top: 45px;
+    left: auto;
+    color: #666;
+    height: auto;
+    /*transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    opacity: 1;*/
+    /*max-height: 400px;*/
+    /*transition: max-height 0.25s ease-in;*/
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}

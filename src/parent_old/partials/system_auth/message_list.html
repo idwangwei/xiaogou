@@ -1,0 +1,31 @@
+<ion-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <h1 class="title">消息</h1>
+    </ion-header-bar>
+    <ion-content padding="false">
+        <div class="list">
+            <div class="item item-input block-input" style="height: 40px;" ng-if="msgData.msgList.length<=0">
+                <input type="text"
+                       ng-model="tip"
+                       readonly="readonly"
+                       style="font-size: 18px;color: rgb(6, 6, 6);"
+                        />
+            </div>
+            <div class="item item-avatar" ng-repeat="item in msgData.msgList" ng-click="goMsgDetail(item)" ng-if="msgData.msgList.length>0">
+                <img ng-src="{{$root.loadImg(item.imgUrl)}}" >
+                <!-- <div style="position: absolute;left: 18px;">
+                     <img src="pImages/student.svg" style="width: 40px;height: 40px">
+                 </div>-->
+                <h2><span ng-bind="item.senderName"></span>
+                    <i style="float: right;font-size:14px;color: #666;" ng-bind="item.msgLastDateTime"></i>
+                    <!--  <i class="badge badge-positive" style="background-color: #066CB3;right: 10px" ng-bind="item.msgNotViewedCount"></i>-->
+                </h2>
+                <!--<h2><span ng-bind="item.sendName"></span><i style="float: right;color:rgba(41, 66, 109, 0.82)">未读</i></h2>-->
+                <p><span ng-bind="item.msgLastContent"></span>
+                    <i class="badge badge-positive" style="background-color: rgb(215, 24, 24);right: 17px;top: 38px;font-weight: normal;padding: 2px 6px;" ng-bind="item.msgNotViewedCount" ng-if="item.msgNotViewedCount>0"></i>
+                </p>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

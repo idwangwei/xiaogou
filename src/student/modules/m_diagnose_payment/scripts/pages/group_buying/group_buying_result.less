@@ -1,0 +1,209 @@
+@import '../../../../m_boot/less/theme01/include/_mixins';
+
+.group_buying_result {
+
+  .result_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+
+  .result_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  .result_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+
+  }
+
+  .myHeader {
+    background: #FC6F56 !important;
+
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+
+  .payResult {
+    top: 44px !important;
+    background: #EAEAE8;
+    height: 100%;
+
+    .result {
+      width: 90%;
+      margin-left: 5%;
+      margin-top: 5%;
+      text-align: center;
+      .result_display(column);
+      .result_align(center);
+
+      //团主栏
+      .group_create_content_body_planner {
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 5px 0;
+        .result_display(column);
+        .result_align(center);
+
+        .leader_table_header {
+          .result_display(row);
+          .result_justify(center);
+          .result_align(center);
+          width: 95%;
+          color: #696B78;
+          padding: 5px 0;
+        }
+        .table_col {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: center;
+        }
+        .table_col_01 {
+          width: 35%;
+          min-width: 110px;
+        }
+        .table_col_02 {
+          width: 20%;
+        }
+        .table_col_03 {
+          width: 25%;
+        }
+        .table_col_04 {
+          width: 15%;
+        }
+
+        .leader_table_content {
+          .result_display(row);
+          .result_justify(center);
+          .result_align(center);
+          width: 95%;
+          height: 40px;
+          color: #8E91A4;
+        }
+      }
+      //团员栏
+      .group_create_content_body_member {
+        width: 100%;
+        .result_display(column);
+        .result_align(center);
+        margin: 5% 0 0 0;
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 5px 0;
+
+        .member_table_header {
+          .result_display(row);
+          .result_justify(center);
+          .result_align(center);
+          width: 95%;
+          color: #696B78;
+          padding: 5px 0;
+        }
+        .table_col {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: center;
+        }
+        .table_col_01 {
+          width: 35%;
+          min-width: 110px;
+        }
+        .table_col_02 {
+          width: 20%;
+        }
+        .table_col_03 {
+          width: 25%;
+        }
+        .table_col_04 {
+          width: 15%;
+          min-width: 45px;
+        }
+
+        .member_table_content {
+          position: relative;
+          width: 95%;
+
+          /*@media screen and (max-height: 568px) {
+            height: 128px;
+            max-height: 128px;
+
+          }
+          @media screen and (min-height: 568px) {
+            height: 160px;
+            max-height: 192px;
+
+          }*/
+          //overflow-y: scroll;
+          .member_table_content_list {
+            .result_display(row);
+            .result_justify(center);
+            .result_align(center);
+            height: 32px;
+            color: #8E91A4;
+          }
+        }
+      }
+
+    }
+
+    .text {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 25px;
+      color: #000000;
+    }
+
+    .successBtn {
+      margin-top: 5%;
+      height: 120px;
+      img {
+        width: 200px;
+      }
+    }
+
+    p {
+      font-size: 15px;
+      margin-top: 5px;
+      color: #666666;
+    }
+
+    .failBtn {
+      margin-top: 15%;
+      span {
+        height: 60px;
+        padding: 10px 30px;
+        border-radius: 5px;
+        background: #00b3ee;
+        font-size: 25px;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .check {
+    top: 44px !important;
+    background: #EAEAE8;
+    width: 100%;
+    height: 100%;
+    margin-top: 40%;
+    font-size: 20px;
+    text-align: center;
+
+    span {
+      color: #666666;
+    }
+
+    u {
+      color: #0a9dc7;
+    }
+
+  }
+
+}

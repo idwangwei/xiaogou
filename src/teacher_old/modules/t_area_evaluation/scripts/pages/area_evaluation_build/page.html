@@ -1,0 +1,58 @@
+<ion-view title="布置作业" hide-nav-bar="false" class="area_evaluation_build">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">布置作业</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="area_content">
+        <div class="my-form-content">
+            <div class="my-form-control">
+                <span class="my-form-title">试卷名称：</span>
+                <input type="text" class="my-form-input" value="四年级测评" ng-model="ctrl.formObj.paperName">
+                <a href="javascript:;" class="my-form-btn">点击修改<i class="icon ion-ios-arrow-right"> </i></a>
+            </div>
+            <div class="my-form-control">
+                <span class="my-form-title">开始时间：</span>
+                <!--<input type="text" class="my-form-input" ng-model="ctrl.formObj.startTime"  ng-focus="ctrl.openDatePicker('startTime')"  ng-if="ctrl.isPC">-->
+                <input type="datetime-local" class="my-form-input" ng-model="ctrl.formObj.startTime" ng-if="!ctrl.isPC">
+                <input type="text" class="my-form-input" ng-model="ctrl.formObj.startTime"  ng-focus="ctrl.openDatePicker('startTime')" ng-if="ctrl.isPC">
+                <a href="javascript:;" class="my-form-btn">点击修改<i class="icon ion-ios-arrow-right"> </i></a>
+                <alr-select-date-time style="left: 75px;" date-time="ctrl.startDateTime" select-done="ctrl.selectDone(1)"  ng-if="ctrl.isPC&&ctrl.isStartDateTimeShowFlag"></alr-select-date-time>
+            </div>
+            <div class="my-form-control">
+                <span class="my-form-title">截止时间：</span>
+                <input type="datetime-local" class="my-form-input" ng-model="ctrl.formObj.stopTime" ng-if="!ctrl.isPC">
+                <input type="text" class="my-form-input" ng-model="ctrl.formObj.stopTime" ng-focus="ctrl.openDatePicker('stopTime')" ng-if="ctrl.isPC">
+                <a href="javascript:;" class="my-form-btn">点击修改<i class="icon ion-ios-arrow-right"> </i></a>
+                <alr-select-date-time style="left: 75px;" date-time="ctrl.endDateTime" select-done="ctrl.selectDone(2)"  ng-if="ctrl.isPC&&ctrl.isEndDateTimeShowFlag"></alr-select-date-time>
+            </div>
+            <div class="my-form-control">
+                <span class="my-form-title">比赛时长：</span>
+                <label class="item item-input item-select my-form-select" >
+                    <select ng-model="ctrl.formObj.timeInterval">
+                        <option ng-repeat="item in ctrl.timeIntervalOptions" value="{{item.value}}">{{item.name}}</option>
+                    </select>
+                </label>
+                <a href="javascript:;" class="my-form-btn">点击修改<i class="icon ion-ios-arrow-right"> </i></a>
+            </div>
+            <div class="my-form-control">
+                <span class="my-form-title large">选择布置对象：</span>
+                <label class="item item-input item-select my-form-select">
+                    <select ng-model="ctrl.formObj.gradeName">
+                        <option ng-repeat="item in ctrl.gradeNameOptions" value="{{item.value}}">{{item.name}}</option>
+                    </select>
+                </label>
+                <a href="javascript:;" class="my-form-btn">点击修改<i class="icon ion-ios-arrow-right"> </i></a>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-balanced" ng-show="clazzList && clazzList.length>0">
+        <button class="button-clear bg-calm  bar-item" ng-click="ctrl.submitForm()">
+            <i class="icon ion-ios-paperplane">
+            </i>
+            布置
+        </button>
+    </div>
+
+</ion-view>

@@ -1,0 +1,43 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+@import "./../include/common";
+/*.item-complex {
+  .item-content {
+    padding: 5px 49px 10px 5px;
+  }
+}*/
+ion-list{
+  ion-item{
+    .first{
+      .white-bold(160, 15px);
+      .overflow-ellipsis;
+      margin-top: 5px;
+    }
+    .tool-bar-right {
+      position: absolute;
+      right: 60px;
+      top: 5px;
+      width: auto;
+      height: 60px;
+      text-align: center;
+      .display-flex;
+      .com_align_item;
+      .com_justify-content;
+      i {
+        color: #ffffff;
+        font-size: 30px;
+        padding: 3px;
+      }
+      .tool-bar-item{
+        padding: 0 15px 0 3px;
+      }
+
+    }
+  }
+  ion-item:nth-child(2n+1) .item-content{
+    .ion-item-even;
+  }
+}
+/*ul:nth-child(2n+1) .item-content{
+  .ion-item-even;
+}*/

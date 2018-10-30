@@ -1,0 +1,147 @@
+<ion-view hide-nav-bar="true" class="xly-select">
+    <ion-header-bar class="myHeader" align-title="center">
+        <button class="button buttons  button-clear common-back-btn" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+    </ion-header-bar>
+
+    <ion-content class="desc-content" overflow-scroll="true">
+        <div class="title-img">
+            <img ng-src="{{$root.loadImg('xly/xly_title-img.png')}}">
+        </div>
+        <div class="content-div">
+            <div class="plan-bar">
+                <div class="plan-part" ng-class="item.selected?'plan-select':''" ng-repeat="item in ctrl.plans"
+                     ng-click="ctrl.changePlan($index)">
+                    <p>{{item.text}}</p>
+                </div>
+            </div>
+            <div>
+                <div style="height: 100%;">
+                    <div class="desc-title">
+                        <div class="title">
+                            <p ng-if="ctrl.currentPlan=='planA'">
+                                <em style="font-size: 17px">1. </em>
+                                <span>缴纳督学金 </span>
+                                <span ng-if="!ctrl.xlyObj.planA[0].desc.saleFee">
+                                    <i class="ion-social-yen"></i>
+                                    {{ctrl.xlyObj.planA[0].desc.joinFee}}
+                                </span>
+                                <span ng-if="ctrl.xlyObj.planA[0].desc.saleFee" class="sale-fee-box">
+                                    <span>
+                                        <img ng-src="{{$root.loadImg('weixin_pay/wxpayRedLine.png')}}">
+                                        <i class="ion-social-yen"></i>
+                                        {{ctrl.xlyObj.planA[0].desc.joinFee}}
+                                    </span>
+                                    <span>
+                                        <i class="ion-social-yen"></i>
+                                        {{ctrl.xlyObj.planA[0].desc.saleFee+'（'+ ctrl.xlyObj.planA[0].desc.saleMsg +'）'}}
+                                    </span>
+                                </span>
+                                <span>加入A计划（三年有效）</span>
+
+                            </p>
+                            <p ng-if="ctrl.currentPlan=='planB'"><em style="font-size: 17px">1. </em>缴纳督学金 <i
+                                    class="ion-social-yen"></i>299加入B计划（三年有效）
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="desc-reward">
+                        <div class="reward-title">
+                            <p>
+                                <em style="font-size: 17px">2. </em>
+                                加入后，可通过以下方式
+                                <em style=" color: #ff3b30;">抵消</em>
+                                督学金，
+                                <em class="reward-title-text" style="white-space: nowrap;">
+                                    实现
+                                    <em style=" color: #ff3b30;">免费</em>：
+                                </em>
+                            </p>
+                        </div>
+                        <div class="reward-list">
+                            <!--<div class="reward-item" ng-repeat="item in ctrl.goodsDesc.desc.reward">
+                                <i class="ion-record" style="color: #683FBC;"></i>
+                                <p>{{item}}</p>
+                            </div>-->
+                            <div class="reward-item">
+                                <i class="ion-record" style="color: #683FBC;margin-right: 10px;"></i>
+                                <p ng-if="ctrl.currentPlan=='planA'">
+                                    <b>三年期满</b>，立即获得<b style="color: #ff3b30;">“学霸训练奖”</b>
+                                    <em><i class="ion-social-yen"></i><b>{{ctrl.xlyObj.planA[0].desc.saleFee||ctrl.xlyObj.planA[0].desc.joinFee}}</b></em>
+                                </p>
+                                <p ng-if="ctrl.currentPlan=='planB'">
+                                    <b>三年期满</b>，立即获得<b style="color: #ff3b30;">“学霸训练奖”</b>
+                                    <em><i class="ion-social-yen"></i><b>299</b></em>
+                                </p>
+                            </div>
+                            <div class="reward-item">
+                                <i class="ion-record" style="color: #683FBC; margin-right: 10px;"></i>
+                                <p ng-if="ctrl.currentPlan=='planA'">
+                                    三年期内，首次<b>邀请2名</b>同学成功加入培养计划，立即获得<b style="color: #ff3b30;">“共同进步奖”</b>
+                                    <em><i class="ion-social-yen"></i><b>{{ctrl.xlyObj.planA[0].desc.saleFee||ctrl.xlyObj.planA[0].desc.joinFee}}</b></em>
+                                    <img style="width: 22px;vertical-align: sub;" ng-click="ctrl.alertDialog()"
+                                         ng-src="{{$root.loadImg('me/reward_detail.png')}}">
+                                </p>
+                                <p ng-if="ctrl.currentPlan=='planB'">
+                                    三年期内，首次<b>邀请2名</b>同学成功加入培养计划，立即获得<b style="color: #ff3b30;">“共同进步奖”</b>
+                                    <em><i class="ion-social-yen"></i><b>299</b></em>
+                                    <img style="width: 22px;vertical-align: sub;" ng-click="ctrl.alertDialog()"
+                                         ng-src="{{$root.loadImg('me/reward_detail.png')}}">
+                                </p>
+                            </div>
+                            <div class="reward-item">
+                                <i class="ion-record" style="color: #683FBC;margin-right: 10px;"></i>
+                                <p>以上两奖只能获得一个。奖金将发放至您的原微信付费账号</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc-goods">
+                        <div class="goods-title">
+                        <span class="title-content">
+                            <!--<p>加入</p>
+                            <p ng-if="ctrl.currentPlan=='planA'">A计划</p>
+                            <p ng-if="ctrl.currentPlan=='planB'">B计划</p>
+                            <p>，尽享超低优惠：</p>-->
+                            <p><em style="font-size: 17px">3. </em>加入后，可享有以下超低优惠：</p>
+                            <label style="font-size: 12px;margin-left: 15px;color: #9762b7;">
+                                （各个项目均可先去免费体验）
+                            </label>
+                        </span>
+                        </div>
+                        <div class="goods-list" ng-if="ctrl.xlyObj[ctrl.currentPlan]">
+                            <div class="goods-item" ng-repeat="goods in ctrl.goodsListObj[ctrl.currentPlan]">
+                                <i class="goods-select-box"
+                                   ng-class="goods.selected==true?'ion-android-checkbox':'ion-android-checkbox-blank'"></i>
+                                <p class="goods-name">{{goods.name}}</p>
+                                <span class="goods-price old-price">
+                                <img ng-src="{{$root.loadImg('weixin_pay/wxpayRedLine.png')}}">
+                                <i class="ion-social-yen"></i>
+                                <p>{{goods.originalPrice/100}}</p>
+                            </span>
+                                <span class="goods-price" style="color: #ff3b30;">
+                                <i class="ion-social-yen"></i>
+                                <p>{{goods.discountPrice/100}}</p>
+                            </span>
+                            </div>
+                            <div class="goods-item">
+                                <div class="goods-select-box"></div>
+                                <p class="goods-name" style="white-space:nowrap">后续您将享受更多VIP优惠项目</p>
+                                <div class="goods-price old-price"></div>
+                                <div class="goods-price"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="footer-button">
+        <img ng-if="ctrl.currentPlan=='planA'" ng-src="{{$root.loadImg('xly/join_planA_button.png')}}"
+             ng-click="ctrl.joinPlan()">
+        <img ng-if="ctrl.currentPlan=='planB'" ng-src="{{$root.loadImg('xly/join_planB_button.png')}}"
+             ng-click="ctrl.joinPlan()">
+    </div>
+    <!--<loading-processing-v2></loading-processing-v2>-->
+</ion-view>

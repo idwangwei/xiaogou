@@ -1,0 +1,32 @@
+<div class="reward-prompt" ng-if="$root.showRewardPrompt">
+    <div class="reward-prompt-backdrop">
+        <div class="reward-prompt-content">
+            <div class="animation-content">
+                <img class="animation-bg" ng-src="{{rewardPromptBg}}">
+                <div class="animation-target">
+                    <div class="targets">
+                        <img class="target_img" ng-if="type=='reward'" ng-src="{{rewardPromptC1}}">
+                        <img class="target_img" ng-if="type=='diagnose'" ng-src="{{rewardPromptC2}}">
+                        <img class="animation-star1" ng-src="{{rewardPromptStar1}}">
+                        <img class="animation-star2" ng-src="{{rewardPromptStar2}}"
+                        ng-style="{'right':type=='diagnose'}?'7%':'16%'">
+                    </div>
+                </div>
+
+                <div class="reward-prompt-text">
+                    <div class="text-content">
+                        <img class="text-content-item" ng-src="{{rewardPromptGreen}}">
+                        <p class="text-content-item" ng-if="type=='reward'">能量+{{showNum}}</p>
+                        <p class="text-content-item" ng-if="type=='diagnose'">驯宠记特权+{{showNum}}天</p>
+                    </div>
+                </div>
+                <img class="submit-butn" ng-src="{{rewardPromptButn}}" ng-click="hideRewardPrompt()">
+            </div>
+            <!--<div class="sure-butn" ng-click="hideRewardPrompt()">
+                <img src="{{rewardPromptButn}}">
+            </div>-->
+
+        </div>
+    </div>
+
+</div>

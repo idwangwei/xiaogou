@@ -1,0 +1,112 @@
+<ion-view id="live-course-enter">
+    <ion-header-bar class="bar-balanced enter-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">直播课堂</h1>
+        <button class="button buttons button-clear item-call"  ng-click="ctrl.callPhone()">
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_call_btn.png')}}" class="pay-water">
+        </button>
+    </ion-header-bar>
+    <ion-content padding="false" class="enter-content">
+        <div class="content-banner">
+            <div class="content-title">讲师介绍</div>
+            <div class="banner-box" ng-if="ctrl.courseDetail.teacherIntroduce">
+                <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_banner_bg_2.png')}}" class="banner-box-bg">
+                <div class="text-box">
+                    <div class="star-box" ng-if="ctrl.courseDetail.teacherIntroduce.teacherStarArr.length>0">
+                        <span>{{ctrl.courseDetail.teacherIntroduce.teacherType}}：</span>
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_enter_star.png')}}" alt="" ng-repeat="v1 in ctrl.courseDetail.teacherIntroduce.teacherStarArr track by $index">
+                    </div>
+                    <div class="name">
+                        <img ng-src="{{ctrl.courseDetail.teacherIntroduce.teacherNameURL}}" alt="">
+                    </div>
+                    <div class="normal" ng-repeat="v2 in ctrl.courseDetail.teacherIntroduce.headTitle track by $index">{{v2}}</div>
+                </div>
+                <img ng-src="{{ctrl.courseDetail.teacherIntroduce.imageURL}}" class="banner-teacher">
+            </div>
+        </div>
+        <div class="content-section-2">
+            <div class="content-title">课程内容</div>
+            <div class="normal-box">
+                <div class="title">时间安排</div>
+                <div class="text">
+                    <span class="text-margin">{{ctrl.selectCourse.lessionName}}</span>
+                    <span class="star">
+                        <span>难度：</span>
+                        <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}" alt=""  ng-repeat="v in ctrl.selectCourse.starArr track by $index">
+                    </span>
+                </div>
+                <div class="text">
+                    <span class="text-margin">{{ctrl.selectCourse.showDate}}</span>
+                    <span>{{ctrl.selectCourse.showDateTime}}</span>
+                </div>
+                <div class="text">
+                    <span class="text-margin-2">讲师：{{ctrl.selectCourse.teacherName}}</span>
+                    <span>辅导：{{ctrl.selectCourse.secondaryTeacherName.teacher}}</span>
+                </div>
+            </div>
+            <div class="normal-box" ng-if="ctrl.courseDetail.lessionContent">
+                <div class="title">课程大纲</div>
+                <div class="text" ng-repeat="v in ctrl.courseDetail.lessionContent track by $index">
+                    {{v}}
+                </div>
+            </div>
+        </div>
+        <div class="content-section-3">
+            <div class="content-title">你将收获</div>
+            <div class="normal-box">
+                <div ng-repeat="v in ctrl.courseDetail.lessionHarvest track by $index">
+                    {{v}}
+                </div>
+            </div>
+        </div>
+        <div class="content-section-4">
+            <div class="content-title">如何听课</div>
+            <div class="normal-box">
+                <div class="box-item  step-3">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_step_1.png')}}">
+                    </div>
+                    <div class="bottom">
+                        <p>报名公开课</p>
+                    </div>
+                </div>
+                <div class="box-item step-arrow">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_arrow.png')}}">
+                    </div>
+                </div>
+                <div class="box-item step-2">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_step_2.png')}}">
+                    </div>
+                    <div class="bottom">
+                        <p>提前15分钟进入</p>
+                        <p>智算365课堂</p>
+                    </div>
+                </div>
+                <div class="box-item step-arrow">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_arrow.png')}}">
+                    </div>
+                </div>
+                <div class="box-item step-3">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_step_3.png')}}">
+                    </div>
+                    <div class="bottom">
+                        <p>线上课堂</p>
+                        <p>学习</p>
+                    </div>
+                </div>
+            </div>
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_erweima.png')}}" class="erweima">
+            <div class="notice">提示：微信搜索“智算365”或扫描上方二维码添加公众号，获取更多上课信息以及使用指导</div>
+        </div>
+    </ion-content>
+    <div class="live-course-bottom">
+        <span class="btn-text" ng-if="ctrl.selectCourse.type==1">已报名</span>
+        <img  ng-if="ctrl.selectCourse.type==0" ng-src="{{$root.loadLiveImg('live_course_enter/live_course_bottom_btn_'+ctrl.selectCourse.type+'.png')}}" ng-if="ctrl.selectCourse.type!==undefined" ng-click="ctrl.enterCourse()">
+    </div>
+</ion-view>

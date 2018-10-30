@@ -1,0 +1,129 @@
+.reward-stu-ad {
+  .reward-stu-ad-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    .display-flex;
+    .reward-stu-ad-content {
+      position: relative;
+      z-index: 1000;
+      background: #f9d568;
+      border-radius: 10px;
+      width: 90%;
+      height: 65%;
+      max-width: 500px;
+      max-height: 600px;
+      overflow: hidden;
+      .reward-stu-ad-head {
+        text-align: center;
+        position: relative;
+        overflow: visible;
+        height: 25%;
+        width: 100%;
+        padding-top: 6px;
+        //min-height: 80px;
+        img {
+          height: 100%;
+        }
+      }
+      .reward-stu-ad-desc {
+        .display-flex;
+        .com_flex-direction(column);
+        justify-content: flex-start;
+        -webkit-justify-content: flex-start;
+        min-height: 30px;
+        background-color: #ffffff;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        border-radius: 10px;
+        padding: 5px 10px;
+        text-align: center;
+        overflow: scroll;
+        color: #873430;
+        .desc-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin: 10px 0 15px 0;
+        }
+        .desc-pass1 {
+          font-size: 14px;
+          text-align: left;
+          margin: 0 8px 10px 8px;
+        }
+        .desc-pass2 {
+          font-size: 14px;
+          text-align: left;
+          margin: 0 8px 10px 8px;
+        }
+        @media screen and (min-height: 763px) {
+          .desc-title {
+            font-size: 18px;
+          }
+
+          .desc-pass1 {
+            font-size: 16px;
+          }
+
+          .desc-pass2 {
+            font-size: 16px;
+          }
+        }
+
+        @media screen and (min-height: 1000px) {
+          .desc-title {
+            font-size: 22px;
+          }
+
+          .desc-pass1 {
+            font-size: 20px;
+          }
+
+          .desc-pass2 {
+            font-size: 20px;
+          }
+        }
+
+        height: 65%;
+      }
+      .reward-ad-person {
+        position: absolute;
+        width: 40%;
+        max-width: 220px;
+        bottom: -55px;
+        right: -5px;
+        @media screen and (max-height: 569px) {
+          width: 0px;
+          height: 0px;
+        }
+      }
+    }
+  }
+
+  .display-flex {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+  }
+
+  .con_flex-align-direction(@dir) {
+    align-items: @dir;
+    -webkit-align-items: @dir;
+  }
+
+  .con_flex-justify-direction(@dir) {
+    justify-content: @dir;
+    -webkit-justify-content: @dir;
+  }
+
+  .com_flex-direction (@direction) {
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+  }
+
+}

@@ -1,0 +1,21 @@
+.draft_icon{
+    height: 30px;
+    width: 30px;
+    background: url("./../img/draw-pen.png");
+    background-size: 100% 100%;
+}
+.draft_icon_light{
+    background: url("./../img/close-draw.png");
+    background-size: 100% 100%;
+}
+
+.draft_container{
+    position: absolute;
+    background: rgba(225, 225, 225, 0.1);
+    z-index: 10;
+}
+.draft_container_bg{
+    position: absolute;
+    background: rgba(225, 225, 225, 0.1);
+    z-index: 9;
+}

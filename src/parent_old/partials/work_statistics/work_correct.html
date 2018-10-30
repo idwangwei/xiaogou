@@ -1,0 +1,75 @@
+<style>
+    .work_correct_file .big-q{
+        border: none;
+    }
+    .work_correct_file .comment{
+        background:none!important;
+    }
+    .work_correct_file .input-area{
+        height:auto!important;
+        line-height: inherit!important;
+    }
+    .backdrop.active{
+        pointer-events: auto !important;
+    }
+    .work_correct_file .vertical-tip{
+        font-size: 16px;
+        padding-top: 20px;
+        color: #293d69;
+    }
+</style>
+<ion-view hide-nav-bar="true" class="feedback ">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="ctrl.hideModal()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">试题参考答案</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="work_correct_file">
+        <div class="bg-box">
+            <img ng-src="{{$root.loadImg('work/correct_ans_bg.png')}}" width="100%" height="100%">
+            <div class="bg-inner-box">
+                <div class="bg-inner-box1">
+                    <img ng-src="{{$root.loadImg('work/correct_ans_inner.png')}}"  >
+                </div>
+            </div>
+            <img ng-src="{{$root.loadImg('work/savant_ans.png')}}"
+                 class="savant-ans-wrap"
+                 ng-click="ctrl.getQAns(true,$event)">
+        </div>
+
+        <!--<img id="work_detail_bg" ng-src="{{$root.loadImg('work/correct_ans.png')}}" width="100%">-->
+        <div class="card card-better small_q_bg" >
+            <div class="big-q card-title" ng-if="ctrl.bigQSeq">
+                <div>
+                    <label >
+                            <span ng-bind="ctrl.bigQSeq+'、'+ctrl.bigQTitle+' | 第'+(ctrl.smQSeq+1)+'小题('+ctrl.smallQ.score+'分)'">
+                            </span>
+                    </label>
+                </div>
+            </div>
+            <div ng-if="ctrl.isVertical&&ctrl.referAnswers.vertical" class="vertical-tip">
+                <span ng-bind="ctrl.referAnswers.vertical"></span>
+            </div>
+            <div compile-html="ctrl.smallQ.qContext" refer-answers="ctrl.referAnswers"
+                 ng-if="ctrl.showCorrectFlag&&!ctrl.parsedInputList"
+                 class="q-context">
+            </div>
+            <div compile-html="ctrl.smallQ.qContext" refer-answers="ctrl.referAnswers"
+                 ng-if="ctrl.showCorrectFlag&&ctrl.parsedInputList"
+                 current-q-input="ctrl.parsedInputList"
+                 class="q-context">
+            </div>
+            <!--<div style="padding: 0 10px;" ng-if="ctrl.showDoc">
+                <div>解析：</div>
+                <div compile-html="ctrl.doc" refer-answers="ctrl.referAnswers"
+                     ng-if="ctrl.showDoc"
+                     class="q-context" style="margin-top: 3px; text-align: center;">
+                </div>
+            </div>-->
+
+        </div>
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

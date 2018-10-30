@@ -1,0 +1,237 @@
+<ion-view class="game_map_level_file">
+
+    <div class="level_top_bar" ng-class="{'platform_window_width':ctrl.isWin}"
+         ng-style="{'padding-top':ctrl.isIos?'28px':'8px','height':ctrl.isIos?'80px':'60px'}"
+         ng-if="ctrl.initCtrl && !!ctrl.levelsWithoutFirst.length">
+
+        <div class="top_bar_left" ng-click="ctrl.back()">
+            <img ng-src="{{ctrl.levelTheme.topBarImg.left}}" alt="">
+        </div>
+        <div class="top_bar_middle">
+            <img ng-src="{{ctrl.levelTheme.topBarImg.middle}}" alt="">
+        </div>
+        <div class="top_bar_right" ng-click="ctrl.gotoAtlas()">
+            <img ng-src="{{ctrl.levelTheme.topBarImg.right}}" alt="">
+        </div>
+    </div>
+    <ion-content ng-class="ctrl.isWin ? 'platform_window_width '+ctrl.levelTheme.backgroundColor : ctrl.levelTheme.backgroundColor ">
+
+        <div class="level_content" style="overflow: hidden" >
+            <div class="pass_level_box" ng-if="ctrl.initCtrl && !!ctrl.levelsWithoutFirst.length">
+                <div class="pass_level_box_warp">
+                    <div>
+                        <img class="pass_box_bling_bg"  ng-if="ctrl.passBox.boxCanOpen"
+                             ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptBg.png')}}">
+                        <img ng-src="{{$root.loadGameMapImg(ctrl.passBox.boxOpen ? 'level_page/level_box_open.png':'level_page/level_box_pass_level.png')}}"
+                             ng-click="ctrl.openBox(ctrl.passBox)" alt="" ng-class="{'pass-box-shake':ctrl.passBox.boxCanOpen}">
+                    </div>
+                </div>
+                <div class="pass_box_line"
+                     ng-class="{'level_item_line_light':ctrl.passBox.boxCanOpen||ctrl.passBox.boxOpen,'pass_level_box_line_left':ctrl.levelsWithoutFirst.length%2 != 1,'pass_level_box_line_right':ctrl.levelsWithoutFirst.length%2 == 1}">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="level_content_warp" ng-if="ctrl.initCtrl && !!ctrl.levelsWithoutFirst.length">
+                <div class="level_content_item" ng-repeat="item in ctrl.levelsWithoutFirst" repeat-finish
+                     id="{{ctrl.getLevelItemId(item.levelNum)}}">
+
+                    <!--奇数关卡的路径、平台、风景图片、宝箱-->
+                    <div class="level_item_layer_1 level_item_left_layer_1" ng-if="item.levelNum%2==1">
+                        <div class="level_item_img" ng-if="item.bgImgIndex !== undefined && !$last">
+                            <img ng-src="{{ctrl.levelTheme.itemBgImgArr[item.bgImgIndex]||ctrl.levelTheme.itemBgImgArr[0]}}" alt="">
+                        </div>
+                        <div class="level_item_icon">
+                            <img ng-src="{{ctrl.levelTheme.itemIconLight}}" alt="" ng-class="{'icon_img_light':!item.canPlay}">
+                        </div>
+                        <div class="level_item_line" ng-class="{'level_item_line_light':item.canPlay}">
+                            <div></div><div></div><div></div><div></div><div></div>
+                        </div>
+                        <div class="level_item_box" ng-if="item.hasInsertBox">
+                            <img class="box_bling_bg"  ng-if="item.boxCanOpen"
+                                 ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptBg.png')}}">
+                            <img ng-src="{{item.boxOpen ? ctrl.levelTheme.itemBoxOpen:ctrl.levelTheme.itemBoxClosed}}"
+                                 ng-class="{'box_shake_box':item.boxCanOpen}" alt="" ng-click="ctrl.openBox(item)">
+
+                        </div>
+
+                    </div>
+                    <!--偶数关卡的路径、平台、风景图片、宝箱-->
+                    <div class="level_item_layer_1 level_item_right_layer_1" ng-if="item.levelNum%2==0">
+                        <div class="level_item_img" ng-if="item.bgImgIndex !== undefined && !$last">
+                            <img ng-src="{{ctrl.levelTheme.itemBgImgArr[item.bgImgIndex]||ctrl.levelTheme.itemBgImgArr[0]}}" alt="">
+                        </div>
+                        <div class="level_item_icon">
+                            <img ng-src="{{ctrl.levelTheme.itemIconLight}}" alt="" ng-class="{'icon_img_light':!item.canPlay}">
+                        </div>
+                        <div class="level_item_line" ng-class="{'level_item_line_light':item.canPlay}">
+                            <div></div><div></div><div></div><div></div><div></div>
+                        </div>
+                        <div class="level_item_box" ng-if="item.hasInsertBox">
+                            <img class="box_bling_bg"  ng-if="item.boxCanOpen"
+                                 ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptBg.png')}}">
+                            <img ng-src="{{item.boxOpen ? ctrl.levelTheme.itemBoxOpen:ctrl.levelTheme.itemBoxClosed}}"
+                                 ng-class="{'box_shake_box':item.boxCanOpen}" alt="" ng-click="ctrl.openBox(item)">
+
+                        </div>
+
+                    </div>
+
+                    <!--每个关卡的描述、星星、关卡数字-->
+                    <!--奇数关卡：关卡描述星星在左侧-->
+                    <div class="level_item_left_layer_2"  ng-if="item.levelNum%2==1">
+                        <div class="item_top_layer_box"  ng-click="ctrl.enterGame(item)">
+                            <div class="icon_level_num">{{item.levelNum}}</div>
+                            <div class="icon_star_box">
+                                <img ng-src="{{item.star>=1?ctrl.levelTheme.starImgLight:(item.star==0?ctrl.levelTheme.starImgDark:ctrl.levelTheme.starImgHalf)}}" alt="">
+                                <img ng-src="{{item.star>=2?ctrl.levelTheme.starImgLight:(item.star>1?ctrl.levelTheme.starImgHalf:ctrl.levelTheme.starImgDark)}}" alt="">
+                                <img ng-src="{{item.star>=3?ctrl.levelTheme.starImgLight:(item.star>2?ctrl.levelTheme.starImgHalf:ctrl.levelTheme.starImgDark)}}" alt="">
+                            </div>
+                        </div>
+
+                        <div class="icon_level_desc">{{item.desc}}</div>
+                    </div>
+                    <!--偶数关卡：关卡描述星星在右侧-->
+                    <div class="level_item_left_layer_2 level_item_right_layer_2"  ng-if="item.levelNum%2==0">
+                        <div class="icon_level_desc">{{item.desc}}</div>
+                        <div class="item_top_layer_box"  ng-click="ctrl.enterGame(item)">
+                            <div class="icon_level_num">{{item.levelNum}}</div>
+                            <div class="icon_star_box">
+                                <img ng-src="{{item.star>=1?ctrl.levelTheme.starImgLight:(item.star==0?ctrl.levelTheme.starImgDark:ctrl.levelTheme.starImgHalf)}}" alt="">
+                                <img ng-src="{{item.star>=2?ctrl.levelTheme.starImgLight:(item.star>1?ctrl.levelTheme.starImgHalf:ctrl.levelTheme.starImgDark)}}" alt="">
+                                <img ng-src="{{item.star>=3?ctrl.levelTheme.starImgLight:(item.star>2?ctrl.levelTheme.starImgHalf:ctrl.levelTheme.starImgDark)}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="level_content_item level_content_first" id="{{ctrl.getLevelItemId(1)}}">
+                    <img ng-src="{{ctrl.levelTheme.freePlayImg}}" class="level_first_free_play" alt="" >
+                    <img ng-src="{{ctrl.levelTheme.itemIconLight}}" alt="">
+                    <div class="level_item_left_layer_2">
+                        <div class="item_top_layer_box" ng-click="ctrl.enterGame(ctrl.firstLevel)">
+                            <div class="icon_level_num">{{ctrl.firstLevel.levelNum}}</div>
+                            <div class="icon_star_box">
+                                <img ng-src="{{ctrl.firstLevel.star>=1?ctrl.levelTheme.starImgLight:(ctrl.firstLevel.star==0?ctrl.levelTheme.starImgDark:ctrl.levelTheme.starImgHalf)}}" alt="">
+                                <img ng-src="{{ctrl.firstLevel.star>=2?ctrl.levelTheme.starImgLight:(ctrl.firstLevel.star>1?ctrl.levelTheme.starImgHalf:ctrl.levelTheme.starImgDark)}}" alt="">
+                                <img ng-src="{{ctrl.firstLevel.star>=3?ctrl.levelTheme.starImgLight:(ctrl.firstLevel.star>2?ctrl.levelTheme.starImgHalf:ctrl.levelTheme.starImgDark)}}" alt="">
+                            </div>
+                        </div>
+
+                        <div class="icon_level_desc">{{ctrl.firstLevel.desc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <stu-float-mark ng-if="ctrl.showStuMark" level-id="{{ctrl.getLevelItemId(ctrl.currentStuLevel)}}"></stu-float-mark>
+
+    </ion-content>
+
+    <div class="loading_process_layer"  ng-if="ctrl.isLoadingProcessing" ng-class="{'platform_window_width':ctrl.isWin}">
+        <loading-processing-v2></loading-processing-v2>
+    </div>
+
+
+    <div class="game-level-prompt" ng-if="ctrl.showGameLevelPrompt">
+        <div class="game-level-prompt-backdrop">
+            <div class="game-level-prompt-content need-pass-pre-level" ng-if="ctrl.promptType === ctrl.gameMapFinalData.needPassPreLevel">
+                <div class="content-title"> </div>
+                <div class="content-word">
+                    先要通关前面的关卡才行哟。
+                </div>
+                <div class="content-btn" ng-click="ctrl.hidePrompt()">
+                    <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_btn_ok.png')}}" alt="">
+                </div>
+            </div>
+            <div class="game-level-prompt-content enter-game" ng-if="ctrl.promptType === ctrl.gameMapFinalData.enterGame">
+                <div class="content-title" ng-class="{'first-level-title':ctrl.enterGameInfo.levelNum == 1}">
+                    <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_free_play.png')}}"
+                         ng-if="ctrl.enterGameInfo.levelNum == 1" alt="">
+                </div>
+                <div class="content-word">
+                    <div>{{'第 '+ctrl.enterGameInfo.levelNum+' 关'}}</div>
+                    <div>{{ctrl.enterGameInfo.desc}}</div>
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_btn_enter.png')}}"
+                         alt=""  ng-click="ctrl.playGame()">
+                    <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_btn_cancel.png')}}"
+                         alt=""  ng-click="ctrl.hidePrompt()">
+                </div>
+            </div>
+            <div class="game-level-prompt-content goto-pay" ng-if="ctrl.promptType === ctrl.gameMapFinalData.gotoPay">
+                <div class="content-title">
+                    <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_goto_pay.png')}}" alt="">
+                </div>
+                <div class="content-word">
+                    <div>马上开通自学课程，趣味闯关，轻松掌握知识点。</div>
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_btn_vip.png')}}"
+                         alt=""  ng-click="ctrl.gotoPay()">
+                    <div ng-click="ctrl.hidePrompt()">
+                        取消
+                    </div>
+                </div>
+            </div>
+            <div class="game-level-prompt-content open-box" ng-if="ctrl.promptType === ctrl.gameMapFinalData.openBox">
+
+                <div class="animation-content content-box-card" ng-if="!!ctrl.currentBoxReward.card && ctrl.showBoxCard">
+                    <div class="close-card" ng-click="ctrl.hideBoxCard()">
+                        <i class="icon ion-close-round"></i>
+                    </div>
+                    <div class="animation-content-top">
+                        <img class="animation-bg" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptBg.png')}}">
+                        <div class="animation-target">
+                            <img class="target_img" ng-src="{{$root.loadGameMapImg(ctrl.openBoxCardImgSrc)}}">
+                            <img class="animation-star1" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptStar1.png')}}">
+                            <img class="animation-star2" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptStar2.png')}}">
+                        </div>
+
+                    </div>
+
+                    <div class="animation-content-middle">
+                        <img class="card_green_bling" ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_green_bling.png')}}" alt="">
+                        <img ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptGreen.png')}}">
+                        <div>解锁图集角色</div>
+                    </div>
+
+                    <div class="animation-content-bottom">
+                        <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_btn_check.png')}}" ng-click="ctrl.gotoAtlas(true)">
+                    </div>
+
+                </div>
+                <div class="animation-content" ng-if="!!ctrl.currentBoxReward.credits && ctrl.showBoxCredits">
+                    <div class="animation-content-top">
+                        <img class="animation-bg" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptBg.png')}}">
+                        <div class="animation-target">
+                            <img class="target_img" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptContent1.png')}}">
+                            <img class="animation-star1" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptStar1.png')}}">
+                            <img class="animation-star2" ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptStar2.png')}}">
+                        </div>
+
+                    </div>
+
+                    <div class="animation-content-middle">
+                        <img ng-src="{{$root.loadGameMapImg('game_level_prompt/rewardPromptGreen.png')}}">
+                        <div>能量+{{ctrl.currentBoxReward.credits}}</div>
+                    </div>
+
+                    <div class="animation-content-bottom">
+                        <img ng-src="{{$root.loadGameMapImg('game_level_prompt/prompt_btn_ok.png')}}" ng-click="ctrl.hideBoxCredits()">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</ion-view>
+
+

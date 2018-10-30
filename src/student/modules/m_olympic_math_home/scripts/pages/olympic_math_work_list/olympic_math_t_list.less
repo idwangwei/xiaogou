@@ -1,0 +1,178 @@
+@charset "UTF-8";
+@import '../../../../m_boot/less/theme01/include/_mixins';
+
+.olympic_math_t_list{
+  .select-work-btn{
+    position: absolute;
+    height: 44px;
+    line-height: 44px;
+    top: 0px;
+    font-size: 17px;
+    right: 20px;
+    color: rgb(74, 107, 157);
+  }
+  .scroll-content{
+    bottom: 0px;
+  }
+  .s_work_list_con{
+    background:  linear-gradient(to bottom, #CA75EA 0%, #956BE4 100%);
+    background: linear-webkit-gradient(to bottom, #CA75EA 0%,#956BE4100%);
+  }
+
+  //奖杯榜入口
+  .work-trophy-rank-wrap{
+    background: #7748CE ;
+    position: relative;
+    overflow: hidden;
+    .olympic-math-cup-bg{
+      position: absolute;
+      right: 0px;
+      top: 0;
+      height: 100%;
+    }
+    .olympic_math_gold_cup{
+      position: absolute;
+      left: 9%;
+      top: -10px;
+      height: 175%;
+      transform: rotate(-20deg);
+    }
+    .work-trophy-rank-text{
+      .display-flex;
+      height: 100%;
+      width: 100%;
+      font-size: 17px;
+      color: #fff;
+      span{
+        font-weight: bold;
+      }
+      i{
+        margin: 4px 0px 0px 16px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  //我要练习的入口
+  .self-create-paper-bar-wrap{
+    background: #D579F7 ;
+    position: relative;
+    .display-flex;
+    overflow: hidden;
+    line-height: 57px;
+    .centent-box-wrap{
+      .olympic-math-self-practice{
+        width: 70px;
+        vertical-align: top;
+      }
+      span{
+        color: white;
+        font-size: 20px;
+        margin-left: 10px;
+      }
+      i{
+        font-size: 18px;
+        color: white;
+        margin-left: 7px;
+      }
+    }
+  }
+  .trophy_rank_data{
+    background: #8ad5f9;
+    .bg_wrap_trophy{
+      background: #8ad5f9 url("../../../../m_global/sImages/msg/msg_trophy_bg_1_purple.png") 0 100% repeat-x;
+      .middle-wrap{
+        position: relative;
+        height: 152px;
+        width: 100%;
+
+        .cover-img-wrap{
+          position: absolute;
+          z-index: 100;
+          width: 100%;
+          height: 100%;
+          .display-flex;
+          h4{
+            color: white;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .delete-check-box{
+    font-size: 35px;
+    position: absolute;
+    z-index: 100;
+    bottom: 20px;
+    right: 10px;
+    color: purple;
+  }
+  .delete-bar{
+    position: fixed;
+    bottom: 0;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    color: purple;
+    color: purple;
+    font-size: 22px;
+    span{
+      margin-left: 22px;
+    }
+    .ion-trash-a{
+      float: right;
+      margin-right: 10px;
+      font-size: 35px;
+    }
+  }
+  .vip_paper_icon{
+    position: absolute;
+    left: 8px;
+    top: 80px;
+    height: 36px;
+    padding: 0 2px;
+    background-color: #c173e9;
+    border-radius: 8px;
+    span{
+      line-height: 36px;
+      color: #ffffff;
+    }
+  }
+  .vip_paper_icon_green{
+    background-color: #05ae28!important;
+
+  }
+}
+
+.olympic-math-t-list-select-modal{
+  ion-header-bar{
+    background: #B569E7!important;
+    .ion-ios-arrow-back,.title{
+      color: white;
+    }
+  }
+  .bank_content{
+    background-color: #E3DDE6;
+  }
+  .list{
+    padding-bottom: 20px;
+    .unit_bg{
+      background: #FFFFFF;
+      margin-left: 10px;
+      margin-top: 10px;
+      height: 44px;
+      padding: 10px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      color: #1E446A;
+      margin-right: 10px;
+      border: none;
+    }
+  }
+
+}

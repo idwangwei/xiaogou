@@ -1,0 +1,17 @@
+<div class="competition-alert-box" ng-click="hideCompetitionAd()"
+    ng-if="$root.showCompetitionAdAlertBoxFlag && $root.hasCompetition && $root.currentSystem == 'student' && isCompeting">
+    <div class="competition-alert-box-backdrop">
+        <div class="alert-box-content">
+            <p class="box-title">竞赛通知</p>
+            <span> {{studentTip}}</span>
+            <div class="box-btn" ng-click="goToWorkList()">
+                <img style="width:100%" ng-src="{{btn}}">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div ng-if="$root.showCompetitionAdAlertBoxFlag && $root.hasCompetition && $root.currentSystem == 'parent'"></div>
+

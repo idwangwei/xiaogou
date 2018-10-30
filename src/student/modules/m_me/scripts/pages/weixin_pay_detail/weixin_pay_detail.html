@@ -1,0 +1,27 @@
+<ion-view class="weixin_pay_detail">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">明细</h1>
+    </ion-header-bar>
+    <ion-content class="details_list">
+        <ion-list class="list-item-style">
+            <ion-item class="item item-avatar" ng-repeat="item in ctrl.payDetailList.list"
+                      ng-click="ctrl.getOrderDetail(item)">
+                <div class="details_list">
+                    <div class="details_list_item_left">
+                        <div>{{item.description}}</div>
+                        <p>{{item.createTime}}</p>
+                    </div>
+                    <div class="details_list_item_right">
+                        <div class="fee">{{item.fee/100}}元</div>
+                        <p>{{item.payMethod=="wechat"?"微信支付":"其他方式支付"}}</p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <span ng-if="ctrl.isGetList" style="margin-left: 20px;font-size: 18px">暂时没有支付记录</span>
+
+    </ion-content>
+</ion-view>

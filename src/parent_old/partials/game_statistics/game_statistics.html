@@ -1,0 +1,55 @@
+<ion-view hide-nav-bar="true" class="statisstics">
+    <ion-header-bar align-title="center" class="bar-balanced" id="ionHeaderBar">
+        <div class="button buttons  button-clear header-item" ng-click="back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">{{stuName}}&nbsp;|&nbsp;错误归因</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <ion-content   scroll="false"  id="situationContent"  >
+        <div row-auto-height style="position: relative" id="mainContent">
+            <div  style="overflow-y: auto;height: 50%;" id="topContent">
+                <table>
+                    <tr>
+                        <th ng-repeat="title in data.tabTitle">{{title.name}}</th>
+                    </tr>
+                    <tr ng-if="data.tabData.length<=0">
+                        <td colspan="3" style="color: red">没有完成游戏或没有错误</td>
+                    </tr>
+                    <tr ng-repeat="info in data.tabData" ng-if="data.tabData.length>0">
+                        <td class="name">{{info.position}}</td>
+                        <td>{{info.description}}</td>
+                        <td>{{info.num}}</td>
+                    </tr>
+                </table>
+                <br/>
+            </div>
+            <div  style="position: absolute;width: 100%;height: 50%;"  id="bottomContent">
+                <div style="background: rgba(15, 121, 89, 0.26);font-size: 18px;height: 18px;text-align: center;"
+                     ng-click="handleOpenImg();" id="pullBar">
+                    <i ng-class="openFlag==true?'ion ion-ios-arrow-down':'ion ion-ios-arrow-up'" >
+                    </i>
+                </div>
+
+                <div style="width: 100%;height: 100%;padding-bottom: 60px;overflow-y: auto">
+                    <img img-src="data.total.imgUrl"  width="100%" alt="" ng-click="showErrorImg()"/>
+                </div>
+            </div>
+        </div>
+        <loading-processing></loading-processing>
+    </ion-content>
+</ion-view>
+
+
+<div class="myBackdrop" ng-show="showErrorImgFlag" my-backdrop contentId="situationContent"></div>
+<div class="myModal" ng-show="showErrorImgFlag" ng-click="hideErrorImg()" my-backdrop  contentId="situationContent">
+    <ion-scroll zooming="true" style="width: 100%;height: 97%;" direction="xy" >
+        <img img-src="data.total.imgUrl"  style=" width: 100%;height: auto;">
+    </ion-scroll>
+
+</div>

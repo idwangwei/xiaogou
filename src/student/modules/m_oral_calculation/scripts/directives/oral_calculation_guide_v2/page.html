@@ -1,0 +1,81 @@
+<div class="oral-guide-backdrop" ng-if="$root.showOralCalculationGuideFlag" ng-click="hideGuide()">
+    <div class="oral-guide-go-back" ng-if="showType == 2" ng-click="goBack()" ng-style="{'margin-top':isIos ? '20px':'0'}">
+        <i class="icon ion-ios-arrow-back" style="font-size: 30px;"></i>&nbsp;退出
+
+    </div>
+    <div class="oral-guide-content" ng-class="{'oral-guide-content-bar':showType!=2}" ng-click="clickContent($event)">
+        <div class="oral-guide-content-title" ng-class="{'oral-guide-content-title-1':showType==1}" ng-if="showType != 2">
+            <!--教师端广告弹窗-->
+            <img ng-src="{{loadOralImg('oral_guide_btn_title_t.png')}}" alt="" ng-if="showType == 0">
+            <!--学生端广告弹窗-->
+            <img ng-src="{{loadOralImg('oral_guide_btn_title_s.png')}}" alt="" ng-if="showType == 1">
+        </div>
+
+        <div class="oral-guide-content-body" ng-style="{'padding-bottom':showType == 1 ? '20px':'initial'}" ng-if="(!isPC&&!isOralKeyboard&&!isAreaEvaluation)||showType!=2">
+            <ion-slide-box style="width: 100%" delegate-handle="oral-guide-slide-box-v2"
+                           does-continue="true"
+                           auto-play="false"
+                           show-pager="false"
+                           on-slide-changed="slideHasChanged($index)"
+                           slide-interval=4000>
+                <ion-slide class="oral-guide-slide-content">
+                    <div ng-class="{'content-word-do-question':showType == 2}">手写口算，像纸上一样书写</div>
+                    <div class="oral-guide-slide-content-item">
+                        <img ng-src="{{loadOralImg('oral_guide_first_slide_top.png')}}" alt="">
+                        <img ng-src="{{loadOralImg('oral_guide_first_slide_bottom.png')}}" alt="">
+                    </div>
+                </ion-slide>
+                <ion-slide class="oral-guide-slide-content">
+                    <div class="oral-guide-slide-content-item2">
+                        <div class="item-left">
+                            <div class="text-before">
+                                修改
+                            </div>
+                            <div class="oral-guide-step2"></div>
+                            <!--<img ng-src="{{loadOralImg('oral_guide_second_slide_bottom.png')}}" alt="">-->
+                        </div>
+                        <div class="item-right">
+                            <div class="text-before">
+                                提交
+                            </div>
+                            <img ng-src="{{loadOralImg('oral_guide_second_slide_bottom.png')}}" alt="">
+                        </div>
+                    </div>
+                </ion-slide>
+
+            </ion-slide-box>
+            <div class="slider-change-arrow" ng-click="showNextGuide($event)" ng-class="{'arrow-color-do-question':showType==2}">
+                <i class="icon ion-chevron-right"></i>
+
+            </div>
+        </div>
+
+        <div class="oral-guide-content-body" style="padding-bottom:initial;text-align: center" ng-if="(isPC||isOralKeyboard||isAreaEvaluation)&&showType==2">
+            <img ng-src="{{loadOralImg('oral_count_clock.png')}}" alt="">
+        </div>
+
+        <div class="oral-guide-content-footer" ng-if="showType != 1">
+            <div class="start-timer-btn" ng-if="showType == 2">
+                <div ng-click="handleBtnClick()">
+                    <img ng-src="{{loadOralImg('oral_guide_start_btn.png')}}"
+                         ng-if="selectWork.limitTime==-1"
+                         alt="" style="width: 50%;max-width: 120px;">
+                    <img ng-src="{{loadOralImg('oral_guide_start_timer.png')}}"
+                         ng-if="selectWork.limitTime!=-1"
+                         alt="" style="width: 50%;max-width: 120px;">
+                </div>
+                <p style="color: #fff" ng-if="selectWork.limitTime!=-1">一旦开始，需在规定时间内提交</p>
+            </div>
+
+            <div class="teacher-bar-btn" ng-if="showType == 0">
+                <div ng-click="handleBtnClick()">
+                    <img ng-src="{{loadOralImg('oral_guid_btn_pub.png')}}" alt="">
+                </div>
+                <div ng-click="hideGuide()">下次再说</div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

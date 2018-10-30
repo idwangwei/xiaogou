@@ -1,0 +1,28 @@
+<div class="pane rotary-draw">
+    <p class="title">您有 <span class="num">{{num}}</span>次抽奖机会</p>
+    <div class="content">
+        <div class="wheel" id="wheelBox">
+            <img class="circle" ng-src="{{$root.loadCreditsStoreImg('rotary_draw/icon-circle.png')}}" alt="">
+            <canvas id="wheelCanvas"></canvas>
+        </div>
+        <span class="pointer" ng-class="{true: 'active'}[showRewardInfo||num<=0]" ng-click="runDraw()"></span>
+    </div>
+    <div class="tips" ng-show="isFirst">
+        <span class="tip">{{text}}</span>
+        <span class="tip">送你抽奖大机会！</span>
+        <span class="tip">点击上方开始抽奖吧！</span>
+    </div>
+    <div class="tips" ng-show="!isFirst&&rewardType==1&&showRewardInfo">
+        <span class="tip">恭喜你获得{{text}}！</span>
+    </div>
+    <div class="tips" ng-show="!isFirst&&rewardType==2&&showRewardInfo">
+        <span class="tip">恭喜你获得{{text}}！</span>
+        <span class="tip">请您截图发送到微信</span>
+        <span class="tip">公众号“智算365”联系我们</span>
+    </div>
+    <div class="tips" ng-show="!isFirst&&rewardType==3&&showRewardInfo">
+        <span class="tip">谢谢参与！</span>
+    </div>
+    <span class="hide-btn" ng-click="showRewardInfo=false" ng-show="showRewardInfo">确定</span>
+    <i class="icon ion-close-round close-btn" ng-click="afterLeave()"></i>
+</div>

@@ -1,0 +1,197 @@
+<ion-view hide-nav-bar="true" class="work_list_file">
+    <ion-header-bar align-title="center" class="bar-better">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 2px">首页</span>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4a6b9d">
+            口算作业
+        </h1>
+    </ion-header-bar>
+    <!-- 广告的弹出框 -->
+    <!--<diagnose-ad-dialog></diagnose-ad-dialog>-->
+    <!--侧边栏-->
+    <ion-side-menus has-header="false" id="mainContent">
+
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="game_clazz_select" padding="true">
+                <div class="col-md-12 col-xs-12 work_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-show="clazz.status==1">
+
+                    <div class="clazz-item" ng-if="(clazz.type == 900 && ctrl.clazzList.length == 1)||clazz.type != 900"
+                         ng-click="ctrl.workListSelectClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadImg('clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--试卷列表-->
+        <ion-side-menu-content style="background: #6c8cdf;">
+            <!--班级名称显示框-->
+            <div class="select-content-wrap has-header">
+                <div class="select-bar-wrap">
+                    <div class="select-bar-wrap-left" ng-click="ctrl.showMenu()">
+                        <div class="content-wrap">
+                            <img ng-src="{{$root.loadImg('clazz_icon.png')}}">
+                            <span ng-if="ctrl.wl_selected_clazz.type !== 900"
+                                  ng-bind="ctrl.wl_selected_clazz.name||'没有班级'" ng-show="ctrl.initCount > 0"></span>
+                            <span ng-if="ctrl.wl_selected_clazz.type == 900"
+                                  ng-bind="ctrl.wl_selected_clazz.gradeName.slice(-4, -1) + ctrl.wl_selected_clazz.name"
+                                  ng-show="ctrl.initCount > 0"></span>
+                        </div>
+                        <div class="arrow-right-wrap"><i class="icon ion-ios-arrow-right"
+                                                         ng-if="ctrl.wl_selected_clazz.type !== 900"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <ion-content class="s_work_list_con work_list_content"
+                         ng-style="{'top': ctrl.isIos? '124px' : '104px'} ">
+                <!--口算作业轮播图-->
+                <ion-slide-box style="height:50px" delegate-handle="work-list-slide-box" does-continue="true"
+                               auto-play="true"
+                               show-pager="false"
+                               slide-interval=4000
+                               ng-click="ctrl.clickOralActivePage()">
+                    <ion-slide>
+                        <div class="work_oral_ads"></div>
+                    </ion-slide>
+                </ion-slide-box>
+
+                <!--下拉刷新-->
+                <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+
+                <!--没有班级提示-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="ctrl.clazzList && ctrl.clazzList.length == 0">
+                    <span>没有班级，不能收到老师发布的作业！<br>请到家长端去添加班级吧！</span>
+                </div>
+                <!--自学班的提示-->
+                <div class="item block-input item-input—height" style="padding: 0;"
+                     ng-if="ctrl.wl_selected_clazz.type === 900">
+                    <div class="tip-wrap" ng-click="ctrl.alertInfo()">
+                        <p><i class="icon ion-information-circled"
+                              style=" margin-right: 10px;color: blue;font-size: 25px;vertical-align: sub;"></i>
+                            自学班能干什么？
+                        </p>
+                    </div>
+                </div>
+
+                <!--没有作业提示-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="ctrl.clazzList && ctrl.clazzList.length && ctrl.wl_selected_clazz
+                     && !$root.hasCompetition && ctrl.isShowWorkListFlag==false">
+
+                    <span>该班级目前没有发布作业!</span>
+                </div>
+                <!--作业列表-->
+                <div ng-repeat="listItem in ctrl.workList track by $index" style="padding: 0px 10px"
+                     ng-if="ctrl.isShowWorkListFlag && ctrl.workList.length!=0&&(listItem.paperInfo.publishType==11||listItem.paperInfo.publishType==10)">
+                    <div class="oral-work-bg">
+                        <h5 ng-if="ctrl.ifShow($index)" class="row"
+                            style="padding-left: 10px; margin: 10px -50px 10px -10px;color: white;background-color: #4b61b4;width: 120%;display: inline-block;">
+                            <span>{{ctrl.getMonth(listItem) + '月'}}</span><br>
+                        </h5>
+                        <div class="col-md-3 col-xs-6 work-list">
+                            <div class="work-item " ng-class="listItem.paperInfo.showCss"
+                                 ng-click="ctrl.showWorkDetail(listItem,$index);">
+
+                                <div class="work-hearder" style="width:inherit;overflow: hidden">
+                                    <span ng-bind="listItem.paperInfo.paperName || '&nbsp;'" class="clazz-title"></span>
+                                </div>
+                                <div class="work-content">
+                                    <div class="left-img">
+                                        <img ng-src="{{$root.loadImg('msg/oral_work_icon.png')}}"
+                                             class="oral-work-icon"
+                                             alt="">
+                                    </div>
+                                    <div class="main-img">
+                                        <div ng-if="listItem.paperInfo.img != undefined"
+                                             class="img-box">
+                                            <img ng-src="{{listItem.paperInfo.img==='msg/default_cup.png'?$root.loadImg('msg/oral_work_cup.png'):$root.loadImg(listItem.paperInfo.img)}}"
+                                                 ng-class="listItem.paperInfo.img==='msg/gold_cup.png'? 'img-best':( listItem.paperInfo.img==='msg/default_cup.png'?'img-default':'')">
+                                        </div>
+                                    </div>
+                                    <div class="right-img">
+                                        <div>
+                                            <div ng-click="ctrl.goPraise(listItem.paperInfo,$index,$event)">
+                                                <img ng-if="listItem.paperInfo.studentPraise"
+                                                     ng-src="{{$root.loadImg(listItem.paperInfo.studentPraise.img ||'praise/praise.png')}}">
+                                                <img ng-if="!listItem.paperInfo.studentPraise"
+                                                     ng-src="{{$root.loadImg('praise/praise.png')}}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div ng-click="ctrl.showPraiseDetail(listItem.paperInfo,2,$event)"
+                                                 ng-if="listItem.paperInfo.teacherPraise">
+                                                <img ng-src="{{$root.loadImg(listItem.paperInfo.teacherPraise.img)}}">
+                                            </div>
+
+                                        </div>
+                                        <div>
+                                            <div ng-click="ctrl.showPraiseDetail(listItem.paperInfo,3,$event)"
+                                                 ng-if="listItem.paperInfo.parentPraise">
+                                                <img ng-src="{{$root.loadImg(listItem.paperInfo.parentPraise.img)}}">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="work-footer" style="margin-bottom: 0px;">
+                                    <p style=" margin-top: -5px;margin-bottom: 2px;">
+                                <span ng-bind="'未开始'"
+                                      style="font-size: 14px;font-weight: bold" ng-if="listItem.paperInfo.status==1">
+                                </span>
+                                        <span ng-bind="'进行中'"
+                                              style="font-size: 14px;font-weight: bold"
+                                              ng-if="listItem.paperInfo.status==2">
+                                </span>
+                                        <span ng-bind="'已提交'"
+                                              style="font-size: 14px;font-weight: bold"
+                                              ng-if="listItem.paperInfo.status==3">
+                                </span>
+                                        <span ng-bind="listItem.paperInfo.processBar"
+                                              style="font-size: 14px;font-weight: bold"
+                                              ng-if="listItem.paperInfo.status==4">
+                                </span>
+                                    </p>
+                                    <p><span ng-bind="listItem.paperInfo.showTime"></span></p>
+                                </div>
+                                <div class="oral-work-footer"
+                                     ng-if="listItem.paperInfo.publishType == ctrl.finalData.WORK_TYPE.ORAL_WORK||listItem.paperInfo.publishType == ctrl.finalData.WORK_TYPE.ORAL_WORK_KEYBOARD">
+                                    <p style="margin: -8px 0 0 !important;">
+                                        <span>共{{listItem.paperInfo.questionCount}}题</span></p>
+                                    <p style="margin: 0 0 7px !important;min-height: 18px">
+                                        <span ng-if="!ctrl.showTimer(listItem)"
+                                              ng-bind="listItem.paperInfo.limitTime==-1?'不限时':'限时'+listItem.paperInfo.limitTime+'分钟'"></span>
+                                        <span alr-count-down
+                                              ng-if="ctrl.showTimer(listItem)"
+                                              seconds="{{ctrl.getCountDownStartTime(listItem.paperInfo)}}"
+                                              count-down-timer="ctrl.stopTimer"
+                                              pattern="ms2"
+                                              time-end-call-back="ctrl.timeEndCallBack(listItem.paperInfo)"
+                                              time-count-call-back="ctrl.timeCountCallBack(listItem.paperInfo)">&nbsp;</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <ion-infinite-scroll on-infinite="ctrl.fetWorkListWithLoadMore()" immediate-check="false"
+                                     spinner="ios" distance="1%" ng-if="ctrl.moreFlag">
+                </ion-infinite-scroll>
+
+            </ion-content>
+
+        </ion-side-menu-content>
+
+    </ion-side-menus>
+    <!--口算广告-->
+    <oral-calculation-guide show-type="1"></oral-calculation-guide>
+</ion-view>

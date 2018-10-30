@@ -1,0 +1,23 @@
+<div class="swiper-container picture-box">
+    <span ui-sref="achievement" class="back">
+               <img src="./sImages/other/back.png"/>
+    </span>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide picture-slide" ng-repeat="list in data" swiper-slide>
+            <div class="slide-content">
+                <div class="img-box"  ng-style="imgBox">
+                    <div class="stu-name">华大宝</div>
+                    <img src="{{list.imgSrc}}" ng-style="imgSize" ui-sref="achievement" />
+                    <div class="teacher">李老师</div>
+                    <div class="time">{{list.time}}</div>
+                </div>
+                <div ng-style="slideMsg" class="slide-msg">
+                    教师评语：{{list.msg}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,52 @@
+<ion-view hide-nav-bar="true" class="online-teaching-index-file">
+    <ion-header-bar ng-class="{'header-bar-hans-peer':ctrl.isPeerOnLine}">
+        <i class="icon ion-ios-arrow-back" ng-click="ctrl.back()"></i>
+        </button>
+        <h1 class="title title-center">
+            线上教学
+        </h1>
+        <div style="position: absolute;right: 0">
+
+            <div class="button button-clear"
+                 ng-click="ctrl.changeDrawingType()"
+                 ng-class="{'is-drawing':!ctrl.isDrawing}">擦除</div>
+            <div class="button button-clear"
+                 ng-click="ctrl.showImgUploadModal()">
+                <span>添加试题</span>
+            </div>
+        </div>
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true">
+        <div class="content-list-warp-on-line">
+            <div class="input-warp-box">
+                <input type="text" placeholder="输入连线账号" ng-model="ctrl.onLineCount">
+                <span ng-bind="ctrl.onLineStatusInfo"></span>
+            </div>
+            <span class="on-line-btn" ng-click="ctrl.gotoOnlineTeachingIndexPage()">连线</span>
+        </div>
+        <div class="teaching-area-box">
+            <div class="move-area-box">
+                <div class="move-area-word">
+                    <i class="icon ion-arrow-down-c"></i>
+                    <span>按这里，上下滑屏</span>
+                    <i class="icon ion-arrow-down-c"></i>
+                </div>
+                <div class="move-area-word">
+                    <i class="icon ion-arrow-down-c"></i>
+                    <span>按这里，上下滑屏</span>
+                    <i class="icon ion-arrow-down-c"></i>
+                </div>
+            </div>
+            <div class="whiteboard"
+                 teaching-board
+                 is-peer-on-line = 'ctrl.isPeerOnLine'
+                 on-line-info="ctrl.onLineInfo"
+                 stroke-color="#1c61e2"
+                 on-line-status-info = 'ctrl.onLineStatusInfo'
+                 login-name = 'ctrl.loginName'
+                 is-drawing="ctrl.isDrawing"></div>
+        </div>
+    </ion-content>
+</ion-view>
+

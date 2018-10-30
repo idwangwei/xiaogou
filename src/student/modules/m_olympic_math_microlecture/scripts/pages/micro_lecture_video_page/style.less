@@ -1,0 +1,92 @@
+@import  './../../../../m_boot/less/theme01/include/_mixins.less';
+.micro-lecture-video-page{
+  .video-item{
+    position: relative;
+  }
+  .video-data-loading{
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+    .display-flex;
+    img{
+      height: 50%;
+      width: auto;
+      max-width: 200px;
+      max-height: 200px
+    }
+  }
+
+  .video-back-popup{
+    .video-popup-backdrop{
+      position: absolute;
+      z-index: 200;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.44);
+      .display-flex;
+      .video-popup-box{
+        -webkit-animation-name: superScaleIn;
+        animation-name: superScaleIn;
+        -webkit-animation-duration: 0.2s;
+        animation-duration: 0.2s;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        width: 250px;
+        max-width: 100%;
+        max-height: 90%;
+        overflow: hidden;
+        .video-popup-title{
+          padding: 15px 10px;
+          text-align: center;
+          margin: 0;
+          color: #fff;
+          -webkit-border-top-left-radius: 10px;
+          -webkit-border-top-right-radius: 10px;
+          background: #6B94D6 !important;
+          h3{
+            margin: 0;
+            color: #fff;
+          }
+        }
+        .video-popup-content{
+          padding: 10px;
+          overflow: auto;
+          text-align: center;
+          background-color: #fff;
+
+        }
+        .video-popup-btn{
+          background-color: #fff;
+          .display-flex-pure;
+          padding: 10px;
+          min-height: 65px;
+          div{
+            .display-flex;
+            background: #58D152 !important;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-color: #58D152 !important;
+            color: #fff;
+            .flex_1;
+            min-height: 45px;
+            line-height: 20px;
+            margin-right: 5px;
+            padding: 0 12px;
+            min-width: 52px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

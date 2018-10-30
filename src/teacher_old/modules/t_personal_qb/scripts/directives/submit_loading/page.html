@@ -1,0 +1,23 @@
+<div class="submit-loading" ng-if="$root.showSubmitLoading">
+    <div class="submit-loading-header">
+        <span ng-click="hideSubmitLoading()" style="color: #ffffff;font-size: 18px">
+            <i class="icon ion-ios-arrow-back" style="font-size: 20px"> </i>
+            <span>返回</span>
+        </span>
+    </div>
+    <div class="submit-loading-content" ng-if="!loading">
+        <div class="loading-mark">
+            <img class="loading-bg" ng-src="{{$root.loadPersonalQBImg('loading/loading_03.png')}}">
+            <img class="loading-status-mark loading-status-animation"
+                 ng-src="{{$root.loadPersonalQBImg('loading/loading_01.png')}}">
+        </div>
+        <img class="loading-status" ng-src="{{$root.loadPersonalQBImg('loading/loading_04.png')}}">
+    </div>
+    <div class="submit-loading-content" ng-if="loading">
+        <div class="loading-mark">
+            <img ng-src="{{$root.loadPersonalQBImg('loading/loading_03.png')}}">
+            <img class="loading-status-mark" ng-src="{{$root.loadPersonalQBImg('loading/loading_02.png')}}">
+        </div>
+        <img class="loading-status" ng-src="{{$root.loadPersonalQBImg('loading/loading_05.png')}}">
+    </div>
+</div>

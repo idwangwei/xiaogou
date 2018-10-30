@@ -1,0 +1,266 @@
+<ion-view hide-nav-bar="true" class="add_question" ng-click="addCtrl.isShowSelectBorad = false">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" style="padding-left: 10px" ng-click="addCtrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;返回
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #726c8c">我要出题</h1>
+    </ion-header-bar>
+    <submit-loading loading="addCtrl.loading" cancel-submit="addCtrl.cancelSubmitQues"></submit-loading>
+    <div class="keyboard" style="z-index: 5000"></div>
+    <select-borad ques-right-ans="addCtrl.quesRightAns" select-options="addCtrl.saveRightAnsOptions"
+                  is-show-borad="addCtrl.isShowSelectBorad"></select-borad>
+    <ion-content delegate-handle="questionBankScroll">
+        <div class="ques-content">
+            <div class="ques_type">
+
+                <span class="ques_type_left">
+                    选择出题类型:
+                </span>
+                <span class="ques_type_right">
+                    <!--{{addCtrl.quesType}} <i class="ion-chevron-right"></i>-->
+                     <form-select options="addCtrl.quesTypeOptions"
+                                  default-option="0" value="addCtrl.quesType"></form-select>
+                </span>
+                <!-- <div lang="show" class="ques_type_options"
+                      ng-click="addCtrl.hideQuesTypeOption()">
+                     <p>选择题</p>
+                 </div>-->
+            </div>
+            <div class="ques_stem">
+                <textarea class="ques-stem-content" ng-model="addCtrl.quesTitle" rows="8"
+                          ng-blur="addCtrl.saveQuesTitle()"
+                          ng-keyup="addCtrl.valueCheck()"
+                          placeholder="点击输入题干内容"> </textarea>
+            </div>
+            <div class="ques_pane">
+                <span>根据题目，应选择</span>
+                <!--  <input class="ques_ans_box appTextarea input-area select-input-area square-select-input-area"
+                  id="{{addCtrl.htmlInputId}}" label="Q1" ng-click="addCtrl.showAppKeyBoradForSelect()">-->
+                <span class="ques_ans_box" ng-click="addCtrl.showSelectBorad($event)">
+                    {{addCtrl.quesRightAns}}
+                    <cursor ng-show="addCtrl.isShowSelectBorad"></cursor>
+                </span>
+                <!--<span ng-bind="addCtrl.quesRightAns" class="ques_ans_box" ng-click="addCtrl.showSelectBorad()">-->
+                <!--<cursor></cursor>-->
+                <!--</span>-->
+                <span>。</span>
+            </div>
+            <div class="ques_imgs">
+                <div class="imgDiv add-btn-div">
+                    <div ng-class="addCtrl.imageList.length>0?'img-list-container':''">
+                        <div class="display-flex" ng-repeat="row in addCtrl.displayImageList">
+                        <span class="img-container" ng-repeat="(idx,image) in row">
+                             <img ng-src="{{image.src}}" alt="" ng-click="addCtrl.rotateSelectImg(idx,$event)">
+                             <div class="deleteBtn" ng-click="addCtrl.deleteImg(image.id)">
+                                 <span class="button button-clear button-small icon ion-close"></span>
+                             </div>
+                        </span>
+                            <div class="place-holder" ng-if="row.length==1"></div>
+                        </div>
+                        <p ng-show="addCtrl.imageList.length>0" style="font-size:12px;margin: 0;color: #a9a9a9;">
+                            (点击图片可旋转图片)</p>
+                    </div>
+                    <div style="position: relative" ng-show="addCtrl.imageList.length<2">
+                        <canvas id="myCanvas" style="opacity: 0;position: absolute;width:0;height: 0;"></canvas>
+                        <button class="add-btn">+</button>
+                        <input style="position: absolute;width: 100%;height: 100%;top: 0;left: 0;bottom: 0;right: 0;margin: auto;"
+                               type="file" accept="image/x-png, image/jpeg, image/jpg" id="uploadImg1" multiple
+                               class="input-img">
+                    </div>
+                    <span ng-show="addCtrl.displayImageList.length==0" style="color: #726c8c">如有需要，点击加入图片</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="ques-ans">
+            <!-- <div class="ques-ans-item ques-ans-item01">
+                 <i class="ion-checkmark-round"></i>
+                 <input type="text" ng-model="addCtrl.quesRightAns" placeholder="点击输入正确答案" ng-blur="addCtrl.saveAnsOptions()">
+             </div>-->
+
+            <div class="ques-ans-item ques-ans-item01" ng-repeat="ans in addCtrl.quesOptionsAns track by $index">
+                <!--<i class="ion-close-round"></i>-->
+                <span style="color: #ffffff;font-size: 16px;font-weight: 600">{{'选项'+addCtrl.optionsIndexs[$index]+'：'}}</span>
+                <input type="text" ng-model="addCtrl.quesOptionsAns[$index]" placeholder="点击输入"
+                       ng-blur="addCtrl.saveAnsOptions()">
+            </div>
+            <!--<div class="ques-ans-item">
+                <i class="ion-close-round"></i>
+                <input type="text" placeholder="点击输入干扰项">
+            </div>
+            <div class="ques-ans-item">
+                <i class="ion-close-round"></i>
+                <input type="text" placeholder="点击输入干扰项">
+            </div>-->
+
+        </div>
+        <div class="ques-knowledge">
+            <p class="ques-knowledge-item">请选择您的题目所属知识点：</p>
+            <div class="ques-knowledge-item">
+                <span class="title">选择教材和年级：</span>
+                <span class="selectButn" ng-click="addCtrl.openModal()"
+                      ng-bind="addCtrl.selectQuesInfo.textbook?(addCtrl.selectQuesInfo.textbook.text+'  '+addCtrl.selectQuesInfo.grade.text):'--请选择--'">
+                </span>
+                <span class="mark-butn"><i class="ion-arrow-down-b"></i></span>
+
+            </div>
+            <div class="ques-knowledge-item">
+                <span class="title">选择单元和课时：</span>
+                <span ng-click="addCtrl.openModalUnit()" class="selectButn"
+                      ng-bind="addCtrl.selectQuesInfo.unit?(addCtrl.selectQuesInfo.unit.text+'  '+addCtrl.selectQuesInfo.chapter.text):'--请选择--'">
+                    </span>
+                <span class="mark-butn"><i class="ion-arrow-down-b"></i></span>
+            </div>
+            <div class="ques-knowledge-item">
+                <span class="title">选择知识点：</span>
+                <span class="selectButn" ng-click="addCtrl.openModalKnowledge()"
+                      ng-bind="addCtrl.selectQuesInfo.knowledge?addCtrl.selectQuesInfo.knowledge.text:'--请选择--'">
+                </span>
+                <span class="mark-butn"><i class="ion-arrow-down-b"></i></span>
+            </div>
+            <div class="ques-knowledge-item" ng-if="addCtrl.initCtrl">
+                <span class="title">选择难度：</span>
+                <span class="selectButn">
+                     <!-- ng-bind="addCtrl.selectQuesInfo.difficulty?addCtrl.selectQuesInfo.difficulty.level:'--请选择--'"
+                      ng-click="addCtrl.showDifficultyLevelOptions()">-->
+                    <!--<form-select></form-select>-->
+                    <form-select options="addCtrl.difficultyLevels" on-change="addCtrl.selectDifficultyLevel"
+                                 default-option="addCtrl.getDefaultDifficultyLevel()"
+                                 value="addCtrl.difficultyLevel"></form-select>
+
+                </span>
+                <span class="mark-butn"><i class="ion-arrow-down-b"></i></span>
+                <!-- <div lang="show" class="difficulty_level_options">
+                     <p ng-repeat="level in addCtrl.difficultyLevels" ng-bind="level.level"
+                        ng-click="addCtrl.selectDifficultyLevel(level)">简单</p>
+                 </div>-->
+            </div>
+        </div>
+        <div class="submit_ques" ng-click="addCtrl.submitQues()">
+            上传
+        </div>
+        <div style="width: 100%;height: 120px"></div>
+
+
+    </ion-content>
+
+    <!-- 选择教材 begin -->
+    <script id="textbookSelect.html" type="text/ng-template">
+        <ion-modal-view class="work_paper_bank">
+            <ion-header-bar class="bar-balanced" align-title="center">
+                <button class="button buttons  button-clear header-item" ng-click="addCtrl.closeModal()">
+                    <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+                    &nbsp;&nbsp;
+                </button>
+                <h1 class="title" align-title="center">请选择教材</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content" overflow-scroll="true">
+                <ul class="list">
+                    <div ng-repeat="version in addCtrl.textbooks">
+                        <li class="item unit_bg" ng-click="version.isOpened = !version.isOpened">
+                        <span class="icon"
+                              ng-class="version.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{version.text}}
+                        </li>
+
+                        <div class="list" style="margin-left: 10px;" ng-show="version.isOpened">
+                            <div ng-repeat="book in version.subTags | filter:search">
+                                <li ng-click="addCtrl.selectCurrentTextbook(book,version)"
+                                    class="item lesson_bg item-for-img">
+                                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                                    <span class="first-text" style="font-weight: bold;margin-right: 5px"></span>
+                                    {{book.text}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+    <!-- 选择教材 end -->
+
+
+    <!-- 选择单元 begin -->
+    <script id="unitSelect.html" type="text/ng-template">
+        <ion-modal-view class="work_paper_bank">
+            <ion-header-bar class="bar-balanced" align-title="center">
+                <button class="button buttons  button-clear header-item" ng-click="addCtrl.closeModalUnit()">
+                    <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+                    &nbsp;&nbsp;
+                </button>
+                <h1 class="title" align-title="center">请选择单元和课时</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content" overflow-scroll="true">
+                <span ng-if="addCtrl.getGradeInfoFlage" ng-click="addCtrl.getUnitsInfo()">再试一次吧</span>
+                <ul class="list" ng-if="addCtrl.gradeSubTags&&addCtrl.gradeSubTags.subTags.length>0">
+                    <div ng-repeat="chapterunit in addCtrl.gradeSubTags.subTags">
+                        <li class="item unit_bg " ng-click="addCtrl.clickUnit(chapterunit,$event,$index)">
+                        <span class="icon "
+                              ng-class="chapterunit.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{chapterunit.text}}
+
+                        </li>
+                        <div class="list">
+                            <div class="list list_content_layout" style="margin-left: 10px;"
+                                 ng-show="chapterunit.isOpened">
+                                <li class="item lesson_bg" ng-show="!chapterunit.subTags.length">本单元课时即将开放！</li>
+                                <div ng-repeat="chapter in chapterunit.subTags"
+                                     ng-click="addCtrl.selectLesson(chapterunit,chapter)">
+                                    <li class="item lesson_bg">
+                                        <span>{{chapter.text}}</span>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+    <!-- 选择单元 end -->
+
+
+    <!-- 选择知识点 begin -->
+    <script id="knowledgeSelect.html" type="text/ng-template">
+        <ion-modal-view class="work_paper_bank">
+            <ion-header-bar class="bar-balanced" align-title="center">
+                <button class="button buttons  button-clear header-item" ng-click="addCtrl.closeModalKnowledge()">
+                    <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+                    &nbsp;&nbsp;
+                </button>
+                <h1 class="title" align-title="center">请选择知识点</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content" overflow-scroll="true">
+                <ul class="list">
+                    <div ng-repeat="knowledges in addCtrl.lessonInfo.subTags">
+                        <li class="item unit_bg " ng-click="knowledges.isOpened = !knowledges.isOpened">
+                        <span class="icon "
+                              ng-class="knowledges.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{knowledges.text}}
+
+                        </li>
+                        <div class="list" ng-show="knowledges.isOpened">
+                            <div class="list list_content_layout" style="margin-left: 10px;">
+                                <li class="item lesson_bg" ng-show="!knowledges.subTags.length">本单元课时即将开放！</li>
+                                <div ng-repeat="item in knowledges.subTags"
+                                     ng-click="addCtrl.selectKnowledgePoint(knowledges,item)">
+                                    <li class="item lesson_bg">
+                                        <span>{{item.text}}</span>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+    <!-- 选择知识点 end -->
+</ion-view>

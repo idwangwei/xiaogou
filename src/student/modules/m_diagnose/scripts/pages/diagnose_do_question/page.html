@@ -1,0 +1,209 @@
+<ion-view hide-nav-bar="true" class="diagnose_do_question_file_02" cache-view="false" >
+    <ion-header-bar  style="background: #83DCF5" align-title="center">
+        <button class="button back-button buttons  button-clear header-item common-back-btn"
+                ng-click="doQCtrl.back()"
+                style="color: #1E446A;">
+            <i class="icon ion-ios-arrow-back" style="color: #1E446A;"></i>
+        </button>
+        <h1 class="title"
+            style="color:#1E446A;font-weight: bold;font-size: 20px;left: 0px;right: 76px;"
+            ng-bind="doQCtrl.pointName" >
+        </h1>
+        <div class="report-btn" ng-click="doQCtrl.handleDraft()">
+            <img ng-src="{{$root.loadImg('diagnose/draft-new.png')}}" >
+            草稿本
+        </div>
+    </ion-header-bar>
+    <draft style="position: relative;"></draft>
+    <div class="keyboard" style="z-index: 5000"></div>
+
+    <diagnose-dialog ng-if="doQCtrl.showDiaglog"></diagnose-dialog>
+
+
+    <!--<div ng-if="doQCtrl.showMasterActFlag"
+         class="dot_processing loading-wrap master-act-wrap" >
+        <diagnose-master-act act-end-call-back="doQCtrl.masterActEndCallBack()" num-index="{{doQCtrl.chapterSelectPoint.numIndex}}" >
+        </diagnose-master-act>
+    </div>-->
+
+    <div ng-if="doQCtrl.isLoadingProcessing"
+         class="dot_processing loading-wrap">
+        <ion-spinner icon="ios"></ion-spinner>
+        <p ng-if="doQCtrl.loadingNewQText" >{{doQCtrl.loadingNewQText}}<span class="dotting"></span></p>
+    </div>
+    <div ng-if="doQCtrl.diagnose_submit_q_processing"
+         class="dot_processing loading-wrap">
+        <ion-spinner icon="ios" ></ion-spinner>
+        <p ng-if="doQCtrl.submitText" >{{doQCtrl.submitText}}<span class="dotting"></span></p>
+    </div>
+
+    <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+         style="visibility: hidden;display:block;position: absolute"  id="second-img"
+         ng-if="doQCtrl.masterDegreeUrl&&(doQCtrl.showRightAnimateFlag||doQCtrl.showWrongAnimateFlag||doQCtrl.showMasterRightAnimateFlag)">
+    <div class="dot_processing loading-act" ng-if="doQCtrl.showRightAnimateFlag">
+        <div class="test-wrap">
+            <div style="font-size: 20px;color: white;position: absolute;top:36px;z-index: 1;left: 0;right: 0" ng-if="doQCtrl.masterCode!==4">
+                <div style="font-size: 26px;font-weight: bold;text-shadow: 0px 0px 32px #141e50;">
+                    答对了！还不够牢固
+                </div>
+
+            </div>
+            <img ng-src="{{$root.loadImg(doQCtrl.knowledgePointShowImg)}}"
+                 ng-if="!doQCtrl.showSecondImgFlag"
+                 class="first-img">
+            <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+                 ng-if="doQCtrl.showSecondImgFlag"
+                 class="second-img animated bounceIn">
+            <div class="img-act-wrap">
+                <div class="xiaogou-right-act xiaogou-right-img">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dot_processing loading-act master-act-wrap" ng-if="doQCtrl.showMasterRightAnimateFlag">
+        <div class="test-wrap">
+            <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+                 ng-if="doQCtrl.showSecondImgFlag"
+                 class="second-img ">
+        </div>
+    </div>
+    <div class="dot_processing loading-act" ng-if="doQCtrl.showWrongAnimateFlag">
+        <div class="test-wrap">
+            <img ng-src="{{$root.loadImg(doQCtrl.knowledgePointShowImg)}}"
+                 ng-if="!doQCtrl.showSecondImgFlag"
+                 class="first-img">
+            <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+                 ng-if="doQCtrl.showSecondImgFlag"
+                 class="second-img animated bounceIn">
+            <div class="img-act-wrap">
+                <div class="xiaogou-wrong-act xiaogou-wrong-img">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="dot_processing loading-act" ng-if="doQCtrl.showWordAnimateFlag">
+        <div class="test-wrap">
+            <div style="font-size: 20px;color: white;position: absolute;top:36px;z-index: 1;left: 0;right: 0">
+                <div style="font-size: 26px;font-weight: bold;text-shadow: 0px 0px 32px #141e50;">
+                    答对了！{{doQCtrl.workStr}}
+                </div>
+
+            </div>
+            <div class="img-act-wrap">
+                <div class="xiaogou-word-act xiaogou-right-img">
+                </div>
+            </div>
+        </div>
+    </div>
+    <ion-slide-box on-slide-changed="doQCtrl.slideChange($index)"
+                   delegate-handle="diagnose-do-quetison-slidebox"
+                   does-continue="true"
+                   show-pager="false"
+                   class="">
+        <ion-slide  auto-height="0"  slideBoxCurrentIndex="{{doQCtrl.solidBoxInfo.currentIndex}}">
+            <ion-content  class="do_question_content"
+                          ng-style="{top:(doQCtrl.isIos)?'20px':0}" >
+
+                <div class="top-btns-wrap">
+                    <img ng-src="{{$root.loadImg('diagnose/diagnose-error-record-btn.png')}}" ng-click="doQCtrl.showErrorRecords()"
+                         ng-if="doQCtrl.isSubmitted"
+                         style="width: 40%;max-width: 200px;min-width: 140px;">
+                </div>
+                <div class="edit-section do-question-area" >
+
+
+                    <!--show-type:展示类型为=> 做题:'doQuestion', 批改:'correct', 其他:undefined   -->
+                    <div ng-if="!doQCtrl.isSubmitted&&doQCtrl.questionInfo.question" >
+                        <div class="editor for-content do_question_text"
+                             compile-html="doQCtrl.questionInfo.question"
+                             current_q_input="doQCtrl.questionInfo.inputList"
+                             possible-units="doQCtrl.questionInfo.possibleUnits"
+                             show-type="doQuestion"
+                        >
+                        </div>
+                    </div>
+                    <div ng-if="doQCtrl.isSubmitted&&doQCtrl.questionInfo.question"  >
+                        <div class="editor for-content do_question_text"
+                             compile-html="doQCtrl.questionInfo.question"
+                             current_q_input="doQCtrl.questionInfo.inputListForCorrect"
+                             possible-units="doQCtrl.questionInfo.possibleUnits"
+                             show-type="correct">
+                        </div>
+                    </div>
+
+                    <div class="cheats-btn-wrap" ng-click="doQCtrl.showAnalysis()" ng-if="doQCtrl.isSubmitted">
+                        <span ng-bind="$root.isIncreaseScore?'提分秘籍':'驯宠秘籍'"></span>
+                        <i class="icon ion-chevron-down"></i>
+                    </div>
+                    <div class="analysis-wrap " ng-if="doQCtrl.showAnalysisFlag">
+                        <div class="analysis-title">答案：
+                            <div class="savant-btn" ng-click="doQCtrl.getReferAns($event)" ng-if="doQCtrl.questionInfo.questionTypeKey==='subjective'">
+                                学霸解答
+                            </div>
+                        </div>
+                        <div ng-if="doQCtrl.isVertical&&doQCtrl.referAnswers.vertical" class="vertical-tip">
+                            <span ng-bind="doQCtrl.referAnswers.vertical"></span>
+                        </div>
+                        <div compile-html="doQCtrl.smallQ.qContext" refer-answers="doQCtrl.questionInfo.referAnswers"
+                             ng-if="doQCtrl.questionInfo.referAnswers&&doQCtrl.showCorrectFlag&&!doQCtrl.parsedInputList"
+                             class="q-context" style="pointer-events: none;">
+                        </div>
+                        <div compile-html="doQCtrl.smallQ.qContext" refer-answers="doQCtrl.questionInfo.referAnswers"
+                             ng-if="doQCtrl.questionInfo.referAnswers&&doQCtrl.showCorrectFlag&&doQCtrl.parsedInputList"
+                             current-q-input="doQCtrl.parsedInputList"
+                             class="q-context" style="pointer-events: none;">
+                        </div>
+                        <div style="width: 100%" ng-if="doQCtrl.questionInfo.analysisImgUrl">
+                            <div class="analysis-title">解析：</div>
+                            <img src="{{doQCtrl.questionInfo.analysisImgUrl}}" style="width: 94%" >
+                        </div>
+                    </div>
+                    <div class="place-holder"></div>
+                </div>
+
+
+            </ion-content>
+
+        </ion-slide>
+    </ion-slide-box>
+    <ion-footer-bar class=" bar bar-footer page_footer" ng-show="!(doQCtrl.isSubmitted&&doQCtrl.masterCode===4&&doQCtrl.isFromFinalSprint)">
+        <div class="page_button"  ng-click="doQCtrl.submitQ()" >
+            <!-- <img ng-src="{{$root.loadImg('diagnose/tame-btn-icon-new.png')}}" >-->
+            <span  ng-if="!doQCtrl.isSubmitted">提交答案</span>
+            <span  ng-if="doQCtrl.isSubmitted&&doQCtrl.masterCode!=4" ng-bind="$root.isIncreaseScore?'继续练习':'继续驯服'"></span>
+            <span  ng-if="doQCtrl.isSubmitted&&doQCtrl.masterCode===4"  ng-bind="$root.isIncreaseScore?'获得更多勋章':'驯服更多萌宠'"></span>
+        </div>
+        <div class="blood-box-wrap" ng-if="doQCtrl.questionDataInitlized">
+            <div class="blood-box" id="blood_box_1" ng-class="{'blood_full':doQCtrl.firstBloodFull}">
+                <img src="{{$root.loadImg('diagnose/s_blood_linght.png')}}" alt="">
+                <img src="{{$root.loadImg('diagnose/s_blood_dark.png')}}" alt="">
+            </div>
+            <div class="blood-box" id="blood_box_2" ng-class="{'blood_full':doQCtrl.secondBloodFull}">
+                <img src="{{$root.loadImg('diagnose/s_blood_linght.png')}}" alt="">
+                <img src="{{$root.loadImg('diagnose/s_blood_dark.png')}}" alt="">
+            </div>
+            <div class="blood-box" id="blood_box_3" ng-class="{'blood_full':doQCtrl.thirdBloodFull}">
+                <img src="{{$root.loadImg('diagnose/s_blood_linght.png')}}" alt="">
+                <img src="{{$root.loadImg('diagnose/s_blood_dark.png')}}" alt="">
+            </div>
+        </div>
+
+
+        <img ng-src="{{doQCtrl.gender===1?$root.loadImg('diagnose/diagnose-do-question-boy.png'):$root.loadImg('diagnose/girl-trainer.png')}}"
+             ng-class="doQCtrl.gender===1?'master-boy':'master-girl'" ng-if="doQCtrl.questionDataInitlized && !$root.isIncreaseScore">
+        <div class="master-status-wrap" ng-if="doQCtrl.masterDegreeUrl" ng-click="doQCtrl.goToShowReport()">
+            <div>
+                <div class="point-text-wrap">
+                    <span ng-bind="'考点'+(doQCtrl.chapterSelectPoint.pointIndex+1)"></span>
+                </div>
+                <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+                     ng-click="doQCtrl.goToShowReport()"
+                     id="master-img-btn"
+                     ng-style="{'visibility':(doQCtrl.showRightAnimateFlag||doQCtrl.showWrongAnimateFlag||doQCtrl.showMasterActFlag||doQCtrl.showMasterRightAnimateFlag)?'hidden':'visible'}">
+            </div>
+
+        </div>
+    </ion-footer-bar>
+</ion-view>
+

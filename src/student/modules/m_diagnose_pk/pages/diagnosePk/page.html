@@ -1,0 +1,311 @@
+<ion-view hide-nav-bar="true" cache-view="false" class="diagnose-pk">
+    <ion-header-bar align-title="center" class="bar-better myHeader" style="background: #FCF3CB;">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()" style="color:#fff">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title"
+            style="font-size: 16px;color: #FFFFFF;font-weight: 800;">
+            征服考点争霸战&nbsp;·&nbsp;{{ctrl.getCurrentGrade(ctrl.currentGrade)}}年级
+        </h1>
+        <img class="butn-get-award" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_show_butn.png')}}"
+             ng-click="ctrl.showAwardDescDialog()">
+    </ion-header-bar>
+
+    <ion-content class="diagnose-pk-content" overflow-scroll="true">
+        <div class="last-pk-info">
+            <div class="champion-info">
+                <div class="pk-info-left" ng-click="ctrl.showDialog('preLast')">
+                    <p style="width: 20px;color: #2150bc;font-weight: bold; line-height: 16px;">前日霸主</p>
+                    <div class="info-content" ng-if="ctrl.preLastChampion.schoolName&&ctrl.preLastChampion.name">
+                        <div class="pk-info-content" style="width: 40px">
+                            <img ng-src="{{$root.loadImg('diagnose_pk/diagnose_pk_mark.png')}}"
+                                 style="width: 40px;margin-left: -10px;margin-bottom: -10px;z-index: 30;">
+                            <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator(ctrl.preLastChampion.avator)+'.png')}}"
+                                 style="width: 40px;">
+                        </div>
+                        <div class="pk-info-content" style="width: 50%">
+                            <p style="color: #ffffff;font-size: 10px;">
+                                {{ctrl.preLastChampion.schoolName}}
+                            </p>
+                            <p style="color: #ffffff;font-weight: bold;font-size: 16px">
+                                {{ctrl.preLastChampion.name}}</p>
+                            <p style="color: rgba(255, 255, 255, 0.85);font-size: 12px">
+                                征服{{ctrl.preLastChampion.quantityOfPet}}个考点</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="pk-info-right" ng-click="ctrl.showDialog('last')">
+                    <p style="width: 20px;color: #2150bc;font-weight: bold;line-height: 16px;">昨日霸主</p>
+                    <div class="info-content" ng-if="ctrl.lastChampion.schoolName&&ctrl.lastChampion.name">
+                        <div class="pk-info-content" style="width: 40px">
+                            <img ng-src="{{$root.loadImg('diagnose_pk/diagnose_pk_mark.png')}}"
+                                 style="width: 40px;margin-left: -10px;margin-bottom: -10px;z-index: 30;">
+                            <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator(ctrl.lastChampion.avator)+'.png')}}"
+                                 style="width: 40px;">
+                        </div>
+                        <div class="pk-info-content" style="">
+                            <p style="color: #ffffff;font-size: 10px;">
+                                {{ctrl.lastChampion.schoolName}}
+                            </p>
+                            <p style="color: #ffffff;font-weight: bold;font-size: 16px;">{{ctrl.lastChampion.name}}</p>
+                            <p style="color: rgba(255, 255, 255, 0.85);font-size: 12px">
+                                征服{{ctrl.lastChampion.quantityOfPet}}个考点</p>
+                        </div>
+                        <i class="icon ion-ios-arrow-right" style="font-size: 17px;color: white;"></i>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="live-and-ranking">
+            <div class="live-and-ranking-bg">
+                <img ng-src="{{$root.loadImg('diagnose_pk/diagnose_pk_bg.png')}}"
+                     style="width: 120px;">
+                <img ng-src="{{$root.loadImg('diagnose_pk/diagnose_pk_word.png')}}"
+                     style="width: 110px;margin-top: -50px;margin-left: -25px;">
+            </div>
+            <div class="pk-live">
+                <div class="marquee-div">
+                    <marquee class="scroll-block" direction=up scrollAmount=2 loop="-1" style="height: 100%"
+                             ng-if="!ctrl.isIos()&&ctrl.liveData&&ctrl.liveData.length>0"
+                             ng-click="ctrl.setInfoScroll($event)">
+
+                        <div ng-repeat="item in ctrl.liveData" class="broadcast-content-item">
+                            <broadcast-msg-item msg-item="item" line-count="{{ctrl.msgItemLine}}"></broadcast-msg-item>
+
+                        </div>
+                    </marquee>
+                    <div class="scroll-block" ng-if="ctrl.isIos()&&ctrl.liveData&&ctrl.liveData.length>0"
+                         style="height: 100%"
+                         allere-marquee speed='5000'>
+                        <div ng-repeat="item in ctrl.liveData" class="broadcast-content-item">
+                            <broadcast-msg-item msg-item="item" line-count="{{ctrl.msgItemLine}}"></broadcast-msg-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-weight: bold;margin: 10px 0 0 0;color: #2150bc;width: 100%;text-align: center">
+                {{ctrl.getCurrentGrade(ctrl.currentGrade)}}年级·当前TOP5</p>
+            <div class="pk-ranking">
+                <div class="item-content" ng-if="ctrl.top5OfTodayList&&ctrl.top5OfTodayList.length>0"
+                     ng-repeat="item in ctrl.top5OfTodayList"
+                     ng-style="{'width':$index==0?'65%':'49%','max-width':$index>0?': 250px':'320px'}">
+                    <div class="ranking-head">
+                        <p style="font-weight: bold;">{{$index+1}}</p>
+                        <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator(item.avator)+'.png')}}"
+                             style="width: 45px;">
+                    </div>
+                    <div class="ranking-info">
+                        <p style="width: 100%;">
+                            {{item.schoolName+'·'+ctrl.getCurrentGrade(item.grade)+'年级'}}</p>
+                        <div class="ranking-content">
+                            <p style="font-weight: bold;margin-right: 2px;">{{item.name}}</p>
+                            <p>征服</p>
+                            <p style="font-weight: bold">{{item.quantityOfPet}}</p>
+                            <p>个</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="current-info">
+            <div class="current-info-content">
+                <img class="award-img" ng-src="{{$root.loadImg('diagnose_pk/winAward.png')}}" style="width: 100px">
+                <div class="join-butn">
+                    <div class="user-score-info">
+                        <img class="current-head-img"
+                             ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator(ctrl.currentUserScore.avator)+'.png')}}">
+                        <p style="font-weight: bold;font-size: 14px;color: #2150bc;width: 100%">
+                            {{ctrl.currentUserScore.name}}&nbsp;
+                            今日征服{{ctrl.currentUserScore.quantityOfPet || 0}}个
+                        </p>
+                    </div>
+                    <img class="join-butn-img" ng-src="{{$root.loadImg('diagnose_pk/enter_diagnose_butn.png')}}"
+                         style="height: 45px;margin-top: 10px;" ng-click="ctrl.showOptionsButn()">
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="dialog-bg" ng-if="ctrl.dialogFlag">
+        <div class="dialog-content">
+            <div class="dialog-content-top">
+                <div style="height: 100%;min-width: 52px">
+                    <button class="button buttons button-clear" style="position: fixed"
+                            ng-click="ctrl.hideDialog()">
+                        <i class="ion-chevron-left" style="font-size: 24px;color: #ffffff;"></i>
+                    </button>
+                </div>
+                <img style="width: 31%;max-width: 200px"
+                     ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_butn.png')}}">
+                <img style="width: 14%;max-width: 80px"
+                     ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_share_qr.png')}}">
+            </div>
+            <div class="champion-content">
+                <div class="champion">
+                    <img class="champion-role-img" ng-if="ctrl.selectChampoin.gender=='男'"
+                         ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_role.png')}}">
+                    <img class="champion-role-img" ng-if="ctrl.selectChampoin.gender=='女'" style="width: 55%;"
+                         ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_role01.png')}}">
+
+                    <div class="champion-info-content">
+                        <img class="mark"
+                             ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_role_mark.png')}}">
+                        <div class="champion-head-img">
+                            <img class="head-img-01"
+                                 ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_mark.png')}}">
+                            <img class="head-img-02"
+                                 ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator(ctrl.selectChampoin.avator)+'.png')}}">
+                        </div>
+
+                        <div class="champion-info">
+                            <p style="color:#6c99e5;font-weight: 800;font-size: 15px">第一名</p>
+                            <p style="font-size: 16px;font-weight: 800;color: red" ng-bind="ctrl.selectChampoin.name"></p>
+                            <p style="font-weight: normal;font-size: 12px" ng-bind="ctrl.selectChampoin.schoolName"></p>
+                            <p style="font-weight: normal;font-size: 12px"
+                               ng-bind="ctrl.getCurrentGrade(ctrl.selectChampoin.grade)+'年级'"></p>
+                            <div class="champion-score" >
+                                <p style="font-size: 14px">征服</p>
+                                <p style="color: #f25b45;font-size: 14px"
+                                   ng-bind="ctrl.selectChampoin.quantityOfPet || 0"></p>
+                                <p style="font-size: 14px">个考点</p>
+                            </div>
+                            <div class="champion-credits">
+                                <p>已获得</p>
+                                <p style="color: #f25b45">1000</p>
+                                <p>能量</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="champion-top-five">
+                    <div class="champion-item-content" ng-if="ctrl.lastTopfive&&ctrl.lastTopfive.length>0"
+                         ng-repeat="item in ctrl.lastTopfive.slice(1,5)">
+                        <img class="champion-item-mark" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_mark0'+($index+2)+'.png')}}">
+                        <div class="champion-ranking-head">
+                            <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator(item.avator)+'.png')}}"
+                                 style="width: 38px;">
+                        </div>
+                        <div class="champion-ranking-info">
+                            <p style="width: 100%;color: #6c99e5;font-weight: 800;"
+                               ng-bind="'第'+ctrl.getCurrentGrade($index+2)+'名'"></p>
+                            <p style="font-size: 12px;width: 100%;">
+                                {{item.schoolName+'·'+ctrl.getCurrentGrade(item.grade)+'年级'}}</p>
+                            <div class="champion-ranking-content">
+                                <p style="font-weight: 800;margin-right: 2px;max-width: 40%;min-width: 50px;color: red">{{item.name}}</p>
+                                <p style="font-size: 12px;">征服</p>
+                                <p style="font-size: 12px;">{{item.quantityOfPet}}</p>
+                                <p style="font-size: 12px;">个</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="share-butn" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_share.png')}}"
+                     ng-click="ctrl.clickShareButn()"
+                     ng-if="ctrl.selectChampoin.id==ctrl.currentUserScore.id">
+                     <!--ng-if="ctrl.selectChampoin.id==ctrl.currentUserScore.id">-->
+            </div>
+            <!--<img class="share-butn" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_share.png')}}"
+                 ng-click="ctrl.clickShareButn()">-->
+            <img class="bg-img-01" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_img1.png')}}">
+            <img class="bg-img-02" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_img2.png')}}">
+            <img class="champion-bg_01" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_bg_01.png')}}">
+            <img class="champion-bg_02" ng-src="{{$root.loadImg('diagnose_champion/diagnose_champion_bg_02.png')}}">
+
+            <div class="share-float-div"></div>
+        </div>
+    </div>
+    <div class="dialog-bg" ng-if="ctrl.showAwardDescFlag" ng-click="ctrl.hideAwardDescDialog()">
+        <div class="award-desc-base award-desc-content" ng-click="ctrl.stopClickEvent($event)">
+            <div class="desc-title">
+                <img ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_title.png')}}">
+            </div>
+            <div class="award-desc">
+                <div class="desc-list-content">
+                    <div class="desc-list" ng-repeat="item in ctrl.awardDesc">
+                        <p style="color: #D2522D;font-weight: 800;font-size: 18px" ng-bind="item.ranking"></p>
+                        <p style="color: #D2522D;font-weight: 400;font-size: 18px" ng-bind="item.award"></p>
+                        <img style="width: 20px;vertical-align: sub;margin: 0 0 10px;" ng-click="ctrl.alertDialog()"
+                             ng-src="{{$root.loadImg('reward_system/reward_money.png')}}">
+                    </div>
+                </div>
+                <div class="desc-list" style="justify-content:center;-webkit-justify-content: center;margin-top: 10px">
+                    <p style="color: #ffffff;font-weight: 600;font-size: 16px" ng-bind="ctrl.awardDescLast"></p>
+                    <img style="width: 20px;vertical-align: sub;margin: 0 0 10px 5px;" ng-click="ctrl.alertDialog()"
+                         ng-src="{{$root.loadImg('reward_system/reward_money.png')}}">
+                </div>
+                <p style="color: #ffffff;width: 80%;">（当天奖励，次日以后才能领取，千万记得来领取哟！）</p>
+                <img class="get-award-butn" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_butn.png')}}"
+                     ng-click="ctrl.showAwardDialog()">
+            </div>
+
+            <img class="award-img01" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_img.png')}}">
+            <img class="award-img02" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_img.png')}}">
+        </div>
+    </div>
+    <div class="dialog-bg" ng-if="ctrl.showAwardFlag" ng-click="ctrl.hideAwardDialog()">
+        <div class="award-desc-base award-content" ng-click="ctrl.stopClickEvent($event)"
+             ng-style="{'overflow-y':ctrl.isWin?'initial':'scroll'}">
+            <h2 style="width: 100%;text-align: center;color: #eaee05;margin-top: 10%">恭喜获得奖励</h2>
+            <div class="award-list">
+                <div class="list-item" ng-repeat="item in ctrl.awardList.slice(0,5)">
+                    <p style="margin: 0" ng-bind="item.date"></p>
+                    <p style="margin: 0" ng-bind="'第'+ctrl.getCurrentGrade(item.rank)+'名'"></p>
+                </div>
+                <div class="list-item" ng-if="ctrl.awardList.length>5">
+                    <p>……</p>
+                </div>
+            </div>
+            <div class="content-bottom">
+                <div class="total-credits">
+                    <!-- <div class="reward-money">
+                         <img class="turn-bg" style="width: 150px" ng-src="{{ctrl.rewardPromptBg}}">
+                         <img style="width: 100px;position: absolute;left: 0;right: 0;top:0;bottom: 0;margin: auto; border-radius: 50%;
+     box-shadow: 1px 1px 1px 9px rgba(216, 167, 24, 0.11);"
+                              ng-src="{{$root.loadImg('reward_system/reward_money.png')}}">
+                     </div>-->
+                    <img style="width: 100px" ng-src="{{$root.loadImg('reward_system/reward_money.png')}}">
+
+                    <p style="margin: 10px 0;font-size: 18px;font-weight: 600;color: #eaee05"
+                       ng-bind="ctrl.tatalEnergyValue"></p>
+                </div>
+                <div class="floor-bar">
+                    <img class="sure-butn" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_sure_butn.png')}}"
+                         ng-click="ctrl.hideAwardDialog()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-bg" ng-if="ctrl.showAwardErrorFlag" ng-click="ctrl.hideAwardErrorDialog()">
+        <div class="award-desc-base prompt-message" ng-click="ctrl.stopClickEvent($event)">
+            <p style="width: 100%;text-align: center;font-size: 20px;font-weight: 800;color: #ffffff">小贴士</p>
+            <div class="message-content">
+                <p>昨日之前无可领取的奖励哟！</p>
+                <p>今天努力征服考点，</p>
+                <p>明天再来领取奖励吧！</p>
+            </div>
+            <img style="height: 45px" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_error_butn.png')}}"
+                 ng-click="ctrl.hideAwardErrorDialog()">
+        </div>
+    </div>
+    <div class="dialog-bg" ng-if="ctrl.showOptionsButnFlag" ng-click="ctrl.hideOptionsButn()">
+        <div class="award-desc-base option-butn-content" ng-click="ctrl.stopClickEvent($event)">
+            <img class="option-butn-img" ng-src="{{$root.loadImg('diagnose_pk/diagnose_pk_img.png')}}">
+            <div class="option-content">
+                <div class="options">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_increase_score.png')}}"
+                         ng-click="ctrl.gotoTiFen()">
+                    <p>去“诊断提分”养宠物游戏</p>
+                </div>
+                <div class="options">
+                    <img ng-src="{{$root.loadImg('tabs/study_index/stu_study_index_diagnose_on.png')}}"
+                         ng-click="ctrl.gotoDiagnose()">
+                    <p>去“学霸驯宠记”</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

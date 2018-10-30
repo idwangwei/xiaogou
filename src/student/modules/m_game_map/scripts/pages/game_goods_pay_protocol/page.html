@@ -1,0 +1,20 @@
+<ion-view hide-nav-bar=true class = "gamePayProtocol">
+    <ion-header-bar class="bar-balanced gamePayHead" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">用户须知协议</h1>
+    </ion-header-bar>
+    <ion-content class = "wxPayProtocol">
+        <h5>智算365用户购买协议</h5>
+        <div class="protocolText">
+            <div ng-repeat="text in ctrl.protocolText">
+                <p class = "clauseTitle">{{text.clauseTitle}}</p>
+                <div ng-repeat="clause in text.clauses">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;{{clause}}</p>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

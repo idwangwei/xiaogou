@@ -1,0 +1,38 @@
+<ion-view class="teacher_personal_qb_ad" ng-if="$root.tPersonalQbAdFlag">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #ffffff"></i>返回
+        </button>
+    </ion-header-bar>
+    <ion-content class="qb_ad_content">
+        <img class="title-img" ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img01.png')}}">
+        <div class="content-list">
+            <div class="content-list-item">
+                <img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img10.png')}}">
+            </div>
+            <div class="content-list-item">
+                <img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img04.png')}}">
+                <!--<span>添加题干</span>-->
+                <!--<img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img05.png')}}">-->
+            </div>
+            <div class="content-list-item">
+                <img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img05.png')}}">
+                <!--<span>添加图片</span>-->
+            </div>
+            <div class="content-list-item">
+                <img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img06.png')}}">
+                <!--<span>添加知识点</span>-->
+                <!--<img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img07.png')}}">-->
+            </div>
+            <div class="content-list-item">
+                <img ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img07.png')}}">
+                <!--<span>OK成功，发给学生</span>-->
+            </div>
+        </div>
+        <!--<img class="desc-img" ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img08.png')}}">-->
+    </ion-content>
+    <ion-footer-bar class="goto_qb_butn" ng-click="gotoMyQb()">
+        <p>去我的题库 ></p>
+    </ion-footer-bar>
+
+</ion-view>

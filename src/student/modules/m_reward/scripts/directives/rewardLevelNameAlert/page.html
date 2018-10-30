@@ -1,0 +1,63 @@
+<div class="reward-level-name-alert-backdrop" ng-if="$root.showLevelNameAlert">
+    <div class="reward-level-name-alert-area">
+        <div class="reward-level-name-alert-board">
+            <img ng-src="{{alertBoard}}">
+        </div>
+        <div class="alert-content-common alert-content-status1" ng-if="levelInfo.status == '1'">
+            <div class="alert-title-common">
+                <span>修炼完成</span>
+            </div>
+
+            <div class="alert-name-common">
+                <p>你已获得称号：</p>
+                <div class="magic-book">
+                    <img class="circle" ng-src="{{circle}}">
+                    <img class="book" ng-init="imgUrl = loadLevelNameImg(levelInfo)" ng-src="{{$root.loadImg(imgUrl)}}">
+                </div>
+                <p>{{levelInfo.name}}</p>
+            </div>
+
+            <div class="alert-btn-common">
+                <img class="level-name-alert-btn" ng-click="hideNameAlert()" ng-src="{{btnGood}}">
+            </div>
+        </div>
+
+        <div class="alert-content-common alert-content-status2" ng-if="levelInfo.status == '2'">
+            <div class="alert-title-common">
+                <span ng-if="levelInfo.status == '2'">修炼中</span>
+            </div>
+            <div class="alert-name-common ">
+                <p style="margin-bottom: 0;  margin-top: 10px;">你正在获得称号：</p>
+                <div class="magic-book">
+                    <img class="book level-img-filter" ng-init="imgUrl = loadLevelNameImg(levelInfo)" ng-src="{{$root.loadImg(imgUrl)}}">
+                </div>
+                <p class="level-name">{{levelInfo.name}}</p>
+                <p class="level-tip" ng-init="tip = getTip()">秘籍：{{tip}}</p>
+            </div>
+
+            <div class="alert-btn-common">
+                <img class="level-name-alert-btn" ng-click="hideNameAlert()" ng-src="{{btnEnter}}">
+            </div>
+        </div>
+
+        <div class="alert-content-common alert-content-status3" ng-if="levelInfo.status == '3'">
+            <div class="alert-title-common">
+                <span >待修炼</span>
+            </div>
+
+            <div class="alert-name-common ">
+                <div ng-if="levelInfo.status == '3'">
+                    <p class="tip-msg">满{{levelInfo.endLevel}}级获得称号:</p>
+                    <p class="level-name">{{levelInfo.name}}</p>
+                    <p class="level-tip" ng-init="tip = getTip()">秘籍：{{tip}}</p>
+                </div>
+            </div>
+
+            <div class="alert-btn-common">
+                <img class="level-name-alert-btn" ng-click="hideNameAlert()" ng-src="{{btnEnter}}">
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

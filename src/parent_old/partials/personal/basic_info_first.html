@@ -1,0 +1,61 @@
+<ion-view title="完善个人信息" hide-nav-bar="true">
+    <ion-header-bar  align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back" style="color: white"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'"
+            ng-bind="'完善个人信息'">
+        </h1>
+    </ion-header-bar>
+    <sub-header>
+        <div class="subheader-item" id="basic_info_first">
+            <span class="sub-title">基本信息</span>
+        </div>
+        <div class="subheader-item" id="pqs_first">
+            <span class="sub-title">密保信息</span>
+        </div>
+    </sub-header>
+    <ion-content padding="true" class="has-subheader">
+        <ng-form name="baseInfoForm" novalidate class="list" style="margin-top: 20px"
+                 ng-show="subHeaderInfo.activeEle=='basic_info_first'">
+            <div class="item item-input block-input">
+                <input type="text" placeholder="真实姓名" ng-model="formData.name" name="realName" required/>
+            </div>
+            <div class="row item" style="margin-bottom: 10px">
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox"  ng-checked="formData.gender==1" ng-click="handleCheck($event,1)">
+                    </label>
+                    男
+                </li>
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="formData.gender==0" ng-click="handleCheck($event,0)">
+                    </label>
+                    女
+                </li>
+            </div>
+            <div class="button button-block  button-bg"
+                 ng-click="handleBaseInfoSubmit()"  style="color:white">
+                保存
+            </div>
+        </ng-form>
+        <ng-form name="securityInfoForm"   novalidate="novalidate"
+                 ng-show="subHeaderInfo.activeEle=='pqs_first'">
+            <div class="list" ng-repeat="item in qList" style="margin-bottom: 5px">
+                <div class="item item-input block-input">
+                    <label>问题{{item.num}}:{{item.question}}?</label>
+                </div>
+                <div class="item item-input block-input">
+                    <input type="text" placeholder="答案"  ng-model="item.answer"  required>
+                </div>
+            </div>
+            <button class="button button-block button-bg"
+                    type="submit"
+                    ng-click="submitSecurityInfoForm()" style="color:white">
+                保存
+            </button>
+        </ng-form>
+    </ion-content>
+</ion-view>

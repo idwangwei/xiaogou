@@ -1,0 +1,67 @@
+<ion-view hide-nav-bar="true" class="holiday_work_list">
+
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title">暑假作业</h1>
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true" class="">
+
+        <div class="display-flex" style="font-size: 15px; color: #f16767;font-weight: bold;">
+            <span>学生做作业时间：7月1日-9月15日</span>
+        </div>
+
+        <div style="margin-bottom: 60px">
+            <!--<div ng-if="ctrl.systemTime < ctrl.openingTime"-->
+                 <!--style="font-size: 16px;font-weight: bold;text-align: center;padding: 16px;color: #f16767;">-->
+                <!--暑假作业7月1号开放-->
+            <!--</div>-->
+            <ion-list ng-show="ctrl.holidayWorkList.length!=0">
+                <!--<div ng-repeat-start="list in ctrl.holidayWorkList"-->
+                     <!--class="month-bar"-->
+                     <!--ng-if="ctrl.ifShow($index)">-->
+
+                    <!--<span style="font-size: 1rem;">{{list.paperInfo.publishWeek}}</span>-->
+                    <!--<span>{{"（"+list.paperInfo.publishStr+"）"}}</span><br>-->
+                <!--</div>-->
+
+                <ion-item ng-repeat="list in ctrl.holidayWorkList" ng-click="ctrl.reviewWorkDetail(list);"
+                          class="item item-avatar default-work-item">
+
+                    <img ng-src="{{$root.loadImg('paper_bank/paper_icon.png')}}">
+
+                    <div class="display-flex content-font-color">
+                        <!--试卷信息：名称、班级、人数;如果是口算,显示题量和限时-->
+                        <div class="content-left">
+                            <h2 style="color: #944130!important;">{{list.paperName}}</h2>
+                            <p>{{list.groupName+'('+list.assigneeDisplay+')'}}</p>
+                            <p>{{list.publishTimeStr}}</p>
+                            <p>
+                                <span class="work-correct-font">{{list.submitNum}}</span>
+                                /{{list.totalNum}}人
+                            </p>
+                            <p ng-if="list.nextPublishTime" ng-bind="list.nextPublishTime"
+                               style="white-space: normal;color:red!important"></p>
+                            <p ng-if="ctrl.isOralArithmeticWork(list)||list.publishType == ctrl.finalData.WORK_TYPE.FINAL_ACCESS">
+                                <span ng-if="list.limitTime!=-1">共{{list.questionCount}}题，限时{{list.limitTime}}分钟</span>
+                                <span ng-if="list.limitTime==-1">共{{list.questionCount}}题</span>
+                            </p>
+                        </div>
+                        <!--右边显示时间-->
+                        <!--<div class="content-right">-->
+                            <!--<p class="text-align-center">{{list.createTime.substring(11,16)}}</p>-->
+                            <!--<p class="text-align-center">{{list.publishWeek}}</p>-->
+                            <!--<p class="text-align-center">{{list.createTime.substr(0,10)}}</p>-->
+                        <!--</div>-->
+                    </div>
+
+                </ion-item>
+            </ion-list>
+        </div>
+
+    </ion-content>
+
+</ion-view>
+

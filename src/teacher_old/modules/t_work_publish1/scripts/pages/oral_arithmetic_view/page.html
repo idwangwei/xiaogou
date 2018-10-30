@@ -1,0 +1,22 @@
+<ion-view title="" hide-nav-bar="true" cache-view="true" class="oral-arithmetic-view">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <!--返回按钮-->
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">布置作业</h1>
+    </ion-header-bar>
+    <ion-content padding="false" class="view-content">
+        <div class="ques-content">
+            <oral-calculation-list big-q-list="ctrl.selectPaperInfo.qsTitles" ng-if="ctrl.selectPaperInfo&&ctrl.isOralflag"
+                                   style="width: 100%;"></oral-calculation-list>
+        </div>
+
+    </ion-content>
+    <ion-footer-bar>
+        <div class="floor-butn" ng-click="ctrl.publishOralArithmetic()">
+            <p style="margin: 0;font-size: 18px;font-weight: 700" >布置</p>
+        </div>
+
+    </ion-footer-bar>
+</ion-view>

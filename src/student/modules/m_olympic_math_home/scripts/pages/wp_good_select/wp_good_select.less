@@ -1,0 +1,433 @@
+@import '../../../../m_boot/less/theme01/include/_mixins';
+
+.wp_good_select {
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  .background_change(#CA75EA, #956BE4);
+  .myHeader {
+    background: rgba(252, 111, 86, 0) !important;
+    border: none;
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+
+  .flex_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .flex_display_vc (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+  .flex_display_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  .wp_good_select_bg { //广告位
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    .bg-content {
+      width: 100%;
+      height: 100%;
+      .bg-content_top {
+        background: url("../../../../m_global/sImages/weixin_pay/GTA0001.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+        position: fixed;
+        height: 50%;
+        width: 100%;
+        min-height: 300px;
+        left: 0px;
+        right: 0px;
+      }
+      .bg-content_bottom {
+        position: fixed;
+        bottom: -30px;
+        width: 100%;
+        height: 40%;
+        min-height: 300px;
+        .bg-content_bottom_left {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0005.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 100%;
+          width: 40%;
+          left: 0px;
+          bottom: 0px;
+        }
+        .bg-content_bottom_right {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0006.png") 0px 15px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 80%;
+          width: 40%;
+          right: 0px;
+          bottom: 0px;
+        }
+      }
+
+    }
+  }
+
+  .has-header {
+    top: 20px;
+  }
+
+  .wp_select_content {
+    width: 100%;
+    height: 100%;
+
+    .scroll {
+      width: 100%;
+      height: 100%;
+    }
+
+    .select_content {
+      position: absolute;
+      z-index: 10;
+      left: 0px;
+      right: 0px;
+
+      bottom: 0px;
+      width: 100%;
+      height: 100%;
+
+      .wp_select_pet_content {
+        width: 100%;
+        height: 15%;
+        position: relative;
+        @media screen and (max-height: 736px) {
+          min-height: 85px;
+        }
+        @media screen and (min-height: 736px) {
+          min-height: 105px;
+        }
+        .flex_display(column);
+        .flex_display_justify(center);
+        .flex_display_vc(center);
+        .ad_img {
+          position: absolute;
+          left: 0px;
+          right: 0px;
+          margin: auto;
+
+          @media screen and (max-height: 736px) {
+            width: 245px;
+            height: 245px;
+            bottom: -125px;
+          }
+
+          @media screen and (max-height: 568px) {
+            width: 205px;
+            height: 205px;
+            bottom: -105px;
+          }
+
+          @media screen and (min-height: 736px) {
+            width: 275px;
+            height: 275px;
+            bottom: -140px;
+          }
+
+          @media screen and (min-height: 768px) {
+            width: 285px;
+            height: 285px;
+            bottom: -145px;
+          }
+          @media screen and (min-height: 1024px) {
+            width: 365px;
+            height: 365px;
+            bottom: -185px;
+          }
+
+          background: url("../../../../m_global/sImages/weixin_pay_02/wp_good_select.png") 0px 0px no-repeat;
+          filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+          background-size: 100% 100%;
+          -moz-background-size: 100% 100%;
+          background-repeat: round;
+        }
+        overflow: hidden;
+      }
+
+      .productDetails {
+        background: #fff;
+        color: #666666;
+        width: 90%;
+        height: 25%;
+        //min-height: 150px;
+        margin: 0 5% 4% 5%;
+        font-size: 15px;
+        border-radius: 7px;
+        padding-top: 10px;
+        @media screen and (max-height: 736px) {
+          min-height: 120px;
+        }
+        @media screen and (min-height: 736px) {
+          min-height: 160px;
+        }
+
+        @media screen and (max-width: 568px) {
+          font-size: 20px;
+          min-height: 160px;
+        }
+
+        @media screen and (min-width: 568px) {
+          font-size: 26px;
+          min-height: 180px;
+        }
+
+        @media screen and (max-width: 340px) {
+          font-size: 16px;
+          min-height: 120px;
+        }
+
+        .flex_display(column);
+        .flex_display_vc(center);
+        .flex_display_justify(center);
+
+        .describe {
+          ul {
+            padding-left: 5%;
+          }
+          li {
+            color: #5CF57C;
+            list-style-type: disc;
+            padding-bottom: 1%;
+          }
+          span {
+            color: #666666;
+            white-space: nowrap;
+          }
+        }
+
+      }
+
+      .selectGrade {
+        width: 100%;
+        height: 8%;
+        text-align: center;
+        min-height: 50px;
+        .flex_display(row);
+        .flex_display_justify(center);
+        .flex_display_vc(flex-start);
+
+        .selectGradeDiv {
+          position: relative;
+          width: 90%;
+          height: 80%;
+          font-size: 16px;
+          border-radius: 6px;
+          background-color: #FFFFFF;
+          .flex_display(row);
+          .flex_display_vc(center);
+          .flex_display_justify(space-around);
+          .scroll-wrap {
+            position: absolute;
+            width: 90%;
+            height: 110px;
+            right: 5%;
+            //top: 20px;
+            top: 95%;
+            background-color: #ece7e7;
+            border-radius: 5px;
+            .name-pic-scroll {
+              width: 100%;
+              height: 100%;
+              .name-pic {
+                .display-flex-pure;
+                padding: 5px 5px;
+                position: relative;
+                margin-top: -1px;
+                text-align: center;
+                .user-name {
+                  max-width: 70px;
+                  .overflow-ellipsis;
+                }
+                span {
+                  .flex_1;
+                }
+              }
+            }
+          }
+          .mySelect {
+            width: 100%;
+            .flex_display(row);
+            .flex_display_vc(center);
+            .flex_display_justify(space-around);
+
+          }
+        }
+      }
+
+      .wp_select_good_content {
+        width: 100%;
+        .flex_display(column);
+        .flex_display_vc(center);
+        .flex_display_justify(flex-start);
+
+        .reLoading {
+          label {
+            font-size: 16px;
+            color: #1111dd;
+          }
+        }
+
+        .wp_select_goods { //选择版本
+
+          @media screen and (max-width: 450px) {
+            width: 90%;
+          }
+          @media screen and (min-width: 450px) {
+            width: 80%;
+          }
+
+          .version_color {
+            background-color: #8D8D8D;
+          }
+          .version_color1 {
+            .background_change(#F4E54A, #EE963A);
+          }
+          .version_color2 {
+            background-color: #CEB4B4;
+          }
+          .item_version {
+            width: 100%;
+            padding: 5px 15px;
+            margin-bottom: 3%;
+            color: #FFFFFF;
+            border-radius: 10px;
+            .version_content {
+              .version_img(@url) {
+                background: url(@url) 0px 0px no-repeat;
+                filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+                background-size: 100% 100%;
+                -moz-background-size: 100% 100%;
+                background-repeat: round;
+              }
+              display: flex;
+              display: -webkit-flex;
+              flex-direction: row;
+              -webkit-flex-direction: row;
+              justify-content: space-between;
+              -webkit-justify-content: space-between;
+
+              .version_content_left {
+                .flex_display(column);
+                .flex_display_justify(space-between);
+                .title {
+                  //font-size: 18px;
+                  font-weight: bolder;
+                  @media screen and (max-width: 330px) {
+                    font-size: 13px;
+                  }
+                  @media screen and (min-width: 375px) {
+                    font-size: 16px;
+                  }
+                  @media screen and (min-width: 724px) {
+                    font-size: 22px;
+                  }
+                }
+                .subTitle {
+                  //font-size: 12px;
+                  @media screen and (max-width: 724px) {
+                    font-size: 12px;
+                  }
+                  @media screen and (min-width: 724px) {
+                    font-size: 16px;
+                  }
+                }
+                /*.version_content_title_198 {
+                  width: 60px;
+                  height: 20px;
+                  .version_img("../../../sImages/weixin_pay/GTA0007.png")
+                }
+                .version_content_title_298 {
+                  width: 60px;
+                  height: 20px;
+                  .version_img("../../../sImages/weixin_pay/GTA0008.png")
+                }
+                .version_content_title_498 {
+                  width: 60px;
+                  height: 20px;
+                  .version_img("../../../sImages/weixin_pay/GTA0009.png")
+                }*/
+              }
+              .version_content_right {
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: column;
+                -webkit-flex-direction: column;
+                justify-content: flex-end;
+                -webkit-justify-content: flex-end;
+                align-items: flex-end;
+                -webkit-align-items: flex-end;
+                .price {
+                  margin-right: 8px;
+                  //font-size: 18px;
+                  @media screen and (max-width: 724px) {
+                    font-size: 18px;
+                  }
+                  @media screen and (min-width: 724px) {
+                    font-size: 24px;
+                  }
+                }
+                i {
+                  //font-size: 18px;
+                  @media screen and (max-width: 724px) {
+                    font-size: 18px;
+                  }
+                  @media screen and (min-width: 724px) {
+                    font-size: 24px;
+                  }
+                }
+                /*.version_price_198 {
+                  width: 58px;
+                  height: 18px;
+                  margin-right: 8px;
+                  .version_img("../../../sImages/weixin_pay/198.png")
+                }
+                .version_price_298 {
+                  width: 58px;
+                  height: 18px;
+                  margin-right: 8px;
+                  .version_img("../../../sImages/weixin_pay/298.png")
+                }
+                .version_price_498 {
+                  width: 58px;
+                  height: 18px;
+                  margin-right: 8px;
+                  .version_img("../../../sImages/weixin_pay/498.png")
+                }*/
+              }
+            }
+          }
+
+        }
+      }
+
+      .wp_select_foot {
+        text-align: center;
+        height: 100px;
+        .submit_button {
+          border: none;
+          color: #000000;
+          width: 160px;
+          height: 60px;
+          background: url("../../../../m_global/sImages/weixin_pay/payButton.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+
+  }
+
+}

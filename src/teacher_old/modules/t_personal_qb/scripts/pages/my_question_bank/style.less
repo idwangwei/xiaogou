@@ -1,0 +1,69 @@
+.my_question_bank {
+
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  .display-flex-setting(@dir,@content,@items) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+    justify-content: @content;
+    -webkit-justify-content: @content;
+    align-items: @items;
+    -webkit-align-items: @items;
+  }
+  .question_bank {
+    width: 100%;
+    .module_type {
+      .display-flex-setting(row, space-between, center);
+      margin: 20px auto;
+      height: 115px;
+      width: 85%;
+      max-width: 450px;
+      border-radius: 10px;
+      overflow: hidden;
+      .left-part {
+        flex: 2;
+        -webkit-flex: 2;
+        img {
+          width: 100%;
+          margin-left: -20px;
+          margin-bottom: -20px;
+          max-width: 234px;
+        }
+      }
+      .center-part {
+        flex: 4;
+        -webkit-flex: 4;
+        .title {
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .add-count {
+          color: #fdfe00;
+        }
+        p {
+          text-align: left;
+          margin: 0;
+          color: #ffffff;
+        }
+      }
+      .right-part {
+        flex: 1;
+        -webkit-flex: 1;
+        color: #ffffff;
+      }
+    }
+    .add_question_module {
+      .background_change(#f0673a, #f4b468);
+    }
+    .pub_question_module {
+      .background_change(#31c565, #a6e661);
+    }
+
+  }
+}

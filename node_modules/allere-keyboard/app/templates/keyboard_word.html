@@ -1,0 +1,28 @@
+<div class="left">
+    <div class="word_container">
+        <div class="item"
+             ng-click="handleClickNum($event)"
+             ng-repeat="value in pureWordsList track by $index"
+             value="{{value.item}}"
+             ng-style="{background:value.firstOrTail?'#6F6F6F':'#9391A6'}">
+            <span ng-if="value.item!='\\var{x}'&&value.item!='\\var{y}'&&value.item.indexOf('frac')===-1">{{value.item}}</span>
+            <span ng-if="value.item.indexOf('frac')>-1" mathjax-parser value="{{value.item}}"></span>
+            <span ng-if="value.item=='\\var{x}'" mathjax-parser value="x"></span>
+            <span ng-if="value.item=='\\var{y}'" mathjax-parser value="y"></span>
+        </div>
+    </div>
+</div>
+<div class="right">
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)" style="color: #fe6948;">
+        <img src="images/del.png" width="35px" alt=""/>
+    </div>
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleAnswer($event)" ng-if="wordAnswer">
+        <span style="display: block;width: 35px;color:white">答</span>
+    </div>
+    <div class="item greenItem"
+         style="flex:1;-webkit-flex:1"
+         ng-click="handleClickCommentDone($event)"
+         ng-show="keyboardStatus.isCommentBox">
+        <span style="display: block;color:white">完成</span>
+    </div>
+</div>

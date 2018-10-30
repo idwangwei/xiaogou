@@ -1,0 +1,261 @@
+.display-flex {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+
+}
+
+.con_flex-align-direction(@dir) {
+  align-items: @dir;
+  -webkit-align-items: @dir;
+}
+
+.con_flex-justify-direction(@dir) {
+  justify-content: @dir;
+  -webkit-justify-content: @dir;
+}
+
+.com_flex-direction (@direction) {
+  flex-direction: @direction;
+  -webkit-flex-direction: @direction;
+}
+
+.flex_num(@num) {
+  flex: @num;
+  -webkit-flex: @num;
+}
+
+.game-map-scene-backdrop {
+  .display-flex;
+  .game-map-scene-area {
+    .game-map-scene-title {
+      background: #BF60D7 !important;
+      h1 {
+        color: #fff !important;
+      }
+      .btn-buy {
+        width: 70px;
+      }
+    }
+    .game-map-scene-content {
+      background: #734E9C;
+      .game-map-list {
+        .display-flex;
+        .com_flex-direction(column);
+        width:100%;
+        margin-top:15px;
+        @media screen and(min-width:675px){
+          width:80%;
+          margin: 15px 10%;
+        }
+
+        .map-scene-tr-common {
+          position: relative;
+          border-radius: 15px;
+          height: 120px;
+          margin-bottom: 20px;
+          overflow: hidden;
+          width: 98%;
+          @media screen and(min-width:675px){
+            height: 150px;
+          }
+          @media screen and(min-height:1100px){
+            height: 180px;
+            margin-bottom: 30px;
+          }
+
+          .scene-font{
+            font-size: 11px;
+            @media screen and(min-width:675px){
+              font-size: 13px;
+            }
+            @media screen and(min-height:1100px){
+              font-size: 15px;
+            }
+          }
+
+          .td-left {
+            left: -20px;
+            bottom: -20px;
+            width: 100px;
+            position: absolute;
+          }
+
+          .td-right {
+            right: -25px;
+            bottom: -10px;
+            width: 100px;
+            position: absolute;
+          }
+
+          .td-middle {
+            position: absolute;
+            width: 100%;
+            height: 90%;
+            bottom: 0;
+            color:#2D66BD;
+            .display-flex;
+            .com_flex-direction(column);
+            img{
+              width: 100px;
+            }
+
+            div{
+              padding: 6px 0 0;
+              font-weight: 700;
+              .scene-font;
+            }
+
+            .middle-star{
+              margin: 0 10px 0 2px;
+              width: 14px;
+              @media screen and(min-width:675px){
+                margin: 0 14px 0 3px;
+                width: 15px;
+              }
+              @media screen and(min-height:1100px){
+                margin: 0 17px 0 3px;
+                width: 20px;
+              }
+            }
+
+            .arrow-right{
+              margin-left: 5px;
+              @media screen and(min-width:675px){
+                margin-left: 10px;
+              }
+              @media screen and(min-height:1100px){
+                margin-left: 15px;
+              }
+            }
+          }
+
+          .game-map-totalCredits {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            padding: 2px 10px;
+            color: #fff;
+            font-weight: 700;
+            background: #569AE4;
+            border-radius: 15px;
+            .scene-font;
+          }
+
+          .game-map-has-buy{
+            position: absolute;
+            z-index:1000;
+            img{
+              width: 65px;
+              @media screen and(min-width:675px){
+                width: 92px;
+              }
+            }
+
+          }
+        }
+
+        .scene-bg-common(@color1,@color2) {
+          /*background-image: radial-gradient(circle farthest-corner at 50% 50%, @color1 5%, @color2 100%, transparent 10%);*/
+          background-image: linear-gradient(to top, @color1, @color2);
+        }
+
+        .scene-tr1 {
+          .scene-bg-common(#95F6F7,#83CEF4);
+          .td-left1 {
+            width: 150px;
+            left: -81px;
+            bottom: -20px;
+          }
+
+          .td-right1 {
+            width: 170px;
+            right: -75px;
+            bottom: -35px;
+          }
+
+          .game-map-totalCredits {
+            background: #569AE4;
+          }
+
+          .td-middle{
+            color:#487AC6;
+          }
+        }
+
+        .scene-tr2 {
+          background: #87D658;
+
+          .td-right2 {
+            width: 120px;
+            right: -20px;
+            bottom: -25px;
+          }
+
+          .game-map-totalCredits {
+            background: #55AC81;
+          }
+
+          .td-middle{
+            color:#448057;
+          }
+        }
+
+        .scene-tr3 {
+          .scene-bg-common(#BD8BE7,#5B61C6);
+          .game-map-totalCredits {
+            background: #454AAB;
+          }
+          .td-middle{
+            color:#51419C;
+          }
+        }
+
+        .scene-tr4 {
+          background: #D4F0FB;
+          .game-map-totalCredits {
+            background: #8D97CD;
+          }
+          .td-middle{
+            color:#8D97CD;
+          }
+        }
+
+        .scene-tr5 {
+          .scene-bg-common(#61F2F8, #5BCFF0);
+          .td-left5 {
+            width: 150px;
+            left: -60px;
+            bottom: -15px;
+          }
+
+          .td-right5 {
+            width: 150px;
+            bottom: -50px;
+          }
+        }
+
+        .scene-tr6 {
+          .scene-bg-common(#55D2EF, #66B1ED);
+          .td-left6 {
+            left: -10px;
+            bottom: -10px;
+          }
+          .td-right6 {
+            width: 130px;
+            bottom: -20px;
+            right: -30px;
+          }
+
+          .game-map-totalCredits {
+            background: #4F96E3;
+          }
+        }
+
+      }
+    }
+  }
+}

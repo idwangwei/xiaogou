@@ -1,0 +1,180 @@
+<ion-view id="live-course-detail">
+    <ion-header-bar class="bar-balanced enter-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">课程详情</h1>
+        <button class="button buttons button-clear item-call"  ng-click="ctrl.callPhone()">
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_call_btn.png')}}" class="pay-water">
+        </button>
+    </ion-header-bar>
+    <div class="header-box">
+        <div class="list-item">
+            <div class="item-header" ng-if="ctrl.selectCourse.courseId">
+                <img class="item-discount" ng-src="{{ctrl.selectCourse.discountPercentObj.discountURL}}" alt="" ng-if="ctrl.selectCourse.discountPercentObj&&ctrl.selectCourse.discountPercentObj.discount<10">
+                <div class="item-title">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_type_yellow_'+ctrl.selectCourse.publicClassType+'.png')}}" alt="">
+                    <span>{{ctrl.selectCourse.courseName}}<span></span></span>
+                </div>
+                <div class="item-star">
+                    <span>难度：</span>
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}" alt="" ng-repeat="v1 in ctrl.selectCourse.starArr track by $index">
+                </div>
+                <div class="item-time">{{ctrl.selectCourse.showTime}}<span ng-show="!ctrl.selectCourse.fee">开课</span></div>
+                <div class="item-teacher">
+                    <div class="teacher-box">
+                        <img ng-src="{{ctrl.selectCourse.secondaryTeacherName.liveImageUrl}}" alt="">
+                        <div class="teacher-des">
+                            <p class="teacher-type">授课</p>
+                            <p class="teacher-name">{{ctrl.selectCourse.secondaryTeacherName.teacherName}}</p>
+                        </div>
+                    </div>
+                    <div class="teacher-box">
+                        <img ng-src="{{ctrl.selectCourse.secondaryTeacherName.imageURL}}" alt="">
+                        <div class="teacher-des">
+                            <p class="teacher-type">辅导</p>
+                            <p class="teacher-name">{{ctrl.selectCourse.secondaryTeacherName.teacher}}</p>
+                            <p class="teacher-type">微信号：17780695191</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-notice" ng-click="ctrl.showMoreInfo()">
+                    小贴士：退款须知、直播课程、学情跟踪、课程回放
+                    <i class="ion-ios-arrow-right item-content-arrow"></i>
+                </div>
+            </div>
+        </div>
+        <img class="tab-btn" ng-src="{{$root.loadLiveImg('live_home/live-course-have-zhige.png')}}" ng-if="ctrl.paperInfo.showTagStatus==1" ng-click="ctrl.goToFeePaper()">
+        <img class="tab-btn" ng-src="{{$root.loadLiveImg('live_home/live-course-have-nozhige.png')}}" ng-if="ctrl.paperInfo.showTagStatus==2" ng-click="ctrl.goToFeePaper()">
+    </div>
+    <ion-content padding="false" class="enter-content" delegate-handle="liveDetailScroll">
+        <div class="content-banner">
+            <div class="content-title">讲师介绍</div>
+            <div class="banner-box" ng-if="ctrl.teacherIntroduce">
+                <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_banner_bg_2.png')}}" class="banner-box-bg">
+                <div class="text-box">
+                    <div class="star-box" ng-if="ctrl.teacherIntroduce.teacherStarArr.length>0">
+                        <span>{{ctrl.teacherIntroduce.teacherType}}：</span>
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_enter_star.png')}}" alt="" ng-repeat="v1 in ctrl.teacherIntroduce.teacherStarArr track by $index">
+                    </div>
+                    <div class="name">
+                        <img ng-src="{{ctrl.teacherIntroduce.teacherNameURL}}" alt="">
+                    </div>
+                    <div class="normal" ng-repeat="v2 in ctrl.teacherIntroduce.headTitle track by $index">{{v2}}</div>
+                </div>
+                <img ng-src="{{ctrl.teacherIntroduce.imageURL}}" class="banner-teacher">
+            </div>
+        </div>
+        <div class="content-section-1">
+            <div class="content-title">课程内容</div>
+            <div class="content-text">适合地区：全国</div>
+            <div class="content-text">适合年级：{{ctrl.clazzArr[ctrl.selectCourse.secondaryTeacherName.grade]}}年级</div>
+            <div class="table-box">
+                <div class="table-head">
+                    课程方案（共{{ctrl.lessonList.length}}课）
+                </div>
+                <div class="table-item" ng-repeat="v in ctrl.lessonList track by $index">
+                    <div class="item-left">
+                        <span>第{{v.lesson}}课</span>
+                        <span>{{v.lessonName}}
+                            <span class="star-box">
+                                <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}" ng-repeat="v1 in v.difficultyArr track by $index">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="item-right">
+                        上课：{{v.showTime}}
+                    </div>
+                </div>
+               <!-- <div class="table-item">
+                    <div class="item-left">
+                        <span>第1课</span>
+                        <span>归一问题
+                            <span class="star-box">
+                                <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}">
+                                <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="item-right">
+                        上课：4月11日 15:00-17:00
+                    </div>
+                </div>-->
+            </div>
+            <div class="price-text" ng-if="ctrl.selectCourse.discountPercentObj&&ctrl.selectCourse.discountPercentObj.discount<10"><span class="new-fee">现价：￥{{ctrl.fee}}</span><span class="fee">学费：￥{{ctrl.oldFee}}</span></div>
+            <div class="price-text" ng-if="!(ctrl.selectCourse.discountPercentObj&&ctrl.selectCourse.discountPercentObj.discount<10)">学费：￥{{ctrl.fee}}</div>
+        </div>
+        <div class="content-section-2">
+            <div class="content-title">课程优势</div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_1.png')}}">
+                <span>互动直播授课，在家即可享受优质教学</span>
+            </div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_2.png')}}">
+                <span>小升初名师辅导，全程陪伴式学习</span>
+            </div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_3.png')}}">
+                <span>配套精品习题，边学边练，巩固提升</span>
+            </div>
+            <div class="content-img">
+                <img ng-src="{{$root.loadLiveImg('live_home/live_course_detail_mark_4.png')}}">
+                <span>回放任意看，随时随地温故知新</span>
+            </div>
+        </div>
+        <div class="content-section-3">
+            <div class="content-title">如何听课</div>
+            <div class="normal-box">
+                <div class="box-item  step-3">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_step_1.png')}}">
+                    </div>
+                    <div class="bottom">
+                        <p>报名公开课</p>
+                    </div>
+                </div>
+                <div class="box-item step-arrow">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_arrow.png')}}">
+                    </div>
+                </div>
+                <div class="box-item step-2">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_step_2.png')}}">
+                    </div>
+                    <div class="bottom">
+                        <p>提前15分钟进入</p>
+                        <p>智算365课堂</p>
+                    </div>
+                </div>
+                <div class="box-item step-arrow">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_arrow.png')}}">
+                    </div>
+                </div>
+                <div class="box-item step-3">
+                    <div class="header">
+                        <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_step_3.png')}}">
+                    </div>
+                    <div class="bottom">
+                        <p>线上课堂</p>
+                        <p>学习</p>
+                    </div>
+                </div>
+            </div>
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_erweima.png')}}" class="erweima">
+            <div class="notice">提示：微信搜索“智算365”或扫描上方二维码添加公众号，获取更多上课信息以及使用指导</div>
+        </div>
+    </ion-content>
+    <div class="live-course-bottom" ng-click="ctrl.goToPay()">
+        <img ng-src="{{$root.loadLiveImg(ctrl.paperInfo.btnUrl)}}" ng-if="ctrl.paperInfo.btnUrl">
+        <span class="btn-text" ng-if="ctrl.paperInfo.btnUrl===''&&ctrl.selectCourse.type==0&&ctrl.selectCourse.studentCount<ctrl.selectCourse.limitTotal">无报名资格</span>
+        <span class="btn-text" ng-if="ctrl.paperInfo.btnUrl===''&&ctrl.selectCourse.type==1">已报名</span>
+        <span class="btn-text" ng-if="ctrl.paperInfo.btnUrl===''&&ctrl.selectCourse.type==0&&ctrl.selectCourse.studentCount>=ctrl.selectCourse.limitTotal">已售罄</span>
+        <!--<div class="price-box">
+            <span class="old-price" ng-if="ctrl.fee!=ctrl.oldFee">原价￥{{ctrl.oldFee}}</span>
+            <span class="new-price">￥{{ctrl.fee}}</span>
+        </div>-->
+    </div>
+</ion-view>

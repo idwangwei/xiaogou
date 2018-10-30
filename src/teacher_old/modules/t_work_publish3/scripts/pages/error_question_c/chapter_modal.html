@@ -1,0 +1,56 @@
+
+<ion-modal-view hide-nav-bar="true" class="error_question_c_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.closeChapterSelect()" style="padding:0 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';font-weight: bold" ng-bind="ctrl.isFetchTextbookProcessing ? '教材':ctrl.textbook.name" ></h1>
+    </ion-header-bar>
+
+    <ion-content delegate-handle="textbookModal">
+
+        <div class="modal_textbook_content" style="padding:20px 0">
+            <!--没有班级-->
+            <div ng-if="!ctrl.clazzList.length" style="padding: 10px;color: #3f4367">
+                您还没有创建班级，请返回点击下方的“班级”，然后再点击“+”创建班级。
+            </div>
+
+            <div class="display-flex" style="font-size: 16px;margin-top: 20px" ng-if="ctrl.isFetchTextbookProcessing">
+                <ion-spinner icon="ios"></ion-spinner>
+                <span style="margin-left: 10px">获取班级教材中...</span>
+            </div>
+            <div class="list" ng-show="ctrl.textbooks[0] && !ctrl.isFetchTextbookProcessing"
+                 ng-repeat="textbookItem in ctrl.textbooks[0].subTags | filter:{text:ctrl.commonService.convertToChinese(ctrl.selectedClazz.grade)}"
+                 ng-click="ctrl.clickTextbook(textbookItem)">
+
+                <div class="item textbook_bg row-link">
+                    <span class="icon row-icon ion-chevron-down"
+                          ng-class="textbookItem.id === ctrl.currentChooseTextbook.id ? 'ion-chevron-down':'ion-chevron-right'"
+                          style="font-weight: bold;margin-right: 5px;display: inline-block">
+                    </span>{{textbookItem.name}}
+                </div>
+
+                <div class="" ng-repeat="chapter in textbookItem.subTags" ng-if="ctrl.currentChooseTextbook.id === textbookItem.id">
+                    <div class="item unit_bg" ng-click="ctrl.clickChapter($event,chapter)">
+                        <span class="icon ion-chevron-right"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{chapter.text}}
+                    </div>
+                </div>
+            </div>
+            <!--<div class="list" ng-show="ctrl.textbook && !ctrl.isFetchTextbookProcessing">-->
+                <!--<div ng-repeat="chapter in ctrl.textbook.subTags">-->
+                    <!--<div class="item unit_bg" ng-click="ctrl.clickChapter(chapter)">-->
+                        <!--<span class="icon ion-chevron-right"-->
+                              <!--style="font-weight: bold;margin-right: 5px">-->
+                        <!--</span>{{chapter.text}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+    </ion-content>
+
+</ion-modal-view>
+
+

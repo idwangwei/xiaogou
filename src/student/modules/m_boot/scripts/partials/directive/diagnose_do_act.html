@@ -1,0 +1,33 @@
+<div>
+    <div class="dot_processing loading-act"  ng-if="doQCtrl.showRightAnimateFlag">
+        <div class="test-wrap">
+            <img ng-src="{{$root.loadImg(doQCtrl.knowledgePointShowImg)}}"
+                 ng-if="!doQCtrl.showSecondImgFlag"
+                 class="first-img" >
+            <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+                 ng-if="doQCtrl.showSecondImgFlag"
+                 class="second-img animated bounceIn" >
+            <div class="img-act-wrap">
+                <div class="xiaogou-right-act xiaogou-right-img" >
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="dot_processing loading-act"   ng-if="doQCtrl.showWrongAnimateFlag">
+        <div class="test-wrap">
+            <img ng-src="{{$root.loadImg(doQCtrl.knowledgePointShowImg)}}"
+                 ng-if="!doQCtrl.showSecondImgFlag"
+                 class="first-img" >
+            <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}"
+                 ng-if="doQCtrl.showSecondImgFlag"
+                 class="second-img animated bounceIn" >
+            <div class="img-act-wrap">
+                <div class="xiaogou-wrong-act xiaogou-wrong-img" >
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

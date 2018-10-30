@@ -1,0 +1,116 @@
+<style type="text/css">
+    .index-camp-ad {
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top, #A1F6FE, #5DA5F0);
+    }
+
+    .index-camp-ad .index-camp-ad-area {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .index-camp-ad-area .index-camp-ad-btn-skip {
+        background: #406790;
+        color: #fff;
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 18px;
+    }
+
+    @media screen and(min-width: 768px) {
+        .index-camp-ad-area .index-camp-ad-btn-skip {
+            font-size: 25px;
+        }
+    }
+
+    .index-camp-ad-area .index-camp-ad-bg {
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .index-camp-ad-area .index-camp-ad-bg .cloud1 {
+        position: absolute;
+        height: 70%;
+        right: -22%;
+        top: 5%;
+    }
+
+    .index-camp-ad-area .index-camp-ad-bg .cloud2 {
+        position: absolute;
+        height: 50%;
+    }
+
+    .index-camp-ad-area .index-camp-ad-bg .cloud3 {
+        bottom: 0;
+        position: absolute;
+        height: 50%;
+    }
+
+    .index-camp-ad-area .index-camp-ad-content {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .index-camp-ad-area .index-camp-ad-content .index-camp-ad-center {
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .index-camp-ad-area .index-camp-ad-content .camp_ad {
+        position: absolute;
+        height: 40%;
+        top: 10%;
+    }
+
+    .index-camp-ad-area .index-camp-ad-content .camp_animal_area {
+        position: relative;
+        width: 200%;
+        margin-left: -50%;
+        height: 80%;
+        bottom: -52%;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+
+    .index-camp-ad-area .index-camp-ad-content .camp_animal_area .camp_animal {
+        height: 100%;
+    }
+
+</style>
+
+
+<ion-view class="index-camp-ad">
+    <div class="index-camp-ad-area">
+        <div class="index-camp-ad-btn-skip" ng-click="skipToIndexHome()" ng-style="{'top': isIos ? '20px' : '5px'}">
+            跳过 <i class="ion-chevron-right"></i>
+        </div>
+        <div class="index-camp-ad-bg">
+            <img class="cloud3" ng-src="{{camp_cloud3}}">
+            <img class="cloud1" ng-src="{{camp_cloud1}}">
+            <img class="cloud2" ng-src="{{camp_cloud2}}">
+        </div>
+        <div class="index-camp-ad-content">
+            <img class="camp_ad index-camp-ad-center" ng-src="{{camp_ad_content}}">
+            <div class="camp_animal_area">
+                <img class="camp_animal" ng-src="{{camp_animal}}">
+            </div>
+        </div>
+    </div>
+</ion-view>

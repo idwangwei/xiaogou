@@ -1,0 +1,39 @@
+<div class="question-title" >
+    <style type="text/css">
+        .question-title .q-feedback {
+            border-radius: 0px;
+            min-height: 14px;
+            line-height: 20px;
+            padding: 0px 4px;
+            margin-top: 2px;
+            float: right;
+        }
+    </style>
+    <ion-checkbox ng-if="checkBox" ng-model="record.selected">
+        第{{record.seqNum+1}}题
+        <span style="color: darkred" ng-show="showScore">{{record.score}}分</span>
+    </ion-checkbox >
+       <div ng-show="!checkBox">
+           <span class="small_title">{{'第'+(record.seqNum+1)+'题'}}</span>
+           <span style="color: red;font-weight: normal" ng-show="showScore">{{record.score}}分</span>
+           <span class="button button-small  q-feedback" q-feedback="record.id" paper-id="libWorkId" >
+                <i class="icon ion-hammer"></i>
+              <!-- 报错-->
+           </span>
+            <span class="button button-small q-feedback"
+                  q-correct-ans
+                  paper-id="libWorkId"
+                  big-q="qt"
+                  small-q="record"
+                  book-mark-id="bookMarkId"  >
+                 <i class="icon ion-key" ></i>
+                              <!--  参考答案-->
+            </span>
+           <div ng-hide="hideIcon">
+               <span class="icon ion-gear-b" style="color:#1462d2;font-size: 16px;margin-left: 10px" ng-click="editQList(qt.qsList,idx,$index)">&nbsp;小题设置</span>
+               <span class="icon ion-ios-trash-outline" style="color:#1462d2;font-size: 16px;margin-left: 10px" ng-click="delSmallQ(qt.qsList,idx,$index)">&nbsp;移除小题</span>
+           </div>
+
+       </div>
+
+</div>

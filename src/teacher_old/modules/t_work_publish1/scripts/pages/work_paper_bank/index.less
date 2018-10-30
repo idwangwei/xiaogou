@@ -1,0 +1,116 @@
+@import "../../../../t_boot/less/theme02/include/_mixins";
+
+.work_paper_bank{
+  .new-icon-title{
+    position: absolute;
+    right: 19px;
+    top: 1px;
+  }
+  .new-icon{
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    width: 28px;
+    height: 15px;
+  }
+
+  .item-for-img{
+    margin:10px auto;
+    color: #2e3969;
+    position: relative;
+    img{
+      width: 30px;
+      position: absolute;
+    }
+    .first-text{
+      margin-left: 36px;
+    }
+  }
+  .content-img{
+    border-radius: 0px!important;
+    margin-right: 14px;
+  }
+  .item{
+    border: none;
+  }
+  .me_content{
+    ion-list{
+      .list{
+        .item:nth-child(odd){
+          background: #FEFAF1;
+        }
+      }
+      .item{
+        color: #4A3C37;
+        border: none;
+      }
+    }
+    .content-left{
+      flex:9;
+      -webkit-flex:9;
+      p{
+        .overflow-ellipsis;
+      }
+    }
+    .content-right{
+      flex:2;
+      -webkit-flex:2;
+      .right-main{
+        float: right;
+        text-align: center;
+        background: #FA7B75;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        line-height: 30px;
+        i{
+          color: #fff;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .bank_content{
+    .common_sty{
+      margin-top: 10px;
+      height: 44px;
+      padding: 10px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      color: #2e3969;
+      margin-right: 10px;
+    }
+    .list{
+      .unit_bg{
+        background: #B4D0ED;
+        margin-left: 13px;
+       .common_sty;
+      }
+      .lesson_bg{
+        background: #BEE7F1;
+        margin-left: 18px;
+        .common_sty;
+      }
+      .work_bg{
+        .common_sty;
+        margin-left: 23px;
+        background: #D2F7EF;
+        padding-left: 50px;
+        img{
+          width: 30px;
+          position: absolute;
+          top: 6px;
+          left: 12px;
+          vertical-align: middle;
+        }
+      }
+    }
+    .ion-chevron-down:before{
+      width: 18px;
+    }
+    .ion-chevron-right:before{
+      width: 18px;
+    }
+  }
+}

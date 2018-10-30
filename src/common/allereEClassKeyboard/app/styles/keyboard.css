@@ -1,0 +1,452 @@
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    position: fixed;
+    border: 2px solid #ddd;
+    background: #DCE4F3;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    color: #627283;
+    bottom: 0;
+    border-radius: 11px;
+}
+
+.keyboard .hardware-acceleration {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility:hidden;
+    -webkit-perspective:1000;
+}
+
+.keyboard .key-active {
+    background: #83D07C !important;
+}
+
+.keyboard .key-active-100 {
+    background: #83D07C !important;
+    width: 100%;
+}
+
+.keyboard .tool-bar{
+    background: #f1f1f5!important;
+    color: rgb(74, 107, 157);
+    border-bottom: 1px solid #b5b7c4;
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
+}
+
+.keyboard .tool-bar .tool-bar-item {
+    height: inherit;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+
+}
+
+.keyboard .tool-bar .un-click {
+    color: #b2b2b2;
+}
+.keyboard .tool-bar .flex-4 {
+    flex: 4;
+    -webkit-flex: 4;
+    ;
+}
+
+.keyboard .tool-bar .flex-2 {
+    flex: 2;
+    -webkit-flex: 2;
+    font-size: 20px;
+}
+
+/*上方切换栏*/
+.keyboard .switcher {
+    background: hsl(0, 0%, 95%);
+    /*border-radius: 10px;*/
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-flex: 1;
+    -webkit-justify-content: center;
+}
+
+.keyboard .switcher .left-div-box{
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    flex: 8;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-flex: 8;
+
+}
+
+.keyboard .switcher .right-div-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    -webkit-flex: 2;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    height: inherit;
+}
+
+.keyboard .switcher .active {
+    background-color: hsl(205, 68%, 49%);
+    color: hsl(0, 100%, 100%);
+    border-radius: 17px;
+    border-bottom: none;
+    box-shadow: none;
+    -webkit-appearance: none !important;
+}
+
+.keyboard .switcher .switcherItem {
+    display: flex;
+    display: -webkit-flex;
+    margin: 4px;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    flex: 1;
+    -webkit-flex: 1;
+    height: inherit;
+}
+
+.keyboard .keyboardContent {
+    flex: 6;
+    -webkit-flex: 6;
+    background: #DFE0E8;
+}
+
+/*===============================常用输入================================================*/
+.keyboardCommon {
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+
+}
+
+.left {
+    height: inherit;
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    -webkit-flex: 4;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    -webkit-flex-direction: column;
+
+}
+
+.left .itemRow {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-flex: 1;
+    width: 100%;
+}
+
+.left .item {
+    background: hsl(246, 11%, 61%);
+    margin: 3px;
+    padding: 16px 0px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-flex: 1;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    display: -webkit-flex;
+    font-weight: normal;
+    white-space: normal;
+}
+.keyboardVertical .left .item{
+    padding: 16px;
+}
+.left .itemRow .num {
+    background: #ffffff;
+    color: black;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    justify-content: center;
+    -webkit-flex: 1;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    height: 100%;
+
+
+}
+
+.right .item {
+    background: #7B7E93;
+    margin: 2px;
+    border-radius: 10px;
+    display: -webkit-flex;
+    font-size: 20px;
+    color: #627283;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-flex: 1;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+
+.item .mathMark {
+    color: white;
+    font-size: 12px;
+}
+
+
+.show-top{
+    position: absolute;
+    top: 9%;
+    left: -21%;
+}
+
+.show-bottom{
+    position: absolute;
+    top: 9%;
+    left: -22%;
+}
+
+/*===============================数学符号输入================================================*/
+.keyboardMark {
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+
+.right .greenItem {
+    color: white;
+    background: #59b6dd !important;
+    width: 100%;
+}
+
+/*===============================单位输入================================================*/
+.keyboardUnit {
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+.keyboardUnit .keyboardUnitLeft{
+
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.keyboardUnit .keyboardUnitLeft .unitItem{
+    background-color: #9391a6;
+    white-space: nowrap;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px 4px;
+    min-width: 40px;
+    color: #fff;
+    font-weight: 100;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    -webkit-flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/*===============================文字输入================================================*/
+
+.keyboardWord {
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+
+/*.keyboardWord .left {*/
+    /*flex-direction: row;*/
+    /*-webkit-flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    /*-webkit-flex-wrap: wrap;*/
+    /*align-content: flex-start;*/
+    /*-webkit-align-content: flex-start;*/
+    /*justify-content: flex-start;*/
+    /*-webkit-justify-content: flex-start;*/
+    /*overflow: auto;*/
+    /*height: inherit;*/
+/*}*/
+.keyboard .left .word_container {
+    background-color:rgb(147, 145, 166);
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: wrap;
+    -webkit-align-content: flex-start;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: flex-start;
+    overflow: auto;
+    height: inherit;
+}
+
+.keyboardWord .left .word_container .item {
+    min-width: 50px;
+    margin: 0;
+    flex-grow: 0;
+    padding: 8px;
+    text-align: center;
+    flex: 1;
+    border-radius: 0;
+    border:none;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    -webkit-flex-grow: 0;
+    -webkit-flex: 1;
+
+}
+
+
+/*==========================字母输入*/
+.keyboardCharacter{
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+
+
+/* 小屏幕（平板，大于等于 100px） */
+@media (min-width: 100px) {
+    .kbd-img-dot > img{
+        width: 200% !important;
+    }
+    .kbd-img-carry > img, .kbd-img-borrow > img {
+        width: 200% !important;
+    }
+    .kbd-img-line > img {
+        width: 50px !important;
+    }
+}
+
+/* 小屏幕（平板，大于等于 100px） */
+@media (min-width: 375px) {
+    .kbd-img-dot > img {
+        width: 150% !important;
+    }
+    .kbd-img-carry > img, .kbd-img-borrow > img {
+        width: 150% !important;
+    }
+    .kbd-img-line > img {
+        width: 60px !important;
+    }
+    .itemRowLast > .item {
+        padding: 5px;
+    }
+}
+
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+    .keyboard .item {
+        font-size: 30px;
+    }
+    .keyboardWord .left .item {
+        min-width: 42px;
+        padding: 11px;
+    }
+    .kbd-img-dot > img, .kbd-img-carry > img, .kbd-img-borrow > img {
+        width: 80px !important;
+    }
+    .kbd-img-line > img {
+        width: 80px !important;
+    }
+    .kbd-img-clearall> img {
+        width: 65px !important;
+    }
+    .keyboardUnit .keyboardUnitLeft .unitItem{
+        min-width: 100px;
+        padding: 30px;
+    }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+    .keyboardUnit .keyboardUnitLeft .unitItem{
+        min-width: 150px;
+        padding: 50px;
+    }
+}
+
+
+
+
+
+

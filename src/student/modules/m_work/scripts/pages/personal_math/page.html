@@ -1,0 +1,92 @@
+<ion-view title="个人学情"
+          hide-nav-bar="true"
+          hide-tab="true"
+          class="clazz-study-statistics-file math-oly">
+    <ion-header-bar class="bar-balanced" align-title="center" style="border:none">
+        <a class="button button-clear common-back-btn" ng-click="ctrl.back()" nav-direction="back">
+            <i class="icon ion-ios-arrow-back"></i>
+        </a>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">个人学情</h1>
+    </ion-header-bar>
+    <ion-content  class="s_work_list_con" style="padding-top: 40px">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+
+        <!-- <div class="count-tip">
+             <span ng-bind="ctrl.study_stati.list[0].studentName+':'" ng-if="ctrl.study_stati.list[0].studentName"></span>
+         </div>-->
+
+        <div class="bg-img-wrap" style="padding-top: 0;">
+            <img  ng-src="{{$root.loadImg('math/personal_math.png')}}">
+        </div>
+
+        <div class="count-tip" >
+            <span ng-bind="'自主练习'" class="outstanding" ng-show="ctrl.pageType"></span>
+            <span ng-bind="ctrl.selectedClazz.name" class="outstanding" ng-hide="ctrl.pageType"></span>
+        </div>
+
+        <div class="select-wrap">
+            <!--详情见 directives - form - select-->
+            <!--default-option默认的选项-->
+            <form-select options="ctrl.timeOptions"
+                         default-option="ctrl.selectedTimeIndex" value="ctrl.selectedTime"
+                         on-change="ctrl.handleTimeTypeOnChange"></form-select>
+            <form-select options="ctrl.typeOptions"
+                         default-option="ctrl.selectedDefaultType" value="ctrl.selectedType"
+                         on-change="ctrl.handleTypeOnChange"></form-select>
+        </div>
+
+        <div class="card card-better" >
+            <div class="pub-times">
+                <span  ng-bind="'收到作业次数:'"></span>
+                <span ng-bind="ctrl.stuInfo.workNum" class="font-bold "></span>
+                <span>次</span>
+            </div>
+            <div class="table-container">
+                <div class="row table-header" ng-if="ctrl.smallScreen">
+                    <div class="col " >没交</div>
+                    <div class="col " >未完成</div>
+                    <div class="col " >完成</div>
+                    <div class="col " >首次</div>
+                </div>
+                <div class="row table-header" ng-if="ctrl.smallScreen">
+                    <div class="col " >作业</div>
+                    <div class="col " >改错</div>
+                    <div class="col " >改错</div>
+                    <div class="col " >满分</div>
+                </div>
+                <div class="row table-header" ng-if="ctrl.smallScreen">
+                    <div class="col " >次数</div>
+                    <div class="col " >次数</div>
+                    <div class="col " >次数</div>
+                    <div class="col " >次数</div>
+                </div>
+                <div class="row table-header" ng-if="!ctrl.smallScreen" >
+                    <div class="col " >没交作业次数</div>
+                    <div class="col " >未完成改错次数</div>
+                    <div class="col " >完成改错次数</div>
+                    <div class="col " >首次满分次数</div>
+                </div>
+                <div class="row table-row" style="margin-top:-1px " >
+                    <div class="col ">
+                        <div class="row data-row" >
+                            <div class="col">
+                                <a class="font-bold">{{ctrl.stuInfo.list[0].unSubNum}}</a>
+                            </div>
+                            <div class="col " >
+                                <a class="font-bold">{{ctrl.stuInfo.list[0].unMistakeNum}}</a>
+                            </div>
+                            <div class="col " >
+                                <a class="font-bold">{{ctrl.stuInfo.list[0].fullMarksNum}}</a>
+                            </div>
+                            <div class="col " >
+                                <a  class="font-bold">{{ctrl.stuInfo.list[0].firstFullMarksNum}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

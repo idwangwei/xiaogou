@@ -1,0 +1,7 @@
+<div class="list">
+    <div class="item item-divider"><b>请选择打印方式</b></div>
+    <ion-radio ng-repeat="type in printTypeList track by type.code"
+               ng-model="printType.selected" ng-value="type.code">
+        {{type.name}}
+    </ion-radio>
+</div>

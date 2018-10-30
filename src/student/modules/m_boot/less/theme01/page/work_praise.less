@@ -1,0 +1,125 @@
+@charset "UTF-8";
+@import "../include/_mixins";
+
+.work_praise_file{
+  ion-content{
+    top:44px!important;
+  }
+  label{font-weight: normal;}
+  .bar-balanced{
+    background: #83dcf5!important;
+  }
+  .item-input—height{
+    margin-top: 10px;
+  }
+  .work_praise_con{
+    background-color: #83dcf5;
+    .bg-img-wrap{
+      padding-top: 50px;
+      width: 100%;
+      text-align: center;
+      img {
+        max-height: 387px;
+        max-width: 507px;
+        width: 70%;
+      }
+    }
+  }
+  .center-tip-box{
+    .display-flex;
+    .com_align_item;
+    .com_justify-content;
+    .tip-box{
+      min-width: 200px;
+      text-align: left;
+      font-weight: 400;
+      font-size: 18px;
+      p{
+        margin: 0 0 5px;
+      }
+    }
+  }
+  .item{
+    border: none;
+    background: #96fcf1;
+    color: #4a6b9d;
+  }
+  .card{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin: 10px 10px 30px 10px;
+  }
+  textarea{
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 97%;
+  }
+  .praise_tip_img{
+    text-align: center;
+  }
+  //.checkbox input:after, .checkbox-icon:after {
+  //  -webkit-transition: opacity 0.05s ease-in-out;
+  //  transition: opacity 0.05s ease-in-out;
+  //  -webkit-transform: rotate(-45deg);
+  //  transform: rotate(-45deg);
+  //  position: absolute;
+  //  top: 33%;
+  //  left: 25%;
+  //  display: table;
+  //  width: 14px;
+  //  height: 6px;
+  //  border: 2px solid #fff;
+  //  border-top: 0;
+  //  border-right: 0;
+  //  content: ' ';
+  //  opacity: 0;
+  //}
+  .qff_content input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+    background: #4BD937;
+    border-color: #4BD937;
+  }
+
+
+  .bg-box{
+    position: relative;
+    height: 30%;
+    width: 100%;
+    @media all and (orientation : landscape) {
+      height: 70%;
+      //max-height: 300px;
+    }
+    @media all and (orientation : portrait){
+      height: 24%;
+      @media screen and (max-width: 767px) {
+        max-height: 140px;
+      }
+    }
+    .bg-img{
+      height: 100%;
+      width: 100%;
+    }
+    .bg-inner-box{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      .bg-inner-box1{
+        width: 60%;
+        max-width: 600px;
+        height: 100%;
+        margin: auto;
+        position: relative;
+        img{
+          position: absolute;
+          bottom: 5px;
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+    }
+  }
+
+
+}
+

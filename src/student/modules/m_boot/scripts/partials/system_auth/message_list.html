@@ -1,0 +1,278 @@
+<ion-view hide-nav-bar="true" class="message_list_file">
+    <!--头部header-->
+    <ion-header-bar align-title="center" class="" style="background-color: #96F3F5;color: #4A6b9d">
+        <h1 class="title" style="color: #4A6b9d" ng-if="subHeaderInfo.activeEle == 'trophy_rank'">作业奖杯榜</h1>
+        <h1 class="title" style="color: #4A6b9d" ng-if="subHeaderInfo.activeEle == 'star_rank'">游戏星星榜</h1>
+        <h1 class="title" style="color: #4A6b9d" ng-if="subHeaderInfo.activeEle == 'fighter_rank'">速算斗士榜</h1>
+    </ion-header-bar>
+
+    <!--顶部标签-->
+    <sub-header id="message_list_subheader " class="">
+        <div class="subheader-item" ng-click="ctrl.clickSubheader('trophy_rank')" id="trophy_rank">
+            <div class="sub-title">
+                <div class="sub-title-wrap">
+                    <span class="sub-header-icon"><img ng-src="{{$root.loadImg('msg/msg_cup_gold.png')}}" alt=""></span>
+                    <span>奖杯榜</span>
+                </div>
+            </div>
+        </div>
+        <div class="subheader-item" ng-click="ctrl.clickSubheader('star_rank')" id="star_rank">
+            <div class="sub-title">
+                <div class="sub-title-wrap">
+                    <span class="sub-header-icon"><img ng-src="{{$root.loadImg('msg/msg_game_star.png')}}"
+                                                       alt=""></span>
+                    <span>星星榜</span>
+                </div>
+            </div>
+        </div>
+        <div class="subheader-item" ng-click="ctrl.clickSubheader('fighter_rank')" id="fighter_rank">
+            <div class="sub-title">
+                <div class="sub-title-wrap">
+                    <span class="sub-header-icon"><img ng-src="{{$root.loadImg('msg/msg_medal_gold.png')}}"
+                                                       alt=""></span>
+                    <span>斗士榜</span>
+                </div>
+            </div>
+        </div>
+    </sub-header>
+
+    <!--榜单背景-->
+    <div class="rank_top_bg_box has-subheader">
+
+        <!--作业奖杯榜背景-->
+        <div class="top_bg_wrap bg_wrap_trophy" ng-if="subHeaderInfo.activeEle == 'trophy_rank'">
+            <roll-factual-play activeEle="trophy_rank"></roll-factual-play>
+            <div class="bg_wrap_star_2">
+                <img ng-src="{{$root.loadImg('msg/msg_trophy_bg_2.png')}}" alt="">
+            </div>
+            <img ng-src="{{$root.loadImg('msg/msg_trophy_icon.png')}}" alt="" class="top_bg_icon">
+        </div>
+
+        <!--游戏星星榜背景-->
+        <div class="top_bg_wrap bg_wrap_star" ng-if="subHeaderInfo.activeEle == 'star_rank'">
+            <roll-factual-play activeEle='star_rank'></roll-factual-play>
+            <div class="bg_wrap_star_2">
+                <img ng-src="{{$root.loadImg('msg/msg_game_star_bg_2.png')}}" alt="">
+            </div>
+            <img ng-src="{{$root.loadImg('msg/msg_game_star_icon.png')}}" alt="" class="top_bg_icon">
+        </div>
+
+        <!--速算斗士榜背景-->
+        <div class="top_bg_wrap bg_wrap_fighter" ng-if="subHeaderInfo.activeEle == 'fighter_rank'">
+            <roll-factual-play activeEle='fighter_rank'></roll-factual-play>
+            <div class="bg_wrap_fighter_layer_1">
+                <img ng-src="{{$root.loadImg('msg/msg_fighter_icon.png')}}" alt="" class="top_bg_fighter_middle">
+            </div>
+
+            <div class="bg_wrap_fighter_layer_2">
+                <img ng-src="{{$root.loadImg('msg/msg_fighter_bg2.png')}}" alt="" class="top_bg_fighter_left">
+                <img ng-src="{{$root.loadImg('msg/msg_fighter_bg3.png')}}" alt="" class="top_bg_fighter_right">
+            </div>
+        </div>
+
+    </div>
+
+    <!--侧边栏-->
+    <ion-side-menus ng-style="{top:ctrl.isIos?'228px':'208px'}" style="height:initial">
+
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content padding="true" class="clazz_select" style="top: 0 !important;">
+                <div class="col-md-12 col-xs-12 clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList">
+
+                    <div class="clazz-item" ng-click="ctrl.selectClazz(clazz)">
+                        <img class="clazz_select_img" ng-src="{{$root.loadImg('clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+
+        <ion-side-menu-content
+                ng-style="{'background':subHeaderInfo.activeEle == 'fighter_rank' ? '#fe6a5a':'#fdea64'}">
+            <div class="top_clazz_wrap">
+                <!--班级名称显示n框-->
+                <div class="select-content-wrap" ng-if="ctrl.selectedClazz && ctrl.selectedClazz.id">
+
+                    <div class="display-flex select-bar-wrap" ng-click="ctrl.showMenu()"
+                         ng-class="{'trophy_rank_clazz_bar':subHeaderInfo.activeEle == 'trophy_rank'}">
+
+                        <!--<i class="icon  ion-android-contacts" ng-if="ctrl.screenWidth>500"></i>-->
+                        <img ng-src="{{$root.loadImg('clazz_icon.png')}}" style="height: 26px">
+                        <div ng-bind="ctrl.selectedClazz.name"
+                             style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"></div>
+                        <span class="icon ion-ios-arrow-right position-right"></span>
+                    </div>
+
+                    <div class="time_bar_wrap" ng-if="subHeaderInfo.activeEle == 'trophy_rank'">
+                        <div class="select-bar">
+                            <div class="ui-select">
+                                <span ng-bind="ctrl.termData.nowTerm"></span>
+                                <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                <select ng-model="ctrl.termData.nowTerm"
+                                        ng-options="item for item in ctrl.termData.terms"
+                                        ng-change="ctrl.getTrophyRankData()" class="select-options">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tip-div-wrap" ng-if="!ctrl.clazzList || !ctrl.clazzList.length">
+                    <span class="net-tip">
+                        <span>想看到排行情况，<br>请家长帮你申请班级吧！</span>
+                    </span>
+                </div>
+            </div>
+
+            <!--奖杯排行列表表头-->
+            <div class="trophy_rank_header" ng-if="subHeaderInfo.activeEle == 'trophy_rank'">
+                <div class="trophy_rank_header_left"></div>
+                <div class="trophy_rank_header_right">
+                    <div class="trh_right_div trh_right_1"><img ng-src="{{$root.loadImg('msg/msg_cup_gold.png')}}"
+                                                                alt=""></div>
+                    <div class="trh_right_div trh_right_2"><img ng-src="{{$root.loadImg('msg/msg_cup_silver.png')}}"
+                                                                alt=""></div>
+                    <div class="trh_right_div trh_right_3"><img ng-src="{{$root.loadImg('msg/msg_cup_copper.png')}}"
+                                                                alt=""></div>
+                </div>
+            </div>
+            <!--斗士排行列表表头-->
+            <div class="fighter_rank_header" ng-if="subHeaderInfo.activeEle == 'fighter_rank'">
+                <div class="fighter_rank_header_left"></div>
+                <div class="fighter_rank_header_right">
+                    <div class="frh_right_div frh_right_1"><img ng-src="{{$root.loadImg('msg/msg_medal_gold.png')}}"
+                                                                alt=""></div>
+                    <div class="frh_right_div frh_right_2"><img ng-src="{{$root.loadImg('msg/msg_medal_silver.png')}}"
+                                                                alt=""></div>
+                    <div class="frh_right_div frh_right_3"><img ng-src="{{$root.loadImg('msg/msg_medal_copper.png')}}"
+                                                                alt=""></div>
+                    <div class="frh_right_div frh_right_4">
+                        <div style="width: 100%;max-width: 40px">击败人数</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <ion-content class="rank_list_content_top">
+
+                <!--奖杯排行列表-->
+                <div class="trophy_rank_list_box"
+                     ng-if="subHeaderInfo.activeEle == 'trophy_rank' && ctrl.selectedClazz && ctrl.selectedClazz.id">
+                    <div ng-if="!ctrl.isTrophyLoading&&!ctrl.trophyRankData.length" class="rank_list_content_none">该班暂时没有作业奖杯排行信息</div>
+                    <div ng-if="ctrl.isTrophyLoading&&!ctrl.trophyRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+
+                    <!--具体列表信息-->
+                    <div class="item trophy_rank_list" ng-repeat="item in ctrl.trophyRankData"
+                         ng-class="{'trophy_rank_list_user':item.studentId == ctrl.user.userId}">
+
+                        <!--左边学生信息-->
+                        <div class="trophy_rank_list_left">
+                            <!--排名-->
+                            <div class="tr_list_index">
+                                <span ng-bind="item.topSeq"> </span>
+                            </div>
+
+                            <!--用户信息-->
+                            <div class="tr_list_info">
+                                <div class="tr_list_student_name">{{item.studentName}}</div>
+                                <!--<div class="tr_list_clazz_name">{{ctrl.selectedClazz.name}}</div>-->
+                            </div>
+                        </div>
+
+                        <!--右侧数量信息-->
+                        <div class="trophy_rank_list_right">
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.goldenCupNumber"></div>
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.silverCupNumber"></div>
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.copperCupNumber"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--星星排行列表-->
+                <div class="star_rank_list_box"
+                     ng-if="subHeaderInfo.activeEle == 'star_rank' && ctrl.selectedClazz && ctrl.selectedClazz.id">
+                    <div ng-if="!ctrl.isGameStarLoading&&!ctrl.gameStarRankData.length" class="rank_list_content_none">该班暂时没有游戏星星排行信息</div>
+                    <div ng-if="ctrl.isGameStarLoading &&!ctrl.gameStarRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+
+                    <div class="item star_rank_list" ng-repeat="item in ctrl.gameStarRankData"
+                         ng-class="{'star_rank_list_user':item.userId == ctrl.user.userId}">
+
+                        <!--排名-->
+                        <div class="gs_content_list_index">
+                            <span ng-bind="item.rank"> </span>
+                        </div>
+
+                        <!--列表信息-->
+                        <div class="gs_content_list_info">
+
+                            <!--头像-->
+                            <div class="game_star_content_left"></div>
+
+                            <!--用户信息-->
+                            <div class="game_star_content_middle">
+                                <div class="gs_cm_student_name">{{item.userName}}</div>
+                                <!--<div class="gs_cm_clazz_name">{{ctrl.selectedClazz.name}}</div>-->
+                            </div>
+
+                            <!--信息信息-->
+                            <div class="game_star_content_right">
+                                <img ng-src="{{$root.loadImg('msg/msg_game_star.png')}}" alt="">
+                                <span>&nbsp;×{{item.starAmount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--斗士排行列表-->
+                <div class="fighter_rank_list_box"
+                     ng-if="subHeaderInfo.activeEle == 'fighter_rank' && ctrl.selectedClazz && ctrl.selectedClazz.id">
+                    <div ng-if="!ctrl.isFighterLoading&&!ctrl.fighterRankData.length" class="rank_list_content_none">该班暂时没有速算斗士排行信息</div>
+                    <div ng-if="ctrl.isFighterLoading&&!ctrl.fighterRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+
+                    <!--具体列表信息-->
+                    <div class="item fighter_rank_list" ng-repeat="item in ctrl.fighterRankData"
+                         ng-class="{'fighter_rank_list_user':item.userId == ctrl.user.userId}">
+
+
+                        <!--左边学生信息-->
+                        <div class="fighter_rank_list_left">
+                            <!--排名-->
+                            <div class="fr_list_index">
+                                <span ng-bind="item.rank"> </span>
+                            </div>
+
+                            <!--用户信息-->
+                            <div class="fr_list_info">
+                                <div class="fr_list_student_name">{{item.userName}}</div>
+                                <!--<div class="fr_list_clazz_name">{{ctrl.selectedClazz.name}}</div>-->
+                            </div>
+                        </div>
+
+                        <!--右侧数量信息-->
+                        <div class="fighter_rank_list_right">
+                            <div class="fr_list_num" ng-bind="item.goldMedal"></div>
+                            <div class="fr_list_num" ng-bind="item.sliverMedal"></div>
+                            <div class="fr_list_num" ng-bind="item.copperMedal"></div>
+                            <div class="fr_list_num" ng-bind="item.defeatPeopleAmount"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </ion-content>
+        </ion-side-menu-content>
+    </ion-side-menus>
+
+</ion-view>

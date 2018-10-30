@@ -1,0 +1,141 @@
+
+.platform-ios.platform-cordova:not(.fullscreen) .organize-paper .has-subheader{
+  top: 134px !important;
+}
+.textHidden{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.list-wrap-1{
+  .mitem-1{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 3px 10px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    .hack-click{
+      position: absolute;
+      z-index: 1;
+      background-color: transparent;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+    }
+    i{
+       font-size: 28px;
+    }
+    .one{
+      width: 15%;
+      max-width: 100px;
+    }
+    .two{
+      flex-grow: 1;
+      -webkit-flex-grow: 1;
+      .textHidden;
+    }
+    .three{
+      width: 20%;
+      text-align: right;
+    }
+  }
+
+}
+.organize-paper{
+   color: #fff;
+  background-image: -webkit-linear-gradient(top, #b569e7, #7d4fdf);
+  background-image: linear-gradient(to bottom, #b569e7 0%, #7d4fdf 100%);
+  .overscroll {
+    position: inherit !important;  /*解决android下拉刷新变形问题*/
+  }
+  .mitem-1.selected{
+    background-color: #D8D1DE;
+  }
+  img{
+    max-width: 100%;
+  }
+  .mheader{
+    color: #fff;
+    background:transparent;
+  }
+  .mback-icon{
+    font-size: 32px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+  }
+  .title{
+    color: #fff;
+  }
+  .options-wrap{
+    color: #1e446a !important;
+  }
+   .currentSelected{
+    color: #1e446a;
+  }
+  .ion-ios-checkmark{
+    color: #62E162;
+  }
+  .bar-subheader{
+    height: 70px;
+    background:transparent;
+  }
+  .mainBody{
+    padding: 10px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+  .has-subheader{
+    top: 114px;
+  }
+  .has-footer{
+    bottom: 70px;
+  }
+  .bar-footer{
+    background:transparent;
+    height: 74px;
+  }
+  .list-wrap-1{
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    color: #1e446a;
+  }
+  .select-wrap{
+    position: relative;
+    z-index:300;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    > div{
+      width: 48%;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      >label{
+        margin-right: 9px;
+        font-size: 18px;
+      }
+      >a{
+        flex-grow: 1;
+        -webkit-flex-grow: 1;
+      }
+    }
+  }
+}

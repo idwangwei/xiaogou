@@ -1,0 +1,75 @@
+
+<ion-view hide-nav-bar="true" class="work_paper_detail_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'" >添加小题</h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="has-footer" overflow-scroll="true" on-scroll="ctrl.getScrollPosition()">
+        <div class="wfs_filter_top" style="padding-left: 10px; padding-top: 10px;">
+            <div class="wfs_filter_top_p">
+                <span>考点：</span>
+                <span>{{ctrl.selectKnowledge.text}}</span>
+            </div>
+        </div>
+
+        <div ng-if="ctrl.isNoQuestion" style="padding: 20px">没有查询到相关试题</div>
+
+        <div ng-repeat="smallQ in ctrl.smallQList track by $index+smallQ.basic.id">
+            <div class="image-type-question">
+                <div class="question-content card card-better small_q_bg" >
+                    <div class="smallq-title title-for-add-q">
+                        <ion-checkbox  ng-model="smallQ.selected" class="smallq-title-first">
+                            <label class="text-adapt text-for-add-q">
+                                <span  ng-bind="'第'+($index+1)+'题'"></span>
+                                <span class="actual-score" ng-bind="smallQ.score"></span>
+                                <span class="score-text" ng-bind="'分'"></span>
+                            </label>
+                        </ion-checkbox >
+                        <div class="img-align-right img-for-add-q">
+
+                            <span ng-click="ctrl.goQFeedbackPage(smallQ.id)">
+                               <img ng-src="{{$root.loadImg('other/report.png')}}">
+                            </span>
+
+
+                            <span q-correct-ans paper-id="ctrl.selectPaper.id" big-q="bigQ" small-q="smallQ">
+                            <img ng-src="{{$root.loadImg('other/ans1.png')}}">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div ng-bind="ctrl.showKnowledgeAndDifficulty(smallQ)"
+                         style="background-color: #B8E4FC;color:#565555"></div>
+                    <div compile-html="smallQ.qContext"  current-q-input="smallQ.inputList" class="q-context" style="pointer-events: none"></div>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="ctrl.loadMore()" distance="1%" ng-if="ctrl.canLoadMore" spinner="ios"></ion-infinite-scroll>
+
+    </ion-content>
+
+    <loading-processing ng-if="!ctrl.retFlag"></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+
+    <div class="bar bar-footer bg-balanced">
+        <div class="title title-center" ng-bind="'确定'" ng-click="ctrl.addQ()" style="color: white!important;"></div>
+    </div>
+</ion-view>
+
+<script id="filtrateSQ.html" type="text/ng-template">
+    <div class="list">
+        <div class="item item-input item-select" ng-repeat="cell in ctrl.filtrate">
+            <div class="input-label">{{cell.text}}</div>
+            <select ng-model="cell.selected" ng-options="url.val as url.text for url in cell.options"></select>
+        </div>
+    </div>
+</script>

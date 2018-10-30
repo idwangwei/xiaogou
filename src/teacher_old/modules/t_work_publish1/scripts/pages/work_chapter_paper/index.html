@@ -1,0 +1,115 @@
+<ion-view hide-nav-bar="true" class="work_chapter_paper_file">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" ng-bind="ctrl.unitName"></h1>
+    </ion-header-bar>
+
+    <div class="bar_top_points" ng-click="ctrl.gotoUnitPoints()" ng-class="{'bar_top_points_ios':ctrl.isIos}">
+        <img ng-src="{{$root.loadImg('paper_bank/unit_points.png')}}" style="width: 45px;margin-left: 10px">
+        <span class="title-center" style="margin: 0 auto;font-size: 18px">教学要点</span>
+        <i class="icon ion-ios-arrow-forward title title-right"></i>
+    </div>
+    <sub-header id="work_chapter_paper_subheader" style="border: none;top: 135px;margin: 0 10px;width: auto">
+        <div class="subheader-item" id="list">
+            <span class="sub-title">试卷列表</span>
+        </div>
+        <div class="subheader-item" id="mine">
+            <span class="sub-title">我的试卷</span>
+        </div>
+    </sub-header>
+
+    <ion-content class="card wcp_list_content" scroll=true overflow-scroll=false style="top: 120px;bottom: 139px">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh(subHeaderInfo.activeEle)"
+                       spinner="ios"></ion-refresher>
+        <!--<ion-list class="list" style="">
+            <ion-item class="item item-avatar" style="background-color: bisque;" ng-click="ctrl.gotoOralArithmeticPaper()">
+                <img ng-src="{{$root.loadImg('paper_bank/paper_icon.png')}}" alt="" class="img-content"/>
+                <p>{{ctrl.unitName+"-口算"}}</p>
+                <p>手写口算，与真实作业体验一致</p>
+            </ion-item>
+        </ion-list>-->
+        <div ng-show="subHeaderInfo.activeEle == 'list'" class="list" style="">
+            <div style="background-color: #99ecfd;position: relative"
+                 class="item item-avatar"
+                 ng-if="ctrl.hasOralCalculation&&!ctrl.needHideRapid"
+                 ng-click="ctrl.gotoOralArithmeticPaper()">
+                <img ng-src="{{$root.loadImg('oralArithmeticImg/oral_arithmetic_img01.png')}}" alt=""
+                     class="img-content"/>
+                <p>{{ctrl.unitName+"-口算"}}</p>
+                <p>口算作业，题量和时间由老师自主控制</p>
+                <img style="position: absolute;bottom: -5px;right: -15px;width: 50px"
+                     ng-src="{{$root.loadImg('oralArithmeticImg/oral_arithmetic_img02.png')}}" alt=""
+                     class="img-content"/>
+            </div>
+
+            <div ng-repeat="paper in ctrl.paperList"
+                 class="item item-avatar"
+                 ng-click="ctrl.showPaperDetail(paper)"
+                 ng-class="{'last-content':$last,'last_selected_paper':ctrl.selectPaperInfo.id == paper.id}">
+
+                <img ng-src="{{$root.loadImg('paper_bank/paper_icon.png')}}" alt="" class="img-content"/>
+                <p>{{paper.title}}</p>
+                <p>{{paper.createdTime}}</p>
+            </div>
+        </div>
+        <ion-list ng-show="subHeaderInfo.activeEle == 'mine'" class="list" style="">
+            <div ng-if="ctrl.getMinePaperList && !ctrl.mineListOther.length" style="padding: 10px">点开试卷列表 > 打开一套作业 >
+                点右上编辑，即可对作业进行编辑，保存或布置后可在我的试卷里查看。
+            </div>
+            <ion-item ng-repeat="mine in ctrl.mineListOther"
+                      ng-click="ctrl.showMainPaperDetail(mine)"
+                      class="item item-avatar"
+                      ng-class="{'last-content':$last,'last_selected_paper':ctrl.selectPaperInfo.id == mine.id}">
+
+                <img ng-src="{{$root.loadImg('paper_bank/paper_icon.png')}}" alt="" class="img-content"/>
+                <p>{{mine.title}}</p>
+                <p>{{mine.createdTime}}</p>
+                <ion-option-button
+                        class="button-assertive"
+                        ng-click="ctrl.deleteMinePaper(mine.id)">删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll on-infinite="ctrl.loadMore()" distance="20%"
+                             ng-if="subHeaderInfo.activeEle == 'mine' && ctrl.canLoadMoreMine"
+                             spinner="ios"></ion-infinite-scroll>
+
+
+    </ion-content>
+    <div class="chapter_footer-content">
+        <div class="wcp_prompt_msg">
+            <p style="font-weight: bold">提示：</p>
+            <p style="margin: 0">1.口算练习可以设置题量和完成时间。</p>
+            <p style="margin: 0">2.试卷难度：基础＜精炼＜培优，可以针对学生水平分层布置。</p>
+            <p style="margin: 0">3.试卷可以用“编辑”功能来增删试卷里的题目。</p>
+        </div>
+        <!--<div class="wcp_prompt_msg">
+            <span style="font-weight: bold">提示：</span>
+            这几套试卷的内容和难度有一定差异（难度：基础＜精炼＜培优），老师可根据班级实际情况选一套布置。
+            也可以将学生分层，分别布置不同难度的试卷。
+            还可以用“编辑”功能来增删试卷里的题目。
+        </div>-->
+    </div>
+
+    <teaching-guide ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.hasPubedSimulationWork"
+                    current-step="1"
+                    current-show-ele="ctrl.currentShowEle"
+                    get-high-light-ele="ctrl.getHighLightEle()">
+    </teaching-guide>
+    <!--<ion-footer-bar align-title="center" class="chapter_footer-content">-->
+    <!--<div class="wcp_prompt_msg">-->
+    <!--<span style="font-weight: bold">提示：</span>-->
+    <!--这几套试卷的内容和难度有一定差异（难度：基础＜精炼＜培优），老师可根据班级实际情况选一套布置。-->
+    <!--也可以将学生分层，分别布置不同难度的试卷。-->
+    <!--还可以用“编辑”功能来增删试卷里的题目。-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="chapter_footer-content_title" style="line-height: 55px;">&ndash;&gt;-->
+    <!--&lt;!&ndash;<img ng-src="{{$root.loadImg('paper_bank/generate_paper.png')}}" style="width: 45px;margin-left: 10px">&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="title-center" style="color: #4b1818;margin: auto;font-size: 18px">自主组卷</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="icon ion-ios-arrow-forward title-right"></i>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</ion-footer-bar>-->
+</ion-view>

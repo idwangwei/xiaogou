@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "./../include/_mixins";
+.tab_sub_bar {
+  .reset-padding;
+  .display-flex;
+   border:none;
+   .tab_sub_bar_item {
+     .flex_1;
+     height: 44px;
+     box-sizing: border-box;
+     border: 1px solid #DDDDDD;
+     border-top:none;
+     &:first-child{
+       border-left: none;
+       border-bottom: none;
+     }
+     &:last-child{
+       border-right: none;
+     }
+     .button{
+       font-size: 14px;
+       .icon{
+         font-size: 15px !important;
+         font-weight: bold;
+       }
+     }
+   }
+}

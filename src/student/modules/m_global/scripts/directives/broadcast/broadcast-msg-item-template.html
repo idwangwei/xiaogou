@@ -1,0 +1,167 @@
+<div>
+    <div ng-if="lineCount == 2" style="position: relative">
+
+        <p ng-if="item.type != msgType.diagnosePk">
+            <i class="icon ion-volume-high"></i>
+            <span class="left-title" ng-bind="item.createTime+', '"></span>
+            <span class="left-title" ng-bind="item.studentName+ '('"></span>
+            <span ng-bind="item.schoolName" class="school school-normal"
+                  ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+                                </span>
+            <span ng-bind="')'"></span>
+        </p>
+
+        <img ng-src="{{$root.loadImg('head_images/user_head'+getAvator(item.avator)+'.png')}}"
+             style="height: 40px;position: absolute;top:0;bottom: 0;left: 0;margin: auto"
+             ng-if="item.type == msgType.diagnosePk">
+        <p ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span class="left-title" style="color: #ffffff" ng-bind="item.createTime+', '"></span>
+            <span class="left-title" style="color: #ffffff" ng-bind="item.studentName"></span>
+
+        </p>
+        <p ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span ng-bind="item.schoolName+(!item.schoolName?'':'·')+getCurrentGrade(item.grade)" class="school school-normal school-100"></span>
+        </p>
+
+
+        <!--作业-->
+        <p class="second-p" ng-if="item.type == msgType.work || item.type===undefined">
+            <span class="content-text" ng-bind="'作业—完成'+item.scheduleDeliverName+', 正确率'"></span>
+            <i ng-bind="item.scoreRate" class="accuracy school-normal"
+               ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+            </i>
+        </p>
+
+        <!--驯宠单题-->
+        <p class="second-p" ng-if="item.type == msgType.diagnoseSingle">
+            <span class="content-text" ng-bind="'征服 '+item.score+' 个考点，今日共征服 '+item.totalScore+' 个'"></span>
+        </p>
+
+        <!--驯宠试卷-->
+        <p class="second-p" ng-if="item.type == msgType.diagnosePaper">
+            <span class="content-text" ng-bind="'一次征服 '+item.score+' 个考点，今日共征服 '+item.totalScore+' 个'"></span>
+        </p>
+
+        <!--速算闯关-->
+        <p class="second-p" ng-if="item.type == msgType.computeLevel">
+            <span class="content-text" ng-bind="'速算—成功闯过'+item.scheduleDeliverName+', 正确率'"></span>
+            <i ng-bind="item.scoreRate" class="accuracy school-normal"
+               ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+            </i>
+        </p>
+
+        <!--速算挑战-->
+        <p class="second-p" ng-if="item.type == msgType.computeChallenge">
+            <span class="content-text" ng-bind="'速算—'+item.scheduleDeliverName"></span>
+        </p>
+
+        <!--普通游戏-->
+        <p class="second-p" ng-if="item.type == msgType.game">
+            <span class="content-text" ng-bind="'游戏—顺利通过'+item.scheduleDeliverName+', 获得 '"></span>
+            <i ng-bind="item.score" class="accuracy school-normal"
+               ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+            </i>
+            <span class="content-text" ng-bind="' 颗星'"></span>
+        </p>
+
+        <!-- 驯宠争霸赛 -->
+        <p class="second-p" ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span class="content-text" style="color: #ffffff" ng-bind="'征服 '+item.score+' 个考点'"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span class="content-text" style="color: #ffffff" ng-bind="'今日共征服 '+item.totalScore+' 个'"></span>
+        </p>
+    </div>
+
+    <div ng-if="lineCount == 4" style="position: relative">
+        <p ng-if="item.type != msgType.diagnosePk">
+            <i class="icon ion-volume-high"></i>
+            <span class="left-title" ng-bind="item.createTime+', '"></span>
+            <span class="left-title" ng-bind="item.studentName"></span>
+        </p>
+        <p ng-if="item.type != msgType.diagnosePk">
+                                <span ng-bind="item.schoolName" class="school school-normal"
+                                      ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+                                </span>
+        </p>
+        <img ng-if="item.type == msgType.diagnosePk"
+             ng-src="{{$root.loadImg('head_images/user_head'+getAvator(item.avator)+'.png')}}"
+             style="height: 40px;position: absolute;top:0;bottom: 0;left: 0;margin: auto">
+        <p ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span class="left-title" style="color: #ffffff" ng-bind="item.createTime+', '"></span>
+            <span class="left-title" style="color: #ffffff" ng-bind="item.studentName"></span>
+
+        </p>
+        <p ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span ng-bind="item.schoolName+'·'+getCurrentGrade(item.grade)" class="school school-normal school-100"></span>
+        </p>
+
+
+        <!--作业-->
+        <p ng-if="item.type == msgType.work || item.type===undefined">
+            <span class="content-text" ng-bind="'作业—完成'+item.scheduleDeliverName"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.work || item.type===undefined">
+            <span ng-bind="'正确率'"></span>
+            <i ng-bind="item.scoreRate" class="accuracy school-normal"
+               ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+            </i>
+        </p>
+
+        <!--驯宠单题-->
+        <p class="second-p" ng-if="item.type == msgType.diagnoseSingle">
+            <span class="content-text" ng-bind="'征服 '+item.score+' 个考点'"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.diagnoseSingle">
+            <span class="content-text" ng-bind="'今日共征服 '+item.totalScore+' 个'"></span>
+        </p>
+
+
+        <!--驯宠试卷-->
+        <p class="second-p" ng-if="item.type == msgType.diagnosePaper">
+            <span class="content-text" ng-bind="'一次征服 '+item.score+' 个考点'"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.diagnosePaper">
+            <span class="content-text" ng-bind="'今日共征服 '+item.totalScore+' 个'"></span>
+        </p>
+
+        <!--速算闯关-->
+        <p ng-if="item.type == msgType.computeLevel">
+            <span class="content-text" ng-bind="'速算—成功闯过 ' +item.scheduleDeliverName"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.computeLevel">
+            <span ng-bind="'正确率'"></span>
+            <i ng-bind="item.scoreRate" class="accuracy school-normal"
+               ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+            </i>
+        </p>
+
+        <!--速算挑战-->
+        <p class="second-p" ng-if="item.type == msgType.computeChallenge">
+            <span class="content-text" ng-bind="'速算—' + item.scheduleDeliverName.split('，')[0]"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.computeChallenge">
+            <span class="content-text" ng-bind="item.scheduleDeliverName.split('，')[1]"></span>
+        </p>
+
+        <!--普通游戏-->
+        <p ng-if="item.type == msgType.game">
+            <span class="content-text" ng-bind="'游戏—顺利通过'+item.scheduleDeliverName"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.game">
+            <span ng-bind="'获得 '"></span>
+            <i ng-bind="item.score" class="accuracy school-normal"
+               ng-class="{'school-100':item.styleType==3, 'school-80':item.styleType==2, 'school-60':item.styleType==1}">
+            </i>
+            <span ng-bind="' 颗星'"></span>
+        </p>
+        <!-- 驯宠争霸赛 -->
+        <p class="second-p" ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span class="content-text" style="color: #ffffff" ng-bind="'征服 '+item.score+' 个考点'"></span>
+        </p>
+        <p class="second-p" ng-if="item.type == msgType.diagnosePk" style="margin-left: 40px">
+            <span class="content-text" style="color: #ffffff" ng-bind="'今日共征服 '+item.totalScore+' 个'"></span>
+        </p>
+
+    </div>
+</div>

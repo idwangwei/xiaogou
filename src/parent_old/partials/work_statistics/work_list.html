@@ -1,0 +1,220 @@
+<ion-view title="作业" hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <h1 class="title">作业-家长端</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="answer()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header work_list_file" id="mainContent">
+
+        <div class="winter-holidays-box">
+            <ion-slide-box delegate-handle="winter-holidays-box" does-continue="true" style="height: 100%"
+                           auto-play="true"
+                           show-pager="false"
+                           slide-interval=4000
+                           ng-click="clickActivePage()">
+
+                <!--<ion-slide>-->
+                    <!--<reward-add-page></reward-add-page>-->
+                <!--</ion-slide>-->
+
+                <!-- 假期作业广告 注释掉后不要删除, 每个假期都会使用 -->
+                <!--<ion-slide>-->
+                    <!--<div class="holiday-work-ad-wrap slide-mark" data-mark="holidayWork">-->
+                        <!--<img class="img-left" ng-src="{{$root.loadImg('holiday_homework/holiday_wok_summer_ad_1.png')}}">-->
+                        <!--<img class="img-right" ng-src="{{$root.loadImg('holiday_homework/holiday_wok_summer_ad_2.png')}}">-->
+                    <!--</div>-->
+                <!--</ion-slide>-->
+
+                <ion-slide>
+                    <div class="winter-holidays-wrap-03">
+                        <div class="broadcast_page_fireworks">
+                            <div class="broadcast_fireworks broadcast_fireworks_01"></div>
+                            <div class="broadcast_fireworks broadcast_fireworks_02"></div>
+                            <div class="broadcast_fireworks broadcast_fireworks_03"></div>
+                            <div class="broadcast_fireworks broadcast_fireworks_04"></div>
+                            <div class="broadcast_fireworks broadcast_fireworks_05"></div>
+                        </div>
+                        <div class="broadcast_page_left">
+                            <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-left.png')}}">
+                        </div>
+                        <div class="broadcast_page_middle">
+                            <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-middle.png')}}">
+                        </div>
+                        <div class="broadcast_page_right">
+                            <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-right.png')}}">
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+
+        <div style="display: flex;display: -webkit-flex;">
+            <div ng-if="pubWorkStudent.showName"
+                 style="font-size: 17px;display: flex;display: -webkit-flex;align-items: center;-webkit-align-items: center;margin-left: 13px;color: #41678d;">
+                选择孩子
+            </div>
+            <ion-item class="item-divider item-icon-right select-bar" ng-click="retFlag?studentSelectModal.show():''" ng-if="pubWorkStudent.showName"
+                      style="flex: 1;-webkit-flex: 1; margin-left: 10px;">
+
+                {{pubWorkStudent.showName}}<span class="icon ion-ios-arrow-right"></span>
+            </ion-item>
+        </div>
+        <div class="item item-input block-input" style="height: 40px;white-space: inherit;"
+             ng-if="!pubWorkStudent.stuClazzStatus">
+            {{'没有收到作业，原因：还没有申请学校老师的班级'}}
+        </div>
+        <div class="item item-input block-input" style="height: 40px;white-space: inherit;"
+             ng-if="pubWorkStudent.stuClazzStatus&&pubWorkStudent.stuClazzStatus<3">
+            {{pubWorkStudent.stuClazzStatus==1?'没有收到作业，原因：还没有申请学校老师的班级':'没有收到作业，原因：老师还在审核你的班级申请，请等一等或联系老师'}}
+        </div>
+        <div class="item item-input block-input" style="height: 40px;white-space: inherit;"
+             ng-if="pubWorkStudent.stuClazzStatus>=3 && (wData.workList.length<=0  || (wData.workList.length == 1 && wData.workList[0].publishType == 8))&& retFlag">
+            {{'没有收到作业，原因：老师还没有布置作业'}}
+        </div>
+        <auto-list-con  ng-if="pubWorkStudent.stuClazzStatus>=3">
+
+            <auto-list class="winter-work-item" ng-if="$root.config && $root.config.vacation">
+                <auto-list-content class=" list-content_stu " style="min-height: 105px;position: relative;" >
+                    <div class="list-center-stu"  ng-click="openHolidayWorkList();" style="position: relative">
+                        <div  class="left-img left-img-flex" style="width: auto;height: auto;max-width: 60px;" >
+                            <img ng-src="{{}}" class="work-tag">
+                            <img ng-src="{{$root.loadImg('paper/holiday_paper_icon_v2.png')}}"  style="margin-left: 30px" >
+
+                        </div>
+                        <div class="center-span content-font-color" style="margin: 10px 0px 10px 15px;">
+                            <div class="second position-set " >
+                                <span style="font-weight: 100;font-size: 16px;" ng-bind="'暑假作业（7月1日-9月15日）'" class="paper-name"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 13px" ng-bind="'共60套试卷'"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 14px" ng-bind="'做作业时间：7月1日-9月15日'"></span>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--<div class="list-right_stu"  >-->
+                        <!--<div class="tool-bar-item" >-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </auto-list-content>
+            </auto-list>
+
+
+            <auto-list ng-repeat="paper in wData.workList"
+                       ng-class="paper.showCss?paper.showCss:''" ng-if="paper.publishType!=8">
+                <auto-list-content class=" list-content_stu " style="min-height: 105px;position: relative;" >
+                    <div class="list-center-stu"  ng-click="showWorkDetail(paper,$index);" style="position: relative">
+                        <div  class="left-img left-img-flex" style="width: auto;height: auto;max-width: 60px;" >
+                            <img ng-src="{{isWinterHolidayHomework(paper)?$root.loadImg('work/winter-work/winter-work-tag.png'):$root.loadImg('work/summer_work/s_work_tag1.png')}}"
+                                 ng-if="isPpecialWork(paper)"
+                                 class="work-tag">
+                            <img ng-src="{{}}"
+                                 ng-if="ctrl.isPpecialWork(list)"
+                                 class="work-tag">
+                            <img ng-src="{{$root.loadImg('paper/paper_icon.png')}}"  style="margin-left: 30px" >
+
+                        </div>
+                        <div class="center-span content-font-color" style="margin: 10px 0px 10px 15px;">
+                            <div class="second position-set " >
+                                <span style="font-weight: 100;font-size: 16px;" ng-bind="paper.paperName" class="paper-name"></span>
+                            </div>
+                            <div class="second position-set" style="margin-top: 0px !important;"
+                                 ng-if="paper.publishType==21">
+                                <span style="color: #ff1111 !important;">来自老师的个人题库</span>
+                            </div>
+
+                            <div class="second position-set" >
+                                <span style="font-size: 13px" ng-bind="paper.publishDateTime"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 13px" ng-bind="paper.clazz"></span>
+                            </div>
+
+                            <div class="second position-set" ng-if="paper.status==1">
+                                <span class="not-submit-paper" style="color:darkred!important;"
+                                      ng-bind="'未开始'">
+                                </span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status==2">
+                                <span class="not-submit-paper" style="color:darkred!important;"
+                                      ng-bind="'进行中'">
+                                </span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status==3">
+                                <span style="font-size: 13px" ng-bind="'作业已提交'"></span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status==4">
+                                <p>
+                                    <span class="correct-score" style="color:#003366!important;">{{paper.latestScore}}</span>
+                                    /{{paper.worthScore}}分
+                                </p>
+                            </div>
+                            <div class="second position-set">
+                                <p ng-if="paper.nextPublishTime"
+                                   ng-bind="paper.nextPublishTime"
+                                   style="white-space: normal;font-size: 13px;color: red"></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="list-right_stu"  >
+                        <div class="tool-bar-item" >
+                            <div >
+                                <img ng-src="{{$root.loadImg(paper.studentPraise.img)}}"
+                                     ng-click="showPraiseDetail(paper,1)"
+                                     ng-if="paper.studentPraise">
+                            </div>
+                            <div>
+                                <img ng-src="{{$root.loadImg(paper.teacherPraise.img)}}"
+                                     ng-click="showPraiseDetail(paper,2)"
+                                     ng-if="paper.teacherPraise">
+                            </div>
+                            <div>
+                                <img ng-src="{{$root.loadImg(paper.parentPraise.img)}}"
+                                     ng-click="praiseStu(paper)" ng-if="paper.parentPraise">
+                                <img ng-src="{{$root.loadImg('praise/praise.png')}}"
+                                     ng-click="praiseStu(paper)" ng-if="!paper.parentPraise">
+                            </div>
+
+                        </div>
+                    </div>
+                </auto-list-content>
+            </auto-list>
+
+        </auto-list-con>
+        <ion-infinite-scroll on-infinite="loadMore();" spinner="ios"
+                             distance="10%" ng-if="moreFlag">
+        </ion-infinite-scroll>
+    </ion-content>
+    <loading-processing load-top="100" ng-if="loadingFlag"></loading-processing>
+</ion-view>
+
+<script id="student-select.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <button class="button back-button buttons  button-clear header-item"
+                    ng-click="studentSelectModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center">请选择学生</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <div ng-repeat="student in studentList">
+                    <li  ng-repeat="clazz in student.allClazzList" class="item" ng-click="selectStudent(student,clazz)" ng-if="clazz.status===1">
+                        <span ng-bind="student.studentName+'（'+clazz.name+'）'" ></span>
+                    </li>
+                </div>
+            </ul>
+        </ion-content>
+        <loading-processing load-top="100"></loading-processing>
+    </ion-modal-view>
+</script>
+

@@ -1,0 +1,96 @@
+
+<ion-view title="表扬"  hide-nav-bar="true" class="work_praise_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()" >
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">家长评价</h1>
+    </ion-header-bar>
+    <ion-content  class="wpf_content" overflow-scroll="true" style="height: auto!important;">
+        <div class="bg-box">
+            <img ng-src="{{$root.loadImg('work_praise/work_praise_bg_inner.png')}}" width="100%"  height="100%">
+            <div class="bg-inner-box">
+                <div class="bg-inner-box1">
+                    <img ng-src="{{$root.loadImg('work_praise/work_praise_bg.png')}}"  width="100%">
+                </div>
+            </div>
+        </div>
+
+        <ng-form name="correctQForm" novalidate class="list" >
+
+            <div  class="wpf_content_title" ><span >奖励</span></div>
+
+            <div class="wpf_content_card">
+
+                <div class="card wpf_content_card_option">
+                    <div class="item item-input block-input praise-img-div option_cell"
+                         ng-repeat="praiseType in wData.praiseTypeList">
+
+                        <ion-checkbox ng-model="praiseType.selected" ng-click="handleClick(praiseType)" class="item-checkbox-right ">
+                            <img ng-src="{{$root.loadImg(praiseType.img)}}">
+                            <span class = "option_word" >{{praiseType.text}}</span>
+                        </ion-checkbox>
+                    </div>
+                </div>
+                <div class="write-praise wpf_content_card_word" >
+                    <textarea placeholder="在这里填写反馈或评价" rows="4" id="parentPraise"></textarea>
+                    <div class="select-praise-div" ng-click="openPraiseModal()">
+                        <i class="icon ion-ios-plus-outline"></i> <span>常用评价语</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="praise-group wpf_content_group">
+                   <span class="tip"> 发送给 :&nbsp;&nbsp;
+                    <span ng-bind="wData.queryParams.sName"></span>
+                </span>
+            </div>
+
+        </ng-form>
+
+
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+    <ion-footer-bar class="bg-balanced"  >
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="comfirmPraise()" >
+            <i class="icon ion-ios-checkmark">
+            </i>
+            发送
+        </button>
+    </ion-footer-bar>
+</ion-view>
+
+<script id="selectPraise.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <button class="button back-button buttons  button-clear header-item"
+                    ng-click="closePraiseModal()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center">常用评价语</h1>
+        </ion-header-bar>
+
+        <ion-content class="list">
+            <label class="item item-radio" ng-repeat="rec in wData.commonPraiseList"
+                   ng-click="selectedPraise(rec)">
+                <div ng-if="rec.checkStatus">
+                    <input type="radio" name="group" checked>
+
+                    <div class="item-content">{{rec.value}}</div>
+                    <i class="radio-icon ion-checkmark assertive"></i>
+                </div>
+                <div ng-if="!rec.checkStatus">
+                    <input type="radio" name="group">
+
+                    <div class="item-content">{{rec.value}}</div>
+                    <i class="radio-icon ion-checkmark assertive"></i>
+                </div>
+            </label>
+        </ion-content>
+        <loading-processing load-top="100"></loading-processing>
+    </ion-modal-view>
+</script>

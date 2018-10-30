@@ -1,0 +1,98 @@
+roll-factual-play {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width: 100%;
+  z-index: 99;
+
+  .roll_factual_play {
+    width: 100%;
+    height: 35px;
+    .display-flex-center(@flow) {
+      display: flex;
+      display: -webkit-flex;
+      flex-flow: @flow;
+      -webkit-flex-flow: @flow;
+    }
+
+    .display-arrange(@arrange) {
+      justify-content: @arrange;
+      -webkit-justify-content: @arrange;
+      align-items: @arrange;
+      -webkit-align-items: @arrange;
+    }
+
+    .playBoxCenter {
+      width: 100%;
+      height: 100%;
+      .display-flex-center(row);
+      .display-arrange(center);
+
+      background-color: rgba(0, 0, 0, 0.5);
+
+      .marquee_style {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+
+      .resluts-content-style {
+        .display-flex-center(row);
+        .display-arrange(center);
+        justify-content: flex-start;
+        -webkit-justify-content: flex-start;
+
+        .roll_play_center_android {
+          min-width: 150%;
+        }
+        .roll_play_center_other {
+        }
+        .roll_play_center {
+          .display-flex-center(row);
+          .display-arrange(center);
+          justify-content: flex-start;
+          -webkit-justify-content: flex-start;
+
+          margin-left: 15px;
+          margin-right: 15px;
+          color: #e6fff4;
+          white-space: nowrap;
+          .item-studentName {
+            margin-right: 8px;
+            overflow-wrap: break-word;
+          }
+          .item-scheduleDeliverName {
+            margin-right: 8px;
+            overflow-wrap: break-word;
+          }
+          .item-score {
+            margin-right: 8px;
+            overflow-wrap: break-word;
+          }
+
+          .school-100 {
+            color: #ffff55;
+            font-weight: bold;
+          }
+          .school-80 {
+            color: #FF94B7;
+            font-weight: bold;
+          }
+          .school-60 {
+            color: #ff952b;
+            font-weight: bold;
+          }
+          .school-normal {
+          }
+
+        }
+      }
+
+    }
+
+  }
+
+}

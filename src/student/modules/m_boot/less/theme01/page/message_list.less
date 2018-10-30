@@ -1,0 +1,529 @@
+@import "../include/_mixins";
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.rank_list_content_top{
+  top:84px!important;
+}
+.message_list_file {
+  //头部标签
+  .subheader-item{
+    .sub-title{
+      height: 100%;
+      width: 100%;
+      color: #666666;
+      .display-flex;
+      .sub-title-wrap{
+        .display-flex;
+        height: 30px;
+        width: 100%;
+        border-style: solid;
+        border-right-width: 1px;
+        border-color: #ccc;
+        .sub-header-icon{
+          margin-right: 6px;
+          img{
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .subheader-item:last-child{
+    .sub-title-wrap{
+      border: none
+    }
+  }
+  .subheader-active{
+    min-width: initial;
+    padding: 0;
+    border-radius:0;
+    color: #6d6b6b !important;
+    background: #f3f3f3;
+  }
+
+  //榜单背景
+  .rank_top_bg_box{
+    position: absolute;
+    height: 120px;
+    width: 100%;
+
+
+    .top_bg_wrap{
+      height: 100%;
+      width: 100%;
+      //background-size: cover;
+      .top_bg_icon{
+        height: 106px;
+      }
+    }
+    .bg_wrap_trophy{
+      .display-flex-pure;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      background: #fdea64 url("../../../../../modules/m_global/sImages/msg/msg_trophy_bg_1.png") 0 100% repeat-x;
+      .bg_wrap_star_2{
+        .display-flex;
+        position: absolute;
+        height:100%;
+        width:100%;
+        z-index: 1;
+        left: 0;
+        padding-bottom: 6px;
+        img{height: 100%}
+      }
+      .top_bg_icon{z-index: 2}
+    }
+    .bg_wrap_star{
+      .display-flex-pure;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      background: #fdea64 url("../../../../../modules/m_global/sImages/msg/msg_game_star_bg_1.png") 0 100% repeat-x;
+      .bg_wrap_star_2{
+        .display-flex;
+        position: absolute;
+        height:100%;
+        width:100%;
+        z-index: 1;
+        left: 0;
+        padding-bottom: 6px;
+        img{height: 100%}
+      }
+
+      .top_bg_icon{z-index: 2}
+    }
+    .bg_wrap_fighter{
+      background: #fe6a5a url("../../../../../modules/m_global/sImages/msg/msg_fighter_bg.png") 50% 100% no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      .bg_wrap_fighter_layer_1{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        .display-flex;
+        align-items: flex-start;
+        -webkit-align-items: flex-start;
+        padding-top: 6px;
+
+        .top_bg_fighter_middle{
+          height: 80px;
+        }
+      }
+      .bg_wrap_fighter_layer_2{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        .display-flex-pure;
+        justify-content: space-between;
+        align-items: flex-end;
+        -webkit-justify-content: space-between;
+        -webkit-align-items: flex-end;
+        .top_bg_fighter_left{
+          height: 80px;
+        }
+        .top_bg_fighter_right{
+          height: 80px;
+        }
+      }
+    }
+
+  }
+
+
+  /*班级*/
+  .top_clazz_wrap{
+    .select-content-wrap{
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      height: 44px;
+      padding: 5px 10px;
+      .select-bar-wrap{
+        height: 100%;
+        .flex_1;
+        background: white;
+        border-radius: 5px;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        padding: 0 10px;
+        color: #454545;
+        span{
+          font-size: 20px;
+        }
+      }
+      .time_bar_wrap{
+        background: #FFFFFF;
+        height: 100%;
+        padding: 0 10px;
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+        border-left: 1px solid #cecece;
+        .display-flex;
+        .flex_1;
+
+        .select-bar{
+          height: 100%;
+          color: black;
+          position: relative;
+          text-align: center;
+          i{
+            color: #6dace4;
+            margin-left:10px;
+            font-size: 28px;
+            vertical-align: text-top;
+          }
+          .position-right{
+            position: absolute;
+            top: 9px;
+            right: 7px;
+            font-size: 20px;
+          }
+
+          .ui-select {
+            text-align: center;
+            height: 34px;
+            line-height: 34px;
+            .select-time-icon{
+              vertical-align: sub;
+              font-size: 20px;
+              color: black;
+              margin-left: 10px;
+            }
+            select {
+              position: absolute;
+              left: 0px;
+              top: 0px;
+              opacity: 0;
+              border: none;
+              background: #c0e9f8;
+              height: 38px;
+              line-height: 38px;
+              width: 100%;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+      .trophy_rank_clazz_bar{
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        width: 50%;
+      }
+    }
+    .tip-div-wrap{
+      background: white;
+      padding: 4px 16px;
+      margin: 2px 16px;
+    }
+  }
+
+  .item{
+    padding: 6px 16px;
+  }
+  .rank_list_content_none{padding: 20px 0;}
+  .rank_list_content_top{
+    top:84px!important;
+  }
+
+
+  /*奖杯排行信息*/
+  .trophy_rank_header{
+    display: flex;
+    display: -webkit-flex;
+    margin: 0 10px;
+    padding: 0 16px;
+    .trophy_rank_header_left{width: 60%}
+    .trophy_rank_header_right{
+      width: 40%;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      .trh_right_div{
+        width: 30%;
+        .display-flex;
+        align-items: flex-end;
+        -webkit-align-items: flex-end;
+        img{max-height: 30px}
+      }
+
+    }
+  }
+
+  .trophy_rank_list_box{
+
+    overflow: hidden;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    margin: 0 10px 30px 10px;
+
+    .trophy_rank_list{
+      .display-flex-pure;
+      border: none;
+      border-bottom-style: dashed;
+      border-bottom-width: 2px;
+      border-bottom-color: #ddd;
+
+      .trophy_rank_list_left{
+        width: 60%;
+        .display-flex-pure;
+        .tr_list_index{
+          width: 40px;
+          line-height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .tr_list_info{
+          .display-flex-pure;
+          .flex_1;
+          flex-direction: column;
+          -webkit-flex-direction: column;
+          justify-content: center;
+          -webkit-justify-content: center;
+          .tr_list_student_name{color: #666666}
+          .tr_list_clazz_name{font-size: 12px;color: #999999}
+        }
+      }
+      .trophy_rank_list_right{
+        width: 40%;
+        .display-flex-pure;
+        justify-content: space-around;
+        -webkit-justify-content: space-around;
+        .tr_list_num{
+          width: 30%;
+          .display-flex;
+          color: #666666;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+    .trophy_rank_list_user{
+      color: #811701;
+      .trophy_rank_list_left{
+        .tr_list_info{
+          .tr_list_student_name{color: #811701}
+          .tr_list_clazz_name{color: #811701}
+        }
+      }
+      .trophy_rank_list_right{
+        .tr_list_num{color: #811701}
+      }
+
+    }
+    .trophy_rank_list:nth-child(1){
+      .tr_list_num{color: #fcb118!important;}
+      .tr_list_student_name{color: #fcb118!important;}
+    }
+    .trophy_rank_list:nth-child(1),.trophy_rank_list:nth-child(2),.trophy_rank_list:nth-child(3){
+      .tr_list_index{
+        color: red;
+      }
+    }
+    .trophy_rank_list:last-child{
+      border-bottom-width: 0!important;
+    }
+
+  }
+
+  /*星星排行信息*/
+  .star_rank_list_box{
+      overflow: hidden;
+      border-radius:6px;
+      -webkit-border-radius:6px;
+      margin: 0 10px 30px 10px;
+
+    .star_rank_list{
+        .display-flex-pure;
+        border: none;
+        border-bottom-style: dashed;
+        border-bottom-width: 2px;
+        border-bottom-color: #ddd;
+        .gs_content_list_index{
+          width: 40px;
+          line-height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .gs_content_list_info{
+          .display-flex-pure;
+          .flex_1;
+          .game_star_content_left{}
+          .game_star_content_middle{
+            .flex_1;
+            .display-flex-pure;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: center;
+            -webkit-justify-content: center;
+            .gs_cm_student_name{color: #666666}
+            .gs_cm_clazz_name{font-size: 12px;color: #999999}
+          }
+          .game_star_content_right{
+            .display-flex;
+            justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+            width: 80px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666666;
+          }
+        }
+      }
+      .star_rank_list_user{
+        color: #811701;
+        .gs_content_list_index{color: #811701}
+        .gs_content_list_info{
+          .game_star_content_middle{
+            .gs_cm_student_name{color: #811701}
+            .gs_cm_clazz_name{color: #811701}
+          }
+          .game_star_content_right{color: #811701}
+        }
+      }
+      .star_rank_list:nth-child(1){
+        .gs_cm_student_name{color: #fcb118!important;}
+        .game_star_content_right{color: #fcb118!important;}
+      }
+      .star_rank_list:nth-child(1),.star_rank_list:nth-child(2),.star_rank_list:nth-child(3){
+        .gs_content_list_index{
+          color: red!important;
+        }
+      }
+      .star_rank_list:last-child{
+        border-bottom-width: 0!important;
+      }
+    }
+
+
+  /*斗士排行信息*/
+  .fighter_rank_header{
+    display: flex;
+    display: -webkit-flex;
+    margin: 0 10px;
+    padding: 0 16px;
+    .fighter_rank_header_left{width: 50%}
+    .fighter_rank_header_right{
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      display: -webkit-flex;
+      -webkit-justify-content: space-around;
+      .frh_right_div{
+        width: 25%;
+        .display-flex;
+        color: #fdea64;
+        text-align: center;
+        img{height: 30px}
+      }
+
+    }
+  }
+
+
+  .fighter_rank_list_box{
+    overflow: hidden;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    margin: 0 10px 30px 10px;
+
+    .fighter_rank_list{
+      .display-flex-pure;
+      border: none;
+      border-bottom-style: dashed;
+      border-bottom-width: 2px;
+      border-bottom-color: #ddd;
+
+      .fighter_rank_list_left{
+        width: 50%;
+        .display-flex-pure;
+        .fr_list_index{
+          width: 40px;
+          line-height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .fr_list_info{
+          .display-flex-pure;
+          .flex_1;
+          flex-direction: column;
+          -webkit-flex-direction: column;
+          justify-content: center;
+          -webkit-justify-content: center;
+
+          .fr_list_student_name{color: #666666}
+          .fr_list_clazz_name{font-size: 12px;color: #999999}
+        }
+      }
+      .fighter_rank_list_right{
+        width: 50%;
+        .display-flex-pure;
+        .fr_list_num{
+          width: 25%;
+          .display-flex;
+          color: #666666;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+    .fighter_rank_list_user{
+      color: #811701;
+      .fighter_rank_list_left{
+        .fr_list_info{
+          .fr_list_student_name{color: #811701}
+          .fr_list_clazz_name{color: #811701}
+        }
+      }
+      .fighter_rank_list_right{
+        .fr_list_num{color: #811701}
+      }
+
+    }
+    .fighter_rank_list:nth-child(1){
+      .fr_list_num{color: #fcb118!important;}
+      .fr_list_student_name{color: #fcb118!important;}
+    }
+    .fighter_rank_list:nth-child(1),.fighter_rank_list:nth-child(2),.fighter_rank_list:nth-child(3){
+      .fr_list_index{
+        color: red;
+      }
+    }
+    .fighter_rank_list:last-child{
+      border-bottom-width: 0!important;
+    }
+  }
+
+
+
+  /*左侧选择班级start */
+  .clazz_select {
+    top: 0;
+    border-left-width: 6px;
+    background: #d2d5df;
+  }
+  .clazz_select_block {
+    padding: 6px;
+  }
+  .clazz-item {
+    background: white;
+    border-radius: 7px;
+    width: 99%;
+    padding: 15px 0;
+    min-height: 158px;
+  }
+  .clazz-name {
+    font-size: 17px;
+    margin-top:10px;
+    color: #1E446A;
+  }
+  .clazz_select_img {
+    margin-top: 14px;
+    width: 105px;
+  }
+
+}
+
+
+

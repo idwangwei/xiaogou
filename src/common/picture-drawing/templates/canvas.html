@@ -1,0 +1,36 @@
+<div class="pwCanvasPaint" style="position:relative" ng-style="scaleStyle">
+
+    <svg id="bgGrid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position: absolute;top: 0;">
+        <defs>
+            <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="gray" stroke-width="0.5"></path>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#smallGrid)"></rect>
+    </svg>
+
+    <!-- <canvas> there -->
+
+    <span id="holdingContainer" style="position: absolute;">
+        <img id="pencil" ng-src="{{pencilImg}}" style="display: none; position: absolute; width: 28px; /*transform: rotate(65deg); transform-origin: top center;*/"/>
+        <span id="progress" style="display: none;position: absolute; width: 80px;">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve" style="position:absolute; width: 50px; left:33px;" >
+              <circle fill="#555" stroke="none" cx="6" cy="50" r="6">
+                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"></animate>
+              </circle>
+              <circle fill="#555" stroke="none" cx="26" cy="50" r="6">
+                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"></animate>
+              </circle>
+              <circle fill="#555" stroke="none" cx="46" cy="50" r="6">
+                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"></animate>
+              </circle>
+            </svg>
+            <span style="position: absolute;width: 200px;font-size: 10px;left: 33px;height: 20px;color: gray;">将笔尖移至起始位置</span>
+        </span>
+    </span>
+
+    <div id="correctness" ng-show="correctnessSrc" style="position: absolute;right: 20%;bottom: 20%;" >
+        <img ng-src="{{correctnessSrc}}" alt="" style="width: 120%">
+    </div>
+
+</div>

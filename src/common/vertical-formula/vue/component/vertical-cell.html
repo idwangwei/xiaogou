@@ -1,0 +1,29 @@
+<!--:class="[verticalCellWrapperClass]"-->
+<!--@click="$emit('vf-click')"-->
+<div class="vertical-cell-wrapper"
+     :class="[VF_LINE, VF_DIV, VF_LINE_DIV,
+        VF_CELL_WRAPPER_PADDING, VF_DOT,
+        VF_CARRY1,VF_CARRY2,VF_CARRY3,VF_CARRY4,
+        VF_CARRY5,VF_CARRY6,VF_CARRY7,VF_CARRY8]"
+     @click="verticalCellOnClick"
+     :r="r"
+     :c="c"
+>
+    <span class="vertical-cell hardware-acceleration"
+          :class="[VF_EDITABLE_COLOR, VF_CELL_GRID,
+            VF_CELL_BORDER, VF_BORROW]"
+    >
+        {{ vfCell.val }}
+        <vertical-cursor
+                :v-show="curCur"
+                :r="r"
+                :c="c"
+                :curCur="vfCell.curCur"
+        />
+
+        <!--<component :is="currentCursor" keep-alive></component>-->
+        <!--{{ vfCell.val | filterValDisplay(ctrl) }}
+        {{ vfCell.line | filterLine(ctrl) }}
+        {{ vfCell.hasStyleDiv | filterDiv(ctrl) }}-->
+    </span>
+</div>

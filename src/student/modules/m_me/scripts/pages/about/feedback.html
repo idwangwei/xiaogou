@@ -1,0 +1,66 @@
+<style>
+    .bar-balanced{
+        background: #6fa4d5!important;
+    }
+</style>
+<ion-view hide-nav-bar="true" class="feedback_file" >
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button back-button buttons  button-clear header-item common-back-btn" ui-sref="home.me" ng-click="ctrl.saveSuggestionAndReturn()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">意见反馈</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="feedback_content">
+        <div class="list">
+            <!--正常显示顶部的图片-->
+            <div class="img-box"  ng-show="!ctrl.changeImgWidthFLag">
+                <img ng-src="{{$root.loadImg('feed_back/feedBackTip2.png')}}" class="fc_img_box_img" >
+            </div>
+            <!--大尺寸屏幕显示图片-->
+            <div class="img-box-big-screen" ng-show="ctrl.changeImgWidthFLag" >
+                <div class="center-img-box" id="centerImgBox" >
+                    <img ng-src="{{$root.loadImg('feed_back/feedBackTip2.png')}}" class="fc_img_box_img" >
+                </div>
+            </div>
+            <!--反馈意见-->
+            <div class="fc_suggestion" >
+                <div class="fc_suggestion_head">意见反馈</div>
+                <!--意见文字-->
+                <textarea ng-model="ctrl.feedback" rows="11" placeholder="请在这里填写您的问题描述，以及您的意见或建议"></textarea>
+                <!--意见图片-->
+                <div ng-class="ctrl.displayImageList.length>0?'img-list-container':''">
+                    <div class="display-flex" ng-repeat="row in ctrl.displayImageList">
+                        <span class="img-container" ng-repeat="image in row">
+                             <img ng-src="{{image.src}}" alt="">
+                             <div class="delete-button" ng-click="ctrl.deleteImg(image.id)">
+                                 <span class="button button-clear button-small icon ion-close"></span>
+                             </div>
+                        </span>
+                        <div class="place-holder" ng-if="row.length==1"></div>
+                    </div>
+                </div>
+                <!--添加图片按钮-->
+                <div class="item item-button-right clear-border fc_suggestion_btn">
+                    <button class="button  button-clear add-img"
+                            ng-click="ctrl.browsePhoto()"
+                            ng-show="ctrl.platformType== ctrl.PLATFORM_TYPES.MOBILE">
+                        <i class="icon ion-ios-plus-outline"></i>添加图片
+                    </button>
+                    <a href="javascript:;" class="file" ng-show="ctrl.platformType== ctrl.PLATFORM_TYPES.PC" style="color: #ACB0B5">
+                        <i class="icon ion-ios-plus-outline"></i>添加图片
+                        <input type="file" id="browseFiles" multiple>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <ion-footer-bar class=" display-flex" style="background: #e6e9ec !important;">
+        <button class="button-clear bar-item " ng-click="ctrl.sendFeedback()" style=" color: #627482!important;">
+            <i class="icon ion-ios-checkmark">
+            </i>
+            提交
+        </button>
+    </ion-footer-bar>
+</ion-view>

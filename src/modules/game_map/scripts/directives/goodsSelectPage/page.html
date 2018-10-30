@@ -1,0 +1,72 @@
+<div class="goods-select-page goods-select-page-one">
+    <!--  ng-class="ctrl.isGameBag ? 'goods-select-page-all': 'goods-select-page-one'">-->
+
+    <!--  ng-style="{'height':ctrl.goodsInfo.type == 'games1'?'100%':'85%','min-height':ctrl.goodsInfo.type == 'games1'?'568px':'450px'}">-->
+
+    <div class="slid-left-btn">
+        <img ng-src="{{ctrl.loadLocalImg('p1_slidButn.png')}}" ng-click="ctrl.goPrevious()">
+    </div>
+    <div class="goods-select-area">
+        <div class="goods-select-content" ng-style="{'min-height':ctrl.isGameBag?'390':'350px'}">
+            <div class="goods-title">
+                <img ng-src="{{ctrl.getImg()}}">
+            </div>
+            <div class="goods-desc">
+                <div class="sub-title" ng-if="!ctrl.isGameBag">
+                    <p>{{ctrl.goodsInfo.subTitle}}</p>
+                </div>
+                <div class="detail-desc" ng-class="ctrl.isGameBag ? '' : ''"
+                     ng-if="ctrl.goodsInfo.goodsDesc && ctrl.goodsInfo.goodsDesc.length>0">
+                    <p ng-repeat="desc in ctrl.goodsInfo.goodsDesc">{{desc}}</p>
+                </div>
+                <div class="include-modules" ng-if="ctrl.isGameBag" ng-init="imgArr = ctrl.getTitleArr()">
+                    <div class="item-module" ng-repeat="item in imgArr">
+                        <img ng-src="{{ctrl.getImg(item)}}">
+                    </div>
+                </div>
+                <div class="include-right" ng-class="ctrl.isGameBag ? '' : 'sub-title-one'">
+                <span class="right-desc" ng-repeat="desc in ctrl.goodsInfo.includeRight">
+                    <i class="ion-record" style="color:#734E9C"></i>
+                    <span>{{desc}}</span>
+                </span>
+                </div>
+                <div class="goods-price">
+                    <span class="current-price">
+                        <i ng-if="ctrl.goodsInfo.saleFee" class="sale-fee-line"></i>
+                        <span ng-if="ctrl.goodsInfo.totalFee && ctrl.goodsInfo.realFee!=ctrl.goodsInfo.totalFee"
+                                style="font-weight: bold">优惠</span>
+                        <span ng-if="ctrl.goodsInfo.realFee" style="font-weight: bold">价格：</span>
+                        <i style="color:#ff3300" class="ion-social-yen money-word"></i>
+                        <span style="color:#ff3300;font-weight: bold"
+                              class="money-word">{{ctrl.goodsInfo.realFee}}</span>
+                    </span>
+                    <span class="price-bottom-box">
+                        <span ng-if="ctrl.goodsInfo.saleFee" class="price-bottom-box-sale">
+                            <span>{{ctrl.goodsInfo.saleMsg+'：'}}</span>
+                            <i class="ion-social-yen" style="font-size: 18px"></i>
+                            <span>{{ctrl.goodsInfo.saleFee}}</span>
+                        </span>
+
+                        <span class="old-price"
+                              ng-if="ctrl.goodsInfo.totalFee && ctrl.goodsInfo.realFee!=ctrl.goodsInfo.totalFee"
+                              style="text-decoration:line-through;text-decoration-color: #FF0000">
+
+                            <span>原价：</span>
+                            <i class="ion-social-yen"></i>
+                            <span>{{ctrl.goodsInfo.totalFee}}</span>
+                        </span>
+                    </span>
+
+                </span>
+                </div>
+            </div>
+        </div>
+        <div class="game-goods-pay-btn">
+            <img ng-src="{{ctrl.loadLocalImg('p1_payButn.png')}}" ng-click="ctrl.confirmGoods()">
+        </div>
+        <div style="width: 100%;height: 20px"></div>
+    </div>
+    <div class="slid-right-btn">
+        <img ng-src="{{ctrl.loadLocalImg('p1_slidButn.png')}}" ng-click="ctrl.goNext()">
+    </div>
+</div>

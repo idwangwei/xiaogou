@@ -1,0 +1,406 @@
+
+@charset "UTF-8";
+@import "./../../../../m_boot/less/theme01/include/_mixins";
+
+.smart-training-camp{
+  .content-center{
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .smart-training-camp-head{
+    background: #F4A6D1;
+    .my-back-btn {
+      color: #fff !important;
+      position: absolute;
+    }
+    .smart-training-camp-head-bg{
+      width:100%;
+      height:100%;
+      position: relative;
+      .camp-head-area-common{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .smart-training-camp-head-animal{
+        .camp-head-area-common;
+        overflow: hidden;
+        img{
+          position: absolute;
+        }
+
+        .head-animal-cloud{
+          width: 190px;
+          bottom: 0;
+          left: -20px;
+        }
+
+        .head-animal{
+          width: 110px;
+          bottom: -10px;
+          left: 5px;
+        }
+
+        .head-man-cloud{
+          bottom: 0;
+          width: 180px;
+          right: -10px;
+          transform:rotateY(180deg);
+          -webkit-transform:rotateY(180deg); /* Safari 和 Chrome */
+        }
+
+        .head-man{
+          right: 0;
+          width: 150px;
+          top: 40px;
+        }
+
+      }
+
+      .smart-training-camp-head-word {
+        top: 30%;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        height: 50%;
+        img{
+          width: 180px;
+        }
+      }
+
+    }
+  }
+
+  @media screen  and (max-width: 600px) {
+    .smart-training-camp-content-normal {
+      top: 120px;
+    }
+
+    .smart-training-camp-content-ios {
+      top: 140px !important;
+    }
+
+    .smart-training-camp-head-normal {
+      height: 120px;
+    }
+
+    .smart-training-camp-head-ios {
+      height: 140px !important;
+    }
+  }
+  @media screen  and (min-width: 601px) {
+    .smart-training-camp-content-normal {
+      top: 150px;
+    }
+
+    .smart-training-camp-content-ios {
+      top: 170px !important;;
+    }
+
+    .smart-training-camp-head-normal {
+      height: 150px;
+    }
+
+    .smart-training-camp-head-ios {
+      height: 170px
+    }
+  }
+
+  .ion-smart-training-camp-content{
+    background: #F4A6D1;
+    width:100%;
+    margin-bottom: 45px;
+    font-size: 14px !important;
+    @media screen and(min-width: 768px) {
+      font-size: 17px !important;
+    }
+
+    .start-time-area{
+      width:100%;
+      background: #9762B7;
+      padding: 5px;
+      p {
+        color:#fff;
+        margin: 0 0 2px !important;
+        text-align: center;
+      }
+    }
+    /*
+
+    .get-btn-area{
+      .display-flex;
+      .com_flex-direction_column;
+      .btn-get-reward{
+        .display-flex;
+        width: 100%;
+        padding: 5px;
+
+        .reward-card{
+          .flex_2;
+          @media screen and(min-width: 768px) {
+            .flex_1;
+          }
+
+          text-align: center;
+          padding:5px 10px;
+          position: relative;
+          .btn-get-reward-img{
+            width: 150px;
+            @media screen and(min-width: 768px) {
+              width: 220px;
+            }
+            position: relative;
+          }
+          .reward-money{
+            position: absolute;
+            bottom: 10px;
+            .content-center;
+            color: #8c1616;
+            @media screen and(min-width: 768px) {
+              font-size: 20px !important;
+            }
+          }
+        }
+        .btn-get-reward-btn-area{
+          .flex_2;
+
+          img{
+            height: 30px;
+            @media screen and(min-width: 375px) and(max-width:767px){
+              height: 35px;
+            }
+            @media screen and(min-width: 768px) {
+              height: 45px;
+            }
+          }
+
+          .gray-btn{
+            background: #8a8989;
+            padding: 10px;
+            border-radius: 15px;
+            color: #fff;
+            @media screen and(min-width: 768px) {
+              padding: 10px 20px;
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+    */
+
+    .reward-btn-area{
+      background: #fff;
+      padding: 10px 0 0;
+      .display-flex;
+      .com_flex-direction_column;
+      .reward-btn-content{
+        .display-flex;
+        width: 100%;
+        padding: 5px;
+        .reward-card{
+          text-align: center;
+          padding:5px 10px;
+          position: relative;
+          .flex_2;
+
+          .btn-get-reward-img{
+            width:100%;
+            max-width: 180px;
+            position: relative;
+            @media screen and(min-width: 414px)and(max-width:767px) {
+              max-width: 210px;
+            }
+            @media screen and(min-width: 768px) {
+              max-width: 300px
+            }
+          }
+          .reward-card-title{
+            position: absolute;
+            top: 20px;
+            .content-center;
+            color: #a23030;
+            font-weight: bold;
+            font-size: 18px !important;
+            @media screen and(min-width: 321px) and(max-width:767px) {
+              font-size: 20px !important;
+            }
+            @media screen and(min-width: 768px) {
+              font-size: 30px !important;
+            }
+          }
+
+          .reward-cut{
+            position: absolute;
+            top: 45%;
+            .content-center;
+            color: #23269c;
+            font-weight: bold;
+            font-size: 12px;
+            @media screen and(min-width: 768px) {
+              font-size: 18px !important;
+            }
+          }
+
+          .btn-get-reward-area{
+            position: absolute;
+            bottom: 6px;;
+
+            .content-center;
+            img{
+              height: 26px;
+              @media screen and(min-width: 768px) {
+                height: 42px;
+              }
+            }
+
+            .gray-btn{
+              background: #8a8989;
+              padding: 2px 10px;
+              border-radius: 15px;
+              color: #fff;
+              @media screen and(min-width: 768px) {
+                padding: 5px 20px;
+                font-size: 25px;
+              }
+            }
+          }
+
+          .gray-btn-area{
+            bottom: 12% !important;
+            @media screen and(min-width: 768px) {
+              bottom: 18px !important;
+            }
+          }
+        }
+
+        .reward-text{
+          flex: 1.5;
+          -webkit-flex:1.5;
+          @media screen and(min-width: 768px) {
+            .flex_2;
+            padding-right: 30px;
+          }
+
+        }
+      }
+    }
+
+    .invite-stu-info{
+      width:100%;
+      padding: 0 0 50px 0;
+      p {
+        margin: 0 0 2px !important;
+        text-align: center;
+      }
+      .invite-code{
+        background: #bf9fb1;
+        padding: 10px 4px;
+        text-align: center;
+        color:#fff;
+      }
+      .invite-stu-msg{
+        background: #9762B7;
+        padding: 10px 4px;
+        text-align: center;
+        color:#fff;
+      }
+      .invite-stu-table{
+        background: #F4A6D1;
+        width:100%;
+        padding: 0 5px 20px;
+        .display-flex;
+        .com_flex-direction_column;
+
+        .invite-stu-table-tr{
+          width:100%;
+          .display-flex;
+          .invite-stu-table-td{
+            .flex_1;
+          }
+
+          .invite-stu-cell-title{
+            text-align: center;
+            padding: 10px;
+            color:#714E8F;
+          }
+          .invite-stu-cell{
+            padding: 10px 5px;
+            background: #fff;
+            margin: 5px;
+            color:#666666;
+          }
+        }
+
+      }
+    }
+  }
+
+  .btn-buy-cheap{
+    background: #F4A6D1;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0 0;
+    img{
+      height:45px;
+    }
+  }
+
+  .smart-training-camp-prompt {
+    .smart-training-camp-backdrop {
+      top:0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      .display-flex;
+      .smart-training-camp-content {
+        position: relative;
+        z-index: 1000;
+        border-radius: 10px;
+        width: 280px;
+        max-width: 100%;
+        max-height: 90%;
+        background-color: #ffffff;
+        color:#1E446A;
+        overflow: hidden;
+        .display-flex;
+        .com_flex-direction_column;
+
+        .content-title{
+          background: #52aef3;
+          width: 100%;
+          text-align: center;
+          font-size: 18px;
+          padding: 10px;
+          font-weight:bold;
+        }
+        .content-word{
+          padding: 10px;
+          font-size: 16px;
+          margin: 20px;
+          text-align: center;
+        }
+        .content-btn{
+          height: 60px;
+          padding: 10px;
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          display: -webkit-flex;
+          -webkit-justify-content: space-around;
+          img{
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+<ion-view hide-nav-bar="true" class="teaching_group">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" style="padding-left: 10px" ng-click="ctrl.back(true)">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">教研圈</h1>
+    </ion-header-bar>
+    <ion-content class="teaching_group_list" delegate-handle="teachGroupScroll">
+        <div ng-repeat="group in ctrl.serviceData.TGroupsOfAdmin"  ng-if="ctrl.serviceData" style="padding-bottom: 60px">
+            <div class="list card"  style="margin-bottom: 5px !important;">
+                <div class="item item-divider item-avatar item-icon-right"
+                     class="display-flex" style="height: 75px;">
+                    <img class="thumbnail-left" ng-src="{{$root.loadImg('teaching_group/teacher_group.png')}}" alt=""
+                         style="max-width: 50px;">
+                    <h2 style=" color:#293d69!important;">{{group.groupName||group.name}}</h2>
+                    <p style=" color:#293d69!important;">{{'群号:'+(group.groupId||group.id)}}</p>
+                </div>
+                <div class="item item-text-wrap display-flex item-icon-right sub_teaching_group_title">
+                    <span>区域总人数：{{group.totalCount||group.studentCount||0}}人</span>
+                    <!--<span>活跃人数：{{group.totalActiveCount||group.activeCount||0}}人</span>-->
+                </div>
+            </div>
+            <!--<div class="school_list_title"><span>按活跃率排序</span><i class="ion-arrow-down-b"></i></div>-->
+            <div class="school_list_title"></div>
+            <ion-list>
+                <ion-item class="item item-thumbnail-left " ng-repeat="detail in group.childViewDistricts"
+                          ng-click="ctrl.getGroupDetail(detail)">
+                    <img ng-src="{{$root.loadImg('teaching_group/school.png')}}">
+                    <h2>{{detail.name}}</h2>
+                    <p style="color: black;">学生数:&nbsp;{{detail.studentCount}}</p>
+                    <!--<p style="color: black;">活跃数:&nbsp;{{detail.activeCount}}</p>-->
+                    <p style="color: black;">老师数:&nbsp;{{detail.teacherCount}}</p>
+                    <i class="icon ion-chevron-right" style="position: absolute;top: 40%;right: 25px;"></i>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div ng-if="ctrl.retFlag && ctrl.serviceData.TGroupsOfAdmin && !ctrl.serviceData.TGroupsOfAdmin.length" style="margin: 20px">
+            {{ctrl.currentSelectItem.name+'下暂时没有人使用'}}
+        </div>
+        <loading-processing load-top="100"></loading-processing>
+    </ion-content>
+</ion-view>
+<script id="groupDetailModal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <button class="button back-button buttons  button-clear header-item"
+                    ng-click="ctrl.closeGroupDetailModal()" style="padding-left: 10px">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center" ng-bind="ctrl.selectSchool.name"></h1>
+        </ion-header-bar>
+
+        <ion-content class="group_detail_list">
+            <div class="school_detail_title">
+                <div ng-bind="'学生数：'+ctrl.serviceData.schoolDetail.studentCount||0+'人'"></div>
+                <!--<div ng-bind="'活跃数：'+ctrl.serviceData.schoolDetail.activeCount||0+'人'"></div>-->
+                <div ng-bind="'老师数：'+ctrl.serviceData.schoolDetail.teacherCount||0+'人'"></div>
+            </div>
+            <div class="item" ng-repeat="grade in ctrl.serviceData.schoolDetail.grades" ng-click="ctrl.switchOpen($event,grade)">
+                <div class="school_detail_grade">
+                    <i class="icon" ng-class="grade.isOpen?'ion-ios-arrow-down':'ion-ios-arrow-right'"></i>
+                    <span ng-bind="grade.name"></span>
+                    <span ng-bind="grade.text" style="font-size: 12px"></span>
+                </div>
+                <div class="item" ng-repeat="teacher in grade.teachers" ng-if="grade.isOpen" ng-click="ctrl.switchOpen($event,teacher)">
+                    <div class="school_detail_teacher">
+                        <i class="icon" ng-class="teacher.isOpen?'ion-ios-arrow-down':'ion-ios-arrow-right'"></i>
+                        <span ng-bind="teacher.name"></span>
+                        <span  ng-bind="teacher.text" style="font-size: 12px"></span>
+                    </div>
+
+                    <div class="item" ng-repeat="clazz in teacher.classes" ng-if="teacher.isOpen">
+                        <div class="school_detail_clazz">
+                            <img ng-src="{{$root.loadImg('other/class.png')}}" alt="">
+                            <span ng-bind="clazz.name"></span>
+                            <span  ng-bind="clazz.text" style="font-size: 12px"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <loading-processing load-top="100"></loading-processing>
+    </ion-modal-view>
+</script>

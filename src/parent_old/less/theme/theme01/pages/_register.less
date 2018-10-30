@@ -1,0 +1,108 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+
+.register-file{
+  .user_register {
+
+    .card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child {
+      border-radius: 10px;
+    }
+    .card .item:last-child .item-content, .list-inset .item:last-child .item-content, .padding > .list .item:last-child .item-content {
+      border-radius: 10px;
+    }
+    .add-stu-div{
+      background: #daf5fe;
+      font-size: 16px;
+      margin-top: 20px;
+      button{
+        max-width: 150px;
+        color: #FFFFFF;
+        background: #3f93ef;
+        border-radius: 10px;
+        font-size: 16px;
+        height: 60px;
+      }
+    }
+    .card-title-line{
+      padding-top: 8px;
+      padding-bottom: 8px;
+      min-height: 30px;
+      color: #222;
+      font-weight: 500;
+      text-align: center;
+      font-size: 25px;
+    }
+    .card-title-bg{
+      color: #293d96;
+      background: #accbf9;
+    }
+    .validate-image{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .refresh-code-btn{
+      background: #3f93ef;
+      border-radius: 10px;
+      color: white
+    }
+    .phone-block{
+      margin-top: 10px;
+      button{
+        margin-left: 10px;
+        background: #3f93ef;
+        color: #fff;
+        border-radius: 10px;
+      }
+    }
+    .card-body-bg{
+      background: #daf5fe;
+
+      .line-box{
+        border-radius: 10px;
+        background: #fff;
+      }
+    }
+    .card-body-padding{
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    .error {
+      font-size: 13px;
+      color: red;
+      position: absolute;
+      top:-1px;
+    }
+    .ion-person:before {
+      vertical-align: top;
+    }
+    label {
+      //color: gray;
+      margin: 0px 10px 10px 10px;
+      border: none;
+      //border-bottom: 1px solid #DDDDDD;
+      height: 55px;
+      .input-label{
+        width: 100%;
+        top: 2px;
+      }
+      input{
+        margin-top: -10px;
+      }
+    }
+  }
+  .gender {
+    margin-top: 5px;
+    padding: 0px 16px;
+    border-radius: 10px;
+    label {
+      border: none;
+      .flex_1;
+    }
+    label:first-child {
+      margin-left: -16px;
+    }
+  }
+
+}
+

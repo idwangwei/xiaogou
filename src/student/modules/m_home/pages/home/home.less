@@ -1,0 +1,1001 @@
+@import "../../../m_boot/less/theme01/include/_mixins";
+
+.home{
+  .tabs {
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+    /*background-color: #83DCF5!important;*/
+  }
+  .tabs, .tabs.tabs-stable {
+    background-color: #83DCF5 !important;
+  }
+
+
+  .tab-nav{
+    a{
+      border: none!important;
+    }
+  }
+
+
+  .tabs-item-hide > .tabs{
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+  }
+  .badgeStyle{
+    background-color:red!important;
+    top:0!important;
+    opacity: .8!important;
+  }
+
+  .bar-better{
+    background: #83DCF5!important;
+  }
+
+  .btn-position-right{
+    position: absolute;
+    right: 1px;
+  }
+
+  .tabs-top > .tabs, .tabs.tabs-top {
+    top: 56px!important;
+    height: 44px!important;
+   /* border-top-left-radius: 20px;
+    border-top-right-radius: 20px;*/
+    z-index: 100;
+  }
+  .tab-title{
+    font-family: 'microsoft yahei'!important;
+    font-size: 18px;
+  }
+  .tab-nav.tabs{
+    background: url("../../../m_global/sImages/tabs/bottomTabsBg_new.png");
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background-repeat: round;
+    width: 100%;
+    .tab-item{
+      color: #283F59;
+      font-weight: 400;
+      opacity: 1;
+      i{
+        display: none;
+      }
+    }
+  }
+
+  .tabs-top {
+
+    .tabs, .tabs.tabs-stable {
+      //background-color: #FFFFFF !important;
+    }
+
+    .tab-nav.tabs{
+      background: #FFFFFF;
+      .tab-item{
+        color: #174169;
+        font-weight: 400;
+        opacity: 1;
+        i{
+          display: none;
+        }
+      }
+    }
+    .tab-top-img{
+      width: 47px;
+      top: -19px;
+      position: absolute;
+     /* box-shadow: 2px 3px 6px #ababab;
+      border-radius: 50%;*/
+    }
+
+    .tab-top-img-on{
+      width: 66px;
+      top: -34px;
+      position: absolute;
+     /* box-shadow: 2px 3px 6px #ababab;
+      border-radius: 50%;*/
+      display: none;
+    }
+
+    .tab-item-active {
+      border: none!important;
+      .tab-top-img-on{
+        display: inline-block!important;
+      }
+      .tab-top-img{
+        display: none!important;
+      }
+    }
+
+    .tab-title{
+      display: inline-block!important;
+      visibility: hidden;
+    }
+
+  }
+
+  .tab-item-active {
+    border: none!important;
+    .tab-study{
+     /* opacity: 0;*/
+      display: inline-block;
+    }
+    .tab-clazz{
+     /* opacity: 0;*/
+      display: inline-block;
+    }
+    .tab-improve{
+     /* opacity: 0;*/
+      display: inline-block;
+    }
+
+    .tab-me{
+    /*  opacity: 0;*/
+      display: inline-block;
+    }
+    .tab-wx{
+      /*  opacity: 0;*/
+      display: inline-block;
+    }
+    .tab-gzh-img{
+      display: none;
+    }
+    .tab-title{
+      visibility: hidden;
+    }
+  }
+
+  .tab-study{
+    width: 65px;
+    position: absolute;
+    top: -27px;
+    z-index: 10000;
+    display: none;
+  }
+
+  .tab-clazz{
+    width: 65px;
+    position: absolute;
+    top: -27px;
+    z-index: 10000;
+    display: none;
+  }
+
+  .tab-improve{
+    width: 65px;
+    position: absolute;
+    top: -27px;
+    z-index: 10000;
+    display: none;
+  }
+
+  .tab-me{
+    width: 65px;
+    position: absolute;
+    top: -27px;
+    z-index: 10000;
+    display: none;
+  }
+  .tab-wx{
+   width: 72px;
+   position: absolute;
+   top: -27px;
+   z-index: 10000;
+   display: none;
+  }
+  .tab-gzh-img{
+    width: 35px;
+    position: absolute;
+    top: -18px;
+    z-index: 10000;
+    animation: float-mark-animation 1s ease-out infinite alternate;
+    -webkit-animation: float-mark-animation 1s ease-out infinite alternate;
+  }
+
+  .tab-bottom-on{
+    opacity: 1!important;
+  }
+
+  .work-backdrop{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    .display-flex;
+    .backdrop-content-02{
+      @media all and (max-height: 768px) and (orientation : landscape) {
+        width: 30%;
+        height: 100%;
+        max-height: 450px;
+        .ad-content-wrap{
+          .ad-content{
+            padding: 0!important;
+          }
+          h5{
+            font-size: 10px!important;
+          }
+          p{
+            font-size: 10px!important;
+          }
+        }
+      }
+      background-color: #F56B5C;
+      width: 70%;
+      height: 70%;
+      min-width: 260px;
+      max-width: 450px;
+      border: 1px solid #4f8db1;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      .display-flex-pure;
+      .com_flex-direction_column;
+      .com_justify_content_space;
+      .ion-close{
+        position: absolute;
+        z-index: 200;
+        right: 9px;
+        top: 0px;
+        font-size: 25px;
+        color: #912020;
+      }
+      .snowflakes{
+        .snowflake{
+          background: url('../../../m_global/sImages/work/winter-work/snowdot.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          z-index: 101;
+        }
+        .snowflake1{
+          width: 14px;
+          height: 14px;
+          bottom: 84%;
+          left: -1px;
+        }
+        .snowflake2{
+          width: 12px;
+          height: 12px;
+          top: -1%;
+          left: 14%;
+        }
+        .snowflake3{
+          width: 7px;
+          height: 7px;
+          bottom: 20%;
+          left: 26%;
+        }
+        .snowflake4{
+          width: 6px;
+          height: 6px;
+          top: 16%;
+          left: 84%;
+        }
+        .snowflake5{
+          width: 5px;
+          height: 5px;
+          top: 84%;
+          left: 65%;
+        }
+        .snowflake6{
+          width: 5px;
+          height: 5px;
+          bottom: 10%;
+          left: 46%;
+        }
+        .snowflake7{
+          width: 6px;
+          height: 6px;
+          top: -1%;
+          left: 76%;
+        }
+        .snowflake8{
+          width: 5px;
+          height: 5px;
+          top: 9%;
+          right: 0%;
+        }
+        .snowflake9{
+          width: 6px;
+          height: 6px;
+          top: 61%;
+          right: 4%;
+        }
+        .snowflake10{
+          width: 6px;
+          height: 6px;
+          left: 1%;
+          bottom: 29%;
+        }
+      }
+      .fireworks{
+        .firework{
+          background: url('../../../m_global/sImages/work/winter-work/ad-fireworks.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          z-index: 101;
+        }
+        .firework1{
+          width: 30px;
+          height: 30px;
+          top: 37%;
+          left: 15%;
+        }
+        .firework2{
+          width: 22px;
+          height: 22px;
+          top: 72%;
+          left: 71%;
+        }
+        .firework3{
+          width: 40px;
+          height: 40px;
+          top: 4%;
+          left: 67%;
+        }
+      }
+      .ad-title{
+        width: 100%;
+        text-align: center;
+        img{
+          width: 40%;
+          max-width: 170px;
+        }
+      }
+
+      .ad-content-wrap{
+        width: 100%;
+        .display-flex;
+        .ad-content{
+          width: 80%;
+          max-width: 400px;
+          text-align: center;
+          background-color: white;
+          border-radius: 10px;
+          @media screen  and (min-width: 401px)   {
+            padding: 20px;
+          }
+
+
+          h5{
+            @media screen  and (max-width: 700px)   {
+              font-size: 17px;
+            }
+            @media screen  and (min-width: 701px)   {
+              font-size: 25px;
+            }
+
+            color: #7d7395;
+            font-weight: bold;
+          }
+          p{
+            color: #7d7395;
+            margin: 20px 0 10px 0px;
+            padding: 0px 12px;
+            text-align: left;
+          }
+        }
+      }
+
+      .christ-house{
+        width: 100%;
+        text-align: center;
+        max-height: 25%;
+        min-height: 20%;
+        overflow: hidden;
+        position: relative;
+        .christ-xiaogou-02{
+          left: -5%;
+          bottom: -26%;
+          transform: rotate(-24deg);
+          z-index: 100;
+          width: 25%;
+          position: absolute;
+          max-width: 105px;
+        }
+        .ad-fu-dao{
+          left: 15%;
+          bottom: -4%;
+          width: 21%;
+          position: absolute;
+          max-width: 96px;
+        }
+        .christ-xiaogou-partner{
+          width: 48%;
+          right: -4%;
+          bottom: -17%;
+          position: absolute;
+          max-width: 200px;
+        }
+      }
+    }
+    .backdrop-content-03{
+      @media all and (max-height: 768px) and (orientation : landscape) {
+        width: 30%;
+        height: 100%;
+        max-height: 450px;
+      }
+      background: rgba(134, 240, 180, 0);
+      width: 70%;
+      min-width: 260px;
+      min-height: 350px;
+      max-width: 450px;
+      max-height: 620px;
+      //border: 1px solid #4f8db1;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      .display-flex-pure;
+      align-items: flex-end;
+      -webkit-align-items: flex-end;
+      .ion-close{
+        position: absolute;
+        z-index: 200;
+        right: 0px;
+        top: 0px;
+        font-size: 30px;
+        color: #fff;
+      }
+      .broadcast-content-box{
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        img{
+          width: 100%;
+        }
+        .broadcast-content{
+          height: 60%;
+          position: absolute;
+          width: 77%;
+          left: 11.2%;
+          bottom: 13.5%;
+          overflow: hidden;
+          color: #a8fdf4;
+          font-size: 12px;
+          @media all and (min-height: 768px){
+            font-size: 14px;
+          }
+
+          .scroll-block{
+            .broadcast-content-item{
+              margin: 16px 0;
+              p {
+                margin: 0 0 2px;
+                padding-left: 17px;
+              }
+              p:first-child{
+                padding-left: 2px;
+              }
+            }
+            .broadcast-content-item:first-child{margin-top: 0}
+
+            .second-p{
+              //.display-flex;
+            }
+            .left-title{
+
+            }
+            .school{
+              //margin-left: -4px;
+              //margin-right: -4px;
+              //.overflow-ellipsis;
+            }
+            .school-100{
+              color: #ffff55;
+              font-weight: bold;
+              /* animation: blink 1s linear infinite;
+               -webkit-animation: blink 1s linear infinite;*/
+            }
+            .school-80{
+              color: #FF94B7;
+              font-weight: bold;
+            }
+            .school-60{
+              color: #ff952b;
+              font-weight: bold;
+            }
+            .school-normal{
+            }
+
+            .content-text{
+              //.overflow-ellipsis;
+              .flex_1;
+            }
+            .right-text-content{
+              flex: 0 0 100px;
+              -webkit-flex:0 0 100px;
+              .display-flex;
+              .accuracy-text{
+                .flex_1;
+              }
+              .accuracy{
+                .flex_1;
+              }
+            }
+            .right-text{
+              float: right;
+              margin-right: 10px;
+              text-align: right;
+            }
+          }
+          .broadcast-show-info{
+            position: absolute;
+            bottom: 2px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .diagnose-backdrop{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    .display-flex;
+    .backdrop-content{
+      @media all and (min-height: 401px) and (max-height: 768px) and (orientation : landscape) {
+        width: 30%;
+        height: 100%;
+        max-height: 450px;
+      }
+      @media all and (max-height: 400px) and (orientation : landscape) {
+        width: 30%;
+        height: 100%;
+        max-height: 450px;
+        .girl-talk-text-content,.boy-talk-text-content{
+          font-size: 12px!important;
+        }
+        .ad-go-btn{
+          font-size: 14px!important;
+        }
+        .boy-wrap img{
+          width: 87%!important;
+        }
+        .girl-wrap img{
+          width: 80%!important;
+        }
+      }
+      @media all and (max-height: 600px){
+        .girl-talk-text-content,.boy-talk-text-content{
+          font-size: 13px!important;
+         /* margin-top:-10px;*/
+        }
+      }
+      @media all and (min-height: 736px)and (max-height: 899px){
+        .girl-talk-text-content,.boy-talk-text-content{
+          font-size: 18px!important;
+          margin-top:-10px;
+        }
+      }
+        @media all and(min-height: 900px){
+          .girl-talk-text-content,.boy-talk-text-content{
+            font-size: 25px!important;
+            margin-top:-10px;
+          }
+        .ad-go-btn{
+          font-size: 25px!important;
+        }
+      }
+      background-color: #F8D754;
+      color: #B03A22;
+      width: 70%;
+      height: 70%;
+      min-width: 260px;
+      max-width: 450px;
+      border: 1px solid #4f8db1;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      .display-flex-pure;
+      .com_flex-direction_column;
+      .com_justify_content_space;
+      .ion-close{
+        position: absolute;
+        z-index: 1000;
+        right: 9px;
+        top: 0px;
+        font-size: 25px;
+        color: #912020;
+      }
+      .fireworks{
+        .firework{
+          background: url('../../../m_global/sImages/work/winter-work/ad-fireworks.png') 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          z-index: 101;
+        }
+        .firework1{
+          width: 30px;
+          height: 30px;
+          top: 39%;
+          left: 18%;
+        }
+        .firework2{
+          width: 22px;
+          height: 22px;
+          top: 77%;
+          left: 67%;
+        }
+        .firework3{
+          width: 40px;
+          height: 40px;
+          top: 4%;
+          left: 67%;
+        }
+      }
+      .ad-title{
+        width: 100%;
+        text-align: center;
+        .flex_3;
+        background: linear-gradient(to bottom, #F89645 0%,#faac43 100%);
+        background: linear-webkit-gradient(to bottom, #F89645 0%,#faac43 100%);
+        position: relative;
+        max-height: 110px;
+        .pieces{
+          .piece{
+            position: absolute;
+            z-index: 100;
+          }
+          .piece04{
+            background: url('../../../m_global/sImages/diagnose/ad-piece04.png') 0px 0px no-repeat;
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            background-size: 100% 100%;
+            background-repeat: round;
+            width: 66%;
+            height: 40%;
+            left: -33%;
+            bottom: 0%;
+          }
+          .piece05{
+            background: url('../../../m_global/sImages/diagnose/ad-piece05.png') 0px 0px no-repeat;
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            background-size: 100% 100%;
+            background-repeat: round;
+            width: 54%;
+            height: 40%;
+            right: -27%;
+            bottom: 0%;
+          }
+
+        }
+        .ad-title-img-wrap{
+          top:0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: 200;
+          text-align: center;
+          .ad-title-img{
+            height: 80%;
+            margin-top: 4%;
+          }
+        }
+
+      }
+      .girl-trainer-wrap{
+        .flex_3;
+        .display-flex-pure;
+        .girl-talk-text-wrap{
+          .flex_2;
+          .display-flex;
+          padding-left: 10px;
+          .girl-talk-text-content{
+            text-align: left;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #FEFAB1;
+            position: relative;
+            font-size: 16px;
+        /*    margin-right: -10%;*/
+            animation: flipInX 0.5s 1s;
+            -webkit-animation: flipInX 0.5s 1s;
+          }
+          .girl-talk-text-content:before {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-left: 9px solid #FEFAB1;
+            border-bottom: 8px solid transparent;
+          }
+        }
+        .girl-wrap{
+          .flex_1;
+          .display-flex;
+          margin-top:-10px;
+          img{
+            width: 110%;
+            margin-left: -18px;
+            animation: fadeInRight 1s;
+            -webkit-animation: fadeInRight 1s;
+          }
+        }
+      }
+      .boy-trainer-wrap{
+        .flex_3;
+        .display-flex-pure;
+        margin-top: -10%;
+        .boy-talk-text-wrap{
+          .flex_2;
+          .display-flex;
+          padding-right: 15px;
+          .boy-talk-text-content{
+            text-align: left;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #FEFAB1;
+            position: relative;
+            font-size: 16px;
+            animation: flipInX 0.5s 2.5s;
+            -webkit-animation: flipInX 0.5s 2.5s;
+          }
+          .boy-talk-text-content:before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 10px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-right: 9px solid #FEFAB1;
+            border-bottom: 8px solid transparent;
+          }
+        }
+        .boy-wrap{
+          .flex_1;
+          .display-flex;
+          img{
+            width: 150%;
+            margin-right: -25px;
+            animation: fadeInLeft 1s 1.5s;
+            -webkit-animation: fadeInLeft 1s 1.5s;
+          }
+        }
+      }
+      p{
+        margin: 0;
+      }
+      .ad-bottom{
+        .flex_1;
+        text-align: center;
+        img{
+          max-width: 170px;
+          margin-top: -10px;
+          width: 40%;
+          display: block;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .ad-go-btn{
+          background: url("../../../m_global/sImages/diagnose/diagnose-go-to-register.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          max-width: 170px;
+          margin-top: -10px;
+          width: 40%;
+          height: 44px;
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          @media all and(min-width: 601px){
+            height: 56px;
+          }
+        }
+        .ad-go-btn:before {
+          content: "";
+          position: absolute;
+          width: 100px;
+          height: 100%;
+          top: 3px;
+          overflow: hidden;
+          border-radius: 30px;
+          background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.24)), color-stop(100%, rgba(255, 255, 255, 0)));
+          background: -webkit-linear-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.4)), color-stop(100%, rgba(255, 255, 255, 0)));
+          animation: lightFlash 1s linear infinite;
+          -webkit-animation: lightFlash 1s linear infinite;
+        }
+      }
+
+
+    }
+  }
+
+  .olympic-math-ad-backdrop{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    .display-flex;
+    .backdrop-content{
+      @media all and (min-height: 401px) and (max-height: 768px) and (orientation : landscape) {
+        width: 30%;
+        height: 100%;
+        max-height: 450px;
+      }
+      @media all and (max-height: 400px) and (orientation : landscape) {
+        width: 30%;
+        height: 100%;
+        max-height: 450px;
+        .ad-go-btn{
+          font-size: 14px!important;
+        }
+      }
+      @media all and(max-height: 600px){
+        .ad-text-1,.ad-text-2{
+          font-size: 13px!important;
+        }
+      }
+      @media all and(min-height: 900px){
+        .ad-text-1{
+          margin-bottom: 30px!important;
+        }
+        .ad-text-1,.ad-text-2{
+          font-size: 22px!important;
+        }
+        .ad-go-btn{
+          font-size: 25px!important;
+        }
+      }
+      background: url("../../../m_global/sImages/olympic-math/olympic-math-ad.png");
+      filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+      background-size: 100% 100%;
+      -moz-background-size: 100% 100%;
+      background-repeat: round;
+      color: #B03A22;
+      width: 70%;
+      height: 70%;
+      min-width: 260px;
+      max-width: 450px;
+      border: 1px solid #4f8db1;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      .display-flex;
+      .ion-close{
+        position: absolute;
+        z-index: 1000;
+        right: 9px;
+        top: 0px;
+        font-size: 25px;
+        color: #912020;
+      }
+      .ad-text-wrap{
+        margin-top: 10%;
+        margin-left: 10%;
+        margin-right: 10%;
+        .ad-text-1{
+          margin-bottom: 15px;
+        }
+        .ad-text-1,.ad-text-2{
+          padding: 10px 20px;
+          background-color: #ffffff;
+          color: #843131;
+          border-radius: 20px;
+          font-size: 16px;
+        }
+      }
+      .ad-bottom{
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        img{
+          max-width: 170px;
+          margin-top: -10px;
+          width: 40%;
+          display: block;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .ad-go-btn{
+          background: url("../../../m_global/sImages/diagnose/diagnose-go-to-register.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          max-width: 170px;
+          margin-top: -10px;
+          width: 40%;
+          height: 44px;
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          @media all and(min-width: 601px){
+            height: 56px;
+          }
+        }
+        .ad-go-btn:before {
+          content: "";
+          position: absolute;
+          width: 100px;
+          height: 100%;
+          top: 3px;
+          overflow: hidden;
+          border-radius: 30px;
+          background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.24)), color-stop(100%, rgba(255, 255, 255, 0)));
+          background: -webkit-linear-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.4)), color-stop(100%, rgba(255, 255, 255, 0)));
+          animation: lightFlash 1s linear infinite;
+          -webkit-animation: lightFlash 1s linear infinite;
+        }
+      }
+
+
+    }
+  }
+
+  .guide-content-box{
+    width: 80%;
+    background: #fff;
+    border-radius:8px;
+    min-width: 240px;
+    max-width: 400px;
+    .guide-content-title{
+      img{
+        width: 100%;
+      }
+    }
+    .guide-content-text{
+      padding: 40px;
+      font-size: 1rem;
+      color: #666666;
+      .content-text-decorate{
+        color: #c27ce5;
+      }
+    }
+    .guide-content-button{
+      .display-flex-pure;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      padding: 10px;
+
+      .guide-content-button-sure{
+        .display-flex;
+        img{
+          width: 120px;
+        }
+      }
+      .guide-content-button-cancel{
+        background: #fff;
+        color: #999999;
+        font-size: 17px;
+      }
+    }
+  }
+
+  @keyframes float-mark-animation {
+    from {
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+    }
+    to{
+      transform: translateY(-10px);
+      -webkit-transform: translateY(-10px);
+    }
+  }
+  @-webkit-keyframes float-mark-animation {
+    from {
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+    }
+    to{
+      transform: translateY(-10px);
+      -webkit-transform: translateY(-10px);
+    }
+  }
+
+}
+
+
+
+

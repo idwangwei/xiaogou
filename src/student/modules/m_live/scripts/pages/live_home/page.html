@@ -1,0 +1,125 @@
+<ion-view id="live-home" ng-class="ctrl.currentCourse.courseId?'hasData':''">
+    <div class="head-box">
+        <div class="head-banner-box">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_home_banner_img_1.png')}}" alt="" class="banner-img-1">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_home_banner_img_2.png')}}" alt="" class="banner-img-2">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_home_banner_img_3.png')}}" alt="" class="banner-img-3">
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_call_btn.png')}}" class="call-btn" ng-click="ctrl.callPhone()">
+        </div>
+        <div class="head-task-box">
+            <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_title.png')}}" alt="" class="head-task-title">
+            <!--<div class="task-all-btn"><span ng-click="ctrl.showModal()">我的课程表 <i class="ion-ios-arrow-right"></i></span></div>-->
+            <div class="task-all-btn"><img ng-src="{{$root.loadLiveImg('live_home/live_home_task_btn.png')}}" ng-click="ctrl.showModal()"></div>
+            <div class="task-des" ng-if="!ctrl.currentCourse.courseId">你还没有直播课程，快去报名吧~</div>
+            <div class="task-des" ng-if="ctrl.currentCourse.courseId">
+                <span class="title">{{ctrl.currentCourse.topTitle}}</span>
+                <span class="subtitle">{{ctrl.currentCourse.lessonName}}</span>
+                <span class="time">{{ctrl.currentCourse.showTime1}}</span>
+            </div>
+            <div class="task-progress">
+                <div class="task-progress-item prepare" ng-click="ctrl.goToPaperDetail(1)">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_1.png')}}" alt="" class="img-step">
+                    <span>预习 <i class="ion-ios-arrow-right"></i></span>
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_finish.png')}}" alt="" class="img-status" ng-if="ctrl.currentCourse.preStatus==4&&ctrl.currentCourse.preStatusFullFlag">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_error.png')}}" alt="" class="img-status" ng-if="ctrl.currentCourse.preStatus==4&&!ctrl.currentCourse.preStatusFullFlag">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_wait.png')}}" alt="" class="img-status" ng-if="ctrl.currentCourse.preStatus<4">
+                </div>
+                <div class="task-progress-item  live" ng-click="ctrl.goToLive()">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_2.png')}}" alt="" class="img-step">
+                    <span ng-if="ctrl.currentCourse.liveStatus!=2">线上课堂 <i class="ion-ios-arrow-right"></i></span>
+                    <span ng-if="ctrl.currentCourse.liveStatus==2">查看回放 <i class="ion-ios-arrow-right"></i></span>
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_finish.png')}}" alt="" class="img-status"  ng-if="ctrl.currentCourse.liveStatus==2">
+                </div>
+                <div class="task-progress-item  exercise" ng-click="ctrl.goToPaperDetail(2)">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_3.png')}}" alt="" class="img-step">
+                    <span>作业 <i class="ion-ios-arrow-right"></i></span>
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_finish.png')}}" alt="" class="img-status"  ng-if="ctrl.currentCourse.nextStatus==4&&ctrl.currentCourse.nextStatusFullFlag">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_error.png')}}" alt="" class="img-status"  ng-if="ctrl.currentCourse.nextStatus==4&&!ctrl.currentCourse.nextStatusFullFlag">
+                    <img ng-src="{{$root.loadLiveImg('live_home/live_home_task_wait.png')}}" alt="" class="img-status"  ng-if="ctrl.currentCourse.nextStatus!=4&&ctrl.currentCourse.liveStatus==2">
+                </div>
+            </div>
+        </div>
+        <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_title.png')}}" class="course-title">
+    </div>
+    <ion-content padding="false" class="home-content" delegate-handle="liveHomeScroll">
+        <ion-refresher
+                pulling-text="下拉刷新..."
+                on-refresh="ctrl.getCourseList()">
+        </ion-refresher>
+        <div class="list-box">
+            <div class="list-item" ng-repeat="v in ctrl.allCourseList  track by $index">
+                <div class="item-header">
+                    <img class="item-discount" ng-src="{{v.discountPercentObj.discountURL}}" alt="" ng-if="v.discountPercentObj&&v.discountPercentObj.discount<10">
+                    <div class="item-title">
+                        <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_type_'+v.publicClassType+'.png')}}" alt="">
+                        <span>{{v.courseName}}<span></span></span>
+                    </div>
+                    <div class="item-star">
+                        <span>难度：</span>
+                        <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}" alt="" ng-repeat="v1 in v.starArr track by $index">
+                        <span style="margin-left: 10px">适用年级：</span>
+                        <span style="font-weight: bold">{{ctrl.clazzArr[v.secondaryTeacherName.grade]}}年级</span>
+                    </div>
+                    <div class="item-time">{{v.showTime}}<span ng-show="!v.fee">开课</span></div>
+                    <div class="item-teacher">
+                        <div class="teacher-box">
+                            <img ng-src="{{v.secondaryTeacherName.liveImageUrl}}" alt="">
+                            <div class="teacher-des">
+                                <p class="teacher-type">授课</p>
+                                <p class="teacher-name">{{v.secondaryTeacherName.teacherName}}</p>
+                            </div>
+                        </div>
+                        <div class="teacher-box">
+                            <img ng-src="{{v.secondaryTeacherName.imageURL}}" alt="">
+                            <div class="teacher-des">
+                                <p class="teacher-type">辅导</p>
+                                <p class="teacher-name">{{v.secondaryTeacherName.teacher}}</p>
+                            </div>
+                            <div class="enter-num">余{{v.limitTotal-v.studentCount}}个名额</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-bottom" ng-click="ctrl.goToEnter(v)">
+                    <span class="course-num">共 {{v.paperCount}} 课</span>
+                    <span class="course-handle">{{v.btnText}} <i class="ion-ios-arrow-right"></i></span>
+                    <span class="course-type">{{v.feeName}}</span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="list-modal" ng-if="ctrl.showCourseModal">
+        <div class="list-modal-task"  ng-click="ctrl.hideModal()"></div>
+        <div class="list-modal-box">
+            <ion-scroll class="list-modal-scroll">
+                <div class="list-box" ng-repeat="v in ctrl.myCourseList track by $index">
+                    <div class="title">{{v.courseName}}</div>
+                    <div class="modal-course-list">
+                         <div class="modal-course-item" ng-repeat="v1 in v.videoLiveCoursePapers track by $index" ng-click="ctrl.changeCurrentCourse(v,v1,$index)">
+                             <div class="item-num">第{{v1.lesson}}课</div>
+                             <div class="item-content">
+                                 <div class="item-content-head">{{v1.lessonName}}</div>
+                                 <div class="item-content-middle">
+                                     <span>难度：</span>
+                                     <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}" alt="" ng-repeat="v2 in v1.difficultyArr track by $index">
+                                 </div>
+                                 <div class="item-content-bottom">上课：{{v1.showTime}}</div>
+                                 <i class="ion-ios-arrow-right item-content-arrow"></i>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+    </div>
+    <div class="success-modal" ng-if="ctrl.showSuccessModal">
+        <div class="modal-inner">
+            <div class="modal-title">{{ctrl.liveTxt}}提示</div>
+            <div class="modal-text-box">
+                <p class="title">Ctrl+A、Ctrl+C全选复制选择框中链接：</p>
+                <textarea name="" id="" rows="8">{{ctrl.liveUrl}}</textarea>
+                <p class="title">在电脑浏览器打开即可观看{{ctrl.liveTxt}}</p>
+            </div>
+            <img ng-src="{{$root.loadLiveImg('live_course_enter/live_course_success_btn.png')}}" alt="" class="modal-btn" ng-click="ctrl.closeModal()">
+        </div>
+    </div>
+</ion-view>

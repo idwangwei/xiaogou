@@ -1,0 +1,108 @@
+<ion-view class="work-report">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #1e446a"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="color: #1e446a">诊断提分</h1>
+        <!--<p class="title" style="font-size: 14px;">{{ctrl.paperName}}（{{ctrl.totalScore}}分）</p>-->
+    </ion-header-bar>
+    <!--<sub-header class="mySubHeader">
+        <div>
+            <p style="width: 80%;margin-left: 10%;">{{ctrl.paperName}}（{{ctrl.totalScore}}分）</p>
+        </div>
+    </sub-header>-->
+    <ion-content padding="true" class="work-report-content" delegate-handle="work-report-content">
+        <!--  <div class="statistics-title">
+              <p style="margin:0px">{{ctrl.paperName}}（{{ctrl.totalScore}}分）</p>
+          </div>-->
+
+        <div class="statistics-box">
+            <p class="statistics-box-title">作业：{{ctrl.paperName+(ctrl.isFinalAccess?'测试':'')}}（{{ctrl.totalScore}}分）</p>
+            <div class="statistics-box-inside">
+                <div class="statistics-box-left">
+                    <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator()+'.png')}}"
+                         style="width: 60%;max-width: 60px;" ng-if="ctrl.avator">
+                    <p style="margin: 0px;margin-top: 5px">{{ctrl.realName}}</p>
+                </div>
+                <div class="statistics-box-right" ng-if="ctrl.allPoints&&ctrl.fetchFlag">
+                    <p>一共<label>{{ctrl.getAllPointsNum()}}</label>个考点：</p>
+                    <div class="checkPointStatus">
+                        <span>掌握  <label  style=" color: #4acb3d;">{{ctrl.allPoints['4'].length}}</label>个</span>
+                        <span>不牢固<label  style=" color: #faa958;">{{ctrl.allPoints['3'].length}}</label>个</span>
+                        <span>未掌握<label  style=" color: #f85a5a;">{{ctrl.allPoints['2'].length}}</label>个</span>
+
+                      <!--  <span>掌握  <label  style=" color: #4acb3d;">{{ctrl.allPoints['4'].length}}</label>个，</span>
+                        <span>不牢固<label  style=" color: #faa958;">{{ctrl.allPoints['3'].length}}</label>个，</span>
+                        <span ng-if="!$root.platform.IS_ANDROID && !$root.platform.IS_IPHONE">未掌握<label  style=" color: #f85a5a;">{{ctrl.allPoints['2'].length}}</label>个</span>
+                        <p ng-if="$root.platform.IS_ANDROID || $root.platform.IS_IPHONE" style="margin:0">未掌握<label  style=" color: #f85a5a;">{{ctrl.allPoints['2'].length}}</label>个</p>
+                    -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="statistics-tabel">
+            <div class="table-container">
+                <div class="row table-header" style="margin-left: 0px;margin-right: 0px;">
+                    <div class="col " style="display: inline-block">考点&题号</div>
+                    <div class="col " style="display: inline-block">掌握程度</div>
+                    <div class="col " style="display: inline-block;padding: 5px 0;"></div>
+                </div>
+                <div class="row table-row " style="margin-top:-1px;" ng-if="ctrl.allPoints&&ctrl.fetchFlag"
+                     ng-repeat="item in ctrl.getAllPointsQuesList()" ng-style="{'background-color':$index%2==0?'#ebecf1':'#f5f5f8'}">
+                    <div class="col">
+                        <div class="row ">
+                            <div class="col" ng-click="ctrl.gotoQuesRecord(item,$index)" style="color: #0765b3;overflow-x: hidden;word-break: keep-all;text-align: left">
+                                <span style="margin: 0 0 3px; !important; font-weight: 700"><u>考点</u>{{item.num=='-1'?'':item.num}}:</span>
+                                <!--<span style="margin: 0 0 3px; !important; font-weight: 700">考点:</span>-->
+                                <u>{{item.knowledgeAndQues}}</u>
+                                <!--{{ctrl.getCheckPointsQues(item,$index)}}-->
+                            </div>
+                            <div class="col" ng-click="ctrl.gotoQuesRecord(item,$index)">
+                                <div ng-if="item.masterStatus==4" class="col-status" style="color:#4acb3d;">
+                                    <!--<i class="ion-record"></i>掌握-->
+                                    <p>掌握</p>
+                                    <div style=" width: 90%;max-width:160px;height: 10px;border-radius: 10px;background-color: #bdbec2;margin: 5px">
+                                        <div style="width: 100%;height: 10px;border-radius: 10px;background-color: #4acb3d;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="item.masterStatus==3" class="col-status" style="color:#faa958;">
+                                    <!--<i class="ion-record"></i>不牢固-->
+                                    <p>不牢固</p>
+                                    <div style=" width: 90%;max-width:160px;height: 10px;border-radius: 10px;background-color: #bdbec2;margin: 5px">
+                                        <div style="width: 65%;height: 10px;border-radius: 10px;background-color: #faa958;">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div ng-if="item.masterStatus==2" class="col-status" style="color:#f85a5a;">
+                                    <!--<i class="ion-record"></i>未掌握-->
+                                    <p>未掌握</p>
+                                    <div style=" width: 90%;max-width:160px;height: 10px;border-radius: 10px;background-color: #bdbec2;margin: 5px">
+                                        <div style="width: 30%;height: 10px;border-radius: 10px;background-color: #f85a5a;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col tabel-butn" ng-click="ctrl.gotoDiagnose(item)" style="overflow: hidden;">
+                                <div ng-if="item.masterStatus==4" class="col-butn">
+                                    <!--<i class="ion-checkmark-round" style="color:#4acb3d;"></i>-->
+                                    <img ng-src="{{$root.loadImg('work_report/expand_level_btn.png')}}">
+                                </div>
+                                <div ng-if="item.masterStatus==3" class="col-butn">
+                                    <!--<p>变式强化></p>-->
+                                    <img ng-src="{{$root.loadImg('work_report/upgrade_level_btn.png')}}">
+                                </div>
+                                <div ng-if="item.masterStatus==2" class="col-butn">
+                                    <img ng-src="{{$root.loadImg('work_report/correct_error_btn.png')}}">
+                                   <!-- <p>改错&同类练习></p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

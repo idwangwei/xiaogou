@@ -1,0 +1,172 @@
+@charset "UTF-8";
+@import './../../../../t_boot/less/theme02/include/_mixins';
+
+.teacher-register{
+  ion-content{
+    background-color: rgb(202, 247, 237);
+  }
+  .ion-ipad{
+    font-size: 25px;
+    margin-right: 5px;
+  }
+  .ion-locked,.ion-person{
+    font-size: 20px;
+    margin-right: 5px
+  }
+  .isRegister{
+    background-color: #999 !important;
+  }
+  .input-wrap{
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px 16px;
+    width: 90%;
+    margin: 12px auto;
+    height: 44px;
+    font-size: 16px;
+  }
+  .input-row{
+    width: 90%;
+    margin: 12px auto;
+    height: 44px;
+    line-height: 44px;
+    .male-col,.female-col{
+      width: 49%;
+      display: inline-block;
+      background-color: white;
+      border-radius: 30px;
+      color: #A5AEB5;
+      height: inherit;
+      line-height: inherit;
+      text-align: center;
+      font-size: 20px;
+      position: relative;
+      i{
+        position: absolute;
+        left: 20px;
+        font-size: 26px;
+      }
+    }
+    .col-select-active{
+      background-color: #44AEEE;
+      color: #ffffff;
+    }
+  }
+  .list-wrap{
+    background-color: white;
+    padding: 5px 20px;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 10px;
+    h4{
+      color: #44AEEE;
+      text-align: center;
+    }
+    .list-input-wrap{
+      border-bottom: 1px solid #CCCCCC;
+      position: relative;
+      margin-bottom: 5px;
+      input{
+        width: 100%;
+        background-color: white;
+        padding-right: 15px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      i{
+        position: absolute;
+        right: 0px;
+        bottom: 5px;
+        color: #ccc;
+      }
+    }
+  }
+  .clazz-btn-wrap{
+    width: 90%;
+    margin: 20px auto;
+    .clazz-btn{
+      padding: 5px 20px;
+      font-size: 17px;
+      display: inline-block;
+      border-radius: 30px;
+    }
+    .add-clazz-btn{
+      background-color: #44AEEE;
+      color: white;
+
+    }
+    .delete-clazz-btn{
+      background-color: #E0605C;
+      color: white;
+      i{
+        margin-right: 5px;
+      }
+    }
+  }
+  .last-page-row-wrap{
+    width: 90%;
+    margin: 10px auto;
+    position: relative;
+    .img-validate-input{
+      background-color: white;
+      padding: 10px 16px;
+      display: inline-block;
+      border-radius: 30px;
+      width: 50%;
+      height: 44px;
+    }
+    .img-validate{
+      width: 30%;
+      max-width: 150px;
+      vertical-align: middle;
+    }
+    .ion-refresh{
+      font-size: 32px;
+      vertical-align: middle;
+      color: #70A3DA;
+      margin-left: 10px;
+    }
+    .telvc-input{
+      width: 100%;
+      background-color: white;
+      padding: 10px 100px 10px 16px;
+      border-radius: 30px;
+      height: 44px;
+    }
+    .telvc-btn{
+      position: absolute;
+      right: 8px;
+      bottom: 5px;
+      height: 34px;
+      line-height: 34px;
+      background-color: #44AEEE;
+      border-radius: 30px;
+      color: white;
+      width: 90px;
+      text-align: center;
+    }
+  }
+  .tel-tip{
+    width: 90%;
+    margin: 20px auto;
+  }
+  .page-foot-bar{
+    font-size: 20px;
+    padding-top: 15px;
+    background-color: rgb(202, 247, 237);
+    .display-flex-pure;
+    height: 70px;
+    line-height: 70px;
+    .previous-btn{
+      color: #4481DB;
+      font-size: 18px;
+    }
+    .next-btn{
+      background-color: #44AEEE;
+      color: white;
+      padding: 7px 25px;
+      font-size: 18px;
+      border-radius: 30px;
+    }
+  }
+}

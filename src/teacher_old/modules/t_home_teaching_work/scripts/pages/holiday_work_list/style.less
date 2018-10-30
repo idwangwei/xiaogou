@@ -1,0 +1,395 @@
+@import "./../../../../t_boot/less/theme02/include/_mixins";
+@import "./../../../../t_boot/less/theme02/include/common";
+
+.holiday_work_list{
+
+    .bar-better {
+      background: #bcfcf8 !important;
+      height: 100px;
+    }
+
+    ion-header-bar .title {
+      left: 0 !important;
+      right: 0 !important;
+    }
+
+    .select-bar {
+      margin: 7px 0px;
+      padding-left: 14px;
+      color: #7c3c25 !important;
+      background: #F9E18E !important;
+    }
+
+    .select-class-bar {
+      margin-top: 30px;
+      margin-left: 5px;
+      margin-right: 3px;
+    }
+
+  .item-avatar.default-work-item:nth-child(2n+1) {
+      .ion-item-odd;
+    }
+
+    .item-row {
+      margin-top: 7px;
+      margin-bottom: 7px;
+      width: 100%;
+      color: #003366;
+      .img-text-warp {
+        text-align: center;
+      }
+      .img-block {
+        border-radius: 50%;
+        text-align: center;
+        img {
+          width: 100%;
+        }
+      }
+      @media screen and (max-width: 760px) {
+        .img-block {
+          width: 35px;
+          margin-left: 6px;
+        }
+
+        .text-block {
+          font-size: 12px;
+        }
+      }
+
+      @media screen and (min-width: 761px) {
+        .img-block {
+          width: 60px;
+        }
+
+        .text-block {
+          font-size: 16px;
+        }
+      }
+
+    }
+
+    .bg-box {
+      position: relative;
+      @media screen and (max-width: 760px) {
+        height: 100px;
+      }
+      @media screen and (min-width: 761px) {
+        height: 160px;
+      }
+      width: 100%;
+      .bg-img {
+        height: 100%;
+        width: 100%;
+      }
+      .bg-tree {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 90%;
+      }
+      .bg-people {
+        position: absolute;
+        height: 35%;
+        @media screen and (max-width: 320px) {
+          bottom: 9%;
+          left: 64px;
+        }
+        @media screen and (min-width: 321px) and (max-width: 760px) {
+          bottom: 9%;
+          left: 86px;
+        }
+        @media screen and (min-width: 761px) {
+          bottom: 12px;
+          left: 135px;
+        }
+
+      }
+      .bg-cloud {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 55%;
+      }
+      .bg-text3 {
+        position: absolute;
+        bottom: 6px;
+        right: 10px;
+        height: 23%;
+      }
+
+      .bg-inner-box {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        .bg-inner-box1 {
+          width: 50%;
+          max-width: 465px;
+          height: 100%;
+          margin: auto;
+          position: relative;
+          .bg-text1 {
+            position: absolute;
+            top: 15%;
+            left: 10%;
+            height: 25%;
+          }
+          .bg-text2 {
+            position: absolute;
+            bottom: 25%;
+            right: 10%;
+            height: 25%;
+          }
+        }
+      }
+    }
+
+    .month-bar {
+      font-weight: bold;
+      font-size: 16px;
+      color: #61646B;
+      background: #E9EDF3;
+      margin: 0 5px;
+      padding: 5px 16px;
+      width: 110%;
+      margin-left: 0;
+    }
+
+    .item-avatar {
+      padding-left: 95px;
+      .item-content {
+        padding-left: 95px;
+        padding-right: 5px;
+        padding-top: 16px;
+      }
+      .new-icon {
+        position: absolute;
+        top: 26px;
+        left: 30px;
+        width: 28px;
+        height: 15px;
+      }
+      .work-tag {
+        position: absolute;
+        width: 30px;
+        -webkit-font-smoothing: subpixel-antialiased;
+        left: 0;
+        top: 0;
+      }
+      .s-work-tag-icon {
+        position: absolute;
+        top: 13px;
+        left: 40%;
+        width: 110px;
+        height: 79.5px;
+        opacity: 0.7;
+        z-index: 1000;
+      }
+    }
+    .item-avatar > img:first-child {
+      max-width: 45px;
+      max-height: 45px;
+      border-radius: 0px;
+      left: 33px;
+      top: 29px;
+    }
+    .display-flex {
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      .content-left {
+        flex: 7;
+        -webkit-flex: 7
+      }
+      .content-right {
+        flex: 3;
+        -webkit-flex: 3
+      }
+
+    }
+    .item {
+      border-width: 0px;
+      border-style: none;
+    }
+    .content-left {
+      overflow: hidden;
+    }
+
+    .button.button-assertive {
+      background-color: #F5615C;
+    }
+
+    .content-font-color h2, .content-font-color p {
+      color: #3F4367 !important;
+    }
+
+    .winter-work-item .content-font-color h2, .winter-work-item .content-font-color p {
+      color: #CB7643 !important;
+    }
+
+    .menu-content.pane{
+      background-color: #e9edf3;
+    }
+    .divHeadBar {
+      top: 105px !important;
+      background: #e9edf3 !important;
+    }
+
+    .divHeadBtn {
+      .display-flex;
+      height: 88px;
+      width: 100%;
+      font-size: 15px;
+      margin: 0 0 5px 0;
+      text-align: center;
+      background: #e9edf3;
+      .div-head-btn-left{
+        height: 100%;
+        color: #3F4367;
+        .flex_3;
+        .display-flex-pure;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        border-radius: 5px;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+      }
+      .spanStyle {
+        width: 20px;
+        text-align: center;
+      }
+
+      .className {
+        //.flex_1;
+        .display-flex;
+        background-color: #F9E18E;
+        height: 41px;
+        border-radius: 5px;
+      }
+      .study {
+        .display-flex;
+        .details {
+          .display-flex;
+          flex: 1;
+          -webkit-flex: 1;
+          height: 100%;
+          background-color: #f9a08a;
+          border-radius: 5px;
+          margin-right: 5px;
+        }
+        .docs {
+          .display-flex;
+          flex: 1;
+          -webkit-flex: 1;
+          height: 100%;
+          background-color: #83d5f3;
+          border-radius: 5px;
+        }
+        height: 42px;
+      }
+      .work_pub {
+        .flex_2;
+        height: 100%;
+        width: 100%;
+        background: #91f086;
+        color: #2d4030;
+
+        text-align: center;
+        border-radius: 5px;
+        margin-left: 5px;
+        div{
+          .flex_1;
+        }
+        div img{
+          height: 30px;
+        }
+        span{
+          padding: 0 10px;
+        }
+      }
+    }
+
+    .game_clazz_select {
+      top: 40px;
+      border-left-width: 6px;
+      background: #6997eb;
+    }
+
+    .game_clazz_select_img {
+      margin-top: 14px;
+      width: 105px;
+      min-height: 56px;
+    }
+
+    .clazz-item {
+      background: white;
+      border-radius: 7px;
+      width: 99%;
+      padding: 15px 0;
+      min-height: 158px;
+      text-align: center;
+    }
+    .clazz-name {
+      font-size: 17px;
+      margin-top: 10px;
+    }
+    .work_clazz_select_block {
+      padding: 6px 14px;
+    }
+
+    .all_ad_box {
+      width: 100%;
+      .display_flex(row, space-between, center);
+      .winter-holidays-wrap-03-new {
+        flex: 1;
+        -webkit-flex: 1;
+      }
+      .oral_arithmetic_ad {
+        flex: 1;
+        -webkit-flex: 1;
+        .display_flex(row, center, center);
+        .background_change(#72c7ef, #5c88d8);
+        position: relative;
+        width: 100%;
+        height: 100%;
+        img {
+          width: 80%;
+          max-width: 300px;
+        }
+      }
+
+    }
+
+    .display_flex(@dir,@justify,@align) {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: @dir;
+      -webkit-flex-direction: @dir;
+      justify-content: @justify;
+      -webkit-justify-content: @justify;
+      align-items: @align;
+      -webkit-align-items: @align;
+    }
+
+    .background_change(@color1,@color2) {
+      background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+      background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+      background: linear-gradient(@color1, @color2); /* 标准的语法 */
+    }
+
+    .month-bar {
+    font-weight: bold;
+    font-size: 16px;
+    color: #61646B;
+    background: #E9EDF3;
+    margin: 0 5px 0 0;
+    padding: 5px 16px;
+    width: 110%;
+  }
+
+}

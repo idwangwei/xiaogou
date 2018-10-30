@@ -1,0 +1,66 @@
+<ion-view class="day-task">
+    <reward-prompt type="reward" show-num="{{ctrl.getCapacity}}"></reward-prompt>
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #ffffff"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #ffffff">每日任务</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <div class="task-list">
+            <ion-list class="list-item-style">
+                <ion-item class="item item-avatar item-content" ng-repeat="item in ctrl.tasks">
+                    <div class="task-mark">
+                        <div ng-class="item.type=='game'?'gameM':item.type=='work'?'workM':item.type=='diagnose'?'diagnoseM':item.type=='susuan'?'susuanGameM':'susuanPkM'"></div>
+                    </div>
+                    <div class="task-desc">
+                        <p>{{item.name}}</p>
+                        <div class="desc-score">
+                            <!--<i class="ion-heart" style="color: #f6f906"></i>-->
+                            <img ng-src="{{ctrl.loadImage('reward_money.png')}}"
+                            style="width: 20px;height: 20px;margin-right: 5px">
+                            <p>{{item.credits}}</p>
+                        </div>
+                    </div>
+                    <div class="task-progress">
+                        <div class="level-pre" ng-if="item.statusCode!=400&&!item.status">
+                            <label class="done-text">{{item.finishedCount}}</label>
+                            <label class="require-text">/{{item.requiredCount}}</label>
+                        </div>
+                        <div ng-if="item.statusCode!=400&&!item.status">
+                            <div class="task-progress-bar">
+                                <!--  <div class="task-done-bar"
+                                       ng-style="{'border-top-right-radius':ctrl.getWidth(item)>=90?'4px':'0px',
+                                   'border-bottom-right-radius':ctrl.getWidth(item)>=90?'4px':'0px',
+                                   'width': ctrl.getWidth(item)+ '%'}">
+                                  </div>-->
+                                <div class="task-done-bar"
+                                     ng-style="{'width': ctrl.getWidth(item)+ '%'}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-reward" ng-if="item.statusCode==200&&!item.status"
+                             ng-click="ctrl.doTest(item)" style="background-color:#999999">
+                            <p>去完成</p>
+                            <!--<div>领取奖励</div>-->
+                        </div>
+                        <!--<div class="task-reward" ng-if="item.statusCode!=400&&!item.status"-->
+                        <div class="task-reward" ng-if="item.statusCode==300&&!item.status"
+                             ng-click="ctrl.getAward(item)"
+                             ng-style="{'background-color': item.statusCode==300?'#fc8536':'#999999'}">
+                            <p>领取奖励</p>
+                            <!--<div>领取奖励</div>-->
+                        </div>
+                        <div class="task-reward" ng-if="item.statusCode==400||item.status"
+                             style="background-color:#ffffff;border: solid 2px #999999;color: #999999">
+                            <p style="color: #8b7c7c">已领取</p>
+                            <!--<div>领取奖励</div>-->
+                        </div>
+                    </div>
+
+                </ion-item>
+            </ion-list>
+
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,244 @@
+<ion-view hide-nav-bar=true class="add_clazz">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">{{ctrl.title}}</h1>
+       <!-- <div class="buttons" >
+            <button class="button button-clear" ng-click="help()" style="position: absolute;right: -3px;">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>
+        </div>-->
+    </ion-header-bar>
+    <ion-content padding="true" class="add_clazz_file has-footer">
+        <ion-list>
+            <ion-item class="item item-input border-solid border-color item-icon-right" ng-click="ctrl.openProvinceModal()">
+                <input type="text"  placeholder="选择省" readonly="readonly" ng-model="ctrl.clazzInfo.provinceName" />
+                <i class="icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item class="item  item-input border-solid border-color item-icon-right" ng-click="ctrl.openCityModal()">
+                <input type="text"  placeholder="选择市" readonly="readonly" ng-model="ctrl.clazzInfo.cityName" />
+                <i class="icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item class="item item-input border-solid border-color item-icon-right" ng-click="ctrl.openCountyModal()">
+                <input type="text" placeholder="选择区/县" readonly="readonly" ng-model="ctrl.clazzInfo.districtName"  />
+                <i class="icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item class="item item-input border-solid border-color item-icon-right" ng-click="ctrl.openSchoolModal()">
+                <input type="text" placeholder="选择学校" readonly="readonly" ng-model="ctrl.clazzInfo.schoolName" />
+                <i class="icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item class="item item-input border-solid border-color item-icon-right" ng-click="ctrl.openGradeModal()">
+                <input type="text" placeholder="选择年级" readonly="readonly" ng-model="ctrl.clazzInfo.gradeName" />
+                <i class="icon ion-chevron-right" ></i>
+            </ion-item>
+            <ion-item class="item item-input border-solid border-color item-icon-right" ng-click="ctrl.openClazzModal()">
+                <input type="text" placeholder="选择班级" readonly="readonly" ng-model="ctrl.clazzInfo.className" />
+                <i class="icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item class="item item-input border-solid border-color item-icon-right"  ng-click="ctrl.openTextBookModal()">
+                <!--<input type="text" placeholder="选择教材（不可修改，请谨慎选择）" readonly="readonly" ng-model="ctrl.clazzTextName" />-->
+                <input type="text" placeholder="选择教材" readonly="readonly" ng-model="ctrl.clazzTextName" />
+                <!--<i class="icon ion-chevron-right" ng-show="ctrl.isUpdate"></i>-->
+                <i class="icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item class="item  border-solid border-color item-icon-right">
+                <input type="text" placeholder="输入班级名称" ng-model="ctrl.clazzInfo.name"/>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <div class="bar bar-footer bar-balanced">
+        <button class="bar-item button-clear" ng-click="ctrl.add_update_Clazz()"
+                ng-disabled="ctrl.isDisabled">
+            {{ctrl.btnTitle}}</button>
+    </div>
+</ion-view>
+
+
+/*------------------------------------modal----------------------------------------*/
+<script id="selectProvince.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear" ng-click="ctrl.provinceModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title" align-title="center">请选择省份</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="(letter,provinces) in ctrl.Province">
+                    {{letter}}
+                    <br/>
+                        <span ng-repeat="province in provinces"
+                              class="item student-list"
+                              ng-click="ctrl.selectedProvince(province)">
+                            {{province.name}}
+                        </span>
+                    <br/>
+                </li>
+            </ul>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+<script id="selectCity.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear"  ng-click="ctrl.cityModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title" align-title="center">请选择城市</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="(letter,cities) in ctrl.City">
+                    {{letter}}
+                    <br/>
+                            <span ng-repeat="city in cities"
+                                  class="item student-list"
+                                  ng-click="ctrl.selectedCity(city)">
+                                {{city.name}}
+                            </span>
+                    <br/>
+                </li>
+            </ul>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+<script id="selectDistrict.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear"  ng-click="ctrl.districtModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title">请选择区县</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="(letter,districts) in ctrl.District">
+                    {{letter}}
+                    <br/>
+                    <span ng-repeat="district in districts"
+                          class="item add_span border-solid border-color"
+                          ng-click="ctrl.selectedDistrict(district)">
+                    {{district.name}}
+                    </span>
+                    <br/>
+                </li>
+            </ul>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+<script id="selectSchool.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear" ng-click="ctrl.backFromEnterSchool()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title">请选择学校</h1>
+        </ion-header-bar>
+        <ion-content ng-show="ctrl.School && !ctrl.addOtherSchoolFlag">
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="(letter,school) in ctrl.School">
+                    {{letter}}
+                    <br/>
+                    <span ng-repeat="sch in school"
+                          class="item add_span border-solid border-color"
+                          ng-click="ctrl.selectedSchool(sch)">
+                    {{sch.name}}
+                    </span>
+                    <br/>
+                </li>
+            </ul>
+            <div ng-show="ctrl.School && !ctrl.addOtherSchoolFlag" style="text-align: center;padding-bottom: 10px;margin-top: -10px;">
+                <span style="padding: 10px 20px;display: inline-block;border-radius: 5px;background-color: #f90;color: #fff;box-shadow: 1px 1px 3px rgba(0,0,0,0.3);"
+                 ng-click="ctrl.addOtherSchool()">没有您的学校？点击添加</span>
+            </div>
+        </ion-content>
+        <ion-content scroll="false" ng-show="!ctrl.School || ctrl.addOtherSchoolFlag">
+            <div style="padding: 20px;">
+                <label style="display: block;margin-bottom: 10px;">请输入学校名称:</label>
+                <input type="text" ng-model="ctrl.clazzInfo.schoolName"
+                       style="border: 1px solid #e1e1e1;width: 100%;border-radius: 5px;padding: 0 5px;"/>
+                <div style="text-align: right;margin-top: 20px;">
+                    <button style="padding: 6px 12px;border-radius: 5px;border: none;color: #fff;background-color: #58D152;box-shadow: 1px 1px 3px rgba(0,0,0,0.3);"
+                            ng-click="ctrl.hideSchoolModel($event)">确定</button>
+                </div>
+            </div>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+<script id="selectGrade.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear" style="font-size: 17px" ng-click="ctrl.gradeModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title">请选择年级</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="grade in ctrl.Grade"
+                    class="item add_span border-solid border-color"
+                    ng-click="ctrl.selectedGrade(grade)">
+                    {{grade.name}}
+                </li>
+            </ul>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+<script id="selectClazz.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear" ng-click="ctrl.clazzModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title">请选择班级</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="clazz in ctrl.Clazz"
+                    class="item add_span border-solid border-color"
+                    ng-click="ctrl.selectedClazz(clazz)">
+                    {{clazz.name}}
+                </li>
+            </ul>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+<script id="selectTextBook.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <div class="button button-clear" ng-click="ctrl.textBookModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</div>
+            <h1 class="title">请选择教材</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list" style="padding: 5px">
+                <li ng-repeat="item in ctrl.textBooks"
+                    class="item add_span border-solid border-color"
+                    ng-click="ctrl.selectedTextBook(item)">
+                    {{item.text}}
+                </li>
+            </ul>
+        </ion-content>
+        <loading-processing></loading-processing>
+    </ion-modal-view>
+</script>
+
+
+

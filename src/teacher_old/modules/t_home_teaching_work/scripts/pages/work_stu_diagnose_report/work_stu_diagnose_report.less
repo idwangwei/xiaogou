@@ -1,0 +1,216 @@
+@charset "UTF-8";
+@import "../../../../t_boot/less/theme02/include/_mixins";
+
+.work_stu_diagnose_report{
+  .work_stu_diagnose_report_title-bar{
+    background: #83DCF5 !important;
+    color:#1E445A !important;
+    border: none !important;
+  }
+
+  .work_stu_diagnose_report_content{
+    background: #F5F5F8;
+    width:100%;
+    height:100%;
+    padding-bottom:80px;
+    .level-color-one {
+      color: #4ACB3D;
+    }
+
+    .level-color-two {
+      color: #FAA958;
+    }
+
+    .level-color-three {
+      color:  #F85A5A;
+    }
+
+    .work_stu_report_area{
+      width:100%;
+      height:100%;
+      .display-flex-pure;
+      .com_flex-direction_column;
+
+      .work_stu_diagnose_report_title {
+        .flex_1;
+        background: #83DCF5;
+        position: relative;
+        width: 100%;
+        padding: 0 0 30px 0;
+        color:#1E445A;
+        max-height:180px;
+        .display-flex;
+        .com_flex-direction_column;
+
+        .report-title {
+          background: #83DCF5;
+          text-align: center;
+          font-size: 16px;
+          /*font-weight: bold;*/
+          position: relative;
+          z-index: 2;
+          display: block;
+          margin-bottom:10px;
+        }
+
+        .test_points_tip {
+          width: 90%;
+          background: #ccf2fd;
+          text-align: center;
+          padding: 5px 25px;
+          font-size: 14px;
+          border-radius: 20px;
+          margin-bottom:10px;
+
+          @media screen and(min-width:650px) and(max-width:736px){
+            padding: 5px 50px;
+          }
+
+          .test-points-count {
+            font-size: 16px;
+            /*font-weight: 700;*/
+          }
+
+          .test-point-tip{
+            color:#68779d !important;
+
+            @media screen and (min-height:900px){
+              padding:3px;
+              font-size: 17px !important;
+            }
+          }
+        }
+
+        .test_points_status {
+          .display-flex;
+          width: 100%;
+          background: #fff;
+          position: absolute;
+          bottom: 0;
+          padding: 5px;
+
+          .level-point{
+            .flex_1;
+            .display-flex;
+            .level-common {
+              padding-right:  7px;
+              font-size: 18px;
+            }
+          }
+
+        }
+
+        @media screen and(min-height:900px){
+          .report-title {
+            font-size:20px !important;
+          }
+
+          .test-points-count {
+            padding:3px;
+            font-size: 19px !important;
+          }
+
+          .test_points_status{
+            font-size:17px !important;
+          }
+
+          .stu-name{
+            font-size:17px !important;
+            margin-top:0 !important;
+          }
+        }
+      }
+
+      .work_stu_diagnose_report_table {
+        .flex_1;
+        background: #F5F5F8;
+        height: 60%;
+
+        @media screen and(min-width: 768px) {
+          padding: 10px;
+        }
+        @media screen and(min-width: 1024px) {
+          height: 83%;
+        }
+
+        .level-background-one {
+          background: #4ACB3D;
+        }
+
+        .level-background-two {
+          background: #FAA958;
+        }
+
+        .level-background-three {
+          background:  #F85A5A;
+        }
+
+        .test-points-tb {
+          /* .test-points-tb-tr:nth-child(2n+1) {
+             background-color: #EBECF1;
+           }*/
+
+          .test-points-tb-tr{
+            .display-flex-pure;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            line-height: 34px;
+            padding: 0 30px 0 10px;
+            color: #3C486A;
+            position: relative;
+
+            .common-font {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-align: center;
+            }
+
+            .tr_cm_cell {
+              .display-flex;
+              .flex_1;
+              .com_flex-direction_column;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              img {
+                width: 35px;
+                margin-top: 5px;
+              }
+              .stu-name {
+                .common-font;
+                margin-top: -5px;
+                width: 100%;
+              }
+            }
+
+            .tr_cm_cell_bar{
+              line-height: 28px;
+              .flex_3;
+
+              .tr_cell_bar{
+                .display-flex;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width:70%;
+                .common-bar{
+                  .common-font;
+                  font-size:15px;
+                }
+              }
+            }
+
+            .ion-chevron-right {
+              color:#797A85;
+              position: absolute;
+              font-size: 20px;
+              right: 9px;
+              top: 19px;
+            }
+
+          }
+        }
+
+      }
+    }
+  }
+}

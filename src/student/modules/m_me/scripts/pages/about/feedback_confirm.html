@@ -1,0 +1,20 @@
+<ion-view hide-nav-bar="true" >
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <h1 class="title">意见反馈</h1>
+    </ion-header-bar>
+    <ion-content padding="true" >
+        <div class="feedback-confirm">
+            <div class="img-box" id="imgBoxConfirm">
+                <img class="aligncenter" ng-src="{{$root.loadImg('feed_back/feedBackConfirm.jpg')}}" >
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="display-flex" style="background: #e6e9ec !important;">
+        <button class="button-clear  bar-item" ng-click="ctrl.confirmed()" style=" color: #627482!important;">
+            <i class="icon ion-ios-checkmark">
+            </i>
+            确定
+        </button>
+    </ion-footer-bar>
+</ion-view>
+

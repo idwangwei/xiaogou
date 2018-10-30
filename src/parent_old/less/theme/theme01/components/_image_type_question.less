@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@import "./../include/_mixins";
+
+//图片类型的问题
+
+.image-type-question {
+  width: 100%;
+  .question-content {
+    margin: 5px 8px 0 8px;
+    .question-title {
+      .white-bold(140, 14px, black);
+      line-height: 25px;
+    }
+    //img {
+    //  width: 100%;
+    //}
+  }
+  .sub-toolbar {
+    border-top: 2px solid #DDDDDD;
+    .display-flex;
+    .tool-item {
+      height: 30px;
+      .flex_1;
+      border-left: 1px solid #DDDDDD;
+      border-right: 1px solid #DDDDDD;
+      text-align: center;
+      padding-top: 5px;
+      .white-bold(140, 15px, rgb(20, 98, 210));
+      &:first-child {
+        border-left: none;
+      }
+      &:last-child {
+        border-right: none
+      }
+      i {
+        font-size: 17px;
+        padding-right: 3px;
+      }
+    }
+  }
+}

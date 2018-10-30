@@ -1,0 +1,45 @@
+<ion-view hide-nav-bar=true class="sprint_goods_pay_result">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button ng-show="!ctrl.retFlag && !ctrl.isSuccessFlag" class="button buttons  button-clear header-item"
+                ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">支付结果</h1>
+    </ion-header-bar>
+    <ion-content class="payResult">
+        <div class="result" ng-show="ctrl.retFlag && ctrl.isSuccessFlag">
+            <div class="pic">
+                <img ng-src="{{$root.loadImg('weixin_pay/successFlag.png')}}">
+            </div>
+            <div class="text">
+                <span>支付成功</span>
+            </div>
+            <div class="successBtn" ng-click="ctrl.paySuccessStart()">
+                <!--<img ng-src="{{ctrl.loadMyImg('game_pay_play.png')}}">-->
+                <p>去期末冲刺></p>
+            </div>
+        </div>
+
+        <div class="result" ng-show="ctrl.retFlag && !ctrl.isSuccessFlag">
+            <div class="pic">
+                <img ng-src="{{$root.loadImg('weixin_pay/failFlag.png')}}">
+            </div>
+            <div class="text">
+                <span>支付失败</span>
+                <p>{{ctrl.failTip}}</p>
+            </div>
+
+            <div class="failBtn">
+                <!--<img ng-src="{{ctrl.loadMyImg('game_pay_back.png')}}" ng-click="ctrl.payFailBack()">-->
+                <p ng-click="ctrl.payFailBack()"
+                   style="text-decoration: underline;text-decoration-color: cornflowerblue;">
+                    再试试>
+                </p>
+            </div>
+        </div>
+
+        <div class="check" ng-show="!ctrl.retFlag && !ctrl.isSuccessFlag" ng-click="ctrl.queryOrderInfo()">
+            <span>查询订单失败，</span><u>刷新</u><span>试试吧</span>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,69 @@
+<div class="roll_factual_play" ng-if="classId">
+    <div class="playBoxCenter" ng-if="reslutList.length==0">
+        <span style="color: #54b0ff">{{promptStr}}</span>
+    </div>
+
+    <div class="playBoxCenter" ng-if="reslutList.length>0 && activeType=='trophy_rank'">
+        <marquee class="scroll-block marquee_style" scrollAmount=2
+                 onclick="this.flag=!this.flag;this.flag?this.stop():this.start()">
+            <div class="resluts-content-style">
+                <div ng-repeat="item in reslutList" class="roll_play_center" ng-class="isAndroid?'roll_play_center_android':'roll_play_center_other'">
+                    <div class="item-studentName" ng-class="item.styleType==3?'school-100':item.styleType==2?'school-80':item.styleType==1?'school-60':'school-normal'" ng-bind="item.studentName"></div>
+                    <div class="item-studentName" ng-bind="item.createTime"></div>
+                    <div class="item-scheduleDeliverName" ng-show="item.type==0">完成作业《{{item.scheduleDeliverName}}》
+                    </div>
+                    <div class="item-scheduleDeliverName" ng-hide="item.type==0">改正作业《{{item.scheduleDeliverName}}》
+                    </div>
+                    <div class="item-score" ng-show="item.styleType==3||item.styleType==2||item.styleType==1">
+                        获得
+                        <label ng-class="item.styleType==3?'school-100':item.styleType==2?'school-80':item.styleType==1?'school-60':'school-normal'">
+                            {{item.styleType==3?"金杯":item.styleType==2?"银杯":"铜杯"}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </marquee>
+    </div>
+    <div class="playBoxCenter" ng-if="reslutList.length>0 && activeType=='star_rank'">
+        <marquee class="scroll-block marquee_style" scrollAmount=2
+                 onclick="this.flag=!this.flag;this.flag?this.stop():this.start()">
+            <div class="resluts-content-style">
+                <div ng-repeat="item in reslutList" class="roll_play_center" ng-class="isAndroid?'roll_play_center_android':'roll_play_center_other'">
+                    <div class="item-studentName"  ng-class="item.star==3?'school-100':item.star==2.5?'school-80':'school-normal'" ng-bind="item.name"></div>
+                    <div class="item-studentName" ng-bind="item.time"></div>
+                    <div class="item-scheduleDeliverName">成功闯关《{{item.levelName}}》</div>
+                    <div class="item-score">
+                        获得
+                        <label ng-class="item.star==3?'school-100':item.star==2.5?'school-80':'school-normal'">
+                            {{analysisStar(item.star)}}
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </marquee>
+    </div>
+    <div class="playBoxCenter" ng-if="reslutList.length>0 && activeType=='fighter_rank'">
+        <marquee class="scroll-block marquee_style" scrollAmount=2
+                 onclick="this.flag=!this.flag;this.flag?this.stop():this.start()">
+            <div class="resluts-content-style">
+                <div ng-repeat="item in reslutList" class="roll_play_center" ng-class="isAndroid?'roll_play_center_android':'roll_play_center_other'">
+                    <div class="item-studentName" ng-class="item.medalType==100?'school-100':item.medalType==200?'school-80':'school-normal'" ng-bind="item.name"></div>
+                    <div class="item-studentName" ng-bind="item.time"></div>
+                    <div class="item-scheduleDeliverName" ng-show="!!item.medalType">
+                        战胜1名{{item.medalType==100?"高手":"同学"}}
+                    </div>
+                    <div class="item-score" ng-show="!!item.medalType">
+                         获得
+                        <label ng-class="item.medalType==100?'school-100':item.medalType==200?'school-80':'school-normal'">
+                            1枚{{item.medalType==100?"金牌":item.medalType==200?"银牌":"铜牌"}}
+                        </label>
+                     </div>
+                    <div class="item-score" ng-hide="!!item.medalType">
+                         成功闯过{{item.grade}}年级第{{item.levelNum}}关
+                     </div>
+                </div>
+            </div>
+        </marquee>
+    </div>
+</div>

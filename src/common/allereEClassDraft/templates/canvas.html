@@ -1,0 +1,27 @@
+<style>
+    .container {
+        width: 100%;
+        margin: 44px auto 0 auto;
+        position: absolute;
+        top: 0px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content:center
+    }
+    .pwCanvasPaint canvas:first-child {
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(0,0,0,0.1);
+        -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(0,0,0,0.1);
+    }
+    .undo{z-index: 10}
+    .undo > button {
+        background-color: orange;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        margin-left: -48px;
+    }
+
+</style>
+<div class="button button-clear" ng-click="isShow = !isShow;backAll()" style="font-size: 30px"><i ng-class="{'ion-ios-compose':!isShow,'ion-ios-compose-outline':isShow}"></i></div>

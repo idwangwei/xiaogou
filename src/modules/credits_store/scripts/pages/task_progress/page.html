@@ -1,0 +1,189 @@
+<ion-view hide-nav-bar="true" class="credits-store-task-progress">
+    <ion-header-bar class="bar-new">
+        <div class="button button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+            <span class="" ng-if="ctrl.taskType!=2">我的任务</span>
+            <span class="" ng-if="ctrl.taskType==2">返回</span>
+        </div>
+    </ion-header-bar>
+    <ion-content on-scroll-complete="ctrl.scrollComplete()"  overflow-scroll="true" >
+        <ion-refresher
+                pulling-text="下拉刷新..."
+                on-refresh="ctrl.doRefresh()">
+        </ion-refresher>
+        <div class="task-progress-content">
+            <p class="task-text"  ng-bind-html="ctrl.taskInfo.title"></p>
+            <div class="task-title">
+                任务进度:
+            </div>
+            <div class="task-progress" ng-if="ctrl.progressType == 1">
+                <div class="step-one">
+                    <div class="step-num">1</div>
+                    <div class="progress-desc desc-type-{{ctrl.taskInfo.taskType}}">
+                        <p ng-repeat="description in ctrl.taskInfo.stepOneDesc">
+                            {{description}}
+                        </p>
+                    </div>
+                </div>
+                <div class="step-one step-mark" ng-if="ctrl.taskInfo.stepMarkDesc">
+                    <div class="step-num" ng-class="{false:'active'}[ctrl.taskInfo.finishCount>0]">2</div>
+                    <div class="progress-desc desc-type-3">
+                        <p ng-bind="ctrl.taskInfo.stepMarkDesc"></p>
+                    </div>
+                </div>
+                <div class="step-two">
+                    <div class="step-num" ng-class="{false:'active'}[!!ctrl.taskInfo.awardId]" ng-bind="ctrl.taskInfo.stepMarkDesc?3:2">
+                    </div>
+                    <div class="progress-desc">
+                        <p ng-bind-html="ctrl.taskInfo.stepTwoDesc"></p>
+                    </div>
+                </div>
+            </div>
+            <div style="position: relative" ng-if="ctrl.progressType == 2" class="task-progress-box">
+                <ion-scroll class="task-progress-01 task-progress-03"
+                            scrollbar-y="false" delegate-handle="taskProgress01"  has-bouncing="false">
+                    <div class="progress-card-better">
+                        <div class="progress-table-container">
+                            <div class="progress-row progress-table-header">
+                                <div class="progress-col" style="width: 30%">新老师手机号</div>
+                                <div class="progress-col" style="width: 25%">姓名</div>
+                                <div class="progress-col" style="width: 15%;min-width: 64px">班级人数</div>
+                                <div class="progress-col" style="width: 30%;min-width: 95px;">领取</div>
+                                <!--<div class="progress-col" style="width: 15%;min-width: 50px;">抽奖</div>-->
+                            </div>
+                            <!-- <div class="progress-row"
+                                  ng-repeat="item in ctrl.invitList"
+                                  ng-style="{background:$index%2==1?'#ededed':'#FFFFFF'}">
+                                 <div class="progress-col" >-->
+                            <div class="progress-row " ng-repeat="item in ctrl.taskInfo.invitList"
+                                 ng-style="{background:$index%2==1?'#ededed':'#FFFFFF'}">
+                                <div class="progress-col" style="width: 30%">
+                                    <a ng-bind="item.phone" class="outstanding"></a>
+                                </div>
+                                <div class="progress-col" style="width: 25%">
+                                    <a ng-bind="item.name" class="outstanding"></a>
+                                </div>
+                                <div class="progress-col" style="width: 15%;min-width: 64px">
+                                    <a class="outstanding">
+                                        <span class="text-red">{{item.joinStudentCount}}</span>/{{item.targetStudentCount}}
+                                    </a>
+                                </div>
+                                <div class="progress-col butn-flex" style="width: 30%;min-width: 95px">
+                                    <div class="butn butn-flex butn-small"
+                                         style="background-color: #f56969;min-width: 95px;margin:0;max-width: 120px;"
+                                         ng-if="!!item.awardId&&item.canAward"
+                                         ng-click="ctrl.getReward(item.awardId)">
+                                        <!-- <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}"
+                                              style="height: 14px;margin-right: 5px">-->
+                                        <img class="butn-icon"  ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}" alt="">
+                                            领取智慧币
+                                        </p>
+                                    </div>
+                                    <div class="butn butn-flex butn-small"
+                                         style="background-color: #aaa;min-width: 95px;margin:0;max-width: 120px;"
+                                         ng-if="!!item.awardId&&!item.canAward">
+                                        <img class="butn-icon"  ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}" alt="">
+                                        已领取
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="no-data" ng-if="ctrl.taskInfo.invitList.length==0">
+                                您还未邀请任何新老师，快去邀请吧！
+                            </div>
+                        </div>
+                    </div>
+                </ion-scroll>
+                <div class="up-scroll-prompt" ng-if="ctrl.showArrow">
+                    <i class="ion-chevron-up"></i>
+                    <span>向上滑动</span>
+                </div>
+            </div>
+            <div  ng-if="ctrl.progressType == 3" style="width: 100%;position: relative;">
+                <ion-scroll class="task-progress-01 task-progress-03" has-bouncing="false"  scrollbar-y="false">
+                    <div class="progress-card-better">
+                        <div class="progress-table-container">
+                            <div class="progress-row progress-table-header">
+                                <div class="progress-col" style="width: 50%">学生姓名</div>
+                                <div class="progress-col" style="width: 50%">完成学习任务情况</div>
+                                <div class="progress-col" style="width: 20%;min-width: 95px;max-width: 120px">领取</div>
+                            </div>
+                            <div class="progress-row" ng-repeat="group in ctrl.stuDoneTaskList" style="border-bottom: 5px solid #fff">
+                                <div class="progress-col" style="width: 100%">
+                                    <div class="progress-row" ng-repeat="studyTask in group.studentList"
+                                         ng-style="{background:$index%2==0?'#ededed':'#FFFFFF'}">
+                                        <div class="progress-col" style="width: 50%;padding:0">
+                                            <a ng-bind="studyTask.studentName" class="outstanding"></a>
+                                        </div>
+                                        <div class="progress-col" style="width: 50%;padding:0">
+                                            <a ng-bind="'完成'+studyTask.finishCount+'个学习任务'" class="outstanding"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progress-col get-award-butn"
+                                     style="width: 20%;min-width: 95px;max-width: 120px">
+                                    <div class="get_reward_butn"
+                                         ng-click="ctrl.getReward(group.awardId)"
+                                         ng-if="group.type=='unAward'"
+                                         style="background-color:#f56969">
+                                        <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                                        <p>领取智慧币</p>
+                                    </div>
+                                    <div class="get_reward_butn"
+                                         ng-if="group.type=='award'"
+                                         style="background-color:#afafaf">
+                                        <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                                        <p>已领取</p>
+                                    </div>
+                                    <!--<div class="get_reward_butn"
+                                         ng-if="group.type=='unFinish'"
+                                         style="background-color:#afafaf">
+                                        <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                                        <p>待完成</p>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="no-data" ng-if="ctrl.stuDoneTaskList.length==0">
+                                还没有学生完成考点任务，快去提醒吧！
+                            </div>
+                        </div>
+                    </div>
+
+                </ion-scroll>
+                <div class="up-scroll-prompt" ng-if="ctrl.showArrow">
+                    <i class="ion-chevron-up"></i>
+                    <span>向上滑动</span>
+                </div>
+            </div>
+
+            <div class="task-butn">
+                <div class="butn" style="background-color: #61b3ef" ng-click="ctrl.gotoDoTask()" ng-if="ctrl.progressType!=1||!ctrl.taskInfo.awardId">
+                    {{ctrl.taskInfo.doTask}}
+                </div>
+                <div class="butn butn-flex" style="background-color: #f56969"
+                     ng-if="ctrl.progressType==1 && ctrl.taskInfo.canAward"
+                     ng-click="ctrl.getReward()">
+                    <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}"
+                         style="height: 14px;margin-right: 5px">
+                    <p style="margin: 0">
+                        领取智慧币
+                    </p>
+
+                </div>
+                <div ng-style="{'display':ctrl.taskInfo.taskType==5?'':'none'}">
+                    <a ng-click="ctrl.gotoDiagnose()">去查看学生考点掌握情况>></a>
+                </div>
+            </div>
+            <span class="limit-time">
+                <i class="ion-android-time" style="margin-right: 5px"></i>
+                任务截止时间{{ctrl.taskInfo.deadline}}</span>
+        </div>
+        <div class="task-desc-info">
+            <p class="rules-title">任务规则</p>
+            <div class="rules-content" ng-if="ctrl.taskInfo.rules&&ctrl.taskInfo.rules.length>0">
+                <p ng-repeat="item in ctrl.taskInfo.rules track by $index">{{item}}</p>
+            </div>
+        </div>
+    </ion-content>
+    <get-teacher-reward ng-if="$root.getTeacherRewardFlag" rewards="ctrl.rewardInfo" refresh="ctrl.doRefresh()"></get-teacher-reward>
+</ion-view>

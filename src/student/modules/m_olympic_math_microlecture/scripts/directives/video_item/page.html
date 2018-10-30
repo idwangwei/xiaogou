@@ -1,0 +1,146 @@
+<div class="video-item-page-box" ng-click="handleClick($event)">
+    <!--视频控件菜单栏-->
+    <div class="video-menu-bar-layer ng-hide" ng-show="isShowMenuBar">
+        <div class="top-bar">
+            <i class="icon ion-ios-arrow-back" ng-click="alertBackPopup()"></i>
+            <span ng-bind="videoConfig.text"></span>
+        </div>
+        <div class="bottom-bar">
+            <div class="parse-play-btn" ng-class="{'btn-filter':showKeyboard || showOption ||!!showContinueBtn}" ng-click="playOrParseVideo($event)">
+                <img ng-src="{{getBtnImg()}}" alt="">
+            </div>
+            <div class="play-process-bar">
+                <div class="process-current-time"></div>
+
+                <!--答题进度条-->
+                <div class="question-ans-process-bar">
+                    <div ng-repeat="item in ansResultArr"
+                         class="ans-process-item"
+                         ng-class="{'ans-process-item-show':item.ansRight}">
+
+                        <div class="process-item-left"></div>
+                        <div class="process-item-middle"></div>
+                        <div class="process-item-right" ng-bind="$index+1"></div>
+
+                    </div>
+                </div>
+
+                <div class="process-total-time"></div>
+            </div>
+        </div>
+    </div>
+
+    <video class="video js-video teach-video" preload="auto" poster="./images/teach_poster.jpg"
+           style="display: none;pointer-events: none">
+
+        <source ng-src="{{videoUrl(videoConfig.videoSrcPath)}}" type="video/mp4">
+    </video>
+    <canvas class="canvas js-canvas video-item-page teach-canvas"></canvas>
+
+    <video ng-if="!isAndroid" crossOrigin="anonymous" class="video js-video teacher-video">
+        <source src="" type="video/mp4">
+    </video>
+    <div ng-if="!isAndroid" class="teacher-canvas-box">
+        <canvas class="canvas js-canvas video-item-page teacher-canvas"></canvas>
+    </div>
+
+
+
+    <video-keyboard ng-if="showKeyboard"
+                    show-keyboard="showKeyboard"
+                    confirm-callback="confirmQuestionAns(answer)">
+
+    </video-keyboard>
+    <video-option ng-show="showOption" class="ng-hide"
+                  option-arr="currentNeedAnsQuestion"
+                  confirm-callback="confirmQuestionAns(answer)">
+
+    </video-option>
+
+
+<!--
+    &lt;!&ndash;答题正确动画&ndash;&gt;
+    <div class="question-ans-right-animation" ng-show="showRightAnimation">
+        <audio ng-src="{{$root.loadMicrolectureImg('video/m_right_animation_audio.mp3')}}"></audio>
+        <div class="right-animation"  ng-show="showRightAnimation"></div>
+    </div>
+
+    &lt;!&ndash;答题错误动画&ndash;&gt;
+    <div class="question-ans-wrong-animation" ng-show="showWrongAnimation">
+        <audio ng-src="{{$root.loadMicrolectureImg('video/m_wrong_animation_audio.mp3')}}"></audio>
+        <div class="wrong-animation" ng-show="showWrongAnimation"></div>
+    </div>
+-->
+
+    <!--视频交互答错弹出框-->
+    <div class="video-wrong-confirm-backdrop" ng-show="showWrongConfirm">
+        <div class="video-wrong-confirm-box">
+           <!-- <div class="confirm-title">
+                <img ng-src="{{$root.loadMicrolectureImg('video/m_video_confirm_title.png')}}" alt="">
+            </div>-->
+            <div class="confirm-content">
+<!--
+                <div class="content-info"><p>答错啦~</p></div>
+-->
+                <div class="content-btn-box">
+                    <div class="content-btn-back" ng-click="handleBackBtn($event)">
+                        <img ng-src="{{$root.loadMicrolectureImg('video/m_video_confirm_btn_back.png')}}" alt="">
+                    </div>
+                   <!-- <div ng-click="handleRedoBtn()" class="content-btn-redo"
+                         ng-class="{'btn-filter':currentNeedAnsQuestion.reSelectCount>1}">
+                        <img ng-src="{{$root.loadMicrolectureImg('video/m_video_confirm_btn_redo.png')}}" alt="">
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--视频播放结束，弹出框-->
+    <div class="video-ended-confirm-backdrop" ng-show="showEndedConfirm">
+        <div class="ended-confirm-box">
+            <div class="ended-confirm-title">
+                <img ng-src="{{$root.loadMicrolectureImg('video/m_video_ended_title.png')}}" alt="">
+            </div>
+            <div class="ended-confirm-content">
+                <img alt=""
+                     ng-src="{{$root.loadMicrolectureImg(isUnitStepOneRight === 'true' ? 'video/m_video_go_step_3.png':'video/m_video_go_step_1.png')}}">
+            </div>
+            <div class="ended-confirm-bottom">
+                <img ng-src="{{$root.loadMicrolectureImg('video/m_video_ended_btn_1.png')}}" ng-click="replayVideo()" alt="">
+                <img ng-src="{{$root.loadMicrolectureImg('video/m_video_ended_btn_2.png')}}" ng-click="backUrl()" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <!--视频缓冲显示加载-->
+    <div class="video-loading-box" ng-show="showLoading">
+        <ion-spinner icon="bubbles"></ion-spinner>
+    </div>
+
+    <!--继续播放按钮-->
+    <div class="video-pause-continue-btn" ng-show="showContinueBtn===2">
+        <div ng-click="continuePlayVideo($event)">
+            <img ng-src="{{$root.loadMicrolectureImg('video/m_video_continue_btn.png')}}" alt="">
+        </div>
+    </div>
+
+    <!--讲解继续-->
+    <div class="video-pause-continue-btn" ng-show="showContinueBtn===3">
+        <div ng-click="continuePlayVideo($event)">
+            <img  style="height: 44px" ng-src="{{$root.loadMicrolectureImg('video/m_video_continue_btn2.png')}}" alt="">
+        </div>
+    </div>
+
+    <div class="video-play-pause-icon" ng-show="isVideoPlay">
+        <div class="video-play-pause-line" ng-class="{'video-play-pause-icon-animation':isVideoPlay}">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!--<img ng-src="{{$root.loadMicrolectureImg('video/m_video_laba2.png')}}" alt="">-->
+    </div>
+
+</div>
+
+

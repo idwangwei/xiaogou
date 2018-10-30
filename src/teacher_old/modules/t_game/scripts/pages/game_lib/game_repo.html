@@ -1,0 +1,93 @@
+<ion-view align-title="center" hide-nav-bar="true" class="game_repo_file pane">
+    <style>
+        .col-md-3, .col-xs-6 {
+            padding: 5px;
+            float: left;
+        }
+
+        @media screen and (min-width: 600px) {
+            .col-md-3 {
+                width: 25%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .col-xs-6 {
+                width: 50%;
+            }
+        }
+    </style>
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</button>
+        <h1 class="title title-center">布置游戏</h1>
+    </ion-header-bar>
+
+    <ion-content class="bank_content" overflow-scroll="true">
+        <div ng-if="!ctrl.gr_selected_textbook.id && ctrl.hasNoGameMsg"
+             style="text-align: center;padding: 20px;font-size: 16px;">{{ctrl.hasNoGameMsg}}
+        </div>
+        <div style="height: 120%;">
+            <div class="list">
+                <div class="item item-divider item-for-img"
+                     ng-show="ctrl.gr_selected_textbook.tbName"
+                     ng-click="ctrl.textbookSelectModal.show()">
+
+                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                    <span ng-bind="ctrl.gr_selected_textbook.tbName+'('+ctrl.gr_selected_textbook.type+')'"
+                          class="first-text"></span>
+                    <span style="margin-left: 5px;" class="icon ion-ios-arrow-right"></span>
+                </div>
+
+                <div ng-repeat="data in ctrl.gr_textbook_detail_map[ctrl.gr_selected_textbook.id] track by $index+data.id"
+                     ng-class="{'last_lesson':$last}">
+                    <li class="item unit_bg" ng-click="ctrl.openOrCloseTreeNode(data,$event)">
+                            <span class="icon "
+                                  ng-class="data.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                                  style="font-weight: bold;margin-right: 5px">
+                            </span>{{data.text}}
+                    </li>
+                    <div class="list" style="margin-left: 10px;" ng-show="data.isOpened">
+                        <li class="item lesson_bg" ng-show="!data.children.length">这个单元还没有课时哦！</li>
+                        <div ng-repeat="lesson in data.children track by $index+lesson.id">
+                            <li ng-click="ctrl.selectChapterAnd2GameList(lesson,data.seq)"
+                                class="item lesson_bg">
+                                <span class="icon "
+                                      ng-class="lesson.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                                      style="font-weight: bold;margin-right: 5px">
+                                </span>{{lesson.text}}
+                            </li>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing></loading-processing>
+    <script id="gameLab.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar class="bar-balanced" align-title="center">
+                <button class="button buttons  button-clear header-item"
+                        ng-click="ctrl.textbookSelectModal.hide()">
+                    <i class="icon ion-ios-arrow-back"></i>
+                    &nbsp;&nbsp;
+                </button>
+                <h1 class="title" align-title="center">选择教材</h1>
+            </ion-header-bar>
+
+            <ion-content>
+                <ul class="list content-font-color">
+                    <li ng-repeat="textbook in ctrl.gr_textbooks"
+                        class="item" ng-click="ctrl.chooseTextbook(textbook)||ctrl.textbookSelectModal.hide()">
+
+                        <p ng-bind="textbook.tbName+'('+textbook.type+')'"></p>
+                    </li>
+                </ul>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</ion-view>
+

@@ -1,0 +1,559 @@
+@import '../../../../m_boot/less/theme01/include/_mixins';
+.platform-ios.platform-cordova:not(.fullscreen) .wxPay_select .wxPay_select_content_increase_score{
+  top:0px!important;
+}
+.wxPay_select {
+  //background-color: #EAEAE8;
+
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  .background_change(#5185F3, #7bE2EE);
+  .myHeader {
+    background: rgba(252, 111, 86, 0) !important;
+    border: none;
+    .title, .button i {
+      color: #f7ff00 !important;
+    }
+  }
+  .wxPay_select_content_increase_score{
+    top:0px !important;
+  }
+  .wxPay_select_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .wxPay_select_display_vc (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+
+  .wxPay_select_justify_content(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  .wxPay-select_ad { //广告位
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    .wxPay-select_ad_bg {
+      width: 100%;
+      height: 100%;
+      .wxPay-select_ad_bg_top {
+        background: url("../../../../m_global/sImages/weixin_pay/GTA0001.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+        position: fixed;
+        height: 50%;
+        width: 100%;
+        min-height: 300px;
+        left: 0px;
+        right: 0px;
+      }
+      .wxPay-select_ad_bg_bottom {
+        position: fixed;
+        bottom: -30px;
+        width: 100%;
+        height: 40%;
+        min-height: 300px;
+        .wxPay-select_ad_bg_bottom_left {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0005.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 100%;
+          width: 40%;
+          left: 0px;
+          bottom: 0px;
+        }
+        .wxPay-select_ad_bg_bottom_right {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0006.png") 0px 15px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 80%;
+          width: 40%;
+          right: 0px;
+          bottom: 0px;
+        }
+      }
+
+    }
+  }
+
+  .has-header {
+    top: 20px;
+  }
+  .wxPay_select_content {
+    width: 100%;
+    .scroll {
+      width: 100%;
+    }
+    .wxPay-select_ad_ios {
+      margin-top: 3%;
+    }
+    .back-button {
+      position: fixed;
+      left: 0;
+      top: 10px;
+      color: #ffffff;
+      z-index: 100;
+    }
+
+    .wxPay-select_pay_content-increase-score {
+      top: 0px !important;
+      background-color: #5185F3;
+      .display_flex(column, space-between, center);
+    }
+    .select_page_top {
+      width: 100%;
+      height: 100px;
+      min-height: 100px;
+      position: relative;
+      overflow: hidden;
+      @media screen and (min-height: 927px) {
+        height: 120px;
+      }
+      .background_change(#ce84e9,#744fcf);
+      .display_flex(row, center, center);
+      .left-img{
+        position: absolute;
+        height: 120px;
+        z-index: 100;
+        left: -70px;
+        bottom: -50px;
+      }
+      .center-img{
+        position: relative;
+        height: 55%;
+        z-index: 200;
+      }
+      .right-img{
+        position: absolute;
+        height: 220px;
+        z-index: 110;
+        right: -170px;
+        bottom: -65px;
+      }
+      /*img {
+        width: 100%;
+        max-width: 720px;
+      }
+      @media screen and (max-width: 375px) {
+        //height: auto;
+        min-height: 100px;
+       !* img {
+          width: 100%;
+          height: auto;
+        }*!
+      }
+      @media screen and (min-width: 376px) {
+        min-height: 120px;
+      !*  img {
+          width: auto;
+          height: 100%;
+        }*!
+      }*/
+
+    }
+    .goods-content {
+      width: 100%;
+      min-height: 420px;
+      max-width: 660px;
+      .display_flex(column, space-around, center);
+      @media screen and (max-height: 767px) {
+        flex: 1;
+        -webkit-flex: 1;
+      }
+
+    }
+
+    .productDetailsIncreaseScore {
+      background: #fff;
+      width: 90%;
+      //min-height: 150px;
+      font-size: 15px;
+      background: initial !important;
+      color: #ffffff;
+      font-weight: 600;
+      margin: 3% 0;
+      .item-describe {
+        font-size: 16px;
+        .display_flex(row, flex-start, flex-start);
+        @media screen and (min-height: 927px) {
+          font-size: 18px;
+        }
+        p{
+          flex: 1;
+          -webkit-flex: 1;
+        }
+      }
+    }
+    .wxPay-select_pay_content {
+      position: absolute;
+      z-index: 10;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      width: 100%;
+      height: 100%;
+
+      @media screen and (max-height: 800px) {
+        top: 0;
+      }
+      @media screen and (min-height: 800px) {
+        top: 10%;
+      }
+
+      .wxPay-select-group-buying {
+        position: fixed;
+        right: 5%;
+        top: 0px;
+        width: 15%;
+        max-width: 70px;
+        min-width: 50px;
+      }
+
+      .wxPay-select_pay_pet_content {
+        width: 100%;
+        @media screen and (max-height: 736px) {
+          height: 75px;
+        }
+        @media screen and (min-height: 737px) {
+          height: 160px;
+        }
+        .wxPay_select_display(column);
+        .wxPay_select_justify_content(center);
+        .wxPay_select_display_vc(center);
+
+        .wxPay-select_pay_pet {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          .wxPay_select_display(column);
+          .wxPay_select_justify_content(flex-start);
+          .wxPay_select_display_vc(center);
+
+          .wxPay-select_pay_pet_word {
+            @media screen and (max-height: 736px) {
+              width: 137px;
+              height: 60px;
+            }
+            @media screen and (min-height: 736px) {
+              width: 207px;
+              height: 90px;
+            }
+            background: url("../../../../m_global/sImages/weixin_pay/GTA0004.png") 0px 0px no-repeat;
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            background-repeat: round;
+          }
+          .wxPay-select_pay_pet_baby {
+            //position: absolute;
+            /* @media screen and (max-height: 736px) {
+               top: 45px;
+               width: 126px;
+               height: 50px;
+             }
+             @media screen and (min-height: 736px) {
+               width: 250px;
+               height: 100px;
+               top: 70px;
+             }*/
+            width: 75%;
+            height: 100%;
+            min-width: 200px;
+            //left: 0px;
+            //right: 0px;
+
+            //margin: auto;
+            .wxPay_select_display(row);
+            .wxPay_select_justify_content(space-around);
+            .wxPay-select_pay_pet_baby1 {
+              @media screen and (max-height: 736px) {
+                width: 76px;
+                height: 60px;
+              }
+              @media screen and (min-height: 736px) {
+                width: 127px;
+                height: 100px;
+              }
+              background: url("../../../../m_global/sImages/weixin_pay/GTA0002.png") 0px 0px no-repeat;
+              filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+              background-size: 100% 100%;
+              -moz-background-size: 100% 100%;
+              background-repeat: round;
+              z-index: 10;
+            }
+            .wxPay-select_pay_pet_baby2 {
+              @media screen and (max-height: 736px) {
+                width: 76px;
+                height: 60px;
+              }
+              @media screen and (min-height: 736px) {
+                width: 127px;
+                height: 100px;
+              }
+              background: url("../../../../m_global/sImages/weixin_pay/GTA0003.png") 0px 0px no-repeat;
+              filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+              background-size: 100% 100%;
+              -moz-background-size: 100% 100%;
+              background-repeat: round;
+              margin-left: -25px;
+              z-index: 11;
+            }
+
+          }
+
+        }
+      }
+
+      .productDetails {
+        background: #fff;
+        color: #666666;
+        width: 90%;
+        //height: 20%;
+        min-height: 150px;
+        margin: 0 5% 4% 5%;
+        font-size: 15px;
+        border-radius: 7px;
+        padding-top: 10px;
+
+        @media screen and (max-width: 568px) {
+          font-size: 16px;
+        }
+
+        @media screen and (min-width: 568px) {
+          font-size: 18px;
+        }
+
+        @media screen and (max-width: 340px) {
+          font-size: 14px;
+        }
+
+        .wxPay_select_display(column);
+        .wxPay_select_display_vc(center);
+        .wxPay_select_justify_content(center);
+
+        .describe {
+          width: 80%;
+          .display_flex(column, center, center);
+          ul {
+            width: 100%;
+            padding-left: 5%;
+          }
+          li {
+            width: 100%;
+            color: #5CF57C;
+            list-style-type: disc;
+            padding-bottom: 1%;
+          }
+          span {
+            color: #666666;
+            //white-space: nowrap;
+          }
+        }
+
+      }
+      .goods-desc-caricature {
+        width: 90%;
+        background-color: #f8ec96;
+        //margin: 0 0 5% 0;
+        margin: 3% 0;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        min-height: 120px;
+        @media screen and (min-height: 927px) {
+          margin-bottom: 20%;
+        }
+        .item-caricature{
+          width: 100%;
+          .display_flex(row,space-around,center);
+          .item-caricature-left{
+            flex: 7;
+            -webkit-flex: 7;
+            padding: 5px;
+            .display_flex(column,center,center);
+          }
+          .item-caricature-right{
+            flex: 5;
+            -webkit-flex: 5;
+            padding: 5px;
+            .display_flex(column,center,center);
+          }
+          .caricature-text{
+            background-color: #ffffff;
+            border-radius: 5px;
+            color: #343887;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 5px;
+          }
+          .caricature-img{
+            height: 50px;
+          }
+        }
+
+      }
+
+      .wxPay-select_versions_content {
+        width: 100%;
+        //height: 30%;
+        .wxPay_select_display(column);
+        .wxPay_select_display_vc(center);
+        .wxPay_select_justify_content(center);
+
+        .wxPay-select_versions { //选择版本
+          width: 90%;
+          .version_color {
+            background-color: #8D8D8D;
+          }
+          .version_color1 {
+            .background_change(#6583DF, #D279E1);
+          }
+          .item_version {
+            width: 100%;
+            padding: 5px 2px 0 2px;
+
+            margin-bottom: 6px;
+            color: #FFFFFF;
+            border-radius: 10px;
+
+            .version_content_old_num {
+              position: relative;
+              .display_flex(row, center, center);
+              margin-right: 8px;
+              img {
+                position: absolute;
+                display: inherit;
+                width: 100%;
+              }
+
+            }
+            .version_content_new_num {
+              .display_flex(row, center, center);
+
+            }
+            .version_content_new_num_sale {
+              .display_flex(column, center, center);
+
+            }
+
+            .cost_money {
+              .display_flex(row, center, center);
+            }
+            .version_content {
+              .display_flex(row, space-between, inherit);
+              font-size: 18px;
+              padding: 0px 10px 2px 10px;
+              .version_content_left {
+                .wxPay_select_display(column);
+                .wxPay_select_justify_content(space-between);
+              }
+              .version_content_right {
+                display: flex;
+                display: -webkit-flex;
+                flex-direction: column;
+                -webkit-flex-direction: column;
+                align-items: flex-end;
+                -webkit-align-items: flex-end;
+                justify-content: center;
+                -webkit-justify-content: center;
+              }
+              .version_content_share {
+                .display_flex(row, center, center);
+                padding: 5px;
+                border-radius: 8px;
+                font-size: 14px;
+                box-shadow: 0px 0px 3px 2px #bdbbc0;
+                margin-bottom: 5px;
+                p {
+                  margin: 0px 5px;
+                  font-weight: bold;
+                }
+              }
+              .version_content_num {
+                .display_flex(row, center, center);
+              }
+            }
+
+            .version_content_02 {
+              .display_flex(column, space-between, inherit);
+              font-size: 16px;
+              padding: 0px 15px 5px 15px;
+              .version_content_top {
+                margin: 0;
+              }
+              .version_content_bottom {
+                margin-top: 6px;
+                .display_flex(row, space-between, center);
+                .version_content_bottom_left {
+                  margin: 0;
+                  font-size: 14px;
+                }
+                .version_content_bottom_right {
+                  .display_flex(row, flex-end, center);
+                }
+              }
+            }
+
+          }
+
+        }
+      }
+
+      .wxPay_select_foot {
+        //height: 10%;
+        text-align: center;
+        //margin-top: 5px;
+        padding: 5px;
+        .bargain-btn{
+          width: 140px;
+          margin-right: 2px;
+        }
+        .submit_button {
+          //border-radius: 40px;
+          border: none;
+          color: #000000;
+          width: 140px;
+          height: 52px;
+          background: url("../../../../m_global/sImages/weixin_pay/payButton.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+        }
+        @media screen and (min-width: 350px) {
+          .bargain-btn{
+            width: 160px;
+            margin-right: 15px;
+          }
+          .submit_button{
+            width: 160px;
+            height: 60px;
+          }
+        }
+      }
+    }
+
+  }
+  .display_flex(@dir,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+    align-items: @align;
+    -webkit-align-items: @align;
+  }
+
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+}

@@ -1,0 +1,880 @@
+@import '../../../../m_boot/less/theme01/include/_mixins';
+
+.group_buying_create_ios {
+
+  .group_buying_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+
+  .group_buying_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  .group_buying_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+
+  }
+
+  .myHeader {
+    background: rgba(252, 111, 86, 0) !important;
+    border: none;
+    .title, .button i {
+      color: #fff !important;
+    }
+    z-index: 10 !important;
+  }
+
+  .myHeaderBack {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10 !important;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  background-color: #EBECF1 !important;
+
+  .group_create_content_title {
+
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    .background_change(#5185F3, #7bE2EE);
+
+    .group_create_content_title_bg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .group_create_content_title_word {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        z-index: 15;
+        width: 50%;
+        height: 35%;
+        max-width: 280px;
+        max-height: 240px;
+      }
+      .group_create_content_title_top {
+        background: url("../../../../m_global/sImages/weixin_pay/GTA0001.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        height: 100%;
+        width: 60%;
+        //min-height: 300px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        z-index: 10;
+      }
+      .group_create_content_title_bottom {
+        position: absolute;
+        bottom: -30px;
+        width: 100%;
+        height: 85%;
+        z-index: 12;
+
+        //min-height: 300px;
+        .group_create_content_title_bottom_left {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0005.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 100%;
+          width: 35%;
+          left: 0px;
+          bottom: 0px;
+          z-index: 13;
+        }
+        .group_create_content_title_bottom_right {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0006.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 80%;
+          width: 30%;
+          right: 0px;
+          bottom: 0px;
+          z-index: 13;
+        }
+      }
+
+    }
+
+  }
+
+  .overflow-scroll {
+    -webkit-overflow-scrolling: auto !important;
+  }
+
+  .formSelectSet(@index) {
+    .mFormSelect {
+      max-width: 100% !important;
+      width: 100% !important;
+      .currentSelected {
+        padding: 0px 5px !important;
+      }
+      .options-wrap {
+        z-index: @index;
+      }
+    }
+    .mFormSelect.active {
+      .options-wrap {
+        top: 25px !important;
+      }
+    }
+  }
+
+  .group_create_content_body {
+    .group_buying_display(column);
+    .group_buying_justify(center);
+    .group_buying_align(center);
+    .group_create_content_body_asd {
+      width: 100%;
+      text-align: center;
+      color: #397FC6;
+      margin-bottom: 10px;
+    }
+    .group_create_content_body_type {
+      margin: 4% 5% 0 5%;
+      .group_buying_display(row);
+      .group_buying_justify(center);
+      .group_buying_align(center);
+
+      span {
+        font-size: 16px;
+        color: #696B78;
+      }
+
+      .group_create_content_type {
+        margin: 5px 10px;
+        overflow: initial;
+        .formSelectSet(20);
+        width: 105px;
+      }
+
+    }
+
+    //团主栏
+    .group_create_content_body_planner {
+      width: 100%;
+      position: relative;
+      .group_buying_display(column);
+      .group_buying_align(center);
+
+      .leader_table_header {
+        .group_buying_display(row);
+        .group_buying_justify(center);
+        .group_buying_align(center);
+        width: 95%;
+        color: #696B78;
+      }
+      .table_col {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .table_col_01 {
+        width: 30%;
+        min-width: 110px;
+        max-width: 150px;
+      }
+      .table_col_02 {
+        width: 20%;
+      }
+      .table_col_03 {
+        width: 25%;
+        min-width: 90px;
+        max-width: 120px;
+      }
+      .table_col_04 {
+        width: 20%;
+      }
+
+      .form_select_type {
+        overflow: initial;
+        .formSelectSet(19);
+        min-width: 95px;
+      }
+
+      .leader_table_content {
+        .group_buying_display(row);
+        .group_buying_justify(center);
+        .group_buying_align(center);
+        width: 95%;
+        height: 40px;
+        background-color: #ffffff;
+        border: solid 1px #1E4E7B;
+        border-radius: 5px;
+        color: #8E91A4;
+        input {
+          border: solid 1px #d9d9d9;
+          border-radius: 4px;
+          size: 20px;
+          height: 22px;
+          width: 100%;
+          color: #8E91A4;
+        }
+        .leader_list {
+          position: absolute;
+          text-align: left;
+          background-color: #fbfdfe;
+          opacity: 1;
+          padding: 5px;
+          border: solid 1px #d9d9da;
+          border-radius: 3px;
+          top: 20px;
+          //left: 3%;
+          z-index: 100;
+        }
+        .errorType{
+          position: absolute;
+          z-index: 20;
+          top: 30px;
+          color: #ea5a1a;
+        }
+
+      }
+    }
+
+    //团员栏
+    .group_create_content_body_member {
+      width: 100%;
+      .group_buying_display(column);
+      .group_buying_align(center);
+      margin: 5% 0;
+
+      .member_table_header {
+        .group_buying_display(row);
+        .group_buying_justify(center);
+        .group_buying_align(center);
+        width: 95%;
+        color: #696B78;
+      }
+      .table_col {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .table_col_01 {
+        width: 30%;
+        min-width: 110px;
+        max-width: 150px;
+      }
+      .table_col_02 {
+        width: 20%;
+      }
+      .table_col_03 {
+        width: 25%;
+        min-width: 90px;
+        max-width: 120px;
+      }
+      .table_col_04 {
+        width: 20%;
+      }
+
+      .form_select_type {
+        overflow: initial;
+        .formSelectSet(19);
+        min-width: 95px;
+      }
+
+      .member_table_content {
+        position: relative;
+        width: 95%;
+        background-color: #ffffff;
+        border: solid 1px #a8afb6;
+        border-radius: 5px;
+        //overflow-y: scroll;
+        .member_table_content_list {
+          position: relative;
+          .group_buying_display(row);
+          .group_buying_justify(center);
+          .group_buying_align(center);
+          background-color: #efecea;
+          height: 45px;
+          color: #8E91A4;
+          input {
+            border: solid 1px #bdb8b8;
+            border-radius: 4px;
+            size: 20px;
+            height: 22px;
+            width: 100%;
+            color: #8E91A4;
+            min-width: 105px;
+          }
+
+          .member_user_list {
+            position: absolute;
+            text-align: left;
+            background-color: #f3f3f3;
+            opacity: 1;
+            padding: 5px;
+            border: solid 1px #d9d9da;
+            border-radius: 3px;
+            z-index: 50;
+          }
+          .member_input_name {
+            padding: 0;
+
+            p {
+              position: absolute;
+              z-index: 20;
+              top: 30px;
+              color: #ea5a1a;
+            }
+          }
+        }
+        .member_table_content_list:nth-child(2n+0) {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+    .member_table_totle {
+      width: 100%;
+      margin: 3% 0;
+      .group_buying_display(row);
+      .group_buying_justify(flex-end);
+      .group_buying_align(center);
+      .totle_left {
+        width: 50%;
+      }
+      .totle_right {
+        width: 50%;
+      }
+    }
+
+  }
+  .foot_div {
+    position: fixed;
+    bottom: 0px;
+
+    height: 70px;
+    background-color: #ebecf1;
+    background-size: 0;
+
+    width: 100%;
+    text-align: center;
+    .submit_button {
+      border: none;
+      color: #000000;
+      width: 160px;
+      height: 60px;
+      background: url("../../../../m_global/sImages/weixin_pay/groupBuy02.png") 0px 0px no-repeat;
+      background-size: 100% 100%;
+    }
+
+  }
+  .select-bar {
+    color: #8E91A4;
+    position: relative;
+    text-align: center;
+    //width: 120px;
+    height: 30px;
+    border: solid 1px #d9d9d9;
+    border-radius: 5px;
+    background-color: #ffffff;
+    i {
+      color: #6dace4;
+      margin-left: 10px;
+      font-size: 28px;
+      vertical-align: text-top;
+    }
+    //.position-right {
+    //  position: absolute;
+    //  top: 9px;
+    //  right: 7px;
+    //  font-size: 20px;
+    //}
+    .ui-select {
+      text-align: center;
+      height: 34px;
+      line-height: 34px;
+      width: 100%;
+      .select-time-icon {
+        vertical-align: sub;
+        font-size: 18px;
+        color: #7a7a73;
+        margin-left: 10px;
+      }
+      select {
+        position: absolute;
+        left: 0px;
+        top: -10px;
+        opacity: 0;
+        border: none;
+        background: #c0e9f8;
+        height: 38px;
+        line-height: 38px;
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+.group_buying_create {
+
+  .group_buying_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+
+  .group_buying_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  .group_buying_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+
+  }
+
+  .myHeader {
+    background: rgba(252, 111, 86, 0) !important;
+    border: none;
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  background-color: #EBECF1 !important;
+  .has-header {
+    top: 0px !important;
+  }
+
+  .myHeaderBack {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10 !important;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+  .group_create_content_title {
+    position: absolute;
+    z-index: 1 !important;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    .background_change(#5185F3, #7bE2EE);
+
+    .group_create_content_title_bg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .group_create_content_title_word {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        z-index: 15;
+        width: 50%;
+        height: 35%;
+        max-width: 280px;
+        max-height: 240px;
+      }
+      .group_create_content_title_top {
+        background: url("../../../../m_global/sImages/weixin_pay/GTA0001.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        height: 100%;
+        width: 60%;
+        //min-height: 300px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        z-index: 10;
+      }
+      .group_create_content_title_bottom {
+        position: absolute;
+        bottom: -30px;
+        width: 100%;
+        height: 85%;
+        z-index: 12;
+
+        //min-height: 300px;
+        .group_create_content_title_bottom_left {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0005.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 100%;
+          width: 35%;
+          left: 0px;
+          bottom: 0px;
+          z-index: 13;
+        }
+        .group_create_content_title_bottom_right {
+          background: url("../../../../m_global/sImages/weixin_pay/GTA0006.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          height: 80%;
+          width: 30%;
+          right: 0px;
+          bottom: 0px;
+          z-index: 13;
+        }
+      }
+
+    }
+
+  }
+
+  .group_create_content {
+    position: absolute;
+    top: 120px;
+    margin-bottom: 50px;
+    z-index: 8 !important;
+
+    .formSelectSet(@index) {
+      .mFormSelect {
+        max-width: 100% !important;
+        width: 100% !important;
+        .currentSelected {
+          padding: 0px 5px !important;
+        }
+        .options-wrap {
+          z-index: @index;
+        }
+      }
+      .mFormSelect.active {
+        .options-wrap {
+          top: 25px !important;
+        }
+      }
+    }
+
+    .group_create_content_body {
+      //position: relative;
+      .group_create_content_body_asd {
+        width: 100%;
+        text-align: center;
+        color: #397FC6;
+        margin-bottom: 10px;
+      }
+      .group_create_content_body_type {
+        margin: 4% 5% 0 5%;
+        .group_buying_display(row);
+        .group_buying_justify(center);
+        .group_buying_align(center);
+
+        span {
+          font-size: 16px;
+          color: #696B78;
+        }
+
+        .group_create_content_type {
+          margin: 5px 10px;
+          .formSelectSet(20);
+          width: 95px;
+        }
+
+      }
+
+      //团主栏
+      .group_create_content_body_planner {
+        position: relative;
+        min-height: 60px;
+        .group_buying_display(column);
+        .group_buying_align(center);
+
+        .leader_table_header {
+          .group_buying_display(row);
+          .group_buying_justify(center);
+          .group_buying_align(center);
+          width: 95%;
+          color: #696B78;
+        }
+        .table_col {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: center;
+        }
+        .table_col_01 {
+          width: 30%;
+          min-width: 110px;
+          max-width: 150px;
+        }
+        .table_col_02 {
+          width: 20%;
+        }
+        .table_col_03 {
+          width: 25%;
+          min-width: 95px;
+          max-width: 120px;
+        }
+        .table_col_04 {
+          width: 20%;
+        }
+
+        .form_select_type {
+          overflow: initial;
+          .formSelectSet(19);
+          min-width: 95px;
+        }
+
+        .leader_table_content {
+          .group_buying_display(row);
+          .group_buying_justify(center);
+          .group_buying_align(center);
+          width: 95%;
+          height: 40px;
+          background-color: #ffffff;
+          border: solid 1px #1E4E7B;
+          border-radius: 5px;
+          color: #8E91A4;
+          input {
+            border: solid 1px #d9d9d9;
+            border-radius: 4px;
+            size: 20px;
+            height: 22px;
+            width: 100%;
+            color: #8E91A4;
+          }
+          .leader_list {
+            position: absolute;
+            text-align: left;
+            background-color: #fbfdfe;
+            opacity: 1;
+            padding: 5px;
+            border: solid 1px #d9d9da;
+            border-radius: 3px;
+            top: 20px;
+            //left: 3%;
+            z-index: 100;
+          }
+          .errorType{
+            position: absolute;
+            z-index: 20;
+            top: 30px;
+            color: #ea5a1a;
+          }
+        }
+      }
+
+      //团员栏
+      .group_create_content_body_member {
+        .group_buying_display(column);
+        .group_buying_align(center);
+        margin: 5% 0;
+
+        .member_table_header {
+          .group_buying_display(row);
+          .group_buying_justify(center);
+          .group_buying_align(center);
+          width: 95%;
+          color: #696B78;
+        }
+        .table_col {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: center;
+        }
+        .table_col_01 {
+          width: 30%;
+          min-width: 110px;
+          max-width: 150px;
+        }
+        .table_col_02 {
+          width: 20%;
+        }
+        .table_col_03 {
+          width: 25%;
+          min-width: 95px;
+          max-width: 120px;
+        }
+        .table_col_04 {
+          width: 20%;
+
+        }
+
+        .form_select_type {
+          overflow: initial;
+          .formSelectSet(19);
+          min-width: 95px;
+        }
+
+        .member_table_content {
+          position: relative;
+          width: 95%;
+          //height: 240px;
+          //max-height: 240px;
+          background-color: #ffffff;
+          border: solid 1px #a8afb6;
+          border-radius: 5px;
+          //overflow-y: scroll;
+          .member_table_content_list {
+            position: relative;
+            .group_buying_display(row);
+            .group_buying_justify(center);
+            .group_buying_align(center);
+            background-color: #efecea;
+            height: 40px;
+            color: #8E91A4;
+            input {
+              border: solid 1px #bdb8b8;
+              border-radius: 4px;
+              size: 20px;
+              height: 22px;
+              width: 100%;
+              color: #8E91A4;
+            }
+
+            .member_user_list {
+              position: absolute;
+              //top: 20px;
+              //width: 100%;
+              text-align: left;
+              background-color: #f3f3f3;
+              opacity: 1;
+              padding: 5px;
+              border: solid 1px #d9d9da;
+              border-radius: 3px;
+              z-index: 50;
+            }
+            .member_input_name {
+              //position: relative;
+
+              p {
+                position: absolute;
+                z-index: 20;
+                top: 30px;
+                color: #ea5a1a;
+              }
+            }
+          }
+          .member_table_content_list:nth-child(2n+0) {
+            background-color: #e0e0e0;
+          }
+        }
+      }
+      .member_table_totle {
+        width: 100%;
+        margin: 3% 0;
+        .group_buying_display(row);
+        .group_buying_justify(flex-end);
+        .group_buying_align(center);
+        .totle_left {
+          width: 50%;
+        }
+        .totle_right {
+          width: 50%;
+        }
+      }
+
+    }
+  }
+
+  .group_create_content_foot {
+    //position: relative;
+    height: 70px;
+    background-color: #ebecf1;
+    background-size: 0;
+    .foot_div {
+      width: 100%;
+      text-align: center;
+      .submit_button {
+        border: none;
+        color: #000000;
+        width: 160px;
+        height: 60px;
+        background: url("../../../../m_global/sImages/weixin_pay/groupBuy02.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
+  }
+  .select-bar {
+    color: #8E91A4;
+    position: relative;
+    text-align: center;
+    //width: 95px;
+    //min-width: 95px;
+    height: 30px;
+    border: solid 1px #d9d9d9;
+    border-radius: 5px;
+    background-color: #ffffff;
+    i {
+      color: #6dace4;
+      margin-left: 10px;
+      font-size: 28px;
+      vertical-align: text-top;
+    }
+    //.position-right {
+    //  position: absolute;
+    //  top: 9px;
+    //  right: 7px;
+    //  font-size: 20px;
+    //}
+
+    .ui-select {
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      width: 100%;
+      .select-time-icon {
+        vertical-align: sub;
+        font-size: 18px;
+        color: #7a7a73;
+        margin-left: 10px;
+      }
+      select {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        opacity: 0;
+        border: none;
+        background: #c0e9f8;
+        height: 30px;
+        line-height: 30px;
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+  }
+
+}

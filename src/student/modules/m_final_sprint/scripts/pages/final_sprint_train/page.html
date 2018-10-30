@@ -1,0 +1,70 @@
+<ion-view id="final-sprint-train">
+    <loading-processing-v2></loading-processing-v2>
+    <ion-header-bar class="bar-balanced check-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">测评结果和薄弱考点</h1>
+    </ion-header-bar>
+    <div class="check-subtitle">期末全真模拟密卷（{{ctrl.selected_work.name}}）</div>
+    <div class="test-score">
+        <div class="score-box">
+            <div class="score-item">
+                <div class="item-title">首次测评成绩</div>
+                <div class="item-score">{{ctrl.resetScoreInfo.firstScore}}<i>分</i></div>
+            </div>
+            <div class="score-item" ng-if="ctrl.resetScoreInfo.modifyScore!==undefined">
+                <div class="item-title">改错后</div>
+                <div class="item-score">{{ctrl.resetScoreInfo.modifyScore}}<i>分</i></div>
+            </div>
+        </div>
+        <div class="data-box">
+            <div class="data-item">本套密卷含<span class="text-blue">{{ctrl.resetScoreInfo.total}}</span>个考点</div>
+            <div class="data-child-box">
+                <div class="data-item">
+                    掌握：<span class="text-blue">{{ctrl.resetScoreInfo.hold}}</span>
+                </div>
+                <div class="data-item">
+                    不牢固：<span class="text-red">{{ctrl.resetScoreInfo.unfirm}}</span>
+                </div>
+                <div class="data-item">
+                    未掌握：<span class="text-red">{{ctrl.resetScoreInfo.unhold}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ion-content padding="false" class="test-result">
+        <div class="result-title">
+            以下考点测评来自你的本次测评和平时作业
+        </div>
+        <div class="unit-box" ng-repeat="v in ctrl.resetKnowledgeInfo track by $index">
+            <div class="unit-title">{{ctrl.calcUnit(v.name)}}</div>
+            <div class="unit-header">
+                <span class="header-item">考点</span>
+                <span class="header-item">掌握程度</span>
+                <span class="header-item">提分方案</span>
+            </div>
+            <div class="unit-list">
+                <div class="list-item" ng-repeat="x in v.data track by $index">
+                    <div class="item-text" ng-click="ctrl.goToQuesRecord(x)">
+                        考点：<b点/> <span>{{x.knowledgeTxt}}</span>
+                    </div>
+                    <div class="item-progress {{ctrl.dicObj[x.level].class}}">
+                        <div class="progress-title">{{ctrl.dicObj[x.level].name}}</div>
+                        <div class="progress-box">
+                            <div class="progress-inner"></div>
+                        </div>
+                    </div>
+                    <div class="item-btn"  ng-click="ctrl.goToKnowledge(x)">
+                        <div class="btn-box">
+                            <div class="btn-animate" ng-if="x.hasAnimate">
+                                <div class="animate-inner"></div>
+                            </div>
+                            <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/train-btn-'+ctrl.dicObj[x.level].id+'.png')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+{
+  "code": 200,
+  "msg": "正常",
+  "classes": [
+    {
+      "id": "10000",
+      "clazzName": "二班",
+      "teacherName": "李老师",
+      "gradeName":"二年级",
+      "status": "1"
+    },
+    {
+      "id": "20000",
+      "clazzName": "四班",
+      "teacherName": "王老师",
+      "gradeName":"五年级",
+      "status": "1"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+<ion-view hide-nav-bar="true" class="organize-paper">
+    <ion-header-bar align-title="center" class="mheader" style="position: absolute;">
+        <i class="icon ion-ios-arrow-back mback-icon" style="width: 40px;height: 40px;" ng-click="ctrl.back()"> </i>
+        <h1 class="title">我要练习</h1>
+    </ion-header-bar>
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+    <div class="bar bar-subheader">
+        <div class="select-wrap">
+            <!--详情见 directives - form - select-->
+            <!--default-option默认的选项-->
+            <div>
+                <label>题量</label>
+                <form-select options="ctrl.numOptions"
+                             default-option="0" value="ctrl.quesNum" on-change="ctrl.handleChangeQuesNum"></form-select>
+            </div>
+            <div>
+                <label>难度</label>
+                <form-select options="ctrl.levelOptions" on-change="ctrl.handleChangeLevel"
+                             default-option="0" value="ctrl.level"></form-select>
+            </div>
+
+        </div>
+    </div>
+    <ion-content class="mainBody has-subheader" scroll="false">
+        <div style="margin-bottom: 10px;font-size: 16px;margin-left: 5px; min-height: 1em; line-height: 1em;">
+            选内容:(最多勾选{{ctrl.quesNum || 5}}讲)
+        </div>
+        <ion-scroll class="list-wrap-1" style="padding: 0 5px;"  delegate-handle="paperListScroll">
+            <div ng-if="ctrl.retFlag && ctrl.list && ctrl.list.length === 0 " style="padding: 10px;color: #fff;">
+                未能获取到数据！
+            </div>
+            <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullDownRefresh()" spinner="ios"></ion-refresher>
+            <div class="mitem-1"  ng-repeat="item in ctrl.list" ng-class="{selected: item.selected}">
+                <div class="one">
+                    <i ng-class="item.selected ? 'ion-ios-checkmark' :'ion-ios-circle-outline'"></i>
+                </div>
+                <div class='two'>
+                    <span style="margin-right: 10px;">第{{ctrl.convertToChinese(item.index + 1)}}讲</span>{{item.name}}
+                    <span ng-if="!ctrl.isVip"
+                          ng-style="{'color': item.index > ctrl.finalData.OLYMPIC_SELF_TRANCE_FREE_LESSON?'#b267e6':'#02bb19'}"
+                          ng-bind="item.index > ctrl.finalData.OLYMPIC_SELF_TRANCE_FREE_LESSON?'（未激活）':'（免费体验）'">
+                    </span>
+                </div>
+                <div class="three" ng-click="ctrl.goPaperDetail(item.id, item.name, item.index)"><i class="ion-ios-arrow-right"></i></div>
+                <div class="hack-click" ng-click="ctrl.handleSelect(item)"></div>
+            </div>
+
+        </ion-scroll>
+    </ion-content>
+    <ion-footer-bar align-title="left">
+        <div class="buttons" style="margin: 0 auto;">
+            <button class="button" style="width: 50%;margin: 0 auto; background: transparent;" ng-click="ctrl.organizePaper()">
+                <img ng-src="{{$root.loadImg('math/zujuan.png')}}"/>
+            </button>
+        </div>
+    </ion-footer-bar>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

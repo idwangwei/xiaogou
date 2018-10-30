@@ -1,0 +1,32 @@
+scroll-tip {
+  left: 0;
+  width: 80px;
+  position: absolute;
+  display: block;
+  padding-right: 30px;
+  background: transparent;
+  z-index: 2000;
+  .scrollTipContainer {
+    .scrollTip {
+      margin: 200px 0 0 0;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      align-items: center;
+      -webkit-align-items: center;
+      justify-content: center;
+      -webkit-align-content: center;
+      text-align: center;
+      .tipContent {
+        pointer-events: none;
+        word-break: break-all;
+        width: 26px;
+        color: #85ADE1;
+      }
+      .ion-arrow-up-c, .ion-arrow-down-c {
+        color: #85ADE1;
+      }
+    }
+  }
+}

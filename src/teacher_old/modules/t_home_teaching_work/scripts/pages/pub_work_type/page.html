@@ -1,0 +1,71 @@
+<ion-view title="布置作业" hide-nav-bar="true" class="pub_work_type">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px;color: #4A6B9D!important;">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">布置作业</h1>
+    </ion-header-bar>
+    <ion-content class="type-content">
+        <div class="type-list">
+            <div ng-click="ctrl.clickEvent(ctrl.typeList[0])" class="type-item type-desc-00">
+                <img class="type-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type01.png')}}">
+                <div class="type-desc">
+                    <p style="font-size: 18px;font-weight: 600">{{ctrl.typeList[0].name}}</p>
+                    <p ng-repeat="item in ctrl.typeList[0].desc" ng-style="{'font-weight':$last?'600':'normal'}">
+                        {{item}}</p>
+                </div>
+            </div>
+            <div ng-click="ctrl.clickEvent(ctrl.typeList[4])" class="type-item type-desc-04">
+                <img class="type-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type04.png')}}">
+                <div class="type-desc">
+                    <p style="font-size: 18px;font-weight: 600">{{ctrl.typeList[4].name}}</p>
+                    <p ng-repeat="item in ctrl.typeList[4].desc" ng-style="{'font-weight':$last?'600':'normal'}">
+                        {{item}}</p>
+                </div>
+                <img class="new-mark" ng-if="ctrl.typeList[1].newMark"
+                     ng-src="{{$root.loadImg('pub_work_type/pub_type_new.png')}}">
+            </div>
+            <div ng-click="ctrl.clickEvent(ctrl.typeList[1])" class="type-item type-desc-01">
+                <img class="type-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type02.png')}}">
+                <div class="type-desc">
+                    <p style="font-size: 18px;font-weight: 600">{{ctrl.typeList[1].name}}</p>
+                    <p ng-repeat="item in ctrl.typeList[1].desc" ng-style="{'font-weight':$last?'600':'normal'}">
+                        {{item}}</p>
+                </div>
+                <img class="new-mark" ng-if="ctrl.typeList[1].newMark"
+                     ng-src="{{$root.loadImg('pub_work_type/pub_type_new.png')}}">
+            </div>
+            <div ng-click="ctrl.clickEvent(ctrl.typeList[2])" class="type-item type-desc-02">
+                <img class="type-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type03.png')}}">
+                <div class="type-desc">
+                    <p style="font-size: 18px;font-weight: 600">{{ctrl.typeList[2].name}}</p>
+                    <p ng-repeat="item in ctrl.typeList[2].desc" ng-style="{'font-weight':$last?'600':'normal'}">
+                        {{item}}</p>
+                </div>
+            </div>
+            <div ng-click="ctrl.clickEvent(ctrl.typeList[5])" class="type-item type-desc-05"  ng-if="ctrl.hasAreaEvaluation">
+                <img class="type-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type05.png')}}">
+                <div class="type-desc">
+                    <p style="font-size: 18px;font-weight: 600">{{ctrl.typeList[5].name}}</p>
+                    <p ng-repeat="item in ctrl.typeList[5].desc" ng-style="{'font-weight':$last?'600':'normal'}">
+                        {{item}}</p>
+                </div>
+            </div>
+            <div ng-click="ctrl.clickEvent(ctrl.typeList[6])" class="type-item type-desc-06" ng-if="ctrl.isShowPersonalQb">
+                <img class="type-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type06.png')}}">
+                <img class="new-mark" ng-src="{{$root.loadImg('pub_work_type/pub_type_new01.png')}}">
+                <div class="type-desc">
+                    <p style="font-size: 18px;font-weight: 600">{{ctrl.typeList[6].name}}</p>
+                    <p ng-repeat="item in ctrl.typeList[6].desc" ng-style="{'font-weight':$last?'600':'normal'}">
+                        {{item}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <teaching-guide ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.hasPubedSimulationWork"
+                    current-show-ele="ctrl.currentShowEle"
+                    step-count="2"
+                    current-step="ctrl.currentStep"
+                    get-high-light-ele="ctrl.getHighLightEle()">
+    </teaching-guide>
+</ion-view>

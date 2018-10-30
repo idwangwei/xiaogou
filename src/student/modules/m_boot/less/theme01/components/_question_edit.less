@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+body {
+  overflow: hidden;
+}
+
+//上方按钮菜单
+.menu {
+  height: 50px;
+  margin: 5px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.edit-title {
+  width: 100%;
+  height: 200px;
+}
+
+//编辑区域
+.edit-section {
+  width: 100%;
+  height: 500px;
+  text-align: left;
+  .editor {
+    margin: auto;
+    position: relative;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    -ms-transition: width 0.5s;
+    -o-transition: width 0.5s;
+    transition: width 0.5s;
+  }
+  .editor-for-pad {
+    text-align: left;
+    width: 915px;
+    height: 500px;
+    box-sizing: border-box;
+    border: 1px solid #5bc0de;
+    background: #ffffff;
+    overflow: hidden;
+    //添加边距
+    padding-left: 10px;
+    padding-top:10px;
+
+    .card {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 1.0);
+      .q_title {
+        padding-top: 5px;
+        background-color: gold;
+        height: auto;
+      }
+      .q_content {
+        background-color: #11c1f3;
+      }
+      .q_ans {
+        background-color: midnightblue;
+        display: block;
+        padding: 12px 0 5px 16px;
+        font-size: 16px;
+      }
+    }
+  }
+  .list-inset {
+    overflow: hidden;
+    margin: 20px 10px;
+    border-radius: 2px;
+    background-color: #fff;
+  }
+}
+
+.editor-for-phone {
+  width: 330px;
+  height: 500px;
+  box-sizing: border-box;
+  border: 1px solid #5bc0de;
+  background: #ffffff;
+  overflow: hidden;
+
+}
+
+.editor-for-title {
+  width: 915px;
+  height: auto;
+  box-sizing: border-box;
+  border: 1px solid #5bc0de;
+  background: goldenrod;
+  overflow: hidden;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 400;
+
+}
+
+.editor-for-answer {
+  width: 800px;
+  height: 568px;
+  box-sizing: border-box;
+  border: 1px solid #5bc0de;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.preview {
+  width: 100%;
+  height: 2000px;
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -ms-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
+  iframe {
+    width: 100%;
+    height: 600px;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
+    -ms-transition: width 0.5s;
+    -o-transition: width 0.5s;
+    transition: width 0.5s;
+  }
+
+}
+
+.modal-lg {
+  width: 1200px;
+}
+
+.img {
+  display: inline-block;
+}
+

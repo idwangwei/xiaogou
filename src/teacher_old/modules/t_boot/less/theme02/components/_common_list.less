@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+
+common-list{
+  width: 100%;
+  display: block;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #ffffff;
+  padding: 0px;
+  common-list-item {
+    display: block;
+    min-height:70px;
+    width: 100%;
+    background-color: #11c1f3;
+    margin-bottom: 5px;
+    position: relative;
+        list-left {
+          display: block;
+          position: absolute;
+          left: 5px;
+          top: 5px;
+          width: 60px;
+          height: 60px;
+          z-index: 999;
+        }
+        list-left img{
+          width: 60px;
+          height: 60px;
+        }
+        list-center{
+          display: block;
+          .flex_1;
+          min-height: 70px;
+          position: relative;
+          //padding-left: 70px;
+          padding-right: 30px;
+          .center{
+            overflow: auto;
+            .first {
+              .white-bold(160, 13px);
+              .overflow-ellipsis;
+              margin-top: 5px;
+              height:20px;
+            }
+            .second {
+              .white-bold(140, 13px);
+              .overflow-ellipsis;
+              height: 20px;
+            }
+            .third {
+              .white-bold(140, 13px);
+              .overflow-ellipsis;
+              height: 20px;
+            }
+          }
+          }
+        list-right{
+          display: block;
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          width: auto;
+          height: 60px;
+          text-align: center;
+          .display-flex;
+          .com_align_item;
+          .com_justify-content;
+          i{
+            color: #ffffff;
+            font-size: 30px;
+            padding: 3px;
+          }
+        }
+      }
+  }

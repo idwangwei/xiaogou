@@ -1,0 +1,104 @@
+<div class="pwContainer">
+    <!--<img ng-src="{{ctrl.imgBg}}" alt="" style="width: 400px; position: absolute;">-->
+
+
+    <div style="display: none">
+    <div pw-color-selector="['#000', '#9CB199', '#CF3759', '#485247', '#E77547', '#D38E47', '#0A6A74', '#153974']"
+         color="ctrl.selectedColor"></div>
+    <input type="range" min="1" max="50" ng-model="ctrl.selectedLineWidth" class="lineWidthSelector">{{ctrl.selectedLineWidth}}
+    </div>
+
+    <div class="fnBtns" style="margin-bottom: 3px;">
+        <div style="display: none">
+            <input type="range" min="20" max="80" ng-model="ctrl.bgGridWidth" class="lineWidthSelector" ng-change="ctrl.zoomInBgGrid()">
+        </div>
+        <!--<span class="btn-pic {{ctrl.version < 1 ? '' : 'btn-selected'}}">
+            <button ng-click="ctrl.undo()"
+                    ng-disabled="ctrl.version < 1">回退
+            </button>
+        </span>-->
+        <span class="btn-pic undo">
+            <button ng-click="ctrl.undo()">
+                回退
+                <!--ng-disabled="ctrl.version < 1"-->
+            </button>
+        </span>
+        <span class="btn-pic undo-all">
+            <button ng-click="ctrl.undoAll()">
+                重画
+            </button>
+        </span>
+
+        <span class="btn-pic ans" ng-show="ctrl.isShowBtnAns">
+            <button ng-click="ctrl.toggleAns()">
+                答案
+                <span>
+                    {{(ctrl.share.similarityNum*100).toFixed(2) +"%"}}
+                </span>
+            </button>
+        </span>
+
+        <div style="display: none">
+        <span class="btn-pic {{ctrl.accuracy ? 'btn-selected': ''}}">
+            <button ng-click="ctrl.toggleAccuracy()">
+                局部匹配 {{ctrl.accuracy ? ctrl.punish : ""}}
+            </button>
+        </span>
+        <input type="range" min="-5" max="5" ng-model="ctrl.coordOffset" class="lineWidthSelector">
+        <br>
+        </div>
+
+        <span class="btn-pic similarity">
+            <button ng-click="ctrl.toggleBtnAns()">
+                <span style="display: none;">
+                    {{
+                    ctrl.share.calculating
+                        ? (ctrl.status = 1)
+                        : (ctrl.version == 0 || ctrl.share.similarityNum < 0.01)
+                            ? (ctrl.status = 2) : (ctrl.share.similarityNum < 0.6)
+                                ? (ctrl.status = 3) : (ctrl.share.similarityNum < 0.8)
+                                    ? (ctrl.status = 4) : (ctrl.status = 5)
+                    }}
+                </span>
+                <span style="color: #222959" ng-show="ctrl.status === 1">计算中...</span>
+                <span style="color: #00A000" ng-show="ctrl.status === 2"></span>
+                <span style="color: #e34d48" ng-show="ctrl.status === 3">没有画好</span>
+                <span style="color: #e77a21" ng-show="ctrl.status === 4">画得还行</span>
+                <span style="color: #3fc954" ng-show="ctrl.status === 5">画得很好</span>
+            </button>
+        </span>
+
+        <span class="btn-pic toggle-pencil" >
+            <button ng-click="ctrl.togglePencilMode()">
+                <img ng-show="ctrl.drawingMode === 1" ng-src="{{ctrl.modelPencilSrc1}}" alt="">
+                <img ng-show="ctrl.drawingMode === 2" ng-src="{{ctrl.modelPencilSrc2}}" alt="">
+            </button>
+        </span>
+        <!--<span class="btn-pic similarity">
+            <button ng-click="ctrl.similarity()">
+                相似度
+                {{
+                ctrl.share.calculating
+                    ? "计算中... "
+                    : (ctrl.share.similarityNum*100).toFixed(2) +"%"
+                }}
+                {{
+                    (ctrl.share.similarityNum == 0)
+                        ? "" : (ctrl.share.similarityNum < 0.6)
+                            ? "没有画好" : (ctrl.share.similarityNum < 0.8)
+                                ? "画得还行" : "画得很好"
+                }}
+            </button>
+        </span>-->
+
+        <div style="display: none">
+            <span style="font-size: 14px;color: gray;">精度：{{ 5 + +ctrl.coordOffset }}px</span>
+        </div>
+
+    </div>
+
+    <div version="ctrl.version"
+         options="{uuid: ctrl.uuid, undo: true, heightLoaded:ctrl.heightLoaded, globalScale:ctrl.globalScale, width: ctrl.imgWidth, height: ctrl.imgHeight, color: ctrl.selectedColor, lineWidth: ctrl.selectedLineWidth, imageSrcBg: ctrl.imageSrcBg, imageSrcAns: ctrl.imageSrcAns, correctnessStatus: ctrl.status, bridge: ctrl.bridge  }">
+        drawing
+    </div>
+</div>

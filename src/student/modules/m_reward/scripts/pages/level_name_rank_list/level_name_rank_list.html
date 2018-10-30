@@ -1,0 +1,50 @@
+<ion-view class="level-rank-list-page">
+   <!-- <ion-header-bar class="bar-balanced level-rank-list-head" align-title="center">
+        <button class="button buttons button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #1E446A"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #1E446A">称号排行榜</h1>
+    </ion-header-bar>-->
+
+    <div class="level-rank-list-title" ng-class="ctrl.isIos()? 'level-rank-list-title-ios': 'level-rank-list-title-normal'">
+        <img class="level-rank-list-title-man" ng-src="{{$root.loadImg('levelNameRank/level_name_rank_man.png')}}">
+        <div class="level-rank-list-title-word">
+            <img class="level-rank-list-title-word-img" ng-src="{{$root.loadImg('levelNameRank/level_name_rank_title.png')}}">
+        </div>
+        <button class="button buttons button-clear header-item" ng-click="ctrl.back()"
+            ng-style="{'top': ctrl.isIos() ? '20px': '0'}">
+            <i class="ion-ios-arrow-back my-back-btn" style="font-size: 35px !important;"></i>&nbsp;&nbsp;
+        </button>
+    </div>
+    <ion-content class="level-rank-list-content" style="bottom: 0px;" ng-class="ctrl.isIos()? 'level-rank-list-content-ios': 'level-rank-list-content-normal'">
+        <div style=" text-align: center;">
+            <span style="padding: 10px;" ng-if="!ctrl.selectedClazz && ctrl.initFlag">您还没有添加班级，赶快去家长端添加班级吧！</span>
+            <span style="padding: 10px;" ng-if="!ctrl.initFlag && ctrl.selectedClazz">正在获取数据，请稍候...</span>
+            <span style="padding: 10px;" ng-if="ctrl.initFlag && ctrl.selectedClazz && !ctrl.getDataSuccessFlag">获取数据失败，请切换页面重试！</span>
+        </div>
+
+        <div ng-if="ctrl.levelRankList.length>0 && ctrl.initFlag" class="level-rank-list">
+            <ion-list>
+                <ion-item class="item level-rank-list-item" ng-repeat="levelInfo in ctrl.levelRankList"
+                          ng-class="levelInfo.seq == 1 && $index== 0 ? 'level-rank-first' :(levelInfo.userId == ctrl.user.userId ? 'level-rank-me' : '')">
+                    <div class="level-rank-item-left">
+                        <img class="head-img" ng-src="{{ctrl.getHeadImg(levelInfo.avator)}}">
+                        <div class="level-rank-item-name">
+                            <span class="user-name">{{levelInfo.userName}}</span>
+                            <p class="common-font">lv.{{levelInfo.level}}</p>
+                        </div>
+                    </div>
+                    <div class="level-rank-item-middle">
+                        <img class="level-item-img" ng-src="{{ctrl.loadLevelNameImg(levelInfo)}}">
+                        <span>{{levelInfo.title}}</span>
+                    </div>
+                    <div class="level-rank-item-right">
+                        <img  ng-if="levelInfo.seq == 1" ng-src="{{$root.loadImg('levelName/number_0.png')}}">
+                        <span ng-if="levelInfo.seq!=1" ng-class="levelInfo.seq < 4 ? 'span-red' : ''">{{levelInfo.seq}}</span>
+                    </div>
+                </ion-item>
+            </ion-list>
+
+        </div>
+    </ion-content>
+</ion-view>

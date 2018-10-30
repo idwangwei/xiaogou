@@ -1,0 +1,198 @@
+<ion-view align-title="center" hide-nav-bar="true" class="system_login_file">
+    <!--<div class="bar bar-header login-bg-color">
+        <div class="app-description">
+            <p style="margin: 0px">教育部《现代教育技术》杂志社</p>
+            <p style="margin: 0px">中国基础教育人工智能研究基地</p>
+        </div>
+    </div>-->
+    <div class="login-backdrop popup-fade" ng-if="showInputHelpFlag"  data-area-name="floating-layer"
+         ng-click="hideInputHelp($event)">
+        <div class="scroll-wrap">
+            <ion-scroll  direction="y"  delegate-handle="namePicScroll" class="name-pic-scroll">
+                <h4 class="name-pic-title">请选择帐号</h4>
+                <h4 class="name-pic-tip-wrap"  ng-click="changeInputName()">
+                    <span>都不是，</span >
+                    <span class="name-pic-tip">
+                        输入新号码<i class="icon ion-chevron-right" style="margin-left: 5px;"></i></span>
+                </h4>
+                <div class="name-pic" ng-repeat="person in userList"
+                     ng-style="{'background-color':$odd?'#eeeeee':''}"
+                     ng-click="autoCompleteName(person)">
+                    <img ng-src="{{$root.loadImg(person.gender==0?'person/parent-f.png':'person/parent-m.png')}}">
+                    <!--<span class="user-name" ng-bind="person.hasOwnProperty('gender')?person.name:''"></span>-->
+                    <span class="user-name" ng-bind="'家长'"></span>
+                    <span class="login-name" ng-bind="person.hasOwnProperty('gender')?person.loginName:person"></span>
+                </div>
+
+            </ion-scroll>
+        </div>
+    </div>
+    <ion-content padding="true" class="login-bg-color" style="top:25px;">
+
+        <div class="app-description">
+            <p style="margin: 0px;font-size: 18px;">教育部主管中国基础教育</p>
+            <p style="margin: 0px;font-size: 18px;">人工智能研究基地&nbsp;&nbsp;&nbsp;出品</p>
+        </div>
+
+        <div class="login-img-box">
+            <div class="img-box">
+                <img  ng-src="{{$root.loadImg('other/login-logo-p.png')}}"/>
+            </div>
+
+        </div>
+
+        <div class="role-box row" style="text-align: center">
+            <div class="col cole-role" >
+                <div class="circle-btn circle-btn-un-active" ng-click="switchSystem('student')">
+                    <span>学生</span>
+                </div>
+            </div>
+
+            <div class="col cole-role" >
+                <div class="circle-btn circle-btn-un-active" ng-click="switchSystem('teacher')">
+                    <span>教师</span>
+                </div>
+
+            </div>
+            <div class="col cole-role">
+                <!--<div class="circle-btn-out-active">
+                    <div class="circle-btn circle-btn-active">
+                        <span>家长</span>
+                    </div>
+                </div>-->
+                <div class="circle-btn-out-active animate-btn">
+                    <div class="circle-btn circle-btn-active">
+                    </div>
+                </div>
+                <div class="role-name">
+                    <div class="circle-btn-out-active">
+                        <div class="circle-btn circle-btn-active">
+                            <span>家长</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--登陆表单 start-->
+        <ng-form novalidate="novalidate" id="loginForm" name="loginForm" class="list login-form" ng-show="!needQRCode">
+            <div class="form-wrap">
+               <!-- <div class="name-pic-wrap" ng-if="showInputHelpFlag">
+                    <ion-scroll  direction="y"  delegate-handle="namePicScroll" class="name-pic-scroll">
+                        <div class="name-pic" ng-repeat="person in userList"
+                             ng-click="autoCompleteName(person)">
+                            <img ng-src="{{$root.loadImg(person.gender==0?'person/parent-f.png':'person/parent-m.png')}}">
+                            <span class="user-name" ng-bind="person.hasOwnProperty('gender')?person.name:''"></span>
+                            <span class="login-name" ng-bind="person.hasOwnProperty('gender')?person.loginName:person"></span>
+                        </div>
+                    </ion-scroll>
+
+                </div>-->
+                <!--账号-->
+                <div class="item item-input block-input border-10 row-better">
+                    <i class="ion ion-person" ></i>
+                    <input type="text" ng-model="formData.userName" name="userName" placeholder="家长账号" required
+                           id="userName"
+                           ng-blur="checkUserName()"
+                           ng-focus="showInputHelp('focus')"
+                           ng-change="showInputHelp('change')"
+                           ng-keydown="handleKeyBackspace($event)"
+                    />
+                    <a href="" class="forget-pass login-name-list-btn" ng-click="forgetLoginName()" >账号列表</a>
+                </div>
+                <!--账号格式错误提示-->
+                <!--<div style="color: red;font-size: 12px;padding-left: 16px;margin: auto;width: 90%;"
+                     ng-style="{'visibility': checkAccount()?'hidden':'visible'}">
+
+                    家长账号格式不对
+                </div>-->
+                <!--密码-->
+                <div class="item item-input block-input border-10 row-better row-margin">
+                    <i class="ion ion-locked" ></i>
+                    <input type="password" ng-model="formData.password" id="password" name="password" placeholder="家长密码"
+                           required/>
+                    <!--<div href="" class="forget-pass" ng-click="goPage('reset_pass')">忘记密码?</div>-->
+                </div>
+
+                <div class="row  img-validate-block row-better" ng-if="needVCode">
+                    <div class="item item-input border-10">
+                        <input type="text" ng-model="formData.vCode" name="vCode" placeholder="验证码"
+                               ng-blur="validateImageVCode()" required/>
+                    </div>
+                    <img ng-src="{{validateImageUrl}}" class="border-10"/>
+                    <i class="button icon ion-refresh button-clear  defined_bg border-10" ng-click="getValidateImage()"></i>
+                </div>
+                <div class="row  phone-validate-block row-better" ng-if="needTelVC">
+                    <div class="item item-input border-10">
+                        <input type="text" placeholder="手机验证码" ng-model="formData.telVC" name="telVC" required/>
+                    </div>
+                    <button class="button button-positive border-10" ng-click="getTelVC()" ng-disabled="telVcBtn">{{telVcBtnText}}
+                    </button>
+                </div>
+            </div>
+
+            <div class="password-bar">
+                <div class="remenber-pw">
+                    <i class="ion-android-checkbox-blank" style="color: #ffffff" ng-if="!savePWflag"
+                       ng-click="savePasswordFlag()"></i>
+                    <i class="ion-android-checkbox" style="color: #000000" ng-if="savePWflag"
+                       ng-click="savePasswordFlag()"></i>
+                    <a class="forget-pass">记住密码</a>
+                </div>
+                <div>
+                    <a class="forget-pass" ng-click="goPage('reset_pass')">忘记密码?</a>
+                </div>
+            </div>
+
+            <div style="margin-left: 5%;margin-right: 5%;">
+                <div class="button button-block  border-20 btn-login"
+                     type="submit"
+                     ng-click="handleSubmit()">
+                    登录
+                </div>
+            </div>
+
+            <div class="register-butn">
+                <a class="how_do_do" ng-click="goPage('register')">一键注册学生和家长账号</a>
+                <i class="ion-chevron-right" style=" color: #47b447;"></i>
+            </div>
+
+           <!-- <div class="display-flex row-better" style="padding:0 !important;">
+                <div class="flex_1">
+                    <div class="button button-block border-20 btn-login"
+                         type="submit"
+                         ng-click="handleSubmit()">
+                        登录
+                    </div>
+                </div>
+                <div class="flex_1">
+                    <div class="button button-block border-20  btn-register"
+                         ng-click="goPage('register')">
+                        注册
+                    </div>
+                </div>
+
+            </div>-->
+        </ng-form>
+        <!--登陆表单 end-->
+       <!-- <div class="row" style="margin-top: 15px;text-align: center"  ng-show="!needQRCode">
+            <div class="col-50" ng-if="showForgetFlag" ui-sref="forget_user_name">  <a href="" class="forget-pass">忘记账号?</a> </div>
+            <div class="col-50" ng-if="showForgetFlag" ui-sref="reset_pass"> <a href="" class="forget-pass">忘记密码?</a></div>
+           &lt;!&ndash; <a href="" class="forget-pass" ng-if="!showForgetFlag" ui-sref="reset_pass">忘记密码?</a>&ndash;&gt;
+        </div>-->
+        <!--<div class="row row-better" style="margin-top:10px;padding-left: 15px;padding-right: 15px"  >-->
+            <!--<span  class="forget-pass" style="color: red">-->
+                <!--建议：在手机上安装登录家长端，在平板或电脑上安装登录学生端。下载安装：xuexiV.com-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div style="text-align: center" ng-show="needQRCode">-->
+            <!--<br/>-->
+            <!--<p>你当前在非手机上登录，请使用手机客户端登录，扫描二维码后直接登录</p>-->
+            <!--<img src="{{QRcode}}" alt=""/>-->
+            <!--<p style="color: red;font-size: 18px">{{msg}}</p>-->
+        <!--</div>-->
+    </ion-content>
+</ion-view>
+

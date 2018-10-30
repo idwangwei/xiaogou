@@ -1,0 +1,35 @@
+<div class="change_head_img" ng-show="$root.showChangeHeadFlag">
+    <div class="change_head_img_backdrop" ng-click="hideChangeHead()">
+        <div class="change_head_img_content" ng-click="stopEvent($even)">
+            <!--<i class="icon ion-close change_head_close" ng-click="hideChangeHead()"></i>-->
+            <div class="change_head_title">
+                <p>当前头像:</p>
+                <img class="item-img" ng-src="{{$root.loadImg('head_images/user_head'+currtenHead+'.png')}}">
+            </div>
+            <!--<div style="height: 85%;">-->
+            <ion-scroll zooming="true" direction="y" style="width: 100%"
+                        class="scroll-content-style">
+                <!--<div class="imgs-content" ng-style="{'height':getHeight()}">-->
+                <div class="imgs-content">
+                    <div class="img-list" ng-repeat="item in headImgs" ng-click="chooseHeadImg(item,$even)">
+                        <div class="img-border" ng-style="{'border':item.status?'solid 6px #2196F3':'none'}">
+                            <img class="item-img" ng-src="{{$root.loadImg('head_images/user_head'+item.index+'.png')}}">
+                            <!--<img class="choose-mark" ng-src="{{chooseBtn}}" ng-if="item.status">-->
+                        </div>
+
+                    </div>
+                </div>
+            </ion-scroll>
+            <div class="chang-head-btn">
+                <div class="change-btn" ng-click="changeHead($event)">
+                    <p>更换头像</p>
+                </div>
+                <!--<img ng-src={{changeBtn}} ng-click="changeHead()">-->
+            </div>
+            <!--</div>-->
+
+        </div>
+
+    </div>
+
+</div>

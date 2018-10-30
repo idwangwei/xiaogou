@@ -1,0 +1,51 @@
+<ion-modal-view hide-nav-bar="true" class="error_q_records_file">
+    <ion-header-bar style="background: #C2EDF8" align-title="center">
+    <button class="button back-button buttons  button-clear header-item common-back-btn"
+            ng-click="ctrl.hideModal()"
+            style="color: #4a6b9d;">
+        <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+    </button>
+    <h1 class="title"
+        style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+        ng-bind="'错题记录'">
+    </h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" overflow-scroll="false">
+        <div  style="margin-bottom:140px;height: 120%">
+            <div class="image-type-question">
+                <div class="question-content card card-better small_q_bg">
+                    <!--改错列-->
+                    <div ng-repeat="(key,doneInfo) in ctrl.record.smallQStuAnsMapList" ng-init="doneIndex=$index;doneLast=$last">
+                        <div class="smallq-title" ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}">
+                            <div class="text-div-adapt" ng-click="ctrl.showSmallQ(doneInfo)">
+                                <label class="text-adapt">
+                                    <span ng-bind="'该题第'+(doneIndex+1)+'次错误记录'" class="'done-more'"></span>
+                                  <!--  <span ng-if="doneIndex==0" ng-bind="'首次做 '"></span>
+                                    <span ng-if="doneIndex>=1" ng-bind="'改错后'"></span>-->
+                                    <span  ng-bind="doneInfo.createTime"></span>
+                                    <span class="correct-icons">
+                                        <img ng-show="doneInfo.passFlag==0" ng-src="{{$root.loadImg('other/icon_no.png')}}">
+                                        <img ng-show="doneInfo.passFlag==1" ng-src="{{$root.loadImg('other/icon_yes2.png')}}">
+                                        <img ng-show="doneInfo.passFlag==2" ng-src="{{$root.loadImg('other/icon_yes3.png')}}">
+                                        <img ng-show="doneInfo.passFlag==3" ng-src="{{$root.loadImg('other/grading-icon.png')}}">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="img-align-right">
+                                <span ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                    <img ng-src="{{!doneInfo.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}"
+                                    >
+                                </span>
+                            </div>
+                        </div>
+                        <div compile-html="ctrl.record.question" show_type="correct" current_q_input="doneInfo.inputList"  ng-if="doneInfo.showQFlag"
+                             class="qcontext" state-name="error_q_records">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

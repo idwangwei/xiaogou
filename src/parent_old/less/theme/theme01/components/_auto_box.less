@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import "./../include/_mixins";
+
+auto-box-con {
+  display: block;
+  min-height: 200px;
+  auto-box-row {
+    .display-flex;
+    box-sizing: border-box;
+    width: 100%;
+    auto-box-block {
+      .flex_1;
+      .display-flex;
+      border: 2px solid #efeff4;
+      position: relative;
+      .checker {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25px;
+        height: 25px;
+        border-left: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        border-bottom-left-radius: 5px;
+        .check-icon {
+          right:-3px;
+          top:-5px;
+          z-index: 500;
+          position: absolute;
+          color: #ff7e85;
+          font-size: 30px;
+        }
+      }
+      .block-content {
+        width: 100px;
+        margin: 20px auto 0 auto;
+
+        img {
+          width: 60px;
+          margin-left: 20px;
+        }
+        div {
+          .white-bold(150, 17);
+          text-align: center;
+        }
+
+      }
+    }
+  }
+}

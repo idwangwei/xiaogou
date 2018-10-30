@@ -1,0 +1,135 @@
+.oral-question {
+  background: #DAF5FE;
+}
+
+.eraser {
+  width: 55px;
+}
+
+.do_question_file .header-bar {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.do_question_file .footer-butn {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.do_question_file .scrollTipHide {
+  -webkit-animation: scroll-bar-hide 1s;
+}
+
+.do_question_file .scrollTipShow {
+  -webkit-animation: scroll-bar-show 1s;
+}
+
+.oral_do_question_file .scroll {
+  padding-top: 30px;
+}
+
+@keyframes scroll-bar-hide /*Firefox*/ {
+  0% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);;
+  }
+  100% {
+    transform: translate3d(-50px, 0, 0);
+    -webkit-transform: translate3d(-50px, 0, 0);;
+  }
+}
+
+@-webkit-keyframes scroll-bar-hide /*Safari and Chrome*/ {
+  0% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);;
+  }
+  100% {
+    transform: translate3d(-50px, 0, 0);
+    -webkit-transform: translate3d(-50px, 0, 0);;
+  }
+}
+
+@keyframes scroll-bar-show /*Firefox*/ {
+  0% {
+    transform: translate3d(-50px, 0, 0);
+    -webkit-transform: translate3d(-50px, 0, 0);;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);;
+  }
+}
+
+@-webkit-keyframes scroll-bar-show /*Safari and Chrome*/ {
+  0% {
+    transform: translate3d(-50px, 0, 0);
+    -webkit-transform: translate3d(-50px, 0, 0);;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);;
+  }
+}
+
+.do_question_file .tip-cards {
+  position: absolute;
+  z-index: 900;
+  top: 0;
+  bottom: 0;
+  right: -150px;
+  margin: auto;
+  width: 150px;
+  -webkit-animation: tip-cards-show-hide 5s;
+}
+
+@keyframes tip-cards-show-hide /*Firefox*/ {
+  0% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  5% {
+    transform: translate3d(-160px, 0, 0);
+    -webkit-transform: translate3d(-150px, 0, 0);
+  }
+  95% {
+    transform: translate3d(-160px, 0, 0);
+    -webkit-transform: translate3d(-150px, 0, 0);
+  }
+  100% {
+    transform: translate3d(150px, 0, 0);
+    -webkit-transform: translate3d(150px, 0, 0);
+  }
+}
+
+@-webkit-keyframes tip-cards-show-hide /*Safari and Chrome*/ {
+  0% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  10% {
+    transform: translate3d(-150px, 0, 0);
+    -webkit-transform: translate3d(-150px, 0, 0);
+  }
+  90% {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(150px, 0, 0);
+    -webkit-transform: translate3d(150px, 0, 0);
+  }
+}
+

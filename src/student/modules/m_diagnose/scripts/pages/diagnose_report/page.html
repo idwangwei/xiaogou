@@ -1,0 +1,112 @@
+<ion-view hide-nav-bar="true" class="diagnose_report_file">
+    <ion-header-bar align-title="center" class="bar-better" style="background: #FCF3CB;"     >
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title"
+            style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+            ng-bind="'考点'+ctrl.pointIndex+'诊断报告'">
+        </h1>
+    </ion-header-bar>
+    <!-- <ion-header-bar style="background: #83DCF5" align-title="center">
+         <button class="button back-button buttons  button-clear header-item common-back-btn"
+                 ng-click="ctrl.go('home.diagnose_do_question02','back')"
+                 style="color: #4a6b9d;">
+             <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+         </button>
+         <h1 class="title"
+             style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+             ng-bind="'考点诊断报告'">
+         </h1>
+         <div class="buttons">
+             <button class="button button-clear" ng-click="ctrl.hideAllQ()">
+                 <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+             </button>
+         </div>
+     </ion-header-bar>-->
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+    <ion-content has-header="false"  overflow-scroll="true" ng-style="{bottom:ctrl.showBottomFlag?'44px':''}">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+        <div class="top-report-wrap">
+            <!-- <p class="report-title">考点诊断报告</p>-->
+            <!-- <p class="point-f" ng-bind="ctrl.chapterSelectPoint.parentContent"></p>-->
+            <p class="point-c" ng-if="ctrl.chapterSelectPoint.knowledgeName">
+                <span>考点：</span><span ng-bind="ctrl.chapterSelectPoint.knowledgeName"></span>
+            </p>
+            <div class="report-wrap">
+                <div class="master-all-msg" ng-bind="ctrl.report.allMsg.value" ng-if="ctrl.report.allMsg.value">
+                </div>
+                <div class="report-row" ng-repeat="master in ctrl.report.masterList">
+                    <div class="img-area" ng-if="master.sort!=3">
+                        <img ng-src="{{$root.loadImg(master.showImg)}}">
+                    </div>
+                    <div class="text-area" ng-if="master.sort!=3">
+                        <span ng-bind="master.value"></span>
+                    </div>
+                    <div class="master-status-wrap" ng-if="master.sort===3">
+                        <img ng-src="{{$root.loadImg(master.showImg)}}" ng-click="ctrl.showMasterTip()">
+                    </div>
+                </div>
+                <!-- <div class="master-status-wrap" >
+                     <img ng-src="{{$root.loadImg(doQCtrl.masterDegreeUrl)}}" >
+                 </div>-->
+            </div>
+        </div>
+        <div class="records-title" ng-if="ctrl.qRecords&&ctrl.qRecords.length">
+            做题记录：
+        </div>
+        <div ng-repeat="record in ctrl.qRecords " ng-init="smallQIndex = $index"
+             ng-style="{'margin-bottom':$last&&bigLast?'140px':''}">
+            <div class="image-type-question">
+                <div class="question-content card card-better small_q_bg">
+                    <!--改错列-->
+                    <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index" ng-init="doneIndex=$index;doneLast=$last">
+                        <div class="smallq-title" ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}">
+                            <div class="text-div-adapt" ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                <div class="text-adapt">
+                                    <span ng-bind="'第'+(smallQIndex+1)+'题'" ng-class="{'done-more':doneIndex>=1}"></span>
+                                    <span ng-if="doneIndex==0" ng-bind="'首次做 '"></span>
+                                    <span ng-if="doneIndex>=1" ng-bind="'改错后'"></span>
+                                    <span  ng-bind="doneInfo.createTime"></span>
+                                    <span class="correct-icons">
+                                        <img ng-show="doneInfo.passFlag==0" ng-src="{{$root.loadImg('other/icon_no.png')}}">
+                                        <img ng-show="doneInfo.passFlag==1" ng-src="{{$root.loadImg('other/icon_yes2.png')}}">
+                                        <img ng-show="doneInfo.passFlag==2" ng-src="{{$root.loadImg('other/icon_yes3.png')}}">
+                                        <img ng-show="doneInfo.passFlag==3" ng-src="{{$root.loadImg('other/grading-icon.png')}}">
+                                    </span>
+                                </div>
+                                <div class="record-type"><span ng-bind="doneInfo.keyValuePairs.key==='1'?'( 该记录来自作业 )':'( 该记录来自单题 )'"></span></div>
+                            </div>
+                            <div class="img-align-right">
+                                <span ng-click="doneInfo.showQFlag=!doneInfo.showQFlag">
+                                    <img ng-src="{{!doneInfo.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}"
+                                    >
+                                </span>
+                            </div>
+                        </div>
+
+                        <div compile-html="record.question" show_type="correct" current_q_input="doneInfo.inputList"
+                             ng-if="doneInfo.showQFlag" class="qcontext">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="ctrl.fetchQRecordsWithLoadMore();"
+                             distance="1%" ng-if="ctrl.moreFlag">
+        </ion-infinite-scroll>
+
+        <div class="tip" ng-if="ctrl.hasNoRecords()">
+            <span>该知识点下，暂无做题记录。</span>
+        </div>
+    </ion-content>
+    <loading-processing ng-if="ctrl.firstLoading"></loading-processing>
+    <ion-footer-bar class=" bar bar-footer page_footer" ng-if="ctrl.showBottomFlag">
+        <button class="button-clear flex_1 page_button" style="color: #2B4E72;font-weight: bold;" ng-click="ctrl.gotoDiagnoseDoQues()">
+            <span ng-if="!$root.isIncreaseScore"
+                  ng-bind="ctrl.hasNoRecords()?'开始驯服':ctrl.chapterSelectPoint.level==4?'已驯服，去喂养':'继续驯服'"></span>
+
+            <span ng-if="$root.isIncreaseScore" ng-bind="ctrl.chapterSelectPoint.level==4?'去练习':'去掌握'"></span>
+        </button>
+    </ion-footer-bar>
+</ion-view>

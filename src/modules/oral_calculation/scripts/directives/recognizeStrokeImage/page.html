@@ -1,0 +1,35 @@
+<div class="recognize-stroke-image-page" ng-if="showRecognizeStroke">
+    <div class="top-bar" ng-style="{'padding-top': getPaddingTop()}">
+        <button ng-click="back()">返回输入</button>
+        <button ng-click="showScreenshot()">显示原图</button>
+    </div>
+    <p style="color:red; margin: 5px 10px;">如果你认为你的书写是可接受的，但识别结果错误，请点击“修正识别结果”按钮</p>
+    <div class="img-list" ng-style="{'max-height':getHeight()+'px'}">
+        <div class="item-img" ng-repeat="item in allImgs">
+            <div class="img-content">
+                <img ng-src="{{hostUrl +item.imgUrl}}">
+            </div>
+
+            <p style="width: 100%;text-align: left;margin: 0;">识别结果：</p>
+            <p style="width: 100%;text-align: center;font-weight: bold;">{{item.recognizeResult}}</p>
+            <p style="width: 100%;text-align: left;" ng-if="item.sample">修正为：{{item.sample}}</p>
+            <span class="recognize-btn" ng-if="!item.sample" ng-click="showSampleTypes($index)">修正识别结果</span>
+            <button style="background-color: #4ab783;" ng-if="!!item.sample" ng-click="cancelAddToSample($index)">取消修正</button>
+        </div>
+        <div class="floor-btn" ng-click="addAssignModle()">
+            保存修正
+        </div>
+    </div>
+    <div class="sample-types" ng-if="showSampleTypesFlag" ng-click="hideSampleTypes()">
+        <div class="sample-types-content" ng-click="stopEvent($event)">
+            <div class="sample-types-item" ng-repeat="type in allSampleTypes"
+                 ng-click="selectSampleType(type)">{{type}}
+            </div>
+        </div>
+    </div>
+    <div class="sample-types" ng-if="showScreenshotFlag" ng-click="hideScreenshot()">
+        <div class="screen-shot-img">
+            <img style="max-width: 100%;" ng-src="{{getScreenshot()}}">
+        </div>
+    </div>
+</div>

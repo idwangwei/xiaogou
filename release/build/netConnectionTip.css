@@ -1,0 +1,27 @@
+#net_connection_tip {
+    position: absolute;
+    z-index: 1000;
+    margin: auto;
+    width: 100%;
+    padding: 5px;
+    top: 45px;
+    background-color: hsl(58, 81%, 63%);
+}
+
+#net_connection_tip .warning_icon {
+    font-size: 18px;
+    color: red;
+    display: inline-block;
+    margin-top: 5px;
+    vertical-align: bottom;
+}
+
+#net_connection_tip .close_icon {
+    font-size: 21px;
+    color: red;
+    display: inline-block;
+    margin-top: 4px;
+    position: absolute;
+    vertical-align: bottom;
+    right: 10px;
+}

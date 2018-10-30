@@ -1,0 +1,99 @@
+<ion-view title="评价反馈" hide-nav-bar="true" class="work_praise_detail_file">
+    <ion-header-bar  align-title="center" style="background-color: #f9df66 !important;background-image: initial;">
+        <div class="button button-clear common-back-btn" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color:#4a6b9d" ng-bind="'评价反馈'"></h1>
+    </ion-header-bar>
+    <ion-content    ng-init="work=ctrl.wData.correctedPraise.work" overflow-scroll="true" style="height: auto!important;" class="work_praise_detail_file_content">
+       <!-- <div class="bg-box">
+            <img ng-src="{{$root.loadImg('work_praise/work_praise_bg_inner.png')}}" width="100%"  height="100%">
+            <div class="bg-inner-box">
+                <div class="bg-inner-box1">
+                    <img ng-src="{{$root.loadImg('work_praise/work_praise_bg.png')}}"  width="100%">
+                </div>
+            </div>
+        </div>-->
+        <div class="bg-box">
+            <img class="praise-title-img" ng-src="{{$root.loadImg('praise/praise_title.png')}}">
+            <div class="award-desc" ng-if="ctrl.wData.correctedPraise.showType==2">
+                <div class="award-desc-top" ng-bind="ctrl.wData.correctedPraise.photoName+'老师颁发给你'"></div>
+                <div class="award-desc-content">
+                    <img ng-src="{{$root.loadImg(ctrl.getPraiseImg(ctrl.wData.correctedPraise.work.teacherPraise.img))}}">
+                    <p ng-bind="ctrl.wData.correctedPraise.work.teacherPraise.text"></p>
+                </div>
+            </div>
+
+            <div class="award-desc"  ng-if="ctrl.wData.correctedPraise.showType==3">
+                <div class="award-desc-top" ng-bind="ctrl.wData.correctedPraise.photoName+'家长颁发给你'"></div>
+                <div class="award-desc-content">
+                    <img ng-src="{{$root.loadImg(ctrl.getPraiseImg(ctrl.wData.correctedPraise.work.parentPraise.img))}}">
+                    <p ng-bind="ctrl.wData.correctedPraise.work.parentPraise.text"></p>
+                </div>
+            </div>
+
+        </div>
+        <!--老师反馈情况 -->
+        <div ng-if="ctrl.wData.correctedPraise.showType==2" style="margin: 5% 0;width: 100%;max-width: 620px;">
+            <div class="praise-content" ng-if="work.teacherPraise.type<6&&work.teacherPraise.type>=1">
+                <div class="praise-logo">
+                    <img ng-src="{{$root.loadImg('praise/praise_logo.png')}}" alt="" />
+                </div>
+                <div class="praise-main">
+                    <div class="praise-title">
+                        老师给予你的奖励
+                    </div>
+                    <div class="praise-img-div">
+                        <img ng-src="{{$root.loadImg(work.teacherPraise.img)}}">
+                        <span style="border: none" ng-bind="work.teacherPraise.text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message_content" ng-class="ctrl.wData.correctedPraise.gender?'man-color':'woman-color'">
+                <div class="msg-title">
+                    老师评语：
+                </div>
+                <div class="face">
+                    <img ng-src="{{$root.loadImg(ctrl.wData.correctedPraise.headImg||'person/teacher-m.png')}}" />
+                </div>
+                <div class="message">
+                    <label ng-bind="ctrl.wData.correctedPraise.message||''"></label>
+                </div>
+            </div>
+        </div>
+        <!--家长反馈情况 -->
+        <div ng-if="ctrl.wData.correctedPraise.showType==3" style="margin: 5% 0">
+            <div class="praise-content" ng-if="work.parentPraise.type<10&&work.parentPraise.type>=7">
+                <div class="praise-logo">
+                    <img ng-src="{{$root.loadImg('praise/praise_logo.png')}}" alt="" />
+                </div>
+                <div class="praise-main">
+                    <div class="praise-title">
+                        家长给予你的奖励
+                    </div>
+                    <div class="praise-img-div" ng-init="img = work.parentPraise.img">
+                        <img ng-src="{{$root.loadImg(img)}}">
+                        <span style="border: none" ng-bind="work.parentPraise.text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message_content"
+                 ng-class="pMsg.gender?'man-color':'woman-color'"
+                 ng-repeat="pMsg in ctrl.wData.correctedPraise.parentMsgList">
+                <div class="msg-title">
+                    家长评语：
+                </div>
+                <div class="face">
+                    <img ng-src="{{$root.loadImg(pMsg.headImg)}}"/>
+                </div>
+                <div class="message">
+                    <label ng-bind="pMsg.message||''"></label>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>
+

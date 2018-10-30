@@ -1,0 +1,65 @@
+<style type="text/css">
+    .tip_first{
+        margin-top: 15px;
+    }
+    .tip_second {
+        margin-left: 50px;
+    }
+    .forget_user_name_file .card{
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+    .forget_user_name_file .bg{
+        background-color:#d2f7ef!important;color: black!important;
+    }
+    .forget_user_name_file p{
+        color: black!important;
+    }
+</style>
+<ion-view title="忘记账号" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title " style="font-family: 'Microsoft YaHei'">忘记账号</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="forget_user_name_file">
+        <p style="font-size: 18px">在本机已注册成功的帐号：</p>
+        <div class="text-title card" ng-repeat="pInfo in pUserNameList">
+            <div class="list " >
+                <div class="item item-divider bg" style="background: #accbf9!important;color: #293d69!important;">
+                    注册时间：
+                    <br>
+                    {{pInfo.createTime}}
+                </div>
+                <div class="item tip_second" style="padding: 4px 16px;">
+                    <div class="row-margin" >
+                        家长账号：
+                        <br>
+                         <span style="font-size: 22px">
+                             <span >
+                                 <span ng-bind="pInfo.pUserName.substring(0,11)">
+                                 </span>
+                                 <i style="color:red;margin-left:-4px" ng-bind="pInfo.pUserName.substring(11,pInfo.pUserName.length)"></i>
+                             </span>
+                         </span>
+                    </div>
+                </div>
+                <div ng-repeat="student in pInfo.students" class="item tip_second" style="padding: 4px 16px;">
+                    <div class="row-margin" style="margin-top: 10px">
+                        对应的孩子账号：
+                        <br>
+                         <span style="font-size: 22px">
+                             <span >
+                                 <span ng-bind="student.loginName.substring(0,11)">
+                                 </span>
+                                 <i style="color:red;margin-left:-4px" ng-bind="student.loginName.substring(11,student.loginName.length)"></i>
+                             </span>
+                         </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

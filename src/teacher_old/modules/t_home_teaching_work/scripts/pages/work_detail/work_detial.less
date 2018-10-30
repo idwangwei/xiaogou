@@ -1,0 +1,350 @@
+@charset "UTF-8";
+@import "../../../../t_boot/less/theme02/include/_mixins";
+
+.work_detail_file {
+  .oral-background {
+    background-color: #daf5fe;
+  }
+  .comment {
+    background: none !important;
+  }
+
+  /*添加样式使之与出题端保持一致*/
+  .image-type-question {
+    img {
+      vertical-align: middle;
+    }
+    p {
+      margin: 0 !important;
+    }
+  }
+  .bar-balanced {
+    background: #BCFCF8 !important;
+  }
+
+  //.q-feedback {
+  //  border-radius: 3px;
+  //  min-height: 14px;
+  //  line-height: 20px;
+  //  padding: 0px 4px;
+  //  float: right;
+  //  border: none;
+  //  background-color: #ffffff;
+  //  box-shadow: none;
+  //}
+  .big-q {
+    border: none;
+    background: none;
+    //text-align: center;
+    padding-left: 10px;
+    margin: 0;
+    @media screen and (max-width: 320px) {
+      label {
+        font-size: 18px;
+        color: #293d69;
+      }
+
+      height: 20px;
+      line-height: 20px;
+    }
+    @media screen and (min-width: 321px) and (max-width: 767px) {
+      label {
+        font-size: 22px;
+        color: #293d69;
+      }
+
+      height: 30px;
+      line-height: 30px;
+    }
+    @media screen and (min-width: 768px) {
+      label {
+        font-size: 30px;
+        color: #293d69;
+      }
+
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+
+  .small-q {
+    border: none;
+    margin: 10px 5px 10px 5px;
+    position: relative;
+    background: #E2FEDA
+  }
+  .item { //去掉线条
+    border: none;
+    background: #FBF7DB;
+  }
+  .first {
+    margin-top: 10px;
+  }
+  .two {
+    margin-top: 3px;
+  }
+  .item-label {
+    padding: 5px;
+  }
+
+  .image-type-question {
+    .question-content {
+      .done-more {
+        visibility: hidden;
+      }
+      .smallq-title {
+        color: #293d69;
+        width: 100%;
+        position: relative;
+        text-align: left;
+        @media screen and (max-width: 320px) {
+          line-height: 31px;
+          height: 34px;
+          .text-adapt {
+            max-width: 74%;
+            font-size: 16px;
+            vertical-align: middle;
+          }
+
+          .corrected-score {
+            color: #fe5345;
+            font-size: 16px;
+          }
+
+          .actual-score {
+            font-size: 19px;
+          }
+
+          .deserve-score {
+            font-size: 16px;
+          }
+
+          .correct-icons {
+            img {
+              width: 16px;
+            }
+          }
+
+          .img-align-right {
+            //padding-top: 1px;
+            min-width: 100px;
+            img {
+              width: 22px;
+              height: 22px;
+            }
+          }
+
+        }
+        @media screen and (min-width: 321px) and (max-width: 767px) {
+          line-height: 37px;
+          height: 35px;
+          .corrected-score {
+            color: #fe5345;
+            font-size: 17px;
+          }
+
+          .text-adapt {
+            font-size: 19px;
+          }
+
+          .actual-score {
+            font-size: 20px;
+          }
+
+          .deserve-score {
+            font-size: 17px;
+          }
+
+          .correct-icons {
+            img {
+              width: 18px;
+            }
+          }
+
+          .img-align-right {
+            min-width: 125px;
+            max-width: 140px;
+            height: 100%;
+            //margin-top: -2px;
+            img {
+              width: 22px;
+              height: 22px;
+            }
+          }
+
+        }
+        @media screen and (min-width: 768px) {
+          line-height: 45px;
+          height: 45px;
+          .text-adapt {
+            font-size: 22px;
+            vertical-align: middle;
+          }
+
+          .actual-score {
+            font-size: 22px;
+          }
+
+          .deserve-score {
+            font-size: 22px;
+          }
+
+          .correct-icons {
+            img {
+              width: 20px;
+            }
+          }
+
+          .img-align-right {
+            min-width: 300px;;
+            margin-top: -2px;
+            height: 100%;
+            img {
+              width: 36px;
+              height: 36px;
+            }
+          }
+
+        }
+      }
+      .smallq-title-first {
+        background: #accbf9;
+      }
+      .smallq-title-more {
+        margin-top: 2px;
+        background: #AEE3f8;
+      }
+
+      .actual-score {
+        color: #293d69;
+      }
+      label {
+        font-size: 15px;
+        width: auto;
+      }
+      label:first-child {
+        margin-left: 10px;
+      }
+      .text-div-adapt {
+        max-width: 100%;
+      }
+      .img-align-right {
+        position: absolute;
+        text-align: right;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        .display-flex;
+        .com_align_item;
+        .com_justify-content;
+        span {
+          .flex_1;
+          text-align: center;
+        }
+        img {
+
+          //margin-top: 5px;
+          border-radius: 50%;
+          //box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+  }
+  .paper-title-box {
+    width: 100%;
+    @media all and (orientation: landscape) {
+      height: 50%;
+    }
+    @media all and (orientation: portrait) {
+      height: 32%;
+    }
+    position: relative;
+    margin-bottom: 10px;
+    .bg_t_photo {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      height: 60%;
+      max-height: 186px;
+    }
+    .bg_file {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      height: 60%;
+      max-height: 215px;
+    }
+    //background: url('../../../../tImages/work/work_detail_t.png') no-repeat;
+    .title-text-box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      text-align: center;;
+      height: 100%;
+      .text-box {
+        height: inherit;
+        .display-flex;
+        .com_flex-direction_column;
+      }
+      p {
+        margin: 0;
+        font-size: 11px;
+      }
+      .row {
+        @media screen and (max-width: 320px) {
+          padding: 0;
+          font-size: 11px;
+          .actual-score {
+            font-size: 11px;
+          }
+
+          .text-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: #4A3C37;
+          }
+        }
+        @media screen and (min-width: 321px) and (max-width: 767px) {
+          font-size: 14px;
+          .actual-score {
+            font-size: 14px;
+          }
+
+          .text-title {
+            font-size: 18px;
+            font-weight: 400;
+            color: #4A3C37;
+          }
+
+          margin: 0px;
+        }
+        @media screen and (min-width: 768px) {
+          font-size: 18px;
+          .actual-score {
+            font-size: 18px;
+          }
+
+          .text-title {
+            font-size: 24px;
+            font-weight: 400;
+            color: #4A3C37;
+          }
+
+          margin: 3px;
+        }
+        .col {
+          padding: 2px;
+        }
+        .left-col {
+          text-align: right;
+        }
+        .right-col {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+}
+

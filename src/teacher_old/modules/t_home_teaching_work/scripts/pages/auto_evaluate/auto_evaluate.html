@@ -1,0 +1,55 @@
+<ion-view title="" hide-nav-bar="true" cache-view="true" class="auto-evaluate">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <!--返回按钮-->
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">自动评价</h1>
+        <!--提示按钮-->
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content padding="false" class="auto-evaluate-content">
+        <div class="on-off-button-div">
+            <p>学生提交作业后，系统将根据学生成绩自动发送老师预设的奖励和评语。</p>
+            <div class="on-off-button"
+                 ng-style="{'background-color':ctrl.onOrOffFlag?'rgb(12, 206, 89)':'#959b9a'}"
+                 ng-click="ctrl.onOrOffClickEvent()">
+                <div class="on-off"
+                     ng-style="{'transform':ctrl.initOnOrOffFlag?'translate3d(40px, 0, 0)':'translate3d(0, 0, 0)','-webkit-transform':ctrl.onOrOffFlag?'translate3d(40px, 0, 0)':'translate3d(0, 0, 0)'}">
+                </div>
+            </div>
+        </div>
+        <div class="evaluate-list">
+            <div class="evaluate-list-item" ng-repeat="item in ctrl.levelList">
+                <div class="item-level-name">
+                    <i class="ion-record" style="color: #00A000"></i>
+                    <p ng-bind="ctrl.evaluateLevelList[item].levelName+'：'" style="margin: 0 5px 0 5px;"></p>
+                </div>
+                <div class="item-award">
+                    <span style="margin: 0">自动发送</span>
+                    <div class="award-content">
+                        <img ng-src="{{$root.loadImg(ctrl.evaluateLevelList[item].img)}}" style="height: 35px;margin-bottom: 10px;">
+                        <span class="option_word" style="font-size: 16px;padding:2px; color: #a50c0c;font-weight: 600;">
+                            {{ctrl.evaluateLevelList[item].text}}
+                        </span>
+                    </div>
+                </div>
+                <div class="item-text">
+                    <span style="margin: 0">自动评语</span>
+                    <input type="text" placeholder="请预设您的个性化评语" ng-model="ctrl.evaluateLevelList[item].msg" name="evaluateText"
+                           ng-change="ctrl.changeEvaluateText()" required/>
+                </div>
+
+            </div>
+
+        </div>
+
+    </ion-content>
+    <ion-footer-bar ng-click="ctrl.saveSetting()">
+        <p style="margin: 0;font-size: 18px;font-weight: 700">保存评语</p>
+    </ion-footer-bar>
+</ion-view>

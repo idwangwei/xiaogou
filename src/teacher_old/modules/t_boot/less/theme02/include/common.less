@@ -1,0 +1,272 @@
+@charset "UTF-8";
+
+/*==============统一强制覆盖ionic样式Start==============*/
+.input-area {
+  display: inline-block !important;
+}
+
+.tab-item-active {//主界面tab激活的字体颜色
+/*  color:#89B64B !important; */
+  color:#6B94D6 !important;
+
+}
+.bar-header{//头部背景
+  background:#fff !important;
+  /*color: #fff !important;
+  background: #89B64B !important;*/
+}
+.bar{
+  .title {//头部字体
+    color: #4A6B9D!important;
+  }
+}
+.bar-footer{//底部bar
+  background: #5c6761 !important;
+  color: #fff!important;
+}
+
+.defined_bg{  //登录前的颜色
+  background:#6B94D6 !important;
+  color: #fff !important;
+}
+
+.defined_bg_tint{
+  background:#A3B6DA !important;
+  color: #fff !important;
+}
+
+.item-divider{//选择bar，如作业、游戏的选择班级
+  /*background-color:#B8CFE4!important;*/
+  background-color:#fff !important;
+  font-size: 17px;
+  font-color: #6B94D6;
+  color: #6B94D6!important;
+  /*color:#233152!important;*/
+  /*margin: 10px auto;*/
+  span{
+    margin-left: 5px;
+  }
+}
+
+/*==============强制覆盖ionic样式End==============*/
+
+/*==============公用样式Start==============*/
+.text-font-color{//文本字体颜色
+  color: #553333!important;
+}
+
+
+.text-align-left{//文字居左
+  text-align: center
+}
+.text-align-center{//文字居中
+  text-align: center
+}
+
+.text-align-right{//文字居中
+  text-align: center
+}
+
+.border-solid{
+  border:1px solid;
+}
+
+.border-bottom-solid{
+  border-bottom:1px solid;
+}
+
+.border-color{//线条颜色
+  border-color: #D7AD97;
+}
+
+.table-header-color{//表格头部颜色
+  background: #d2f7ef;
+}
+
+.table-tr-color,.row-color{//表格行以及特别行颜色
+  background: #fbf7db;
+}
+
+.ion-item-even{//ng-repeat里的偶数行背景色
+  background: #FFF;
+  //background: #FDF8EE;
+  //background: #fefbf5;
+}
+
+.ion-item-odd{//ng-repeat里的偶数行背景色
+  background: #F3F3F3;
+  //background: #fefbf5;
+}
+
+.work-correct-font{//作业批改字体醒目样式
+  font-weight: bold;
+  font-size: 19px;
+  color:#003366;
+}
+
+.button-color{//按钮颜色，如添加、注册
+  .bar-footer;
+}
+
+
+
+.item-input-height{ //item的统一高度，用于列表数据没有时展示默认提示信息。
+  height: 40px;
+  input{
+    font-size: 18px;
+    .text-font-color;
+  }
+}
+
+.content-font-color{
+  h2,p{//整体内容的字体颜色
+    .text-font-color;
+  }
+}
+
+.theme-color{
+  color: #6B94D6;
+}
+
+.pull-icon{//如作业批改折叠和打开
+  color: #6B94D6;
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+}
+
+.card-better{//这一个版本的card样式
+  border-radius: 10px;
+  box-shadow:  0px 0px 18px #D0C4C4;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  .card-title{
+    color:#273A43;
+    background: #D2F7EF;
+  }
+  .card-body{
+    color:#4a3c37;
+  }
+}
+.list-even {//偶数
+  background: #FDF8EE;
+}
+.list-odd{//奇数行
+
+}
+.small_q_bg{//试题内容大区域
+  background: #daf5fe;
+  .q-context{//试题内容的样式
+    color: #17233e;
+    margin-top: 20px
+  }
+}
+
+/*===========弹出框样式====================*/
+.popup-container{
+  .popup{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    .popup-head{
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      -webkit-border-top-left-radius: 10px;
+      -webkit-border-top-right-image: 10px;
+      background: #6B94D6 !important;
+      .popup-title{
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+    .popup-buttons{
+      .button{
+        background: #58D152 !important;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-color: #58D152 !important;
+        color: #fff;
+      }
+    }
+  }
+}
+
+/*==============统一强制覆盖ionic样式End==============*/
+
+
+.scrollToTop{//回到顶部的样式
+  height: 48px;
+  width: 48px;
+  position: fixed;
+  bottom: 15%;
+  right: 5%;
+  z-index: 1000;
+  display: none;
+  opacity: 0.6;
+  background: url('../../../tImages/other/back-to-top.png') no-repeat;
+}
+
+/*==================公共图标样式=======================*/
+.common-help{
+  width: 30px;
+  border-radius: 15px;
+}
+
+.common-help-tip{
+  width: 24px;
+  border-radius: 15px;
+  /* margin-top: 0px; */
+  position: absolute;
+  top: 22px;
+  left: 36px;
+}
+
+
+.btn-disabled-color{//底部菜单按钮不可点击的颜色
+  color: #C7B7B7!important;
+}
+h1.title{//所有重写了ionic的标题页面，如果标题过长就显示....
+  overflow: hidden;
+}
+
+//圆形输入框
+.circle-input-area {
+  border-radius: 50%!important;
+}
+
+//tab嵌套其他非嵌套tab内页面距离顶部有bug
+.pane[hide-nav-bar="true"] .has-tabs-top {
+  top: 0px;
+}
+
+ion-header-bar .button i,ion-header-bar .title{
+  color: #4a6b9d
+}
+
+//返回按钮，点击范围增大
+.common-back-btn{
+  width: 50px;
+  text-align: left;
+}
+
+//公共信息的弹出提示的bar
+.common-help-tip-wrap{
+  border-radius: 8px;
+  margin: 20px 10px 0px 10px;
+  background-color: #ffffff;
+  .common-help-bar{
+    color: #838E92;
+    font-size: 15px;
+    text-align: left;
+    margin: 0;
+    padding: 5px 10px;
+    .common-help-bar-icon{
+      margin-right: 10px;
+      color: #F26691;
+      font-size: 25px;
+      vertical-align: sub;
+    }
+  }
+
+}
+

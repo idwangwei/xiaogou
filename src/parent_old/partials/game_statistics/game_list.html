@@ -1,0 +1,118 @@
+
+<style type="text/css">
+
+    .pub_game_list .item-avatar .item-content{
+        //padding-left: 110px;
+        //padding-right: 5px;
+        //padding-top: 10px;
+    }
+    .pub_game_list .item-avatar .item-content>img:first-child {
+        //top:20px;
+        max-width: 80px;
+        max-height: 80px;
+    }
+    .display-flex h2,p{
+        color: #553333!important;
+    }
+    .item-content h2,p{
+        color: #553333!important;
+    }
+
+    .pub_game_list .item{
+        border-width: 0px;
+        border-style: none;
+    }
+    .pub_game_list .item-avatar, .item-avatar .item-content{
+        padding-left: 0px!important;
+    }
+    .pub_game_list .item{
+        padding: 5px;
+        border-width: 0px;
+        border-style: none;
+    }
+
+    .pub_game_list .not-complete{
+        font-weight: bold;
+    }
+</style>
+<ion-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <h1 class="title">学习游戏-家长端</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="pub_game_list">
+        <ion-item class="item-divider" style="color: #28a54c" ng-click="retFlag?studentSelectModal.show():''" ng-if="pubGameStudent.showName">
+            {{pubGameStudent.showName}}<span style="margin-left: 5px;" class="icon ion-ios-arrow-right"></span>
+        </ion-item>
+
+        <div class="item item-input block-input" style="height: 40px;white-space: inherit;"
+             ng-if="!pubGameStudent.stuClazzStatus">
+            {{'没有收到游戏，原因：还没有申请学校老师的普通班级'}}
+        </div>
+        <div class="item item-input block-input" style="height: 40px;white-space: inherit;"
+             ng-if="pubGameStudent.stuClazzStatus&&pubGameStudent.stuClazzStatus<3">
+            {{pubWorkStudent.stuClazzStatus==1?'没有收到游戏，原因：还没有申请学校老师的班级':'没有收到游戏，原因：老师还在审核你的班级申请，请等一等或联系老师'}}
+        </div>
+        <div class="item item-input block-input" style="height: 40px;white-space: inherit;"
+             ng-if="pubGameStudent.stuClazzStatus>=3&&data.gameList.length<=0 && retFlag">
+            {{'没有收到游戏，原因：老师还没有布置游戏'}}
+        </div>
+        <ion-list ng-if="pubGameStudent.stuClazzStatus>=3">
+
+            <ion-item ng-repeat="game in data.gameList"
+                      ng-click="showLevels(game)"
+                      class="item item-avatar ">
+                <div class="item-content" style="position: relative;">
+                    <img ng-src="{{getGameIconUrl(game.levels[0].levelGuid)}}" alt=""
+                            style="position: absolute;top: 3px;left: 10px;"/>
+                    <div class="display-flex" style="padding: 5px 0px">
+                        <div style="flex:2;-webkit-flex:2;margin-left: 106px;overflow: hidden">
+                            <h2>{{game.levels[0].name}}</h2>
+                            <!--<p>{{game.showNum}}</p>-->
+                            <p>{{game.levels[0].desc}}</p>
+                            <p ng-show="game.pass==-1" style="    color: green!important;;font-weight: bold">完成</p>
+                            <p ng-show="game.pass!=-1" class="not-complete" style="color: darkred!important;">未完成</p>
+                        </div>
+                        <div style="flex:2;-webkit-flex:2 ">
+                            <p>{{game.publishWeek}}</p>
+                            <p>{{game.publishTime.substr(0,11)}}</p>
+                            <p>{{game.clazzName}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll on-infinite="getGameList()" spinner="ios"
+                             distance="10%" ng-if="moreFlag">
+        </ion-infinite-scroll>
+    </ion-content>
+    <loading-processing load-top="100" ng-if="loadingFlag"></loading-processing>
+</ion-view>
+
+
+<script id="student-select.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-balanced" align-title="center">
+            <button class="button back-button buttons  button-clear header-item" ng-click="studentSelectModal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center">请选择学生</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <!--<div ng-repeat="student in studentList">-->
+                    <li  ng-repeat="clazz in studentClazzList" class="item" ng-click="selectStudent(clazz.stu,clazz.clazz)" >
+                        <span ng-bind="clazz.stu.studentName+'（'+clazz.clazz.name+'）'"  ng-if="clazz.clazz.status===1"></span>
+                    </li>
+                <!--</div>-->
+            </ul>
+        </ion-content>
+    </ion-modal-view>
+</script>

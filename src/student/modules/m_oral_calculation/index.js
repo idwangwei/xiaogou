@@ -1,0 +1,9 @@
+import "./module"
+import "./scripts/pages/oral_calculation_check_answer/index";
+import "./scripts/pages/oral_calculation_do_question/index";
+import "./scripts/pages/oral_calculation_work_list/index";
+import "./scripts/pages/oral_calculation_work_detail/index";
+import "./scripts/pages/oral_calculation_select_question/index";
+import "./scripts/constants/index"
+import "./scripts/services/oralCalculationPaperServer"
+import "./scripts/view_decorators/selectQuestionCtrl"

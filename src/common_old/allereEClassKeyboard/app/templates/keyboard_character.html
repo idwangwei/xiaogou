@@ -1,0 +1,50 @@
+<div class="left">
+    <div class="itemRow">
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{a}">a</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{b}">b</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{c}">c</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{d}">d</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{e}">e</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{f}">f</div>
+    </div>
+    <div class="itemRow">
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{g}">g</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{h}">h</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{i}">i</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{j}">j</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{k}">k</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{l}">l</div>
+    </div>
+    <div class="itemRow">
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{m}">m</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{n}">n</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{o}">o</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{p}">p</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{q}">q</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{r}">r</div>
+    </div>
+    <div class="itemRow">
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{s}">s</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{t}">t</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{u}">u</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{v}">v</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{w}">w</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{x}">x</div>
+    </div>
+    <div class="itemRow">
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{y}">y</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="\var{z}">z</div>
+    </div>
+</div>
+
+<div class="right">
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)" style="color: #fe6948;">
+        <img ng-src="images/del.png" width="35px" alt=""/>
+    </div>
+    <div class="item greenItem" style="flex:1;-webkit-flex:1;font-size: 15px;" ng-click="findNextInput($event)" style="color: #fe6948;">
+        <span style="display: block;width: 35px;color:white;margin-left: -8px">обр╩©у</span>
+    </div>
+    <div class="item greenItem" ng-click="toCase()" style="color: #fff" ng-bind="lowerOrUpper"></div>
+
+</div>
+

@@ -1,0 +1,196 @@
+.work_statistics_report {
+  color: #767092;
+  font-size: 14px;
+  p {
+    margin: 0;
+  }
+  .report-content {
+    background-color: #e8e8ee;
+  }
+  .paper_info {
+    .display-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    padding: 10px;
+    background: #ffffff;
+    width: 94%;
+    margin: 15px auto 5px auto;
+    border-radius: 6px;
+    max-width: 800px;
+    .paper-clazz-info {
+      width: 70%;
+      height: 45px;
+      line-height: 40px;
+      text-align: center;
+      background: url("../../../images/statistic_report/t_work_report_img12.png") 0px 0px no-repeat;
+      background-size: 100% 100%;
+      margin-top: -20px;
+      color: #cf5611;
+      font-weight: bold;
+    }
+    .paper-name {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 5px 0;
+      color: #454455;
+    }
+    .paper-statistic {
+      width: 90%;
+      text-align: left;
+      margin: 5px 0;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .statistics-content {
+    width: 100%;
+    margin: 10px auto;
+    background: #ffffff;
+    padding: 10px 0;
+    max-width: 800px;
+
+    .praise-content {
+      width: 95%;
+      border-radius: 6px;
+      padding: 10px 0;
+      border: solid 1px #e7e7e8;
+      margin: 5px auto;
+      .praise-title-img01 {
+        width: 150px;
+        display: block;
+        margin: 15px 0 5px -2px;
+      }
+      .statistics-title {
+        width: 90%;
+        color: #111111;
+        font-weight: 800;
+        text-align: left;
+        margin: 10px auto;
+        white-space: nowrap;
+      }
+      .statistics-table {
+        width: 80%;
+        margin: 5px auto;
+        .statistics-table-head {
+          width: 100%;
+          background-color: #e8e8ee;
+          color: #726c8c;
+          font-weight: 600;
+          .display-flex;
+          .head-cell {
+            flex: 1;
+            -webkit-flex: 1;
+            text-align: center;
+          }
+        }
+        .statistics-table-content {
+          width: 100%;
+          color: #1e1e1e;
+          .row {
+            width: 100%;
+            margin: 5px 0;
+            .display-flex;
+            .row-cell {
+              flex: 1;
+              -webkit-flex: 1;
+              text-align: center;
+              position: relative;
+              height: 35px;
+              //line-height: 30px;
+              .display-flex;
+              flex-direction: column;
+              -webkit-flex-direction: column;
+              .stu-name {
+                display: inline-block;
+                max-width: 70px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+              }
+              .praise-level-img {
+                width: 18px;
+                position: absolute;
+                left: -5px;
+                top: 0;
+                bottom: 0;
+                margin: auto
+              }
+            }
+          }
+        }
+      }
+      .praise_part {
+        margin: 0 auto;
+        width: 100%;
+
+      }
+      .improve_part {
+        margin: 0 auto;
+        width: 100%;
+      }
+      .positive_part {
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    .remind_part {
+      margin: 25px auto;
+      width: 95%;
+      border: solid 1px #e7e7e8;
+      border-radius: 6px;
+      .remind-title {
+        width: 150px;
+        display: block;
+        margin: -2px auto 10px -2px;
+      }
+      .list-title-wold {
+        width: 95%;
+        margin: 0 auto;
+        font-weight: 800;
+        color: #344b5f;
+      }
+      .remind-stu-list {
+        width: 98%;
+        margin: 0 auto;
+        .display-flex;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        justify-content: flex-start;
+        -webkit-justify-content: flex-start;
+        flex-wrap: wrap;
+        .remind-stu-list-item {
+          margin: 5px 3px;
+          .display-flex;
+          flex-direction: column;
+          -webkit-flex-direction: column;
+          background: #ebebeb;
+          padding: 3px;
+          border-radius: 8px;
+          width: 108px;
+          color: #726c8c;
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .share-to-parent {
+    p {
+      margin: 0;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+  }
+  .display-flex {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+  }
+}

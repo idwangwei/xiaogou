@@ -1,0 +1,64 @@
+<ion-view class="micro-unit-list">
+    <div></div>
+    <ion-side-menus>
+        <!-- 中间内容 -->
+        <ion-side-menu-content>
+            <ion-header-bar class="bar-balanced unit-bar" align-title="center">
+                <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+                    <i class="icon ion-ios-arrow-back"></i>
+                </button>
+                <h1 class="title">小升初·名校思维训练</h1>
+                <button class="button buttons button-clear item-pay" ng-click="ctrl.goToPay()">
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-water.png')}}" class="pay-water">
+                    <span>{{ctrl.vipNum}}</span>
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-add.png')}}" class="pay-add">
+                </button>
+            </ion-header-bar>
+            <div class="micro-unit-flag" ng-click="ctrl.toggleLeft()">
+                <span class="flag-title">{{ctrl.currentGrade.title}}</span>
+                <span class="flag-subtitle">（{{ctrl.currentGrade.subtitle}}册）</span>
+                <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-change-btn.png')}}" class="flag-btn">
+            </div>
+            <ion-content padding="false" class="micro-unit-content">
+                <div class="unit-head">
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-cloud.png')}}" alt="" class="unit-cloud num-2">
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-cloud.png')}}" alt="" class="unit-cloud num-3">
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-castle-1.png')}}" alt="" class="unit-castle-1">
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-castle-2.png')}}" alt="" class="unit-castle-2">
+                </div>
+                <div class="unit-content">
+                    <div class="unit-mark">
+                        <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-adv.png')}}">
+                    </div>
+                    <div class="unit-body">
+                        <div class="unit-box">
+                            <div class="unit-item" ng-repeat="v in ctrl.resetUnitList track by $index" ng-click="ctrl.goToExample(v)">
+                                <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-'+v.isOpen+'.png')}}" class="item-img">
+                                <div class="item-context">
+                                    <p class="context-title">{{v.title}}</p>
+                                    <p class="context-subtitle">{{v.subtitle}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grass-box">
+                            <span class="grass-item" ng-repeat="v in ctrl.resetGrassList track by $index" ng-style="v"></span>
+                        </div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu-content>
+        <!-- 左侧菜单 -->
+        <ion-side-menu side="left" width="114">
+            <ion-content padding="false" class="micro-unit-slide">
+                <div class="slide-flag"  ng-repeat="v in ctrl.resetGradeInfo.data track by $index" ng-click="ctrl.changeGrade(v)">
+                    <span class="flag-title">{{v.title}}</span>
+                    <span class="flag-subtitle">（{{v.subtitle}}册）</span>
+                </div>
+                <div class="slide-flag disable" ng-if="!ctrl.resetGradeInfo.isAllOpen">
+                    <span class="flag-subtitle">更多年级</span>
+                    <span class="flag-subtitle">敬请期待</span>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
+</ion-view>

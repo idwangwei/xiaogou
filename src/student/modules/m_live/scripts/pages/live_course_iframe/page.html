@@ -1,0 +1,11 @@
+<ion-view id="live-course-iframe" cache-view="false">
+    <loading-processing-v2></loading-processing-v2>
+    <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+        <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <div class="iframe-content">
+        <iframe id="talkfun_frame" scrolling="no" frameborder="0"  border="0" style="position:absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; margin: 0; padding: 0;"></iframe>
+    </div>
+    <div class="frame-mark" ng-click="ctrl.closeMark()"></div>
+    <div class="frame-btn" ng-click="ctrl.sendMsg()"></div>
+</ion-view>

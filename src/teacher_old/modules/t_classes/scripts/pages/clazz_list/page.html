@@ -1,0 +1,75 @@
+<ion-view hide-nav-bar="true" class="clazz_list_file">
+    <ion-header-bar class="bar-balanced" align-title="center" style="border-bottom: 1px solid #ddd">
+        <div class="buttons" style="margin-right: 10px">
+            <button class="button button-clear icon ion-plus-round clazz-list-left-top-btn"
+                    style="color: #4a6b9d"
+                    ng-disabled="ctrl.isDisabled">
+                创建
+            </button>
+        </div>
+
+        <h1 class="title" style="font-weight:bold;font-family: 'Microsoft YaHei';">班级列表</h1>
+    </ion-header-bar>
+    <ion-content padding="false" class="clazz_list" scroll="true" overflow-scroll="true">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.doRefresh()" spinner="ios"></ion-refresher>
+        <!--没有班级提示信息-->
+        <div class="item item-input block-input item-input—height" style="margin-top: 10px;"
+             ng-if="ctrl.clazzList.length<=0&&ctrl.retFlag">
+            <input type="text" ng-model="ctrl.tip" readonly="readonly"/>
+        </div>
+        <div class="card" ng-repeat="clazz in ctrl.clazzList">
+            <div class="item-divider item-avatar item-icon-right" ng-click="ctrl.clazzDetail(clazz)"
+                 class="display-flex" style="height: 75px;position: relative">
+                <img class="thumbnail-left" ng-src="{{$root.loadImg('class.svg')}}" alt="">
+
+                <span style=" color:#293d69!important;display: inherit;">{{'班级号:'+clazz.id}}</span>
+
+                <span style=" color:#293d69!important;display: inherit;">{{clazz.name}}</span>
+
+                <i class="icon ion-chevron-right" style="margin-right: 4px;"></i>
+            </div>
+
+            <div class=" item-text-wrap text-font-color">
+                <div style="padding: 10px;">
+                    &nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:&nbsp;&nbsp;{{clazz.gradeName}}
+                </div>
+                <div style="padding: 10px 15px;position: relative"
+                     class="display-flex item-icon-right "
+                     ui-sref="clazz_student_list({clazzId:clazz.id,type:1,stuNum:clazz.checkedNum})">
+                    学生列表:
+                    <span style="flex: 6;-webkit-flex:6">&nbsp;{{clazz.checkedNum}}人</span>
+                    <i class="icon ion-chevron-right"></i>
+                </div>
+                <div style="padding: 10px 15px;background:#FDF8EE"
+                     class="display-flex ">
+                    <span>申请通道:</span>
+                    <span class="checkbox">
+                       <i ng-class="clazz.openStatus.open==true?
+                                    'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"
+                          class="openCheck"
+                          ng-click="ctrl.toggleApplyTunnel(1,clazz)">
+                       </i>
+                      <span class="openText">开启</span>
+                          <i ng-class="!!clazz.openStatus.close ? 'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"
+                             class="closeCheck" ng-click="ctrl.toggleApplyTunnel(2,clazz)">
+                          </i>
+                         <span class="closeText">关闭</span>
+                    </span>
+                </div>
+                <div style="padding:5px 20px 3px;">
+                    <button class="bar-item button-clear" style="color: #553333!important;">
+                        <!--<img ng-src="{{$root.loadImg('common/inform_stu.png')}}" width="160px"/>-->
+                        <share-btn
+                                share-content="{{ctrl.teacherName+ '老师的班级号是'+ clazz.id +'，点击注册加入老师班级。'}}"
+                                tpl="<img src='{{$root.loadImg('common/inform_stu.png')}}' height='30px'/>"
+                                clazz-id="{{clazz.id}}"
+                                teacher-name="{{ctrl.teacherName}}"
+                                share-url="{{ctrl.finalData.WEB_REGISTER_URL}}">
+                        </share-btn>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

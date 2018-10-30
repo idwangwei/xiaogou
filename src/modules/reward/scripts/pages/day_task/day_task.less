@@ -1,0 +1,156 @@
+.day-task {
+  .myHeader {
+    background-color: #fc8536 !important;
+    .button-back {
+      margin-left: 85%;
+    }
+  }
+
+  .task-list {
+    width: 100%;
+    //margin-left: 2%;
+    //margin-right: 2%;
+    .item-content {
+      padding: 5px 0px !important;
+      .flex_display(row);
+      .flex_display_align(space-around);
+      .flex_display_justify(space-around);
+      border: none;
+      border-bottom-style: inset;
+      .task-mark {
+        min-width: 55px;
+        .flex_display(column);
+        .flex_display_align(center);
+        .flex_display_justify(center);
+        .gameM {
+          background: url("../../../reward_images/game_star.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          width: 50px;
+          height: 30px;
+        }
+        .workM {
+          background: url("../../../reward_images/gold_cup.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          width: 50px;
+          height: 50px;
+        }
+        .diagnoseM {
+          background: url("../../../reward_images/reward_diagnose.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          width: 50px;
+          height: 50px;
+        }
+        .susuanPkM {
+          background: url("../../../reward_images/susuan_pk.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          width: 50px;
+          height: 40px;
+        }
+        .susuanGameM {
+          background: url("../../../reward_images/susuan_game.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          width: 50px;
+          height: 40px;
+        }
+
+      }
+      p {
+        white-space: normal !important;
+      }
+      .task-desc {
+        width: 55%;
+        margin: 5px 5px;
+        .flex_display(column);
+        .flex_display_align(flex-start);
+        .flex_display_justify(center);
+        p {
+          color: #1e446a;
+        }
+        .desc-score {
+          .flex_display(row);
+          .flex_display_align(center);
+          .flex_display_justify(flex-start);
+          p {
+            color: #fc9536;
+          }
+        }
+      }
+      .task-progress {
+        margin: 5px 5px;
+        .flex_display(column);
+        .flex_display_align(center);
+        .flex_display_justify(center);
+        .level-pre {
+          .flex_display(row);
+          .flex_display_align(center);
+          .flex_display_justify(center);
+          .done-text {
+            margin: 0px;
+            padding: 0px;
+            color: #fc9536;
+          }
+          .require-text {
+            margin: 0px;
+            padding: 0px;
+          }
+        }
+        .task-progress-bar {
+          width: 48px;
+          height: 8px;
+          border-radius: 6px;
+          background-color: #d4d4d4;
+        }
+        .task-done-bar {
+          height: 8px;
+          /* border-top-left-radius: 4px;
+           border-bottom-left-radius: 4px;*/
+          border-radius: 6px;
+          background-color: #fc8536;
+        }
+
+      }
+      .task-reward {
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        width: 80px;
+
+        //padding: 5px 10px;
+        border-radius: 15px;
+        background-color: #999999;
+        color: #ffffff;
+        text-align: center;
+        margin-top: 5px;
+
+        .flex_display(column);
+        .flex_display_align(center);
+        .flex_display_justify(center);
+        p {
+          margin: 0px;
+          color: #ffffff;
+        }
+        /* div {
+           padding: 2px;
+           border-radius: 5px;
+           background-color: #a8a7a3;
+         }*/
+
+      }
+    }
+  }
+
+  .flex_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .flex_display_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+  .flex_display_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+}

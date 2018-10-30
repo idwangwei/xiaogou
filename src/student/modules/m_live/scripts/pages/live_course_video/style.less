@@ -1,0 +1,63 @@
+
+
+#live-course-video{
+  @main-color: #5bccf7;//定义字体主色
+  @animate-time:2s;
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: #fff;
+  .enter-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      font-weight: bold;
+    }
+    .item-back{
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+    .item-call{
+      img{
+        width: 70px;
+      }
+    }
+  }
+  .video-content{
+    position: relative;
+    #backVideo{
+      min-width: 100vw;
+      border:none;
+      min-height:200px
+    }
+    .loading-box{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background: #fff;
+      .display-flex(column,flex-start,center);
+      img{
+        width: 32px;
+        margin-bottom: 16px;
+        margin-top: 60px;
+      }
+      span{
+        color: #000;
+        font-size: 12px;
+      }
+    }
+  }
+}

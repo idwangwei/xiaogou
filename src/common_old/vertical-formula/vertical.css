@@ -1,0 +1,125 @@
+vertical {
+                           /* 小屏幕（平板，大于等于 400px） */
+                           /* 小屏幕（平板，大于等于 768px） */
+                           /* 中等屏幕（桌面显示器，大于等于 992px） */
+                           /* 大屏幕（大桌面显示器，大于等于 1200px） */
+                       }
+vertical .vertical-container {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    height: 88vw;
+    margin: 0 4%;
+    border-radius: 5px;
+    /*border: gray dotted;*/
+    /*border-width: 1px 1px 0px 0px;*/
+}
+vertical .vertical-container-border {
+    border: 1px solid #959191;
+}
+vertical .vertical-editable-color {
+    background-color: #FAFAD2;
+}
+vertical .vertical-row {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    height: 100%;
+    /*border: gray dotted;*/
+    /*border-width: 0 0 1px 0;*/
+}
+vertical vertical-cell {
+    flex: 1;
+    -webkit-flex: 1;
+    justify-content: center;
+    -webkit-justify-content: center;
+    /*height: 100%;*/
+    width: 100%;
+    padding: 3px;
+    /*border: gray dotted 1px;*/
+    /*border-width: 0 0 0 1px;*/
+}
+vertical vertical-cell > span {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    /*border: #ffa95e solid 1px;*/
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    position: relative;
+}
+vertical .vfdot:after {
+    content: ".";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+vertical .vfline {
+    border-bottom: gray solid 1px;
+}
+vertical .vfdiv {
+    background: url(images/vfdiv-black.png) no-repeat;
+    background-size: cover;
+}
+vertical .vfline-div {
+    border-top: gray solid 1px;
+}
+vertical .vfcell-border {
+    border: #ffa95e solid 1px;
+}
+@media (min-width: 360px) {
+    vertical .vertical-container {
+        font-size: 18px;
+    }
+}
+@media (min-width: 768px) {
+    vertical .vertical-container {
+        width: 400px;
+        height: 400px !important;
+        font-size: 20px;
+    }
+}
+.keyboard .kbd-vf {
+    background-size: contain !important;
+    position: absolute;
+}
+.keyboard .kbd-vfdiv {
+    background: url(images/kbd-div.png) no-repeat;
+    width: 50%;
+    height: 50%;
+}
+.keyboard .kbd-vfdiv-del {
+    background: url(images/kbd-div-del.png) no-repeat;
+    width: 70%;
+    height: 53%;
+    left: 18%;
+}
+.keyboard .kbd-vfdot {
+    background: url(images/kbd-dot.png) no-repeat;
+    width: 100%;
+    height: 80%;
+    margin-left: 30%;
+}
+.keyboard .kbd-vfdot-del {
+    background: url(images/kbd-dot-del.png) no-repeat;
+    width: 28%;
+    height: 61%;
+    margin-left: 20%;
+}
+.keyboard .kbd-vfline {
+    background: url(images/kbd-line.png) no-repeat;
+    width: 70%;
+    height: 5%;
+}
+.keyboard .kbd-vfline-del {
+    background: url(images/kbd-line-del.png) no-repeat;
+    width: 70%;
+    height: 70%;
+}

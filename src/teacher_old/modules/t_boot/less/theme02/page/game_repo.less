@@ -1,0 +1,85 @@
+@import "../include/_mixins";
+
+.game_repo_file{
+
+  .item-for-img{
+    margin:10px auto;
+    color: #2e3969;
+    position: relative;
+    img{
+      width: 30px;
+      position: absolute;
+    }
+    .first-text{
+      margin-left: 36px;
+    }
+  }
+  .content-img{
+    border-radius: 0px!important;
+    margin-right: 14px;
+  }
+  .item{
+    border: none;
+  }
+  .me_content{
+    ion-list{
+      .list{
+        .item:nth-child(odd){
+          background: #FEFAF1;
+        }
+      }
+      .item{
+        color: #4A3C37;
+        border: none;
+      }
+    }
+    .content-left{
+     .flex_9;
+      p{
+        .overflow-ellipsis;
+      }
+    }
+    .content-right{
+      .flex_2;
+      .right-main{
+        float: right;
+        text-align: center;
+        background: #FA7B75;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        line-height: 30px;
+        i{
+          color: #fff;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .bank_content{
+    .common_sty{
+      margin-top: 10px;
+      height: 44px;
+      padding: 10px;
+      border-radius: 10px;
+      color: #622317;
+      margin-right: 10px;
+    }
+    .list{
+      .unit_bg{
+        background: #F5C4AB;
+        margin-left: 13px;
+       .common_sty;
+      }
+      .lesson_bg{
+        background: #FAE1C0;
+        margin-left: 18px;
+        .common_sty;
+      }
+      .last_lesson{
+        margin-bottom: 50px!important;
+      }
+    }
+  }
+}

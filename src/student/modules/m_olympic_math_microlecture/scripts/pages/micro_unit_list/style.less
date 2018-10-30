@@ -1,0 +1,251 @@
+.platform-ios.platform-cordova:not(.fullscreen){
+  .micro-unit-list{
+    .micro-unit-flag{
+      top:185px;
+    }
+  }
+}
+.micro-unit-list{
+  @header-bar-color:#8258d2;//顶部颜色
+  @main-color: #7d59d2; //定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .unit-bar{
+    background-color: @header-bar-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      //height: 30px;
+      //line-height: 54px;
+      font-weight: bold;
+    }
+    .item-back{
+      //margin-top: 5px;
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+    .item-pay{
+      .display-flex(row,center,center);
+      .pay-water{
+        width: 22px;
+        position: relative;
+        z-index: 50;
+        margin-top: -6px;
+      }
+      span{
+        display: inline-block;
+        width: 46px;
+        height: 20px;
+        line-height: 20px;
+        background: #6042a6;
+        margin-left: -8px;
+        font-size: 14px;
+        color: #f5f30a;
+        font-weight: bold;
+        text-align: center;
+        padding-left: 2px;
+      }
+      .pay-add{
+        width: 22px;
+        margin-left: -2px;
+      }
+    }
+  }
+  .micro-unit-flag{
+    position: fixed;
+    top:165px;
+    left: -5px;
+    width: 76px;
+    height: 56px;
+    .display-flex(column,flex-start,center);
+    background: url("../../../images/micro_unit_list/unit-clazz-current.png") no-repeat;
+    background-size: 76px 56px;
+    padding-left: 6px;
+    padding-top: 5px;
+    z-index: 50;
+    .flag-title{
+      font-size: 16px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .flag-subtitle{
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .flag-btn{
+      position: absolute;
+      bottom: -28px;
+      width: 70px;
+    }
+/*    .flag-subsubtitle{
+      font-size: 12px;
+      color: #fff;
+      font-weight: bold;
+    }*/
+  }
+  .micro-unit-content{
+    background: linear-gradient(to bottom, #8258d2 0%,#b350db 27%);
+    .unit-head{
+      height: 140px;
+      position: relative;
+      .display-flex(row,center,flex-end);
+      .unit-cloud{
+        position: absolute;
+        left: 0;
+        top:40px;
+        width: 60px;
+        z-index: 1;
+        &.num-2{
+          left: 83%;
+          top: 23px;
+        }
+        &.num-3{
+          left: 2%;
+          top: 65px;
+        }
+      }
+      /*.unit-castle{
+        position: relative;
+        z-index: 10;
+        width: 320px;
+      }*/
+      .unit-castle-1{
+        position: absolute;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 10;
+        width: 70px;
+        bottom: 0;
+      }
+      .unit-castle-2{
+        position: absolute;
+        right: 50%;
+        margin-right: -182px;
+        z-index: 10;
+        width: 100px;
+        bottom: 0px;
+      }
+    }
+    .unit-content{
+      position: relative;
+      z-index: 20;
+      margin-top: -23px;
+      .unit-mark{
+        position: relative;
+        width: 140%;
+        height: 120px;
+        left: 50%;
+        margin-left: -70%;
+        border-radius: 50%;
+        background: #8ace5e;
+        text-align: center;
+        //overflow: hidden;
+        img{
+          width: 280px;
+          margin-top: -120px;
+        }
+      }
+      .unit-body{
+        margin-top: -30px;
+        background: linear-gradient(to bottom, #8ace5e 0%,#5cc475 100%);
+        min-height: 100vh;
+        position: relative;
+        z-index: 30;
+        padding-bottom: 60px;
+      }
+      .unit-box{
+        width: 260px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 40;
+        .unit-item{
+          &:nth-child(even){
+            .display-flex(row,flex-end,center);
+          }
+          &:nth-child(odd){
+            .display-flex(row,flex-start,center);
+          }
+          margin-bottom: 14px;
+        }
+        .item-img{
+          width: 84px;
+        }
+        .item-context{
+          width: 100px;
+          margin-left: 10px;
+          .context-title{
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+          }
+          .context-subtitle{
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            margin: 0;
+          }
+        }
+      }
+      .grass-box{
+        width: 350px;
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .grass-item{
+          display: block;
+          position: absolute;
+          top: 5px;
+          left: 50px;
+          background: url("../../../images/micro_unit_list/unit-grass.png") no-repeat;
+          width:25px;
+          height: 24px;
+          background-size: 25px 24px;
+        }
+      }
+    }
+  }
+  .menu{
+    margin: 0;
+  }
+  .micro-unit-slide{
+    //padding-top: 10px;
+    .slide-flag{
+      width: 115px;
+      height: 90px;
+      margin: 20px 0 20px -10px;
+      .display-flex(column,flex-start,center);
+      background: url("../../../images/micro_unit_list/unit-clazz-big.png") no-repeat;
+      background-size: 113px 90px;
+      padding-left: 6px;
+      padding-top: 13px;
+      z-index: 50;
+      &.disable{
+        background-image: url("../../../images/micro_unit_list/unit-clazz-big-disable.png");
+      }
+      .flag-title{
+        font-size: 16px;
+        color: #fff;
+        font-weight: bold;
+      }
+      .flag-subtitle{
+        font-size: 14px;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+}

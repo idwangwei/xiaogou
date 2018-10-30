@@ -1,0 +1,323 @@
+@import "./../../common/_mixins";
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.s_game_list_con{
+  top:124px!important;
+}
+.game_list {
+  .tip-wrap{
+    margin: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #f00;
+    padding: 5px 10px;
+    >p{
+      color: #f00;
+    }
+  }
+  .spinner {
+    stroke: #3F638E!important;
+  }
+
+  .scroll-content{
+    bottom: 44px;
+  }
+  .bar-better{border: none}
+
+  .item-input—height{
+    margin-top: 10px;
+  }
+  //班级显示框
+  .select-content-wrap{
+    background-color: #83dcf5;
+    padding: 10px 4px;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    .select-clazz-bar{
+      .display-flex-pure;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      height: 40px;
+      width: 100%;
+      overflow: hidden;
+      background: white;
+      border-radius: 5px;
+      font-size: 17px;
+      color: #1e446a;
+      .content-wrap{
+        .flex_1;
+        .display-flex-pure;
+        align-items: center;
+        -webkit-align-items: center;
+        padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        span{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          .flex_1;
+          text-align: center;
+        }
+        img{width: 40px}
+      }
+      .arrow-right-wrap{
+        width: 40px;
+        text-align: center;
+        font-size: 26px;
+        color: #9BA0B0;
+      }
+    }
+  }
+
+  //游戏列表ion-content
+  .s_game_list_con {
+    background: #F7796f;
+    .flex-con {
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
+      justify-content: center;
+      -webkit-justify-content: center;
+    }
+    .work-item {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      width: 99%;
+      min-height: 193px;
+      text-align: center;
+      /* box-shadow: 0px 0px 7px #C6C6C4;*/
+      color: #1E446A;
+    }
+    .overflow-ellipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  //奖杯榜入口
+  .game-star-rank-wrap{
+    height: 50px;
+    background: #738ad8 url('../../../images/math_game_star_bg_2.png') center center no-repeat;
+    .game-star-rank{
+      width: 100%;
+      height: 100%;
+      background: url('../../../images/math_game_star_bar_bg_2.png') 6% 50% no-repeat;
+      background-size: 66px;
+      .game-star-rank-text{
+        .display-flex;
+        height: 100%;
+        font-size: 17px;
+        color: #fff;
+      }
+    }
+  }
+
+  //班级列表
+  .game_clazz_select {
+    border-left-width: 6px;
+    background: #d2d5df;
+
+    .game_clazz_select_img {
+      margin-top: 14px;
+      width: 105px;
+    }
+    .game_clazz_select_block {
+      padding: 6px;
+    }
+    .clazz-item {
+      background: white;
+      border-radius: 7px;
+      width: 99%;
+      padding: 15px 0;
+      min-height: 158px;
+    }
+    .clazz-name {
+      font-size: 17px;
+      margin-top:10px;
+      color: #1E446A;
+    }
+  }
+
+
+  .game_star_rank_data{
+    background: #fdea64;
+    border-radius: 10px;
+    width: 90%;
+    height: 70%;
+    overflow: hidden;
+    .display-flex-pure;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+
+    -webkit-animation: superScaleIn 0.2s ease-in-out;
+    -webkit-animation-fill-mode:both;
+    animation: superScaleIn 0.2s ease-in-out;
+    animation-fill-mode:both;
+
+    .top_bg_wrap{
+      width: 100%;
+      .top_bg_icon{
+        height: 106px;
+      }
+    }
+    .bg_wrap_star{
+      .display-flex;
+      background: #fdea64 url("../../../images/math_game_star_bg_1.png") 0 100% repeat-x;
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      .bg_wrap_star_2{
+        .display-flex;
+        position: absolute;
+        height:100%;
+        width:100%;
+        z-index: 1;
+        left: 0;
+        padding-bottom: 6px;
+        img{height: 100%}
+      }
+      .top_bg_icon{z-index: 2}
+    }
+
+    /*星星排行信息*/
+    .star_rank_list_box{
+      overflow: hidden;
+      border-radius:6px;
+      -webkit-border-radius:6px;
+      margin: 0 10px 30px 10px;
+      .item{
+        padding: 4px 16px;
+      }
+      .star_rank_list{
+        .display-flex-pure;
+        border: none;
+        border-bottom-style: dashed;
+        border-bottom-width: 2px;
+        border-bottom-color: #ddd;
+        .gs_content_list_index{
+          width: 40px;
+          line-height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .gs_content_list_info{
+          .display-flex-pure;
+          .flex_1;
+          .game_star_content_left{}
+          .game_star_content_middle{
+            .flex_1;
+            .display-flex-pure;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: center;
+            -webkit-justify-content: center;
+            .gs_cm_student_name{color: #666666}
+            .gs_cm_clazz_name{font-size: 12px;color: #999999}
+          }
+          .game_star_content_right{
+            .display-flex;
+            justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+            width: 80px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666666;
+          }
+        }
+      }
+      .star_rank_list_user{
+        color: #811701;
+        .gs_content_list_index{color: #811701}
+        .gs_content_list_info{
+          .game_star_content_middle{
+            .gs_cm_student_name{color: #811701}
+            .gs_cm_clazz_name{color: #811701}
+          }
+          .game_star_content_right{color: #811701}
+        }
+      }
+      .star_rank_list:nth-child(1){
+        .gs_cm_student_name{color: #fcb118!important;}
+        .game_star_content_right{color: #fcb118!important;}
+      }
+      .star_rank_list:nth-child(1),.star_rank_list:nth-child(2),.star_rank_list:nth-child(3){
+        .gs_content_list_index{
+          color: red!important;
+        }
+      }
+      .star_rank_list:last-child{
+        border-bottom-width: 0!important;
+      }
+    }
+    @media screen  and (min-width: 768px)   {
+      width: 70%;
+    }
+    @media screen  and (min-width: 1024px)   {
+      width: 50%;
+    }
+
+  }
+
+
+  .bar-subheader {
+    height: 36px;
+    padding: 0;
+  }
+  .item-divider {
+    border: none;
+    background: #E4726C;
+    padding: 5px 10px;
+    height: 38px;
+    line-height: 26px;
+  }
+  .item-divider .button-clear {
+    max-width: 200px;
+    line-height: 30px;
+    height: 30px;
+  }
+  .spinner {
+    stroke: white;
+  }
+  .has-subheader {
+    top: 82px;
+  }
+  .spinner-text {
+    color: white;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+  .offline-alert-container {
+    width: 98%;
+    background: #83e7ff;
+    border-radius: 2px;
+    text-align: center;
+    color: #ff4f4c;
+    margin: 5px auto 5px auto;
+    font-size: 16px;
+    padding: 3px;
+  }
+  .clazz-icon:before {
+    font-size: 23px !important;
+    line-height: 28px !important;
+    padding-right: 0 !important;
+    color: white;
+  }
+  .col-md-3, .col-xs-6 {
+    padding: 2px 7px 12px 3px;
+  }
+  .net-tip {
+    display: block;
+    background: #fbf2f2;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 7px;
+    border: 1px solid #dddddd;
+    box-shadow: 3px 2px 5px #ddd;
+    text-align: center;
+    color: #ef473a;
+  }
+}

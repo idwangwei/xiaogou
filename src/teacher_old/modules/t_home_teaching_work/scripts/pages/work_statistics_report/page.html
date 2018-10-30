@@ -1,0 +1,165 @@
+<ion-view title="作业报告" class="work_statistics_report">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px;color: #767092">
+            <i class="icon ion-ios-arrow-back"> </i>返回
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #767092 !important;">作业报告</h1>
+    </ion-header-bar>
+    <ion-content class="report-content">
+        <div class="paper_info">
+            <div class='paper-clazz-info'>
+                <span>{{ctrl.statisticsInfo.groupName}}</span>
+                <span>{{ctrl.statisticsInfo.gradeName}}</span>
+                <span>{{ctrl.statisticsInfo.delivererName}}</span>
+            </div>
+
+            <div class="paper-name" ng-bind="ctrl.statisticsInfo.subjects[0].subjectSymbol"></div>
+            <div class="paper-statistic">
+                <p ng-bind="'该作业于'+ctrl.statisticsInfo.publishTime+'发布'"></p>
+                <p>
+                    提交情况：
+                    <em style="color:red;font-style: normal;">{{ctrl.statisticsInfo.subjects[0].submitNum}}</em>/
+                    {{ctrl.statisticsInfo.subjects[0].totalNum}}人
+                </p>
+                <p>
+                    首次做平均分： <em style="color:red;font-style: normal;">{{ctrl.statisticsInfo.average+'分'}}</em>
+                </p>
+                <p>
+                    首次做平均答题时长： <em style="color:red;font-style: normal;">{{ctrl.statisticsInfo.averageElapse}}</em>
+                </p>
+            </div>
+
+        </div>
+        <div class="statistics-content">
+            <div class="praise-content">
+                <!--<img class='praise-title-img01'-->
+                <!--ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img11.png')}}">-->
+                <div class="praise_part">
+                    <!--<div class="statistics-title">优秀作业奖：</div>-->
+                    <img class='praise-title-img01'
+                         ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img11.png')}}">
+                    <div class="statistics-title">
+                        <p style="color: #000000;font-size: 12px;font-weight: initial;">（以下同学首次成绩≥90%，提出表扬！）</p>
+                    </div>
+                    <div class="statistics-table">
+                        <div class="statistics-table-head">
+                            <div class="head-cell">姓名</div>
+                            <div class="head-cell">首次做</div>
+                            <div class="head-cell">首次用时</div>
+                        </div>
+                        <div class="statistics-table-content">
+                            <div class="row"
+                                 ng-repeat="fullScore in ctrl.statisticsInfo.getHighScoreStudentList.slice(0,ctrl.morePraise?3:ctrl.statisticsInfo.getHighScoreStudentList.length)">
+                                <div class="row-cell">
+                                    <img class="praise-level-img" ng-if="$index<3"
+                                         ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img0'+($index+1)+'.png')}}">
+                                    <span class="stu-name">{{fullScore.name}}</span>
+                                </div>
+                                <div class="row-cell" ng-bind="fullScore.scores[0]+'分'"></div>
+                                <div class="row-cell" style="font-size: 12px;" ng-bind="fullScore.workTime"></div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;margin: 10px 0;"
+                             ng-if="ctrl.statisticsInfo.getHighScoreStudentList.length>3&&ctrl.morePraise">
+                        <span ng-click="ctrl.showMorePraise()"
+                              style="display: inline-block;border-radius: 10px;background-color: #e8e8ee;padding: 0 8px;">
+                            更多 <i class="ion-chevron-down"></i>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="improve_part">
+                    <!--<div class="statistics-title">最佳进步奖：</div>-->
+                    <img class='praise-title-img01'
+                         ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img15.png')}}">
+                    <div class="statistics-title">
+                        <p style="color: #000000;font-size: 12px;font-weight: initial;">（以下同学改错后满分，进步非常大！）</p>
+                    </div>
+                    <div class="statistics-table">
+                        <div class="statistics-table-head">
+                            <div class="head-cell">姓名</div>
+                            <div class="head-cell">改错后</div>
+                            <div class="head-cell">提升幅度</div>
+                        </div>
+                        <div class="statistics-table-content">
+                            <div class="row"
+                                 ng-repeat="promoteStu in ctrl.statisticsInfo.promoteLatitudeStudentList.slice(0,ctrl.moreError?3:ctrl.statisticsInfo.promoteLatitudeStudentList.length) track by $index">
+                                <div class="row-cell">
+                                    <img class="praise-level-img" ng-if="$index<3"
+                                         ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img0'+($index+7)+'.png')}}">
+                                    <span class="stu-name">{{promoteStu.name}}</span>
+
+                                </div>
+                                <div class="row-cell" ng-bind="promoteStu.scores[promoteStu.scores.length-1]+'分'"></div>
+                                <div class="row-cell"
+                                     ng-bind="promoteStu.proLa"></div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;margin: 10px 0;"
+                             ng-if="ctrl.statisticsInfo.promoteLatitudeStudentList.length>3&&ctrl.moreError">
+                       <span ng-click="ctrl.showMoreError()"
+                             style="display: inline-block;border-radius: 10px;background-color: #e8e8ee;padding: 0 8px;">
+                            更多 <i class="ion-chevron-down"></i>
+                       </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="positive_part">
+                   <!-- <div class="statistics-title">
+                    积极提交奖：
+                    <p style="color: #ff1111;font-size: 12px;font-weight: initial;">（积极提交，并且首次提交分数≥80分）</p>
+                    </div>-->
+                    <img class='praise-title-img01'
+                         ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img16.png')}}">
+                    <div class="statistics-title">
+                        <p style="color: #000000;font-size: 12px;font-weight: initial;">（以下同学首次成绩≥80%，提交很积极！）</p>
+                    </div>
+                    <div class="statistics-table">
+                        <div class="statistics-table-head">
+                            <div class="head-cell">姓名</div>
+                            <div class="head-cell">首次做</div>
+                            <div class="head-cell">提交时间</div>
+                        </div>
+                        <div class="statistics-table-content">
+                            <div class="row" ng-repeat="firstSubmitStu in ctrl.statisticsInfo.firstSubmitStudentList">
+                                <div class="row-cell">
+                                    <img class="praise-level-img" ng-if="$index<3"
+                                         ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img0'+($index+4)+'.png')}}">
+                                    <span class="stu-name">{{firstSubmitStu.name}}</span>
+                                </div>
+                                <div class="row-cell" ng-bind="firstSubmitStu.scores[0]+'分'"></div>
+                                <div class="row-cell" style="font-size: 12px;"
+                                     ng-bind="firstSubmitStu.simFirstSubmitTime"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="remind_part">
+                <img class="remind-title"
+                     ng-src="{{$root.loadHomeTeachingWorkImg('statistic_report/t_work_report_img13.png')}}">
+                <p class="list-title-wold">未改错的学生：</p>
+                <div class="remind-stu-list">
+                    <div class="remind-stu-list-item"
+                         ng-repeat="notErrorStu in ctrl.statisticsInfo.errorCorrectStudentList">
+                        <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%;text-align: center;"
+                           ng-bind="notErrorStu.name"></p>
+                        <p ng-bind="notErrorStu.loginName"></p>
+                    </div>
+                </div>
+                <p class="list-title-wold" style="color: #45345f !important;">未提交的学生：</p>
+                <div class="remind-stu-list">
+                    <div class="remind-stu-list-item"
+                         ng-repeat="notSubmitStu in ctrl.statisticsInfo.notSubmitStudentList">
+                        <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%;text-align: center;"
+                           ng-bind="notSubmitStu.name"></p>
+                        <p ng-bind="notSubmitStu.loginName"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="share-to-parent" ng-click="ctrl.shareToParent()">
+        <p>向家长发通知</p>
+    </ion-footer-bar>
+</ion-view>

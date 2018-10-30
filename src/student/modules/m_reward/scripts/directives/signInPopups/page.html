@@ -1,0 +1,22 @@
+<div class="sign-in-popups-backdrop" ng-if="alertPopupFlag" ng-click="ctrl.hidePopup($event)">
+    <div class="sign-in-popups-wrap">
+        <div class="sign-in-popups-box-top">
+            <img ng-src="{{$root.loadImg('signIn/sign_in_popups_title.png')}}" alt="">
+        </div>
+        <div class="sign-in-popups-box-bottom">
+            <div class="sign-in-popups-item" ng-repeat="item in ctrl.signItemArr" ng-click="ctrl.clickItem(item)">
+                <div class="sign-in-popups-item-title" ng-bind="item.title"></div>
+                <div class="sign-in-popups-item-content">
+                    <div class="sipic-img"><img ng-src="{{$root.loadImg(item.signIn?item.signInImg:item.imgUrl)}}" alt=""></div>
+                    <div class="sipic-text" ng-bind="item.text"></div>
+                    <div class="sipic-sign-in" ng-if="item.canSignIn">
+                        <img ng-src="{{$root.loadImg('signIn/sign_get_btn.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sign-in-reward-prompt" ng-if="$root.showRewardPrompt">
+        <reward-prompt type="reward" show-num="{{ctrl.getCapacity}}"></reward-prompt>
+    </div>
+</div>

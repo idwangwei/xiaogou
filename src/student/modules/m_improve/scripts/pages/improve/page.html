@@ -1,0 +1,44 @@
+<ion-view class="improve-module">
+    <ion-content class="improve-module-content">
+        <audio src="{{ctrl.audioSrc}}" id="improve-video" style="display: none"></audio>
+        <img class="home-bg-01"
+             src="{{$root.loadImg('import_images/stu_improve_module_home_bg03.png')}}">
+        <img class="home-bg-02"
+             src="{{$root.loadImg('import_images/stu_improve_module_home_bg03.png')}}">
+
+        <div class="select-content">
+            <ion-slide-box on-slide-changed="ctrl.slideChange($index)"
+                           does-continue="true"
+                           auto-play="false"
+                           show-pager="false"
+                           delegate-handle="improve-module-select-box"
+                           ng-if="ctrl.allModule.length>0">
+                <ion-slide style="height: 100% !important;" ng-repeat="m in ctrl.allModule track by $index"
+                           auto-height="30">
+                    <div class="module-img" ng-click="ctrl.enterModule($index)">
+                        <img class="select-content-bg" src="{{$root.loadImg('import_images/stu_improve_home_bg.png')}}">
+                        <img class="select-module lazy" src="{{$root.loadImg(m.bigImgUrl)}}">
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+            <img class="select-butn-left lazy" ng-click="ctrl.showPreGuide($event)"
+                 src="{{$root.loadImg('import_images/stu_improve_home_butn01.png')}}">
+            <img class="select-butn-right" ng-click="ctrl.showNextGuide($event)"
+                 src="{{$root.loadImg('import_images/stu_improve_home_butn02.png')}}">
+            <div class="select-butn-enter" >
+                <img class="select-butn-enter-img select-butn-enter-animation" style="width: 100%;" ng-click="ctrl.enterModule()" src="{{$root.loadImg('import_images/stu_improve_home_butn03.png')}}">
+                <!--<i class="select-butn-enter-animation"></i>-->
+            </div>
+
+
+        </div>
+
+        <div class="select-options-list">
+            <div class="option-item" ng-repeat="module in ctrl.allModule track by $index" ng-click="ctrl.selectModule($index)">
+                <img class="option-bg" src="{{$root.loadImg('import_images/stu_improve_options_bg.png')}}">
+                <img class="option-item-img" src="{{$root.loadImg(module.imgUrl)}}">
+            </div>
+            <img class="select-options-bottom-bg" src="{{$root.loadImg('import_images/stu_improve_home_bg02.png')}}">
+        </div>
+    </ion-content>
+</ion-view>

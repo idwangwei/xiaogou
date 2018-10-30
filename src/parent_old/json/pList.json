@@ -1,0 +1,30 @@
+{
+  "code": 200,
+  "msg": "OK",
+  "students": [
+    {
+      "id": "148562ae-3309-43d6-9410-047f0b7a7090",
+      "name": "王伟",
+      "loginName": "13888888888C4",
+      "updatedTime": "2015-10-15 11:37:05",
+      "relationShip": "0",
+      "gender": "1"
+    },
+    {
+      "id": "170e3eeb-60a0-4e45-ab1e-32cdebb8c49c",
+      "name": "殷书林",
+      "loginName": "13888888888C5",
+      "updatedTime": "2015-10-15 11:11:28",
+      "relationShip": "0",
+      "gender": "1"
+    },
+    {
+      "id": "1d76d738-1d6f-4f58-a9f1-5a0dc1b74a0c",
+      "name": "王家佑",
+      "loginName": "13888888888C0",
+      "updatedTime": "2015-10-15 11:08:55",
+      "relationShip": "0",
+      "gender": "1"
+    }
+  ]
+}

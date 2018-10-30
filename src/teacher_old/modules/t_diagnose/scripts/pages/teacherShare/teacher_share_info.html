@@ -1,0 +1,86 @@
+<ion-view hide-nav-bar="true" class="teacher-share-info-file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+        </button>
+        <h1 class="title">邀请老师</h1>
+    </ion-header-bar>
+
+
+    <ion-content>
+        <!--邀请流程-->
+        <div class="share-info-flow-warp">
+            <div class="flow-title">邀请流程：</div>
+            <div class="flow-detail">
+                <div class="flow-detail-icon" ng-repeat="flow in ctrl.flowDetail">
+                    <div class="flow-detail-icon-item">
+                        <span class="icon-line icon-left" ng-class="{'icon-line-light':ctrl.teacherShare.flowStep >= $index}"></span>
+                        <span class="icon-cyc icon-middle" ng-class="{'icon-cyc-light':ctrl.teacherShare.flowStep >= $index}">
+                            <i class="icon ion-checkmark" ng-if="ctrl.teacherShare.flowStep > $index"></i>
+                            <i class="icon ion-more" ng-if="ctrl.teacherShare.flowStep == $index"></i>
+                        </span>
+                        <span class="icon-line icon-right" ng-class="{'icon-line-light':ctrl.teacherShare.flowStep>$index}"></span>
+                    </div>
+
+                    <div class="flow-detail-word" ng-bind="flow.text"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--一键分享-->
+        <div class="share-info-operate-warp">
+            <div class="operate-title">一键分享：</div>
+            <div class="operate-content">
+                <div class="operate-left" ng-class="{'text-align-center':!ctrl.isShowInvite()}">
+                    <img ng-src="{{ctrl.qrCodeImg}}">
+                </div>
+                <div class="operate-right" ng-if="ctrl.isShowInvite()">
+                    <div class = "btn" ng-click="ctrl.shareToWeiXin($event)">
+                        <img ng-src="{{$root.loadImg('wechat.ico')}}">
+                        <span>分享到微信</span>
+                    </div>
+                    <div class = "btn" ng-click="ctrl.shareToWeiXinFriendCyc($event)">
+                        <img ng-src="{{$root.loadImg('friend-circle.png')}}">
+                        <span>分享到朋友圈</span>
+                    </div>
+                    <div class = "btn" ng-click="ctrl.shareToQQ($event)">
+                        <img  ng-src="{{$root.loadImg('qq.ico')}}">
+                        <span> 分享到QQ</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--分享详情-->
+        <div class="share-info-detail-warp">
+            <div class="detail-title">分享详情：</div>
+            <div class="detail-content">
+                <table>
+                    <tr class="detail-table-header">
+                        <td>通过您的链接注册的老师姓名</td>
+                        <td>目前加入他班级的学生数（单个班级）</td>
+                        <td>分享成功时间</td>
+                        <td>您的学生总共获得特权使用时间</td>
+                    </tr>
+                    <tr class="detail-table-body" ng-repeat="item in ctrl.teacherShare.shareInfoDetail">
+                        <td valign="middle" ng-bind="item.fansTeacher"></td>
+                        <td valign="middle" ng-bind="item.studentCount"></td>
+                        <td valign="middle" ng-bind="item.finishTime ? item.finishTime:'等待他的学生继续加入班级'"
+                            ng-class="{'font-size-12':!item.finishTime}"></td>
+                        <td valign="middle" ng-bind="ctrl.teacherShare.mineStuVipTime"
+                            ng-if="$index===0" rowspan="{{ctrl.teacherShare.shareInfoDetail.length}}"></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+
+    </ion-content>
+
+
+</ion-view>

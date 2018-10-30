@@ -1,0 +1,19 @@
+<ion-view title="重置密码申请" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">重置密码申请</h1>
+    </ion-header-bar>
+    <ion-content padding="true" style="margin-top: 10px">
+        <div class="list">
+            <div class="item item-input block-input">
+                <label> 您申请的账号“{{ctrl.loginName}}”不存在！</label>
+            </div>
+            <button  ui-sref="reset_pass" class="button  button-block button-positive">
+                确定
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,19 @@
+{
+  "name": "allereEClassMathJaxParser",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "MathJax": "~2.5.3",
+    "requirejs": "~2.1.22"
+  }
+}

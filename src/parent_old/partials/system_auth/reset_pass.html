@@ -1,0 +1,26 @@
+<ion-view title="重置密码申请" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">输入家长账号</h1>
+    </ion-header-bar>
+    <ion-content padding="true" style="margin-top: 10px">
+        <ng-form novalidate="novalidate" name="CellPhoneForm" class="list" >
+
+            <div style="color: red" ng-style="{'visibility': checkAccount()?'hidden':'visible'}">家长账号格式不对</div>
+            <div class="item item-input block-input">
+                <label style="width: 100%">
+                    <input type="text" placeholder="例如：13812345678p"
+                           ng-model="formData.loginName"  name="loginName" id="loginName" required>
+                </label>
+            </div>
+            <div>
+                <p style="color:red;font-size: 15px">注意：想要同时重置孩子密码，在下一步勾选！</p>
+            </div>
+            <button class="button button-block button-bg" type="submit" ng-click="submitCellPhoneForm()" style="color: #fff">下一步
+            </button>
+        </ng-form>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

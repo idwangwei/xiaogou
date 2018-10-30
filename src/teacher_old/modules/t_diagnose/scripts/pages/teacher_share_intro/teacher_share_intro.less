@@ -1,0 +1,86 @@
+@import "./../../../../t_boot/less/theme02/include/_mixins";
+
+
+.teacher-share-intro-file {
+  .bar-header {
+    background: #8649a1 !important;
+    button i {
+      color: #fff;
+    }
+  }
+  ion-content {
+    background: linear-gradient(#8649a1, #62529c 30%, #455a98 70%);
+  }
+
+  .share-intro-top-warp {
+    height: 100px;
+    width: 100%;
+    .share-intro-top {
+      width: 100%;
+      height: 100%;
+      background: url('./../../../../t_boot/tImages/share/share_top_icon.png') 50% 50% no-repeat;
+      background-size: auto 80%;
+
+    }
+  }
+
+  .share-intro-middle-warp {
+    margin: 0 8%;
+    background-color: #fff;
+    border-radius: 10px;
+
+    .middle-warp-title, .middle-warp-footer {
+      color: #8a3d3d;
+      padding: 10px 14%;
+      font-size: 12px;
+    }
+    .middle-warp-content {
+      .display-flex;
+      height: 200px;
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  .share-intro-btn-warp {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    .display-flex;
+    .share-intro-btn {
+      width: 120px;
+      height: 100%;
+      border-radius: 20px;
+      background-color: #f34359;
+      color: #fff;
+      font-size: 16px;
+      .display-flex;
+    }
+  }
+
+  .share-intro-bottom-warp {
+    margin: 0 8%;
+    color: #fff;
+    font-size: 12px;
+    p:not(:first-child) {
+      padding-left: 12px;
+    }
+  }
+  @media screen  and (min-width: 600px){
+    .share-intro-top-warp{
+      height:150px;
+    }
+    .share-intro-middle-warp .middle-warp-content{
+      height:320px;
+    }
+  }
+  @media screen  and (min-width: 1024px){
+    .share-intro-top-warp{
+      height:180px;
+    }
+    .share-intro-middle-warp .middle-warp-content{
+      height:400px;
+    }
+  }
+}

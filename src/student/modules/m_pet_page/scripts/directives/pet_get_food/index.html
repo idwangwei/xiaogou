@@ -1,0 +1,28 @@
+<div class="pet-get-food-warp" ng-if="showFood">
+
+    <div class="pet-get-food-box">
+
+        <div class="animation-content-top">
+            <div class="animation-bg">
+                <img ng-src="{{$root.loadImg('pet_page/rewardPromptBg.png')}}">
+            </div>
+            <div class="animation-target">
+                <img class="target_img" ng-src="{{$root.loadImg('pet_page/pet_food'+(foodType||'all')+'.png')}}">
+                <img class="animation-star1" ng-src="{{$root.loadImg('pet_page/rewardPromptStar1.png')}}">
+                <img class="animation-star2" ng-src="{{$root.loadImg('pet_page/rewardPromptStar2.png')}}">
+            </div>
+
+        </div>
+
+        <div class="animation-content-middle">
+            <img ng-src="{{$root.loadImg('pet_page/rewardPromptGreen.png')}}">
+            <div ng-bind="foodName"></div>
+        </div>
+
+        <div class="animation-content-bottom">
+            <img ng-src="{{$root.loadImg('pet_page/prompt_btn_ok.png')}}" ng-click="hide()">
+
+        </div>
+
+    </div>
+</div>

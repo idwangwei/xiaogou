@@ -1,0 +1,64 @@
+<ion-view hide-nav-bar="true" class="official-accounts">
+    <ion-content class="official-accounts-content" overflow-scroll="true">
+        <div style="width: 100%; background-color: #96dbe7;" ng-style="{'height':ctrl.isIos()?'18px':'5px'}"></div>
+        <div class="title">
+            <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_title.png')}}">
+            <div class="title-plate">
+                <p>家长们都加入了“智算365”</p>
+                <p>微信公众号，您还不来？</p>
+            </div>
+        </div>
+        <div class="content">
+            <p class="title-word" style="width: 80%;max-width: 650px;margin: 8px 0">加入公众号，您就可以：</p>
+            <div class="include-module">
+                <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_m1.png')}}">
+                <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_m2.png')}}">
+                <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_m3.png')}}">
+                <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_m4.png')}}">
+            </div>
+        </div>
+
+        <div class="operation">
+            <p class="operation-title title-word">如何加入？</p>
+            <div class="operate-step">
+                <span>
+                    1. 打开您的微信，点下方
+                    <img style="height: 42px;" ng-src="{{$root.loadImg('officialAccounts/official_accounts_mark1.png')}}">
+                </span>
+                <span ng-if="ctrl.isIos()">
+                    2. 点击右上
+                    <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_mark2.png')}}">
+                </span>
+                <span ng-if="!ctrl.isIos()">
+                    2. 点击右上
+                    <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_mark2_android.png')}}">
+                    -添加朋友
+                </span>
+                <span>
+                    3. 点最下方
+                     <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_mark3.png')}}">
+                </span>
+                <span>
+                    4. 输入
+                    <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_mark4.png')}}">
+                    查找
+                </span>
+                <span>
+                    5. 进入公众号，点击下方
+                    <img ng-src="{{$root.loadImg('officialAccounts/official_accounts_mark5.png')}}">
+                </span>
+                <p style="width: 80%;text-align: left;margin-top: 10px;">好了，您已成功加入！</p>
+            </div>
+        </div>
+
+        <div class="qr-code-img">
+            <p class="title-word" style="margin: 0">如果您用的不是手机，请打开微信扫一扫</p>
+            <img class="qr-img" ng-src="{{$root.loadImg('qrCodeImages/xiaogou_official_accounts.png')}}">
+            <p class="title-word" ng-if="ctrl.isMobile()">分享给朋友，让朋友加入，有惊喜！</p>
+            <img ng-if="ctrl.isMobile()" ng-src="{{$root.loadImg('officialAccounts/official_accounts_share.png')}}"
+                 style="height: 40px"
+                 ng-click="ctrl.shareOfficialAccounts()">
+        </div>
+        <canvas id="myCanvas" style="display: none"></canvas>
+    </ion-content>
+</ion-view>

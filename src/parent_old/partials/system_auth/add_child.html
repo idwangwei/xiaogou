@@ -1,0 +1,77 @@
+<ion-view title="添加孩子" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">添加孩子</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <!--学生基本信息 start-->
+        <loading-processing load-top="100"></loading-processing>
+        <ng-form name="studentRegisterForm" class="list">
+            <div class="item item-input block-input">
+                <i class="ion ion-person" style="font-size: 20px;margin-right: 5px"></i>
+                <input type="text"
+                       placeholder="学生名"
+                       required=""
+                       name="studentName"
+                       ng-model="formData.name"/>
+            </div>
+            <common-password password-setting="passwordSetting" ></common-password>
+            <common-password password-setting="passwordConfirmSetting"></common-password>
+            <!--关系下拉菜单 start-->
+            <!--<label class="item item-input item-select" style="margin-bottom: 5px">-->
+                <!--<div class="input-label" style="color: #a29f91">-->
+                    <!--您是孩子的-->
+                <!--</div>-->
+                <!--<select name="relationship" id="relationship" ng-model="formData.relationShip" style="height: 50px">-->
+                    <!--<option value="-1" >请选择...</option>-->
+                    <!--<option value="0" >爸爸</option>-->
+                    <!--<option value="1">妈妈</option>-->
+                    <!--<option value="2">爷爷</option>-->
+                    <!--<option value="3">奶奶</option>-->
+                    <!--<option value="4">外公</option>-->
+                    <!--<option value="5">外婆</option>-->
+                    <!--<option value="6">其他</option>-->
+                <!--</select>-->
+            <!--</label>-->
+            <!--关系下拉菜单 end-->
+            <!--性别选择 start-->
+            <div class="row item" style="margin-bottom: 10px">
+
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="formData.gender==1" ng-click="handleGenderSelect(1)" >
+                    </label>
+                    男
+
+                </li>
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="formData.gender==0" ng-click="handleGenderSelect(0)" >
+                    </label>
+                    女
+                </li>
+            </div>
+            <!--性别选择 end-->
+
+            <div class="row  img-validate-block">
+                <div class="item item-input">
+                    <input type="text"
+                           placeholder="图形验证码"
+                           required=""
+                           name="vCode"
+                           ng-model="formData.vCode"/>
+                </div>
+                <img src="{{validateImageUrl}}"/>
+                <i class="button  icon ion-refresh button-clear"
+                        ng-click="getValidateImage()"></i>
+            </div>
+            <div class="button button-block  button-balanced"
+                 ng-click="handleSubmit()">
+                注册
+            </div>
+        </ng-form>
+        <!--学生基本信息表单 end-->
+    </ion-content>
+</ion-view>

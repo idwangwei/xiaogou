@@ -1,0 +1,95 @@
+<ion-view hide-nav-bar="true" class="holiday_work_list">
+
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title">暑假作业</h1>
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true" class="">
+
+        <div class="display-flex" style="font-size: 15px; color: #f16767;font-weight: bold;">
+            <span>做作业时间：7月1日-9月15日</span>
+        </div>
+
+        <div style="margin-bottom: 60px">
+            <!--<div ng-if="systemTime<openingTime"-->
+                 <!--style="font-size: 16px;font-weight: bold;text-align: center;padding: 16px;color: #f16767;">-->
+                <!--暑假作业7月1号开放-->
+            <!--</div>-->
+            <auto-list ng-repeat="paper in wData.workList" class="default-work-item">
+                <auto-list-content class=" list-content_stu " style="min-height: 105px;position: relative;" >
+                    <div class="list-center-stu"  ng-click="reviewWorkDetail(paper,$index);" style="position: relative">
+                        <div  class="left-img left-img-flex" style="width: auto;height: auto;max-width: 60px;" >
+                            <img ng-src="{{$root.loadImg('paper/holiday_paper_icon_v2.png')}}"  style="margin-left: 30px" >
+
+                        </div>
+                        <div class="center-span content-font-color" style="margin: 10px 0px 10px 15px;">
+                            <div class="second position-set " >
+                                <span style="font-weight: 100;font-size: 16px;" ng-bind="paper.paperName" class="paper-name"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 13px" ng-bind="paper.publishDateTime"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 13px" ng-bind="paper.clazz"></span>
+                            </div>
+
+                            <div class="second position-set" ng-if="paper.status==1">
+                                <span class="not-submit-paper" style="color:darkred!important;"
+                                      ng-bind="'未开始'">
+                                </span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status==2">
+                                <span class="not-submit-paper" style="color:darkred!important;"
+                                      ng-bind="'进行中'">
+                                </span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status==3">
+                                <span style="font-size: 13px" ng-bind="'作业已提交'"></span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status==4">
+                                <p>
+                                    <span class="correct-score" style="color:#003366!important;">{{paper.latestScore}}</span>
+                                    /{{paper.worthScore}}分
+                                </p>
+                            </div>
+                            <div class="second position-set">
+                                <p ng-if="paper.nextPublishTime"
+                                   ng-bind="paper.nextPublishTime"
+                                   style="white-space: normal;font-size: 13px;color: red"></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="list-right_stu"  >
+                        <div class="tool-bar-item" >
+                            <div >
+                                <img ng-src="{{$root.loadImg(paper.studentPraise.img)}}"
+                                     ng-click="showPraiseDetail(paper,1)"
+                                     ng-if="paper.studentPraise">
+                            </div>
+                            <div>
+                                <img ng-src="{{$root.loadImg(paper.teacherPraise.img)}}"
+                                     ng-click="showPraiseDetail(paper,2)"
+                                     ng-if="paper.teacherPraise">
+                            </div>
+                            <div>
+                                <img ng-src="{{$root.loadImg(paper.parentPraise.img)}}"
+                                     ng-click="praiseStu(paper)" ng-if="paper.parentPraise">
+                                <img ng-src="{{$root.loadImg('praise/praise.png')}}"
+                                     ng-click="praiseStu(paper)" ng-if="!paper.parentPraise">
+                            </div>
+
+                        </div>
+                    </div>
+                </auto-list-content>
+            </auto-list>
+
+        </div>
+
+    </ion-content>
+
+</ion-view>
+

@@ -1,0 +1,84 @@
+<ion-view hide-nav-bar="true" class="credits-store">
+    <ion-header-bar>
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i><span style="color: #4A6B9D!important;">返回</span>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';font-weight: 800;">智慧勾商城</h1>
+        <div class="header-bar-right" ng-click="ctrl.gotoTaskList()">
+            <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg01.png')}}">
+            <span style="color: #4A6B9D!important;">赚智慧币</span>
+        </div>
+    </ion-header-bar>
+    <div class="sub-header-bar bar bar-subheader subheader-flex">
+        <div class="top-butn">
+            <div class="top-butn-item" ng-click="ctrl.gotoCreditsRecord()">
+                <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                <p style="margin: 0 5px">我的智慧币</p>
+                <p style="margin: 0;color: #fafd05">{{ctrl.currentCredits}}</p>
+            </div>
+        </div>
+    </div>
+    <ion-content class="store-content has-subheader">
+        <!--下拉刷新-->
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()" spinner="ios"></ion-refresher>
+
+        <div class="all-goods">
+            <div class="goods-list-title">
+                <span>· 热购商品 ·</span>
+            </div>
+            <div class="goods-list goods-list-hot">
+                <div class="goods-item goods-item" ng-repeat="item in ctrl.hotGoodsList track by $index"
+                     ng-click="ctrl.gotoExchangeGoods(item)">
+                    <p ng-bind="item.name" style="font-size: 18px;position: relative;z-index:20"></p>
+                    <div class="goods-img" style="position: relative;z-index:20">
+                        <img ng-src="{{item.imgUrl}}">
+                        <!--<p ng-bind="'参考价：'+item.price"></p>-->
+                    </div>
+                    <div class="goods-item-credits">
+                        <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                        <p ng-bind="'智慧币：'+ item.credits"></p>
+                    </div>
+                    <img class="no-stock-mark" ng-style="{'display':item.hasStock?'none':'block'}"
+                         ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg12.png')}}">
+                    <img class="hot-goods-mark" ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg14.png')}}">
+                </div>
+
+            </div>
+        </div>
+        <div class="all-goods">
+            <div class="goods-list-title">
+                <span>· 商品 ·</span>
+                <span ng-click="ctrl.selectSort()" class="sort-butn">
+                    {{ctrl.sortSelectOptions[ctrl.sortType].name}}
+                    <i class="ion-arrow-down-b"></i>
+                    <i class="ion-arrow-up-b" style="display: none"></i>
+                </span>
+                <div class="select-sort" id="selectSort" style="display: none">
+                    <p ng-if="ctrl.sortType !='desc'" ng-click="ctrl.sortGoodsList('desc')"
+                       ng-bind="ctrl.sortSelectOptions['desc'].name"></p>
+                    <p ng-if="ctrl.sortType !='asc'" ng-click="ctrl.sortGoodsList('asc')"
+                       ng-bind="ctrl.sortSelectOptions['asc'].name"></p>
+                </div>
+            </div>
+            <div class="goods-list">
+                <div class="goods-item" ng-repeat="goods in ctrl.goodsList track by $index"
+                     ng-click="ctrl.gotoExchangeGoods(goods)">
+                    <p ng-bind="goods.name" style="font-size: 18px;"></p>
+                    <div class="goods-img">
+                        <img ng-src="{{goods.imgUrl}}">
+                        <!--<p ng-bind="'参考价：'+goods.price"></p>-->
+                    </div>
+                    <div class="goods-item-credits">
+                        <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                        <p ng-bind="'智慧币：'+goods.credits"></p>
+                    </div>
+                    <img class="no-stock-mark" ng-style="{'display':goods.hasStock?'none':'block'}"
+                         ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg12.png')}}">
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll id="loadMoreGoods" on-infinite="ctrl.loadMore()" ng-if="ctrl.moreFlag"
+                             immediate-check="false"
+                             spinner="ios" distance="10%"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+
+.xly_promote_assets{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+
+  .promote_common_btn{
+    background: #E36262;
+    border-style: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .promote_assets_head{
+    background-color: #dfe7e8;
+    padding: 10px;
+    .show-start-time-default:before{
+      content:'请选择开始时间';
+      color: #757575;
+    }
+    .show-end-time-default:before{
+      content:'请选择结束时间';
+      color: #757575;
+    }
+    .time-filter-box{
+      div{
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        padding: 6px;
+        .flex_4;
+        background-color: #fff;
+      }
+      div:nth-child(2){
+        margin: 0 6px;
+      }
+      .display-flex;
+      .com_justify_content_space;
+      .query-btn{
+        text-align: center;
+        border-radius: 4px;
+        background-color: #5ed05e;
+        color: #fff;
+        .flex_2;
+      }
+    }
+    .invite-info-box{
+      margin: 16px;
+      font-size: 16px;
+      .display-flex;
+      .com_justify_content_space;
+    }
+  }
+
+  .promote_assets_details{
+    margin: 10px;
+    text-align: center;
+
+    .details{
+      font-size: 16px;
+    }
+
+    .details_table {
+      color: #2E344B;
+      width: 100%;
+      text-align: center;
+
+      .vip-list-title{
+        color: #ffffff;
+        .display-flex;
+        div{
+          height: 60px;
+          line-height: 50px;
+          text-align: center;
+          .flex_3;
+          background-color: #f48080;
+        }
+      }
+      .vip-list-title div:nth-child(3){
+        .flex_2;
+      }
+      .vip-list-title{
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        overflow: hidden;
+      }
+      .vip-list-title div:nth-child(odd){
+        margin: 0 1px;
+      }
+
+      .vip-list-item{
+        background-color: #fff;
+        div{
+          .flex_3;
+          background-color: #fff;
+          font-size: 12px;
+          overflow: hidden;
+        }
+      }
+      .vip-list-item div:nth-child(3){
+        .flex_2;
+
+      }
+      .vip-list-item:nth-child(even) div{
+        background-color: #ececec;
+      }
+      .vip-list-item div:nth-child(odd){
+        margin: 0 1px;
+      }
+    }
+  }
+
+  .promote_details_btn{
+    text-align: center;
+    @media screen  and (max-width: 600px)   {
+      padding: 25px;
+    }
+    @media screen  and (min-width: 601px)   {
+      padding: 60px 25px;
+    }
+
+    .details_btn{
+      background: #83b3d9;
+    }
+  }
+
+  .promote_query{
+    .display-flex;
+    flex-direction: row;
+    -webkit-flex-direction:row;
+    padding: 5px;
+    width: 90%;
+    margin-left: 5%;
+
+    .promote_query_input{
+      width: 80%;
+      border-style: solid;
+      border-color: #d5d9df;
+      border-radius: 2px;
+    }
+
+    .promote_query_btn{
+      width: 60px;
+      height: 30px;
+      border-radius: 10px;
+      border-style: none;
+      background: #E36262;
+      color: #fff;
+    }
+  }
+}
+
+.promote_btn_gray{
+    background: #8b8f94 !important;
+}

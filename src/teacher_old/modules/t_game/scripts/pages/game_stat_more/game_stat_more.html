@@ -1,0 +1,86 @@
+<ion-view hide-nav-bar="true" class="statisstics" id="ion-header-bar">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title">游戏统计</h1>
+        <div class="button button-clear" ng-click="ctrl.doRefresh()">
+            <i class="icon ion-refresh"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content scroll="false" id="statMoreContent" class="game_stat_more_file">
+        <loading-processing></loading-processing>
+        <div class="row ">
+            <div stat-more-div class="col " style="overflow-y: auto;height: 600px"
+                 id="leftContent"
+                    >
+                <div style="text-align: center">
+                    <h4>每个学生在当前关卡的学习情况</h4>
+                    <h5>“{{ctrl.pubGame.gameName}}”第{{ctrl.pubGame.levelNum}}关</h5>
+                    <h6>知识点：{{ctrl.pubGame.kdName}}</h6>
+                    <h5>通关人数：{{ctrl.data.total.passedNum}}人, 通关率：{{ctrl.data.total.passedInfo}}%</h5>
+                </div>
+                <button class="button button-clear button-positive"
+                        ng-click="ctrl.errorByClazz()"
+                        style="float: right;font-size: 14px">
+                    全班错误类型统计
+                </button>
+                <table>
+                    <tr>
+                        <th ng-repeat="title in ctrl.data.tabTitle">{{title.name}}</th>
+                    </tr>
+                    <tr ng-repeat="info in ctrl.data.tabData" ng-click="ctrl.errorByStu(info)">
+                        <td class="name">{{info.name}}</td>
+                        <td>{{info.errorTimes}}</td>
+                        <td>{{info.order}}</td>
+                        <td>{{info.totalGameTime}}</td>
+                    </tr>
+                </table>
+            </div>
+            <span on-touch="ctrl.onTouch($event)"
+                  on-drag-left="ctrl.onDrag($event)"
+                  on-drag-right="ctrl.onDrag($event)"
+                  style="border:4px solid rgba(15, 121, 89, 0.26);">
+            </span>
+
+            <div stat-more-div class="col " id="rightContent">
+                <div style="position: relative;height: 99%" id="mainContent">
+                    <div style="overflow-y: auto;height: 50%;" id="topContent">
+                        <div style="text-align: center">
+                            <h4 ng-if="ctrl.clazzOrStu==1">{{ctrl.className}}在当前关卡的错误类型统计</h4>
+                            <h4 ng-if="ctrl.clazzOrStu==2">{{ctrl.stuName}}在当前关卡的错误类型统计</h4>
+                        </div>
+                        <table>
+                            <tr>
+                                <th ng-repeat="title in ctrl.errorStatData.tabTitle">{{title.name}}</th>
+                            </tr>
+                            <tr ng-repeat="info in ctrl.errorStatData.tabData">
+                                <td class="name">{{info.position}}</td>
+                                <td>{{info.description}}</td>
+                                <td>{{info.num}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="border-top:4px solid rgba(15, 121, 89, 0.26);position: absolute;bottom: 0;width: 100%;height: 50%;"
+                         on-touch="ctrl.onTouchForUp($event)"
+                         on-drag-up="ctrl.onDragForUp($event)"
+                         on-drag-down="ctrl.onDragForUp($event)"
+                         id="bottomContent">
+                        <img img-src="ctrl.errorStatData.total.imgUrl"
+                             height="100%" width="100%" alt=""
+                             ng-click="ctrl.showErrorImg()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
+<div class="backdrop-for-assist" ng-show="ctrl.showErrorImgFlag" my-backdrop contentId="statMoreContent"></div>
+<div class="myModal" ng-show="ctrl.showErrorImgFlag" ng-click="ctrl.hideErrorImg()" my-backdrop contentId="statMoreContent">
+    <ion-scroll zooming="true" style="width: 100%;height: 97%;" direction="xy" >
+        <img img-src="ctrl.errorStatData.total.imgUrl"  style=" width: 100%;height: auto;">
+    </ion-scroll>
+
+</div>

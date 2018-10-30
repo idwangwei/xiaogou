@@ -1,0 +1,77 @@
+<ion-view hide-nav-bar="true" class="trainingPetsMaster">
+    <ion-header-bar align-title="center" class="header" style="position: absolute;">
+        <i class="icon ion-ios-arrow-back back-icon" ng-click="ctrl.back()"> </i>
+        <h1 class="title" ng-bind="$root.isIncreaseScore ? '提分高手榜':'学霸之驯宠高手榜'">学霸之驯宠高手榜</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.help()" style="position: absolute;right: 5px;">
+                <img ng-src="{{$root.loadImg('trainingPetsMaster/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="mainBody" scroll="false">
+        <div class="personalWrap">
+            <div class="personal">
+                <div class="mAvatar">
+                    <img ng-src="{{ctrl.person.gender == 1 ? ctrl.boyIcon : ctrl.girlIcon}}" ng-show="ctrl.person"/>
+                    <!-- <img ng-src="{{$root.loadImg('trainingPetsMaster/girl.png')}}" ng-if="ctrl.person.gender != '1'"/>-->
+                </div>
+                <div class="info">
+                    <p>{{ctrl.person.studentName}}</p>
+                    <p>全国排行：
+                        <span ng-if="ctrl.person.ranking !== 0">第{{ctrl.person.ranking}}名</span>
+                        <span ng-if="ctrl.person.ranking === 0">未进入排名</span>
+                    </p>
+                    <p ng-if="!$root.isIncreaseScore">驯服考点萌宠： <span>{{ctrl.person.masterNumber}}</span>只</p>
+                    <p ng-if="$root.isIncreaseScore">掌握考点： <span>{{ctrl.person.masterNumber}}</span>个</p>
+                </div>
+                <div class="bkImg">
+                    <div class="topImg">
+                        <img ng-src="{{$root.loadImg('trainingPetsMaster/bk-top.png')}}"/>
+                    </div>
+                    <div class="botImg">
+                        <img ng-src="{{$root.loadImg('trainingPetsMaster/bk-bot.png')}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="select-wrap">
+            <!--详情见 directives - form - select-->
+            <!--default-option默认的选项-->
+            <form-select options="ctrl.allTypeOptions"
+                         default-option="1" value="ctrl.allType"
+                         on-change="ctrl.handleAllTypeOnChange"></form-select>
+            <form-select options="ctrl.typeOptions"
+                         default-option="0" value="ctrl.type"
+                         on-change="ctrl.handleTypeOnChange"></form-select>
+        </div>
+        <!--<div class="list-wrap">-->
+        <ion-scroll direction="y" class="list-wrap" delegate-handle="trainingPetsScroll">
+            <div ng-if="ctrl.retFlag && ctrl.list && ctrl.list.length === 0 " style="padding: 10px;">
+                未能获取到数据，请切换选项重试！
+            </div>
+            <div class="mList">
+                <div class="mItem" ng-repeat="item in ctrl.list" ng-class="{self: item.self === 1}">
+                    <!--<ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.getMainInfo()" spinner="ios"></ion-refresher>-->
+                    <div class="mLeft"><span><em ng-if="$index > 2">{{$index + 1}}</em><img ng-if="$index < 3"
+                                                                                            ng-src="{{$root.loadImg('trainingPetsMaster/number-'+$index +'.png')}}"/></span><em>{{item.studentName}}</em>
+                    </div>
+                    <div class="mMiddle"><p style="margin-bottom: 0;">{{item.schoolName || '自学班'}}</p></div>
+                    <div class="mRight"><em>{{item.masterNumber}}</em><span><img
+                            ng-src="{{$root.loadImg($root.isIncreaseScore?'diagnose/level-star-4.png':'diagnose/level-four-0.png')}}"/></span></div>
+                </div>
+                <ion-infinite-scroll on-infinite="ctrl.pullRefresh()" spinner="ios"
+                                     distance="15%" ng-if="ctrl.moreFlag && ctrl.allType==='country'"
+                                     immediate-check="false">
+                </ion-infinite-scroll>
+            </div>
+        </ion-scroll>
+        <!--</div>-->
+        <footer class="mFooter">
+            <!--ng-if="ctrl.isShowInvite()"-->
+            <div class="mBtn" ng-click="ctrl.showInvite()" ng-if="ctrl.isShowInvite()">
+                <img ng-src="{{$root.loadImg('trainingPetsMaster/showOff.png')}}"/>
+            </div>
+        </footer>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

@@ -1,0 +1,70 @@
+<ion-view title="考点诊断提分" hide-nav-bar="true" class="work_stu_diagnose_report">
+    <ion-header-bar class="bar-balanced work_stu_diagnose_report_title-bar" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">考点诊断提分</h1>
+    </ion-header-bar>
+
+    <ion-content class="work_stu_diagnose_report_content" overflow-scroll="true" style="overflow: hidden">
+        <div class="work_stu_report_area">
+            <div class="work_stu_diagnose_report_title">
+                <div class="item-label report-title">
+                    <span ng-bind="ctrl.currentWork.paperName+(ctrl.isFinalAccess?'测试':'')+'('+ctrl.currentWork.stu.totalScore+ '分)'"></span>
+                </div>
+
+                <div class="test_points_tip">
+                    <div class="test-points-count"><span>本次作业涉及<span style="color:#F85A5A;padding: 0 3px">{{ctrl.currentReport.totalLevelCount}}</span>个考点</span>
+                    </div>
+                    <div class="test-point-tip"><span>想看整个单元的考点诊断报告，请到首页“诊断提分”里查看</span></div>
+                </div>
+
+                <div class="test_points_status">
+                    <div class="level-point">
+                        <i class="icon ion-stop level-common  level-color-one"></i><span>掌握</span>
+                    </div>
+                    <div class="level-point">
+                        <i class="icon ion-stop level-common level-color-two"></i><span>不牢固</span>
+                    </div>
+                    <div class="level-point">
+                        <i class="icon ion-stop level-common level-color-three"></i><span>未掌握</span>
+                    </div>
+                </div>
+            </div>
+            <div class="work_stu_diagnose_report_table">
+                <ion-scroll zooming="true" direction="y" style="width: 100%; height:95%;">
+                    <div class="test-points-tb"
+                         ng-repeat="(name,item) in ctrl.currentReport.stuId2KnowledgeMasterDict"
+                         ng-if="item.myData.isShow" ng-style="{'background-color':$index%2==0?'#ebecf1':'#f5f5f8'}">
+                        <div class="test-points-tb-tr"
+                             ng-style="{'margin-bottom':$last ? '80px':''}"
+                             ng-click="ctrl.showStuReport(name)">
+                            <div class="tr_cm_cell">
+                                <img ng-src="{{item.myData.stuImg}}" alt=""/>
+                                <div ng-bind="item.profile.name" class="stu-name"></div>
+                            </div>
+                            <div class="tr_cm_cell tr_cm_cell_bar">
+                                <div class="tr_cell_bar">
+                                    <div class="common-bar level-background-one"
+                                         style="width:{{item.myData['4'].levelPercent}}"
+                                         ng-bind="item.myData['4'].levelCount" ng-if="item.myData['4'].levelCount>0"></div>
+                                    <div class="common-bar level-background-two"
+                                         style="width:{{item.myData['3'].levelPercent}}"
+                                         ng-bind="item.myData['3'].levelCount" ng-if="item.myData['3'].levelCount>0"></div>
+                                    <div class="common-bar level-background-three"
+                                         style="width:{{item.myData['2'].levelPercent}}"
+                                         ng-bind="item.myData['2'].levelCount" ng-if="item.myData['2'].levelCount>0"></div>
+                                </div>
+                            </div>
+                            <i class="icon ion-chevron-right"></i>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <loading-processing ng-if="!ctrl.currentReport" load-top="200"></loading-processing>
+    </ion-content>
+    <ion-footer-bar style="background: #fff !important;" ng-if="ctrl.currentWork.publishType !=4 && ctrl.currentWork.publishType !=5">
+        <img style="height: 90%" ng-src="{{$root.loadImg('workStuList/send_msg_to_student.png')}}" ng-click="ctrl.sendMsgTostu()">
+    </ion-footer-bar>
+
+</ion-view>

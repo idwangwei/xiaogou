@@ -1,0 +1,39 @@
+<div class="game-map-scene-backdrop">
+    <ion-view class="game-map-scene-area">
+        <ion-header-bar class="bar-balanced game-map-scene-title" align-title="center">
+            <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+                <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #ffffff"></i>&nbsp;&nbsp;
+            </button>
+            <h1 class="title" style="font-family: 'Microsoft YaHei';color: #1E446A">魔力闯关</h1>
+            <button class="button buttons  button-clear header-item" ng-click="ctrl.buy()">
+                <img class="btn-buy" ng-src="{{ctrl.getMyImg('btn_buy.png')}}">
+            </button>
+        </ion-header-bar>
+        <ion-content padding="true" class="game-map-scene-content">
+            <div ng-if="ctrl.initCtrl && !ctrl.normalClazz && !ctrl.selfStudyClazz" style="padding: 20px; font-size: 16px;color: white">
+                你没有加入任何班级，请到家长端去申请加入班级吧！
+            </div>
+            <div class="game-map-list">
+                <div ng-repeat="item in ctrl.gameMapSceneList"
+                class="map-scene-tr-common {{'scene-tr'+($index+1)}}" ng-click="ctrl.goToPlay(item)">
+                    <img  class="td-left {{'td-left'+($index+1)}}" ng-src="{{ctrl.getBgImg($index,1)}}">
+                    <img class="td-right {{'td-right'+($index+1)}}" ng-src="{{ctrl.getBgImg($index,2)}}">
+                    <div class="td-middle ">
+                        <img ng-src="{{ctrl.getTitleImg($index)}}">
+                        <div>{{item.grade}}</div>
+                        <div class="display-flex" style="padding: 4px 0 0;">
+                            <span>{{item.star}}</span>
+                            <img class="middle-star" ng-src="{{ctrl.getMyImg('star.png')}}">
+                            <span>{{item.playingCount}}人正在闯关</span>
+                            <i class="ion-chevron-right arrow-right"></i>
+                        </div>
+                        </div>
+                    <div class="game-map-totalCredits">最高获得{{item.totalCredits}}能量</div>
+                    <div class="game-map-has-buy" ng-if="ctrl.hasPayForGame($index)">
+                        <img ng-src="{{ctrl.getMyImg('has_pay.png')}}">
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</div>

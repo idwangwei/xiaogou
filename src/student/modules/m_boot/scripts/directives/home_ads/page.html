@@ -1,0 +1,16 @@
+<div class="home-ad-dialog"
+     ng-if="$root.showHomeAdDialogFlag">
+    <div class="home-ad-dialog-backdrop" ng-click="hideDiagnoseDialog($event)">
+        <div class="home-ad-dialog-content">
+            <div class="dialog-desc">
+                <img class="dialog-content-img" ng-src="{{loadlocalImages('ads_content.png')}}">
+                <div class="dialog-btn">
+                    <img ng-src="{{$root.loadImg('diagnose/diagnose_ad_dialog_butn.png')}}"
+                         ng-click="gotoPages($event)">
+                    <a ng-click="hideDiagnoseDialog($event)">下次再说</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

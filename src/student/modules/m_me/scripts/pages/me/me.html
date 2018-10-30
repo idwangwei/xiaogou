@@ -1,0 +1,185 @@
+<ion-view hide-nav-bar="true" class="me">
+    <!-- 切换头像-->
+    <!--<change-head-img ng-if="$root.showChangeHeadFlag"></change-head-img>-->
+    <!--能量弹出框-->
+    <reward-dialog ng-if="$root.showRewardDialogFlag" current-level="{{ctrl.rewardData.level}}"
+                   level-up="{{ctrl.rewardData.levelUp}}"
+                   experience="{{ctrl.rewardData.experience}}" credits="{{ctrl.rewardData.credits}}"
+                   current-page="home.me"></reward-dialog>
+    <div class="head-content" ng-class="ctrl.isIos()?'head-content-height-ios':'head-content-height'">
+        <div class="bg-content" ng-if="ctrl.rewardData">
+            <img ng-src="{{$root.loadImg('me/reward_detail.png')}}" style="position: absolute;right: 2%;width: 25px;"
+                 ng-style="{'top':ctrl.isIos()?'25px':'8%'}" ng-click="ctrl.scoreDetails()">
+            <div class="reward-content">
+                <!-- <img ng-src="{{$root.loadImg('me/me-s-logo.png')}}"
+                      alt="" class="user-head">-->
+                <img ng-src="{{$root.loadImg('head_images/user_head'+ctrl.getAvator()+'.png')}}" class="user-head"
+                     ng-if="ctrl.rewardData"
+                     ng-click="ctrl.changeHead()">
+                <div class="user-name">
+                    <p class="nameP" ng-bind="ctrl.name"></p>
+                    <p class="levelP">Lv.{{ctrl.rewardData.level}}</p>
+                </div>
+                <p style="color: #ffffff;margin: 0">{{ctrl.loginName}}</p>
+
+                <!-- <div class="level-names" ng-if="ctrl.rewardData.currenLevelName" ng-click="ctrl.goToLevelName()">
+                     <img ng-src="{{$root.loadImg('levelName/'+'group'+(!ctrl.rewardBase.title?'1':ctrl.rewardBase.title)+'LevelName'+ctrl.rewardData.currenLevelImgIndex+'.png')}}">
+                     <p>{{ctrl.rewardData.currenLevelName}}</p>
+                 </div>-->
+                <!-- <div class="level-progress" ng-if="!!ctrl.rewardData">
+                     <label>Lv.{{ctrl.rewardData.level}}</label>
+                     <div class="progress-bar">
+                         <div class="progress-bar-done"
+                              ng-style="{'width':ctrl.getProgressWidth()+'%'}">
+                         </div>
+                     </div>
+                     <label>Lv.{{ctrl.getNextLevel(ctrl.rewardData.level)}}</label>
+                 </div>
+                 <div class="level-desc">
+                     {{ctrl.rewardData.experience}}/{{ctrl.rewardData.levelUp}}经验
+                 </div>-->
+            </div>
+            <div class="reward-content-bottom">
+                <div class="reward-sign-entry" ng-click="ctrl.goToSignIn()">
+                    <img ng-src="{{$root.loadImg('me/reward_sign_in.png')}}">
+                    <label>签到</label>
+                </div>
+                <!--style="position: absolute;left: 0;right: 0;width: 30%;min-width: 110px;max-width: 130px;margin: auto"-->
+                <div class="level-names" ng-if="ctrl.rewardData.currenLevelName" ng-click="ctrl.goToLevelName()"
+                     style="width: 30%;min-width: 110px;;max-width: 140px;">
+                    <img ng-src="{{$root.loadImg('levelName/'+'group'+(!ctrl.rewardBase.title?'1':ctrl.rewardBase.title)+'LevelName'+ctrl.rewardData.currenLevelImgIndex+'.png')}}">
+                    <p>{{ctrl.rewardData.currenLevelName}}</p>
+                </div>
+                <div class="reward-detail-button">
+                    <div class="reward-detail-credits" ng-click="ctrl.creditsDialog()">
+                        <img ng-src="{{$root.loadImg('reward_system/reward_money.png')}}"
+                             style="width: 20px;height: 20px">
+                        <label style="color: #FFFF00;margin-left: 5px;">{{ctrl.rewardData.credits}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <ion-content id="me-content"
+                 ng-class="ctrl.isIos()?'me-content-ios':'me-content'"
+                 has-bouncing="true"
+                 overflow-scroll="false"
+                 on-scroll="ctrl.onScrolling(this)"
+                 on-scroll-complete="ctrl.completeScroll(this)"
+                 ng-style="{paddingTop:'15px'}">
+        <div class="row-con">
+            <div class="row-item" ng-click="ctrl.goToDayTask()">
+                <img ng-src="{{$root.loadImg('me/reward_day_task.png')}}">
+                <span>每日任务</span>
+            </div>
+            <!--<div class="row-item" ng-click="ctrl.goToLevelName()">
+                <img ng-src="{{$root.loadImg('me/reward_level_name.png')}}">
+                <span>称号</span>
+            </div>-->
+            <div class="row-item" ng-click="ctrl.goToDignosePK()">
+                <img ng-src="{{$root.loadImg('me/me-stu-diagnose-pk.png')}}">
+                <span>霸主</span>
+            </div>
+            <div class="row-item" ng-click="ctrl.goToScoreStore()">
+                <img ng-src="{{$root.loadImg('me/reward_score_store.png')}}">
+                <span>能量中心</span>
+            </div>
+        </div>
+
+
+        <div class="row-con">
+            <!--   <div class="row-item" ng-click="ctrl.goToSignIn()">
+                   <img ng-src="{{$root.loadImg('me/reward_sign_in.png')}}">
+                   <span>签到</span>
+               </div>-->
+            <!--<div class="row-item" id="online-kefu" ng-click="ctrl.goToOnlineService()">-->
+            <!--<img ng-src="{{$root.loadImg('me/kefu.png')}}">-->
+            <!--<span>在线客服</span>-->
+            <!--</div>-->
+
+<!--
+            <div class="row-item" ng-click="ctrl.toProtectEyePage()">
+                <img ng-src="{{$root.loadImg('me/protect-eye.png')}}">
+                <span>护眼妙招</span>
+            </div>
+-->
+            <div class="row-item" ng-click="ctrl.gotoClazzManage()" nav-direction="forward">
+                <img ng-src="{{$root.loadImg('me/me-stu-clazz.png')}}">
+                <span>我的班级</span>
+            </div>
+            <div class="row-item" ui-sref="about" nav-direction="forward">
+                <img ng-src="{{$root.loadImg('me/me-xiaogou.png')}}">
+                <span>关于智算365</span>
+            </div>
+
+            <div class="row-item" ui-sref="achievement" nav-direction="forward">
+                <img ng-src="{{$root.loadImg('me/me-stu-achievement.png')}}">
+                <span>表扬记录</span>
+            </div>
+
+        </div>
+        <div class="row-con">
+
+            <div class="row-item" ui-sref="clear_local_data">
+                <img ng-src="{{$root.loadImg('me/me-clear.png')}}">
+                <span>清除缓存</span>
+            </div>
+            <div class="row-item" ui-sref="weixin_pay_detail">
+                <img ng-src="{{$root.loadImg('me/pay_detail.png')}}">
+                <span>支付明细</span>
+            </div>
+            <div class="row-item" ng-click="ctrl.gotoOnlineTeachingIndexPage()">
+                <img ng-src="{{$root.loadImg('me/me-help.png')}}">
+                <span>线上辅导</span>
+            </div>
+
+            <!-- <div class="row-item" ng-click="ctrl.showQQHelp()">
+                 <img ng-src="{{$root.loadImg('me/qq-help.png')}}">
+                 <span>客服QQ</span>
+             </div>-->
+
+            <!--<div class="row-item" ng-click="ctrl.goCommonProblem()">-->
+                <!--<img ng-src="{{$root.loadImg('me/weixin-help.png')}}">-->
+                <!--<span>微信客服</span>-->
+            <!--</div>-->
+        </div>
+
+        <div class="row-con">
+
+            <!-- <div class="row-item" ng-click="ctrl.goCommonProblem()">
+                 <img ng-src="{{$root.loadImg('me/me-help.png')}}">
+                 <span>常见问题</span>
+             </div>-->
+            <div class="row-item" ng-click="ctrl.showInvite()" ng-if="ctrl.isShowInvite()">
+                <img ng-src="{{$root.loadImg('me/stu-me-invite.png')}}">
+                <span>邀请同学</span>
+            </div>
+            <div class="row-item" ng-click="ctrl.userLogoutToParent()">
+                <img ng-src="{{$root.loadImg('me/me-stu-login-out-parent.png')}}">
+                <span>去家长端</span>
+            </div>
+            <div class="row-item" ng-click="ctrl.userLogout()">
+                <img ng-src="{{$root.loadImg('me/me-stu-login-out.png')}}">
+                <span>退出登录</span>
+            </div>
+        </div>
+
+        <!--<div class="row-con">-->
+            <!--<div class="row-item" ng-click="ctrl.userLogoutToParent()" ng-if="ctrl.isShowInvite()">-->
+                <!--<img ng-src="{{$root.loadImg('me/me-stu-login-out-parent.png')}}">-->
+                <!--<span>去家长端</span>-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="row-con" ng-if="ctrl.isShowInvite()">
+            <div class="row-item" ng-click="ctrl.userLogout()">
+                <img ng-src="{{$root.loadImg('me/me-stu-login-out.png')}}">
+                <span>退出登录</span>
+            </div>
+        </div>
+-->
+    </ion-content>
+</ion-view>
+

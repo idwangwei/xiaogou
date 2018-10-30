@@ -1,0 +1,77 @@
+<ion-view hide-nav-bar="true" class="do_question_file oral_do_question_file" cache-view="false">
+    <div class="bar bar-header " style="background: #d2f7ef!important;">
+        <button ng-click="ctrl.back()" class="button buttons  button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i>&nbsp;返回
+        </button>
+
+        <div class="title header-bar">
+            <img ng-if="ctrl.limitTime>=0 && !ctrl.redoFlag" ng-src="{{ctrl.clock}}"
+                 style="height: 65%;margin-right: 5px">
+            <span ng-if="ctrl.limitTime>=0 && !ctrl.redoFlag && ctrl.startTimeFlag" alr-count-down
+                  seconds="{{ctrl.getCountDownStartTime()}}" pattern="ms2"
+                  count-down-timer="ctrl.stopTimer"
+                  time-end-call-back="ctrl.timeEndCallBack()"
+                  time-rest-call-back="ctrl.timeRestCallback"
+                  time-count-call-back="ctrl.timeCountCallBack()">
+        </span>
+        </div>
+
+        <!--<div class="bar-item bar-i">-->
+        <img ng-show="ctrl.eraserStatus==0" ng-click="ctrl.changeEraserStatus(1)"
+             class="button buttons button-clear eraser"
+             style="position: absolute;top: 5px;right: 5px;bottom: 5px;"
+             ng-src="{{ctrl.eraser}}"/>
+        <img ng-show="ctrl.eraserStatus==1" ng-click="ctrl.changeEraserStatus(0)"
+             class="button buttons button-clear eraser"
+             ng-src="{{ctrl.eraserActive}}"/>
+
+        <!--<img ng-src="{{ctrl.eraserActive}}"/>-->
+        <!--</div>-->
+    </div>
+    <div class="bar bar-subheader progress-tip"
+         style="padding: 0;height: 30px; font-size: 16px;display: flex;justify-content: space-around;display: -webkit-flex;-webkit-justify-content: space-around;color: #4a6b9d;">
+        <span style="position: absolute;left: 30px;font-size: 21px">{{ctrl.doneCount+"/"+ctrl.smallQList.length}}</span>
+        <span style="background-color: #fff;border-radius: 15px;padding: 5px 15px">请<span style="color:red">书写工整</span>，养成好习惯</span>
+    </div>
+    <div ng-if="ctrl.submitProcessing" style="text-align: center;width: 100%;position: absolute;z-index: 1200;top: 15%;">
+        <ion-spinner icon="ios"></ion-spinner>
+        <p>正在提交</p>
+    </div>
+    <ion-content delegate-handle="oral-question-content"
+                 ng-style="{top:($root.platform.IS_IPHONE||$root.platform.IS_IPAD)?'64px':'44px'}"
+                 on-scroll="ctrl.onScroll()">
+        <scroll-tip ng-show="ctrl.showScrollAreaFlag"
+                    height="ctrl.canvasSize.scrollHeight"></scroll-tip>
+        <canvas-input height="ctrl.canvasSize.scrollHeight"
+                      handle="oral_cal_canvas_input">
+        </canvas-input>
+        <oral-calculation-list big-q-list="ctrl.bigQList" correct-status="DO_QUESTION"></oral-calculation-list>
+        <!--<div ng-repeat="quesInfo in ctrl.questionList"-->
+        <!--ng-repeat-finished-->
+        <!--class="oral-question">-->
+        <!--<equation ques-info={{quesInfo}} ques-index={{$index+1}}></equation>-->
+        <!--</div>-->
+        <!--<div style="width: 1px;height: 100px"></div>-->
+    </ion-content>
+    <div class="bar bar-footer footer-butn">
+        <img style="width: 40px;" ng-src="{{ctrl.scrollUp}}"
+             ng-click="ctrl.scrollEvent('up')">
+        <div class="bar-item" style="flex: none;-webkit-flex: none;background-color: #65baed;border-radius: 20px;"
+             ng-click="ctrl.submitAnswer()">
+            <button class="button buttons  button-clear" style="width: 85px;color: #ffffff;">完成计算
+            </button>
+        </div>
+
+        <img style="width: 40px;" ng-src="{{ctrl.scrollDown}}"
+             ng-click="ctrl.scrollEvent('down')">
+    </div>
+
+    <!--<img class="tip-cards" ng-if="ctrl.redoFlag" ng-src="{{ctrl.tipCards}}">-->
+
+    <loading-processing-oral></loading-processing-oral>
+    <oral-calculation-guide show-type="2"
+                            ng-if="!ctrl.startTimeFlag"
+                            guide-callback="ctrl.startTimer()"
+                            go-back-callback="ctrl.back(true)"></oral-calculation-guide>
+
+</ion-view>

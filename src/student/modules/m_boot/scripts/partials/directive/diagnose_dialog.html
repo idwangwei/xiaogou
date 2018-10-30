@@ -1,0 +1,54 @@
+<div class="diagnsoe-dialog">
+    <div ng-if="showDiagnoseDialog" >
+        <div class="work-backdrop " >
+            <div class="diagnose-dialog-box diagnose-popup-bounce" ng-if="showDiagnoseDialogFalg">
+                <div class="top-img-wrap" ng-if="val.comeFrom==='olympic-math'">
+                    <img ng-src="{{$root.loadImg('olympic-math/olympic-math-girl-modal.png')}}" >
+                </div>
+                <div class="top-img-wrap top-img-winter-camp" ng-if="val.comeFrom==='winter-camp'">
+                    <img ng-src="{{$root.loadImg('winter_camp/winter_camp_global_img01.png')}}" >
+                </div>
+                <!--<div class="top-img-wrap top-img-winter-camp" ng-if="val.comeFrom==='winter-camp01'">
+                    <img ng-src="{{$root.loadImg('winter_camp/winter_camp_global_img02.png')}}" >
+                </div>-->
+                <div class="top-img-wrap top-img-diagnose" ng-if="val.comeFrom =='diagnose-knowlege'">
+                    <img ng-src="{{$root.loadImg($root.isIncreaseScore?'diagnose/diagnose_dialog_top_img_v2.png':'diagnose/diagnose_dialog_top_img.png')}}" >
+                </div>
+                <div class="top-img-wrap" ng-if="val.comeFrom =='mircorlecture'">
+                    <img style="margin-bottom: -59px;height: 71%;" ng-src="{{$root.loadImg('mircorlecture/mircorlecture_img01.png')}}" >
+                </div>
+                <div class="dialog-content-text">
+                    <h4 class="dialog-title" style="position: relative;z-index: 10" ng-bind="val.title" ng-if="val.title"></h4>
+                    <p ng-bind="val.content"></p>
+                    <div style="width: 100%" ng-if="val.contentWords">
+                        <p ng-repeat="word in val.contentWords" ng-bind="word"></p>
+                    </div>
+                    <div class="dialog-content-button" ng-class="{'tipDialog':!showConfirmFlag}">
+                        <div class="dialog-confirm-btn" >
+                            <div class="btn-text" ng-click="dialogConfirm()">
+                                <span ng-bind="val.confrimBtnText"></span>
+                            </div>
+                            <img ng-src="{{$root.loadImg('diagnose/diagnose-dialog-confirm.png')}}">
+                        </div>
+                        <div class="dialog-cancel-btn" ng-if="showConfirmFlag">
+                            <div class="btn-text" ng-click="dialogCancel()">
+                                <span ng-bind="val.cancelBtnText"></span>
+                            </div>
+                            <img ng-src="{{$root.loadImg('diagnose/diagnose-dialog-cancel.png')}}" >
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="val.comeFrom==='diagnose'">
+                    <img ng-src="{{$root.loadImg('diagnose/diagnose-dialog-buble.png')}}" class="diagnose-dialog-buble01">
+                    <img ng-src="{{$root.loadImg('diagnose/diagnose-dialog-buble.png')}}" class="diagnose-dialog-buble02">
+                    <img ng-src="{{$root.loadImg($root.isIncreaseScore?'diagnose/diagnose-dialog-logo-v2.png':'diagnose/diagnose-dialog-logo.png')}}" class="diagnose-dialog-logo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- <div class="work-backdrop-copy" ng-if="showDiagnoseDialogFalg">
+
+    </div>-->
+</div>
+

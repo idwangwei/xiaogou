@@ -1,0 +1,30 @@
+<div class="winter-camp-reward-prompt" ng-if="$root.showWinterCampRewardPrompt">
+    <div class="reward-prompt-backdrop">
+        <div class="reward-prompt-content">
+            <div class="animation-content">
+                <img class="animation-bg" ng-src="{{rewardPromptBg}}">
+                <div class="animation-target">
+                    <div class="targets">
+                        <img class="target_img" ng-src="{{rewardPromptC1}}">
+                        <img class="animation-star1" ng-src="{{rewardPromptStar1}}">
+                        <img class="animation-star2" ng-src="{{rewardPromptStar2}}"
+                        ng-style="{'right':type=='diagnose'}?'7%':'16%'">
+                    </div>
+                </div>
+
+                <div class="reward-prompt-text">
+                    <div class="text-content">
+                        <img class="text-content-item" ng-src="{{rewardPromptGreen}}">
+                        <p class="text-content-item">能量+{{showNum}}</p>
+                    </div>
+                </div>
+                <img class="submit-butn" ng-src="{{rewardPromptButn}}" ng-click="hideRewardPrompt()">
+            </div>
+            <!--<div class="sure-butn" ng-click="hideRewardPrompt()">
+                <img src="{{rewardPromptButn}}">
+            </div>-->
+
+        </div>
+    </div>
+
+</div>

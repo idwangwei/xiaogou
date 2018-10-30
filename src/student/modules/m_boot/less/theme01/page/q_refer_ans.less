@@ -1,0 +1,144 @@
+@charset "UTF-8";
+@import "../include/_mixins";
+
+.q-refer-ans-file{
+
+    //覆盖之前的ios样式
+    .ios-header-adapt{
+        top: 64px!important;
+    }
+    .not-ios-header-adapt{
+        top: 44px!important;
+    }
+    .bg-box{
+        position: relative;
+        @media screen and (max-width: 767px) {
+            font-size: 25px;
+            line-height: 145px;
+            height: 145px;
+        }
+        @media screen and (min-width: 768px) {
+            font-size: 40px;
+            line-height: 300px;
+            height: 300px;
+        }
+        .savant-ans-wrap{
+            position: absolute;
+            bottom: 10%;
+            right: 10px;
+            width: 18%;
+            max-width: 124px;
+        }
+        .bg-inner-box{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: #293d69;
+            .bg-inner-box1{
+                width: 60%;
+                height:100%;
+                margin: auto;
+                img{
+                    width: 100%;
+                    max-width: 600px;
+                    margin: auto;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    .bg-box-olympic-math{
+        position: relative;
+        background:  linear-gradient(to bottom, #C974E9 0%, #936BE4 100%);
+        background: linear-webkit-gradient(to bottom, #C974E9 0%,#936BE4 100%);
+        @media screen and (max-width: 767px) {
+            font-size: 25px;
+            line-height: 145px;
+            height: 145px;
+        }
+        @media screen and (min-width: 768px) {
+            font-size: 40px;
+            line-height: 300px;
+            height: 300px;
+        }
+        .middle-title{
+            text-align: center;
+            width: 100%;
+            color: white;
+        }
+        .savant-ans-wrap{
+            position: absolute;
+            bottom: 10%;
+            right: 10px;
+            width: 18%;
+            max-width: 124px;
+        }
+        .olympic-math-bg-cloud-01{
+            position: absolute;
+            bottom: 0px;
+            left: -10px;
+            height: 40%;
+            max-height: 130px;
+        }
+        .olympic-math-bg-cloud-02{
+            position: absolute;
+            bottom: 0px;
+            left: 70px;
+            height: 15%;
+            max-height: 80px;
+        }
+        .olympic-math-bg-cloud-03{
+            position: absolute;
+            bottom: 0px;
+            right: -7px;
+            height: 15%;
+            max-height: 80px;
+            transform: scale(-1, 1);
+            -webkit-transform: scale(-1, 1);
+        }
+        .olympic-math-cup-bg{
+            position: absolute;
+            bottom: 0px;
+            left: 7px;
+            height: 45%;
+            max-height: 180px;
+            z-index: 100;
+        }
+    }
+    .analysis-title{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .q-context{
+        color: #17233e;
+    }
+    .big-q{
+        border: none;
+        margin: 0;
+        background: #accbf9;
+        color: #293d69;
+        height: 30px;
+        line-height: 30px;
+        width: 100%;
+        label{
+            font-size: 16px;
+            span{
+                margin-left: 10px;
+            }
+        }
+    }
+    .card-p-correct{
+        background: #daf5fe;
+        margin: 0px 10px 10px 10px;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        padding-bottom: 0px;
+    }
+    .correct-box{
+        margin-top: 20px;
+    }
+}
+

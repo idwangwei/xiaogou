@@ -1,0 +1,23 @@
+<div class="vertical-container"
+     :class="[verticalContainerClass, VF_BLANK_MARGIN]"
+>
+   <vertical-row
+            v-for="(row, r) in ctrl.vam"
+            :key="r"
+            :vfRow="row"
+    >
+        <!--@click="verticalCellOnClick"-->
+        <!--:key="r*100+c"-->
+        <vertical-cell
+                v-for="(col, c) in row"
+                :key="c"
+                :vfCell="col"
+                :r="r"
+                :c="c"
+        />
+    </vertical-row>
+
+    <vertical-correctness :gradeInfo="ctrl.gradeInfo" />
+</div>
+
+

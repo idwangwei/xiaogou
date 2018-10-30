@@ -1,0 +1,35 @@
+<style>
+    .col-md-3, .col-xs-6 {
+        padding: 2px;
+    }
+    .clazz-item {
+        background: white;
+        border-radius: 7px;
+        width: 99%;
+        padding: 15px 0;
+    }
+    .clazz-overflow-ellipsis{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<ion-view hide-nav-bar=true nav-direction="left">
+    <ion-header-bar  align-title="center" ng-style="ctrl.barBalanced">
+        <button class="button back-button buttons  button-clear header-item common-back-btn" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" ng-style="ctrl.titleColor"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'" ng-style="ctrl.titleColor">选择班级</h1>
+    </ion-header-bar>
+    <ion-content class="has-header" padding="true" ng-style="ctrl.contentBg">
+        <div class="col-md-3 col-xs-6 " ng-repeat="clazz in ctrl.passClazzList.toJS()" ng-show="clazz.status==1">
+            <div class="clazz-item" ng-click="ctrl.selectClazz(clazz)">
+                <img ng-src="{{$root.loadImg('other/class.svg')}}">
+                <div class="clazz-overflow-ellipsis">{{clazz.name}}</div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

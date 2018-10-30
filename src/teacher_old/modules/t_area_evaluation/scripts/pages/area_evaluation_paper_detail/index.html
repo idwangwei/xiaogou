@@ -1,0 +1,84 @@
+
+<ion-view hide-nav-bar="true" class="work_paper_detail_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title title-right-set" style="font-family: 'Microsoft YaHei';" ng-bind="ctrl.selectPaperInfo.title"></h1>
+        <!--<div class="buttons">
+            <img style="height: 30px;" ng-if="!ctrl.isEditFlag"
+                 ng-src="{{$root.loadImg('pub_work_type/pub_type_butn01.png')}}"
+                 ng-click="ctrl.paperEdit()">
+        </div>-->
+    </ion-header-bar>
+
+    <div style="" class="knowledge_box_main_top" ng-class="{'set_top_ios':ctrl.isIOS}">
+        <ion-checkbox ng-model="ctrl.isShowKAD">显示考点及能力层次</ion-checkbox>
+    </div>
+
+    <ion-content overflow-scroll="false" class="has-header has-footer set_top_86"
+                 ng-class="{'set_top_106':ctrl.isIOS}"
+                 on-scroll="ctrl.getScrollPosition()">
+
+        <div ng-if="!ctrl.isLoadingProcessing && !ctrl.paper" style="padding: 16px">网络状态差，没有获取到作业，请返回重试</div>
+        <div ng-repeat="qt in ctrl.paper.qsTitles track by $index" ng-init="idx=$index" class="bigQContainer">
+            <div class="big-q-setting">
+                <div class="big-q-title">
+                    <span ng-bind="ctrl.getBigQText(qt)+'('+qt.score+'分)'"></span>
+                </div>
+            </div>
+            <div ng-repeat="record in qt.qsList track by $index" class="smallQContainer">
+                <div class="image-type-question">
+                    <div class="question-content card card-better small_q_bg" ng-click="ctrl.showTips()">
+                        <div class="smallq-title smallq-title-first" >
+                            <div class="text-div-adapt">
+                                <label class="text-adapt">
+                                    <span ng-bind="'第'+(record.seqNum+1)+'题'">
+                                    </span>
+                                    <span class="actual-score" ng-bind="record.score"></span>
+                                    <span class="score-text" ng-bind="'分'"></span>
+                                </label>
+                            </div>
+                            <div class="img-align-right" >
+                                <span ng-click="ctrl.goQFeedbackPage($event,record.id)">
+                                   <img ng-src="{{$root.loadImg('other/report.png')}}">
+                                </span>
+
+                                <span q-correct-ans paper-id="ctrl.paper.basic.id" big-q="qt" small-q="record">
+                                    <img ng-src="{{$root.loadImg('other/ans1.png')}}">
+                                </span>
+                            </div>
+                        </div>
+                        <div ng-show="ctrl.isShowKAD" class="question_content_knowledge_text"
+                             ng-bind="ctrl.showKnowledgeAndDifficulty(record)"
+                             style="background-color: #B8E4FC;color:#565555"></div>
+                        <div compile-html="record.qContext"  current_q_input="record.inputList" class="q-context" style="pointer-events: none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="200"></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+    <div class="bar bar-footer bg-balanced footer_box_main">
+        <div class="footer_box_main_down">
+           <!-- <div ng-click="ctrl.testPoints()" class="footer_click_btn">
+                <span>考点</span>
+            </div>-->
+            <div  ng-click="ctrl.workPub()" class="footer_click_btn">
+                <span style="font-size: 20px">布置</span>
+            </div>
+            <!--<div ng-click="ctrl.paperPrint()" class="footer_click_btn">
+                <span>打印</span>
+            </div>-->
+          <!--  <div ng-click="ctrl.paperEdit()" class="footer_click_btn">
+                <span>编辑</span>
+            </div>-->
+        </div>
+    </div>
+    <teaching-guide  ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.isGuideAnimationEnd"
+            current-step="1"
+            current-show-ele = "ctrl.currentShowEle"
+            get-high-light-ele="ctrl.getHighLightEle()">
+    </teaching-guide>
+</ion-view>

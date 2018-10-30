@@ -1,0 +1,141 @@
+<ion-view hide-nav-bar="true" class="area_evaluation_work ">
+
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" ng-bind="'区域测评'"></h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.hideAllData()">
+                <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true" class="">
+        <div class="bank_content">
+            <div class="list" ng-show="ctrl.textbook || (ctrl.guideFlag && !ctrl.guideFlag.hasPubedSimulationWork)"
+                 style="padding-bottom: 55px">
+                <div class="item item-divider item-for-img" ng-click="ctrl.openModal('标签',1)">
+                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                    <span ng-bind="ctrl.guideFlag && !ctrl.guideFlag.hasPubedSimulationWork ? '人教版' : ctrl.textbook.name "
+                          class="first-text"></span>
+                    <span style="margin-left: 5px;" class="icon ion-ios-arrow-right"></span>
+                </div>
+
+                <div ng-repeat="chapter in ctrl.textbook.subTags">
+                    <li class="item unit_bg " ng-click="ctrl.clickUnit(chapter,$event,$index)">
+                        <span class="icon "
+                              ng-class="chapter.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{chapter.text}}
+
+                    </li>
+
+                    <div class="list list_content_layout" style="margin-left: 10px;" ng-show="chapter.isOpened">
+                        <li class="item lesson_bg" ng-show="!chapter.subTags.length">本单元课时即将开放！</li>
+                        <div ng-repeat="unit in chapter.subTags">
+                            <!--<li ng-click="ctrl.showDetailUnit(chapter, unit)" class="item lesson_bg">-->
+                            <li class="item lesson_bg">
+                                <!--<span class="icon ion-chevron-right" style="font-weight: bold;margin-right: 5px"></span>-->
+                                <span>{{unit.text}}</span>
+                                <div class="option-butn">
+                                    <div style="width: 24px">
+                                        <i class="ion-minus-circled"
+                                           ng-show="!!ctrl.totalSelectQues[unit.id]&&ctrl.totalSelectQues[unit.id].questionNum!=0"
+                                           ng-click="ctrl.changeSelectNum(unit,'sub',$event)"></i>
+                                    </div>
+                                    <div style="width: 22px">
+                                        <!--<p ng-show="!!unit.selectNum" ng-bind="unit.selectNum"></p>-->
+                                        <p ng-show="!!ctrl.totalSelectQues[unit.id]"
+                                           style="color: brown;font-size: 18px;font-weight: 600;"
+                                           ng-bind="ctrl.totalSelectQues[unit.id]&&ctrl.totalSelectQues[unit.id].questionNum"></p>
+                                    </div>
+                                    <div style="width: 24px">
+                                        <i class="ion-plus-circled"
+                                           ng-click="ctrl.changeSelectNum(unit,'add',$event)"
+                                           ng-show="!ctrl.totalSelectQues[unit.id]||ctrl.totalSelectQues[unit.id] && ctrl.totalSelectQues[unit.id].questionNum < 30"></i>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <!--  单独地区的非自行组卷的区域测评  -->
+                <div ng-show="ctrl.selectAutoPaper.data.length>0">
+                    <li class="item unit_bg " ng-click="ctrl.clickAutoPaper($event)">
+                        <span class="icon "
+                              ng-class="ctrl.selectAutoPaper.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{ctrl.selectAutoPaper.data[0].paperName}}
+                    </li>
+                    <div class="list list_content_layout" style="margin-left: 10px;" ng-show="ctrl.selectAutoPaper.isOpened">
+                        <div ng-repeat="chapter in ctrl.selectAutoPaper.data" ng-click="ctrl.goToAutoPaperDetail(chapter)">
+                            <li class="item lesson_bg">
+                                <span>{{chapter.paperName}}</span>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="fooler_content">
+        <span>
+            <p>已选</p>
+            <p ng-bind="ctrl.totalSelectNum" style="color: #FFFF00;font-weight: 800;margin: 0 5px;"></p>
+            <p>题</p>
+        </span>
+        <!--<button ng-click="ctrl.gotoMackPaper()">去组卷</button>-->
+        <img ng-src="{{$root.loadImg('pub_work_type/pub_type_butn03.png')}}" style="height: 35px"
+             ng-click="ctrl.gotoMackPaper()">
+    </div>
+
+    <loading-processing></loading-processing>
+    <script id="textbookSelect.html" type="text/ng-template">
+        <ion-modal-view class="work_paper_bank">
+            <ion-header-bar class="bar-balanced" align-title="center">
+                <button class="button buttons  button-clear header-item" ng-click="ctrl.closeModal()">
+                    <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+                    &nbsp;&nbsp;
+                </button>
+                <h1 class="title" align-title="center">请选择教材</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content" overflow-scroll="true" >
+                <ul class="list">
+                    <div ng-repeat="version in ctrl.textbooks">
+                        <li class="item unit_bg" ng-click="version.isOpened = !version.isOpened">
+                        <span class="icon"
+                              ng-class="version.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{version.text}}
+                        </li>
+
+                        <div class="list" style="margin-left: 10px;" ng-show="version.isOpened">
+                            <div ng-repeat="book in version.subTags | filter:search | orderBy:'content.length'">
+                                <li ng-click="ctrl.selectCurrentTextbook(book)" class="item lesson_bg item-for-img">
+                                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                                    <span class="first-text" style="font-weight: bold;margin-right: 5px"></span>
+                                    {{book.text}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+
+    <teaching-guide ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.hasPubedSimulationWork"
+                    current-show-ele="ctrl.currentShowEle"
+                    step-count="2"
+                    current-step="ctrl.currentStep"
+                    get-high-light-ele="ctrl.getHighLightEle()">
+    </teaching-guide>
+</ion-view>
+

@@ -1,0 +1,175 @@
+.submit-exchange-goods {
+  background-color: #e8e8ee;
+  .title {
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+  }
+  .submit-goods-content {
+    .goods-info {
+      .display-flex(column, center, center);
+      background-color: #ffffff;
+      padding: 8px 0;
+      .goods-img-big {
+        width: 80%;
+        .display-flex-center();
+        img {
+          display: inherit;
+          max-width: 100%;
+          max-height: 185px;
+        }
+      }
+      .goods-item {
+        font-size: 20px;
+      }
+      .goods-item-credits {
+        height: 20px;
+        line-height: 20px;
+        color: #656161;
+        font-size: 16px;
+        font-weight: 800;
+        .display-flex(row, center, center);
+        img {
+          width: 25px;
+          margin: 0 5px;
+        }
+      }
+    }
+    .input-address {
+      margin: 10px 0;
+      .input-name {
+        width: 90%;
+        max-width: 350px;
+        margin: 5px;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .input-phone-num {
+        width: 90%;
+        max-width: 350px;
+        margin: 5px;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .input-address-detail {
+        width: 90%;
+        margin: 5px;
+        max-width: 750px;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .display-flex(column, space-around, center);
+      .on-off-button {
+        width: 68px;
+        min-width: 68px;
+        height: 28px;
+        background-color: #959b9a;
+        border-radius: 40px;
+        padding: 2px 2px;
+        margin-left: 5px;
+        .on-off {
+          width: 24px;
+          height: 24px;
+          border-radius: 40px;
+          background-color: #ffffff;
+        }
+      }
+      .set-default-butn {
+        width: 90%;
+        margin: 5px;
+        .display-flex(row, flex-end, center);
+        .on-off-active {
+          animation: on-to-off 0.5s;
+          -webkit-animation: on-to-off 0.5s;
+        }
+        .off-on-active {
+          animation: off-to-on 0.5s;
+          -webkit-animation: off-to-on 0.5s;
+        }
+      }
+
+    }
+  }
+  .goods-exchange-butn {
+    position: absolute;
+    bottom: 0px;
+    background-color: #ffffff;
+    width: 100%;
+    .display-flex(column, center, center);
+    color: #656161;
+    padding: 10px 0;
+    .exchange-butn {
+      width: 150px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      border-radius: 8px;
+      background-color: #97f569;
+      box-shadow: 1px 1px 3px 1px #b0cba3;
+      margin: 10px;
+      color: #3e7867;
+      font-size: 20px;
+      font-weight: 900;
+    }
+  }
+
+  @keyframes on-to-off {
+    from {
+      transform: translate3d(40px, 0, 0);
+      -webkit-transform: translate3d(40px, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+  @-webkit-keyframes on-to-off {
+    from {
+      transform: translate3d(40px, 0, 0);
+      -webkit-transform: translate3d(40px, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes off-to-on {
+    from {
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(40px, 0, 0);
+      -webkit-transform: translate3d(40px, 0, 0);
+    }
+  }
+  @-webkit-keyframes off-to-on {
+    from {
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(40px, 0, 0);
+      -webkit-transform: translate3d(40px, 0, 0);
+    }
+  }
+  .display-flex-center() {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+}

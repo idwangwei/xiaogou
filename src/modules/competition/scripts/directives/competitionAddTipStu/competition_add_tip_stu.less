@@ -1,0 +1,85 @@
+.competition-add-tip-student{
+  height: 50px;
+  background: #F16969;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 5;
+
+  .competition-wrap-left{
+    width: 80%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    -webkit-align-items: flex-start;
+    color: #fff;
+    padding-left:2%;
+    z-index: 10;
+    @media screen  and (min-width: 375px)   {
+      padding-left:5%;
+    }
+    @media screen  and (min-width: 501px)   {
+      width: 95%;
+      align-items: center;
+      -webkit-align-items: center;
+    }
+
+    .competition-paper-name{
+      font-size: 14px;
+      padding: 5px 0 3px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .competition-add-time{
+      font-size: 12px;
+      padding: 1px 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      @media screen  and (max-width: 374px)   {
+        font-size: 10px;
+      }
+      .competition-area{
+        padding: 5px 0 10px;
+        font-size: 12px;
+        @media screen  and (max-width: 374px)   {
+          font-size: 10px;
+        }
+      }
+      .competition-details-btn{
+        background: #CB2748;
+        text-align: center;
+        border-radius: 20px;
+        padding: 1px 5px ;
+      }
+    }
+  }
+
+  .competition-wrap-right{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 6;
+
+    .competition-img-car{
+      position: absolute;
+      z-index: 7;
+      height: 100%;
+      right: -5px;
+      bottom: 0;
+    }
+    .competition-img-flag{
+      position: absolute;
+      z-index: 8;
+      height: 50%;
+      right: 60px;
+      bottom:0;
+    }
+  }
+
+
+}

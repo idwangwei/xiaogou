@@ -1,0 +1,49 @@
+<ion-view class="micro-lecture-pay">
+    <loading-processing-v2></loading-processing-v2>
+    <ion-header-bar class="bar-balanced pay-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">小升初·名校思维训练</h1>
+        <button class="button buttons button-clear item-pay">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-water.png')}}" class="pay-water">
+            <span>{{ctrl.vipNum}}</span>
+        </button>
+    </ion-header-bar>
+    <ion-content padding="false" class="micro-pay-content">
+        <!--<div class="content-banner">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/header-bg-1.png')}}" alt="" class="banner-left">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/micro_lecture_banner.png')}}" alt="" class="banner-middle">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/header-bg-2.png')}}" alt="" class="banner-right">
+        </div>-->
+        <!--<div class="content-gradient"></div>-->
+        <div class="pay-box">
+            <div class="pay-inner">
+                <div class="pay-ad">
+                    <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/ad-bg.png')}}" alt="" class="ad-bg">
+                    <div class="item-box">
+                        <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/ad-1.png')}}" alt="" class="ad-1">
+                        <span>名师出题，例题匹配思路导航</span>
+                        <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/ad-2.png')}}" alt="" class="ad-2">
+                        <span>一对一交互辅导，精准攻克重难点</span>
+                        <img ng-src="{{$root.loadMicrolectureImg('micro_lecture_pay/ad-3.png')}}" alt="" class="ad-3">
+                        <span>难度层层递进，达到举一反三</span>
+                    </div>
+                </div>
+                <!--<div class="pay-title">购买魔界药水</div>-->
+                <div class="pay-list">
+                    <div class="pay-item" ng-repeat="v in ctrl.resetVipList track by $index" ng-click="ctrl.goToPay(v)" ng-class="v.promoteBeforeMarkPrice?'active':''">
+                        <div class="item-bg type-{{v.type}}"></div>
+                        <div class="item-content">
+                            <span>{{v.giftNumStr}}个</span>
+                            <span class="discount-old" ng-if="v.promoteBeforeMarkPrice">原价：{{v.promoteBeforeMarkPrice/100}}元</span>
+                            <div class="item-btn">{{v.totalFee}}元</div>
+                            <span class="discount-mark" ng-if="v.promoteBeforeMarkPrice">{{v.discountPercent}}</span>
+                        </div>
+                        <!--<div class="item-mark" ng-if="v.giftNum>0">送{{v.giftNum}}个</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

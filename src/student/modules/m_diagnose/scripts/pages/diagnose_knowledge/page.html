@@ -1,0 +1,217 @@
+<ion-view hide-nav-bar="true" class="diagnose_knowledge_file_02" cache-view="true">
+    <ion-header-bar style="background: #83DCF5" align-title="center">
+        <button class="button back-button buttons  button-clear header-item common-back-btn"
+                ng-click="ctrl.back()"
+                style="color: #1E446A;">
+            <i class="icon ion-ios-arrow-back" style="color: #1E446A;"></i>
+        </button>
+        <h1 class="title"
+            style="color:#1E446A;font-weight: bold;font-size: 20px;"
+            ng-bind="ctrl.chapterConten">
+        </h1>
+        <div class="rank-btn" ng-click="ctrl.go('training-pets-master')">
+            <img class="clazz_select_img" ng-src="{{$root.loadImg('trainingPetsMaster/number-0.png')}}">
+            排行榜
+        </div>
+
+    </ion-header-bar>
+
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+
+
+    <div class="content-warp-box" ng-class="{'content-warp-box-ios':ctrl.isIos}">
+        <!--驯宠-->
+        <div class="knowledge-title-wrap" ng-if="!ctrl.workReportFlag && !ctrl.isIncreaseScore">
+            <div class="diagnose-top-wrap">
+                <div class="diagnose-title-wrap">
+                    <div class="diagnose-title" ng-bind="'以下诊断数据来自于你平时的作业和练习'"></div>
+                    <div class="diagnose-subtitle" ng-bind="ctrl.stuName+'掌握情况'"></div>
+                </div>
+                <div class="pie-chart-wrap">
+                    <pie-chart id="pie" settings="ctrl.chapter_diagnose.pieChart.settings" chart="ctrl.pieChart"
+                               ng-if="ctrl.showPieChartFlag">
+                    </pie-chart>
+                    <div class="right-text-wrap" ng-if="ctrl.showPieChartFlag">
+                        <div class="content">
+                            <p>共<span ng-bind="ctrl.chapter_diagnose.totalKnowledgeNumber"></span>个考点</p>
+                            <div ng-repeat="row in ctrl.chapter_diagnose.totalStatistics" ng-init="rowIndex=$index">
+                                <div ng-repeat="col in row" class="row-wrap" ng-init="colIndex=$index">
+                                    <i class="icon ion-record {{col.colorClass}}"></i>
+                                    <pre ng-style="{'margin-left':rowIndex===0&&colIndex===0?'2px':''}">{{col.key+'： '}}</pre>
+                                    <span ng-bind="col.masterNumber+'个'" class=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="diagnose-seabeach"></div>
+            <div class="diagnose-forest"></div>
+        </div>
+        <div class="ad-wrap" ng-if="!ctrl.workReportFlag && !ctrl.isIncreaseScore"
+             ng-click="ctrl.go('weixin_pay_select','forward',{'urlFrom':'diagnose_knowledge02'})">
+
+            <div class="pieces">
+                <div class="piece piece01"></div>
+                <div class="piece piece02"></div>
+                <div class="piece piece03"></div>
+                <div class="piece piece04"></div>
+                <div class="piece piece05"></div>
+            </div>
+            <h4 class="ad-title" ng-if="ctrl.chapter_diagnose.vipDays<=0">马上开通，全面驯服所有考点萌宠 <i>></i><i
+                    style="margin-left: -3px">></i></h4>
+            <h4 class="ad-title" ng-if="ctrl.chapter_diagnose.vipDays>0">驯宠特权还有<span
+                    ng-bind="ctrl.chapter_diagnose.vipDays||1"></span>天到期
+                <div class="qq-btn" ng-click="ctrl.showQQCustomService($event)">
+                    客服QQ<i class="icon ion-ios-arrow-right position-right"></i>
+                </div>
+            </h4>
+            <div class="left-boy-wrap"><i>></i><i>></i>
+                <img ng-src="{{$root.loadImg('diagnose/boy-trainer.png')}}">
+            </div>
+            <div class="middle-text-wrap">
+
+            </div>
+            <div class="right-girl-wrap">
+                <img ng-src="{{$root.loadImg('diagnose/girl-trainer.png')}}">
+            </div>
+        </div>
+
+        <!--提分-->
+        <div class="increase-score-graph-wrap" ng-if="ctrl.workReportFlag || ctrl.isIncreaseScore"
+             ng-click="ctrl.handleShowSummaryGraph()">
+
+            <span>掌握情况</span>
+            <i class="icon " ng-class="ctrl.showSummaryGraph?'ion-chevron-down':'ion-chevron-right'"></i>
+        </div>
+        <div class="knowledge-title-wrap" ng-if="ctrl.showSummaryGraph">
+            <div class="diagnose-top-wrap">
+                <div class="diagnose-title-wrap">
+                    <div class="diagnose-title" ng-bind="'以下诊断数据来自于你平时的作业和练习'"></div>
+                    <div class="diagnose-subtitle" ng-bind="ctrl.stuName+'掌握情况'"></div>
+                </div>
+                <div class="pie-chart-wrap">
+                    <pie-chart id="pie" settings="ctrl.chapter_diagnose.pieChart.settings" chart="ctrl.pieChart"
+                               ng-if="ctrl.showPieChartFlag">
+                    </pie-chart>
+                    <div class="right-text-wrap" ng-if="ctrl.showPieChartFlag">
+                        <div class="content">
+                            <p>共<span ng-bind="ctrl.chapter_diagnose.totalKnowledgeNumber"></span>个考点</p>
+                            <div ng-repeat="row in ctrl.chapter_diagnose.totalStatistics" ng-init="rowIndex=$index">
+                                <div ng-repeat="col in row" class="row-wrap" ng-init="colIndex=$index">
+                                    <i class="icon ion-record {{col.colorClass}}"></i>
+                                    <pre ng-style="{'margin-left':rowIndex===0&&colIndex===0?'2px':''}">{{col.key+'： '}}</pre>
+                                    <span ng-bind="col.masterNumber+'个'" class=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="diagnose-seabeach"></div>
+            <div class="diagnose-forest"></div>
+        </div>
+        <div class="increase-score-ad-wrap" ng-if="ctrl.workReportFlag || ctrl.isIncreaseScore"
+             ng-click="ctrl.gotoSelectGoods()">
+            <div class="increase-score-ad-box">
+                <img ng-src="{{$root.loadImg('diagnose_promote/diagnose_promote_top02.png')}}" alt="">
+                <img style="z-index: 10;left: 0;right: 0;top:0;bottom: 0;margin: auto;max-width: 500px;width: 75%"
+                     ng-src="{{$root.loadImg('diagnose_promote/diagnose_promote_ad_title.png')}}">
+                <img ng-src="{{$root.loadImg('pet_page/pet_knowledge_ad_1.png')}}" alt="">
+            </div>
+
+        </div>
+        <div ng-show="ctrl.isIncreaseScoreVipV2 && ctrl.isIncreaseScore && !!ctrl.getIncreaseScoreVipStr()"
+             class="increase-score-vip-v2">
+
+            <img ng-src="{{$root.loadImg('diagnose/stu_increase_score_icon.png')}}" alt="">
+            <span style="margin: 0 16px">考点特权</span>
+            <span ng-bind="ctrl.getIncreaseScoreVipStr()"></span>
+        </div>
+
+        <ion-scroll overflow-scroll="true" zooming="true" direction="y" class="flex_1" style="width: 100%"
+                    ng-class="{'knowledge-content-wrap-increase-score':ctrl.workReportFlag || ctrl.isIncreaseScore}">
+
+            <!--考点列表-->
+            <p class="fail-mag-wrap" ng-if="ctrl.showErrorMsg">
+                <span>获取数据失败，点击</span>
+                <span class="re-click-area" ng-click="ctrl.getChapterDiagnose()">这里</span>重新获取。
+            </p>
+            <div class="knowledge-content-wrap">
+                <div class="knowledge-item" ng-repeat="item in ctrl.chapter_diagnose.list track by item.id"
+                     ng-init="pIndex=$index" id="{{item.id}}">
+                    <div class="knowledge-title" ng-bind="item.content"></div>
+                    <div class="point-block-wrap">
+                        <div class="point-block" ng-repeat="ponitInfo in item.list track by ponitInfo.knowledgeId"
+                             ng-init="cIndex=$index">
+                            <div class="col-md-3 col-xs-6 point-item" id="{{ponitInfo.knowledgeId}}">
+                            <span class="point-title">
+                                <span ng-bind="'考点'+(ponitInfo.pointIndex+1)"></span>
+                            </span>
+
+                                <div class="img-box-wrap">
+                                    <div ng-if="ponitInfo.knowledgeId==ctrl.knowledgeId&&ctrl.workReportFlag"
+                                         class="circle-btn-out-active animate-btn circle-position"
+                                         ng-click="ctrl.goToReport(ponitInfo,pIndex,cIndex)">
+                                        <div class="circle-btn circle-btn-active" style="background-color: rgba(170, 170, 170, 0);">
+                                        </div>
+                                    </div>
+                                    <!--<div style="top:0px" ng-style="{'position':ponitInfo.knowledgeId==ctrl.knowledgeId?'absolute':'relative'}">
+                                        <div ng-class="ponitInfo.knowledgeId==ctrl.knowledgeId?'circle-btn-out-active':''">
+                                            <div ng-class="ponitInfo.knowledgeId==ctrl.knowledgeId?'circle-btn circle-btn-active':''">
+                                                <img ng-src="{{$root.loadImg(ponitInfo.showImg)}}"
+                                                     ng-click="ctrl.goToReport(ponitInfo,pIndex,cIndex)"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <i class="icon ion-chevron-right"></i>-->
+                                    <img ng-src="{{$root.loadImg(ponitInfo.showImg)}}">
+                                    <img style="position: absolute;top:0;left:0;z-index: 20"  ng-src="{{$root.loadImg(ponitInfo.showImg)}}"  ng-click="ctrl.goToReport(ponitInfo,pIndex,cIndex)">
+                                    <i class="icon ion-chevron-right" ng-if="!ctrl.isIncreaseScore"></i>
+
+                                </div>
+                                <span class="master" ng-bind="ponitInfo.text" ng-show="ponitInfo.level!= 4 && !ctrl.isIncreaseScore"
+                                      ng-click="ponitInfo.text?ctrl.goToDoQuestion(ponitInfo,pIndex,cIndex):''"
+                                      ng-class="{'master-limit':((pIndex===0&&cIndex>1)||pIndex!=0)&&ctrl.chapter_diagnose.vipDays<=0,'has-master':!ponitInfo.text}">
+                            </span>
+                                <span class="master" ng-bind="ponitInfo.text" ng-show="ponitInfo.level!= 4 && ctrl.isIncreaseScore"
+                                      ng-click="ponitInfo.text?ctrl.goToDoQuestion(ponitInfo,pIndex,cIndex):''"
+                                      ng-class="{'master-limit':!ctrl.currentKnowledgeCanClickIn(pIndex,cIndex,ponitInfo),'has-master':!ponitInfo.text}">
+                            </span>
+
+                                <span class="master" style="opacity: 0"
+                                      ng-if="(ponitInfo.level== 4 && !ctrl.isIncreaseScore)||  (ctrl.isIncreaseScore && ponitInfo.level== 4 && ponitInfo.petGoods.received)"></span>
+
+                                <img class="master" style="background: initial;padding: 0"
+                                     ng-if="ctrl.isIncreaseScore && ponitInfo.level== 4 && !ponitInfo.petGoods.received"
+                                     ng-click="ctrl.getPetGoods(ponitInfo,pIndex,cIndex)"
+                                     ng-src="{{$root.loadImg('pet_page/pet_get_goods_bar.png')}}">
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-scroll>
+
+    </div>
+
+
+    <!--底部广告语-->
+    <div class="diagnose_middle_ad_word" ng-if="ctrl.initCtrl && ctrl.isShowTipWord" ng-click="ctrl.hideTipWord()">
+        <img ng-src="{{$root.loadImg('diagnose/diagnose_middle_bar.png')}}" alt="">
+    </div>
+    <loading-processing></loading-processing>
+
+    <!--驯养移动图标-->
+    <pet-icon has-footer="true" ng-if="ctrl.initCtrl && (ctrl.isIncreaseScore||ctrl.workReportFlag)"></pet-icon>
+
+    <pet-get-food food-type="ctrl.buyFoodType" show-food="ctrl.buyFoodSuccess"></pet-get-food>
+
+</ion-view>

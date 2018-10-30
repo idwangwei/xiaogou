@@ -1,0 +1,59 @@
+<ion-view class="game-goods-select">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.backShowPromote()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #ffffff"></i>&nbsp;&nbsp;
+        </button>
+    </ion-header-bar>
+    <ion-content padding="false" class="goods-content" ><!--ng-style="{'top':ctrl.isIos()?'20px':'5px'}">-->
+        <div class="winter-holidays-box" ng-style="{'height':ctrl.getContentHeight()}">
+            <ion-slide-box class="winter-holidays-box-slide" delegate-handle="game-goods-select-box" does-continue="true"
+                           auto-play="false"
+                           ng-style="{'height':ctrl.getContentHeight()}">
+                <ion-slide repeat-finish ng-repeat="item in ctrl.goodsListInfo track by item.id" ng-style="{'height':ctrl.getContentHeight()}">
+                    <goods-select goods-list-info={{item}} confirm-goods="ctrl.confirmSelectGoods()"></goods-select>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+
+    </ion-content>
+
+    <div class="game-goods-select-prompt" ng-if="ctrl.showGamePayPrompt">
+        <div class="game-goods-select-backdrop">
+            <div class="game-goods-select-content need-pass-pre-level" ng-if="ctrl.promptType === 'giveUpPay'">
+                <div class="content-title">提示 </div>
+                <div class="content-word">
+                    确定要退出支付吗？
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadGameMapImg('gameGoodsPay/game_pay_ok.png')}}"
+                         alt=""  ng-click="ctrl.quitPay()">
+                    <img ng-src="{{$root.loadGameMapImg('gameGoodsPay/game_pay_back.png')}}"
+                         alt=""  ng-click="ctrl.hidePrompt()">
+                </div>
+            </div>
+            <div class="game-goods-select-content tell-parent" ng-if="ctrl.promptType === 'tellParent'">
+                <div class="content-title">确认支付 </div>
+                <div class="content-word">
+                    <p>购买前必须告诉爸爸妈妈</p>
+                    <p>不要擅自购买哦！</p>
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadGameMapImg('gameGoodsPay/game_pay_tell.png')}}"
+                         alt=""  ng-click="ctrl.goToPayForGoods()">
+                </div>
+            </div>
+            <div class="game-goods-select-content tell-parent" ng-if="ctrl.promptType === 'buyRepeat'">
+                <div class="content-title">温馨提示 </div>
+                <div class="content-word">
+                    <p>已经购买过了哟！</p>
+                </div>
+                <div class="content-btn">
+                    <img ng-src="{{$root.loadGameMapImg('gameGoodsPay/game_pay_back.png')}}"
+                         alt=""  ng-click="ctrl.back()">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</ion-view>

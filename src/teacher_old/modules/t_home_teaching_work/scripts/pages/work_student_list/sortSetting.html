@@ -1,0 +1,39 @@
+﻿<ion-modal-view>
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.closeSortModal()"
+                style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" align-title="center">列表排序设置</h1>
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true">
+        <div class="item  item-label " style="font-size: 20px;color:dodgerblue">
+            <span ng-bind="'请选择排序类型：'"></span>
+        </div>
+        <div class="list">
+            <ion-radio ng-repeat="sortInfo in ctrl.sortConfig.sortByList track by sortInfo.code"
+                       ng-model="ctrl.sortConfig.sortBy" ng-value="sortInfo.code">
+                {{sortInfo.name}}
+            </ion-radio>
+        </div>
+        <div style="font-size: 20px; color:dodgerblue; padding: 8px;">
+            <span ng-bind="'请选择排序顺序：'"></span>
+        </div>
+        <ion-checkbox ng-repeat="sort in ctrl.sortConfig.sortUpOrDown " ng-model="sort.selected"
+                      class="item clazz-list" ng-click="ctrl.selectSortUpOrDown(sort)">
+            {{sort.name}}
+        </ion-checkbox>
+
+        <ion-toggle ng-model="ctrl.sortConfig.showGreenIcon.flag" style="margin-bottom: 60px">
+            显示绿色箭头标识
+        </ion-toggle>
+    </ion-content>
+
+    <div class="bar bar-footer bg-balanced">
+        <button class="button-clear bg-calm  bar-item" ng-click="ctrl.confirmSortModal()">
+            确定
+        </button>
+    </div>
+</ion-modal-view>

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+@import '../include/_mixins';
+
+
+.allere-cloud{
+
+  .clouds-01{
+    animation: float-cloud-animate 10s linear 0s infinite alternate running;
+    -webkit-animation: float-cloud-animate 10s linear 0s infinite alternate running;
+  }
+  @keyframes float-cloud-animate {
+    0%{
+      left:0;
+    }
+    50%{
+      left:80%;
+    }
+    100%{
+      left:0;
+    }
+  }
+
+  @-webkit-keyframes float-cloud-animate {
+    0%{
+      left:0;
+    }
+    50%{
+      left:80%;
+    }
+    100%{
+      left:0;
+    }
+  }
+}
+
+

@@ -1,0 +1,53 @@
+<div class="work-backdrop" ng-if="$root.isShowGameStarRank" ng-click="closeGameStarRankData($event)">
+    <div class="game_star_rank_data">
+
+        <!--游戏星星榜背景-->
+        <div class="top_bg_wrap bg_wrap_star">
+            <div class="bg_wrap_star_2">
+                <img ng-src="{{$root.loadImg('msg/msg_game_star_bg_2.png')}}" alt="">
+            </div>
+            <img ng-src="{{$root.loadImg('msg/msg_game_star_icon.png')}}" alt="" class="top_bg_icon">
+        </div>
+
+        <!--星星排行列表-->
+        <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+            <div ng-if="!selectedClazz || !selectedClazz.id" style="padding: 20px">您还没有申请学校老师的班级!</div>
+            <div class="star_rank_list_box" ng-if="selectedClazz && selectedClazz.id">
+
+                <div ng-if="!isGameStarLoading&&!gameStarRankData.length" class="rank_list_content_none">该班暂时没有游戏星星排行信息</div>
+
+                <div ng-if="isGameStarLoading &&!gameStarRankData.length">
+                    <loading-processing></loading-processing>
+                </div>
+
+                <div class="item star_rank_list" ng-repeat="item in gameStarRankData"
+                     ng-class="{'star_rank_list_user':item.userId == user.userId}">
+
+                    <!--排名-->
+                    <div class="gs_content_list_index">
+                        <span ng-bind="item.rank"> </span>
+                    </div>
+
+                    <!--列表信息-->
+                    <div class="gs_content_list_info">
+
+                        <!--头像-->
+                        <div class="game_star_content_left"></div>
+
+                        <!--用户信息-->
+                        <div class="game_star_content_middle">
+                            <div class="gs_cm_student_name">{{item.userName}}</div>
+                        </div>
+
+                        <!--信息信息-->
+                        <div class="game_star_content_right">
+                            <img ng-src="{{$root.loadImg('msg/msg_game_star.png')}}" alt="">
+                            <span>&nbsp;×{{item.starAmount}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </ion-scroll>
+    </div>
+</div>

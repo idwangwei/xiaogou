@@ -1,0 +1,33 @@
+<div class="left">
+    <div class="itemRow"  ng-repeat="unitRows in unitsDataList"  >
+        <div class="item" ng-click="handleClickNum($event)" ng-repeat="unitInfo in unitRows" value="{{unitInfo.unit}}"  unit
+             ng-style="{flexGrow:unitInfo.length,flexShrink:unitInfo.length}">
+            <span mathjax-parser value="unitInfo.unit" lazy-compile="true"></span>
+        </div>
+    </div>
+</div>
+<div class="right">
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)" style="color: #fe6948;">
+        <img ng-src="images/del.png" width="35px" alt=""/>
+    </div>
+    <!--<div class="item" ng-click="space($event)">空格</div>-->
+    <div class="item greenItem" style="flex:1;-webkit-flex:2" ng-click="enter($event)" style="color: #fe6948;">
+        <img src="images/newline.png" width="35px" alt=""/>
+    </div>
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleAnswer($event)" ng-if="wordAnswer">
+        <span style="display: block;width: 35px;color:white">答</span>
+    </div>
+    <div class="item greenItem"
+         style="flex:1;-webkit-flex:1"
+         ng-click="handleClickNum($event)"
+         value="\comment{}"
+         ng-show="keyboardStatus.isAppTextarea&&!keyboardStatus.isCommentBox">
+        <span style="display: block;width: 35px;color:white">文</span>
+    </div>
+    <div class="item greenItem"
+         style="flex:1;-webkit-flex:1"
+         ng-click="handleClickCommentDone($event)"
+         ng-show="keyboardStatus.isCommentBox">
+        <span style="display: block;color:white">完成</span>
+    </div>
+</div>

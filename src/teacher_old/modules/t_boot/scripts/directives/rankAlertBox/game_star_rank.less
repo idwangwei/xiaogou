@@ -1,0 +1,119 @@
+@import './../../../less/theme02/include/_mixins';
+.game_star_rank_data{
+  background: #fdea64;
+  border-radius: 10px;
+  width: 90%;
+  height: 70%;
+  overflow: hidden;
+  .display-flex-pure;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+
+  -webkit-animation: superScaleIn 0.2s ease-in-out;
+  -webkit-animation-fill-mode:both;
+  animation: superScaleIn 0.2s ease-in-out;
+  animation-fill-mode:both;
+
+  .top_bg_wrap{
+    width: 100%;
+    .top_bg_icon{
+      height: 106px;
+    }
+  }
+  .bg_wrap_star{
+    .display-flex;
+    background: #fdea64 url("../../../tImages/msg/msg_game_star_bg_1.png") 0 100% repeat-x;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    .bg_wrap_star_2{
+      .display-flex;
+      position: absolute;
+      height:100%;
+      width:100%;
+      z-index: 1;
+      left: 0;
+      padding-bottom: 6px;
+      img{height: 100%}
+    }
+    .top_bg_icon{z-index: 2}
+  }
+
+  /*星星排行信息*/
+  .star_rank_list_box{
+    overflow: hidden;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    margin: 0 10px 30px 10px;
+    .item{
+      padding: 4px 16px;
+    }
+    .star_rank_list{
+      .display-flex-pure;
+      border: none;
+      border-bottom-style: dashed;
+      border-bottom-width: 2px;
+      border-bottom-color: #ddd;
+      .gs_content_list_index{
+        width: 40px;
+        line-height: 44px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .gs_content_list_info{
+        .display-flex-pure;
+        .flex_1;
+        .game_star_content_left{}
+        .game_star_content_middle{
+          .flex_1;
+          .display-flex-pure;
+          flex-direction: column;
+          -webkit-flex-direction: column;
+          justify-content: center;
+          -webkit-justify-content: center;
+          .gs_cm_student_name{color: #666666}
+          .gs_cm_clazz_name{font-size: 12px;color: #999999}
+        }
+        .game_star_content_right{
+          .display-flex;
+          justify-content: flex-start;
+          -webkit-justify-content: flex-start;
+          width: 80px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #666666;
+        }
+      }
+    }
+    .star_rank_list_user{
+      color: #811701;
+      .gs_content_list_index{color: #811701}
+      .gs_content_list_info{
+        .game_star_content_middle{
+          .gs_cm_student_name{color: #811701}
+          .gs_cm_clazz_name{color: #811701}
+        }
+        .game_star_content_right{color: #811701}
+      }
+    }
+    .star_rank_list:nth-child(1){
+      .gs_cm_student_name{color: #fcb118!important;}
+      .game_star_content_right{color: #fcb118!important;}
+    }
+    .star_rank_list:nth-child(1),.star_rank_list:nth-child(2),.star_rank_list:nth-child(3){
+      .gs_content_list_index{
+        color: red!important;
+      }
+    }
+    .star_rank_list:last-child{
+      border-bottom-width: 0!important;
+    }
+  }
+  @media screen  and (min-width: 768px)   {
+    width: 70%;
+  }
+  @media screen  and (min-width: 1024px)   {
+    width: 50%;
+  }
+
+}

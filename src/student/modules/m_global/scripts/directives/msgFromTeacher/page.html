@@ -1,0 +1,13 @@
+<div class="teacher-msg-dialog" ng-if="$root.msgDialogFlag" ng-click="hideMsgDialog()">
+    <img class="dialog-bg" ng-src="{{loadlocalImages('msg_from_t_bg.png')}}" ng-click="stopEvent()">
+    <div class="teacher-msg-dialog-content" ng-click="stopEvent()">
+        <div class="msg-content">
+            <p style="width: 100%;text-align: left">{{studentName}}同学:</p>
+            <p style="width: 100%;text-align: left;padding-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;完成作业后，作业下方有你的考点掌握情况，请家长和学生注意查看！</p>
+            <p style="width: 100%;text-align: right">{{getTeacherName()}}老师</p>
+        </div>
+        <!--<img style="height: 40px" ng-src="{{$root.loadImg('diagnose_pk/diagnose_award_sure_butn.png')}}" ng-click="hideMsgDialog()">-->
+
+    </div>
+
+</div>

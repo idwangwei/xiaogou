@@ -1,0 +1,186 @@
+@charset "UTF-8";
+@import "../../../../t_boot/less/theme02/include/_mixins";
+
+.work-report {
+  .display-flex(@dir,@content,@items) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+    justify-content: @content;
+    -webkit-justify-content: @content;
+    align-items: @items;
+    -webkit-align-items: @items;
+  }
+
+  .common-font(@pos ,@wrap) {
+    word-wrap: @wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: @pos;
+  }
+  .myHeader {
+    background: #83dcf5 !important;
+    border:none !important;
+  }
+  .mySubHeader {
+    border: none;
+    background-image: none;
+  }
+
+  .work-report-content {
+    width: 110%;
+    margin-left: -5%;
+    .statistics-title {
+      width: 95%;
+      margin-left: 2.5%;
+      widtt:100%;
+      margin-top: -5%;
+      margin-bottom: 3%;
+      background-color: #83DCF5;
+      .display-flex(column, center, center);
+    }
+    .statistics-box {
+     /* width: 110%;*/
+      width:100%;
+      margin-top: -5%;
+      padding: 5% 6%;
+      background-color: #83DCF5;
+      .display-flex(column, center, center);
+
+      .statistics-box-title{
+        margin:0px;
+        margin-bottom: 5px;
+        font-size:16px;
+        @media screen and(min-width:650px){
+          font-size:20px;
+        }
+      }
+
+      .statistics-box-inside {
+        color: #1e446a;
+        width: 100%;
+        background-color: #ccf2fd;
+        border-radius: 5px;
+        padding: 2%;
+        font-size:16px;
+        @media screen and(min-width:650px){
+          font-size:17px;
+        }
+
+        .display-flex(row, space-between, center);
+        .statistics-box-left {
+          flex: 2;
+          -webkit-flex: 2;
+          .display-flex(column, center, center);
+        }
+        .statistics-box-right {
+          flex: 3;
+          -webkit-flex: 3;
+          .display-flex(column, center, flex-start);
+
+          @media screen and(max-width:320px){
+            padding-left:15px;
+          }
+          @media screen and(min-width:321px) and(max-width:600px){
+            padding-left:25px;
+          }
+          label {
+            color: #f85a5a;
+            padding: 0 5px;
+            font-weight: 700;
+            @media screen and(min-width:650px){
+              font-size:17px;
+            }
+          }
+        }
+      }
+    }
+    .checkPointStatus {
+      width: 100%;
+      //.display-flex(row, flex-start, center);
+      .display-flex(column, center,flex-start);
+      label {
+      }
+    }
+    .statistics-tabel {
+      width: 95%;
+      margin-left: 2.5% !important;
+      .table-container {
+        margin-left: 0px;
+        margin-right: 0px;
+
+        .common-tr{
+          padding:0 10px;
+
+          @media screen and(min-width:650px) and(max-width:1000px){
+            padding:5px 25px !important;
+            font-size: 16px;
+          }
+
+          @media screen and(min-width:1001px){
+            padding:5px 35px !important;
+            font-size: 16px;
+          }
+        }
+      }
+      .table-header {
+        background-color: #ffffff !important;
+        color: #1e446a;
+        font-size: 16px;
+
+        @media screen and(min-width:650px){
+          font-size: 17px !important;
+        }
+      }
+      .row {
+        display: flex;
+        display: -webkit-flex;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        align-items: center;
+        -webkit-align-items: center;
+      }
+      .table-row {
+        border: none;
+        width: 100%;
+      }
+      .col-status {
+        .display-flex(column, center, center);
+        p{
+          margin:0 !important;
+          font-weight: bold;
+        }
+      }
+      .col-butn {
+        border-radius: 10px;
+        min-width: 90px;
+        .display-flex(column, center, center);
+        padding: 5px 0px;
+        p {
+          width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          margin: 0px;
+        }
+        img{
+          width: 90px;
+          @media screen and(min-width:375px) and(max-width:649px){
+            width: 100px;
+          }
+          @media screen and(min-width:650px){
+            width: 150px;
+          }
+        }
+      }
+
+    }
+
+    .table-col {
+      @media screen and(min-width: 768px) {
+        padding: 5px 30px !important;
+      }
+    }
+  }
+}

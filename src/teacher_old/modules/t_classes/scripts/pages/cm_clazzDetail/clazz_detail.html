@@ -1,0 +1,84 @@
+<style>
+    .clazz_detail_file .header {
+        background: #d2f7ef;
+    }
+
+</style>
+<ion-view hide-nav-bar=true>
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">班级详情</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-footer clazz_detail_file">
+        <ion-list>
+            <ion-item class="header">
+                <img src="{{ctrl.getRootScope().loadImg('class.svg')}}" alt="" width="50px" height="50px"
+                     style="float: left"/>
+                <div style="margin-top: 6px;padding-left: 60px;">
+                    <h2>班级号：<span ng-bind="ctrl.clazzInfo.id"></span></h2>
+                    <div ng-bind="ctrl.clazzInfo.name" style="font-size: 0.875em;"></div>
+                </div>
+            </ion-item>
+
+            <ion-item>
+                <span>详细地址：</span>
+                <span>{{ctrl.clazzInfo.provinceName+ctrl.clazzInfo.cityName+ctrl.clazzInfo.districtName}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>学校名称：</span>
+                <span>{{ctrl.clazzInfo.schoolName ? ctrl.clazzInfo.schoolName : "未添加"}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>年级名称：</span>
+                <span>{{ctrl.clazzInfo.gradeName}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>班级名称：</span>
+                <span>{{ctrl.clazzInfo.className}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>教材版本：</span>
+                <span>{{ctrl.textBookName}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>教师名称：</span>
+                <span>{{ctrl.clazzInfo.teacher}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>申请通道：</span>
+                <span>{{ctrl.clazzInfo.status == 1 ? "开启" : "关闭"}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>班级人数：</span>
+                <span>{{ctrl.clazzInfo.studentCount}}</span>
+            </ion-item>
+
+            <ion-item>
+                <span>创建时间：</span>
+                <span>{{ctrl.clazzInfo.createdTime}}</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <div class="bar bar-footer bar-balanced"
+         style="justify-content: space-around;-webkit-justify-content: space-around;">
+        <button class="bar-item button-clear" style="width: 120px;max-width: 120px;" ng-click="ctrl.updateClazz()"><i
+                class="icon ion-wrench"></i>
+            修改
+        </button>
+        <button class="bar-item button-clear" style="width: 120px;max-width: 120px;" ng-click="ctrl.deleteClazz()"><i
+                class="icon ion-wrench"></i>
+            删除
+        </button>
+    </div>
+</ion-view>

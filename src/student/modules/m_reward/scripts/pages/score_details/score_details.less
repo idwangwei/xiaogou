@@ -1,0 +1,96 @@
+.score-details {
+
+  /*.popup-container .popup .popup-head {
+    background: #40c662 !important;
+  }
+  .popup-body {
+    background-color: #d2eddb;
+  }
+  .popup-buttons {
+    background-color: #d2eddb;
+  }*/
+  .myHeader {
+    position: relative;
+    background-color: #83dcf5 !important;
+    .button-back {
+
+    }
+    .button-details {
+      position: absolute;
+      right: 5px;
+      top: 0px;
+      .flex_display(row);
+      .flex_display_align(center);
+      .flex_display_justify(space-between);
+      img {
+        margin: 5px 5px;
+      }
+    }
+  }
+  .detail-content {
+    border: none;
+    //border-left-style: outset;
+    border-left: 1px solid #cccccc;
+  }
+  .task-details {
+    position: relative;
+    border: none;
+
+    .time-mark {
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      border-radius: 10px;
+      background-color: #CCCCCC;
+      position: absolute;
+      left: -8px;
+    }
+    .task-time {
+      text-align: left;
+      margin-left: 15px;
+    }
+    .task-list {
+      margin: 5px 0px;
+      .cell-content {
+        .flex_display(row);
+        .flex_display_align(center);
+        .flex_display_justify(space-around);
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: #40c662;
+        height: 35px;
+        line-height: 35px;
+        border-radius: 20px;
+        label {
+          color: #ffffff
+        }
+      }
+
+    }
+  }
+  .foot-desc {
+    text-align: center;
+    width: 100%;
+    .flex_display(row);
+    .flex_display_align(center);
+    .flex_display_justify(center);
+    color: #ffffff;
+    background-color: #2f3249;
+  }
+
+  .flex_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .flex_display_align (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+  .flex_display_justify(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+}

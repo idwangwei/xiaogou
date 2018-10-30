@@ -1,0 +1,92 @@
+@import "../../../m_boot/less/theme01/include/_mixins";
+
+.online-teaching-index-file {
+  .bar-header{
+    .ion-ios-arrow-back{
+      font-size: 2rem;
+      padding: 0 1rem;
+      line-height: 2rem;
+      color: #4a6b9d;
+    }
+    .title{
+      color: rgb(74, 107, 157);
+      font-weight: bold;
+      text-align: center;
+    }
+    .is-drawing{
+      background-color: red;
+    }
+    .button-clear{
+      color: rgb(74, 107, 157);
+    }
+  }
+  .header-bar-hans-peer{
+    background-color: #f0ffb1;
+  }
+  .teaching-area-box{
+    width: 100%;
+    .display-flex;
+    .move-area-box{
+      background-color: #b0c1f8;
+      width: 2rem;
+      height: 200vh;
+      .display-flex-setting(column,space-around,center);
+      .move-area-word{
+        .display-flex-pure;
+        .display-flex-direction(column);
+        padding: 0.5rem;
+        font-size: 1rem;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .whiteboard{
+      .flex_1;
+      height: 200vh;
+      position: relative;
+      canvas{
+        position: absolute;
+      }
+      canvas:first-child{
+        z-index: 1;
+        pointer-events: none;
+      }
+      canvas:last-child{
+        z-index: 2;
+      }
+    }
+  }
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  .content-list-warp-on-line{
+    height: 60px;
+    background-color: #b0c1f8;
+    padding: 0 1rem 0 2rem;
+    .display-flex-setting(row,space-between,center);
+    .input-warp-box{
+      .display-flex;
+      input{
+        width: 12rem;
+        padding-left: 0.5rem;
+      }
+      span{
+        color: #878787;
+        padding-left: 0.5rem;
+      }
+    }
+    .on-line-btn{
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #98d967;
+      color: #fff;
+      border-radius: 0.5rem;
+    }
+
+  }
+}
+.teaching-index-img-upload{
+
+}
+

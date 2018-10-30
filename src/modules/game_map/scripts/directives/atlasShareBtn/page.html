@@ -1,0 +1,14 @@
+<div class="game-map-atlas-btn">
+    <div class="atlas-btn-action">
+        <div class="game-map-atlas-back" ng-style="{'margin-top':ctrl.isIos?'20px':'0'}">
+            <img ng-src="{{ctrl.loadBtnImg('top_bar_left.png')}}"  ng-click="ctrl.back()">
+        </div>
+        <div class="game-map-atlas-btn-share" ng-if="ctrl.isMobile()">
+            <img class="atlas-share" ng-src="{{ctrl.loadBtnImg('btn_atlas_share.png')}}"
+                 ng-click="ctrl.clickShareBtn()">
+        </div>
+    </div>
+    <div class="game-map-atlas-logo">
+        <img ng-src="{{ctrl.loadBtnImg('atlas_logo.png')}}">
+    </div>
+</div>

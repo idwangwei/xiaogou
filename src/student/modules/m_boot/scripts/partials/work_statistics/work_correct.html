@@ -1,0 +1,29 @@
+<ion-modal-view hide-nav-bar="true" class="feedback">
+    <ion-header-bar align-title="center" style="background: #d2f7ef!important;" class="bar-balanced">
+        <div class="button back-button buttons  button-clear header-item common-back-btn" ng-click="ctrl.hideModal()">
+            <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title" style="color:#4a6b9d;font-weight: bold">试题参考答案</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true" class="work_correct_file">
+        <div class="bg-box">
+            <img ng-src="{{$root.loadImg('work/correct_ans_bg.png')}}" width="100%" height="100%">
+            <div class="bg-inner-box">
+                <div class="bg-inner-box1">
+                    <img ng-src="{{$root.loadImg('work/correct_ans_inner.png')}}"  width="100%">
+                </div>
+            </div>
+            <img ng-src="{{$root.loadImg('work/savant_ans.png')}}"
+                 class="savant-ans-wrap"
+                 ng-click="ctrl.getQAns(true,$event)">
+        </div>
+
+        <div class="card card-better small_q_bg" style=" font-size: 16px;">
+            <p style="text-indent:2em;">学生首次提交作业后，家长可以进家长端，点击题目旁边的“答案”图标，查看参考答案和主观题的解答步骤。</p>
+            <p style="text-indent:2em;">【注意】学生端不能看参考答案。</p>
+        </div>
+    </ion-content>
+
+    <loading-processing load-top="100"></loading-processing>
+</ion-modal-view>

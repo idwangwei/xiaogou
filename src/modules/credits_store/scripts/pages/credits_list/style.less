@@ -1,0 +1,121 @@
+@main-color: #726c8c;//定义字体主色
+.tea-score-list{
+  .myFooter{
+    background-color: #fff !important;
+    border-top: 1px solid #dfdfdf !important;
+    color: @main-color !important;
+    height: 50px;
+    .item-score,.item-shop{
+      background-color:  transparent !important;
+      flex: 1;
+      -webkit-flex:1;
+      img{
+        height: 25px;
+        vertical-align: middle;
+        margin-top: -1px;
+      }
+      span{
+        color: @main-color !important;
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+    .item-score{
+      padding-left: 10px;
+      img{
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+    }
+    .item-shop{
+      padding-right: 10px;
+      text-align: right;
+      img{
+        margin-left: 10px;
+      }
+    }
+  }
+  .tea-score-content{
+    background-color: #e8e8ee;
+    .scroll{
+      padding-left: 0 ;
+      padding-right: 0;
+    }
+    .content-score{
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      color: @main-color;
+      text-align: center;
+    }
+    .content-item{
+      height: 90px;
+      background: #fff;
+      margin-bottom: 12px;
+      padding: 20px 22px;
+      display: flex;
+      display: -webkit-flex;
+      &.reduce{
+        background: #f9ea68;
+        .text{
+          color: #fd3a1a !important;
+        }
+        .img{
+          background-color: #f9ea68;
+        }
+      }
+      .img{
+        height: 50px;
+        width: 50px;
+        background: #87cff5 no-repeat center/cover;
+        background-size: 68%;
+        border-radius: 50%;
+        margin-right: 15px;
+        &.img-0{
+          background-image: url("../../../images/credits_list/icon-activity-0.png");
+        }
+        &.img-1{
+          background-image: url("../../../images/credits_list/icon-activity-1.png");
+        }
+        &.img-2{
+          background-image: url("../../../images/credits_list/icon-activity-2.png");
+        }
+        &.img-3{
+          background-image: url("../../../images/credits_list/icon-activity-3.png");
+        }
+        &.img-4{
+          background-image: url("../../../images/credits_list/icon-activity-4.png");
+        }
+        &.img-5{
+          background-image: url("../../../images/credits_list/icon-activity-5.png");
+        }
+        &.img-6{
+          background-image: url("../../../images/credits_list/icon-activity-6.png");
+        }
+      }
+      .text{
+        flex: 1;
+        -webkit-flex:1;
+        font-size: 14px;
+        color: @main-color;
+        padding-top: 5px;
+      }
+      .item-right{
+        margin-left: 15px;
+        img{
+          display: block;
+          width: 30px;
+          height: 30px;
+          margin: 0 auto;
+        }
+        .num{
+          display: block;
+          font-size: 12px;
+          color: @main-color;
+          margin-top: 5px;
+          padding-right: 4px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+
+<ion-view hide-nav-bar="true" class="game_list" hide-tab="false">
+    <ion-header-bar align-title="center" class="bar-better">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 2px">首页</span>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4b61b4" ng-bind="'游戏'"></h1>
+    </ion-header-bar>
+
+    <ion-side-menus>
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="has-header game_clazz_select" padding="true">
+                <div class="col-md-12 col-xs-12 game_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList" ng-show="clazz.status==1">
+
+                    <div class="clazz-item" ng-click="ctrl.selectClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadMathGameImg('math_game_clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <ion-side-menu-content>
+            <!--班级名称显示框-->
+            <div class="select-content-wrap has-header">
+                <div class="select-clazz-bar" ng-click="ctrl.showMenu()" >
+                    <!--<div style="float: right">-->
+                    <!--<span ng-show="ctrl.isFetchClazzProcessing">-->
+                    <!--<ion-spinner icon="ripple"></ion-spinner>-->
+                    <!--<span class="spinner-text">正在加载数据....</span>-->
+                    <!--</span>-->
+                    <!--</div>-->
+
+                    <div class="content-wrap">
+                        <img ng-src="{{$root.loadMathGameImg('math_game_clazz_icon.png')}}">
+                        <span ng-if="ctrl.selectedClazz.type !== 900" ng-bind="ctrl.clazzName||'没有班级'" ng-show="ctrl.initCount > 0"></span>
+                        <span ng-if="ctrl.selectedClazz.type == 900"
+                              ng-bind="ctrl.selectedClazz.gradeName.slice(-4, -1) + ctrl.selectedClazz.name" ng-show="ctrl.initCount > 0"></span>
+                    </div>
+                    <div class="arrow-right-wrap"><i class="icon ion-ios-arrow-right" ng-if="ctrl.selectedClazz.type !== 900"></i></div>
+                </div>
+            </div>
+
+            <ion-content class="has-header s_game_list_con"  style="top:104px">
+                <!--排行榜-->
+                <div class="game-star-rank-wrap"  ng-click="ctrl.showGameStarRank()">
+                    <div class="game-star-rank">
+                        <div class="game-star-rank-text">
+                            <span style="line-height: 22px">游戏星星榜</span>
+                            <i style="margin-left: 16px;font-size: 16px;" class="icon ion-ios-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+
+                <!--没有网络-->
+                <div ng-if="!ctrl.onLine" class="net-tip">
+                    <span> <i class="icon ion-alert-circled"></i>&nbsp;无法连接网络</span>
+                </div>
+                <!--没有班级提示-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="ctrl.clazzList && ctrl.clazzList.length == 0">
+                    <span>没有班级，不能收到老师发布的游戏！<br>请到家长端去添加班级吧！</span>
+                </div>
+                <!--自学班的提示-->
+                <div class="item block-input item-input—height" style="padding: 0;" ng-if="ctrl.selectedClazz.type === 900">
+                    <div class="tip-wrap" ng-click="ctrl.alertInfo()" >
+                        <p ><i class="icon ion-information-circled" style=" margin-right: 10px;color: blue;font-size: 25px;vertical-align: sub;"></i>
+                            自学班能干什么？
+                        </p>
+                    </div>
+                </div>
+                <!--没有游戏提示-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="ctrl.clazzList.length&&ctrl.gameListInitlized&&!ctrl.isLoadingProcessing && (!ctrl.gameList || ctrl.gameList.length == 0)">
+                    <span>该班级目前没有发布游戏!</span>
+                </div>
+                <!--游戏列表-->
+                <div ng-repeat="game in ctrl.gameList track by $index">
+                    <h5 ng-if="ctrl.ifShow($index)" style="padding-left: 10px; margin: 10px 0 10px 0;color: white;background-color: #d12756;width: 120%;display: inline-block;"
+                        class="row">
+                        <span>{{ctrl.getMonth(game) + '月'}}</span><br>
+                    </h5>
+                    <div  class="col-md-3 col-xs-6" >
+                        <div class="work-item" ng-click="ctrl.goToPlayGame(game)">
+                            <h4 class="overflow-ellipsis"
+                                style="padding: 0 5px;font-size: 1.2em;color: #1E446A; margin:10px auto;font-weight: bold;"
+                                ng-bind="game.tb.tbName||'&nbsp;'"
+                            >
+                            </h4>
+                            <div style="position: relative;height: 105px">
+                                <img ng-src="{{ctrl.getGameIconUrl(game.levels[0].levelGuid)}}" alt=""
+                                     style="width: 100px" ng-if="game.gameGuid"/>
+                                <div style="position: absolute;top:0px;width: 100%" ng-show="game.status==100">
+                                    <img ng-src="{{$root.loadMathGameImg('math_game_ui_lock_bg.png')}}" alt="" style="width: 100px;"/>
+                                </div>
+                                <div style="position: absolute;top: 40px;text-align: center;width: 100%"
+                                     ng-show="game.status==100">
+                                    <img ng-src="{{$root.loadMathGameImg('math_game_ui_lock.png')}}"/>
+                                </div>
+                                <div style="position: absolute;top: 5px;text-align: center;width: 100%"
+                                     ng-show="game.pass==-1">
+                                    <img ng-src="{{$root.loadMathGameImg('math_game_passed.png')}}" style="margin-left: 80px"/>
+                                </div>
+                            </div>
+                            <p class="overflow-ellipsis" style="font-size: 13px;margin:0 auto" ng-bind="game.showName||'&nbsp;'"></p>
+                            <p class="overflow-ellipsis" style="font-size: 13px">
+                                <span ng-bind="game.publishTime.substring(0,10)+''"></span>
+                                <span ng-bind="game.publishWeek"></span>
+                            </p>
+                            <div style="margin-top: -5px">
+                                <img width="20px"
+                                     ng-src="{{$root.loadMathGameImg(game.levels[0].score >= 1? ctrl.starImg.fullStar: game.levels[0].score >= 0.5?ctrl.starImg.halfStar:ctrl.starImg.emptyStar)}}"
+                                     alt=""/>
+                                <img width="20px"
+                                     ng-src="{{$root.loadMathGameImg(game.levels[0].score >= 2? ctrl.starImg.fullStar: game.levels[0].score >= 1.5?ctrl.starImg.halfStar:ctrl.starImg.emptyStar)}}"
+                                     alt=""/>
+                                <img width="20px"
+                                     ng-src="{{$root.loadMathGameImg(game.levels[0].score ==3?  ctrl.starImg.fullStar: game.levels[0].score >= 2.5 ?ctrl.starImg.halfStar:ctrl.starImg.emptyStar)}}"
+                                     alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ion-infinite-scroll on-infinite="ctrl.fetGameListWithLoadMore()" spinner="ios" distance="10%" ng-if="ctrl.moreFlag"></ion-infinite-scroll>
+            </ion-content>
+
+        </ion-side-menu-content>
+
+    </ion-side-menus>
+
+    <!--作业列表显示的作业奖杯排行榜显示框-->
+    <div class="work-backdrop" ng-if="ctrl.isShowGameStarRank" ng-click="ctrl.closeGameStarRankData($event)">
+        <div class="game_star_rank_data">
+
+            <!--游戏星星榜背景-->
+            <div class="top_bg_wrap bg_wrap_star">
+                <div class="bg_wrap_star_2">
+                    <img ng-src="{{$root.loadMathGameImg('math_game_star_bg_2.png')}}" alt="">
+                </div>
+                <img ng-src="{{$root.loadMathGameImg('math_game_star_icon.png')}}" alt="" class="top_bg_icon">
+            </div>
+
+            <!--星星排行列表-->
+            <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+                <div ng-if="!ctrl.selectedClazz || !ctrl.selectedClazz.id" style="padding: 20px">您还没有申请学校老师的班级!</div>
+                <div class="star_rank_list_box" ng-if="ctrl.selectedClazz && ctrl.selectedClazz.id">
+
+                    <div ng-if="!ctrl.isGameStarLoading&&!ctrl.gameStarRankData.length" class="rank_list_content_none">该班暂时没有游戏星星排行信息</div>
+
+                    <div ng-if="ctrl.isGameStarLoading &&!ctrl.gameStarRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+
+                    <div class="item star_rank_list" ng-repeat="item in ctrl.gameStarRankData"
+                         ng-class="{'star_rank_list_user':item.userId == ctrl.user.userId}">
+
+                        <!--排名-->
+                        <div class="gs_content_list_index">
+                            <span ng-bind="item.rank"> </span>
+                        </div>
+
+                        <!--列表信息-->
+                        <div class="gs_content_list_info">
+
+                            <!--头像-->
+                            <div class="game_star_content_left"></div>
+
+                            <!--用户信息-->
+                            <div class="game_star_content_middle">
+                                <div class="gs_cm_student_name">{{item.userName}}</div>
+                            </div>
+
+                            <!--信息信息-->
+                            <div class="game_star_content_right">
+                                <img ng-src="{{$root.loadMathGameImg('math_game_star.png')}}" alt="">
+                                <span>&nbsp;×{{item.starAmount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-scroll>
+        </div>
+    </div>
+
+</ion-view>

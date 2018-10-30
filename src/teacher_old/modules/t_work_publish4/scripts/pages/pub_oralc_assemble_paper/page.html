@@ -1,0 +1,139 @@
+<ion-view title="布置作业" hide-nav-bar="true" class="oral_work_pub_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">布置作业</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <ng-form name="pubWorkForm" novalidate class="pub-content">
+            <div class="paper-title-wrap">
+                <span class="paper-name padding-better">作业名称:</span>
+                <span class="paper-title" ng-bind="ctrl.paperName"></span>
+            </div>
+            <div class="pub-conctroll-wrap">
+                <span class="pub-controll-name padding-better">发布时间：</span>
+                <div style="position: relative;min-width: 45%;">
+                    <input ng-if="!ctrl.isWin" type="datetime-local" name="subject"
+                           min="{{ctrl.getCurrentDateTimeStr()}}"
+                           ng-model="ctrl.formData.startTime"
+                           placeholder="立即布置"
+                           ng-change="ctrl.minTimeSet()"
+                           style="pointer-events:auto;background-color: rgba(220, 224, 255, 0.9);border: solid 1px #566093;border-radius: 0 !important;width: 100%;height:35px;line-height:35px"/>
+                    <!--TODO 设置浮动在上面也可点击-->
+                    <span ng-if="!!ctrl.showDateTime()&&!ctrl.isWin" style="pointer-events: none;"
+                          class="pub-right-now pub-right-now-win">
+                        立即布置
+                        <i class="ion-arrow-down-b"></i>
+                    </span>
+                    <p ng-if="ctrl.isWin" style="margin: 0;pointer-events:auto;"
+                       ng-bind="ctrl.checkSetTimeAndCurrentTime(ctrl.startDateTime)?ctrl.startDateTime.year+ '-' + ctrl.startDateTime.mouth+ '-' + ctrl.startDateTime.date+ ' ' + ctrl.startDateTime.hour+ ':' + ctrl.startDateTime.minutes:'立即布置'"
+                       ng-click="ctrl.showSelectDateTimeDiagnose()"></p>
+                    <alr-select-date-time date-time="ctrl.startDateTime"></alr-select-date-time>
+                </div>
+
+            </div>
+            <div class="pub-conctroll-wrap">
+                <span class="pub-controll-name padding-better">比赛时长：</span>
+                <div style="position: relative;min-width: 45%;" class="limit-time">
+                    <!-- <input placeholder="{{'推荐用时'+ctrl.defaultLimitTime+'分钟 >'}}" type="text" readonly="true"
+                            ng-bind="ctrl.limitTime?ctrl.limitTime+'分钟':'推荐用时'+ctrl.defaultLimitTime+'分钟 >'"
+                            ng-click="ctrl.showSelectLimitTime()" ng-blur="ctrl.hideSelectLimitTime()">
+                     <div class="select-limit-time" ng-if="ctrl.showSelectLimitTImeFlag">
+                         <p ng-repeat="t in ctrl.limitTimeOptions" ng-bind="t+'分钟'"
+                            ng-click="ctrl.selectLimitTime(t)"></p>
+                     </div>-->
+                    <!--ng-model="ctrl.limitTime"-->
+                    <select ng-model="ctrl.limitTime"
+                            ng-options="item for item in ctrl.limitTimeOptions"
+                            ng-change="ctrl.selectLimitTime($event)" class="select-options">
+                    </select>
+                    <!-- <select ng-model="ctrl.limitTime" ng-change="ctrl.selectLimitTime(item)" class="year_select">
+                         <option value="{{item}}" ng-repeat="item in ctrl.limitTimeOptions" ng-selected="ctrl.limitTime == item">
+                             {{item}}
+                         </option>
+                     </select>-->
+                </div>
+
+            </div>
+            <div class="pub-conctroll-wrap">
+                <span class="pub-controll-name padding-better">答题方式：</span>
+                <div style="position: relative;min-width: 45%;" class="input-type">
+                    <ion-toggle ng-model="ctrl.optionHandwrite" ng-change="ctrl.changeHandWrite()">手写输入</ion-toggle>
+                </div>
+            </div>
+
+            <div class="pub-list-wrap" style="margin-bottom: 60px">
+                <div class="item has-no-clazz" ng-show="!ctrl.clazzList || ctrl.clazzList.length<=0">布置作业前请先创建班级哦！</div>
+                <div class="pub-clazz-name-wrap padding-better">
+                    <span>选择布置对象：</span>
+                </div>
+                <div class="card card-better" ng-class="{'clazz_margin_bottom_last':$last}"
+                     ng-repeat="clazz in ctrl.clazzList track by $index" ng-init="idx=$index">
+                    <div class="clazz-name-wrap">
+                        <span class="clazz-name" ng-bind="clazz.name"></span>
+                    </div>
+                    <ion-checkbox ng-model="clazz.isClicked"
+                                  ng-click="clazz.hasPubedSuccess?'':ctrl.selectAll(clazz)"
+                                  ng-disabled="clazz.hasPubedSuccess?true:false">
+                        全班（{{clazz.studentCount}}人）- 包含所有层
+                        <span style="float: right;color: red"
+                              ng-if="clazz.hasPubed&&clazz.msg&&clazz.code!=2"
+                              ng-bind="clazz.msg">
+                        </span>
+                        <img ng-src="{{$root.loadImg('work/work_pub_succuss.png')}}"
+                             ng-if="clazz.code===2"
+                             style="width: 70px;float: right;">
+                    </ion-checkbox>
+                    <ion-checkbox ng-repeat="(name,level) in clazz.levels"
+                                  ng-class="$even?'clazz-even':''"
+                                  ng-model="clazz.levelClick[name].isClicked"
+                                  ng-click="clazz.levelClick[name].hasPubedSuccess?'':ctrl.selectLevel(idx)"
+                                  ng-disabled="clazz.levelClick[name].hasPubedSuccess?true:false"
+                                  ng-if="clazz.studentCount != level">
+                        {{name}}层（{{level}}人）
+                        <span style="float: right"
+                              ng-if="clazz.levelClick[name].hasPubed&&clazz.levelClick[name].msg&&clazz.levelClick[name].code!=2"
+                              ng-bind="clazz.levelClick[name].msg"
+                              style="color: red">
+                        </span>
+                        <img ng-src="{{$root.loadImg('work/work_pub_succuss.png')}}"
+                             ng-if="clazz.levelClick[name].code===2"
+                             style="width: 70px;float: right;">
+                    </ion-checkbox>
+                </div>
+                <div class="pub-text-tip"
+                     ng-if="$root.platform.isMobile()&&$root.platform.IS_ANDROID&&$root.weChatPluginInstalled">
+                    作业布置成功后，可点击“通知”告诉学生和家长
+                </div>
+            </div>
+        </ng-form>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <div class="bar bar-footer bar-balanced" ng-show="ctrl.clazzList && ctrl.clazzList.length>0">
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.pubStartTime()"
+                ng-disabled="ctrl.pubBtnDisabled"
+                ng-class="ctrl.pubBtnDisabled?'btn-disabled-color':''">
+            <i class="icon ion-ios-paperplane">
+            </i>
+            布置
+        </button>
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.showShareMenu()"
+                ng-if="$root.platform.isMobile()&&$root.weChatPluginInstalled && ctrl.isShowIosShare()&&ctrl.isPubWorkSuccess">
+            <!-- ng-if="$root.platform.isMobile()&&$root.platform.IS_ANDROID&&$root.weChatPluginInstalled">-->
+            <i class="icon ion-aperture">
+            </i>
+            通知
+        </button>
+    </div>
+
+    <!--  <teaching-guide ng-if="guideFlag && !guideFlag.isGuideAnimationEnd && guideFlag.isSameUser"
+                      current-show-ele="currentShowEle"
+                      step-count="2"
+                      current-step="currentStep"
+                      get-high-light-ele="getHighLightEle()">
+      </teaching-guide>-->
+</ion-view>
+

@@ -1,0 +1,145 @@
+<ion-view  hide-nav-bar=true class="clazz_student_list">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">{{ctrl.listType==1?'学生列表':'申请列表'}}</h1>
+       <!-- <button class="button button-clear"
+                ng-click="ctrl.answer()"
+                ng-if="ctrl.listType==1">
+            <img ng-src="{{ctrl.getRootScope().loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+        </button>-->
+    </ion-header-bar>
+    <!--  -->
+    <list-select ng-if="ctrl.showFlag" options="{{ctrl.Levels}}" show-flag="ctrl.showFlag"
+                 default-option="{{ctrl.defaultOption}}"
+                 on-change="ctrl.levelChange()" select-value="ctrl.selectValue">
+    </list-select>
+
+    <ion-content padding="false" class="claz_student_list_file">
+        <div class="tip-wrap" ng-click="ctrl.showAns()" >
+            <p ><i class="icon ion-information-circled" style=" margin-right: 10px;color: blue;font-size: 25px;vertical-align: sub;"></i>
+                后加入班级学生能收到先前布置的作业吗?
+            </p>
+        </div>
+        <!--下拉刷新-->
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.refreshStuList()" spinner="ios"></ion-refresher>
+        <loading-processing></loading-processing>
+        <span ng-show="ctrl.stuNum==0 && ctrl.listType==1 && ctrl.retFlag" class="item">该班级中还没有学生！</span>
+        <div class="item list-title" ng-show="ctrl.listType==1 && ctrl.stuNum>0">
+            <span style="float: left">姓名(账号)</span>
+            <span style="float: right">分层</span>
+        </div>
+        <ul class="list" style="padding: 5px" ng-show="ctrl.listType==1 && ctrl.stuNum>0">
+            <li ng-repeat="(letter,students) in ctrl.Students">
+                <div class="card" ng-show="students.length>0">
+                    <div ng-show="students.length>0" class="layered">{{letter}}</div>
+                    <div ng-model="student.isClicked"
+                         class="item student-list"
+                         ng-repeat="student in students" ng-style="$index%2==0?{background:'#fefbf5'}:{}">
+
+                    <div class="student-name-wrap" ng-click="ctrl.goStuDetail(student.id)">
+                        <p class="student-name-text"><span ng-bind="student.name"></span>
+                            <span ng-if="student.loginName.indexOf('*')===-1" style="font-weight: normal;">(学生端体验帐号)</span></p>
+                        <p ng-bind="'('+student.loginName+')'" class="student-login-name-text"></p>
+                    </div>
+
+                    <div class="select-level-wrap">
+                        <!--<select ng-model="student.level" class="level-select"
+                                ng-options ="item.level as item.level for item in ctrl.Levels"
+                                ng-change="ctrl.levelChange(letter,$index)">
+                        </select>-->
+                        <div class="select-options level-select" ng-click="ctrl.showListSelect(student,letter,$index)">
+                            <label style="font-size: 16px">{{student.level}}</label>
+                            <i class="ion-android-arrow-dropdown"></i>
+                        </div>
+
+                    </div>
+                    <!--<span ng-click="goStuDetail(student.id)" style="width:65%;display:inline-block">
+                        <span  style="font-weight: bold"></span>
+                        <span ></span>
+                    </span>
+                        <select ng-model="student.level" class="level-select"
+                                ng-options ="item.level as item.level for item in Levels"
+                                ng-change="levelChange(letter,$index)">
+                        </select>-->
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div  ng-show="ctrl.listType==0" style="margin: 5px 5px;text-align: left;border-radius: 10px">
+            <div class="question-wrap" ng-click="ctrl.showAns()">
+                <p ><i class="icon ion-information-circled common-help-bar-icon" ></i>
+                    后加入的学生能看到先前布置的作业吗？
+                </p>
+            </div>
+
+           <!-- <p>答：先前发给“全班”的作业，后加入的学生能自动收到。
+                先前分层发布的作业，后加入的学生看不到，需要老师将该学生分层后，在作业列表中按住作业项向左滑，点击“补发作业”。</p>-->
+        </div>
+      <!--  <auto-box-con  decrease-height="135" ng-show="ctrl.listType==0">
+            <span ng-show="ctrl.addingStus.length==0 && ctrl.retFlag" class="item">当前没有申请的学生！</span>
+            <auto-box-row column="{{ctrl.filterStuGetFillNum(addingStuArry,false)}}" ng-repeat="addingStuArry in ctrl.addingStus" >
+                    <auto-box-block  ng-repeat="addingStu in addingStuArry" style="background: lightyellow" ng-if="addingStu.hasSameName==0">
+                        <div class="block-content" ng-click="ctrl.goStuDetail(addingStu.id)">
+                            <img src="{{ctrl.clazzService.getStuImg(addingStu.gender)}}" alt="">
+                            <div class="content-title" style="color: #553333">
+                                <p ng-bind="addingStu.name" style="margin: 0;"></p>
+                                <p ng-bind="addingStu.loginName" style="margin: 0 0 0 -3px;"></p>
+                            </div>
+                        </div>
+                        <div class="checker" ng-click="ctrl.selectStu($event,addingStu)">
+                            <i class="icon ion-checkmark check-icon " hidden="true"></i>
+                        </div>
+                    </auto-box-block>
+            </auto-box-row>
+
+            <div ng-show="ctrl.hasSameName"
+                 style="background: lightyellow;color: #553333;margin: 10px 5px;text-align: center;border-radius: 10px">
+                <p style="padding: 10px;">以下学生与审核通过的学生有同名，如果是同一学生，请不要通过</p>
+            </div>
+
+            <auto-box-row column="{{ctrl.filterStuGetFillNum(addingStuArry,true)}}" ng-repeat="addingStuArry in ctrl.addingStus">
+                <auto-box-block  ng-repeat="addingStu in addingStuArry" style="background: lightyellow" ng-if="addingStu.hasSameName==1">
+                    <div class="block-content" ng-click="ctrl.goStuDetail(addingStu.id)">
+                        <img src="{{ctrl.clazzService.getStuImg(addingStu.gender)}}" alt="">
+                        <div class="content-title" style="color: #553333">
+                            <p ng-bind="addingStu.name" style="margin: 0;"></p>
+                            <p ng-bind="addingStu.loginName" style="margin: 0 0 0 -3px;"></p>
+                        </div>
+                    </div>
+                    <div class="checker" ng-click="ctrl.selectStu($event,addingStu)">
+                        <i class="icon ion-checkmark check-icon " hidden="true"></i>
+                    </div>
+                </auto-box-block>
+            </auto-box-row>
+        </auto-box-con>-->
+
+
+
+    </ion-content>
+
+    <ion-footer-bar class="button-balanced"  ng-show="ctrl.listType==0">
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.passBtnClick()">
+            <i class="icon ion-checkmark-circled">
+            </i>
+            通过
+        </button>
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.refuseClick()">
+            <i class="icon ion-close-circled">
+            </i>
+            拒绝
+        </button>
+        <!--<button class="button-clear bg-calm  bar-item"
+                ng-click="ignoreClick()">
+            <i class="icon ion-navicon-round">
+            </i>
+            忽略
+        </button>-->
+    </ion-footer-bar>
+
+
+</ion-view>

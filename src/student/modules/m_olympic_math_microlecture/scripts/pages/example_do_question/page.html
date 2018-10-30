@@ -1,0 +1,102 @@
+<ion-view hide-nav-bar="true" class="example_do_question" cache-view="false">
+    <ion-header-bar style="background-color: #ca75ea" align-title="center">
+        <button class="button back-button buttons  button-clear header-item common-back-btn"
+                ng-click="doQCtrl.back()"
+                style="color: #ffffff;">
+            <i class="icon ion-ios-arrow-back" style="color: #ffffff;"></i>
+        </button>
+        <h1 class="title"
+            style="color:#ffffff;font-weight: bold;font-size: 20px;left: 0px;right: 76px;"
+            ng-bind="doQCtrl.examSelectPoint.groupName+'例'+doQCtrl.examSelectPoint.num">
+        </h1>
+        <div class="report-btn" ng-click="doQCtrl.handleDraft()">
+            <img ng-src="{{$root.loadImg('diagnose/draft-new.png')}}">
+            草稿本
+        </div>
+    </ion-header-bar>
+    <!--草稿本指令-->
+    <draft style="position: relative;"></draft>
+    <!--键盘指令-->
+    <div class="keyboard" style="z-index: 5000"></div>
+    <!--弹框指令-->
+    <diagnose-dialog ng-if="doQCtrl.showDiaglog"></diagnose-dialog>
+    <!-- 圆圈loading -->
+    <div ng-if="doQCtrl.isLoadingProcessing"
+         class="dot_processing loading-wrap">
+        <ion-spinner icon="ios"></ion-spinner>
+        <p ng-if="doQCtrl.loadingNewQText">{{doQCtrl.loadingNewQText}}<span class="dotting"></span></p>
+    </div>
+    <!--提交loading-->
+    <div ng-if="doQCtrl.quesSubmitProcessing"
+         class="dot_processing loading-wrap">
+        <ion-spinner icon="ios"></ion-spinner>
+        <p ng-if="doQCtrl.submitText">{{doQCtrl.submitText}}<span class="dotting"></span></p>
+    </div>
+    <!-- <ion-slide-box on-slide-changed="doQCtrl.slideChange($index)"
+                    delegate-handle="exam-do-quetison-slidebox"
+                    does-continue="true"
+                    show-pager="false"
+                    class="" ng-if="doQCtrl.questionInfo">
+         <ion-slide auto-height="0" ng-repeat="slideBoxInfo in doQCtrl.slideBoxDataList track by $index"
+                    slideBoxCurrentIndex="{{doQCtrl.solidBoxInfo.currentIndex}}">-->
+    <!-- 思路导航 -->
+    <div class="exam-guid" ng-click="doQCtrl.showExamGuid()">
+        <img ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_guid_img01.png')}}">
+        <p>思路导航</p>
+    </div>
+
+    <div class="example-guid"
+         ng-show="doQCtrl.showAnalysisFlag">
+        <!--<img ng-click="doQCtrl.hideExamGuid()" style="width: 20px"-->
+             <!--ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_guid_img01.png')}}">-->
+        <p compile-html='doQCtrl.questionInfo.doc[0]'>
+        </p>
+        <!--<img style="width: 80px;margin-right: -15px"-->
+             <!--ng-src="{{$root.loadMicrolectureImg('do_ques/do_ques_guid_img02.png')}}">-->
+    </div>
+    <ion-content class="do_question_content" ng-click="doQCtrl.hideExamGuid()">
+        <!-- 做题记录按钮 -->
+        <div class="top-btns-wrap">
+            <img ng-src="{{$root.loadImg('diagnose/diagnose-error-record-btn.png')}}"
+                 ng-click="doQCtrl.showErrorRecords()"
+                 ng-if="doQCtrl.isSubmitted||doQCtrl.hasDone||doQCtrl.hasCorrect"
+                 style="width: 40%;max-width: 200px;min-width: 140px;">
+        </div>
+        <!--题目内容-->
+        <div class="edit-section do-question-area">
+            <!--未提交前题目的显示 show-type="doQuestion"-->
+            <!--show-type:展示类型为=> 做题:'doQuestion', 批改:'correct', 其他:undefined   -->
+            <div ng-if="!doQCtrl.isSubmitted&&doQCtrl.questionInfo.question&&!doQCtrl.hasCorrect&&!doQCtrl.hasDone">
+                <div class="editor for-content do_question_text"
+                     compile-html="doQCtrl.questionInfo.question"
+                     current-q-input="doQCtrl.questionInfo.inputList"
+                     possible-units="doQCtrl.questionInfo.possibleUnits"
+                     show-type="doQuestion">
+                </div>
+            </div>
+            <!--提交后题目的显示 show-type="correct"-->
+            <div ng-if="doQCtrl.isSubmitted&&doQCtrl.questionInfo.question
+                    ||doQCtrl.hasCorrect&&doQCtrl.questionInfo.question
+                    ||doQCtrl.hasDone&&doQCtrl.questionInfo.question">
+                <div class="editor for-content do_question_text"
+                     compile-html="doQCtrl.questionInfo.question"
+                     current-q-input="doQCtrl.questionInfo.inputListForCorrect"
+                     possible-units="doQCtrl.questionInfo.possibleUnits"
+                     show-type="correct">
+                </div>
+            </div>
+            <div class="place-holder"></div>
+        </div>
+    </ion-content>
+    <!--  </ion-slide>
+  </ion-slide-box>-->
+    <ion-footer-bar class=" bar bar-footer page_footer" ng-if="!doQCtrl.hasDone">
+        <div class="page_button" ng-click="doQCtrl.submitQ()">
+            <span ng-if="!doQCtrl.isSubmitted&&!doQCtrl.quesInfo.error&&!doQCtrl.hasCorrect">提交答案</span>
+            <span ng-if="doQCtrl.hasCorrect||doQCtrl.isSubmitted&&!doQCtrl.showNextQFlag">改错</span>
+            <!--<span ng-if="!doQCtrl.isSubmitted&&doQCtrl.quesInfo.error>0">改错</span>-->
+            <span ng-if="doQCtrl.isSubmitted&&doQCtrl.showNextQFlag" ng-bind="'完成例题'"></span>
+        </div>
+    </ion-footer-bar>
+</ion-view>
+

@@ -1,0 +1,19 @@
+.axis path,
+.axis line{
+    fill: none;
+    stroke: #387ef5;
+    stroke-width: 2px;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+.axis-text-font{
+    font-size: 14px;
+}
+.bar-chart-css{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,27 @@
+<ion-view title="{{wData.workDetail.paperName}}">
+    <ion-content class="has-header">
+        <auto-list-con>
+            <auto-list ng-repeat="smallQ in qList">
+                <auto-list-content class="bg-calm"
+                                   style="min-height: 105px;"
+                                   ng-click="showQDetail(smallQ)">
+                    <div stat-circle
+                         refer-text="smallQ.smallQStuScore+'分'"
+                         refer-percent="smallQ.smallQStuScore/smallQ.score*100"
+                         data-dimension="95"
+                         class="thumbnail-left"
+                         style="  width: 100px;height: 100px;float: left">
+                    </div>
+                    <div class="first" style="margin-left: 25px">
+                        <span>{{"第"+(smallQ.seqNum)+"小题"}}</span>
+                    </div>
+                    <br/>
+                    <div class="first" style="margin-left: 25px"><label>小题得分：{{smallQ.smallQStuScore}}分/{{smallQ.score||0}}分 </label>
+                    </div>
+                </auto-list-content>
+            </auto-list>
+        </auto-list-con>
+    </ion-content>
+</ion-view>
+
+

@@ -1,0 +1,117 @@
+<ion-view title="{{wData.workDetail.paperName}}">
+    <ion-content class="has-header">
+        <div class="editor for-content" style="height: 100%;padding-bottom: 100px;text-align: left">
+            <div class="card list-inset">
+                <div class="q_title">
+                    <label>{{"第"+data.paper.currentBigQ.bigQVoIndex+"大题("+data.paper.currentBigQ.title+") | 第"+(data.paper.currentQ.seqNum)+"小题"}}
+                        <span style="margin-left: 10px">{{data.paper.currentQ.score}}分</span> </label>
+                </div>
+                <div correct-paper="data.paper.currentQ.qContext"
+                     current_q_input="data.paper.currentQ.inputList"></div>
+                <!-- 不展示参考答案-->
+                <!--<div class="q_ans">
+                <span class="input-label" style="color: white">参考答案如下:</span>
+                <div style="padding: 10px">
+                    <div ng-repeat="row in data.paper.currentQ.answerArray" style="color: white;margin-bottom: 5px">
+                        <span ng-show="$index>=1&&data.paper.currentQ.match">或者</span>&nbsp;&nbsp;
+                            <span ng-repeat="col in row">
+                            {{col}}&nbsp;&nbsp;
+                            </span>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
+
+<!--<work-container  class="container" style="  width: 100%;padding: 0;" >-->
+    <!--<work-title class="row" style="  padding-left: 2px;padding-right: 2px;margin: auto">-->
+        <!--<div class="col">-->
+            <!--<div style="text-align: center">-->
+                <!--<label>-->
+                            <!--<span>-->
+                                <!--<span style="color: #0044cc;font-size: larger" ng-bind="userName"></span>同学在<span-->
+                                    <!--style="color: #0044cc;" ng-bind="wData.workDetail.clazz"></span>的作业-->
+                                <!--<span style="color: #0044cc;font-size: larger" ng-bind="wData.workDetail.paperName"></span>-->
+                                <!--作业发布日期:-->
+                                    <!--<span style="color: #0044cc;" ng-bind="wData.workDetail.date.substring(0,10)"></span>-->
+                            <!--</span>-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</work-title>-->
+    <!--<work-subtitle class="row" style="  padding-left: 2px;padding-right: 2px;margin: auto">-->
+        <!--<div class="col">-->
+            <!--<label style="text-align: center;float: right"> 作业得分：<span-->
+                    <!--style="color: #0044cc;" ng-bind="data.paper.paperStuScore||0+'分/'+data.paper.paperScore||0 +'分'" ></span></label>-->
+        <!--</div>-->
+        <!--<div class="col">-->
+            <!--<div class="progressDiv" style="float: left">-->
+                <!--<div style="float:left; display:inline">-->
+                    <!--<label style="margin-left:20px ">得分率：<span style="color: #0044cc;" ng-bind="data.paper.paperScoreRate"></span></label>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="progress" style="margin-bottom: 0px;  ">-->
+                    <!--<div class="progress-bar" role="progressbar"-->
+                         <!--aria-valuenow="{{data.workDetail.paperScoreRate.substring(0,data.workDetail.paperScoreRate.length-1)}}"-->
+                         <!--aria-valuemin="0" aria-valuemax="100"-->
+                         <!--style="width: {{data.workDetail.paperScoreRate}};">-->
+                        <!--{{data.workDetail.paperScoreRate}}-->
+                    <!--</div>-->
+                <!--</div>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</work-subtitle>-->
+    <!--<work-subtitle class="row" style="  padding-left: 2px;padding-right: 2px;margin: auto">-->
+        <!--<div class="col">-->
+            <!--<div style="text-align: center;float: right">-->
+                <!--<label> 大题总数：<span style="color: #0044cc;" ng-bind="data.paper.bigQList.length ||0">个</span></label>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col">-->
+            <!--<label style="margin-left: 20px;float: left"> 小题总数：<span style="color: #0044cc;" ng-bind="data.paper.smallQCountForP||0">个</span>-->
+            <!--</label>-->
+        <!--</div>-->
+    <!--</work-subtitle>-->
+    <!--<work-content class="edit-section"  style="overflow-y: auto;">-->
+        <!--<div class="editor for-content" style="height: 100%;padding-bottom: 100px">-->
+            <!--<div class="card list-inset">-->
+                <!--<div class="q_title">-->
+                    <!--<label>{{"第"+data.paper.currentBigQ.bigQVoIndex+"大题("+data.paper.currentBigQ.title+") | 第"+(data.paper.currentQ.seqNum)+"小题"}}-->
+                        <!--<span style="margin-left: 10px">{{data.paper.currentQ.score}}分</span> </label>-->
+                <!--</div>-->
+                <!--<div correct-paper="data.paper.currentQ.qContext"-->
+                     <!--current_q_input="data.paper.currentQ.inputList"></div>-->
+                <!--&lt;!&ndash; 不展示参考答案&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="q_ans">-->
+                <!--<span class="input-label" style="color: white">参考答案如下:</span>-->
+                <!--<div style="padding: 10px">-->
+                    <!--<div ng-repeat="row in data.paper.currentQ.answerArray" style="color: white;margin-bottom: 5px">-->
+                        <!--<span ng-show="$index>=1&&data.paper.currentQ.match">或者</span>&nbsp;&nbsp;-->
+                            <!--<span ng-repeat="col in row">-->
+                            <!--{{col}}&nbsp;&nbsp;-->
+                            <!--</span>-->
+                    <!--</div>-->
+                <!--</div>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</work-content>-->
+    <!--<work-footer >-->
+        <!--<div class="button-group">-->
+            <!--<div class="button button-primary button-3d" style="display: inline-block" onclick="history.back()">-->
+                <!--<i class="fa fa-mail-reply" ></i>返回-->
+            <!--</div>-->
+            <!--<div class="button button-primary button-3d" style="display: inline-block" ui-sref="work_list">-->
+                <!--<i class="fa fa-mail-reply" ></i>作业列表-->
+            <!--</div>-->
+            <!--<div class="button button-primary button-3d" style="display: inline-block"-->
+                 <!--ui-sref="home"><i class="fa fa-home"></i>主界面-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</work-footer>-->
+<!--</work-container>-->
+
+
+

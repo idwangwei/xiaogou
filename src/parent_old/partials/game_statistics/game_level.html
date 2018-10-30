@@ -1,0 +1,43 @@
+<style>
+    .level ion-item{
+        padding: 5px 0px;
+        border: 0px;
+    }
+    .level .item-content > img:first-child{
+        top:5px;
+        left: 10px;
+        max-width: 80px;
+        max-height: 80px;
+        position: absolute;
+    }
+    .level .item-content .margin{
+        margin-left: 110px;
+    }
+</style>
+<ion-view hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button back-button buttons  button-clear header-item" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">{{selectedGame.name}}</h1>
+    </ion-header-bar>
+    <ion-content class="level">
+        <ion-list>
+            <ion-item ng-repeat="level in selectedGame.levels" ng-click="gameStatistics(selectedGame,level)">
+                <div class="item-content" style="display: relative">
+                    <img ng-src="{{$root.loadImg('game_icon/'+selectedGame.gameGuid+'.png')}}" alt=""/>
+                    <h2 style="margin-left: 110px!important;">第{{level.num}}关</h2>
+                    <p class="margin">{{level.kdName}}</p>
+                    <p ng-show="level.firstPassedTime" class="margin">通关 <span style="font-size: 13px">{{level.firstPassedTime.substring(0,10)}}</span></p>
+                    <p ng-show="!level.firstPassedTime" class="margin">未通关</p>
+                    <div class="margin">
+                        <img width="20px" ng-src ="{{$root.loadImg(level.score >= 1? start.fullStar: level.score >= 0.5?start.halfStar:start.emptyStar)}}" alt=""/>
+                        <img width="20px" ng-src ="{{$root.loadImg(level.score >= 2? start.fullStar: level.score >= 1.5?start.halfStar:start.emptyStar)}}" alt=""/>
+                        <img width="20px" ng-src ="{{$root.loadImg(level.score ==3?  start.fullStar: level.score >= 2.5 ?start.halfStar:start.emptyStar)}}" alt=""/>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <loading-processing load-top="200"></loading-processing>
+</ion-view>

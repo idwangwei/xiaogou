@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import "./../../../../t_boot/less/theme02/include/_mixins";
+@import "./../../../../t_boot/less/theme02/include/common";
+
+.work_statistics_file {
+  /*添加样式使之与出题端保持一致*/
+  .image-type-question {
+    img {
+      vertical-align: middle;
+    }
+    p {
+      margin: 0 !important;
+    }
+  }
+  .work-paper-big-q {
+    background-color: white;
+    color: #293d69;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .table-list-row {
+    border-bottom: #d2f7ef !important;
+    border-bottom-style: solid !important;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 0px 5px #D0C4C4;
+    margin-bottom: 8px;
+  }
+
+  .row {
+    display: flex;
+    display: -webkit-flex;
+  }
+  .my-table-row {
+    /*border: 1px solid #d7ad97;*/
+    border: none;
+    text-align: center;
+  }
+
+  .my-table-row-2{
+    border: none;
+  }
+
+  .table-header {
+    background-color: #d2f7ef;
+    color: #293d69;
+  }
+  .table-col {
+    a {
+      color: #E12020;
+      font-size: 18px;
+      text-decoration-color: #8999e8;
+    }
+  }
+  .paper-big-q {
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    color: #293d69;
+  }
+  .paper-small-q {
+    background: #accbf9;
+    color: #293d69;
+    line-height: 30px;
+    height: 30px;
+    width: 100%;
+    position: relative;
+    border: none;
+    //margin: 0px 0px 10px 0px;
+    margin: 0px;
+  }
+  .paper-small-q :first-child {
+    margin-left: 10px;
+  }
+  .card-header {
+    background: white;
+  }
+  .item {
+    border: none;
+  }
+  .left-col {
+    text-align: right;
+    font-size: 16px;
+    span {
+      margin-right: 10%;
+    }
+  }
+  .right-col {
+    text-align: left;
+    font-size: 16px;
+    span {
+      margin-left: 10%;
+    }
+  }
+  .text-title {
+    font-size: 16px;
+    font-weight: bold
+  }
+  .actual-score {
+    color: #357ab3;
+    font-size: 14px;
+  }
+  .paper_title_2 {
+    position: relative;
+    @media screen and (max-width: 767px) {
+      font-size: 25px;
+      line-height: 50px;
+      height: 50px;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 40px;
+      line-height: 138px;
+      height: 138px;
+    }
+    .inner-text-box {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #293d69;
+    }
+    .bg_t_photo {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      height: 60%;
+      max-height: 186px;
+    }
+    .bg_file {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      height: 60%;
+      max-height: 215px;
+    }
+  }
+  .question-content {
+    background: #daf5fe
+  }
+  .card {
+    padding-bottom: 0px;
+  }
+  .table-container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  //layout-box, .layout-box, app-textarea, .app-textarea{
+  //  margin: 2px 2px 0px 2px;
+  //}
+}
+
+
+
+

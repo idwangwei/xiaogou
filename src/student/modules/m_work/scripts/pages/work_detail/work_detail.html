@@ -1,0 +1,400 @@
+<ion-view hide-nav-bar="true" class="work_detail_file">
+    <ion-header-bar class="page_header" style="background: #d2f7ef" align-title="center">
+        <button class="button buttons  button-clear common-back-btn" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title"
+            ng-if="ctrl.retFlag"
+            style="color:#4a6b9d;font-weight: bold;margin-left: 72px;margin-right: 72px;">
+            {{ctrl.selectedWork.paperName+((ctrl.isFinalAccess||ctrl.isAreaEvaluation)?'测试':'')}}<span ng-if="!ctrl.isFinalSprint">({{ctrl.paper.paperScore}}分)</span>
+        </h1>
+        <div class="title spinner-container" ng-show="ctrl.isLoadingProcessing && !ctrl.retFlag"
+             style="display: flex;display: -webkit-flex;justify-content: center;-webkit-justify-content:center">
+            <ion-spinner icon="ripple"></ion-spinner>
+            <span class="spinner-text">正在加载数据....</span>
+        </div>
+
+        <div class="buttons" ng-if="subHeaderInfo.activeEle == 'work_detail'">
+            <button class="button button-clear" ng-click="ctrl.hideAllQ()">
+                <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+    <div ng-if="ctrl.selectedWork.publishType && ctrl.selectedWork.publishType!=ctrl.WORK_TYPE.ORAL_WORK&&ctrl.selectedWork.publishType!=ctrl.WORK_TYPE.ORAL_WORK_KEYBOARD">
+        <sub-header id="work_detail_subheader">
+            <div class="subheader-item" id="work_detail">
+                <span ng-bind="ctrl.userName" class="sub-title">姓名</span>
+            </div>
+            <!--<div class="subheader-item" id="rank_list" ng-if="ctrl.selectedWork.publishType!=12">-->
+                <!--<span ng-bind="'作业之星'" class="sub-title"></span>-->
+            <!--</div>-->
+
+        </sub-header>
+        <!--作业详情-->
+        <ion-content class="has-header has-subheader"
+                     overflow-scroll="true"
+                     on-scroll="ctrl.getScrollPosition()"
+                     ng-class="{'ios-content':ctrl.isIos}">
+            <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+            <div ng-if="!ctrl.isLoadingProcessing" style="height: 100%;">
+                <!--作业详情列-->
+                <div ng-if="subHeaderInfo.activeEle == 'work_detail'" style="height: 100%;">
+                    <div class="paper-title-box" ng-show="ctrl.title && ctrl.retFlag">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg.png')}}" width="100%" height="100%">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg_1.png')}}" class="bg_t_photo">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg_2.png')}}" class="bg_file">
+                        <div class="title-text-box">
+                            <div class="text-box">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-title">
+                                            <span ng-bind="ctrl.clzName"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'首次做: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.firstScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'首次用时: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.wasteTime.minutes"></span>
+                                        <span class="deserve-score" ng-bind="ctrl.paper.wasteTime.seconds===0?'分钟':'分'"></span>
+                                        <span ng-if="ctrl.paper.wasteTime.seconds!==0" class="actual-score" ng-bind="ctrl.paper.wasteTime.seconds"></span>
+                                        <span ng-if="ctrl.paper.wasteTime.seconds!==0" class="deserve-score" ng-bind="'秒'"></span>
+                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'改错次数: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.reworkTimes||0"></span>
+                                        <span class="deserve-score" ng-bind="'次'"></span>
+                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'改错后: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.latestScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <span ng-bind="'首次提交: '+ctrl.paper.firstSubmitTime"></span>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col">
+                                        <span ng-bind="'最近提交: '+ctrl.paper.latestSubmitTime"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--showTipType为1 显示整个paper -->
+                    <div ng-repeat="bigQ in ctrl.qsList track by $index" ng-init="bigIndex = $index; bigLast = $last">
+                        <!--大题名称和分数-->
+                        <div class="big-q">
+                            <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                                <label class="big-q-title-adapt">
+                                    <span ng-bind="bigQ.bigQVoIndex+'、'+bigQ.title"></span>
+                                    &nbsp;
+                                    <span ng-bind="'('+bigQ.score+'分)'"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!--大题下的小题列表-->
+                        <div ng-repeat="record in bigQ.qsList track by record.id" ng-init="smallQIndex = $index"
+                             ng-style="{'margin-bottom':$last&&bigLast?'140px':''}"
+                             ng-class="{'last-samllQ':$last&&bigLast}">
+                            <div class="image-type-question">
+                                <div class="question-content card card-better small_q_bg">
+
+                                    <!--改错列-->
+                                    <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index"
+                                         ng-init="doneIndex=$index;doneLast=$last"
+                                         ng-class="doneInfo.showQFlag?'open':''" class="accordion">
+                                        <div class="smallq-title"
+                                             ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}">
+                                            <div class="text-div-adapt" ng-click="ctrl.showQ(doneInfo,$event)">
+                                                <label class="text-adapt">
+                                                <span ng-bind="'第'+(+record.seqNum+1)+'题'"
+                                                      ng-class="{'done-more':doneIndex>=1}"></span>
+                                                    <span ng-if="doneIndex==0" ng-bind="'首次做: '"></span>
+                                                    <span ng-if="doneIndex>=1" ng-bind="'改错后: '"></span>
+                                                    <span class="correct-icons">
+                                                    <img ng-show="doneInfo.passFlag==0"
+                                                         ng-src="{{$root.loadImg('other/icon_no.png')}}">
+                                                    <img ng-show="doneInfo.passFlag==1"
+                                                         ng-src="{{$root.loadImg('other/icon_yes2.png')}}">
+                                                    <img ng-show="doneInfo.passFlag==2"
+                                                         ng-src="{{$root.loadImg('other/icon_yes3.png')}}">
+                                                    <img ng-show="doneInfo.score===-1"
+                                                         ng-src="{{$root.loadImg('other/grading-icon.png')}}">
+                                                </span>
+                                                    <span class="actual-score" ng-bind="doneInfo.score"
+                                                          ng-show="doneInfo.passFlag!=3"></span>
+                                                    <span class="actual-score" ng-bind="'?'"
+                                                          ng-show="doneInfo.passFlag==3"></span>
+                                                    <span class="deserve-score" ng-bind="'/'+record.score+'分'"></span>
+                                                </label>
+                                            </div>
+                                            <div class="img-align-right">
+                                                <span ng-if="ctrl.selectedWork.publishType!=ctrl.WORK_TYPE.FINAL_ACCESS&& !ctrl.isAreaEvaluation" q-feedback="record.id" paper-id="ctrl.selectedWork.paperId"
+                                                  is-workdetail="true"
+                                                  user-info="ctrl.user"
+                                                  ng-if="!ctrl.isFinalSprint"
+                                                  small-q="record.smallQStuAnsMapList"
+                                                  paper-instance-id="ctrl.selectedWork.instanceId"
+                                                  ng-style="{visibility:doneIndex==0&&doneInfo.ignore!=1?'visible':'hidden'}">
+                                               <img ng-src="{{$root.loadImg('other/report.png')}}">
+                                            </span>
+                                                <span ng-if="ctrl.selectedWork.publishType!=ctrl.WORK_TYPE.FINAL_ACCESS&& !ctrl.isAreaEvaluation" q-correct-ans paper-id="data.paper.paperId" big-q="bigQ"
+                                                      small-q="record" item-input-list="doneInfo.inputList"
+                                                      ng-if="!ctrl.isFinalSprint"
+                                                      ng-style="{visibility:doneIndex==0&&doneInfo.ignore!=1?'visible':'hidden'}">
+                                                <img ng-src="{{$root.loadImg('other/ans1.png')}}">
+                                            </span>
+                                                <span ng-click="ctrl.showQ(doneInfo,$event)" ng-class="{'final_access_open_btn':ctrl.selectedWork.publishType==ctrl.WORK_TYPE.FINAL_ACCESS||ctrl.isAreaEvaluation}">
+                                                    <img ng-src="{{$root.loadImg('other/open.png')}}" class="row-icon">
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div compile-html="record.qContext" show_type="correct"
+                                             current_q_input="doneInfo.inputList"
+                                             ng-if="doneInfo.showQFlag" class="qcontext">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--作业之星列-->
+                <div ng-if="subHeaderInfo.activeEle == 'rank_list'">
+                    <div class="paper-title-box">
+                        <img ng-src="{{$root.loadImg('work/work_rank_star.png')}}" width="100%">
+                        <div class="item item-input block-input" style="height: 40px;margin-top: 15px;">
+                            <label>只有家长才有权限从手机端查看</label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </ion-content>
+        <!--回到页面顶部按钮-->
+        <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+        <!--页面底部的改错按钮-->
+        <ion-footer-bar
+                ng-if="!ctrl.isLoadingProcessing && ctrl.title && ctrl.paper.paperScore>ctrl.paper.latestScore && subHeaderInfo.activeEle=='work_detail' && ctrl.selectedWork.publishType!=ctrl.WORK_TYPE.FINAL_ACCESS"
+                style="background: #e6e9ec">
+            <button class="button-clear bg-calm  bar-item flex_1"
+                    ng-click="ctrl.redoWork()"
+                    style="font-weight: bold;color: #627482;font-size: 19px">
+                <i class="icon ion-ios-paperplane" style="font-size: 19px"> </i>
+                改错
+            </button>
+        </ion-footer-bar>
+    </div>
+    <div ng-if="ctrl.selectedWork.publishType && (ctrl.selectedWork.publishType==ctrl.WORK_TYPE.ORAL_WORK||ctrl.selectedWork.publishType==ctrl.WORK_TYPE.ORAL_WORK_KEYBOARD)" >
+        <sub-header id="oral_calculation_work_detail_subheader" ng-show="ctrl.paper.reworkTimes>0">
+            <div class="subheader-item" id="oral_calculation_first_do_work">
+                <span class="sub-title">首次做</span>
+            </div>
+            <div class="subheader-item" id="oral_calculation_after_correct">
+                <span class="sub-title">改错后</span>
+            </div>
+        </sub-header>
+        <!--作业详情-->
+        <ion-content class="has-header oral-work-background"
+                     overflow-scroll="true"
+                     ng-class="{'ios-content':ctrl.isIos,'has-subheader':ctrl.paper.reworkTimes>0}"
+                     on-scroll="ctrl.getScrollPosition()">
+            <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+            <div ng-if="!ctrl.isLoadingProcessing" style="height: 100%;">
+                <!--口算批改-->
+                <div ng-if="subHeaderInfo.activeEle == 'oral_calculation_first_do_work'||ctrl.paper.reworkTimes==0"
+                     style="height: 100%;">
+                    <div class="paper-title-box" ng-show="ctrl.title && ctrl.retFlag">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg.png')}}" width="100%" height="100%">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg_1.png')}}" class="bg_t_photo">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg_2.png')}}" class="bg_file">
+                        <div class="title-text-box">
+                            <div class="text-box">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-title">
+                                            <span ng-bind="ctrl.clzName"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'首次做: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.firstScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'首次用时: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.wasteTime.minutes"></span>
+                                        <span class="deserve-score" ng-bind="ctrl.paper.wasteTime.seconds===0?'分钟':'分'"></span>
+                                        <span ng-if="ctrl.paper.wasteTime.seconds!==0" class="actual-score" ng-bind="ctrl.paper.wasteTime.seconds"></span>
+                                        <span ng-if="ctrl.paper.wasteTime.seconds!==0" class="deserve-score" ng-bind="'秒'"></span>
+                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'改错次数: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.reworkTimes||0"></span>
+                                        <span class="deserve-score" ng-bind="'次'"></span>
+                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'改错后: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.latestScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <span ng-bind="'首次提交: '+ctrl.paper.firstSubmitTime"></span>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col">
+                                        <span ng-bind="'最近提交: '+ctrl.paper.latestSubmitTime"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <oral-calculation-list big-q-list="ctrl.qsList"
+                                           is-answer-fetched="ctrl.paper.paperScore!==undefined"
+                                           correct-status="CORRECT_FIRST"
+                                           login-name= "!ctrl.paper.reworkTimes ? ctrl.loginName :'' "></oral-calculation-list>
+                </div>
+                <div ng-if="subHeaderInfo.activeEle == 'oral_calculation_after_correct'&&ctrl.paper.reworkTimes!=0"
+                     style="height: 100%;">
+                    <div class="paper-title-box" ng-show="ctrl.title && ctrl.retFlag">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg.png')}}" width="100%" height="100%">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg_1.png')}}" class="bg_t_photo">
+                        <img ng-src="{{$root.loadImg('work/work_detail_bg_2.png')}}" class="bg_file">
+                        <div class="title-text-box">
+                            <div class="text-box">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-title">
+                                            <span ng-bind="ctrl.clzName"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'首次做: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.firstScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'首次用时: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.wasteTime.minutes"></span>
+                                        <span class="deserve-score" ng-bind="ctrl.paper.wasteTime.seconds===0?'分钟':'分'"></span>
+                                        <span ng-if="ctrl.paper.wasteTime.seconds!==0" class="actual-score" ng-bind="ctrl.paper.wasteTime.seconds"></span>
+                                        <span ng-if="ctrl.paper.wasteTime.seconds!==0" class="deserve-score" ng-bind="'秒'"></span>
+                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'改错次数: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.reworkTimes||0"></span>
+                                        <span class="deserve-score" ng-bind="'次'"></span>
+                                    </span>
+                                    </div>
+
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col ">
+                                        <span class="deserve-score" ng-bind="'改错后: '"></span>
+                                        <span>
+                                        <span class="actual-score" ng-bind="ctrl.paper.latestScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <span ng-bind="'首次提交: '+ctrl.paper.firstSubmitTime"></span>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="ctrl.paper.reworkTimes>0">
+                                    <div class="col">
+                                        <span ng-bind="'最近提交: '+ctrl.paper.latestSubmitTime"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <oral-calculation-list big-q-list="ctrl.qsList"
+                                           is-answer-fetched="ctrl.paper.paperScore!==undefined"
+                                           correct-status="CORRECT_LAST" login-name="ctrl.loginName"></oral-calculation-list>
+                </div>
+            </div>
+        </ion-content>
+        <!--回到页面顶部按钮-->
+        <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+        <!--页面底部的改错按钮-->
+        <ion-footer-bar
+                ng-if="!ctrl.isLoadingProcessing && ctrl.title && ctrl.paper.paperScore>ctrl.paper.latestScore"
+                style="background: #e6e9ec">
+            <button class="button-clear bg-calm  bar-item flex_1"
+                    ng-click="ctrl.redoWork()"
+                    style="font-weight: bold;color: #627482;font-size: 19px">
+                <i class="icon ion-ios-paperplane" style="font-size: 19px"> </i>
+                改错
+            </button>
+        </ion-footer-bar>
+
+    </div>
+
+    <recognize-stroke-image></recognize-stroke-image>
+
+</ion-view>

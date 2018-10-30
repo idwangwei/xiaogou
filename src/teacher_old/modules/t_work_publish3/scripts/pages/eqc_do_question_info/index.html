@@ -1,0 +1,37 @@
+
+<ion-view title="学生错误明细" hide-nav-bar="true" class="eqc_do_question_info_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding:0 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title eqc_do_question_info_header" ng-bind="'学生做题详情'"></h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+        <div ng-if="!ctrl.errorInfo && ctrl.retFlag">获取失败，请返回重试</div>
+
+        <!--做题明细详情-->
+        <div ng-repeat="paper in ctrl.errorInfo.paperList">
+            <div class="eqc_dqi_paper_name" ng-bind="'来自试卷：'+paper.paperName"></div>
+            <div class="card card-better">
+                <div ng-repeat="inputList in paper.smallQDoneTimes" ng-init="isOpen = false" ng-click="isOpen = !isOpen"
+                     class="eqc_dqi_error_cell" ng-class="{'eqc_dqi_error_redo':$index}">
+
+                    <div class="eqc_dqi_error_cell_bar">
+                        <div ng-bind="$index == 0 ? '首次做':'改错后'"></div>
+                        <div class=" eqc_dqi_error_cell_bar_img">
+                            <img ng-src="{{$root.loadImg(isOpen ? 'other/open.png':'other/collapse.png')}}" class="show-q-img">
+                        </div>
+                    </div>
+
+                    <div class="image-type-question" ng-if="isOpen">
+                        <div compile-html="ctrl.errorInfo.question" show-type="correct" current-q-input="inputList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing load-top="200" ng-if="!ctrl.retFlag"></loading-processing>
+</ion-view>
+

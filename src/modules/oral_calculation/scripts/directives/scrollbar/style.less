@@ -1,0 +1,62 @@
+.oral-scrollbar-container {
+  position: fixed;
+  width: 30px;
+  left: 0;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  .oral-scroll-up {
+    width: inherit;
+    img {
+      width: inherit;
+    }
+  }
+  .oral-scroll-down {
+    width: inherit;
+    img {
+      width: inherit;
+    }
+  }
+  .oral-scroll {
+    flex: 1;
+    -webkit-flex: 1;
+    width: inherit;
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    .oral-scroll-inner-center, .oral-scroll-inner-top, .oral-scroll-inner-bottom {
+      background: #1ba4ed;
+      border-left: 5px solid #8bdff8;
+      border-right: 5px solid #8bdff8;
+      //border: 5px solid #8bdff8;
+      //border-radius: 50%;
+    }
+    .oral-scroll-inner-center {
+      flex: 1;
+      -webkit-flex: 1;
+    }
+    .oral-scroll-inner-top {
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      border-top: 5px solid #8bdff8;
+      height: 30px;
+    }
+    .oral-scroll-inner-bottom {
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-bottom: 5px solid #8bdff8;
+      height: 30px;
+    }
+  }
+  .oral-scroll-handle {
+    height: 30px;
+    width: inherit;
+    background: #F0C644;
+    position: absolute;
+    border-radius: 10px;
+    border: 2px solid #DD7837;
+  }
+}

@@ -1,0 +1,41 @@
+
+@import "./../../../../m_boot/less/theme01/include/_mixins";
+.pet-level-up-warp{
+  width: 202px;
+  height: 189px;
+  background-image: url('../../../../m_global/sImages/pet_page/pet_level_up.png');
+  background-position:-2px -207px;
+
+
+}
+
+.pet-level-up-animation{
+  animation:level_up_animation 834ms steps(1) 1;
+  -webkit-animation: level_up_animation 834ms steps(1) 1;
+}
+
+@-webkit-keyframes level_up_animation {
+
+  0%   {background-position:-2px -207px;}
+  5.5% {background-position:-1650px -207px;}
+  11%  {background-position:-1444px -207px;}
+  16%  {background-position:-1238px -207px;}
+  21%  {background-position:-1032px -207px;}
+  26%  {background-position:-826px -207px;}
+  31.5%{background-position:-620px -207px;}
+  37%  {background-position:-414px -207px;}
+  42.5%{background-position:-208px -207px;}
+  48%  {background-position:-2px -400px;}
+  53.5%{background-position:-208px -2px;}
+  59%  {background-position:-2px -2px;}
+  64.5%{background-position:-1238px -2px;}
+  69%  {background-position:-1032px -2px;}
+  74.5%{background-position:-1650px -2px;}
+  80%  {background-position:-1444px -2px;}
+  85%  {background-position:-826px -2px;}
+  90%  {background-position:-620px -2px;}
+  95%  {background-position:-414px -2px;}
+  100% {background-position:-2px -207px;}
+}
+
+

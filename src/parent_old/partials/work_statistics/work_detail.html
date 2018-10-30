@@ -1,0 +1,351 @@
+<ion-view title="作业详情" hide-nav-bar="true" class="work_detail_file">
+    <ion-header-bar align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left:10px;color: white"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'"
+            ng-bind="data.paper.title+' ('+data.paper.paperScore+'分)'">
+        </h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="hideAllQ()"
+                    ng-if="workStatus>3&&subHeaderInfo.activeEle=='work_detail_stu'">
+                <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+
+    </ion-header-bar>
+    <sub-header id="work_detail_subheader">
+        <div class="subheader-item" id="work_detail_stu">
+            <span ng-bind="wData.currentWork.sName" class="sub-title"></span>
+        </div>
+        <div class="subheader-item" id="rank_list"
+             ng-click="subHeaderInfo.activeEle=='work_detail_stu'?refreshRank():''">
+            <span ng-bind="'作业之星'" class="sub-title"></span>
+        </div>
+    </sub-header>
+
+    <ion-content overflow-scroll="true" class="has-subheader " on-scroll="getScrollPosition()">
+        <!-- <ion-refresher pulling-text="下拉刷新..." on-refresh="pullRefresh()"></ion-refresher>-->
+        <div ng-if="subHeaderInfo.activeEle=='work_detail_stu'&&workStatus<=2" style="height: 100%;">
+            <div class="paper-title-box">
+                <img ng-src="{{$root.loadImg('work/work_detail_bg.png')}}"
+                     width="100%" height="100%">
+                <img ng-src="{{$root.loadImg('work/work_detail_bg_1.png')}}" class="bg_t_photo">
+                <img ng-src="{{$root.loadImg('work/work_detail_bg_2.png')}}" class="bg_file">
+
+                <div class="title-text-box">
+                    <div class="text-box">
+                        <div class="row">
+                            <div class="col">
+                                <label class="text-title">
+                                    <span ng-bind="wData.currentWork.detailPublishTime"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <span ng-bind="wData.currentWork.clazz"></span>
+                            </div>
+                        </div>
+                        <div class="row actual-score">
+                            <div class="col" ng-if="workStatus==1">
+                                <span ng-bind="'未开始'"></span>
+                            </div>
+                            <div class="col" ng-if="workStatus==2">
+                                <span ng-bind="'进行中'"></span>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="workStatus==2">
+                            <div class="col">
+                                <span class="deserve-score" ng-bind="'用时: '"></span>
+                                <span>
+                                        <span class="actual-score" ng-bind="data.paper.wasteTime"></span>
+                                        <span class="deserve-score" ng-bind="'分钟'"></span>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--showTipType为1 显示整个paper -->
+            <div ng-repeat="bigQ in data.paper.bigQList track by $index" ng-init="bigIndex=$index;bigLast=$last"
+                 class="bigQContainer">
+                <div class="big-q">
+                    <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                        <label class="big-q-title-adapt">
+                            {{bigQ.bigQVoIndex}}、{{bigQ.title}}&nbsp;
+                            <span>
+                            <span ng-bind="'('+bigQ.score+'分)'"></span>
+                        </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div ng-repeat="record in bigQ.qsList track by record.id"
+                     ng-style="{'margin-bottom':$last&&bigLast?'140px':''}"
+                     class="smallQContainer">
+                    <div class="image-type-question">
+                        <div class="question-content card card-better small_q_bg">
+                            <div>
+                                <div class="smallq-title smallq-title-first text-padding">
+                                    <label class="text-adapt">
+                                        <span>{{'第'+(+record.seqNum+1)+'道题('+record.score+'分)'}}</span>
+                                    </label>
+                                    <img ng-src="{{$root.loadImg('other/ans1.png')}}" class="refer-ans-tip-icon"
+                                         ng-click="showAnsTip()">
+                                </div>
+                                <div compile-html="record.qContext"
+                                     current_q_input="record.inputList"
+                                     ng-if="workStatus==1"
+                                     class="q-context"></div>
+                                <div compile-html="record.qContext"
+                                     current_q_input="record.inputList"
+                                     ng-if="workStatus==2"
+                                     class="q-context"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="subHeaderInfo.activeEle=='work_detail_stu'&&workStatus==4" style="height: 100%;">
+            <div class="paper-title-box">
+                <img ng-src="{{$root.loadImg('work/work_detail_bg.png')}}"
+                     width="100%" height="100%">
+                <img ng-src="{{$root.loadImg('work/work_detail_bg_1.png')}}" class="bg_t_photo">
+                <img ng-src="{{$root.loadImg('work/work_detail_bg_2.png')}}" class="bg_file">
+
+                <div class="title-text-box">
+                    <div class="text-box">
+                        <div class="row">
+                            <div class="col">
+                                <label class="text-title">
+                                    <span ng-bind="wData.currentWork.clazz"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col ">
+                                <span class="deserve-score" ng-bind="'首次做: '"></span>
+                                <span>
+                                        <span class="actual-score" ng-bind="data.paper.firstScore"></span>
+                                         <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col ">
+                                <span class="deserve-score" ng-bind="'首次用时: '"></span>
+                                <span>
+                                         <span class="actual-score" ng-bind="data.paper.wasteTime.minutes"></span>
+                                <span class="deserve-score"
+                                      ng-bind="data.paper.wasteTime.seconds===0?'分钟':'分'"></span>
+                                <span ng-if="data.paper.wasteTime.seconds!==0" class="actual-score"
+                                      ng-bind="data.paper.wasteTime.seconds"></span>
+                                <span ng-if="data.paper.wasteTime.seconds!==0" class="deserve-score"
+                                      ng-bind="'秒'"></span>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="row" ng-if="data.paper.reworkTimes>0">
+                            <div class="col ">
+                                <span class="deserve-score" ng-bind="'改错次数: '"></span>
+                                <span>
+                                        <span class="actual-score" ng-bind="data.paper.reworkTimes||0"></span>
+                                        <span class="deserve-score" ng-bind="'次'"></span>
+                                    </span>
+                            </div>
+
+                        </div>
+
+                        <div class="row" ng-if="data.paper.reworkTimes>0">
+                            <div class="col ">
+                                <span class="deserve-score" ng-bind="'改错后: '"></span>
+                                <span>
+                                        <span class="actual-score" ng-bind="data.paper.latestScore"></span>
+                                        <span class="deserve-score" ng-bind="'分'"></span>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span ng-bind="'首次提交: '+data.paper.firstSubmitTime"></span>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="data.paper.reworkTimes>0">
+                            <div class="col">
+                                <span ng-bind="'最近提交: '+data.paper.latestSubmitTime"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="bigQ in data.paper.bigQList track by $index" ng-init="bigIndex=$index;bigLast=$last">
+                <div class="big-q">
+                    <div style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                        <label class="big-q-title-adapt">
+                            {{bigQ.bigQVoIndex}}、{{bigQ.title}}&nbsp;
+                            <span>
+                            <span ng-bind="'('+bigQ.score+'分)'"></span>
+                        </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div ng-repeat="record in bigQ.qsList track by record.id"
+                     ng-init="smallQIndex=$index"
+                     ng-style="{'margin-bottom':$last&&bigLast?'140px':''}">
+                    <div class="image-type-question">
+                        <div class="question-content card card-better small_q_bg">
+                            <div ng-repeat="(key,doneInfo) in record.smallQStuAnsMapList track by $index"
+                                 ng-init="doneIndex=$index;doneLast=$last">
+                                <!--<pre>{{record|json}}</pre>-->
+                                <div class="smallq-title"
+                                     ng-class="{'smallq-title-first':doneIndex==0,'smallq-title-more':doneIndex>=1}"
+                                >
+                                    <div class="text-div-adapt" ng-click="showQ(doneInfo,$event)">
+                                        <label class="text-adapt">
+                                    <span ng-bind="'第'+(record.seqNum+1)+'题'"
+                                          ng-class="{'done-more':doneIndex>=1}">
+                                    </span>
+                                            <span ng-if="doneIndex==0" ng-bind="'首次做: '"></span>
+                                            <span ng-if="doneIndex>=1" ng-bind="'改错后: '">
+                                    </span>
+                                            <span class="correct-icons">
+                                        <img ng-src="{{$root.loadImg('other/icon_yes3.png')}}"
+                                             ng-show="doneInfo.passFlag==2">
+                                        <img ng-src="{{$root.loadImg('other/icon_yes2.png')}}"
+                                             ng-show="doneInfo.passFlag==1">
+                                        <img ng-src="{{$root.loadImg('other/icon_no.png')}}"
+                                             ng-show="doneInfo.passFlag==0">
+                                        <img ng-src="{{$root.loadImg('other/grading-icon.png')}}"
+                                             ng-show="doneInfo.score===-1">
+                                    </span>
+                                            <span class="actual-score" ng-bind="doneInfo.score"
+                                                  ng-show="doneInfo.passFlag!=3"></span>
+                                            <span class="actual-score" ng-bind="'?'"
+                                                  ng-show="doneInfo.passFlag==3"></span>
+                                            <span class="deserve-score" ng-bind="'/'+record.score+'分'"></span>
+
+                                        </label>
+                                    </div>
+
+                                    <div class="img-align-right">
+                                        <span ng-style="{visibility:doneIndex==0&&doneInfo.ignore!=1?'visible':'hidden'}"
+                                              ng-click="goQFeedbackPage(record.id)">
+
+                                            <img ng-src="{{$root.loadImg('other/report.png')}}">
+                                        </span>
+                                        <span q-correct-ans
+                                              paper-id="data.paper.paperId"
+                                              big-q="bigQ"
+                                              small-q="record"
+                                              ng-style="{visibility:doneIndex==0&&doneInfo.ignore!=1?'visible':'hidden'}">
+                                            <img ng-src="{{$root.loadImg('other/ans1.png')}}">
+                                        </span>
+                                        <span ng-click="showQ(doneInfo,$event)">
+                                            <img ng-src="{{!doneInfo.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}"
+                                            >
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="q-context" ng-if="doneInfo.ignore==1&&doneInfo.showQFlag">
+                                    该题已被老师从本次作业中移除
+                                </div>
+
+                                <div compile-html="record.qContext" show_type="correct"
+                                     current_q_input="doneInfo.inputList" ng-if="doneInfo.ignore!=1&&doneInfo.showQFlag"
+                                     class="q-context">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="subHeaderInfo.activeEle=='rank_list'" style="height: 100%;">
+            <div class="paper-title-box">
+                <img ng-src="{{$root.loadImg('work/work_rank_star.png')}}" width="100%">
+
+                <div class="table-container card card-better" ng-show="rankList.length>0&&getRankRetFlag">
+                    <div class="row table-header">
+                        <div class="col " style="display: inline-block">
+                            当前排名
+                            <!--   <i class="icon icon ion-ios-help-outline" style="font-size: 16px;color: #fff"></i>-->
+                        </div>
+                        <div class="col " style="display: inline-block">姓名</div>
+                        <div class="col " style="display: inline-block">正确率</div>
+                        <div class="col " style="display: inline-block">用时(分钟)</div>
+                    </div>
+                    <div class="row table-row" style="margin-top:-1px ">
+                        <div class="col parent-col">
+                            <div class="row line-row" ng-repeat="rank in rankList"
+                                 ng-style="{background:rank.sId==wData.currentWork.sId?'#FCED69':'','margin-bottom':$last?'40px':''}">
+                                <div class="col rank-num">
+                                    <a ng-bind="'第'+rank.topSeq+'名'"
+                                       ng-style="{color:rank.topSeq==1?'#d90000':''}"
+                                       ng-if="rank.topSeq==1">
+                                    </a>
+                                    <a ng-bind="'第'+rank.topSeq+'名'"
+                                       ng-style="{color:rank.topSeq==2?'#5a40a2':''}"
+                                       ng-if="rank.topSeq==2">
+                                    </a>
+                                    <a ng-bind="'第'+rank.topSeq+'名'"
+                                       ng-style="{color:rank.topSeq==3?'#972d87':''}"
+                                       ng-if="rank.topSeq==3">
+                                    </a>
+                                    <a ng-bind="'第'+rank.topSeq+'名'"
+                                       ng-style="{color:rank.topSeq>3?'#368d6a':''}"
+                                       ng-if="rank.topSeq>3">
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a ng-bind="rank.name"></a>
+                                </div>
+                                <div class="col">
+                                    <a ng-bind="rank.point+'%'"></a>
+                                </div>
+                                <div class="col ">
+                                    <a ng-bind="rank.wasteTime || 1">45</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-show="rankList.length==0||!getRankRetFlag">
+                    <div class="item item-input block-input" style="height: 40px;margin-top: 15px;">
+                        <label>还没有学生上作业之星。</label>
+                    </div>
+                </div>
+                <div style="color: #6EAAE0;padding: 0px 20px; ">
+                        <span>
+说明：1. 以首次做的成绩为准  2. 只有前10名或正确率大于80%才能上榜  3. 根据学生提交情况实时更新
+                        </span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar style="background: #e6e9ec">
+        <button class="button-clear bg-calm  bar-item flex_1"
+                ng-click="print()"
+                style="font-weight: bold;color: white;">
+            <i class="icon ion-printer"></i>
+            打印
+        </button>
+
+    </ion-footer-bar>
+    <loading-processing load-top="100"></loading-processing>
+    <div class="scrollToTop" ng-click="scrollTop()"></div>
+</ion-view>
+

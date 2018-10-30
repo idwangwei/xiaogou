@@ -1,0 +1,234 @@
+.winter-camp-reward-prompt {
+  .reward-prompt-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    .display-flex;
+    .reward-prompt-content {
+      position: relative;
+      z-index: 1000;
+      //background: #f9d568;
+      border-radius: 10px;
+      width: 80%;
+      height: 55%;
+      max-width: 450px;
+      max-height: 450px;
+      overflow: hidden;
+      .display-flex;
+      .com_flex-direction(column);
+
+      .animation-content {
+        flex: 3;
+        -webkit-flex: 3;
+        position: relative;
+        .display-flex;
+        .animation-bg {
+          display: inherit;
+          //height: 70%;
+          width: 80%;
+          -webkit-animation: rotate-bg 6s linear infinite;
+        }
+        .animation-target {
+          position: absolute;
+          display: inherit;
+          height: 55%;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          z-index: 10;
+          .display-flex;
+          .targets {
+            position: relative;
+            //width: 100%;
+            height: 100%;
+            .display-flex;
+            .target_img {
+              height: 100%;
+            }
+            .animation-star1 {
+              position: absolute;
+              left: 10%;
+              width: 8%;
+              min-width: 16px;
+              max-width: 30px;
+              display: inherit;
+              z-index: 11;
+              -webkit-animation: star-glitter 1s linear infinite;
+            }
+            .animation-star2 {
+              position: absolute;
+              right: 16%;
+              width: 5%;
+              min-width: 12px;
+              max-width: 20px;
+              display: inherit;
+              z-index: 11;
+              -webkit-animation: star-glitter 1.7s linear infinite;
+            }
+          }
+
+        }
+
+        .reward-prompt-text {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          z-index: 20;
+          height: 15%;
+          width: 100%;
+          bottom: 30%;
+          .display-flex;
+
+          .text-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            .display-flex;
+
+            .text-content-item {
+              position: absolute;
+              left: 0;
+              right: 0;
+              margin: auto;
+              .display-flex;
+            }
+            img {
+              height: 100%;
+              top: 0;
+              bottom: 0;
+              z-index: 22;
+            }
+            p {
+              top: 20%;
+              bottom: 0;
+              z-index: 24;
+              font-size: large;
+              color: #ffff00;
+              font-weight: bold;
+            }
+          }
+        }
+        .submit-butn {
+          position: absolute;
+          bottom: 10%;
+          left: 0;
+          right: 0;
+          margin: auto;
+          z-index: 30;
+          height: 35px;
+        }
+      }
+      /* .sure-butn {
+         flex: 1;
+         -webkit-flex: 1;
+         .display-flex;
+         img {
+           height: 65%;
+           min-height: 20px;
+           max-height: 40px;
+         }
+       }*/
+    }
+  }
+
+  .display-flex {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+  }
+
+  .con_flex-align-direction(@dir) {
+    align-items: @dir;
+    -webkit-align-items: @dir;
+  }
+
+  .con_flex-justify-direction(@dir) {
+    justify-content: @dir;
+    -webkit-justify-content: @dir;
+  }
+
+  .com_flex-direction (@direction) {
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+  }
+  @keyframes star-glitter {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+
+  @-webkit-keyframes star-glitter /*Safari and Chrome*/
+  {
+    0% {
+      opacity: 1;
+      -webkit-opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+      -webkit-opacity: 0.6;
+    }
+    100% {
+      opacity: 0.1;
+      -webkit-opacity: 0.1;
+    }
+  }
+
+  @keyframes rotate-bg {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-moz-keyframes rotate-bg /*Firefox*/
+  {
+    0% {
+      transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes rotate-bg /*Safari and Chrome*/
+  {
+    0% {
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+}

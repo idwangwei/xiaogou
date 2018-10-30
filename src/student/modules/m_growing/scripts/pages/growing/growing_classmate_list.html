@@ -1,0 +1,65 @@
+<ion-view class="growing-classmate-list">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <a class="button back-button buttons  button-clear header-item common-back-btn"
+           ng-click="ctrl.back()"
+           nav-direction="back">
+            <i class="icon ion-ios-arrow-back" style="color:#ffffff;"></i>
+            &nbsp;&nbsp;
+        </a>
+        <p class="title" style="font-family: 'Microsoft YaHei';font-size:20px;">我的同学</p>
+    </ion-header-bar>
+
+    <ion-side-menus has-header="false" class="growing-record-list">
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content padding="true" style="top:45px!important; bottom:0px !important;" class="clazz_select">
+                <div class="col-md-12 col-xs-12 clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-show="clazz.status==1">
+                    <div class="clazz-item" ng-click="ctrl.growingSelectClazz(clazz)">
+                        <img class="clazz_select_img" ng-src="{{$root.loadImg('clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--状态-->
+        <ion-side-menu-content class="classmate-record-list">
+            <ion-content  style="bottom: 0px;">
+                <div  class = "selected-clazz" ng-click="ctrl.clazzList.length>1 ? ctrl.showClazzMenu(): ''">
+                        <div class = "selected-clazz-name">
+                            <img class="" ng-src="{{$root.loadImg('clazz_icon.png')}}">
+                            <span ng-bind="ctrl.selectClazz.name"></span>
+                        </div>
+                        <i class="icon ion-ios-arrow-right position-right"></i>
+                </div>
+
+                <div ng-show="ctrl.classmateList.length==0" class="clazz_tip">
+                    <span ng-if =  "ctrl.getListFlag && !ctrl.hasNewRecordFlag">获取数据失败，请切换页面重试.</span>
+                    <span ng-if =  "!ctrl.getListFlag">正在获取同学列表，请稍候...</span>
+                    <span ng-if =  "ctrl.getListFlag && ctrl.hasNewRecordFlag">您还没有同学，或者您的同学还没有发布状态...</span>
+                </div>
+
+                <div ng-show="ctrl.classmateList.length>0" class="record-list">
+                    <div class="item item-divider item-avatar item-icon-right person"
+                         ng-repeat="person in ctrl.classmateList"
+                         ng-click="ctrl.goClassmateHome(person)">
+                        <img style="top:12px" class="thumbnail-left" ng-src="{{ctrl.getClassMateHead(person.headPortraitUrl)}}" alt="">
+                        <h2 style="text-align: left;font-family: 'Microsoft YaHei'" ng-class="person.newRecordCount>0? '':'personName'">{{person.userName}}</h2>
+                        <p style="text-align: left" ng-show="person.newRecordCount>0">更新了足迹</p>
+                        <span class="badge badge-assertive newCount" ng-if="person.newRecordCount>0">{{person.newRecordCount}} </span>
+                        <i class="icon ion-chevron-right rightArrow"></i>
+                    </div>
+                </div>
+            </ion-content>
+
+        </ion-side-menu-content>
+
+    </ion-side-menus>
+
+
+    <ion-content >
+
+    </ion-content>
+</ion-view>

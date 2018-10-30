@@ -1,0 +1,228 @@
+<style>
+    .register-file .card-header {
+        text-align: center;
+        font-size: 25px;
+        color: #387ef5;
+    }
+
+    .register-file .card-header-title {
+        font-size: 18px;
+        margin-right: 52px;
+    }
+    .delete-btn{
+        display: inline-block;
+        width: 100%;
+        margin-top: 3px;
+    }
+    .delete-btn button{
+        display: inline-block;
+        width: 100%;
+        background-color: #EA6D2F;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        padding: 8px 0;
+        box-shadow: 2px 2px 3px rgba(153, 153, 153, .5);
+    }
+
+
+</style>
+<ion-view title="个人中心" hide-back-button="true" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</button>
+        <h1 class="title title-center" style="font-family: 'Microsoft YaHei'">个人中心</h1>
+    </ion-header-bar>
+
+    <sub-header id="basic_info_manage_subheader">
+        <div class="subheader-item"
+             id="basic_info">
+            <span class="sub-title">基本信息</span>
+        </div>
+
+        <div class="subheader-item"
+             id="pqs">
+            <span class="sub-title">账号安全</span>
+        </div>
+        <div class="subheader-item"
+             ng-show="loginType=='P'"
+             id="pT">
+             <span class="sub-title">第二监护人</span>
+        </div>
+
+    </sub-header>
+
+    <ion-content padding="true" class="has-subheader register-file">
+        <ng-form name="baseInfoForm" novalidate class="list" style="margin-top: 20px"
+                 ng-show="subHeaderInfo.activeEle=='basic_info'">
+            <!--<div class="item item-input block-input">-->
+                <!--<input type="text" placeholder="真实姓名" ng-model="formData.name" name="realName" required disabled="disabled"/>-->
+            <!--</div>-->
+            <div class="row item" style="margin-bottom: 10px">
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="formData.gender==1" ng-click="handleCheck($event,1)">
+                    </label>
+                    男
+                </li>
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="formData.gender==0" ng-click="handleCheck($event,0)">
+                    </label>
+                    女
+                </li>
+            </div>
+            <div class="button button-block  button-bg"
+                 ng-click="handleBaseInfoSubmit()" style="color: #fff">
+                保存
+            </div>
+        </ng-form>
+        <div name="cellphoneResetForm" class="list"
+             ng-show="subHeaderInfo.activeEle=='pqs'">
+            <div class="card">
+                <ng-form name="cellphoneResetForm">
+                    <div class="item item-divider item-icon-left card-header">
+                        <!-- <i class="icon ion-person" style="color:#387ef5"></i>-->
+                        <span class="card-header-title">更换手机号</span>
+                    </div>
+                    <div class="item item-input block-input">
+                        <input type="text"
+                               placeholder="请输入关联手机号"
+                               name="cellphone"
+                               ng-model="formData.tel"
+                               required
+                               pattern="^1\d{10}$"/>
+                    </div>
+                    <div class="row  phone-validate-block">
+                        <div class="item item-input">
+                            <input type="text" placeholder="手机验证码" ng-model="formData.telVC" name="telVC"/>
+                        </div>
+                        <button class="button button-positive"
+                                ng-click="getTelVC()" ng-disabled="telVcBtn">{{telVcBtnText}}
+                        </button>
+                    </div>
+                    <button class="button button-block button-bg"
+                            type="submit"
+                            ng-click="submitReferCellphoneForm()" style="color: #fff">
+                        提交
+                    </button>
+                </ng-form>
+            </div>
+            <!--<div class="card">-->
+                <!--<ng-form name="securityInfoForm" class="list"  novalidate="novalidate">-->
+                    <!--<div class="item item-divider item-icon-left card-header">-->
+                        <!--&lt;!&ndash; <i class="icon ion-person" style="color:#387ef5"></i>&ndash;&gt;-->
+                        <!--<span class="card-header-title">更换密保</span>-->
+                    <!--</div>-->
+                    <!--<div class="list" ng-repeat="item in qList" style="margin-bottom: 5px">-->
+                        <!--<div class=" item-input block-input" >-->
+                            <!--<label>问题{{item.num}}:{{item.question}}?</label>-->
+                        <!--</div>-->
+                        <!--<div class=" item-input block-input">-->
+                            <!--<input type="text" placeholder="答案"  ng-model="item.answer"  required>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<button class="button button-block button-bg"-->
+                            <!--type="submit"-->
+                            <!--ng-click="submitSecurityInfoForm()" style="color: #fff">-->
+                        <!--保存-->
+                    <!--</button>-->
+                <!--</ng-form>-->
+            <!--</div>-->
+
+        </div>
+        <div   ng-show="subHeaderInfo.activeEle=='pT'&&secondP.first" >
+            <ng-form name="setSecondPForm" id="registerForm" novalidate="novalidate" class="list"
+                     style="margin-top: 20px">
+                <div class="item item-input block-input">
+                    <i class="ion ion-iphone" style="font-size: 30px;margin-right: 5px"></i>
+                    <input type="text" placeholder="第二监护人手机号" ng-model="secondP.secondPhone" name="secondPhone"
+                           pattern="^1[0-9]{10}$" required/>
+                </div>
+                <!--<div class="item item-input block-input">-->
+                    <!--<i class="ion ion-person" style="font-size: 30px;margin-right: 5px"></i>-->
+                    <!--<input type="text" placeholder="第二监护人姓名" ng-model="secondP.secondName" name="secondName"-->
+                           <!--required/>-->
+                <!--</div>-->
+                <common-password password-setting="passwordSetting" ></common-password>
+                <common-password password-setting="passwordConfirmSetting"></common-password>
+                <div class="row item" style="margin-bottom: 10px">
+                    <li class="item item-checkbox" style="border: none">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-checked="secondP.secondGender==1"
+                                   ng-click="handleSecondGCheck($event,1)">
+                        </label>
+                        男
+                    </li>
+                    <li class="item item-checkbox" style="border: none">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-checked="secondP.secondGender==0"
+                                   ng-click="handleSecondGCheck($event,0)">
+                        </label>
+                        女
+                    </li>
+                </div>
+                <!--关系下拉菜单 start-->
+                <!--<label class="item item-input item-select" style="margin-bottom: 5px">-->
+                    <!--<div class="input-label" style="color: #a29f91">-->
+                        <!--您是学生的-->
+                    <!--</div>-->
+                    <!--<select name="relationship" id="relationship" style="height: 50px"-->
+                            <!--ng-model="secondP.secondRelationShip">-->
+                        <!--<option value="-1">&#45;&#45;请选择&#45;&#45;</option>-->
+                        <!--<option value="0">爸爸</option>-->
+                        <!--<option value="1">妈妈</option>-->
+                        <!--<option value="2">爷爷</option>-->
+                        <!--<option value="3">奶奶</option>-->
+                        <!--<option value="4">外公</option>-->
+                        <!--<option value="5">外婆</option>-->
+                        <!--<option value="6">其他</option>-->
+                    <!--</select>-->
+                <!--</label>-->
+                <!--关系下拉菜单 end-->
+
+            </ng-form>
+            <!--用户注册信息表单 end-->
+            <div class="button button-block  button-bg"
+                 type="submit"
+                 ng-click="settingSecondSubmit()" style="color: white">
+                设置
+            </div>
+        </div>
+        <div  ng-show="subHeaderInfo.activeEle=='pT'&&!secondP.first" >
+            <div class="list" style="margin-top: 20px">
+                <label class="item item-input" style="margin-bottom: 5px">
+                    <div class="input-label" style="color: #a29f91">
+                        账号：&nbsp;&nbsp;<span style="color: black;" ng-bind="secondP.loginName"></span>
+                    </div>
+                </label>
+                <label class="item item-input " style="margin-bottom: 5px">
+                    <div class="input-label" style="color: #a29f91">
+                        手机号：&nbsp;&nbsp;<span style="color: black;" ng-bind="secondP.secondPhone"></span>
+                    </div>
+                </label>
+                <label class="item item-input " style="margin-bottom: 5px">
+                    <div class="input-label" style="color: #a29f91">
+                        姓名：&nbsp;&nbsp;<span style="color: black;" ng-bind="secondP.secondName"></span>
+                    </div>
+                </label>
+                <label class="item item-input " style="margin-bottom: 5px">
+                    <div class="input-label" style="color: #a29f91">
+                        性别：&nbsp;&nbsp;<span style="color: black;" ng-bind="secondP.secondGenderShow"></span>
+                    </div>
+                </label>
+                <!--<label class="item item-input" style="margin-bottom: 5px">-->
+                    <!--<div class="input-label" style="color: #a29f91">-->
+                        <!--您是学生的：&nbsp;&nbsp;<span style="color: black;" ng-bind="secondP.secondRelationShipShow"></span>-->
+                    <!--</div>-->
+                <!--</label>-->
+                <label class="delete-btn">
+                    <button ng-click="handleDelSecond()">删&nbsp;除</button>
+                </label>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

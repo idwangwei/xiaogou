@@ -1,0 +1,61 @@
+<ion-view title="" align-title="center" hide-nav-bar="true" class="register-success-new">
+    <ion-content padding="true" >
+        <h4>恭喜你，注册成功！</h4>
+        <div class="t-wrap">
+            <p class="show-title">您的教师账号：</p>
+            <div class="row-margin" style="margin-top: 10px">
+                 <span style="font-size: 22px;color: #5b5c77;">
+                     <span >
+                         <span ng-bind="ctrl.tLoginName.substring(0,11)">
+                         </span>
+                         <i style="color:red;margin-left:-4px" ng-bind="ctrl.tLoginName.substring(11,ctrl.tLoginName.length)"></i>
+                     </span>
+                 </span>
+            </div>
+            <div class="row-tip-wrap" >
+                <span style="color: #a0a0ab;">注意账号是：
+                    <span>手机号+<i ng-bind="ctrl.tLoginName.substring(11,ctrl.tLoginName.length)" style="color: red;"></i>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="p-wrap">
+            <p class="show-title">系统自动给您生成了学生端和家长端的体验账号：</p>
+            <p>
+                <span class="detail-title">学生账号：</span>
+                <span  class="num-text">
+                     <span >
+                         <span ng-bind="ctrl.sLoginName.substring(0,11)">
+                         </span>
+                         <i style="color:red;margin-left:-4px" ng-bind="ctrl.sLoginName.substring(11,sLoginName.length)"></i>
+                     </span>
+                 </span>
+            </p>
+            <p>
+                <span class="detail-title">家长账号：</span>
+                <span class="num-text" >
+                     <span >
+                         <span ng-bind="ctrl.pLoginName.substring(0,11)">
+                         </span>
+                         <i style="color:red;margin-left:-4px" ng-bind="ctrl.pLoginName.substring(11,ctrl.pLoginName.length)"></i>
+                     </span>
+                 </span>
+            </p>
+        </div>
+
+        <div class="login-btn-wrap">
+            <div class="login-btn t-login-btn" ng-click="ctrl.goToLogin('t')">
+                去教师端登录
+            </div>
+        </div>
+
+       <!-- <div class="login-btn-wrap" style="margin-top: 20px">
+            <div class="login-btn s-login-btn" ng-click="ctrl.goToLogin('s')">
+                去学生端体验
+            </div>
+        </div>-->
+
+
+    </ion-content>
+</ion-view>

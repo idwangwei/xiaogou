@@ -1,0 +1,66 @@
+<ion-view title="我的任务" hide-nav-bar="true" class="credits-store-task">
+    <ion-header-bar class="bar-balanced bar-new" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            <span>返回</span>
+        </button>
+        <h1 class="title">我的任务</h1>
+        <button class="button buttons item-score" ng-click="ctrl.gotoCreditsList()">
+            <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-score.png')}}">
+            <span>智慧币{{ctrl.currentCredits}}</span>
+        </button>
+    </ion-header-bar>
+    <ion-content class="bg-new">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()" spinner="ios"></ion-refresher>
+        <!--<div class="top-butn">
+            <div class="top-butn-item" ng-click="ctrl.gotoCreditsRecord()">
+                <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                <p style="margin: 0">智慧币</p>
+                <p style="margin: 0">{{ctrl.currentCredits}}</p>
+            </div>
+            <div class="top-butn-item" ng-click="ctrl.gotoCreditsStore()">
+                <p style="margin: 0">智慧勾商城</p>
+                <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg03.png')}}">
+            </div>
+        </div>-->
+        <div class="task-list">
+            <!--<div ng-repeat="item in ctrl.taskList" class="task-item-content {{'task-item-0'+($index+1)}}"
+                 ng-click="ctrl.gotoTaskProgress(item)">
+                <span class="task-name">{{item.taskName}}</span>
+                <p style="width: 80%">{{item.subDesc}}</p>
+                <p style="width: 80%">{{item.taskDetail}}</p>
+                <div class="task-list-content">
+                    <div class="task-desc">
+                        <p style="margin: 0px">{{item.deadline}}</p>
+                    </div>
+                    <div class="task-detail-entry" ng-click="ctrl.gotoDoTask(item,$event)">
+                        <img ng-src="{{$root.loadCreditsStoreImg(item.imgUrl)}}">
+                        <div class="butn {{'butn_0'+($index+1)}}">{{item.butnStr}}</div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="task-item-content" ng-repeat="item in ctrl.taskList">
+                <div class="item-content"  ng-click="ctrl.gotoTaskProgress(item)">
+                    <img ng-src="{{$root.loadCreditsStoreImg(item.imgUrl)}}" alt="" class="content-left">
+                    <div class="content-middle">
+                        <p class="content-title" ng-bind-html="item.taskName"></p>
+                        <p class="content-des">{{item.subDesc}}{{item.taskDetail}}</p>
+                    </div>
+                    <i class="icon ion-ios-arrow-forward content-right"></i>
+                </div>
+                <div class="item-footer">
+                    <div class="item-time"><i class="ion-android-time" style="margin-right: 5px"></i>任务截止时间 {{item.deadline}}</div>
+                    <div class="item-btn" ng-click="ctrl.gotoDoTask(item,$event)">{{item.butnStr}}</div>
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+    <ion-footer-bar class="bar-assertive myFooter"  align-title="center">
+        <div class="item-shop" ng-click="ctrl.goCreditsStore()">
+            <img ng-src="{{$root.loadCreditsStoreImg('credits_list/icon-shop.png')}}">
+            <span>前往智慧勾商城</span>
+        </div>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,51 @@
+<style type="text/css">
+    .clazz_list .item-avatar {
+        padding-bottom: 10px;
+        padding-top: 16px;
+    }
+</style>
+<ion-view title="班级列表" hide-nav-bar="true" class="child_class_list_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">班级列表</h1>
+        <button class="button button-clear icon ion-plus" ui-sref="child_class_apply({sid:sid})"
+                style="color: #fff"></button>
+    </ion-header-bar>
+    <ion-content padding="false" class="clazz_list" >
+        <div class="item item-input block-input" style="height: 40px;" ng-if="classList.length<=0&&retFlag">
+            <input type="text"
+                   ng-model="tip"
+                   readonly="readonly"
+                   style="font-size: 18px;color: rgb(6, 6, 6);"/>
+        </div>
+
+        <div class="list card card-better" ng-repeat="clazz in classList" ng-if="classList.length>0&&retFlag" >
+            <div class="item  item-avatar card-title item-icon-right " ui-sref="child_class_detail({cid:clazz.id})">
+                <img class="thumbnail-left" src="{{$root.loadImg('class.svg')}}" alt="">
+                <h2>{{clazz.name}}</h2>
+                <p>{{'班级号:'+clazz.id}}</p>
+                <p>状态：<span style="color: red">{{clazz.auditStatusName}}</span></p>
+                <i class="icon ion-chevron-right"></i>
+            </div>
+            <div  class="card-body">
+                <div class="item item-text-wrap card-body">
+                    <div>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级: {{clazz.gradeName}}</div>
+                    <div>班级人数: {{clazz.studentCount}}</div>
+                </div>
+                 <div style="flex:1;-webkit-flex:1;text-align:center;color:#615D53" ng-click="delStuClass(sid,clazz.id,$index,clazz)">
+                  <div style="color:#615D53" class="button button-clear"><span class="icon ion-ios-trash-outline">
+                  </span>删除班级</div>
+              </div>
+            </div>
+        </div>
+        <div style="padding-left: 10px;">
+            <p style="color: red;margin: 0">问：孩子加错了班级，怎么办？</p>
+            <p>答：删除该班级，点“+”重新申请正确的班级。</p>
+            <p style="color: red;margin: 0">问：老师错误拒绝了申请，如何重新申请？</p>
+            <p>答：删除该班级，点“+”重新申请。</p>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+</ion-view>

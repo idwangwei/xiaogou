@@ -1,0 +1,33 @@
+<ion-view hide-nav-bar=true class="about_file">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <button class="button back-button buttons  button-clear header-item" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">关于智算365</h1>
+    </ion-header-bar>
+    <ion-content >
+        <div class="main-content">
+            <img class="thumbnail-left"
+                 src="{{$root.loadImg('other/about-logo.png')}}"
+                 alt="智算365"
+                 ng-click="clickImg()">
+            <h4 >智算365</h4>
+            <p ng-bind="appNumVersion"></p>
+            <p style="font-size: 18px;font-weight: bold;color: rgba(255, 0, 0, 0.61)" ng-if="clickCount>=10">日志(changeLog):</p>
+            <p ng-if="clickCount>=10" ng-repeat="log in changeLog" ng-bind="log" style="text-align: left;font-size: 10px">
+            </p>
+
+        </div>
+        <div class="qr-code-wrap">
+            <img class="qr-code"
+                 src="{{$root.loadImg('qrCodeImages/xiaogou_official_accounts.png')}}"
+                 alt="智算365二维码">
+            <p>用微信扫一扫二维码关注公众号</p>
+        </div>
+    </ion-content>
+    <div class="foot-wrap">
+        <p>教育部《现代教育技术》杂志社</p>
+        <p>中国基础教育人工智能研究基地</p>
+    </div>
+</ion-view>

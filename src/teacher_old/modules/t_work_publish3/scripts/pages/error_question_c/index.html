@@ -1,0 +1,163 @@
+
+<ion-view title="错题集" hide-nav-bar="true" class="error_question_c_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding:0 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';font-weight: bold">错题集</h1>
+    </ion-header-bar>
+
+    <ion-side-menus>
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="clazz_select" padding="true" style="padding-bottom: 60px">
+                <div class="clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-style="{'margin-bottom':$last?'60px':'0px'}">
+                    <div class="clazz_item" ng-click="ctrl.selectClazz(clazz)">
+                        <img class="clazz_select_img" ng-src="{{$root.loadImg('other/class.png')}}">
+                        <div class="clazz_name" ng-bind="clazz.name"></div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <ion-side-menu-content>
+            <!--班级、单元-->
+            <div class="has-header error_question_c_select">
+                <!--班级-->
+                <div class="error_question_c_select_left" ng-click="ctrl.openClazzSelect()">
+                    <span class="eqc_sl_clazz_name" ng-bind="ctrl.selectedClazz.name||'选择班级'"></span>
+                    <span class="icon ion-ios-arrow-right"></span>
+
+                </div>
+                <!--单元-->
+                <div class="error_question_c_select_right" ng-click="ctrl.openChapterSelect()">
+                    <span class="eqc_sl_chapter_name" ng-bind="ctrl.selectedChapter.text||'选择章节单元'"></span>
+                    <span class="icon ion-ios-arrow-right"></span>
+                </div>
+            </div>
+
+            <!--分页图标-->
+            <sub-header id="error_question_c_subheader" class="error_question_c_subheader">
+                <div class="subheader-item" id="eqc_overview">
+                    <div class="sub-title">
+                        <span class="sub-header-name">错题统计</span>
+                    </div>
+                </div>
+                <div class="subheader-item" id="eqc_mine">
+                    <div class="sub-title">
+                        <span class="sub-header-name">我的组卷</span>
+                    </div>
+                </div>
+            </sub-header>
+
+            <ion-content padding="false" class="error_question_c_content">
+                <!--没有班级-->
+                <div ng-if="ctrl.initCtrl && !ctrl.selectedClazz.id" style="padding: 10px;color: #3f4367">
+                    您还没有创建班级，请返回点击下方的“班级”，然后再点击“+”创建班级。
+
+                </div>
+
+                <!--没有选择章节-->
+                <div ng-if="ctrl.selectedClazz.id && !ctrl.selectedChapter"
+                     style="padding: 10px;color: #3f4367">请选择教材章节</div>
+
+                <!--再次进入加载数据时显示-->
+                <div ng-show="ctrl.selectedClazz.id && ctrl.selectedChapter && ctrl.errorQuestionInfoItems && !ctrl.initErrorInfo"
+                     style="padding: 10px;color: #3f4367">
+                    正在整理最新错题信息...
+                </div>
+
+                <!--整理错题数据失败-->
+                <div ng-show="ctrl.selectedClazz.id && ctrl.selectedChapter && !ctrl.errorQuestionInfoItems && ctrl.initErrorInfoFail"
+                     style="padding: 10px;color: #3f4367">
+                    {{ctrl.initErrorInfoMsg ? ctrl.initErrorInfoMsg:'获取错题数据失败，请切换单元重试...'}}
+                </div>
+
+
+                <!--单元错题总览-->
+                <div class="list eqc_content_overview" ng-if="subHeaderInfo.activeEle=='eqc_overview'">
+                    <!--单元汇总-->
+                    <div ng-if="ctrl.errorQuestionInfoItems" style="color: #6a6a6a; margin: 2px 10px -8px 10px">单元查看：</div>
+                    <div class="item eqc_content_overview_unit" ng-if="ctrl.errorQuestionInfoItems" ng-click="ctrl.goAndShowQuestion()">
+
+                        <div class="eqc_content_overview_item_left">
+                            <div class="flex_2" ng-bind="'本单元汇总（包含所有课时）'"></div>
+                            <div class="flex_1" style="margin-left: 10px;font-size: 14px">
+                                <span ng-if="ctrl.errorQuestionInfoItems.allNumber != -1">
+                                    错题数：<span style="color:#ff5858">{{ctrl.errorQuestionInfoItems.allNumber}}</span>
+                                </span>
+                                <span ng-if="ctrl.errorQuestionInfoItems.allNumber == -1">无做题记录</span>
+                            </div>
+                        </div>
+                        <div class="eqc_content_overview_item_right">
+                            <span class="icon ion-ios-arrow-right"></span>
+                        </div>
+                    </div>
+
+                    <!--错题总览-->
+                    <div ng-if="ctrl.errorQuestionInfoItems" style="color: #6a6a6a; margin: 20px 10px 2px 10px">分课时查看：</div>
+                    <div ng-repeat="item in ctrl.errorQuestionInfoItems.list" ng-click="ctrl.goAndShowQuestion(item)"
+                         class="item eqc_content_overview_hour" ng-class="{'current_click_tag':item.id === ctrl.workListService.eqcCurrentClickTag}">
+
+                        <div class="eqc_content_overview_item_left">
+                            <div class="flex_2" ng-bind="item.content"></div>
+                            <div class="flex_1" style="margin-left: 10px;font-size: 14px">
+                                <span ng-if="item.errorQuestionNumber === -1" ng-bind="'无做题记录'"></span>
+                                <span ng-if="item.errorQuestionNumber !== -1">
+                                    错题数：<span style="color: #ff5858">{{item.errorQuestionNumber}}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="eqc_content_overview_item_right">
+                            <span class="icon ion-ios-arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--单元错题组卷列表-->
+                <div class="eqc_content_mine" ng-if="subHeaderInfo.activeEle=='eqc_mine'">
+                    <!--没有重练试卷-->
+                    <div ng-if="ctrl.selectedClazz.id && ctrl.selectedChapter && ctrl.initPaperList && !ctrl.minePaperList.length"
+                         style="padding: 10px;color: #3f4367">还没有组卷</div>
+
+                    <ion-list>
+                        <ion-item ng-repeat="mine in ctrl.minePaperList" ng-click="ctrl.showMainPaperDetail(mine)" class="item item-avatar"
+                                  ng-class="{'current_click_tag':$last,'current_click_tag':mine.id === ctrl.workListService.eqcCurrentClickPaper}">
+
+                            <img ng-src="{{$root.loadImg('paper_bank/paper_icon.png')}}" alt="" class="img-content"/>
+                            <p ng-bind="mine.name"></p>
+                            <p ng-bind="mine.createTime"></p>
+
+                            <ion-option-button class="button-assertive" ng-click="ctrl.deleteMinePaper(mine.id)">删除</ion-option-button>
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+                <!--上拉加载更多-->
+                <ion-infinite-scroll on-infinite="ctrl.loadMore()" immediate-check="false" spinner="ios" distance="10%"
+                                     ng-if="subHeaderInfo.activeEle=='eqc_mine' && ctrl.canLoadMore">
+                </ion-infinite-scroll>
+
+                <!--空白loading圈-->
+                <div class="display-flex" style="margin: 20px;" ng-if="ctrl.showLoadingIcon(subHeaderInfo)">
+                    <ion-spinner  icon="ios"></ion-spinner>
+                </div>
+            </ion-content>
+
+            <ion-footer-bar style="background: none!important;" ng-if="subHeaderInfo.activeEle=='eqc_overview'">
+                <button class="button eqc_footer_btn" ng-click="ctrl.showPaperQuestion()">
+                    <div class="display-flex">
+                        <i class="icon ion-android-folder"></i>
+                        <span>错题组卷: 已选</span>
+                        <span style="margin: 0 5px; font-size: 30px; color: #ff8585;">{{ctrl.creatingPaperQuestionList ? ctrl.creatingPaperQuestionList.length:0}}</span>
+                        <span>题</span>
+                    </div>
+                </button>
+            </ion-footer-bar>
+        </ion-side-menu-content>
+    </ion-side-menus>
+</ion-view>
+
+

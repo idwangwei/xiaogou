@@ -1,0 +1,16 @@
+<div class="list-select-form" ng-if="showFlag">
+    <div class="list-select-backdrop" ng-click="hideSignWarn()">
+        <div class="list-select-content" ng-click="stopEvent($event)">
+            <div ng-repeat="item in optionsObj" class="list-content" ng-click="selectOption($index,item)"
+            ng-style="{'border':$index==3?'none':''}">
+                <div class="part-left">
+                    <label>{{item.level}}</label>
+                </div>
+                <div class="part-right">
+                    <i ng-if="defaultIndex==$index" class="ion-android-radio-button-on"></i>
+                    <i ng-if="defaultIndex!=$index" class="ion-android-radio-button-off"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

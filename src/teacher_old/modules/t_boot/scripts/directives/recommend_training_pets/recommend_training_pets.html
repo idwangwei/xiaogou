@@ -1,0 +1,28 @@
+<div class="recommend-training-back-drop" ><!--ng-if="$rootScope.isShowRecommendFlag"-->
+    <div class="recommend-training">
+        <div class="recommend-training-area">
+            <div class="recommend-training-title-bg">
+                <i class="icon ion-close" ng-click="hideRecommendTable()"></i>
+            </div>
+            <div class="recommend-training-content" ng-if="isShowRecommendFlag">
+                <div class="recommend-training-title" ng-bind="title"></div>
+                <div class="recommend-training-subtitle" ng-bind="subTitle"></div>
+                <div class="recommend-training-content">
+                    <div ng-bind-html="describe|sanitizeHtml"></div>
+                    <div class="recommend-tip">
+                    </div>
+                </div>
+                <div class="recommend-training-btn">
+                    <img class="btn-common" ng-src="{{btnRecommend}}" ng-click="recommendUse()">
+                </div>
+            </div>
+
+            <div class="recommend-training-content" ng-if="!isShowRecommendFlag">
+                <div style="padding: 40px 10px; font-size:20px;" ng-bind="alertBoxContent"></div>
+                <div class="recommend-training-btn">
+                    <img class="btn-common" ng-src="{{btnRecommendOk}}" ng-click="hideRecommendTable()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

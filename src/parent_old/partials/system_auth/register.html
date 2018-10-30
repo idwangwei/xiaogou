@@ -1,0 +1,608 @@
+<style type="text/css">
+    .user_register {
+        height: 100% !important;
+    }
+
+    .user_register .card {
+        padding-bottom: 500px;
+    }
+
+    .user_register .ion-person:before {
+        vertical-align: top;
+    }
+
+    .user_register label {
+        color: gray;
+        margin: 0 10px;
+        border: none;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .user_register label .input-label {
+        width: 100%;
+        top: 5px;
+        color: rgba(170, 170, 170, 0.88);
+    }
+
+    .user_register label input {
+        margin-top: -10px;
+    }
+
+    .user_register .item-input {
+        padding-right: 0;
+    }
+
+    .user_register .button {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+    }
+
+    .user_register .error {
+        font-size: 13px;
+        color: red;
+        position: absolute;
+        top: -5px;
+        left: 5px;
+        z-index: 100;
+    }
+
+    .gender {
+        margin-top: 5px;
+    }
+
+    .gender label {
+        border: none;
+        flex: 1;
+    }
+
+    .gender label:first-child {
+        margin-left: -16px;
+    }
+
+    .user_register .card {
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .user_register .card .item-text-wrap {
+        background: #DAFAFE;
+    }
+
+    .user_register .card .item-text-header {
+        text-align: center;
+        color: #293d69;
+        background: #accbf9;
+    }
+
+    .user_register .card label {
+        background: hsl(0, 0%, 100%);
+        border-radius: 5px;
+        border-bottom: none;
+        margin: 3px 0;
+    }
+
+    .user_register input::-webkit-input-placeholder {
+    }
+
+    .user_register .item-text-wrap {
+        padding: 5px;;
+    }
+
+    .user_register .phone-validate-block {
+        margin-top: 5px;
+    }
+
+    .user_register .view-password {
+        font-size: 20px;
+        margin-right: 10px;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        z-index: 1000;
+    }
+
+    .user_register .student_account_info {
+        font-size: 16px;
+        padding-left: 16px;
+        margin: 5px 0;
+        color: #387ef5;
+    }
+
+    .user_register .student_account_info span {
+        font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    }
+
+    .user_register .register_top_question {
+        text-align: center;
+        color: #E42112;
+        border: 1px solid #f9acbe;
+        margin: 5px;
+        padding: 0;
+        font-size: 16px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: -webkit-flex;
+        -webkit-justify-content: center;
+        -webkit-align-items: center;
+    }
+
+    .user_register .parent_account_info {
+        font-size: 16px;
+        margin-left: 16px;
+        margin-bottom: 20px;
+        color: #387ef5;
+        /*font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;*/
+    }
+
+    .teacher-name {
+        position: absolute;
+        bottom: 11px;
+        color: #333;
+        left: 70px;
+    }
+
+    .noClassId {
+        position: absolute;
+        right: 10px;
+        bottom: 11px;
+        font-size: 12px;
+        z-index: 100;
+    }
+
+    .mock-label {
+        background: hsl(0, 0%, 100%);
+        border-radius: 5px;
+        border-bottom: none;
+        margin: 3px 0;
+        color: gray;
+    }
+    .register-clazz-type-warp{
+        height:100%;
+        width: 100%;
+        max-height: 600px;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        -webkit-justify-content: center;
+
+        padding: 20% 10% 10% 10%;
+    }
+    .register-clazz-type-warp img{
+        max-width: 500px;
+        width: 100%;
+        margin: 60px 0;
+        border-radius: 10px;
+    }
+
+</style>
+<ion-view title="家长注册" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">家长注册</h1>
+        <div class="buttons" ng-if="ctrl.clazzType">
+            <button class="button button-clear" ng-click="help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+
+
+    <ion-content padding="false" overflow-scroll="false" class="user_register">
+
+        <div ng-show="!clazzType" class="register-clazz-type-warp">
+
+            <img ng-src="{{$root.loadImg('logo_tip/register_clazz_type_t.png')}}" alt="" ng-click="chooseType($event,'t')">
+            <!--<img ng-src="{{$root.loadImg('logo_tip/register_clazz_type_s.png')}}" style="width: 50%;max-width: 400px" alt="" ng-click="chooseType($event,'s')">-->
+        </div>
+
+        <div style="" class="register_top_question" ng-click="help()" ng-show="ctrl.currentPage!=3 && clazzType">
+            <div ng-if="ctrl.currentPage==1">
+                <p style="margin: 0"><i class="icon ion-information-circled common-help-bar-icon"></i>
+                    如何注册两个家长？
+                </p>
+            </div>
+            <div ng-if="ctrl.currentPage==2">
+                <p style="margin: 0"><i class="icon ion-information-circled common-help-bar-icon"></i>
+                    如何注册多个孩子？<br>如何为孩子设置不同的密码？
+                </p>
+
+            </div>
+
+        </div>
+        <ng-form name="registerForm" id="registerForm" novalidate class="list" style="margin-top: 20px" ng-show="clazzType">
+            <slide-page ng-show="ctrl.currentPage==1">
+                <div class="card">
+                    <div class="item item-text-header item-icon-left">
+                        <i class="icon ion-person" style="color:#387ef5"></i>
+                        <span style="font-size: 18px;">设置家长账号</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label" style="font-size: 13px">手机号</span>
+                            <input type="text"
+                                   ng-model="formData.cellphone"
+                                   name="cellphone"
+                                   id="cellphone"
+                                   placeholder="手机号"
+                                   ng-keyup="saveFormData()"
+                                   required/>
+                            <span class="error"
+                                  ng-if="formStatus.submitClicked&&registerForm['cellphone']['$error']">
+                              {{validateMsg['cellphone'][_.keys(registerForm['cellphone']['$error'])[0]] }}
+                          </span>
+                        </label>
+                        <div ng-if="!account.isInput" class="parent_account_info">
+                            <div ng-show="account.numInfo">家长账号：<span
+                                    style='font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif'>{{account.numInfo}}</span>
+                            </div>
+                            <div ng-show="!account.numInfo">手机号码格式不对</div>
+                        </div>
+                        <div style="position: relative">
+                            <label class="item item-input item-floating-label ">
+                                <span class="input-label" style="font-size: 13px">设置您的新密码&nbsp;(限6个字符)</span>
+                                <input type="password"
+                                       id="password"
+                                       placeholder="设置您的新密码&nbsp;(限6个字符)"
+                                       ng-model="passwords.password"
+                                       ng-keydown="showPassTip(passwords.password,$event)"
+                                       ng-change="testSpace(passwords.password)"
+                                       name="password"
+                                       maxlength="6"
+                                       required/>
+
+                                <span class="error"
+                                      ng-if="formStatus.submitClicked&&registerForm['password']['$error']">
+                              {{  validateMsg['password'][_.keys(registerForm['password']['$error'])[0]] }}
+                          </span>
+                            </label>
+                            <i class="ion ion-eye view-password"
+                               ng-click="switchInputShow()"></i>
+                        </div>
+                        <div style="position: relative">
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label" style="font-size:13px;white-space: nowrap;overflow: hidden;">重复输入该密码&nbsp;(限6个字符)</span>
+                                <input type="{{showPasswordComfirmFlag?'text':'password'}}"
+                                       id="confirmPassword"
+                                       placeholder="重复输入该密码&nbsp;(限6个字符)"
+                                       ng-model="passwords.confirmPass"
+                                       ng-keydown="showPassTip(passwords.confirmPass,$event)"
+                                       name="confirmPassword"
+                                       confirm-pass="passwords.password"
+                                       maxlength="6"
+                                       required/>
+                                <span class="error"
+                                      ng-if="formStatus.submitClicked&&registerForm['confirmPassword']['$error']">
+                              {{validateMsg['confirmPassword'][_.keys(registerForm['confirmPassword']['$error'])[0]] }}
+                          </span>
+                            </label>
+                            <i class="ion ion-eye view-password"
+                               ng-click="showPasswordComfirmFlag=!showPasswordComfirmFlag"></i>
+                        </div>
+                        <!--<label class="item item-input item-floating-label">-->
+                            <!--<span class="input-label" style="font-size: 13px">家长姓名</span>-->
+                            <!--<input type="text"-->
+                                   <!--placeholder="家长姓名"-->
+                                   <!--ng-model="formData.name"-->
+                                   <!--ng-keyup="saveFormData()"-->
+                                   <!--name="realName"/>-->
+                            <!--<span class="error"-->
+                                  <!--ng-if="formStatus.submitClicked&&registerForm['realName']['$error']">-->
+                              <!--{{  validateMsg['realName'][_.keys(registerForm['realName']['$error'])[0]] }}-->
+                          <!--</span>-->
+                        <!--</label>-->
+                        <!--<label class="item  gender" style="min-height:50px;padding: 0px 16px">
+                            <div class="display-flex" style="width: 100%;">
+                                <div class="flex_1">
+                                    <ion-radio style="max-width: 100px"
+                                               id="gender"
+                                               name="gender"
+                                               ng-model="formData.gender"
+                                               value="1"
+                                               ng-mouseup="saveFormData()"
+                                               ng-required="true">男
+                                    </ion-radio>
+                                </div>
+                                <div class="flex_1">
+                                    <ion-radio style="max-width: 100px"
+                                               name="gender"
+                                               value="0"
+                                               ng-mouseup="saveFormData()"
+                                               ng-model="formData.gender"
+                                               ng-required="true">女
+                                    </ion-radio>
+                                </div>
+                            </div>
+                            <div class="error"
+                                 ng-if="formStatus.submitClicked&&registerForm['gender']['$error']">
+                                {{ validateMsg['gender'][_.keys(registerForm['gender']['$error'])[0]] }}
+                            </div>
+                        </label>-->
+                        <!--<label class="item item-input item-select">-->
+                            <!--<div class="input-label">性别</div>-->
+                            <!--<select ng-model="formData.child_list[0].relationShip" name="{{'relationShip'+0}}"-->
+                                    <!--validate-select-->
+                                    <!--ng-mouseup="saveFormData()"-->
+                                    <!--ng-change="selectRelationship(formData.child_list[0].relationShip)"-->
+                            <!--&gt;-->
+                                <!--<option value="-1">&#45;&#45;请选择&#45;&#45;</option>-->
+                                <!--<option value="0">男</option>-->
+                                <!--<option value="1">女</option>-->
+                                <!--&lt;!&ndash;<option value="2">爷爷</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="3">奶奶</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="4">外公</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="5">外婆</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="6">其他</option>&ndash;&gt;-->
+                            <!--</select>-->
+                            <!--<div class="error"-->
+                                 <!--ng-if="formStatus.submitClicked&&registerForm['relationShip'+$index]['$error']">-->
+                                <!--{{-->
+                                <!--validateMsg['relationShip'][_.keys(registerForm['relationShip'+$index]['$error'])[0]]-->
+                                <!--}}-->
+                            <!--</div>-->
+                        <!--</label>-->
+                    </div>
+                </div>
+            </slide-page>
+<!--
+            <slide-page ng-show="ctrl.currentPage==2>
+                <div class="card" ng-repeat="child in formData.child_list">
+                    <div class="item item-text-header item-icon-left ">
+                        <i class="icon ion-android-contact" style="color:#387ef5"></i>
+                        <span style="font-size: 18px;">设置学生账号</span>
+                    </div>
+                    <div>
+                        <div class="item item-text-wrap">
+                            <div class="student_account_info">学生账号：<span>{{account.numInfoStu}}</span></div>
+                            <div class="student_account_info">学生密码：同家长密码</div>
+
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label" style="min-width: 100%;font-size: 13px">填孩子真实姓名,便于老师识别</span>
+                                <input type="text"
+                                       placeholder="孩子姓名"
+                                       ng-model="child.name"
+                                       name="{{'realName'+$index}}"
+                                       ng-keyup="saveFormData()"
+                                       required/>
+                                <div class="error"
+                                     ng-if="formStatus.submitClicked&&registerForm['realName'+$index]['$error']">
+                                    {{ validateMsg['realName'][_.keys(registerForm['realName'+$index]['$error'])[0]]
+                                    }}
+                                </div>
+                            </label>
+
+
+                            <label class="item item-input gender" style="min-height: 50px;padding: 0 16px">
+                                <div class="display-flex" style="width: 100%;">
+                                    <div class="flex_1">
+                                        <ion-radio style="max-width: 100px"
+                                                   name="{{'gender'+$index}}"
+                                                   ng-model="child.gender"
+                                                   ng-mouseup="saveFormData()"
+                                                   value="1"
+                                                   ng-required="true">男
+                                        </ion-radio>
+                                    </div>
+                                    <div class="flex_1">
+                                        <ion-radio style="max-width: 100px"
+                                                   name="{{'gender'+$index}}"
+                                                   value="0"
+                                                   ng-mouseup="saveFormData()"
+                                                   ng-model="child.gender"
+                                                   ng-required="true">女
+                                        </ion-radio>
+                                    </div>
+                                </div>
+                                <div class="error"
+                                     ng-if="formStatus.submitClicked&&registerForm['gender'+$index]['$error']">
+                                    {{ validateMsg['gender'][_.keys(registerForm['gender'+$index]['$error'])[0]] }}
+                                </div>
+                            </label>
+                            <div style="width:100%; background-color: #fff; padding: 10px 0 10px 10px;">
+                                <div style="margin-bottom: 5px; font-size: 14px;">
+                                    请选择班级类型：
+                                </div>
+                                <form-radio options="clazzTypes" value="child.selectedClazzType"
+                                            on-change="handleChangeClazzType"></form-radio>
+                            </div>
+                            <div class="item item-input item-floating-label mock-label"
+                                 style="position: relative; border: none;"
+                                 ng-show="child.selectedClazzType && child.selectedClazzType !== SELF_STUDY_CLAZZ_ID">
+                                <input type="text"
+                                       placeholder="填入老师给的班级号如：610000"
+                                       ng-model="child.clzIds"
+                                       name="{{'clzIds'+$index}}"
+                                       ng-change="checkClazz(child)"
+                                       ng-blur="checkClazzOnblur(child)"
+                                       validate-clazz
+                                       required/>
+
+                                <span ng-bind="child.teacherName" ng-show="child.teacherName"
+                                      class="teacher-name"></span>
+                                <div class="error" ng-if="child.checkClazzErrorFlag && showClassTip">
+                                    {{child.clazzFlagMsg}}
+                                </div>
+                            </div>
+                            <label class="item item-input item-select"
+                                   ng-show="child.selectedClazzType && child.selectedClazzType === SELF_STUDY_CLAZZ_ID">
+                                <div class="input-label">请选择年级</div>
+                                <select ng-model="child.selfStudyClazzGrade" name="{{'selfStudyClazzGrade'+$index}}"
+                                        ng-change="selectSelfStudyClazzGrade(child)">
+                                    <option value="-1">&#45;&#45;请选择&#45;&#45;</option>
+                                    <option value="1">一年级</option>
+                                    <option value="2">二年级</option>
+                                    <option value="3">三年级</option>
+                                    <option value="4">四年级</option>
+                                    <option value="5">五年级</option>
+                                    <option value="6">六年级</option>
+                                </select>
+                            </label>
+                            <div ng-show="child.selectedClazzType && child.selectedClazzType === SELF_STUDY_CLAZZ_ID"
+                                 style="color: #f00;font-size: 14px;margin-top: 5px;">自学班用于个人自学，不接收学校老师布置的作业
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </slide-page>
+-->
+            <slide-page ng-show="ctrl.currentPage==2">
+                <div class="card" ng-repeat="child in formData.child_list">
+                    <div class="item item-text-header item-icon-left ">
+                        <i class="icon ion-android-contact" style="color:#387ef5"></i>
+                        <span style="font-size: 18px;">设置学生账号</span>
+                    </div>
+                    <div>
+                        <div class="item item-text-wrap">
+                            <div class="student_account_info">学生账号：<span>{{account.numInfoStu}}</span></div>
+                            <div class="student_account_info">学生密码：同家长密码</div>
+
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label" style="min-width: 100%;font-size: 13px">填孩子真实姓名,便于老师识别</span>
+                                <input type="text"
+                                       placeholder="孩子姓名"
+                                       ng-model="child.name"
+                                       name="{{'realName'+$index}}"
+                                       ng-keyup="saveFormData()"
+                                       required/>
+                                <div class="error"
+                                     ng-if="formStatus.submitClicked&&registerForm['realName'+$index]['$error']">
+                                    {{ validateMsg['realName'][_.keys(registerForm['realName'+$index]['$error'])[0]]
+                                    }}
+                                </div>
+                            </label>
+                            <label class="item item-input gender" style="min-height: 50px;padding: 0 16px">
+                                <div class="display-flex" style="width: 100%;">
+                                    <div class="flex_1">
+                                        <ion-radio style="max-width: 100px"
+                                                   name="{{'gender'+$index}}"
+                                                   ng-model="child.gender"
+                                                   ng-mouseup="saveFormData()"
+                                                   value="1"
+                                                   ng-required="true">男
+                                        </ion-radio>
+                                    </div>
+                                    <div class="flex_1">
+                                        <ion-radio style="max-width: 100px"
+                                                   name="{{'gender'+$index}}"
+                                                   value="0"
+                                                   ng-mouseup="saveFormData()"
+                                                   ng-model="child.gender"
+                                                   ng-required="true">女
+                                        </ion-radio>
+                                    </div>
+                                </div>
+                                <div class="error"
+                                     ng-if="formStatus.submitClicked&&registerForm['gender'+$index]['$error']">
+                                    {{ validateMsg['gender'][_.keys(registerForm['gender'+$index]['$error'])[0]] }}
+                                </div>
+                            </label>
+
+                            <div class="item item-input item-floating-label mock-label"
+                                 style="position: relative; border: none;"
+                                 ng-if="clazzType === 't'">
+                                <input type="text"
+                                       placeholder="填入老师给的班级号如：610000"
+                                       ng-model="child.clzIds"
+                                       name="{{'clzIds'+$index}}"
+                                       ng-change="checkClazz(child)"
+                                       ng-blur="checkClazzOnblur(child)"
+                                       validate-clazz
+                                       required/>
+
+                                <span ng-bind="child.teacherName" ng-show="child.teacherName"
+                                      class="teacher-name"></span>
+                                <div class="error" ng-if="child.checkClazzErrorFlag && showClassTip">
+                                    {{child.clazzFlagMsg}}
+                                </div>
+                            </div>
+                            <label class="item item-input item-select"
+                                   ng-if="clazzType === 's'">
+                                <div class="input-label">孩子的年级<br><span style="font-size: 12px;">（9月1号自动升级）</span></div>
+
+                                <select ng-model="child.selfStudyClazzGrade" name="{{'selfStudyClazzGrade'+$index}}"
+                                        ng-change="selectSelfStudyClazzGrade(child)">
+                                    <option value="-1">--请选择--</option>
+                                    <option value="1" ng-bind="'一年级（'+ ctrl.currentStudyYear+'级）'"></option>
+                                    <option value="2" ng-bind="'二年级（'+(ctrl.currentStudyYear-1)+'级）'"></option>
+                                    <option value="3" ng-bind="'三年级（'+(ctrl.currentStudyYear-2)+'级）'"></option>
+                                    <option value="4" ng-bind="'四年级（'+(ctrl.currentStudyYear-3)+'级）'"></option>
+                                    <option value="5" ng-bind="'五年级（'+(ctrl.currentStudyYear-4)+'级）'"></option>
+                                    <option value="6" ng-bind="'六年级（'+(ctrl.currentStudyYear-5)+'级）'"></option>
+                                </select>
+                            </label>
+                            <div ng-show="child.selectedClazzType && child.selectedClazzType === SELF_STUDY_CLAZZ_ID"
+                                 style="color: #f00;font-size: 14px;margin-top: 5px;">自学班用于个人自学，不接收学校老师布置的作业
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </slide-page>
+            <slide-page ng-show="ctrl.currentPage==3">
+                <div class="card">
+                    <div class="item item-text-header item-icon-left"
+                         style="text-align: center;font-size: 25px;color:#387ef5">
+                        <i class="icon ion-paper-airplane" style="color:#387ef5"></i>
+                        <span style="font-size: 18px;margin-right: 52px;">验证</span>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <!--<div class="row  img-validate-block">
+                            <div class="item item-input" style="margin-left: 0;margin-right: 5px;">
+                                <input type="text" placeholder="填入右图数字" ng-model="formData.vCode" name="vCode"
+                                       required
+                                       ng-blur="validateImageVCode()"/>
+                            </div>
+                            <img src="{{validateImageUrl}}"/>
+                            <i class="button icon ion-refresh button-clear" ng-click="getValidateImage()"></i>
+                        </div>-->
+                        <div class="row item-text-wrap">
+                            您输入的手机号：{{formData.cellphone}}
+                        </div>
+                        <div class="row  phone-validate-block">
+                            <div class="item item-input">
+                                <input type="text" placeholder="填入短信中的验证码" ng-model="formData.telVC" name="telVC"
+                                       required/>
+                            </div>
+                            <button class="button button-positive" ng-click="getTelVC()" ng-disabled="telVcBtn">
+                                获取短信&nbsp;&nbsp;<span ng-if="vcCount !== 60 && vcCount !== 0">{{vcCount}}</span>
+                            </button>
+                        </div>
+                        <button id="submitForm" type="submit" ng-click="registerSubmit()"
+                                style="display: none;"></button>
+                        <p style=" margin-top: 24px;"><span style="color:red;font-size: 18px">收不到验证码短信，怎么办？</span></p>
+                        <p>1. 检查你输入的电话号码是否正确</p>
+                        <p>2. 检查你的手机是否设置了拦截陌生短信功能</p>
+                        <p>3. 通信运营商的问题，请您多试几次</p>
+                    </div>
+
+                </div>
+
+            </slide-page>
+
+        </ng-form>
+    </ion-content>
+    <ion-footer-bar class="bg-balanced display-flex" ng-show="clazzType">
+        <button class="button-clear bg-calm  bar-item" ng-click="ctrl.previous()"
+                ng-style="{color:ctrl.currentPage==1?'hsla(0, 0%, 0%, 0)':''}">
+            上一步
+        </button>
+        <button class="button-clear bg-calm  bar-item"
+                ng-if="ctrl.currentPage==3"
+                type="submit"
+                ng-click="ctrl.submit()" style="color: white">
+            提交
+        </button>
+        <button class="button-clear bg-calm  bar-item" ng-click="ctrl.next()"
+                ng-if="ctrl.currentPage!=3"
+                ng-style="{color:ctrl.currentPage==3?'hsla(0, 0%, 0%, 0)':''}">
+            下一步
+        </button>
+    </ion-footer-bar>
+</ion-view>

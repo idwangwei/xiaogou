@@ -1,0 +1,58 @@
+<ion-view  class="statisstics" hide-nav-bar="true">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="buttons">
+            <button class="button  button-clear" ng-click="ctrl.back()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;</button>
+        </div>
+        <h1 class="title">游戏统计</h1>
+        <!--<div class="buttons" style="text-align: center">
+            <button class="button button-clear" ng-click="isFresh()" ng-if="!isOpen">{{showFreshText}}</button>
+            <label  ng-if="!isFreshflag&&isOpen" style="font-size: 17px;margin-right: 20px;  line-height: 34px;">{{freshTime}}</label>
+            <label  ng-if="isFreshflag&&isOpen"  style="font-size: 17px;margin-right: 20px;line-height: 34px;">已刷新</label>
+        </div>-->
+        <div class="button button-clear" ng-click="ctrl.doRefresh()">
+            <i class="icon ion-refresh"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content >
+        <div style="text-align: center">
+            <h4>每个学生在当前游戏的学习情况</h4>
+            <h5>{{ctrl.pubGame.gameName}}</h5>
+            <h6>知识点：{{ctrl.pubGame.kdName}}</h6>
+            <h5>通关人数：{{ctrl.data.total.passedNum}}人, 通关率：{{ctrl.data.total.passedInfo}}%</h5>
+        </div>
+        <button class="button button-clear button-positive" ng-click="ctrl.errorByClazz()" style="">全班错误类型统计</button>
+        <table>
+            <tr>
+                <th ng-repeat="title in ctrl.data.tabTitle" class="arrow">{{title.name}}
+                    <br/>
+                        <i class="icon ion-android-arrow-up"  ng-show="title.key=='errorTimes'" ng-click="ctrl.setOrder('errorTimes',true)">&nbsp;</i>
+                        <i class="icon ion-android-arrow-down"  ng-show="title.key=='errorTimes'" ng-click="ctrl.setOrder('errorTimes',false)">&nbsp;</i>
+                        <i class="icon ion-android-arrow-up"  ng-show="title.key=='order'" ng-click="ctrl.setOrder('order',true)">&nbsp;</i>
+                        <i class="icon ion-android-arrow-down"  ng-show="title.key=='order'" ng-click="ctrl.setOrder('order',false)">&nbsp;</i>
+                        <i class="icon ion-android-arrow-up"  ng-show="title.key=='totalGameTime'"ng-click="ctrl.setOrder('totalGameTime',true)">&nbsp;</i>
+                        <i class="icon ion-android-arrow-down"  ng-show="title.key=='totalGameTime'" ng-click="ctrl.setOrder('totalGameTime',false)">&nbsp;</i>
+
+                </th>
+            </tr>
+
+
+            <tr ng-repeat="info in ctrl.data.tabData" ng-click="ctrl.errorByStu(info)">
+                <td class="name">{{info.name}}</td>
+                <td>{{info.errorTimes}}</td>
+                <td>{{info.order}}</td>
+                <td>{{info.totalGameTime}}</td>
+            </tr>
+        </table>
+    </ion-content>
+    <loading-processing></loading-processing>
+   <!-- <ion-footer-bar class="bg-balanced"  >
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="openLaptopClick()">
+            <i class="icon ion-laptop">
+            </i>
+            大屏模式查看统计
+        </button>
+    </ion-footer-bar>-->
+</ion-view>

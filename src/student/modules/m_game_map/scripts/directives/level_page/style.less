@@ -1,0 +1,47 @@
+
+.game_level_stu_float_mark{
+  position: absolute;
+  z-index: 8;
+  animation: float-mark-animation 1s ease-out infinite alternate;
+  -webkit-animation: float-mark-animation 1s ease-out infinite alternate;
+  .float_mark_bg{
+    height: 64px;
+    width: 55px
+  }
+  .float_mark_avatar{
+    height: 44px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  p{
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    white-space: nowrap;
+    color: #0e35c7;
+  }
+}
+
+@keyframes float-mark-animation {
+  from {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  to{
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+  }
+}
+@-webkit-keyframes float-mark-animation {
+  from {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  to{
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+  }
+}

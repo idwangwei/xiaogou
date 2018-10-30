@@ -1,0 +1,158 @@
+<ion-view hide-nav-bar="true" class="growing-auth">
+    <!--<div  class="auth-head"> &lt;!&ndash;ng-style="{'top':ctrl.isIos()?'30px':'0'}">&ndash;&gt;
+        <div class="head-content" ui-sref="growing_classmate_list">
+            <a class="button back-button buttons  button-clear header-item common-back-btn growing-back"
+               nav-direction="back" ng-style="{'top':ctrl.isIos()?'15px':'0'}">
+                <i class="icon ion-ios-arrow-back"></i>
+                <i>同学们</i>
+            </a>
+            <div class="photo-area">
+                <div class="photo-wrap">
+                    <img ng-src="{{ctrl.classmateHead}}" alt="" class="photo">
+                </div>
+                <p class="name" ng-bind="ctrl.classmate.userName + '成长相册'"></p>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="simply-head">
+        <a class="button back-button buttons  button-clear header-item common-back-btn growing-back"
+           nav-direction="back"
+           ng-click="ctrl.back()"
+           ng-style="{'top':ctrl.isIos()?'15px':'0'}">
+            <i class="icon ion-ios-arrow-back" style="color:#fff !important;"></i>
+            <i style="color:#fff !important;">同学们</i>
+        </a>
+    </div>
+
+    <ion-header-bar align-title="center" class="head-bar" ng-if="ctrl.isShowHeadTipFlag && !ctrl.isIos()">
+    </ion-header-bar>
+    <ion-header-bar align-title="center" class="head-bar" ng-if="ctrl.isShowHeadTipFlag && ctrl.isIos()"
+                    style="height: 60px">
+    </ion-header-bar>
+    <ion-content class = "auth-content"  on-scroll="ctrl.changeHeadTip()"> <!--ng-style="{'top':ctrl.isIos()?'180px':'150px'}">-->
+        <div class="auth-head"> <!--ng-style="{'top':ctrl.isIos()?'30px':'0'}">-->
+            <div class="head-content">
+                <div class="photo-area">
+                    <div class="photo-wrap">
+                        <img ng-src="{{ctrl.classmateHead}}" alt="" class="photo">
+                    </div>
+                    <p class="name" ng-bind="ctrl.classmate.userName + '成长相册'"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="growing-home-tip" ng-if="ctrl.recordsList.length==0">
+            <span ng-if="ctrl.getListFlag && ctrl.getListRestFlag">您的同学还没有发布消息哦...</span>
+            <span ng-if="ctrl.getListFlag && !ctrl.getListRestFlag">获取数据失败，请切换页面重试.</span>
+            <span ng-if="!ctrl.getListFlag">正在获取成长记录，请稍候...</span>
+        </div>
+        <div ng-if="ctrl.recordsList.length>0">
+            <div class="list record-card" ng-repeat="record in ctrl.recordsList" ng-if="record.impeach<3">
+                <div class="item item-avatar detailsHead">
+                    <img class="head" ng-src="{{ctrl.classmateHead}}">
+                    <h3 style="margin-top: 11px;" class="blueColor">{{ctrl.classmate.userName}}</h3>
+                    <span class="date">{{record.displayDate}}</span>
+                </div>
+                <div class="item item-body">
+                    <p style="margin: 0 0 5px 10px;  color:#201513;">{{ record.explain}}</p>
+                    <div class="msgImg" ng-if="record.extendData.imgSrcArr.length>0">
+                        <img  ng-repeat="imgSrc in record.extendData.imgSrcArr"
+                              ng-class = "ctrl.getMyImgClass(record)"
+                              ng-src = "{{imgSrc}}"
+                              ng-click = "ctrl.clickPhoto(record,$index)">
+                    </div>
+                     <div class = "label" ng-if="record.recordLabel && record.recordType">
+                        <a class="icon m-i ion-ios-pricetags " style="color:#848484"></a>
+                        <span class="labelWord">{{record.recordLabel}}&nbsp;&nbsp;{{record.recordType}}</span>
+                    </div>
+                    <div class="operateArea">
+                        <div class="operateBtn">
+                            <div class="oneBtnArea" ng-click="ctrl.toggleSendPraise($index)">
+                                <div > <!--class="imgBtn"-->
+                                    <img ng-src="{{record.extendData.praise.flag ?$root.loadImg('growing/praise2.png') : $root.loadImg('growing/praise1.png')}}"
+                                         class="">
+                                </div>
+                                <span class="operateWord" >点赞</span>
+                                <span class="operateNum" ng-if="record.praise>0">{{record.praise}}</span>
+                            </div>
+
+                            <div class="oneBtnArea" ng-click="ctrl.toggleSendFlower($index)" >
+                                <div ><!--class="imgBtn">-->
+                                    <img ng-src="{{record.extendData.flower.flag ?$root.loadImg('growing/flower2.png') : $root.loadImg('growing/flower1.png')}}"
+                                         class="">
+                                </div>
+                                <span class="operateWord">送花</span>
+                                <span class="operateNum" ng-if="record.flower>0">{{record.flower}}</span>
+                            </div>
+
+                            <div class="oneBtnArea" ng-click = "ctrl.impeachPerson($index)" >
+                                <div ><!--class="imgBtn" >-->
+                                    <img ng-src="{{record.extendData.impeachFlag ?$root.loadImg('growing/impeach2.png') : $root.loadImg('growing/impeach1.png')}}">
+                                </div>
+                                <span class="operateWord">举报</span>
+                            </div>
+                        </div>
+                        <div class="operateDetails" ng-if="record.praise>0 || record.flower>0">
+                            <div ng-if="record.praise>0" >
+                                <div class="detailMsg" ng-show="!record.extendData.isPraiseNameUnfold && record.praiseUser.length > ctrl.showNameCount">
+                                    <img class="detailsImg" ng-src="{{$root.loadImg('growing/praise2.png')}}">
+                                    <span>{{record.extendData.praise.foldNameStr}}等{{record.praise}}人觉得很赞</span>
+                                    <span ng-if="record.praiseUser.length > ctrl.showNameCount"
+                                          ng-click="ctrl.togglePraise($index)"
+                                          class="upFold">展开>></span>
+                                </div>
+                                <div class="detailMsg" ng-show="record.extendData.isPraiseNameUnfold || record.praiseUser.length <= ctrl.showNameCount">
+                                    <img class="detailsImg" ng-src="{{$root.loadImg('growing/praise2.png')}}">
+                                    <span>{{record.extendData.praise.unfoldNameStr}}觉得很赞</span>
+                                    <span ng-if="record.praiseUser.length > ctrl.showNameCount"
+                                          ng-click="ctrl.togglePraise($index)"
+                                          class="upFold">收起<<</span>
+                                </div>
+                            </div>
+                            <div ng-show="record.flower>0">
+                                <div class="detailMsg" ng-show=" !record.extendData.isFlowerNameUnfold && record.flowerUser.length > ctrl.showNameCount">
+                                    <img class="detailsImg" ng-src="{{$root.loadImg('growing/flower2.png')}}">
+                                    <span>{{record.extendData.flower.foldNameStr}}等{{record.flower}}人给ta送花</span>
+                                    <span ng-if="record.flowerUser.length > ctrl.showNameCount"
+                                          ng-click="ctrl.toggleFlowerName($index)"
+                                          class="upFold">展开>></span>
+                                </div>
+                                <div class="detailMsg" ng-show="record.extendData.isFlowerNameUnfold || record.flowerUser.length <= ctrl.showNameCount">
+                                    <img class="detailsImg" ng-src="{{$root.loadImg('growing/flower2.png')}}">
+                                    <span>{{record.extendData.flower.unfoldNameStr}}给ta送花</span>
+                                    <span ng-if="record.flowerUser.length > ctrl.showNameCount"
+                                          ng-click="ctrl.toggleFlowerName($index)"
+                                          class="upFold">收起<<</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+<div class="growing_photo_big" ng-style="{'height':ctrl.getScreenHeight()}" ng-if="ctrl.showPhotoFlag"
+     ng-click="ctrl.toggleBigPhotos()">
+    <div class="photo_area" ng-if="ctrl.selectedPhotoList.length>1" >
+        <ion-slide-box active-slide="ctrl.currentIndex">
+            <ion-slide  ng-repeat="photo in ctrl.selectedPhotoList">
+                <div  class="img-flex" ng-style="{height:ctrl.photoStyleList[$index].maxHeight}">
+                    <img ng-src="{{photo}}"
+                         ng-style="{width:ctrl.photoStyleList[$index].width, height:ctrl.photoStyleList[$index].height}">
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+    </div>
+    <div class="photo_area  display-flex" ng-if="ctrl.selectedPhotoList.length==1">
+        <div ng-repeat="photo in ctrl.selectedPhotoList">
+            <img id="signalImg" ng-src="{{photo}}"
+                 ng-style="{width:ctrl.photoStyleList[0].width, height:ctrl.photoStyleList[0].height}">
+        </div>
+    </div>
+</div>
+
+

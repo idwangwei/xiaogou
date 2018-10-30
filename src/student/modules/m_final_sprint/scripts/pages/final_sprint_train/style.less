@@ -1,0 +1,278 @@
+.platform-ios.platform-cordova:not(.fullscreen){
+  #final-sprint-train{
+    .check-subtitle{
+      margin-top: 80px;
+    }
+    .test-result{
+      top:280px !important;
+    }
+  }
+}
+#final-sprint-train {
+  @main-color: #5bccf7; //定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .check-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      //height: 30px;
+      //line-height: 54px;
+      font-weight: bold;
+    }
+    .item-back{
+      //margin-top: 5px;
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+  }
+  .check-subtitle{
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .test-score{
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 0 20px;
+    .score-box{
+      .display-flex(row,center,center);
+      padding-bottom: 10px;
+      border-bottom: 2px dashed #ddd;
+      .score-item{
+        .display-flex(column,center,center);
+        padding: 0 22px;
+      }
+      .item-title{
+        color: #333;
+        font-size: 16px;
+        height: 38px;
+        line-height: 38px;
+      }
+      .item-score{
+        color: #fb6767;
+        font-size: 46px;
+        line-height: 46px;
+        font-weight: bold;
+        position: relative;
+        i{
+          position: absolute;
+          right: -20px;
+          font-size: 16px;
+          color: #fb6767;
+          bottom: -11px;
+        }
+      }
+    }
+    .data-box{
+      .display-flex(column,center,center);
+      padding: 8px;
+      .data-child-box{
+        .display-flex(row,space-between,center);
+        width: 100%;
+        max-width: 500px;
+        margin-top: 5px;
+      }
+      .data-item{
+        font-size: 14px;
+        span{
+          display: inline-block;
+          padding: 0 1px;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        .text-blue{
+          color: #38B526;
+        }
+        .text-red{
+          color:#fb6767
+        }
+      }
+    }
+    @media screen and (max-width: 374px) {
+      .score-box{
+        .score-item{
+          padding: 0 14px;
+        }
+      }
+    }
+  }
+  .test-result{
+    width: 100%;
+    background: #fff;
+    padding-top: 20px;
+    top:260px;
+    .result-title{
+      height: 34px;
+      line-height: 34px;
+      font-size: 14px;
+      color: #aaa;
+      text-align: center;
+    }
+    .unit-box{
+      .unit-title{
+        padding: 0 22px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        background-color: @main-color;
+        font-size: 16px;
+      }
+      .unit-header{
+        .display-flex(row,center,flex-end);
+        height: 36px;
+        width: 100%;
+        .header-item{
+          width: 30%;
+          font-size: 16px;
+          text-align: center;
+          &:first-child{
+            width: 40%;
+          }
+        }
+      }
+      .unit-list{
+        .list-item{
+          .display-flex(row,center,center);
+          padding: 18px 0;
+          background-color: #f5f5f7;
+          &:nth-child(even){
+            background-color: #fff;
+          }
+          &>div{
+            width: 30%;
+            &:first-child{
+              width: 40%;
+            }
+          }
+        }
+        .item-text{
+          .display-flex(column,center,flex-start);
+          padding: 0 20px;
+          font-size: 12px;
+          color: #254260;
+          span{
+            text-decoration: underline;
+          }
+        }
+        .item-progress{
+          .display-flex(column,center,center);
+          margin-top: 11px;
+          &.progress-2{
+            .progress-title{
+              color: #faa958;
+            }
+            .progress-box{
+              .progress-inner{
+                background: #faa958;
+                width: 70%;
+              }
+            }
+          }
+          &.progress-3{
+            .progress-title{
+              color: #4acb3d;
+            }
+            .progress-box{
+              .progress-inner{
+                background: #4acb3d;
+                width: 100%;
+              }
+            }
+          }
+          .progress-title{
+            color: #fb6767;
+            font-size: 14px;
+            height: 22px;
+            line-height: 20px;
+            margin-top: -22px;
+          }
+          .progress-box{
+            width: 70px;
+            height: 10px;
+            background: #d7dae3;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            .progress-inner{
+              height: 10px;
+              position: absolute;
+              left: 0;
+              top:0;
+              width: 30%;
+              background: #fb6767;
+              border-radius: 5px;
+            }
+          }
+        }
+        .item-btn{
+          .display-flex(column,center,center);
+          .btn-box{
+            width: 90px;
+            height: 22px;
+            position: relative;
+            .btn-animate{
+              width: 100px;
+              height: 32px;
+              position: absolute;
+              left: -5px;
+              top:-5px;
+              box-sizing: border-box;
+              border: 3px solid rgba(248,167,72,.2);
+              border-radius: 16px;
+              -webkit-animation: scaleout 2s infinite ease-in-out;
+              animation: scaleout 2s infinite ease-in-out;
+              .animate-inner{
+                box-sizing: border-box;
+                width: 94px;
+                height: 26px;
+                border-radius: 13px;
+                border: 2px solid #f8a748;
+              }
+            }
+            img{
+              width: 90px;
+            }
+          }
+        }
+
+        @-webkit-keyframes scaleout {
+          0% { -webkit-transform: scale(1.0) }
+          100% {
+            -webkit-transform: scale(1.1);
+            opacity: 0;
+          }
+        }
+        @keyframes scaleout {
+          0% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+          }
+          100% {
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}

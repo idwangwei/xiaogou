@@ -1,0 +1,59 @@
+<ion-view hide-nav-bar=true class="about_file" >
+    <ion-header-bar class="bar-better" align-title="center">
+        <button class="button buttons  button-clear common-back-btn" ng-click="ctrl.back()" nav-direction="back">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">关于智算365</h1>
+    </ion-header-bar>
+    <ion-content  style="background-color: #fff">
+        <div class="main-content">
+            <img class="thumbnail-left"
+                 src="{{$root.loadImg('other/about-logo.png')}}"
+                 alt="智算365"
+                 ng-click="ctrl.clickImg()">
+            <h4 >智算365</h4>
+            <p ng-bind="ctrl.appNumVersion"></p>
+            <p style="font-size: 18px;font-weight: bold;color: rgba(255, 0, 0, 0.61)"
+               ng-if="ctrl.clickCount>=10">日志(changeLog):
+            </p>
+            <p ng-if="ctrl.clickCount>=10" ng-repeat="log in changeLog" ng-bind="log" style="text-align: left;font-size: 10px">
+
+            </p>
+
+            <p style="font-size: 18px;font-weight: bold;color: rgba(255, 0, 0, 0.61)"
+               ng-if="ctrl.clickCount>=5">未保存到服务器上的用户答案:
+            </p>
+            <div ng-show="ctrl.clickCount>=5" >
+                <table style="width: 98%" >
+                    <thead>
+                    <th style="text-align: center;font-size: 12px">作业名称</th>
+                    <th style="text-align: center;font-size: 12px">作业用时</th>
+                    <th style="text-align: center;font-size: 12px">小题个数</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="paper in ctrl.paperAnsArray" >
+                        <td style="text-align: center;font-size: 10px" ng-bind="paper.paperName"></td>
+                        <td style="text-align: center;font-size: 10px" ng-bind="paper.intervalTime"></td>
+                        <td style="text-align: center;font-size: 10px" ng-bind="paper.saveAnsCount"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="ctrl.clickCount>=5 && ctrl.paperAnsArray.length == 0" >
+                <p style="font-size: 10px">没有记录</p>
+            </div>
+
+        </div>
+        <div class="qr-code-wrap">
+            <img class="qr-code"
+                 src="{{$root.loadImg('qrCodeImages/xiaogou_official_accounts.png')}}"
+                 alt="智算365二维码">
+            <p>用微信扫一扫二维码关注公众号</p>
+        </div>
+
+    </ion-content>
+    <div class="foot-wrap">
+        <p>教育部《现代教育技术》杂志社</p>
+        <p>中国基础教育人工智能研究基地</p>
+    </div>
+</ion-view>

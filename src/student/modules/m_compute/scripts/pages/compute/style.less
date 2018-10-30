@@ -1,0 +1,683 @@
+@charset "UTF-8";
+@import '../../common/_mixins';
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.cf_content{
+  top:124px!important;
+}
+.compute_file{
+  font-family: 'microsoft yahei'!important;
+  .bar-better{border: none}
+
+  .cf_clazz_content{
+    background: #E9EDF3;
+  }
+  .col-md-3, .col-xs-6 {
+    padding: 2px 7px 12px 3px;
+  }
+  .game_clazz_select_block {
+    padding: 6px;
+  }
+  .game_clazz_select_block:last-child {
+    margin-bottom: 60px;
+  }
+
+  .game_clazz_select {
+    border-left-width: 6px;
+    background: #d2d5df;
+  }
+
+  .clazz-item {
+    background: white;
+    border-radius: 7px;
+    width: 99%;
+    padding: 15px 0;
+    min-height: 158px;
+  }
+  .clazz-name {
+    font-size: 17px;
+    margin-top:10px;
+  }
+  .game_clazz_select_img {
+    margin-top: 14px;
+    width: 105px;
+  }
+  .cf_content_clazz_box{
+    color: #3c98e3;
+    margin-left:10px;
+    font-size: 28px;
+    vertical-align: sub;
+  }
+
+
+  .cf_content{
+    background: linear-gradient(to bottom, #2F325E 0%,#28679B 100%);
+    background: linear-webkit-gradient(to bottom, #2F325E 0%,#28679B 100%);
+    .cf-bg-wrap{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 600px;
+      @media screen and (orientation : landscape)  {
+        min-height: 1000px;
+      }
+      .stars{
+        .star{
+          position: absolute;
+          animation: flash 3.5s infinite;
+          -webkit-animation: flash 3.5s infinite;;
+        }
+        .star1{
+          left: 74%;
+          top: 9%;
+          width: 12px;
+          animation-delay: 100ms;
+          -webkit-animation-delay: 100ms;
+        }
+        .star2{
+          left: 4%;
+          top: 19%;
+          width: 12px;
+          animation-delay: 300ms;
+          -webkit-animation-delay: 300ms;
+        }
+        .star3{
+          left: 82%;
+          top: 23%;
+          width: 12px;
+          animation-delay: 500ms;
+          -webkit-animation-delay: 500ms;
+        }
+        .star4{
+          left: 37%;
+          top: 43%;
+          width: 12px;
+          animation-delay: 700ms;
+          -webkit-animation-delay: 700ms;
+        }
+        .star5{
+          left: 22%;
+          top: 54%;
+          width: 15px;
+          animation-delay: 900ms;
+          -webkit-animation-delay: 900ms;
+        }
+        .star6{
+          left: -1%;
+          top: 75%;
+          width: 15px;
+          animation-delay: 1100ms;
+          -webkit-animation-delay: 1100ms;
+        }
+        .star7{
+          left: 86%;
+          top: 71%;
+          width: 15px;
+          animation-delay: 1300ms;
+          -webkit-animation-delay: 1300ms;
+        }
+        .star8{
+          left: 17%;
+          top: 11%;
+          width: 19px;
+          animation-delay: 1500ms;
+          -webkit-animation-delay: 1500ms;
+        }
+      }
+      .dots{
+        .dot{
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background-color: #c4c4c4;
+          position: absolute;
+        }
+        .dot1{
+          left: 14%;
+          top: 25%;
+        }
+        .dot2{
+          left: 89%;
+          top: 14%;
+        }
+        .dot3{
+          left: 35%;
+          top: 33%;
+        }
+        .dot4{
+          left: 13%;
+          top: 44%;
+        }
+        .dot5{
+          left: 79%;
+          top: 63%;
+        }
+        .dot6{
+          left: 58%;
+          top: 32%;
+        }
+        .dot7{
+          left: 3%;
+          top: 64%;
+        }
+        .dot8{
+          left: 20%;
+          top: 72%;
+        }
+        .dot9{
+          left: 88%;
+          top: 56%;
+        }
+        .dot10{
+          left: 48%;
+          top: 81%;
+        }
+        .dot11{
+          left: 75%;
+          top: 36%;
+        }
+      }
+      .xiaogou-text-wrap{
+
+        position: absolute;
+        position: absolute;
+        width: 100%;
+        top: 8%;
+        height: 10%;
+        max-height: 89px;
+        z-index: 100;
+        .display-flex;
+        .xiaogou-text{
+          background: url('../../../images/compute-xiaogou-text.png') 0px 0px no-repeat;
+          width: 56%;
+          height: 100%;
+          max-width: 294px;
+          max-height: 89px;
+          background-size: 100% 100%;
+          animation-delay: 500ms;
+          -webkit-animation-delay: 500ms;
+          animation: fadeInRight 1s ;
+          -webkit-animation: fadeInRight 1s ;
+
+        }
+      }
+      .rank-text{
+        background: url("../../../images/compute-rank-text.png") 0px 0px no-repeat;
+        position: absolute;
+        left: 3%;
+        top: 26%;
+        width: 26%;
+        height: 5%;
+        max-width: 180px;
+        max-height: 53px;
+        background-size: 100% 100%;
+        z-index: 100;
+      }
+      .xiaogou-ship-wrap{
+        position: absolute;
+        top: 22%;
+        width: 100%;
+        height: 25%;
+        @media all and (max-width: 600px) {
+          height: 23%;
+        }
+        @media all and (min-width: 601px) and (max-width: 1200px){
+          height: 29%;
+        }
+        max-height: 232px;
+        z-index: 100;
+        .display-flex;
+        animation: upDownShake 3s linear infinite;
+        -webkit-animation: upDownShake 3s linear infinite;
+        .xiaogou-ship{
+          background: url("../../../images/compute-xiaogou-ship.png") 0px 0px no-repeat;
+          width: 48%;
+          height: 100%;
+          max-width: 287px;
+          max-height: 232px;
+          background-size: 100% 100%;
+        }
+      }
+
+
+      .start-btn-wrap{
+        position: absolute;
+        width: 100% ;
+        height: 8%;
+        max-height: 65px;
+        top: 53%;
+        z-index: 100;
+        .display-flex;
+        .start-btn{
+          background: url("../../../images/compute-start-btn.png") 0px 0px no-repeat;
+          background-size: 100% 100%;
+          width: 29%;
+          max-width: 170px;
+          height: 100%;
+          border-radius: 30px;
+          display: block;
+          position: relative;
+          overflow: hidden;
+        }
+        .start-btn:before {
+          content: "";
+          position: absolute;
+          width: 100px;
+          height: 100%;
+          top: 10px;
+          overflow: hidden;
+          border-radius: 30px;
+          background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.24)), color-stop(100%, rgba(255, 255, 255, 0)));
+          background: -webkit-linear-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.4)), color-stop(100%, rgba(255, 255, 255, 0)));
+          animation: lightFlash 1s linear infinite;
+          -webkit-animation: lightFlash 1s linear infinite;
+        }
+
+      }
+      .rc-count{
+        position: absolute;
+        top: 65%;
+        z-index: 100;
+        width: 100%;
+        height: 20%;
+        max-height: 160px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        .bg-board{
+          background-color: rgba(99,247,249,0.2);
+          -webkit-border-radius: 10px;
+          border-radius: 10px;
+          width: 80%;
+          max-width: 550px;
+          height: 100%;
+          max-height: 160px;
+        }
+        .rc-wrap{
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          -webkit-justify-content: center;
+          align-items: center;
+          -webkit-align-items: center;
+          color: #fff;
+          margin-top: 2.5%;
+          text-decoration: none;
+          .status-wrap {
+            width: 65%;
+            text-align: center;
+            .status-outer-bar {
+              width: 100%;
+              background-color: #7e829a;
+              height: 15px;
+              border-radius: 25px;
+              position: relative;
+              .status-inner-bar {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: #54eff8;
+                height: 15px;
+                border-radius: 25px;
+              }
+            }
+          }
+          .right-info{
+            display: inline-flex;
+            display: -webkit-inline-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+            position: relative;
+            top: 5px;
+            margin-left: 8px;
+            font-size: 12px;
+            em{
+              color: #f6f906;
+              font-size: 16px;
+            }
+          }
+        }
+        .select-grade{
+          height: 40px;
+          width: 100%;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          margin-top: 5%;
+          .mbtn{
+            width: 190px;
+            line-height: 40px;
+            height: 100%;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            font-size: 16px;
+            color: #fff;
+          }
+          .mback{
+            width: 40px;
+            cursor: pointer;
+            background: url('./../../../images/compute-arrow.png') no-repeat;
+            background-size: 70% 70%;
+            background-position: center;
+          }
+          .mforward{
+            width: 40px;
+            cursor: pointer;
+            background: url('./../../../images/compute-arrow.png') no-repeat;
+            background-size: 70% 70%;
+            background-position: center;
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+          }
+        }
+      }
+      @keyframes upDownShake {
+        0%{
+          top: 22%;
+        }
+
+        50%{
+          top: 23%;
+          transition: top 2s ease 0s;
+        }
+        100%{
+          top: 22%;
+          transition: top 2s ease 0s;
+        }
+      }
+
+      @-webkit-keyframes upDownShake {
+        0%{
+          top: 22%;
+        }
+
+        50%{
+          top: 23%;
+          transition: top 2s ease 0s;
+        }
+        100%{
+          top: 22%;
+          transition: top 2s ease 0s;
+        }
+      }
+
+
+      @keyframes lightFlash {
+        from{
+          left: -100px;
+        }
+        to {
+          left: 150%;
+          transition: left 2s ease 0s;
+        }
+      }
+
+      @-webkit-keyframes lightFlash {
+        from{
+          left: -100px;
+        }
+        to {
+          left: 150%;
+          transition: left 2s ease 0s;
+        }
+      }
+
+    }
+
+  }
+
+  //班级显示框
+  .select-content-wrap{
+    background-color: #83dcf5;
+    padding: 10px 4px;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    .select-clazz-bar{
+      .display-flex-pure;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      height: 40px;
+      width: 100%;
+      overflow: hidden;
+      background: white;
+      border-radius: 5px;
+      font-size: 17px;
+      color: #1e446a;
+      .content-wrap{
+        .flex_1;
+        .display-flex-pure;
+        align-items: center;
+        -webkit-align-items: center;
+        padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        span{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
+          .flex_1;
+        }
+        img{width: 40px}
+      }
+      .arrow-right-wrap{
+        width: 40px;
+        text-align: center;
+        font-size: 26px;
+        color: #9BA0B0;
+      }
+    }
+  }
+
+  //排行榜入口
+  .compute-fighter-rank-wrap{
+    height: 50px;
+    background: #8671d9 url('./../../../images/compute_game_star_bg_2.png') center center no-repeat;
+    .compute-fighter-rank{
+      width: 100%;
+      height: 100%;
+      background: url('./../../../images/compute_fighter_bar_bg_2.png') 6% 50% no-repeat;
+      background-size: 66px;
+      .compute-fighter-rank-text{
+        .display-flex;
+        height: 100%;
+        font-size: 17px;
+        color: #fff;
+      }
+    }
+  }
+
+  //排行榜弹出显示框
+  .compute_fighter_rank_data{
+    background: #fe6a5a;
+    border-radius: 10px;
+    width: 90%;
+    height: 70%;
+    overflow: hidden;
+    .display-flex-pure;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+
+
+    -webkit-animation: superScaleIn 0.2s ease-in-out;
+    -webkit-animation-fill-mode:both;
+    animation: superScaleIn 0.2s ease-in-out;
+    animation-fill-mode:both;
+
+    /*斗士榜顶部背景*/
+    .bg_wrap_fighter{
+      background: #2f325e url("../../../images/compute_fighter_bg.png") 0 0 no-repeat;
+      background-size: 100%;
+      width: 100%;
+      height: 120px;
+      position: relative;
+      padding-bottom: 10px;
+      .bg_wrap_fighter_layer_1{
+        height: 100%;
+        width: 100%;
+        .display-flex;
+        align-items: flex-start;
+        -webkit-align-items: flex-start;
+        padding-top: 6px;
+
+        .top_bg_fighter_middle{
+          height: 80px;
+        }
+      }
+      .bg_wrap_fighter_layer_2{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        .display-flex-pure;
+        justify-content: space-between;
+        align-items: flex-end;
+        -webkit-justify-content: space-between;
+        -webkit-align-items: flex-end;
+        .top_bg_fighter_left{
+          height: 80px;
+        }
+        .top_bg_fighter_right{
+          height: 80px;
+        }
+      }
+    }
+
+    /*斗士榜表头*/
+    .fighter_rank_header{
+      display: flex;
+      display: -webkit-flex;
+      margin: 4px 10px;
+      padding: 0 16px;
+      .fighter_rank_header_left{width: 50%}
+      .fighter_rank_header_right{
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        display: -webkit-flex;
+        -webkit-justify-content: space-around;
+        .frh_right_div{
+          width: 25%;
+          .display-flex;
+          color: #fff;
+          text-align: center;
+          img{height: 36px}
+          font-size: 12px;
+          line-height: 13px;
+
+          @media screen and(min-width: 321px){
+            padding: 2px;
+            margin: 2px;
+          }
+
+          @media screen and(min-width: 360px){
+            font-size: 13px;
+            line-height: 14px;
+          }
+          @media screen and(min-width: 414px){
+            font-size: 14px;
+            line-height: 16px;
+          }
+        }
+        .frh_right_1{
+          background-color: #df3e3e;
+        }
+        .frh_right_2{
+          background-color: #469fe8;
+        }
+        .frh_right_3{
+          background-color: #e287d7;
+        }
+
+      }
+    }
+
+    /*斗士榜排行信息*/
+    .fighter_rank_list_box{
+      overflow: hidden;
+      border-radius:6px;
+      -webkit-border-radius:6px;
+      margin: 0 10px 30px 10px;
+      .item{padding: 4px 16px}
+      .fighter_rank_list{
+        .display-flex-pure;
+        border: none;
+        border-bottom-style: dashed;
+        border-bottom-width: 2px;
+        border-bottom-color: #ddd;
+
+        .fighter_rank_list_left{
+          width: 50%;
+          .display-flex-pure;
+          .fr_list_index{
+            width: 40px;
+            line-height: 44px;
+            font-size: 18px;
+            font-weight: bold;
+          }
+          .fr_list_info{
+            .display-flex-pure;
+            .flex_1;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: center;
+            -webkit-justify-content: center;
+
+            .fr_list_student_name{color: #666666}
+            .fr_list_clazz_name{font-size: 12px;color: #999999}
+          }
+        }
+        .fighter_rank_list_right{
+          width: 50%;
+          .display-flex-pure;
+          .fr_list_num{
+            width: 25%;
+            .display-flex;
+            color: #666666;
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
+      .fighter_rank_list_user{
+        color: #811701;
+        .fighter_rank_list_left{
+          .fr_list_info{
+            .fr_list_student_name{color: #811701}
+            .fr_list_clazz_name{color: #811701}
+          }
+        }
+        .fighter_rank_list_right{
+          .fr_list_num{color: #811701}
+        }
+
+      }
+      .fighter_rank_list:nth-child(1){
+        .fr_list_num{color: #fcb118!important;}
+        .fr_list_student_name{color: #fcb118!important;}
+      }
+      .fighter_rank_list:nth-child(1),.fighter_rank_list:nth-child(2),.fighter_rank_list:nth-child(3){
+        .fr_list_index{
+          color: red;
+        }
+      }
+      .fighter_rank_list:last-child{
+        border-bottom-width: 0!important;
+      }
+    }
+    @media screen  and (min-width: 768px)   {
+      width: 70%;
+    }
+    @media screen  and (min-width: 1024px)   {
+      width: 50%;
+    }
+
+  }
+
+}

@@ -1,0 +1,76 @@
+<div class="switcher" >
+    <div class="left-div-box">
+         <span class="switcherItem active">常用</span>
+    </div>
+    <div  class="right-div-box" ng-click="hide($event)">
+        <span class="tool-bar-item flex-2" >
+            <i class="icon ion-chevron-down"></i>
+        </span>
+    </div>
+</div>
+<div class="keyboardContent">
+    <div class="keyboardCommon">
+        <div class="left" style="overflow: hidden">
+            <div class="itemRow">
+                <div class="item"     ng-click="handleClickNum($event)" value="+">+</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="1">1</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="2">2</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="3">3</div>
+            </div>
+            <div class="itemRow">
+                <div class="item"     ng-click="handleClickNum($event)" value="-">-</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="4">4</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="5">5</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="6">6</div>
+            </div>
+            <div class="itemRow">
+                <div class="item"     ng-click="handleClickNum($event)" value="\times">×</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="7">7</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="8">8</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="9">9</div>
+            </div>
+            <div class="itemRow">
+                <div class="item"     ng-click="handleClickNum($event)" value="\div">÷</div>
+                <div class="item"     ng-click="handleClickNum($event)" value="=">=</div>
+                <div class="item num" ng-click="handleClickNum($event)" value="0">0</div>
+                <div class="item "    ng-click="handleClickNum($event)" value="\frac{}{}">
+                    <div style="position: relative;display: flex;display: -webkit-flex">
+                        <img src="images/fraction1.png" width="20px"/>
+                    </div>
+                    <span class="mathMark">&nbsp;(分数)</span>
+                    <img src="images/go-top.png" class="show-top" ng-if="showFracTop"/>
+                    <img src="images/go-bottom.png" class="show-bottom" ng-if="showFracBottom"/>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)" style="color: #fe6948;">
+                <img src="images/del.png" width="35px" alt=""/>
+            </div>
+            <div class="item item-simplify" style="flex:1;-webkit-flex:1;font-size: 16px;color: #fe6948" ng-click="handleSimplify($event)">
+                <span style="display: block;color:white;">约分</span>
+            </div>
+            <div class="item greenItem" style="flex:1;-webkit-flex:2" ng-click="enter($event)" style="color: #fe6948;">
+                <img src="images/newline.png" width="35px" alt=""/>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="switcher tool-bar" >
+    <span class="tool-bar-item flex-4"
+          ng-click="doCtrl.currentSmallQ.isFirstOfAllQ?'':doCtrl.previousQuestion()"
+          ng-class="doCtrl.currentSmallQ.isFirstOfAllQ?'un-click':''">
+        <i class="icon ion-arrow-left-b" style="font-size: 25px;"></i>&nbsp;
+         <span ng-bind="doCtrl.redoFlag == 'false'?'上一题':'上一错题'" style="font-size: 17px;"></span>
+    </span>
+    <span class="tool-bar-item flex-4"
+          ng-click="doCtrl.currentSmallQ.isLastOfAllQ?doCtrl.backSelectQ():doCtrl.goNextQuestion()">
+
+        <span ng-if="!doCtrl.currentSmallQ.isLastOfAllQ" ng-bind="doCtrl.redoFlag == 'false'?'下一题':'下一错题'" style="font-size: 17px;"></span>
+        <span ng-if="doCtrl.currentSmallQ.isLastOfAllQ" ng-bind="'总览.提交'" style="font-size: 17px;"></span>
+        &nbsp;<i  class="icon ion-arrow-right-b" style="font-size: 25px;"></i>
+    </span>
+</div>

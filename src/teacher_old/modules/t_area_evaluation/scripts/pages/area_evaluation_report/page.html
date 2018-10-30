@@ -1,0 +1,115 @@
+<ion-view title="布置作业" hide-nav-bar="false" class="area_evaluation_report">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">测评报告</h1>
+    </ion-header-bar>
+    <ion-content padding="false" class="area_content">
+        <div class="teacher-intro">
+            <p>{{ctrl.info.a}}老师：</p>
+            <p style="text-indent: 2em">您带领的“{{ctrl.info.d}}”参加了本次大数据监测活动，走在了智能教学的前列，为您点赞！以下是您的专属测评报告！</p>
+            <p class="tip">测评报告以学生<span>首次</span>提交的成绩为准</p>
+            <img ng-src="{{$root.loadImg('area_evaluation_report/area-zhang.png')}}" alt="">
+        </div>
+        <div class="info-box">
+            <div class="info-head">{{ctrl.info.d}}（{{ctrl.info.b}}年级{{ctrl.info.c}}班）</div>
+            <div class="info-item item-rank">
+                <div class="info-item-head">
+                    <span>测评排名</span>
+                </div>
+                <div class="info-item-body">
+                    <p class="rank-notice">同年级对比，测评结果如下：</p>
+                    <div class="item-rank-box">
+                      <div class="rank-item rank-{{$index+1}}" ng-repeat="v in ctrl.allReportInfo.areaAssessmentStatisticList.sortList">
+                        <img ng-src="{{$root.loadImg('area_evaluation_report/crown-'+v.headType+'.png')}}" alt="" class="rank-head">
+                        <div class="rank-middle {{v.type>=1&&v.type<=3?'has-mark':''}}">
+                          <span>{{v.rankType}}</span>
+                          <span class="mark" ng-if="v.type>=1&&v.type<=3">({{ctrl.info.e[v.type-1]}})</span>
+                          <span>第<span>{{v.sortClass}}</span>名</span>
+                        </div>
+                        <div class="rank-foot">共{{v.totalClass}}个班级</div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-item item-grade">
+                <div class="info-item-head">
+                    <span>测评成绩</span>
+                </div>
+                <div class="info-item-body">
+                    <p>{{ctrl.allReportInfo.areaAssessmentStatisticList.dateD}}时间内：</p>
+                    <p>提交测评试卷人数：<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.submitClassStudent}}</span>/{{ctrl.allReportInfo.areaAssessmentStatisticList.classTotal}}人</p>
+                    <p>平均答题时长：<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.classAverageTimeD}}</span>，超过<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.overClassWasteTime*100}}%</span>的班级</p>
+                    <p>平均分：<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.averageClassScore}}</span>，超过<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.overClassAverage*100}}%</span>的班级</p>
+                    <p>成绩最优秀学生：<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.excellentStudent}}</span></p>
+                    <p>最积极学生：<span>{{ctrl.allReportInfo.areaAssessmentStatisticList.activityStudent}}</span></p>
+                </div>
+            </div>
+            <div class="info-item item-student">
+                <div class="info-item-head">
+                    <span>学生分布</span>
+                </div>
+                <div class="info-item-body">
+                    <div class="area-table">
+                        <div class="table-item-head">
+                            <span>成绩正确率%</span>
+                            <span>首次做</span>
+                            <span>改错后</span>
+                        </div>
+                        <div class="table-item-body">
+                            <div class="table-item" ng-repeat="v in ctrl.scoreRankList">
+                                <span>{{v.label}}</span>
+                                <span>{{v.firstNum}}人</span>
+                                <span>{{v.latestNum}}人</span>
+                            </div>
+                           <!-- <div class="table-item">
+                                <span>100</span>
+                                <span>0人</span>
+                                <span>1人</span>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-item item-ques">
+                <div class="info-item-head">
+                    <span>题型掌握情况</span>
+                </div>
+                <div class="info-item-body">
+                    <div class="area-table">
+                        <div class="table-item-head">
+                            <span>题型</span>
+                            <span>班级平均分</span>
+                            <span>{{ctrl.allReportInfo.areaAssessmentStatisticList.sortList[0].rankType}}平均分</span>
+                        </div>
+                        <div class="table-item-body">
+                            <div class="table-item" ng-repeat="v in ctrl.allReportInfo.questionAvgScoreStatList">
+                                <span>{{v.questionTypeName}}（{{v.worthScore}}分）</span>
+                                <span>{{v.groupAvgScore}}</span>
+                                <span>{{v.areaAvgScore}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-item item-know">
+                <div class="info-item-head">
+                    <span>知识点掌握情况</span>
+                </div>
+                <div class="info-item-body">
+                    <div class="know-item" ng-repeat="v in ctrl.allReportInfo.knowledgeMasterRateList">
+                        <div class="know-text"><span ng-click="ctrl.showAll($event)">{{v.knowledgeContent}}</span></div>
+                        <div class="progress-outer">
+                            <div class="progress-inner" style="width: {{v.groupMasterRate}}"></div>
+                            <div class="progress-text">{{v.groupMasterRate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="btn-box">
+        <div class="share-btn" ng-click="ctrl.showShare()">分享</div>
+    </div>
+</ion-view>

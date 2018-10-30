@@ -1,0 +1,81 @@
+.sprint_goods_pay_result{
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  .myHeader {
+    background: #52b6f1 !important;
+
+    .title ,.button i{
+      color:#fff !important;
+    }
+  }
+
+  .payResult{
+    top: 44px !important;
+    //background: #52b6f1;
+    .background_change(#7bc4ef, #a5a1e4);
+    color: #fff;
+    height:100%;
+
+    .result{
+      width: 76%;
+      margin-left: 12%;
+      margin-top: 12%;
+      text-align: center;
+    }
+
+    .text{
+      margin-top: 5px;
+      font-size:25px;
+    }
+
+    .common-pay-btn{
+      width: 120px;
+      @media screen and(min-width: 768px){
+        width:150px;
+      }
+  }
+
+    .successBtn{
+      margin-top: 15%;
+      padding: 20px 0;
+      background-color: #ff7f50;
+      border-radius: 20px;
+      font-weight: 800;
+      img{
+        .common-pay-btn;
+      }
+    }
+
+    p{
+      font-size: 20px;
+      margin-top:5px;
+    }
+
+    .failBtn{
+      margin-top: 15%;
+      img{
+        .common-pay-btn;
+      }
+    }
+  }
+
+
+  .check{
+    top: 44px !important;
+    width: 100%;
+    height:100%;
+    margin-top:40%;
+    font-size: 20px;
+    text-align: center;
+
+
+    u{
+      color:#0a9dc7;
+    }
+
+  }
+}

@@ -1,0 +1,104 @@
+<ion-view  hide-nav-bar="true" class = "promote_home">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button buttons  button-clear header-item" ng-click="back()" style="padding: 0 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+        </div>
+        <h1 class="title">代理专页</h1>
+        <span class="protocol" ng-click="toggleProtocolShowFlag()">代理协议</span>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header">
+        <div class = "promote_btn" ng-show="true">
+            <div class = "btn" ng-click="toggleQrShowFlag()">
+                <img ng-src="{{$root.loadImg('wxqrCode.png')}}">
+                <div class="introduce">
+                    <span>推广二维码</span>
+                   <!-- <p class="extend_introduce">（点击获取全屏二维码）</p>-->
+                </div>
+                <i class="icon ion-chevron-right spaces"></i>
+            </div>
+            <div class = "btn" ui-sref="promote_assets">
+                <img ng-src="{{$root.loadImg('redPacket.png')}}">
+                <div class="introduce">
+                    <span> 我的资产 &nbsp;</span>
+                  <!--  <p class="extend_introduce">（直接/间接推广收入）</p>-->
+                </div>
+                <i class="icon ion-chevron-right spaces"></i>
+            </div>
+            <div class = "btn" ui-sref="promote_query">
+                <img  ng-src="{{$root.loadImg('query.png')}}">
+                <div class="introduce">
+                    <span>查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <!--<p class="extend_introduce">（直接/间接推广情况）</p>-->
+                </div>
+                <i class="icon ion-chevron-right spaces"></i>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>
+
+<div class="promote_backdrop " ng-if="isShowPtotocolFlag" ng-click="closeProtocolBack()">
+    <ion-content class="promote_protocol">
+        <div >
+            <!--  <i class="icon ion-close"  style="position: absolute; right: 5px; top:5px"
+                 ng-click="closeProtocolBack()"></i>-->
+            <h4 style="text-align: center;">申请推广协议</h4>
+            <div>
+                <div ng-repeat="text in protocolText">
+                    <p class="textHead">{{text.clauseTitle}}</p>
+                    <p ng-repeat="clause in text.clauses">&nbsp;&nbsp;&nbsp;&nbsp;{{clause}}</p>
+
+                </div>
+            </div>
+            <div class="protocolAndBtn">
+                <p  ng-click="toggleReadBtn($event)" style="padding: 10px 0">
+                    <span style="padding:10px 5px">
+                        <i ng-class="!!btnReadProtocol?
+                                    'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'">
+                        </i>
+                    </span>
+                    <span>我仔细阅读了以上协议，并同意以上协议内容</span>
+                </p>
+                <p><button class="applyBtn"
+                           ng-class="btnReadProtocol==true? '': 'promote_btn_gray'"
+                           ng-if="!agencyFlag.isAgency"
+                           ng-click="applyPromoteAgency($event)">同意协议</button></p>
+                <p><button class="applyBtn"
+                           ng-if="agencyFlag.isAgency"
+                           ng-click="toggleProtocolShowFlag($event)">关闭协议</button></p>
+            </div>
+
+        </div>
+    </ion-content>
+
+</div>
+
+<div class="promote_backdrop " ng-if="isShowQrCodeFlag" ng-click="toggleQrShowFlag()">
+    <div class="promote_qr">
+      <!--  <i class="icon ion-close"  style="position: absolute; right: 5px; top:5px"
+           ng-click="toggleQrShowFlag()"></i>-->
+
+        <div class="item item-avatar" style="border-style:none;width: 80%;">
+            <img ng-src={{user.gender=='0'?$root.loadImg('person/parent-f.png'):$root.loadImg('person/parent-m.png')}}>
+            <span class="userName">{{user.name}}</span>
+            <p>{{user.loginName.toUpperCase()}}</p>
+        </div>
+
+        <div style="width: 100%;height: 100%; text-align: center">
+            <img ng-src="{{qrCodeImg}}">
+        </div>
+
+        <div class="qrCodeShare" ng-if="isShowInvite()">
+            <div class = "btn" ng-click="shareToWeiXin($event)">
+                <img ng-src="{{$root.loadImg('wechat.ico')}}">
+                <span>分享到微信</span>
+                <i class="icon ion-chevron-right spaces"></i>
+            </div>
+            <div class = "btn" ng-click="shareToQQ($event)">
+                <img  ng-src="{{$root.loadImg('qq.ico')}}">
+                <span> 分享到QQ</span>
+                <i class="icon ion-chevron-right spaces"></i>
+            </div>
+        </div>
+    </div>
+</div>

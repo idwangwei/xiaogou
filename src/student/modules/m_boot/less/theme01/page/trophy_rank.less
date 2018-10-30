@@ -1,0 +1,253 @@
+@import "../include/_mixins";
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header.tr_content_middle{
+  top:220px!important;
+}
+/*.platform-ios{
+  .trophy_rank{
+    ion-content{
+      top:164px!important;
+    }
+  }
+}*/
+
+.trophy_rank{
+  .trophy-clazz-select{
+    top:164px!important;
+  }
+
+  .trophy-padding-top{
+    padding-top:164px;
+  }
+
+  ion-content{
+    bottom: 0px!important;
+  }
+  .item{
+    border: none!important;
+  }
+  .tip-div-wrap{
+   /* padding-bottom: 10px;*/
+  }
+  .tr_content_top{
+    display: flex;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    padding-top: 16px;
+   /* margin-top: 44px;*/
+    background-color: #F57E56;
+    padding-bottom: 8px;
+  }
+
+  .tr_cm_cell_seq_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-justify-content: flex-end;
+    img{width: 52px};
+    p{color: white};
+    width: 35px;
+    margin-left: -3px;
+  }
+
+  .tr_cm_cell_seq{
+    width: 35px;
+    text-align: center;
+    margin-left: -3px;
+  }
+  .tr_cm_cell_name{
+    width: 80px;
+    text-align: center;
+    display: inline-block;
+  }
+  .tr_ct_cell{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    display: -webkit-flex;
+    -webkit-flex: 1;
+    -webkit-flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-justify-content: flex-end;
+    img{width: 52px};
+    p{color: white};
+  }
+
+  .select-content {
+    margin: 10px;
+    color: #28a54c;
+    background: #c0e9f8;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px #ccc;
+    .select-options {
+      width: 40%;
+      background: none;
+      border: none;
+      float: right
+    }
+  }
+
+  .tr_content_middle{
+    top: 205px;
+    /*background-color: #F8F8F5;*/
+    .tr_cm_warp{
+      display: flex;
+      justify-content: space-between;
+      display: -webkit-flex;
+      -webkit-justify-content: space-between;
+      .tr_cm_cell{
+        text-align: center;
+        display: inline-block;
+        flex: 1;
+        -webkit-flex: 1;
+      }
+    }
+    .tr_cm_warp_me{
+      color:red;
+    }
+    .tr_cm_warp:nth-child(odd){
+      background-color: #EDEEF1;
+    }
+  }
+
+  /*左侧选择班级start */
+  .clazz_select {
+    /*top: 144px;*/
+    border-left-width: 6px;
+    background: #6997eb;
+  }
+
+  .clazz-item {
+    background: white;
+    border-radius: 7px;
+    width: 99%;
+    padding: 15px 0;
+    min-height: 158px;
+    text-align: center;
+  }
+
+  .clazz-name {
+    font-size: 17px;
+    margin-top:10px;
+  }
+
+  .clazz_select_block {
+    padding: 6px;
+  }
+
+  .clazz_select_img {
+    margin-top: 14px;
+    width: 105px;
+  }
+  /*左侧选择班级end */
+
+  .user-header-wrap{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+  }
+  /*选择班级bar start*/
+  .top-wrap{
+    padding-top: 10px;
+    /*padding-bottom: 10px;*/
+    .select-content-wrap{
+     /* margin-bottom: 10px;*/
+    }
+    .select-bar-wrap{
+      /*margin-bottom: 10px;*/
+      /*margin: 0px -10px 10px -10px;*/
+      .select-clazz-bar{
+        background: #FFF;
+        border-radius: 7px;
+        margin: 4px;
+        height: 36px;
+        line-height: 36px;
+        color: #6dace4;
+        position: relative;
+        border: 1px solid #ddd;
+        box-shadow: 3px 2px 5px #ddd;
+        display: flex;
+        justify-content: space-between;
+        display: -webkit-flex;
+        -webkit-justify-content: space-between;
+      }
+
+    }
+    .select-bar-right{
+      background: #c0e9f8!important;
+    }
+
+    .select-bar{
+      background: #FFFFFF;
+      border-radius: 10px;
+      margin: 0px 5px 10px 5px;
+      height: 40px;
+      line-height: 17px;
+      color: black;
+      position: relative;
+      border: 1px solid #ddd;
+      box-shadow: 3px 2px 3px #ddd;
+      padding-right: 20px;
+      text-align: center;
+      i{
+        color: #6dace4;
+        margin-left:10px;
+        font-size: 28px;
+        vertical-align: text-top;
+      }
+      .first-title{
+        margin-top: 2px;
+        display: block;
+        .overflow-ellipsis;
+      }
+      .second-title{
+        display: block;
+        .overflow-ellipsis;
+      }
+      .position-right{
+        position: absolute;
+        top: 9px;
+        right: 7px;
+        font-size: 20px;
+      }
+
+      .ui-select {
+        text-align: center;
+        height: 38px;
+        line-height: 38px;
+        .select-time-icon{
+          vertical-align: sub;
+          font-size: 20px;
+          color: black;
+          margin-left: 10px;
+        }
+        select {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          opacity: 0;
+          border: none;
+          background: #c0e9f8;
+          height: 38px;
+          line-height: 38px;
+          width: 100%;
+          border-radius: 10px;
+        }
+      }
+    }
+
+  }
+  /*选择班级bar end*/
+
+}
+
+
+
+

@@ -1,0 +1,153 @@
+@import "../include/_mixins";
+
+.game_star_rank_file{
+  background: #fdea64;
+  /*顶部背景图片*/
+  .bg-top-wrap{
+    position: absolute;
+    background: url("../../../../../modules/m_global/sImages/msg/msg_game_star_bg.png") 50% 100% no-repeat;
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    .bg_top_icon{
+      display: block;
+    }
+  }
+
+  /*班级*/
+  .top_clazz_wrap{
+    .select-content-wrap{
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      height: 44px;
+      padding: 5px 10px;
+      .select-bar-wrap{
+        height: 100%;
+        width: 100%;
+        background: white;
+        border-radius: 5px;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        padding: 0 10px;
+        color: #454545;
+        span{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  /*星星排行信息*/
+  .game_star_content{
+    .user_game_star{
+      .display-flex-pure;
+      margin: 10px;
+      background: white;
+      color: #ec3c2d;
+      border-radius: 6px;
+      -webkit-border-radius:6px;
+      height: 60px;
+      padding: 0 16px;
+      .game_star_content_middle{
+        .display-flex-pure;
+        font-size: 16px;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        justify-content: center;
+        -webkit-justify-content: center;
+        color: #811701;
+      }
+    }
+    .game_star_list{
+      overflow: hidden;
+      border-radius:6px;
+      -webkit-border-radius:6px;
+      margin: 10px;
+      .game_star_content_list{
+        .display-flex-pure;
+        border: none;
+        border-bottom-style: dashed;
+        border-bottom-width: 2px;
+        border-bottom-color: #ddd;
+        .gs_content_list_index{
+          width: 40px;
+          line-height: 44px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .gs_content_list_info{
+          .display-flex-pure;
+          .flex_1;
+        }
+      }
+
+    }
+    .game_star_content_list:nth-child(1),.game_star_content_list:nth-child(2),.game_star_content_list:nth-child(3){
+      .gs_content_list_index{
+        color: red;
+      }
+    }
+
+    .game_star_content_left{}
+    .game_star_content_middle{
+      .flex_1;
+      .gs_cm_clazz_name{font-size: 12px;color: #999999}
+    }
+    .game_star_content_right{
+      .display-flex;
+      justify-content: flex-start;
+      -webkit-justify-content: flex-start;
+      width: 80px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  /*左侧选择班级start */
+  .clazz_select {
+    border-left-width: 6px;
+    background: #6997eb;
+  }
+
+  .clazz-item {
+    background: white;
+    border-radius: 7px;
+    width: 99%;
+    padding: 15px 0;
+    min-height: 158px;
+    text-align: center;
+  }
+
+  .clazz-name {
+    font-size: 17px;
+    margin-top:10px;
+  }
+
+  .clazz_select_block {
+    padding: 6px;
+  }
+
+  .clazz_select_img {
+    margin-top: 14px;
+    width: 105px;
+  }
+  /*左侧选择班级end */
+
+  .has-tabs{
+    bottom:0px;
+  }
+}
+
+
+
+

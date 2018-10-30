@@ -1,0 +1,9 @@
+<label>大题名称</label>
+<input type='text' placeholder='(如:填空题)' ng-model='ctrl.editBigQData.title' style="border: 1px solid #999">
+<label>设置题号</label>
+<br/>
+<select ng-model="ctrl.editBigQData.newIndex"
+        ng-options ="item.seqNum as item.textNum for item in ctrl.editBigQList"
+        style="width: 100%">
+</select>
+<br/>

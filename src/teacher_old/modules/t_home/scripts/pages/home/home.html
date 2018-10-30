@@ -1,0 +1,217 @@
+<div class="home">
+    <ion-tabs class="tabs-stable "
+              custom="bottom">
+
+        <ion-tab title="教学" ng-click="ctrl.bottomTabClick()" >
+            <div>
+                <task-top-bar ng-if="!$root.isAdmin"></task-top-bar>
+                <ion-tabs class="tabs-top " custom="top">
+                    <ion-tab title="作业"   ng-click="ctrl.topTabClick('home.work_list')">
+                        <ion-nav-view animation="slide-in-up" name="work_list"></ion-nav-view>
+                    </ion-tab>
+                    <ion-tab title="游戏"  ng-click="ctrl.topTabClick('home.pub_game_list')">
+                        <ion-nav-view animation="slide-in-up" name="pub_game_list"></ion-nav-view>
+                    </ion-tab>
+                    <ion-tab title="速算" ng-click="ctrl.topTabClick('home.compute')">
+                        <ion-nav-view animation="slide-in-up" name="compute"></ion-nav-view>
+                    </ion-tab>
+                    <ion-tab title="诊断提分" ng-click="ctrl.topTabClick('home.diagnose')">
+                        <ion-nav-view animation="slide-in-up" name="diagnose"></ion-nav-view>
+                    </ion-tab>
+                </ion-tabs>
+            </div>
+        </ion-tab>
+        <ion-tab title="班级" ng-click="ctrl.gotoPageClazz()">
+            <ion-nav-view name="clazz_manage"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="我" ng-click="ctrl.gotoPageMe()">
+            <ion-nav-view name="me"></ion-nav-view>
+        </ion-tab>
+
+        <!--<a class="tab-item">-->
+            <!--<i class="icon"></i>-->
+            <!--<span class="tab-title ng-binding">护眼</span>-->
+        <!--</a>-->
+    </ion-tabs>
+
+    <div class="work-backdrop "  ng-if="$root.showWinterBroadcast" ng-click="ctrl.hideWinterBroadcast($event)">
+        <div class="backdrop-content-03">
+            <div class="broadcast-content-box">
+                <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-bg.png')}}">
+                <div class="broadcast-content">
+
+                    <div class="scroll-block" ng-if="$root.winterBroadcastLoading">
+                        <span>正在获取数据...</span>
+                    </div>
+                    <div class="scroll-block" ng-if="!$root.winterBroadcastLoading && $root.winterBroadcastData === 'error'">
+                        <span>获取数据失败，请关闭重试...</span>
+                    </div>
+
+                    <marquee class="scroll-block" direction=up scrollAmount=2 style="height: 100%"
+                             ng-if="!ctrl.isIos && !$root.winterBroadcastLoading"
+                             onclick="this.flag=!this.flag;this.flag?this.stop():this.start()">
+                        <div ng-repeat="item in $root.winterBroadcastData" class="broadcast-content-item">
+                            <broadcast-msg-item msg-item="item" line-count="{{ctrl.msgItemLine}}"></broadcast-msg-item>
+                        </div>
+                    </marquee>
+                    <div class="scroll-block" ng-if="ctrl.isIos && !$root.winterBroadcastLoading" style="height: 100%"
+                         allere-marquee ng-click="pauseOrResumeMarquee()">
+
+                        <div ng-repeat="item in $root.winterBroadcastData"  class="broadcast-content-item">
+                            <broadcast-msg-item msg-item="item" line-count="{{ctrl.msgItemLine}}"></broadcast-msg-item>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--作业列表显示的作业奖杯排行榜显示框-->
+    <div class="work-backdrop" ng-if="$root.isShowTrophyRank" ng-click="ctrl.closeTrophyRankData($event)">
+        <div class="trophy_rank_data">
+            <div class="top_bg_wrap bg_wrap_trophy">
+                <div class="bg_wrap_star_2">
+                    <img ng-src="{{$root.loadImg('msg/t_msg_trophy_bg_2.png')}}" alt="">
+                </div>
+                <img ng-src="{{$root.loadImg('msg/msg_trophy_icon.png')}}" alt="" class="top_bg_icon">
+            </div>
+            <div class="trophy_rank_header">
+                <div class="trophy_rank_header_left">
+                    <div class="time_bar_wrap">
+                        <div class="select-bar">
+                            <div class="ui-select">
+                                <span ng-bind="ctrl.termData.nowTerm"></span>
+                                <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                <select ng-model="ctrl.termData.nowTerm"
+                                        ng-options="item for item in ctrl.termData.terms"
+                                        ng-change="ctrl.getTrophyRankData()" class="select-options">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trophy_rank_header_right">
+                    <div class="trh_right_div trh_right_1"><img ng-src="{{$root.loadImg('msg/msg_cup_gold.png')}}" alt=""></div>
+                    <div class="trh_right_div trh_right_2"><img ng-src="{{$root.loadImg('msg/msg_cup_silver.png')}}" alt=""></div>
+                    <div class="trh_right_div trh_right_3"><img ng-src="{{$root.loadImg('msg/msg_cup_copper.png')}}" alt=""></div>
+                    <div class="trh_right_div trh_right_4"><span>作业<br>总数</span></div>
+                </div>
+            </div>
+
+            <!--奖杯排行列表-->
+            <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+                <div ng-if="!ctrl.selectedClazz || !ctrl.selectedClazz.id" style="padding: 20px">您还没有申请学校老师的班级!</div>
+                <div class="trophy_rank_list_box" ng-if="ctrl.selectedClazz && ctrl.selectedClazz.id">
+                    <div ng-if="!$root.isTrophyLoading && !$root.trophyRankData.length" class="rank_list_content_none">
+                        该班暂时没有作业奖杯排行信息
+                    </div>
+                    <div ng-if="$root.isTrophyLoading && !$root.trophyRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+                    <!--具体列表信息-->
+                    <div class="item trophy_rank_list" ng-repeat="item in $root.trophyRankData"
+                         ng-class="{'trophy_rank_list_user':item.studentId == ctrl.userId}">
+
+                        <!--左边学生信息-->
+                        <div class="trophy_rank_list_left">
+                            <!--排名-->
+                            <div class="tr_list_index">
+                                <span ng-bind="item.topSeq"> </span>
+                            </div>
+
+                            <!--用户信息-->
+                            <div class="tr_list_info">
+                                <div class="tr_list_student_name">{{item.studentName}}</div>
+                            </div>
+                        </div>
+
+                        <!--右侧数量信息-->
+                        <div class="trophy_rank_list_right">
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.goldenCupNumber"></div>
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.silverCupNumber"></div>
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.copperCupNumber"></div>
+                            <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.totalCupNumber"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+    </div>
+
+    <!--诊断简介-->
+    <div class="diagnose-backdrop diagnose-popup-fade"  ng-if="$root.showDiagnoseAdFlag">
+        <div class="backdrop-content">
+            <i class="icon ion-close" ng-click="ctrl.hideDiagnoseAd()"></i>
+            <div class="ad-title">
+                <div class="ad-light">
+                    <img ng-src="{{$root.loadImg('diagnose/diagnoseForTeacherLight.png')}}" >
+                </div>
+                <div class="ad-title-desc">
+                    <div class="ad-title-desc-content">
+                        <p style="font-weight: bold">学生考点未掌握、不牢固，怎么办？</p>
+                    </div>
+                </div>
+            </div>
+            <div class="girl-trainer-wrap">
+                <div class="girl-talk-text-wrap">
+                    <div class="girl-talk-text-content">
+                        <p>可用“诊断提分”功能去诊断考点漏洞，针对性强化，达到举一反三。</p>
+                    </div>
+                </div>
+                <div class="girl-wrap-01">
+                    <img ng-src="{{$root.loadImg('diagnose/girl-trainer-01.png')}}" >
+                </div>
+            </div>
+            <div class="boy-trainer-wrap">
+                <div class="boy-wrap-01">
+                    <img ng-src="{{$root.loadImg('diagnose/boy-trainer-01.png')}}" >
+                </div>
+                <div class="boy-talk-text-wrap">
+                    <div class="boy-talk-text-content">
+                        <p>学生加入”学霸培养计划“，可以免费使用“诊断提分”功能。</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ad-bottom" ng-click="ctrl.closeDiagnoseAdAndShowInvite()">
+                <img class="ad-bottom-content" ng-src="{{$root.loadImg('workStuList/how_btn.png')}}" >
+            </div>
+        </div>
+
+    </div>
+
+    <!--竞赛广告-->
+    <competition-add></competition-add>
+
+    <!--游戏列表显示的游戏星星排行榜显示框-->
+    <game-star-rank ng-if="$root.isShowGameStarRank"></game-star-rank>
+
+    <!--速算列表显示的速算斗士排行榜显示框-->
+    <compute-fighter-rank></compute-fighter-rank>
+
+    <teaching-guide ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.isGuideAnimationEnd || $root.oralCalculationGuidFlag"
+            current-show-ele="currentShowEle"
+            tip-content={{showTipContent}}
+            current-step= "1"
+            get-high-light-ele="ctrl.getHighLightEle()">
+    </teaching-guide>
+
+    <!-- 假期作业广告 注释掉后不要删除, 每个假期都会使用 -->
+    <holiday-homework-ad show-flag="$root.isShowHolidayHomeworkAdFlag"></holiday-homework-ad>
+
+    <!-- 口算广告 -->
+    <oral-calculation-guide show-type="0" guide-callback="ctrl.showOralPublishGuide()"></oral-calculation-guide>
+
+    <!-- 领取智慧币奖励 -->
+    <get-teacher-reward all-award-flag = '1'></get-teacher-reward>
+
+    <recommend-training from-url="home.diagnose"></recommend-training>
+    <teacher-personal-qb-ad></teacher-personal-qb-ad>
+    <!-- 大数据监测广告 -->
+    <monitor-ad ng-if="$root.showMonitorAd"></monitor-ad>
+</div>
+
+
+
+

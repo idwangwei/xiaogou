@@ -1,0 +1,25 @@
+<ion-modal-view hide-nav-bar="true" class="teaching-index-img-upload">
+    <ion-header-bar align-title="center" style="background: #d2f7ef!important;" class="bar-balanced">
+        <div class="button back-button buttons  button-clear header-item common-back-btn" ng-click="ctrl.hideModal(true)">
+            <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+        </div>
+        <h1 class="title" style="color:#4a6b9d;font-weight: bold">添加试题图片</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div style="padding: 1rem;"
+             class="display-flex com_justify_content_space">
+
+            <label for="pic1" style="position: relative;padding: 0.5rem 1rem;background-color: #00b3ee;color: #fff;font-weight: bold;">
+                <input style="position: absolute;opacity: 0;width: 100%;height: 100%;top: 0;left: 0;"
+                       type="file" name="pic1" id="pic1" onChange="angular.element(this).scope().ctrl.preview(this)"
+                       accept="image/x-png, image/jpg, image/jpeg, image/gif">
+                <span style="pointer-events: none">选择图片</span>
+            </label>
+            <span class="overflow-ellipsis flex_1" ng-bind="ctrl.selectPicName"></span>
+            <span style="padding: 0.5rem;background-color: #00b3ee;color: #fff;font-weight: bold;"
+                  ng-click="ctrl.uploadQuestionImg()">添加</span>
+        </div>
+        <img ng-src="{{ctrl.selectQuestionImgSrc}}" ng-show="!!ctrl.selectQuestionImgSrc" alt="" style="width: 100%">
+    </ion-content>
+</ion-modal-view>

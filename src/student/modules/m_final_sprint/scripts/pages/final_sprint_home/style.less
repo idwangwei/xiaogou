@@ -1,0 +1,370 @@
+.platform-ios.platform-cordova:not(.fullscreen){
+  #final-sprint-home{
+    .item-pay{
+      top:30px;
+    }
+    .home-subtitle{
+      margin-top: 64px;
+    }
+    .home-content{
+      top:142px !important;
+    }
+    .home-bar{
+      .item-back{
+        margin-top: 25px;
+      }
+    }
+  }
+}
+#final-sprint-home{
+  @main-color: #5bccf7;//定义字体主色
+  @animate-time:2s;
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .home-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      //height: 30px;
+      line-height: 54px;
+      font-weight: bold;
+    }
+    .item-back{
+      margin-top: 5px;
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+  }
+  .item-pay{
+    position: absolute;
+    right:5px;
+    top:10px;
+    width: 72px;
+    z-index: 20000;
+  }
+  .home-subtitle{
+    .display-flex(row,center,flex-start);
+    height: 30px;
+    width: 100%;
+    margin-top: 44px;
+    color: #fff;
+    font-size: 14px;
+    opacity: .8;
+  }
+  .home-tab{
+    .display-flex(row,space-between,flex-end);
+    height: 40px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    position: relative;
+    .home-tab-item{
+      .display-flex(row,center,center);
+      width: 23.8%;
+      height: 38px;
+      font-size: 16px;
+      background: #cdcdcd;
+      color: #9c9c9c;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      &.visited{
+        background-color: #f5df41;
+        color: #ac8d8a;
+      }
+      &.active{
+        background-color: #f5df41 !important;
+        color: #dc7a52 !important;
+        height: 47px;
+        line-height: 47px;
+      }
+    }
+    .home-tab-free{
+      position: absolute;
+      left: 12px;
+      top: -20px;
+      width: 72px;
+      pointer-events: none;
+      &.active{
+        animation:move @animate-time;
+        -webkit-animation:move @animate-time;
+      }
+      @deg:20deg;
+      @keyframes move {
+        0% { transform: rotate(0) }
+        20% { transform: rotate(-@deg) }
+        40% { transform: rotate(@deg) }
+        60% { transform: rotate(-@deg) }
+        80% { transform: rotate(@deg) }
+        100% { transform: rotate(0) }
+      }
+    }
+  }
+  .home-inner-box{
+    max-width: 360px;
+    margin: 0 auto;
+    position: relative;
+    .home-bg-1,.home-bg-2{
+      position: absolute;
+      width: 40px;
+    }
+    .home-bg-1{
+      top: 424px;
+      left: -25px;
+    }
+    .home-bg-2{
+      top:450px;
+      right:0;
+    }
+  }
+  .home-content{
+    top:122px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #b4f167;
+    .content-time{
+      .display-flex(row,center,center);
+      color: #56a248;
+      height: 24px;
+      opacity: .8;
+      span{
+        margin-right: 10px;
+      }
+    }
+    .home-step{
+      .display-flex(row,flex-start,flex-start);
+      width: 100%;
+      padding: 0 0 0 5px;
+      position: relative;
+      &.active{
+        .step-box{
+          .box-item-one{
+            opacity: 0;
+          }
+          .box-item-two{
+            opacity: 1;
+          }
+        }
+        .step-content{
+          /*.step-content-title{
+            color: #fff;
+            background-color: @main-color;
+          }*/
+          .step-content-paper{
+            .paper-item{
+              background-image: url("../../../images/final_sprint_home/icon-paper-type-1.png");
+              color: @main-color;
+              &.type-0{
+                background-image: url("../../../images/final_sprint_home/icon-paper-type-0.png") !important;
+              }
+              &.type-1{
+                background-image: url("../../../images/final_sprint_home/icon-paper-type-1.png") !important;
+              }
+              &.type-2{
+                background-image: url("../../../images/final_sprint_home/icon-paper-type-2.png") !important;
+              }
+              &.type-3{
+                background-image: url("../../../images/final_sprint_home/icon-paper-type-3.png") !important;
+              }
+            }
+          }
+          .step-content-btn{
+            &.check-btn{
+              background-image: url("../../../images/final_sprint_home/icon-btn-check-active.png");
+            }
+            &.train-btn{
+              background-image: url("../../../images/final_sprint_home/icon-btn-train-active.png");
+            }
+          }
+        }
+      }
+    }
+    .step-box{
+      width: 67px;
+      position: relative;
+      img{
+        width: 67px;
+        position: absolute;
+        top:0;
+        left: 0;
+        transition: opacity @animate-time;
+      }
+      .box-item-one{
+        opacity: 1;
+      }
+      .box-item-two{
+        opacity: 0;
+      }
+    }
+    .step-line{
+      position: absolute;
+      left: 34px;
+      top:77px;
+      width: 4px;
+      background: #e9e8ee;
+      border-radius: 2px;
+      bottom: 4px;
+      transition: background @animate-time;
+      &.active{
+        background: @main-color;
+      }
+    }
+    .step-content{
+      flex: 1;
+      //margin-left: -36px;
+      padding:5px 10px 10px 15px;
+      //border-left:4px solid @main-color;
+      position: relative;
+      .step-content-mark{
+        position: absolute;
+        top: -10px;
+        left: 182px;
+        width: 100px;
+      }
+      .step-content-title{
+        //display: inline-block;
+        //background-color: #e9e8ee;
+        //padding: 4px 12px;
+        font-size: 18px;
+        color: #368f58;
+        //border-radius: 20px;
+        margin: 2px 0 10px;
+        //font-weight: bold;
+        //transition: background @animate-time;
+      }
+      .step-content-text{
+        font-size: 14px;
+        color: #333;
+        .text-red{
+          color: #f80302;
+        }
+      }
+      .step-content-paper{
+        .display-flex(row,space-between,flex-start);
+        width: 150px;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        margin: 5px 0 0 20px;
+        .paper-item{
+          .display-flex(row,center,flex-end);
+          width: 70px;
+          height: 61px;
+          background: url("../../../images/final_sprint_home/icon-paper-type-0.png") no-repeat top center;
+          background-size: 70px 60.5px;
+          font-size: 16px;
+          color: #bbb;
+          font-weight: bold;
+          position: relative;
+          margin-top: 10px;
+          .display-flex(row,center,flex-start);
+          span{
+            .display-flex(row,center,center);
+            width: 22px;
+            height:22px;
+            color: #fff;
+            background: @main-color;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: -5px;
+            border-radius: 50%;
+          }
+          //transition: background @animate-time;
+        }
+      }
+      .step-content-btn{
+        width: 120px;
+        height: 50px;
+        background: no-repeat center;
+        background-size: 120px 50px;
+        margin: 15px 0 15px 30px;
+        transition: background @animate-time;
+        &.check-btn{
+          background-image: url("../../../images/final_sprint_home/icon-btn-check.png");
+        }
+        &.train-btn{
+          background-image: url("../../../images/final_sprint_home/icon-btn-train.png");
+        }
+      }
+      @media screen and (max-width: 374px) {
+       /* .step-content-title{
+          padding: 4px 8px;
+          word-break: break-all;
+        }
+        .step-content-paper{
+          width: 150px;
+          flex-wrap:wrap;
+        }*/
+      }
+    }
+  }
+  .pay-modal{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 10;
+    .display-flex(row,center,center);
+    .pay-modal-content{
+      .display-flex(column,flex-start,center);
+      width: 250px;
+      background: #fff;
+      padding-bottom: 24px;
+      border-radius: 10px;
+      .modal-content-header{
+        width: 300px;
+        margin-top: -37px;
+      }
+      .text-box{
+        width: 100%;
+        padding: 14px 0 28px;
+        p{
+          text-align: center;
+          margin: 0;
+          padding: 0;
+          font-size: 16px;
+          color: #666;
+        }
+      }
+      .btn-box{
+        .display-flex(row,center,center);
+        img{
+          width: 90px;
+          &:first-child{
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 500px) {
+    .home-inner-box{
+      max-width: 420px;
+    }
+    .home-content{
+      .step-content{
+        .step-content-mark{
+          width: 120px;
+          left: 192px;
+        }
+        .step-content-paper{
+          width: 300px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

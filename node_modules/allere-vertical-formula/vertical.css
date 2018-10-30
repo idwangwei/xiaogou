@@ -1,0 +1,203 @@
+vertical {
+    /* 超小屏幕（平板，大于等于 100px） */
+    /* 小屏幕（平板，大于等于 400px） */
+    /* 小屏幕（平板，大于等于 768px） */
+    /* 中等屏幕（桌面显示器，大于等于 992px） */
+    /* 大屏幕（大桌面显示器，大于等于 1200px） 用于题库导入、预览 */
+}
+vertical .vertical-container {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    height: 88vw;
+    margin: 7px 1%;
+    border-radius: 5px;
+    position: relative;
+    font-family: monospace;
+    /*border: gray dotted;*/
+    /*border-width: 1px 1px 0px 0px;*/
+}
+vertical .vertical-container-border {
+    border: 1px solid #959191;
+}
+vertical .vf-err-msg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #8b4513;
+    font-size: 14px;
+}
+vertical .vertical-grade-info {
+    color: #731e1e;
+}
+vertical .vertical-editable-color {
+    background-color: #FAFAD2;
+}
+vertical .vertical-row {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    height: 100%;
+    /*border: gray dotted 1px;*/
+    /*border-width: 0 0 1px 0;*/
+}
+vertical vertical-cell {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1;
+    -webkit-flex: 1;
+    justify-content: center;
+    -webkit-justify-content: center;
+    /*height: 100%;*/
+    width: 100%;
+    padding: 3px;
+    /*border: 1px dotted rgba(128, 128, 128, 0.15);*/
+    /*border-width: 0 0 0 1px;*/
+    position: relative;
+}
+vertical .vertical-cell-grid {
+    border: 1px dotted rgba(128, 128, 128, 0.15);
+}
+vertical vertical-cell > span {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    /*border: #ffa95e solid 1px;*/
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    position: relative;
+}
+vertical .vfdot:after {
+    content: "";
+    position: absolute;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 5px;
+    height: 5px;
+    background: url(images/vf-dot-black.png) no-repeat;
+    bottom: 0;
+    right: -6px;
+}
+vertical .vfborrow:after {
+    content: "";
+    position: absolute;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 5px;
+    height: 5px;
+    background: url(images/vf-borrow-red.png) no-repeat;
+    top: -2px;
+    justify-content: center;
+    -webkit-justify-content: center;
+    left: 43%;
+}
+vertical .vfcarry1:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+    width: 5px;
+    background: url(images/vfd-carry-1.png) no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 8px;
+}
+vertical .vfline {
+    border-bottom: gray solid 1px;
+}
+vertical .vfdiv {
+    background: url(images/vfdiv-black.png) no-repeat;
+    background-size: cover;
+}
+vertical .vfcorrect {
+    background: url(images/icon_yes3.png) no-repeat;
+    background-size: 70%;
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+}
+vertical .vfwrong {
+    background: url(images/icon_circle1.png) no-repeat;
+    background-size: 70%;
+    width: 100%;
+    opacity: 0.7;
+    height: 100%;
+}
+vertical .checkImgCon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 10%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+vertical .vfline-div {
+    border-top: gray solid 1px;
+}
+vertical .vfcell-border {
+    border: #ffa95e solid 1px;
+}
+@media (min-width: 100px) {
+    vertical .vertical-container {
+        width: 96vw;
+        height: 96vw !important;
+    }
+    vertical .vertical-container,
+    vertical .vertical-container:after {
+        font-size: 20px;
+    }
+}
+@media (min-width: 360px) {
+    vertical .vertical-container {
+        width: 96vw;
+        height: 96vw !important;
+    }
+    vertical .vertical-container,
+    vertical .vertical-container:after {
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 768px) {
+    vertical .vertical-container,
+    vertical .vertical-container:after {
+        font-size: 17px;
+    }
+    vertical .vertical-container {
+        width: 400px;
+        height: 400px !important;
+    }
+}
+@media (min-width: 992px) {
+    vertical {
+        /*.vertical-container, .vertical-container:after {
+          font-size: 23px;
+        }
+        .vertical-container {
+          width: 300px;
+          height: 300px !important;
+        }*/
+    }
+}
+@media (min-width: 1800px) {
+    vertical .vertical-container,
+    vertical .vertical-container:after {
+        font-size: 20px;
+    }
+    vertical .vertical-container {
+        width: 300px;
+        height: 300px !important;
+    }
+}

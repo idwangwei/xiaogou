@@ -1,0 +1,82 @@
+<div class="left">
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="">+</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">1</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">2</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">3</div>
+    </div>
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="">-</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">4</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">5</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">6</div>
+    </div>
+    <div class="itemRow">
+        <div class="item" ng-click="handleClickNum($event)" value="\times">×</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">7</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">8</div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">9</div>
+    </div>
+    <div class="itemRow">
+        <div class="item" ng-show="!keyboardStatus.hasMarkDiv" ng-click="handleClickNum($event)" value="\vfdiv" style="flex: 2;-webkit-flex:2;">
+            <!--<img src="images/vfdiv.png" width="57px"/>-->
+            <img ng-src="{{imgDiv}}" width="80px" alt=""/>
+        </div>
+        <div class="item" ng-show="keyboardStatus.hasMarkDiv" ng-click="handleClickNum($event)" value="\vfdiv-del" style="flex: 2;-webkit-flex:2;">
+            <img ng-src="{{imgDivDel}}" width="80px" alt=""/>
+        </div>
+        <div class="item num" ng-click="handleClickNum($event)" value="">0</div>
+        <div class="item kbd-img-dot" ng-show="keyboardStatus.vfDot" ng-click="handleClickNum($event)" value=".">
+            <!--小数<span style="font-size: 1px;color: rgb(192, 192, 192);margin-left: 4px;">●</span>-->
+            <img ng-src="{{imgDot}}" width="150%" alt=""/>
+        </div>
+        <div class="item kbd-img-dot" ng-show="!keyboardStatus.vfDot" ng-click="handleClickNum($event)" value=".-del">
+            <img ng-src="{{imgDotDel}}" width="150%" alt=""/>
+        </div>
+    </div>
+    <div class="itemRow">
+        <div class="item kbd-img-line" ng-show="!keyboardStatus.hasMarkLine" ng-click="handleClickNum($event)" value="\vfline" style="flex: 2;-webkit-flex:2">
+            <img ng-src="{{imgLine}}" style="width:80px;margin-top: 17px;" alt=""/>
+            <!--竖式橫线-->
+        </div>
+        <div class="item kbd-img-line" ng-show="keyboardStatus.hasMarkLine" ng-click="handleClickNum($event)" value="\vfline-del" style="flex: 2;-webkit-flex:2">
+            <img ng-src="{{imgLineDel}}" style="width:80px;margin-top: 7px;" alt=""/>
+            <!--删除橫线-->
+        </div>
+        <div class="item kbd-img-carry" ng-show="keyboardStatus.vfCarry" ng-click="handleClickNum($event, 'vf-borrow')">
+            <!--添加进位-->
+            <img ng-src="{{imgCarry}}" width="150%" alt=""/>
+        </div>
+        <div class="item kbd-img-carry" ng-show="!keyboardStatus.vfCarry" ng-click="handleClickNum($event)" value="\vfcarry1-del">
+            <!--删除进位-->
+            <img ng-src="{{imgCarryDel}}" width="150%" alt=""/>
+        </div>
+        <div class="item kbd-img-borrow" ng-show="keyboardStatus.vfBorrow" ng-click="handleClickNum($event)" value="\vfborrow">
+            <!--添加退位-->
+            <img ng-src="{{imgBorrow}}" width="150%" alt=""/>
+        </div>
+        <div class="item kbd-img-borrow" ng-show="!keyboardStatus.vfBorrow" ng-click="handleClickNum($event)" value="\vfborrow-del">
+            <!--删除退位-->
+            <img ng-src="{{imgBorrowDel}}" width="150%" alt=""/>
+        </div>
+    </div>
+</div>
+
+<div class="right">
+    <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)" style="color: #fe6948;">
+        <img ng-src="{{imgBackBtn}}" width="35px" alt=""/>
+    </div>
+    <div class="item greenItem kbd-img-clearall" style="flex:1;
+    -webkit-flex:1;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;" ng-click="handleClickNum($event)" style="color: #fe6948;"  value="\vfallclear">
+        <img ng-src="{{imgClearAll}}" style="flex:1; -webkit-flex: 1; width: 50px;" alt=""/>
+        <!--全部<br/>清除-->
+    </div>
+    <!--回退-->
+    <!--<div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="" style="color: #fe6948;">
+        <img ng-src="{{imgUndo}}" style="width: 70%;" alt=""/>
+    </div>-->
+</div>

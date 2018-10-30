@@ -1,0 +1,654 @@
+@import  './../../../../m_boot/less/theme01/include/_mixins.less';
+.video-item-page-box{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  z-index: -1;
+  video{
+    height: 100%;
+    max-width: 100%;
+    z-index: -1;
+  }
+  .display-flex;
+  .video-item-page{
+    position: relative;
+    z-index: -1;
+  }
+  video-keyboard.ng-enter {
+    transition:0.5s linear all;
+    -webkit-transition:0.5s linear all;
+    opacity:0;
+  }
+  video-keyboard.ng-enter.ng-enter-active {
+    opacity:1;
+  }
+  video-keyboard.ng-leave {
+    transition:0.5s linear all;
+    -webkit-transition:0.5s linear all;
+    opacity:1;
+  }
+  video-keyboard.ng-leave.ng-leave-active {
+    opacity:0;
+  }
+
+
+  .question-ans-right-animation{
+    position: absolute;
+    z-index: 88;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.33);
+    .display-flex;
+    .display-flex-justify-content(flex-start);
+    .right-animation{
+      background: url("./../../../images/video/m_menu_animate_right.png") -2px -2px;
+      width: 308px;
+      height: 322px;
+    }
+  }
+  .right-animation.ng-hide-remove.ng-hide-remove-active {
+    opacity:1;
+    animation: right-animation 1s steps(1,start);
+    -webkit-animation: right-animation 1s steps(1,start);
+  }
+  .question-ans-right-animation.ng-animate.ng-hide-animate.ng-hide-add.ng-hide.ng-hide-add-active{
+    opacity:0;
+    transition: opacity linear 0.5s;
+    -webkit-transition: opacity linear 0.5s;
+  }
+  .right-animation.ng-animate.ng-hide-animate.ng-hide-add.ng-hide.ng-hide-add-active{
+    opacity:0;
+    transition: opacity linear 0.5s;
+    -webkit-transition: opacity linear 0.5s;
+  }
+  @-webkit-keyframes right-animation{
+    0%    {background-position:-314px  -654px;}
+    3.7%  {background-position:-626px  -1306px;}
+    7.4%  {background-position:-314px  -1306px;}
+    11.1% {background-position:-2px    -1306px;}
+    14.8% {background-position:-1562px -980px;}
+    18.5% {background-position:-1250px -980px;}
+    22.2% {background-position:-938px  -980px;}
+    25.9% {background-position:-626px  -980px;}
+    29.6% {background-position:-314px  -980px;}
+    33.3% {background-position:-2px    -980px;}
+    37%   {background-position:-1562px -654px;}
+    40.7% {background-position:-1250px -654px;}
+    44.4% {background-position:-938px  -654px;}
+    48.1% {background-position:-626px  -654px;}
+    51.8% {background-position:-938px  -1306px;}
+    55.5% {background-position:-2px    -654px;}
+    59.2% {background-position:-1562px -328px;}
+    62.9% {background-position:-1250px -328px;}
+    66.6% {background-position:-938px  -328px;}
+    70.3% {background-position:-626px  -328px;}
+    74%   {background-position:-314px  -328px;}
+    77.7% {background-position:-2px    -328px;}
+    81.4% {background-position:-1562px -2px;}
+    85.1% {background-position:-1250px -2px;}
+    88.8% {background-position:-938px  -2px;}
+    92.5% {background-position:-626px  -2px;}
+    96.2% {background-position:-314px  -2px;}
+    100%  {background-position:-2px    -2px;}
+
+  }
+  @keyframes right-animation{
+    0%    {background-position:-314px  -654px;}
+    3.7%  {background-position:-626px  -1306px;}
+    7.4%  {background-position:-314px  -1306px;}
+    11.1% {background-position:-2px    -1306px;}
+    14.8% {background-position:-1562px -980px;}
+    18.5% {background-position:-1250px -980px;}
+    22.2% {background-position:-938px  -980px;}
+    25.9% {background-position:-626px  -980px;}
+    29.6% {background-position:-314px  -980px;}
+    33.3% {background-position:-2px    -980px;}
+    37%   {background-position:-1562px -654px;}
+    40.7% {background-position:-1250px -654px;}
+    44.4% {background-position:-938px  -654px;}
+    48.1% {background-position:-626px  -654px;}
+    51.8% {background-position:-938px  -1306px;}
+    55.5% {background-position:-2px    -654px;}
+    59.2% {background-position:-1562px -328px;}
+    62.9% {background-position:-1250px -328px;}
+    66.6% {background-position:-938px  -328px;}
+    70.3% {background-position:-626px  -328px;}
+    74%   {background-position:-314px  -328px;}
+    77.7% {background-position:-2px    -328px;}
+    81.4% {background-position:-1562px -2px;}
+    85.1% {background-position:-1250px -2px;}
+    88.8% {background-position:-938px  -2px;}
+    92.5% {background-position:-626px  -2px;}
+    96.2% {background-position:-314px  -2px;}
+    100%  {background-position:-2px    -2px;}
+
+  }
+
+  .question-ans-wrong-animation{
+    position: absolute;
+    z-index: 86;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 80px;
+    .display-flex;
+    .display-flex-justify-content(flex-start);
+    background-color: rgba(0, 0, 0, 0.33);
+
+    .wrong-animation{
+      background: url("./../../../images/video/m_menu_animate_wrong.png") -2px -2px;
+      width: 307px;
+      height: 321px;
+      transform: scale3d(0.6,0.6,0.6);
+      -webkit-transform: scale3d(0.6,0.6,0.6);
+      margin-left: -40px;
+    }
+  }
+  .wrong-animation.ng-hide-remove.ng-hide-remove-active{
+    animation: wrong-animation 1s steps(1,start);
+    -webkit-animation: wrong-animation 1s steps(1,start);
+  }
+  .question-ans-wrong-animation.ng-animate.ng-hide-animate.ng-hide-add.ng-hide.ng-hide-add-active{
+    opacity:0;
+    transition: opacity linear 0.5s;
+    -webkit-transition: opacity linear 0.5s;
+  }
+  .wrong-animation.ng-animate.ng-hide-animate.ng-hide-add.ng-hide.ng-hide-add-active{
+    opacity:0;
+    transition: opacity linear 0.5s;
+    -webkit-transition: opacity linear 0.5s;
+  }
+  @-webkit-keyframes wrong-animation{
+    0%  {background-position:   -624px  -652px;}
+    3.6%  {background-position: -935px  -1302px;}
+    7.2% {background-position:  -624px  -1302px;}
+    10.8% {background-position: -313px  -1302px;}
+    14.4% {background-position: -2px    -1302px;}
+    18% {background-position:   -1557px -977px;}
+    21.6% {background-position: -1246px -977px;}
+    25.2% {background-position: -935px  -977px;}
+    28.8% {background-position: -624px  -977px;}
+    32.4% {background-position: -313px  -977px;}
+    36% {background-position:   -2px    -977px;}
+    39.6% {background-position: -1557px -652px;}
+    43.2% {background-position: -1246px -652px;}
+    46.8% {background-position: -935px  -652px;}
+    50.4% {background-position: -1246px -1302px;}
+    54% {background-position:   -313px  -652px;}
+    57.6% {background-position: -2px    -652px;}
+    61.2% {background-position: -1557px -327px;}
+    64.8% {background-position: -1246px -327px;}
+    68.4% {background-position: -935px  -327px;}
+    72%{background-position:    -624px  -327px;}
+    75.6%{background-position:  -313px  -327px;}
+    79.2%{background-position:  -2px    -327px;}
+    82.8%{background-position:  -1557px -2px;}
+    86.4%{background-position:  -1246px -2px;}
+    90%{background-position:    -935px  -2px;}
+    93.6%{background-position:  -624px  -2px;}
+    97.2%{background-position:  -313px  -2px;}
+    100%{background-position:   -2px    -2px;}
+
+  }
+  @keyframes wrong-animation{
+    0%  {background-position:   -624px  -652px;}
+    3.6%  {background-position: -935px  -1302px;}
+    7.2% {background-position:  -624px  -1302px;}
+    10.8% {background-position: -313px  -1302px;}
+    14.4% {background-position: -2px    -1302px;}
+    18% {background-position:   -1557px -977px;}
+    21.6% {background-position: -1246px -977px;}
+    25.2% {background-position: -935px  -977px;}
+    28.8% {background-position: -624px  -977px;}
+    32.4% {background-position: -313px  -977px;}
+    36% {background-position:   -2px    -977px;}
+    39.6% {background-position: -1557px -652px;}
+    43.2% {background-position: -1246px -652px;}
+    46.8% {background-position: -935px  -652px;}
+    50.4% {background-position: -1246px -1302px;}
+    54% {background-position:   -313px  -652px;}
+    57.6% {background-position: -2px    -652px;}
+    61.2% {background-position: -1557px -327px;}
+    64.8% {background-position: -1246px -327px;}
+    68.4% {background-position: -935px  -327px;}
+    72%{background-position:    -624px  -327px;}
+    75.6%{background-position:  -313px  -327px;}
+    79.2%{background-position:  -2px    -327px;}
+    82.8%{background-position:  -1557px -2px;}
+    86.4%{background-position:  -1246px -2px;}
+    90%{background-position:    -935px  -2px;}
+    93.6%{background-position:  -624px  -2px;}
+    97.2%{background-position:  -313px  -2px;}
+    100%{background-position:   -2px    -2px;}
+
+  }
+
+  .video-menu-bar-layer{
+    z-index: 100;
+    .top-bar{
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      font-size: 1rem;
+      background-color: #ddd;
+      .display-flex-pure;
+      .display-flex-align-items(center);
+
+      i{
+        font-size: 1.7rem;
+        padding: 0 30px;
+      }
+    }
+    .bottom-bar{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #ddd;
+      padding: 6px;
+      height: 50px;
+      .display-flex-pure;
+      .display-flex-justify-content(space-around);
+
+      .parse-play-btn{
+        width: 20%;
+        max-width: 120px;
+        margin: 0 6%;
+
+        img{
+          width: 100%;
+          display: block;
+        }
+      }
+      .play-process-bar{
+        width: 70%;
+        padding-right: 6%;
+        height: 100%;
+        .display-flex-pure;
+        .display-flex-align-items(center);
+
+        .process-current-time{}
+        .question-ans-process-bar{
+          height: 100%;
+          margin: 0 6px;
+          position: relative;
+          .flex_1;
+          max-width: 360px;
+          .display-flex;
+          .ans-process-item{
+            .flex_1;
+            margin:0 1px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            height: 100%;
+            .display-flex;
+            .process-item-left{
+              background-color: #858585;
+              height: 42%;
+              .display-flex-num(1);
+            }
+            .process-item-middle{
+              margin-right: -14px;
+              border: 14px solid #dddddd;
+              border-left-color: #858585;
+            }
+            .process-item-right{
+              background-color: #858585;
+              border:2px solid #116b7e;
+              border-radius: 50%;
+              .display-flex;
+              width: 28px;
+              height: 28px;
+            }
+
+
+          }
+          .ans-process-item-show{
+            .process-item-left,.process-item-right{
+              background-color: #1ccaec;
+            }
+            .process-item-middle{
+              border-left-color: #1ccaec;
+            }
+          }
+        }
+        .process-total-time{}
+      }
+    }
+  }
+
+  .video-wrong-confirm-backdrop{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 97;
+    padding-bottom: 60px;
+    .display-flex;
+    .display-flex-align-items(flex-end);
+    .video-wrong-confirm-box{
+      width: 36%;
+      max-width: 320px;
+      min-width: 200px;
+      img{
+        display: block;
+      }
+      .confirm-title{
+        height: 100px;
+        .display-flex;
+        img{
+          height: 100%
+        }
+      }
+      .confirm-content{
+        border-radius: 20px;
+        //background-color: #fff;
+        margin-top: -20px;
+        position: relative;
+        z-index: 2;
+        .content-info{
+          font-size: 1.5rem;
+          color: #031942;
+          font-weight: bold;
+          text-align: center;
+          padding: 20px;
+        }
+        .content-btn-box{
+          padding: 10px;
+          .display-flex-pure;
+          .display-flex-justify-content(space-around);
+          div{
+            height: 42px;
+            img{
+              height: 100%;
+            }
+          }
+
+
+        }
+      }
+    }
+  }
+
+  .video-ended-confirm-backdrop{
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    .display-flex;
+    img{
+      height: 100%;
+      display: block;
+    }
+    .ended-confirm-box{
+      height: 80%;
+      .ended-confirm-title{
+        height: 25%;
+        margin-bottom: -20px;
+        .display-flex;
+        max-height: 80px;
+      }
+      .ended-confirm-content{
+        height: 60%;
+        max-height: 180px;
+      }
+      .ended-confirm-bottom{
+        .display-flex-pure;
+        .display-flex-justify-content(space-around);
+        height: 15%;
+        max-height: 40px;
+        margin-top: 20px;
+      }
+    }
+  }
+  .video-ended-confirm-backdrop.ng-hide-remove.ng-hide-remove-active{
+    animation: ended-confirm-show 0.5s;
+    -webkit-animation: ended-confirm-show 0.5s;
+  }
+  .video-ended-confirm-backdrop.ng-hide-add.ng-hide.ng-hide-add-active{
+    animation: ended-confirm-hide 0.5s;
+    -webkit-animation: ended-confirm-hide 0.5s;
+  }
+  @-webkit-keyframes ended-confirm-show{
+    from{opacity: 0}
+    to{opacity: 1;}
+  }
+  @keyframes ended-confirm-show{
+    from{opacity: 0}
+    to{opacity: 1;}
+  }
+  @-webkit-keyframes ended-confirm-hide{
+    from{opacity: 1}
+    to{opacity: 0;}
+  }
+  @keyframes ended-confirm-hide{
+    from{opacity: 1}
+    to{opacity: 0;}
+  }
+
+
+  .video-loading-box{
+    position: absolute;
+    z-index: 99;
+    .display-flex;
+  }
+
+  .video-pause-continue-btn{
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding-bottom: 60px;
+    .display-flex-pure;
+    .display-flex-align-items(flex-end);
+    .display-flex-justify-content(center);
+    div{
+      img{
+       height: 60px;
+      }
+    }
+  }
+
+  .btn-filter{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+  }
+
+
+  .video-play-pause-icon{
+    position: absolute;
+    bottom: 45px;
+    left: 1rem;
+    z-index: 90;
+    height: 2rem;
+    .display-flex;
+    .video-play-pause-line{
+      padding: 0.2rem 0px;
+      height: 100%;
+      background-color: rgba(158, 207, 48, 0.39);;
+      border-radius: 0.3rem;
+      .display-flex;
+      span{
+        margin-left: -0.5rem;
+        background-color: rgba(176, 193, 248, 0);
+        width: 1.5rem;
+        height: 55%;
+        display: inline-block;
+        border-radius: 600%;
+        border: 4px solid rgba(176, 193, 248, 0);;
+        border-right-color: #23ac77;
+        opacity: 0;
+      }
+      span:nth-child(2){
+        height: 80%;
+        margin-left: -1rem;
+      }
+      span:nth-child(3){
+        margin-right: 0.5rem;
+        height: 120%;
+        margin-left: -1rem;
+      }
+    }
+
+    img{
+      height: 100%;
+    }
+  }
+  .video-play-pause-icon-animation span{
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+  }
+
+  .video-play-pause-icon-animation span:nth-child(1){
+    animation-name: fadeOut1;
+    -webkit-animation-name: fadeOut1;
+  }
+  .video-play-pause-icon-animation span:nth-child(2){
+    animation-name: fadeOut2;
+    -webkit-animation-name: fadeOut2;
+  }
+  .video-play-pause-icon-animation span:nth-child(3){
+    animation-name: fadeOut3;
+    -webkit-animation-name: fadeOut3;
+  }
+
+
+
+  @keyframes fadeOut1{
+    0%{
+      opacity: 0;
+    }
+    5%{
+      opacity: 1;
+    }
+    78%{
+      opacity: 1;
+    }
+    80%{
+      opacity: 0;
+    }
+  }
+  @keyframes fadeOut2{
+    0%{
+      opacity: 0;
+    }
+    24%{
+      opacity: 0;
+    }
+    25%{
+      opacity: 1;
+    }
+    78%{
+      opacity: 1;
+    }
+    80%{
+      opacity: 0;
+    }
+  }
+  @keyframes fadeOut3{
+    0%{
+      opacity: 0;
+    }
+    44%{
+      opacity: 0;
+    }
+    45%{
+      opacity: 1;
+    }
+    78%{
+      opacity: 1;
+    }
+    80%{
+      opacity: 0;
+    }
+
+  }
+  @-webkit-keyframes fadeOut1{
+    0%{
+      opacity: 0;
+    }
+    5%{
+      opacity: 1;
+    }
+    78%{
+      opacity: 1;
+    }
+    80%{
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes fadeOut2{
+    0%{
+      opacity: 0;
+    }
+    24%{
+      opacity: 0;
+    }
+    25%{
+      opacity: 1;
+    }
+    78%{
+      opacity: 1;
+    }
+    80%{
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes fadeOut3{
+    0%{
+      opacity: 0;
+    }
+    44%{
+      opacity: 0;
+    }
+    45%{
+      opacity: 1;
+    }
+    78%{
+      opacity: 1;
+    }
+    80%{
+      opacity: 0;
+    }
+
+  }
+
+}
+
+.teacher-canvas-box{
+  position: absolute;
+  z-index: 90;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .display-flex;
+  .display-flex-align-items(flex-end);
+}
+.teacher-canvas{
+  opacity: 0;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+.teach-canvas{
+  background-color: #fff;
+}
+
+video::-webkit-media-controls-start-playback-button {
+  display: none;
+}

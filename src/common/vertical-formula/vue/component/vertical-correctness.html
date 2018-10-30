@@ -1,0 +1,9 @@
+<div v-show="gradeInfo"
+     class="checkImgCon">
+
+    <div :class="[VF_CORRECT, VF_WRONG]"></div>
+
+    <div v-show="!!errMsg" class="vf-err-msg">
+        {{errMsg}}
+    </div>
+</div>

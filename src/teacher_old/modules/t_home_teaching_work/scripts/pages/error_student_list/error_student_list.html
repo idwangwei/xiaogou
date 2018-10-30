@@ -1,0 +1,93 @@
+
+<ion-view title="出错学生列表" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';font-weight: bold">出错学生列表</h1>
+    </ion-header-bar>
+
+    <ion-content padding="false" class="error_student_list_file" overflow-scroll="false"
+                 on-scroll="ctrl.getScrollPosition()"
+                 ng-show="!ctrl.fetchProcessing">
+
+        <auto-list-con>
+            <!--错题名称-->
+            <div class="item  item-label work-paper-title">
+                <span class="name" ng-bind="ctrl.statErrorInfo.questionTitle"></span>
+            </div>
+            <!--显示名称|试题按钮-->
+            <div class="item item-input block-input name" style="height: 40px;font-size: 14px;" id="topPoint"
+                 ng-if="ctrl.statErrorInfo.errorStudentList">
+                <ion-checkbox ng-model="cBNameFlag" ng-click="ctrl.showNameManage()" class="item-checkbox-left my-check-box">
+                    <span class = "option_word name" >显示全部姓名</span>
+                </ion-checkbox>
+                <ion-checkbox ng-model="cBQFlag" ng-click="ctrl.showQManage()" class="item-checkbox-left my-check-box">
+                    <span class = "option_word name" >显示全部试题</span>
+                </ion-checkbox>
+            </div>
+            <!--出错学生列表-->
+            <div ng-repeat="stu in ctrl.statErrorInfo.errorStudentList" class="card card-better  smallq-title"
+                 ng-init="stu.stuImg=(stu.gender=='0'?'person/student-f.png':'person/student-m.png')">
+                <auto-list item="item">
+                    <auto-list-content class=" list-content_stu">
+                        <div class="list-center-stu" ng-click="ctrl.showQ($event,stu)">
+                            <div class="left-img" style="  margin: 5px 0px 10px 10px;">
+                                <img ng-src="{{$root.loadImg(stu.stuImg)}}" alt=""
+                                     ng-click="ctrl.showStuName($event,stu)"/>
+                                <div class="name" ng-show="stu.showAllNameFlag"
+                                     ng-click="stu.showAllNameFlag=false">
+                                    {{stu.name}}
+                                </div>
+                                <div class="name" ng-show="!stu.showAllNameFlag"
+                                     ng-click="stu.showAllNameFlag=true">
+                                    <span ng-bind="'学生'+($index+1)"></span>
+                                </div>
+                            </div>
+                            <div class="center-span">
+
+                                <div class="second" style="  margin-top: 2px;" ng-if="stu.showStatus==1">
+                                    <span ng-bind="'首次做得分：'" ng-if="ctrl.currentWork.publishType != 8"></span>
+                                    <span ng-bind="'得分：'" ng-if="ctrl.currentWork.publishType == 8"></span>
+                                    <span style="color: rgb(232, 12, 12)!important;font-size: 20px; "
+                                          ng-bind="stu.score"></span>
+                                    <span style="margin-left: -3px"> 分/{{stu.currentQ.score}}分</span>
+                                </div>
+                                <div class="second" style="  margin-top: 2px;" ng-if="stu.showStatus!=1">
+                                    <span ng-bind="'改错后得分：'"></span>
+                                    <span style="color: rgb(232, 12, 12)!important;font-size: 20px; "
+                                          ng-bind="stu.score"></span>
+                                    <span style="margin-left: -3px"> 分/{{stu.currentQ.score}}分</span>
+                                </div>
+
+                                <span ng-click="ctrl.showQ($event,stu)">
+                                    <img ng-src="{{!stu.showQFlag==true?$root.loadImg('other/open.png'):$root.loadImg('other/collapse.png')}}" class="show-q-img">
+                                </span>
+                            </div>
+                        </div>
+                    </auto-list-content>
+                </auto-list>
+                <!--题目内容-->
+                <div class="small_q_bg">
+                    <div class="image-type-question">
+                        <div compile-html="stu.currentQ.qContext" show_type="correct"
+                             current_q_input="stu.inputList" ng-if="stu.showQFlag"
+                             class="q-context ">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </auto-list-con>
+    </ion-content>
+
+    <loading-processing load-top="200"></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+
+    <ion-footer-bar class="bg-balanced">
+        <button class="button-clear bg-calm  bar-item" ng-click="ctrl.handleSortBtnClick()">
+            <i class="icon ion-connection-bars"></i>
+            排序
+        </button>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,29 @@
+{
+  "name": "allere-linematch",
+  "version": "2.4.7",
+  "description": "constants used in eclass student parent teacher qb qbi etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "webpack"
+  },
+  "keywords": [
+    "constants",
+    "allere"
+  ],
+  "author": "pjl",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angularjs": "0.0.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "url-loader": "^0.5.7"
+  }
+}

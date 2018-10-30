@@ -1,0 +1,178 @@
+@wk: -webkit-;
+@base: #f938ab;
+
+.flex(@dir) {
+  flex: @dir;
+  -webkit-flex: @dir;
+}
+
+.display-flex(@dir) {
+  display: @dir;
+  display: e(%("%s%s", @wk, @dir));
+}
+
+.flex-align-item(@dir) {
+  align-items: @dir;
+  -webkit-align-items: @dir;
+}
+
+.flex-justify-content(@dir) {
+  justify-content: @dir;
+  -webkit-justify-content: @dir;
+}
+.flex-direction(@dir) {
+  flex-direction: @dir;
+  -webkit-flex-direction: @dir;
+}
+
+vertical {
+  .vertical-container {
+    .display-flex(flex);
+    .flex-direction(column);
+    .flex-justify-content(space-between);
+    height: 88vw;
+    margin: 0 4%;
+
+    border-radius: 5px;
+    /*border: gray dotted;*/
+    /*border-width: 1px 1px 0px 0px;*/
+  }
+
+  .vertical-container-border {
+    border: 1px solid #959191;
+  }
+
+  .vertical-editable-color {
+    background-color: #FAFAD2;
+  }
+
+  .vertical-row .vertical-col {
+  }
+
+  .vertical-row {
+    .display-flex(flex);
+    .flex-direction(row);
+    height: 100%;
+    /*border: gray dotted;*/
+    /*border-width: 0 0 1px 0;*/
+  }
+
+  .vertical-col {
+  }
+
+  vertical-cell {
+    .flex(1);
+    .flex-justify-content(center);
+    /*height: 100%;*/
+    width: 100%;
+    padding: 3px;
+    /*border: gray dotted 1px;*/
+    /*border-width: 0 0 0 1px;*/
+  }
+
+  vertical-cell > span {
+    .display-flex(inline-flex);
+    /*border: #ffa95e solid 1px;*/
+    width: 100%;
+    height: 100%;
+    .flex-justify-content(center);
+    .flex-align-item(center);
+    position: relative;
+  }
+
+  .vfdot:after {
+    content: ".";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .vfline {
+    border-bottom: gray solid 1px;
+  }
+
+  .vfdiv {
+    background: url(../images/vfdiv-black.png) no-repeat;
+    background-size: cover;
+  }
+
+  .vfline-div {
+    border-top: gray solid 1px;
+  }
+
+  .vfcell-border {
+    border: #ffa95e solid 1px;
+  }
+
+
+
+  /* 小屏幕（平板，大于等于 400px） */
+  @media (min-width: 360px) {
+      .vertical-container {
+        font-size: 18px;
+      }
+  }
+
+  /* 小屏幕（平板，大于等于 768px） */
+  @media (min-width: 768px) {
+      .vertical-container {
+        width: 400px;
+        height: 400px !important;
+        font-size: 20px;
+      }
+  }
+
+  /* 中等屏幕（桌面显示器，大于等于 992px） */
+  @media (min-width: 992px) {
+
+  }
+
+  /* 大屏幕（大桌面显示器，大于等于 1200px） */
+  @media (min-width: 1200px) {
+
+  }
+
+}
+
+.keyboard {
+  .kbd-vf {
+    background-size: contain !important;
+    position: absolute;
+  }
+
+  .kbd-vfdiv {
+    background: url(../images/kbd-div.png) no-repeat;
+    width: 50%;
+    height: 50%;
+  }
+  .kbd-vfdiv-del {
+    background: url(../images/kbd-div-del.png) no-repeat;
+    width: 70%;
+    height: 53%;
+    left: 18%;
+  }
+
+  .kbd-vfdot {
+    background: url(../images/kbd-dot.png) no-repeat;
+    width: 100%;
+    height: 80%;
+    margin-left: 30%;
+  }
+  .kbd-vfdot-del {
+    background: url(../images/kbd-dot-del.png) no-repeat;
+    width: 28%;
+    height: 61%;
+    margin-left: 20%;
+  }
+
+  .kbd-vfline {
+    background: url(../images/kbd-line.png) no-repeat;
+    width: 70%;
+    height: 5%;
+  }
+  .kbd-vfline-del {
+    background: url(../images/kbd-line-del.png) no-repeat;
+    width: 70%;
+    height: 70%;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "student": {
+    "redux_root": "src/teacher_old/scripts/redux",
+    "reducer_root": "reducers",
+    "action_type": "action_typs/index.js",
+    "default_states": "default_states/index.js",
+    "pages":"src/teacher_old/scripts/pages"
+
+  }
+}

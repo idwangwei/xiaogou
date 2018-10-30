@@ -1,0 +1,74 @@
+
+<ion-view title="评价反馈" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'"
+                ng-bind="'评价反馈'"></h1>
+    </ion-header-bar>
+    <ion-content  class="work_praise_detail_file"  ng-init="paper=wData.correctedPraise.paper" overflow-scroll="true" style="height: auto!important;">
+        <div class="bg-box">
+            <img ng-src="{{$root.loadImg('work_praise/work_praise_bg_inner.png')}}" width="100%"  height="100%">
+            <div class="bg-inner-box">
+                <div class="bg-inner-box1">
+                    <img ng-src="{{$root.loadImg('work_praise/work_praise_bg.png')}}"  width="100%">
+                </div>
+            </div>
+        </div>
+        <!--学生反馈情况 -->
+        <div ng-if="wData.correctedPraise.showType==1" style="padding-bottom: 100px">
+            <div class="message_content"
+                 ng-repeat="stuMsg in wData.correctedPraise.stuMsgList"
+                 ng-class="stuMsg.studentGender?'man-color':'woman-color'">
+                <div class="name"
+                     ng-bind="stuMsg.stuName">
+                </div>
+                <div class="face">
+                    <img src="{{$root.loadImg(stuMsg.headImg)}}"/>
+                </div>
+                <div class="message">
+                    <label ng-bind="stuMsg.message||''"></label>
+                </div>
+            </div>
+        </div>
+
+        <!--老师反馈情况 -->
+
+        <div ng-if="wData.correctedPraise.showType==2" style="padding-bottom: 100px">
+            <div class="praise-content" ng-if="paper.teacherPraise.type<6&&paper.teacherPraise.type>=1">
+                <div class="praise-logo">
+                    <img ng-src="{{$root.loadImg('praise/praise_logo.png')}}" alt=""/>
+                </div>
+                <div class="praise-main">
+                    <div class="praise-title">
+                        <span ng-bind="'老师给予'+studentName+'的奖励'"></span>
+                    </div>
+                    <div class="praise-img-div">
+                        <img ng-src="{{$root.loadImg(paper.teacherPraise.img)}}">
+                        <span style="border: none" ng-bind="paper.teacherPraise.text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message_content" ng-class="wData.correctedPraise.gender?'man-color':'woman-color'">
+                <div class="name"
+                     ng-bind="wData.correctedPraise.photoName">
+                </div>
+                <div class="face">
+                    <img src="{{$root.loadImg(wData.correctedPraise.headImg)}}"/>
+                </div>
+                <div class="message">
+                    <label ng-bind="wData.correctedPraise.message||''"></label>
+                </div>
+            </div>
+        </div>
+
+
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+
+</ion-view>
+

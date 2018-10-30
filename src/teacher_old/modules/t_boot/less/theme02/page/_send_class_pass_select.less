@@ -1,0 +1,69 @@
+@charset "UTF-8";
+@import "./../include/_bgcolor";
+@import "./../include/_mixins";
+
+.available-game-box {
+  position: relative;
+  .item {
+    background-color: @calm;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    min-height: 80px;
+    margin: 8px 10px 0 10px;
+    border-bottom: 1px solid #DDDDDD;
+    img {
+      width: 60px;
+      height: 60px;
+    }
+    div {
+      margin-top: 5px;
+      line-height: 20px;
+      .white-bold(150, 17);
+    }
+    p {
+      margin-top: 5px;
+      .white-bold(150, 10);
+      white-space: normal;
+    }
+  }
+  .pass-list {
+    .pass-block {
+      border: 1px solid #DDDDDD;
+      margin: 3px;
+      .flex_1;
+      min-height: 70px;
+      text-align: center;
+      position: relative;
+      .white-bold(150, 15);
+      padding-top: 15px;
+      .noSelect{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: #333;
+        opacity: 0.5;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 2px;
+    right: 2px;
+    .icon {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      font-size: 20px;
+      right: -6px;
+      color: #FFF;
+      top: -6px;
+    }
+  }
+}
+.available-game-box:last-child{
+  margin-bottom: 75px;
+}

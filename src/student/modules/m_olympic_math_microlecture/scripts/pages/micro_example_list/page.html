@@ -1,0 +1,77 @@
+<ion-view class="micro-example-list">
+    <ion-header-bar class="bar-balanced example-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">{{ctrl.selectUnitItem.subtitle}}</h1>
+        <button class="button buttons button-clear item-pay"  ng-click="ctrl.goToPay()">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-water.png')}}" class="pay-water">
+            <span>{{ctrl.vipNum}}</span>
+            <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-add.png')}}" class="pay-add">
+        </button>
+    </ion-header-bar>
+    <div class="micro-example-adv">
+      <div class="micro-adv-box">
+        <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/unit-example-adv-bg-left.png')}}" class="adv-bg-left">
+        <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/unit-example-adv-bg-right.png')}}" class="adv-bg-right">
+        <p class="adv-text">
+          <span class="title">{{ctrl.selectUnitItem.subtitle}}：</span>
+          <span>{{ctrl.introduce}}</span>
+        </p>
+      </div>
+    </div>
+    <ion-content padding="false" class="micro-example-content" delegate-handle="micro_example_list">
+        <div class="content-box">
+            <div class="example-item" ng-click="ctrl.goToExampleDetail(v)" ng-repeat="v in ctrl.resetExampleList track by $index">
+                <div class="item-left type-{{v.stateMark}}">
+                    <img
+                            ng-src="{{$root.loadMicrolectureImg('micro_example_list/unit-example-mark-'+v.stateMark+'.png')}}"
+                            class="item-mark-img"
+                            ng-if="v.stateMark==1"
+                    >
+                </div>
+                <div class="item-middle">
+                    <span class="text">{{v.name}} 例{{v.num}}</span>
+                    <span class="star-box">
+                      <span>难度系数：</span>
+                      <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/micro-star-'+item+'.png')}}" alt="" ng-repeat="item in v.starArr track by $index">
+                    </span>
+                </div>
+                <div class="item-right">
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="pay-modal" ng-if="ctrl.isPayModalShowFlag">
+        <div class="pay-modal-content">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/notice-header-1.png')}}" alt="" class="modal-content-header">
+            <div class="header-box">温馨提示</div>
+            <div class="text-box">
+                <p>魔法药水用完啦，</p>
+                <p>快去购买<img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-water.png')}}" alt="">吧。</p>
+            </div>
+            <div class="btn-box">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/pay-btn.png')}}" alt="" ng-click="ctrl.goToPay()">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/cancel-btn.png')}}" alt="" ng-click="ctrl.hidePayModal()">
+            </div>
+        </div>
+    </div>
+    <div class="expend-modal" ng-if="ctrl.isExpendModalShowFlag">
+        <div class="pay-modal-content">
+            <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/notice-header-2.png')}}" alt="" class="modal-content-header">
+            <div class="text-box">
+                <p>是否使用一瓶魔法药水开启</p>
+                <p>“{{ctrl.selectExampleItem.groupName}} 例{{ctrl.selectExampleItem.num}}”？</p>
+            </div>
+            <div class="img-box">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_unit_list/unit-water.png')}}" alt="">
+                <span>-1</span>
+            </div>
+            <div class="btn-box">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/confirm-btn.png')}}" alt="" ng-click="ctrl.openResource()">
+                <img ng-src="{{$root.loadMicrolectureImg('micro_example_list/cancel-btn.png')}}" alt="" ng-click="ctrl.hideExpendModal()">
+            </div>
+        </div>
+    </div>
+</ion-view>

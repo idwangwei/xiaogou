@@ -1,0 +1,23 @@
+<div class="game-map-atlas2-backdrop" ng-class="ctrl.isWin ? 'game-map-atlas-backdrop-win' :''">
+    <div class="game-map-atlas2-area" ng-class="ctrl.isWin ? 'game-map-atlas-area-win' :''">
+        <div class="atlas-title"  ng-style="{'padding-top':ctrl.isIos?'20px':'0'}">
+            <img  ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas_title2.png')}}">
+        </div>
+        <div class="game-map-atlas2-bg">
+            <div class="atlas2-grassland"></div>
+            <img class="atlas2-bg-img1" ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas2_bg_1.png')}}">
+            <img class="atlas2-bg-img2" ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas2_bg_2.png')}}">
+            <img class="atlas2-bg-img3" ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas2_bg_3.png')}}">
+            <img class="atlas2-bg-img4" ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas2_bg_4.png')}}">
+            <img class="atlas2-bg-img5" ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas2_bg_5.png')}}">
+            <img class="atlas2-bg-img6" ng-src="{{ctrl.getMyImg('game_map_atlas2/atlas2_bg_6.png')}}">
+        </div>
+        <div class="game-map-atlas2-animal">
+            <img ng-repeat="item in ctrl.avatorList"
+                 class="{{'atlas-img2-'+($index+1)}}"
+                 ng-class="item.light ? 'avator-filter-light': 'avator-filter-gray'"
+                 ng-src="{{ctrl.getAtlasImg(item.avatorId)}}" >
+        </div>
+        <atlas-share-btn theme="{{ctrl.theme}}" map-id="{{ctrl.mapId}}"></atlas-share-btn>
+    </div>
+</div>

@@ -1,0 +1,415 @@
+@import '../../../../t_boot/less/theme02/include/_mixins';
+
+.bar-better{
+  background: #bcfcf8!important;
+  height: 100px;
+}
+
+.rapid-calc-count {
+  /*reset ion-header-bar style*/
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+  .bar-header{
+    background-color: #fff !important;
+    margin-top: 0 !important;
+  }
+  .bar{
+    position: absolute !important;
+    top: 105px !important;
+    left: auto !important;
+    bottom: auto !important;
+    right: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .scroll-content{
+    top: 195px!important;
+  }
+  .spinner {
+    stroke: #3F638E !important;
+  }
+  .bar-better {
+    background: #bcfcf8 !important;
+    height: 100px;
+  }
+  .clazz-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    color: white;
+  }
+  .select-clazz-bar {
+    background: whitesmoke;
+    border-radius: 7px;
+    height: 36px;
+    line-height: 36px;
+    color: #ec674a;
+    position: relative;
+    border: 1px solid #ddd;
+    box-shadow: 3px 2px 5px #ddd;
+    margin-bottom: 10px;
+  }
+
+
+  .clazz-item {
+    background: white;
+    border-radius: 7px;
+    width: 99%;
+    padding: 15px 0;
+    min-height: 158px;
+    text-align: center;
+  }
+  .clazz-name {
+    font-size: 17px;
+    margin-top: 10px;
+  }
+
+  .position-right {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 20px;
+  }
+
+  .clazz-overflow-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .game_clazz_select {
+    top: 40px;
+    border-left-width: 6px;
+    background: #6997eb;
+  }
+
+  .game_clazz_select_img {
+    margin-top: 14px;
+    width: 105px;
+    min-height: 56px;
+  }
+
+  .game_clazz_select_block {
+    padding: 6px 14px;
+  }
+
+  .bar-subheader {
+    height: 36px;
+    padding: 0;
+  }
+
+  .item-divider {
+    border: none;
+    background: #E4726C;
+    padding: 5px 10px;
+    height: 38px;
+    line-height: 26px;
+  }
+
+  .item-divider .button-clear {
+    max-width: 200px;
+    line-height: 30px;
+    height: 30px;
+  }
+
+  .spinner {
+    stroke: white;
+  }
+  .spinner-text {
+    color: white;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+
+  .offline-alert-container {
+    width: 98%;
+    background: #83e7ff;
+    border-radius: 2px;
+    text-align: center;
+    color: #ff4f4c;
+    margin: 5px auto 5px auto;
+    font-size: 16px;
+    padding: 3px;
+  }
+
+  .clazz-icon:before {
+    font-size: 23px !important;
+    line-height: 28px !important;
+    padding-right: 0 !important;
+    color: white;
+  }
+  .btn-wrap {
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: -webkit-flex; /* NEW - Chrome */
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    justify-content: center;
+    -webkit-justify-content: center;
+
+    padding: 5px;
+    height: 50px;
+    background-color: #fff;
+    margin-top: 0 !important; /*hack ionic-ios*/
+    font-size: 15px;
+    .select-clazz {
+      flex-grow: 1;
+      -webkit-flex-grow: 1;
+
+      width: 49%;
+      position: relative;
+
+      display: inline-flex;
+      display: -webkit-inline-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+
+      height: 100%;
+      background-color: #f9e18e;
+      color: #3F4367;
+      border-radius: 5px;
+      span:first-child{
+        .flex_1;
+        .display-flex;
+      }
+      span:last-child{
+        padding: 0 6px;
+      }
+      .long-text-hidden;
+
+      //>span::after{
+      //  content: '';
+      //  display: block;
+      //  position: absolute;
+      //  right: 8%;
+      //  top: 50%;
+      //
+      //  width: 10px;
+      //  height: 10px;
+      //  border-top: 1px solid #7c3c25;
+      //  border-right: 1px solid #7c3c25;
+      //  transform: rotate(45deg) translateY(-50%);
+      //  -webkit-transform: rotate(45deg) translateY(-50%);
+      //}
+    }
+    .try-play {
+      flex-grow: 1;
+      -webkit-flex-grow: 1;
+      background-color: #91f086;
+      color: #2d4030;
+      width: 49%;
+      height: 100%;
+      margin-left: 5px;
+
+      display: inline-flex;
+      display: -webkit-inline-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      border-radius: 5px;
+      .long-text-hidden;
+      span:first-child{
+        .flex_1;
+        .display-flex;
+      }
+      span:last-child{
+        padding: 0 6px;
+      }
+    }
+
+  }
+  .select-grade{
+    height: 40px;
+    width: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 0 !important;
+    .mbtn{
+      width: 190px;
+      line-height: 40px;
+      height: 100%;
+      text-align: center;
+      margin: 0 auto;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      font-size: 16px;
+    }
+    .mback{
+      width: 40px;
+      cursor: pointer;
+      background: url('./../../../../t_boot/tImages/other/arrow.png') no-repeat;
+      background-size: 70% 70%;
+      background-position: center;
+    }
+    .mforward{
+      width: 40px;
+      cursor: pointer;
+      background: url('./../../../../t_boot/tImages/other/arrow.png') no-repeat;
+      background-size: 70% 70%;
+      background-position: center;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  }
+  //排行榜入口
+  .compute-fighter-rank-wrap{
+    height: 50px;
+    background: #8671d9 url('./../../../../t_boot/tImages/msg/msg_game_star_bg_2.png') center center no-repeat;
+    .compute-fighter-rank{
+      width: 100%;
+      height: 100%;
+      background: url('./../../../../t_boot/tImages/msg/msg_fighter_bar_bg_2.png') 6% 50% no-repeat;
+      background-size: 66px;
+      .compute-fighter-rank-text{
+        .display-flex;
+        height: 100%;
+        font-size: 17px;
+        color: #fff;
+      }
+    }
+  }
+
+}
+.long-text-hidden{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shadow{
+  box-shadow: 3px 2px 5px #ddd;
+}
+.list-content{
+  color: #3f4367;
+  font-size: 14px;
+  background-color:  #fff;
+  overflow: hidden;
+  .r-item:first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .r-item{
+    height: 80px;
+    display: flex;
+    display: -webkit-flex;
+
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 7px 5.33333333% 0 5.33333333%;
+    width: 100%;
+    .status-wrap{
+      width: 50%;
+      text-align: center;
+      .status-outer-bar{
+        width: 100%;
+        background-color: #7e829a;
+        height: 15px;
+        border-radius: 25px;
+        position: relative;
+        .status-inner-bar{
+          position: absolute;
+          left: 0;
+          right: 0;
+          width: 100%;
+          background-color: #54eff8;
+          height: 15px;
+          border-radius: 25px;
+        }
+      }
+    }
+
+    .people-wrap{
+      height: 100%;
+      text-align: center;
+      font-size: 0.75rem;
+      width: 60px;
+      img{
+        height: 45px;
+        width: 48px;
+      }
+      span{
+        white-space: nowrap;
+        font-size: 14px;
+        display: inline-block;
+        min-width: 40px;
+      }
+    }
+    .right-info{
+      height: 100%;
+      display: inline-flex;
+      display: -webkit-inline-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      font-size: 0.75rem;
+      >i:last-child{
+        position: relative;
+        font-size: 20px;
+        top: 2px;
+        right: -5px;
+      }
+      em{
+        color: #DD2222;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .r-item.odd{
+    background-color: #F3F3F3;
+  }
+}
+.stu-pass-levels{
+  .mhelp{
+    background-color: transparent;
+  }
+  .back-icon{
+      color: #4a6b9d;
+    font-size: 32px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+  }
+  ul{
+
+  }
+  li{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 8px;
+  }
+
+  li.pass{
+    background: url('./../../../../t_boot/tImages/other/passLevelBg.png') no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    color: #2f463e;
+  }
+  li.notPass{
+    background-color: #ced9e1;
+    background-size: 100% 100%;
+    background-position: center;
+    color: #798995;
+  }
+}
+

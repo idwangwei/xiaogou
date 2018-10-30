@@ -1,0 +1,319 @@
+<ion-view hide-nav-bar="true" class="work_list_file" ng-class="{'work_list_file_win':ctrl.isPC}">
+    <ion-header-bar align-title="center" class="bar-better">
+    </ion-header-bar>
+    <ion-side-menus>
+
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class=" game_clazz_select" padding="true" style="top:105px!important;padding-bottom: 60px">
+                <div class="work_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-style="{'margin-bottom':$last?'60px':'0px'}">
+                    <div class="clazz-item" ng-click="ctrl.selectClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadImg('other/class.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--列表内容-->
+        <ion-side-menu-content>
+            <!--头部菜单-->
+            <ion-header-bar class="bar-subheader divHeadBar">
+                <!--选择的班级名称、班级学情、档案夹、时间和布置作业按钮-->
+                <div class="divHeadBtn">
+                    <div class="div-head-btn-left">
+                        <!--选择的班级名称-->
+                        <div class="className" ng-click="ctrl.showMenu()">
+                            <span class="flex_1">{{ctrl.selectedClazz.name || "没有班级"}}</span>
+                            <span class="icon ion-ios-arrow-right spanStyle"></span>
+                        </div>
+
+                        <!--学情、档案夹-->
+                        <div class="display-flex study">
+                            <div class="display-flex details" ng-click="ctrl.showStudy()">
+                                <span class="flex_1">班级学情</span>
+                                <span class="icon ion-ios-arrow-right spanStyle"></span>
+                            </div>
+                            <div class="display-flex docs" ng-click="ctrl.showTrophyRankData()">
+                                <span class="flex_1">奖杯榜</span>
+                                <span class="icon ion-ios-arrow-right spanStyle"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!--布置-->
+                    <div class="display-flex work_pub" ng-click="ctrl.goWorkPaperBank()">
+                        <div class="display-flex flex_1">
+                            <img ng-src="{{$root.loadImg('work/pub_work_btn.png')}}" alt="">
+                            <span>布置</span>
+                        </div>
+                        <span class="icon ion-ios-arrow-right spanStyle"></span>
+                    </div>
+                </div>
+            </ion-header-bar>
+
+            <!--试卷列表-->
+            <ion-content ng-style="{'top':ctrl.isAdmin?ctrl.isPC?'265px':'203px':ctrl.isPC?'265px':'203px'}"
+                         delegate-handle="mainScroll" class="has-footer">
+
+                <!--下拉刷新-->
+                <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()" spinner="ios"></ion-refresher>
+                <div class="winter-holidays-box"  ng-if="ctrl.hasSheckClassStudentCount">
+                    <ion-slide-box delegate-handle="winter-holidays-box" does-continue="true" style="height: 100%"
+                                   auto-play=true
+                                   show-pager={{ctrl.hasMonitor||ctrl.isShowHolidayWork||ctrl.isShowPersonalQb}}
+                                   slide-interval=4000>
+                        <!-- 大数据测评广告 -->
+                        <ion-slide ng-if="ctrl.hasMonitor">
+                          <div class="monitor-ad-wrap slide-mark" data-mark="monitor">
+                            <img class="img-middle" ng-src="{{$root.loadImg('monitor_ad/stu_study_index_monitor_2.png')}}">
+                          </div>
+                        </ion-slide>
+                      <!-- 假期作业广告 注释掉后不要删除, 每个假期都会使用 -->
+                      <ion-slide ng-if="ctrl.isShowHolidayWork">
+
+                          <div class="slide-holiday-homework-ad slide-mark" data-mark="slide-holiday-homework">
+                              <img class="img-left" ng-src="{{$root.loadImg('holiday_homework/holiday_wok_summer_ad_1.png')}}">
+                              <img class="img-right" ng-src="{{$root.loadImg('holiday_homework/holiday_wok_summer_ad_2.png')}}">
+                          </div>
+
+                      </ion-slide>
+                        <!--口算轮播广告-->
+                        <ion-slide>
+                            <div class="oral-calculation-ad slide-mark" data-mark="oral-calculation">
+                                <img style="height: 60%;display: block;margin: auto" ng-src="{{$root.loadImg('oralArithmeticImg/oral_arithmetic_img_ad.png')}}">
+                                <div style="padding:4px;font-size:1.2rem;color:#3F4367">布置>选择单元、课时>口算</div>
+                            </div>
+                        </ion-slide>
+                        <!--直播轮播广告-->
+                        <ion-slide>
+                            <div class="winter-holidays-wrap-03 slide-mark" data-mark="winter-holidays">
+                                <div class="broadcast_page_fireworks">
+                                    <div class="broadcast_fireworks broadcast_fireworks_01"></div>
+                                    <div class="broadcast_fireworks broadcast_fireworks_02"></div>
+                                    <div class="broadcast_fireworks broadcast_fireworks_03"></div>
+                                    <div class="broadcast_fireworks broadcast_fireworks_04"></div>
+                                    <div class="broadcast_fireworks broadcast_fireworks_05"></div>
+                                </div>
+                                <div class="broadcast_page_left">
+                                    <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-left.png')}}">
+                                </div>
+                                <div class="broadcast_page_middle">
+                                    <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-middle.png')}}">
+                                </div>
+                                <div class="broadcast_page_right">
+                                    <img ng-src="{{$root.loadImg('work/winter-work/winter-broadcast-right.png')}}">
+                                </div>
+                            </div>
+                        </ion-slide>
+                        <!-- 老师自己出题广告-->
+                        <ion-slide ng-if="ctrl.isShowPersonalQb">
+                            <div class="teacher_personal_qb_home_ad slide-mark" data-mark="teacher_personal_qb_home">
+                                <img class="ad_img_03" ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img09.png')}}">
+                                <img class="ad_img_01" ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img03.png')}}">
+                                <img class="ad_img_02" ng-src="{{$root.loadImg('teacher_qb/teacher_qb_img02.png')}}">
+                            </div>
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
+                <!--区域测评按钮-->
+                <div class="area-evaluation-box" ng-click="ctrl.goAreaEvaluationList()" ng-show="ctrl.hasAreaEvaluation">
+                    <img ng-src="{{$root.loadImg('pub_work_type/pub_type04.png')}}" class="area-evaluation-img">
+                    <div class="area-evaluation-text">
+                        <span class="title">区域测评</span>
+                        <span class="des">点击右上“布置”发布测评试卷</span>
+                        <span class="des">进入可查看测评详情</span>
+                    </div>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+                <!--没有班级提示-->
+                <div ng-if="ctrl.retFlag && !ctrl.clazzList.length" style="padding: 10px 0 0 10px">
+                    您还没有创建班级，请点击下方的“班级”，然后再点击“+”创建班级。
+                </div>
+                <!--班级没有发布作业或刚登录引导的时候模拟班还没有布置作业时:提示信息-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="(ctrl.workList.length==0 && (!ctrl.simulationWorkList|| ctrl.simulationWorkList.length == 0) && ctrl.retFlag) || (ctrl.guideFlag && ctrl.guideFlag.isSameUser &&!ctrl.guideFlag.hasPubedSimulationWork)">
+                    <input type="text" ng-model="ctrl.tip" readonly="readonly"/>
+                </div>
+                <!--区域测评教师端看到的列表-->
+                <div class="area-evaluation-list" ng-show="ctrl.workAEList.length>0">
+                    <div class="area-evaluation-item" ng-show="$index==0||ctrl.showAllAEList" ng-repeat="item in ctrl.workAEList" ng-click="ctrl.paperDetail(item)">
+                        <img src="{{$root.loadImg('pub_work_type/evaluation-list-icon.png')}}" class="ae-item-left">
+                        <div class="ae-item-middle">
+                            <span class="title">{{item.paperName}}</span>
+                            <span class="type">（{{item.assigneeDisplay}}）</span>
+                            <span class="num"><span class="red">{{item.submitNum}}</span>/{{item.totalNum}}人</span>
+                            <span class="des">共{{item.questionCount}}题，限时{{item.limitTime}}分钟</span>
+                        </div>
+                        <div class="ae-item-right" ng-if="item.isStart">
+                            <span>{{item.f1}}</span>
+                            <span>{{item.f2}}</span>
+                            <span>{{item.f3}}</span>
+                        </div>
+                        <div class="ae-item-right" ng-if="!item.isStart">
+                            <span>评测将于</span>
+                            <span>{{item.f3}}</span>
+                            <span>{{item.f1}}</span>
+                            <span>开启</span>
+                        </div>
+                    </div>
+                    <div class="arrow-box" ng-show="!ctrl.showAllAEList&&ctrl.workAEList.length>1" ng-click="ctrl.toggleAEBox()">展开所有测评 <i class="icon ion-chevron-down"></i></div>
+                    <div class="arrow-box" ng-show="ctrl.showAllAEList&&ctrl.workAEList.length>1" ng-click="ctrl.toggleAEBox()">收起所有测评 <i class="icon ion-chevron-up"></i></div>
+                </div>
+                <!--班级发布的作业列表-->
+                <div ng-style="{'margin-bottom': ctrl.simulationWorkList ? '0' : '60px'}"
+                     ng-if="!ctrl.guideFlag ||(ctrl.guideFlag && !ctrl.guideFlag.isSameUser) || (ctrl.guideFlag && ctrl.guideFlag.isSameUser && ctrl.guideFlag.isGuideAnimationEnd)">
+
+                    <ion-list ng-show="ctrl.isShowHolidayWork">
+                        <!--寒假作业框-->
+                        <ion-item class="holiday-work-box item item-avatar" ng-click="ctrl.goHolidayWorkList()">
+                            <!--左侧图片-->
+                            <img style="border-radius: initial;" ng-src="{{$root.loadImg('paper_bank/holiday_paper_icon_v2.png')}}">
+
+                            <div class="display-flex content-font-color">
+                                <div class="content-left">
+                                    <h2 style="color: #944130!important;">暑假作业（7月1日-9月15日）</h2>
+                                    <p>{{'共60套试卷'}}</p>
+                                    <p>{{ctrl.selectedClazz.name+'(全班)'}}</p>
+                                    <p style="font-size: 14px">学生做作业时间：7月1日-9月15日</p>
+                                </div>
+                            </div>
+                        </ion-item>
+
+                    </ion-list>
+
+
+                    <ion-list ng-show="ctrl.workList.length!=0 && ctrl.checkData(ctrl.workList)">
+                        <div ng-repeat-start="list in ctrl.workList"
+                             class="month-bar"
+                             ng-if="ctrl.ifShow($index)">
+                            <span>{{ctrl.getMonth(list) + '月'}}</span>
+                        </div>
+                        <ion-item ng-click="ctrl.paperDetail(list);" class="item item-avatar " ng-repeat-end
+                                  ng-class="list.showCss?list.showCss:''">
+
+                            <!--左侧图片-->
+                            <!--口算作业图片-->
+                            <img ng-if="ctrl.isOralArithmeticWork(list)"
+                                 ng-src="{{$root.loadImg('oralArithmeticImg/oral_arithmetic_img01.png')}}">
+                            <!--非口算作业-->
+                            <img ng-if="!ctrl.isOralArithmeticWork(list)"
+                                 ng-src="{{$root.loadImg(list.publishType ==13?'paper_bank/paper_icon_v13.png':'paper_bank/paper_icon.png')}}">
+                            <!--假期作业，增加显示tag图标-->
+                            <img ng-src="{{ctrl.isWinterHolidayHomework(list)?$root.loadImg('work/winter-work/winter-work-tag-t.png'):$root.loadImg('work/summer_work/s_work_tag1.png')}}"
+                                 ng-if="ctrl.isPpecialWork(list)"
+                                 class="work-tag">
+                            <!--新发布的作业-->
+                            <img ng-src="{{$root.loadImg('other/new-icon.png')}}" class="new-icon"
+                                 ng-if="list.isNew==1">
+
+                            <div class="display-flex content-font-color">
+                                <!--试卷信息：名称、班级、人数;如果是口算,显示题量和限时-->
+                                <div class="content-left">
+                                    <h2 style="color: #944130!important;">{{list.paperName}}</h2>
+                                    <p>{{list.groupName+'('+list.assigneeDisplay+')'}}</p>
+                                    <p>
+                                        <span class="work-correct-font">{{list.submitNum}}</span>
+                                        /{{list.totalNum}}人
+                                    </p>
+                                    <p ng-if="list.nextPublishTime" ng-bind="list.nextPublishTime"
+                                       style="white-space: normal;color:red!important"></p>
+                                    <p ng-if="ctrl.isOralArithmeticWork(list)||list.publishType == ctrl.finalData.WORK_TYPE.FINAL_ACCESS">
+                                        <span ng-if="list.limitTime!=-1">共{{list.questionCount}}题，限时{{list.limitTime}}分钟</span>
+                                        <span ng-if="list.limitTime==-1">共{{list.questionCount}}题</span>
+                                    </p>
+                                </div>
+                                <!--右边显示时间-->
+                                <div class="content-right" ng-if="list.startTime&&!ctrl.checkStartTime(list.startTime)">
+                                    <p class="text-align-center">{{list.startTime.substring(11,16)}}</p>
+                                    <p class="text-align-center">{{list.publishWeek}}</p>
+                                    <p class="text-align-center">{{list.startTime.substr(0,10)}}</p>
+                                </div>
+                                <div class="content-right" ng-if="list.startTime&&ctrl.checkStartTime(list.startTime)">
+                                    <p class="text-align-center" ng-if="list.publishType == ctrl.finalData.WORK_TYPE.FINAL_ACCESS"
+                                       style="overflow: visible;text-overflow: initial;white-space: normal;">
+                                        <span>试卷将于</span><br>
+                                        <span ng-bind="list.startTime.substring(0,16)"></span><br>
+                                        <span>开启</span>
+                                    </p>
+                                    <p class="text-align-center" ng-if="list.publishType != ctrl.finalData.WORK_TYPE.FINAL_ACCESS"
+                                       style="overflow: visible;text-overflow: initial;white-space: normal;">
+                                        <span>该作业将于</span><br>
+                                        <span ng-bind="list.startTime.substring(0,16)"></span><br>
+                                        <span>准时发布</span>
+                                    </p>
+                                </div>
+                                <div class="content-right" ng-if="!list.startTime">
+                                    <p class="text-align-center">{{list.createTime.substring(11,16)}}</p>
+                                    <p class="text-align-center">{{list.publishWeek}}</p>
+                                    <p class="text-align-center">{{list.createTime.substr(0,10)}}</p>
+                                </div>
+                            </div>
+
+                            <!--右滑选项：补发-->
+                            <ion-option-button class="button-assertive icon ion-android-contacts"
+                                               ng-show="!ctrl.isPpecialWork(list) && list.publishType != ctrl.finalData.WORK_TYPE.FINAL_ACCESS"
+                                               ng-click="ctrl.rePublishWork(list)">补发作业
+                            </ion-option-button>
+                            <!--右滑选项：删除-->
+                            <ion-option-button class="button-assertive icon ion-ios-trash"
+                                               ng-show="!ctrl.isPpecialWork(list) && list.publishType != ctrl.finalData.WORK_TYPE.FINAL_ACCESS"
+                                               ng-click="ctrl.delWork(list.instanceId,list.paperId,list.rowId)">删除作业
+                            </ion-option-button>
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+
+                <!--引导：模拟班级作业列表，当老师布置了一套作业后隐藏-->
+                <div style="margin-bottom: 60px;"
+                     ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && ctrl.guideFlag.hasPubedSimulationWork && !ctrl.guideFlag.isGuideEnd">
+                    <ion-list ng-show="ctrl.simulationWorkList.length!=0 && ctrl.checkData(ctrl.simulationWorkList)">
+                        <div ng-repeat-start="list in ctrl.simulationWorkList"
+                             ng-if="ctrl.ifShow($index)">
+                        </div>
+
+                        <ion-item ng-click="ctrl.paperDetail(list);"
+                                  class="item item-avatar item-complex item-right-editable" ng-repeat-end
+                                  ng-class="list.showCss?list.showCss:''">
+                            <div class="item-content">
+                                <img ng-src="{{$root.loadImg('paper_bank/paper_icon.png')}}">
+                                <img ng-src="{{ctrl.isWinterHolidayHomework(list)?$root.loadImg('work/winter-work/winter-work-tag-t.png'):$root.loadImg('work/summer_work/s_work_tag1.png')}}"
+                                     ng-if="ctrl.isPpecialWork(list)"
+                                     class="work-tag">
+                                <img ng-src="{{$root.loadImg('other/new-icon.png')}}" class="new-icon"
+                                     ng-if="list.isNew==1">
+                                <div class="display-flex content-font-color">
+                                    <div class="content-left">
+                                        <h2 style="color: #944130!important;">{{list.paperName}}</h2>
+                                        <p>{{list.groupName+'('+list.assigneeDisplay+')'}}</p>
+                                        <p>
+                                            <span class="work-correct-font">{{list.submitNum}}</span>
+                                            /{{list.totalNum}}人
+                                        </p>
+                                        <p ng-if="list.nextPublishTime" ng-bind="list.nextPublishTime"
+                                           style="white-space: normal;color:red!important"></p>
+                                    </div>
+                                    <div class="content-right">
+                                        <p class="text-align-center">{{list.createTime.substring(11,16)}}</p>
+                                        <p class="text-align-center">{{list.publishWeek}}</p>
+                                        <p class="text-align-center">{{list.createTime.substr(0,10)}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+                <!--上拉加载更多-->
+                <ion-infinite-scroll on-infinite="ctrl.loadMore(true);" immediate-check="false"
+                                     spinner="ios" distance="10%" ng-if="ctrl.moreFlag"></ion-infinite-scroll>
+            </ion-content>
+
+        </ion-side-menu-content>
+    </ion-side-menus>
+</ion-view>

@@ -1,0 +1,148 @@
+<ion-view hide-nav-bar="true" class="diagnose_file" >
+    <ion-header-bar align-title="center" class="bar-better">
+        <!--<task-top-bar ng-if="!ctrl.isAdmin"></task-top-bar>-->
+    </ion-header-bar>
+
+    <!--侧边栏-->
+    <ion-side-menus has-header="false" >
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}">
+            <ion-content class=" clazz_select" padding="true" style="top:105px!important;">
+                <div class="col-md-12 col-xs-12 clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList">
+                    <div class="clazz-item" ng-click="ctrl.diagnoseSelectClazz(clazz)">
+                        <img class="clazz_select_img" ng-src="{{$root.loadImg('other/class.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--试卷列表-->
+        <ion-side-menu-content>
+            <div style="top: 105px!important;padding:5px;height:44px;display:flex;display:-webkit-flex;position: absolute;right: 0;left: 0;z-index: 9;">
+                <div class="top-wrap" ng-if="ctrl.diagnose_selected_clazz&&ctrl.diagnose_selected_clazz.name">
+                    <!--班级名称显示n框-->
+                    <div class="select-content-wrap" >
+                        <div class="display-flex select-bar-wrap">
+                            <div style="width: 49%;margin-right: 5px " >
+                                <div class="select-bar select-bar-left" ng-click="ctrl.showMenu()">
+                                    <!--      <i class="icon  ion-android-contacts" ng-if="ctrl.screenWidth>400"></i>-->
+                                    <div  style="margin-top: 10px;display: inline-block"
+                                          ng-bind="ctrl.diagnose_selected_clazz.name"></div>
+                                    <span class="icon ion-ios-arrow-right position-right"></span>
+                                </div>
+                            </div>
+                            <div style="width: 49%">
+                                <div class="select-bar select-bar-right"  ng-click="ctrl.showUnit()">
+                                    <div class="first-title-v"
+                                         ng-bind="ctrl.selectedUnit.textbookName"
+                                         ng-if="ctrl.selectedUnit">
+                                    </div>
+                                    <div class="first-title "
+                                         ng-bind="'请选择一个单元...'"
+                                         ng-if="!ctrl.selectedUnit"
+                                         style="margin-top: 10px;"
+                                    >
+                                    </div>
+                                    <div class="second-title " ng-bind="ctrl.selectedUnit.text"   ng-if="ctrl.selectedUnit"></div>
+                                    <span class="icon ion-ios-arrow-right position-right"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <ion-content>
+
+                <div class="ad-box-slide ad-wrap" ng-click="ctrl.showWinterAd()">
+                            <div class="left-part">
+                                <!--<img ng-src="{{$root.loadImg('diagnose/diagnoseForTeacherLight.png')}}">-->
+                                <p>单元考点诊断</p>
+                            </div>
+                            <div class="right-part">
+                                <img ng-src="{{$root.loadImg('diagnose/diagnoseForTeacherLogo.png')}}">
+                                <div class="ad-text">
+                                    <!--<p>以下诊断数据来自平时作业<br>和“<span>学霸驯宠记</span>”里的练习</p>-->
+                                    <p>以下诊断数据来自平时作业<br>和“诊断提分”里的练习</p>
+                                    <span class="ad-text-remark">学生未掌握、不牢固，怎么办？<i class="ion-chevron-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                <div class = "divHeadBar"
+                     ng-style="{height:ctrl.unit_diagnose.tableTitleList.length?'':'auto'}">
+
+                    <div ng-if="ctrl.unit_diagnose.tableTitleList&&ctrl.unit_diagnose.tableTitleList.length">
+                        <p ng-bind="ctrl.selectedUnit.text" class=" big-title" style="padding: 8px;"></p>
+                        <p ng-bind="'共 '+ctrl.unit_diagnose.totalPointNum+' 个考点'" class="p-title"></p>
+                        <!--<p class="p-title">-->
+                            <!--以下诊断数据来自于学生平时的作业<br>-->
+                            <!--和“<u style="color: #FF832E" ng-click="ctrl.showWinterAd()">学霸驯宠记</u>”里的练习-->
+                        <!--</p>-->
+                    </div>
+                    <div class=" tr_content_top"  >
+                        <!--<div class="tr_ct_cell"></div>-->
+                        <div class="tr_ct_cell" ng-repeat="item in ctrl.unit_diagnose.tableTitleList">
+                            <div ng-click="ctrl.sortTable(item)" class="accordion display-flex stu_list_header" style="width: 100%">
+                                <i class="icon ion-stop {{item.colorClass}}" >&ensp;</i>
+                                <div class="display-flex-pure">
+                                    <span ng-bind="item.value"></span>
+                                    <i  ng-class="item.sortUp?'icon ion-arrow-up-c':'icon ion-arrow-down-c'"
+                                        style="color:rgb(56, 234, 56);display: inline-block"
+                                        ng-show="item.showSortFlag">
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tip-div-wrap" >
+                                 <span class="net-tip" ng-if="!ctrl.onLine">
+                                     <span><i class="icon ion-alert-circled"></i>&nbsp;无法连接网络</span>
+                                 </span>
+                        <span class="net-tip" ng-if="ctrl.hasNoClass()">
+                                       <span>您还没有创建班级，<br>请点击下方的“班级”，然后再点击“+”创建班级。</span>
+                                 </span>
+                        <span class="net-tip" ng-if="!ctrl.hasNoClass()&&!ctrl.diagnose_selected_clazz.checkedNum">
+                                       <span>您的班级还没有学生加入。</span>
+                                 </span>
+                    </div>
+                </div>
+
+                <div class="tr_cm_warp item" ng-repeat="item in ctrl.unit_diagnose.stuList"
+                         ng-click="ctrl.showStuStati(item)"
+                         ng-init="item.stuImg=(item.gender=='-1'?'person/delete-student.png':(item.gender=='0'?'person/student-f.png':'person/student-m.png'))">
+                        <div class="tr_cm_cell" >
+                            <img ng-src="{{$root.loadImg(item.stuImg)}}" alt="" />
+                            <div ng-bind="item.name+(item.planA?'*':'')" class="stu-name"></div>
+                        </div>
+                        <div class="tr_cm_cell tr_cm_cell_bar">
+                            <div class="tr_cell_bar">
+                                <div class="common-bar level-four-bar" ng-style="{width:item.stuPercentList[0]}"
+                                     ng-bind="item.stuLevelList[0]" ng-if="item.stuLevelList[0]>0"></div>
+                                <div class="common-bar level-three-bar" ng-style="{width:item.stuPercentList[1]}"
+                                     ng-bind="item.stuLevelList[1]" ng-if="item.stuLevelList[1]>0"></div>
+                                <div class="common-bar level-two-bar" ng-style="{width:item.stuPercentList[2]}"
+                                     ng-bind="item.stuLevelList[2]" ng-if="item.stuLevelList[2]>0"></div>
+                                <div class="common-bar level-one-bar" ng-style="{width:item.stuPercentList[3]}"
+                                     ng-bind="item.stuLevelList[3]" ng-if="item.stuLevelList[3]>0"></div>
+                            </div>
+                        </div>
+                       <!-- <div class="tr_cm_cell level-four tr_cell_font" ng-bind="item.master2Number[ctrl.unit_diagnose.tableTitleList[0]['key']]"></div>
+                        <div class="tr_cm_cell level-three tr_cell_font" ng-bind="item.master2Number[ctrl.unit_diagnose.tableTitleList[1]['key']]"></div>
+                        <div class="tr_cm_cell level-two tr_cell_font" ng-bind="item.master2Number[ctrl.unit_diagnose.tableTitleList[2]['key']]"></div>
+                        <div class="tr_cm_cell tr_cell_font" ng-bind="item.master2Number[ctrl.unit_diagnose.tableTitleList[3]['key']]"></div>-->
+                        <i class="icon ion-chevron-right"></i>
+                    </div>
+               <!-- <div style="margin: 5px 0 80px 5px;">
+                    *加入学霸培养计划人数：{{ctrl.xlyACount}}人
+                </div>-->
+            </ion-content>
+            <!--<loading-processing ></loading-processing>-->
+        </ion-side-menu-content>
+    </ion-side-menus>
+
+</ion-view>

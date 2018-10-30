@@ -1,0 +1,323 @@
+<ion-view hide-nav-bar="true" class="work_list_file olympic_math_t_list">
+    <ion-header-bar align-title="center" class="bar-better" style="background: #83DCF5;!important;">
+        <button ng-click="ctrl.backOlympicMathHome()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 2px"></span>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4a6b9d"
+            ng-bind="ctrl.isComeFromOlympicMathTeacher()?'魔法任务':'自主训练'"></h1>
+        <span class="select-work-btn" ng-bind="ctrl.showDeleteFlag?'取消':'选择'"
+              ng-if="ctrl.initCModal&&ctrl.workList.length&&!ctrl.isComeFromOlympicMathTeacher()"
+              ng-click="ctrl.showDeleteIcon()"></span>
+    </ion-header-bar>
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+    <!--侧边栏-->
+    <ion-side-menus has-header="false" id="mainContent">
+
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="game_clazz_select" padding="true">
+                <div class="col-md-12 col-xs-12 work_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-show="clazz.status==1">
+                    <div class="clazz-item" ng-click="ctrl.workListSelectClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadImg('clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--试卷列表-->
+        <ion-side-menu-content style="background: #6c8cdf;">
+            <!--班级名称显示框-->
+            <div class="select-content-wrap has-header">
+
+                <div class="select-bar-wrap">
+                    <!--todo: 学生奥数班级只能加入一个，待去掉-->
+                    <div class="select-bar-wrap-left" ng-click="ctrl.isComeFromOlympicMathTeacher()?'':ctrl.openGradesSelectModal()">
+                        <div class="content-wrap" ng-if="ctrl.initCModal&&ctrl.isComeFromOlympicMathTeacher()">
+                            <img ng-src="{{$root.loadImg('clazz_icon.png')}}">
+                            <span ng-bind="ctrl.olympicMathSelectedClazz.name||'没有奥数班级'"></span>
+                        </div>
+
+                        <div class="content-wrap"  ng-if="ctrl.initCModal&&!ctrl.isComeFromOlympicMathTeacher()">
+                            <!-- <img ng-src="{{$root.loadImg('clazz_icon.png')}}">-->
+                            <span ng-bind="ctrl.olympicMathSelectedGrade.name"></span>
+                        </div>
+                        <div class="arrow-right-wrap"  ng-if="ctrl.initCModal&&!ctrl.isComeFromOlympicMathTeacher()">
+                            <i class="icon ion-ios-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="select-bar-wrap-right" ng-click="ctrl.goStuSituation()">
+                        <div class="content-wrap">
+                            <img ng-src="{{$root.loadImg('work/clazz_study.png')}}">
+                            <span>个人学情</span>
+                        </div>
+                        <div class="arrow-right-wrap"><i class="icon ion-ios-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <ion-content class="s_work_list_con work_list_content" style="top:104px">
+
+                <!--奖杯榜-->
+                <div class="work-trophy-rank-wrap" ng-click="ctrl.showStuTrophyRank()"
+                     ng-if="ctrl.isComeFromOlympicMathTeacher()">
+                    <img class="olympic-math-cup-bg" ng-src="{{$root.loadImg('olympic-math/olympic-math-cup-bg.png')}}">
+                    <img class="olympic_math_gold_cup" ng-src="{{$root.loadImg('msg/olympic_math_gold_cup.png')}}">
+                    <div class="work-trophy-rank-text">
+                        <span>奥数奖杯榜</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </div>
+                </div>
+                <!--我要练习-->
+                <div class="self-create-paper-bar-wrap" ng-click="ctrl.createPaper()"
+                     ng-if="!ctrl.isComeFromOlympicMathTeacher()">
+                    <div class="centent-box-wrap">
+                        <img class="olympic-math-self-practice"
+                             ng-src="{{$root.loadImg('olympic-math/olympic-math-self-practice.png')}}">
+                        <span>我要练习</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </div>
+                </div>
+                <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+                <!--断网提示框-->
+                <div>
+                     <span class="net-tip" ng-if="!ctrl.onLine">
+                         <span><i class="icon ion-alert-circled"></i>&nbsp;无法连接网络</span>
+                     </span>
+                </div>
+
+                <!--没有班级提示-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="ctrl.isComeFromOlympicMathTeacher()&&ctrl.initCModal&&!ctrl.olympicMathSelectedClazz.id">
+                    <span>你没有加入奥数班级，<br>不能收到老师发布的作业！</span>
+                </div>
+
+
+                <!--来自老师没有作业提示-->
+                <div class="item item-input block-input item-input—height"
+                     ng-if="ctrl.isComeFromOlympicMathTeacher()&&ctrl.clazzList && ctrl.clazzList.length &&ctrl.olympicMathSelectedClazz&&ctrl.workList&&ctrl.workList.length==0">
+                    <span>该班级目前没有发布作业!</span>
+                </div>
+
+
+                <!--作业列表-->
+                <div ng-repeat="listItem in ctrl.workList track by $index" style="padding: 0px 10px">
+                    <h5 ng-if="ctrl.ifShow($index)" class="row"
+                        style="padding-left: 10px; margin: 10px -50px 10px -10px;color: white;background-color: #845CD6;width: 120%;display: inline-block;">
+
+                        <span>{{ctrl.getMonth(listItem) + '月'}}</span><br>
+                    </h5>
+                    <div class="col-md-3 col-xs-6 work-list" ng-style="{'margin-bottom':$last?'100px':''}">
+                        <div class="work-item default-work-item"
+                             ng-style="{'background':ctrl.showDeleteFlag&&listItem.selected?'#A6AAB0':''}"
+                             ng-click="ctrl.showWorkDetail(listItem,$index);">
+
+                            <i ng-class="listItem.selected ? 'ion-ios-checkmark' :'ion-ios-circle-outline'"
+                               class="delete-check-box"
+                               ng-click="ctrl.signWork(listItem,$event)"
+                               ng-if="ctrl.showDeleteFlag"></i>
+
+                            <img ng-src="{{$root.loadImg('work/summer_work/s_work_tag1.png')}}"
+                                 class="s-work-tag-icon"
+                                 ng-if="listItem.paperInfo.publishType == 4">
+                            <div class="work-hearder" style="width:inherit;overflow: hidden">
+                                <span ng-bind="listItem.paperInfo.paperName || '&nbsp;'" class="clazz-title"></span>
+                            </div>
+                            <div class="work-content">
+                                <div class="left-img">
+                                </div>
+                                <div class="main-img">
+                                    <div class="img-box" ng-if="listItem.paperInfo.img != undefined"
+                                         ng-style="{'background':ctrl.showDeleteFlag&&listItem.selected?'#A6AAB0':''}">
+                                        <img ng-src="{{$root.loadImg(listItem.paperInfo.img)}}"
+                                             ng-class="listItem.paperInfo.img==='msg/olympic_math_gold_cup.png'? 'img-best':( listItem.paperInfo.img==='msg/olympic_math_default_cup.png'?'img-default':'')">
+                                    </div>
+
+                                </div>
+                                <div class="right-img">
+                                    <div ng-if="ctrl.isComeFromOlympicMathTeacher()">
+                                        <div ng-click="ctrl.goPraise(listItem.paperInfo,$index,$event)">
+                                            <img ng-if="listItem.paperInfo.studentPraise"
+                                                 ng-src="{{$root.loadImg(listItem.paperInfo.studentPraise.img ||'praise/praise.png')}}">
+                                            <img ng-if="!listItem.paperInfo.studentPraise"
+                                                 ng-src="{{$root.loadImg('praise/praise.png')}}">
+                                        </div>
+                                    </div>
+                                    <div ng-if="ctrl.isComeFromOlympicMathTeacher()">
+                                        <div ng-click="ctrl.showPraiseDetail(listItem.paperInfo,2,$event)"
+                                             ng-if="listItem.paperInfo.teacherPraise">
+                                            <img ng-src="{{$root.loadImg(listItem.paperInfo.teacherPraise.img)}}">
+                                        </div>
+
+                                    </div>
+                                    <div ng-if="ctrl.isComeFromOlympicMathTeacher()">
+                                        <div ng-click="ctrl.showPraiseDetail(listItem.paperInfo,3,$event)"
+                                             ng-if="listItem.paperInfo.parentPraise">
+                                            <img ng-src="{{$root.loadImg(listItem.paperInfo.parentPraise.img)}}">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="work-footer" style="margin-bottom: 0px;margin-top: 10px;">
+                                <p style=" margin-top: -5px;margin-bottom: 2px;">
+                                <span ng-bind="'未开始'"
+                                      style="font-size: 14px;font-weight: bold" ng-if="listItem.paperInfo.status==1">
+                                </span>
+                                    <span ng-bind="'进行中'"
+                                          style="font-size: 14px;font-weight: bold"
+                                          ng-if="listItem.paperInfo.status==2">
+                                </span>
+                                    <span ng-bind="'已提交'"
+                                          style="font-size: 14px;font-weight: bold"
+                                          ng-if="listItem.paperInfo.status==3">
+                                </span>
+                                    <span ng-bind="listItem.paperInfo.processBar"
+                                          style="font-size: 14px;font-weight: bold"
+                                          ng-if="listItem.paperInfo.status==4">
+                                </span>
+                                </p>
+                                <p><span ng-bind="listItem.paperInfo.showTime"></span></p>
+                            </div>
+                        </div>
+
+                        <div class="vip_paper_icon" ng-class="{'vip_paper_icon_green':listItem.paperInfo.isFree}"
+                             ng-if="ctrl.stateUrlFrom=='olympic_math_t' && !ctrl.isVip">
+                            <span ng-bind="listItem.paperInfo.isFree?'免费体验':'未激活'"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <ion-infinite-scroll on-infinite="ctrl.fetWorkListWithLoadMore()" immediate-check="false"
+                                     spinner="ios" distance="1%" ng-if="ctrl.moreFlag">
+                </ion-infinite-scroll>
+
+            </ion-content>
+            <div class="delete-bar" ng-if="ctrl.showDeleteBarFlag" ng-click="ctrl.deleteWork()">
+                <span>删除</span>
+                <i class="icon ion-trash-a"></i>
+            </div>
+
+        </ion-side-menu-content>
+
+    </ion-side-menus>
+
+    <script id="gradesSelect.html" type="text/ng-template">
+        <ion-modal-view class="olympic-math-t-list-select-modal" style="{{ctrl.modalStyle}}">
+            <ion-header-bar align-title="center"
+                            class="bar-balanced">
+                <div class="button back-button buttons  button-clear header-item"
+                     ng-click="ctrl.closeGradesSelectModal()">
+                    <i class="icon ion-ios-arrow-back"></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="font-weight: bold">选择年级</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list">
+                    <div ng-repeat="grade in ctrl.Grades">
+                        <li class="item unit_bg" ng-click="ctrl.olympicMathSelectGrade(grade)">
+                            <span ng-bind="grade.name"></span>
+                        </li>
+                    </div>
+                    <div style="padding: 16px;color: #1E446A;font-size: 16px;">
+                        <span ng-bind="'其他年级暂未开放'"></span>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+
+    <!--作业列表显示的作业奖杯排行榜显示框-->
+    <div class="home">
+        <div class="work-backdrop" ng-if="ctrl.isShowTrophyRank" ng-click="ctrl.closeTrophyRankData($event)">
+            <div class="trophy_rank_data">
+                <div class="top_bg_wrap bg_wrap_trophy">
+                    <div class="bg_wrap_star_2">
+                        <img ng-src="{{$root.loadImg('msg/msg_trophy_bg_2_purple.png')}}" alt="">
+                    </div>
+                    <div class="middle-wrap">
+                        <div class="cover-img-wrap">
+                            <div style="text-align: center;">
+                                <img ng-src="{{$root.loadImg('msg/olympic_math_gold_cup.png')}}" alt=""
+                                     class="top_bg_icon">
+                                <h4>奥数奖杯榜</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trophy_rank_header">
+                    <div class="trophy_rank_header_left">
+                        <div class="time_bar_wrap">
+                            <div class="select-bar">
+                                <div class="ui-select">
+                                    <span ng-bind="ctrl.termData.nowTerm"></span>
+                                    <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                    <select ng-model="ctrl.termData.nowTerm"
+                                            ng-options="item for item in ctrl.termData.terms"
+                                            ng-change="ctrl.getTrophyRankData()" class="select-options">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trophy_rank_header_right">
+                        <div class="trh_right_div trh_right_1"><img
+                                ng-src="{{$root.loadImg('msg/olympic_math_gold_cup.png')}}"
+                                alt=""></div>
+                        <div class="trh_right_div trh_right_2"><img
+                                ng-src="{{$root.loadImg('msg/olympic_math_silver_cup.png')}}"
+                                alt=""></div>
+                        <div class="trh_right_div trh_right_3"><img
+                                ng-src="{{$root.loadImg('msg/olympic_math_copper_cup.png')}}"
+                                alt="" style="max-height: 20px;"></div>
+                    </div>
+                </div>
+
+                <!--奖杯排行列表-->
+                <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+                    <div ng-if="!ctrl.olympicMathSelectedClazz || !ctrl.olympicMathSelectedClazz.id" style="padding: 20px">
+                        您还没有申请学校老师的班级!
+                    </div>
+                    <div class="trophy_rank_list_box" ng-if="ctrl.olympicMathSelectedClazz && ctrl.olympicMathSelectedClazz.id">
+                        <div ng-if="!ctrl.isTrophyLoading&&!ctrl.trophyRankData.length" class="rank_list_content_none">
+                            该班暂时没有作业奖杯排行信息
+                        </div>
+                        <div ng-if="ctrl.isTrophyLoading&&!ctrl.trophyRankData.length">
+                            <loading-processing></loading-processing>
+                        </div>
+                        <!--具体列表信息-->
+                        <div class="item trophy_rank_list" ng-repeat="item in ctrl.trophyRankData"
+                             ng-class="{'trophy_rank_list_user':item.studentId == ctrl.userId}">
+
+                            <!--左边学生信息-->
+                            <div class="trophy_rank_list_left">
+                                <!--排名-->
+                                <div class="tr_list_index">
+                                    <span ng-bind="item.topSeq"> </span>
+                                </div>
+
+                                <!--用户信息-->
+                                <div class="tr_list_info">
+                                    <div class="tr_list_student_name">{{item.studentName}}</div>
+                                </div>
+                            </div>
+
+                            <!--右侧数量信息-->
+                            <div class="trophy_rank_list_right">
+                                <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.goldenCupNumber"></div>
+                                <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.silverCupNumber"></div>
+                                <div class="tr_list_num" ng-bind="item.cupStatisticsDTO.copperCupNumber"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+        </div>
+    </div>
+</ion-view>

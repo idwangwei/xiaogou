@@ -1,0 +1,77 @@
+<style>
+    .holiday_work_praise_file .checkbox input:after, .checkbox-icon:after {
+        -webkit-transition: opacity 0.05s ease-in-out;
+        transition: opacity 0.05s ease-in-out;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 33%;
+        left: 25%;
+        display: table;
+        width: 14px;
+        height: 6px;
+        border: 2px solid #fff;
+        border-top: 0;
+        border-right: 0;
+        content: ' ';
+        opacity: 0;
+    }
+    .holiday_work_praise_file .praise-tip{
+        padding: 10px;
+        font-size: 17px;
+        color: #4a6b9d;
+    }
+</style>
+<ion-view title="学生反馈"  hide-nav-bar="true" class="holiday_work_praise_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear common-back-btn" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color:#4a6b9d"
+            ng-bind="'学生反馈'"></h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header work_praise_con" overflow-scroll="true" style="height: auto!important;">
+
+        <div class="bg-img-wrap">
+            <img  ng-src="{{$root.loadImg('work/self_praise.png')}}">
+        </div>
+
+        <div class="card">
+            <div class="item item-input block-input praise-img-div"
+                 ng-repeat="praiseType in ctrl.stuPraise.praiseTypeList" ng-click="ctrl.selectPraiseType(praiseType)">
+                <ion-checkbox ng-model="praiseType.selected" ng-click="praiseType.selected=!praiseType.selected" class="item-checkbox-left ">
+
+                    <span class = "option_word" ng-bind="praiseType.tostring()+praiseType.text"></span>
+
+                </ion-checkbox>
+            </div>
+            <textarea placeholder="还想说什么填这里"
+                      rows="6" id="studentPraise"
+                      ng-model="ctrl.stuPraise.messageS"
+            ></textarea>
+        </div>
+        <div class="praise-tip">
+            请家长评评你今天的表现，可以从家长手机端给你发奖哦
+        </div>
+        <!-- <div class="center-tip-box">
+             <div class="tip-box">
+                 <div class="praise_tip_img">
+                     <img  ng-src="{{$root.loadImg('logo_tip/praise_tip.png')}}" width="90%">
+                 </div>
+             </div>
+         </div>-->
+
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+    <ion-footer-bar   style="background: #F1F2F5">
+        <button class="button-clear bg-calm  bar-item flex_1"
+                ng-click="ctrl.comfirmPraise()"  style="font-weight: bold;color: #2B4E72">
+            <i class="icon ion-ios-checkmark" style=" vertical-align: sub;"></i>
+            发送
+        </button>
+    </ion-footer-bar>
+</ion-view>
+
+

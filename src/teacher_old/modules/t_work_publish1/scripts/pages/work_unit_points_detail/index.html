@@ -1,0 +1,63 @@
+<ion-view hide-nav-bar="true" class="work_points_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'" ng-bind="ctrl.headerText"></h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <div class="wp_content_top" ng-class="{'wp_content_top_ios':ctrl.isIos}">
+        <div class="wp_content_top_title">
+            <span style="">{{ctrl.subHeaderText}}</span>
+        </div>
+        <div class="wp_content_top_type" ng-if="!ctrl.isUnit">
+            <div class="type_warp">
+                <span style="">基础</span>
+                <span style="">变式</span>
+                <span style="">拓展</span>
+            </div>
+        </div>
+    </div>
+
+    <ion-content overflow-scroll="true" on-scroll="ctrl.getScrollPosition()" class="has_header wp_ion_content"
+                 ng-class="{'no_que_num_top':ctrl.isUnit,'wp_ion_content_ios':ctrl.isIos}">
+
+        <div ng-repeat="parentPoint in ctrl.pointsList" class="list wp_content_text" ng-init="pLast = $last">
+            <div ng-click="ctrl.isEdit && ctrl.gotoFilterQ(parentPoint)"
+                 ng-class="{'wp_content_text_big_edit':ctrl.isEdit,'wp_content_text_big':ctrl.isEdit}" style="width: 100%">
+
+                <div style="padding-left: 10px;line-height: 28px" ng-style="{background: ctrl.isEdit ? '':'#ddd'}">{{parentPoint.text}}</div>
+
+                <div ng-if="!ctrl.isEdit" class="list wp_content_text_detail">
+                    <div ng-repeat="childPoint in parentPoint.subTags" class="card text_detail_list"
+                         ng-class="{'text_detail_list_last':$last, 'text_detail_list_bottom':pLast&&$last, 'text_detail_list_first':$first}"
+                         style="box-shadow: none">
+
+                        <div class="text_detail_list_word">
+                            <span>{{childPoint.text}}</span>
+                            <div class="text_detail_list_num" ng-if="!ctrl.isUnit">
+                                <span>{{childPoint.typesNum.base}}</span>
+                                <span>{{childPoint.typesNum.general}}</span>
+                                <span>{{childPoint.typesNum.hard}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text_big_list_num" ng-if="ctrl.isEdit">
+                <span>{{parentPoint.typesNum.base}}</span>
+                <span>{{parentPoint.typesNum.general}}</span>
+                <span>{{parentPoint.typesNum.hard}}</span>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+</ion-view>

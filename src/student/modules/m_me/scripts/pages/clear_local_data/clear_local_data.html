@@ -1,0 +1,26 @@
+<ion-view hide-nav-bar="true" class="clear-local-data">
+    <ion-header-bar align-title="center">
+        <button class="button buttons button-clear" ng-click="ctrl.back()" style="color: #4a6b9d!important;padding: 0 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4a6b9d;">清除缓存</h1>
+
+    </ion-header-bar>
+    <ion-content  class="">
+        <div ng-if="ctrl.localData.isStatisticSize" class="clear-local-data-loading">
+            <ion-spinner icon="bubbles"></ion-spinner>
+            <span>正在清查本地缓存数据...</span>
+        </div>
+
+        <div ng-if="!ctrl.localData.isStatisticSize" class="clear-local-data-info">
+            <div class="info-row">下载的游戏：{{ctrl.localData.gameSize}} Mb</div>
+            <div class="info-row">下载的作业：{{ctrl.localData.workSize}} Mb</div>
+
+            <button class="button button-calm clear-local-data-click-btn" ng-click="ctrl.clearLocalData()">
+                清除
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>

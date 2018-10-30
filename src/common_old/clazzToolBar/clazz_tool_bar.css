@@ -1,0 +1,25 @@
+
+.clazzToolBar{
+    position: absolute;
+    z-index: 10;
+    bottom: 100px;
+    right: 0;
+    width: 16%;
+    max-width: 120px;
+    opacity: 0.8;
+}
+.clazzToolBar img{
+    width: 100%;
+    display: block;
+}
+.clazzToolBar .clazz_bar{
+    position: absolute;
+    z-index: 1;
+    right: 45%;
+}
+.clazzToolBarHide{
+    display: none;
+}
+.clazzToolBarShow{
+    display: block;
+}

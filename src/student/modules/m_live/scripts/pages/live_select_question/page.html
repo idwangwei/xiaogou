@@ -1,0 +1,64 @@
+<ion-view hide-nav-bar="true" class="select_question_file">
+    <loading-processing-v2></loading-processing-v2>
+    <!--页眉-->
+    <div class="bar bar-header page_header">
+        <button ng-click="ctrl.back()"
+                class="button buttons  button-clear page_header_btn_back common-back-btn">
+            <i class="icon ion-ios-arrow-back page_header_btn_back_i"></i>
+        </button>
+        <!--试卷标题-->
+        <h1 class="title page_header_content"
+            style="margin-left: 72px;margin-right: 72px;">
+            {{ctrl.title}}{{ctrl.selectedWork.liveType}}
+        </h1>
+    </div>
+
+
+
+    <!--试卷内容-->
+    <ion-content class="page_content">
+        <div ng-show="!ctrl.onLine" class="offline-alert-container">
+            <span class="alert-text"> <i class="icon ion-alert-circled"></i>&nbsp;无法连接网络</span>
+        </div>
+        <!--  <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.getPaperDataFromService()"></ion-refresher>-->
+
+        <!--每一道大题-->
+        <div class="card page_content_box" ng-repeat="bigQ in ctrl.qsList"
+             ng-init="firstIndex=$index">
+            <!--大题标题-->
+            <div class="page_content_bigTitle"
+                 ng-bind="bigQ.bigQVoIndex + '、' + bigQ.title + '('+bigQ.score+'分)'">
+            </div>
+            <!--大题框-->
+            <div class="list page_content_list">
+                <!--大题下的每一小题-->
+                <a class="item item-icon-left page_content_list_cell"
+                   ng-repeat="qs in  bigQ.qsList"
+                   ng-click="ctrl.goToCheck(bigQ,qs)">
+
+                    <span class="page_content_list_left" ng-bind="'第'+(ctrl.parseSeqNumToInt(qs.seqNum)+1)+'小题'"></span>
+                    <span class="page_content_list_right page_content_list_right_todo"
+                          ng-if="ctrl.statusMapForQuestions[qs.id]==0">未做</span>
+                    <span class="page_content_list_right page_content_list_right_modify"
+                          ng-if="ctrl.statusMapForQuestions[qs.id]==1">未改</span>
+                    <span class="page_content_list_right page_content_list_right_check"
+                          ng-if="ctrl.statusMapForQuestions[qs.id]==2">未检查</span>
+                    <span class="page_content_list_right page_content_list_right_ok"
+                          ng-if="ctrl.statusMapForQuestions[qs.id]==3">已检查</span>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+
+    <!--loading图-->
+    <!--<loading-processing load-top="200"></loading-processing>-->
+    <!--<loading-processing-oral></loading-processing-oral>-->
+    <!--页脚-->
+    <ion-footer-bar class="page_footer">
+        <button class="button-clear bg-calm  bar-item flex_1 button" ng-click="ctrl.submitPaperHandle()"
+                ng-if="ctrl.qsList&&ctrl.qsList.length>0">
+            <i class="icon ion-paper-airplane"></i>
+            提交{{ctrl.btnText}}
+        </button>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,97 @@
+<ion-view title="个人中心" hide-back-button="true" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button back-button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</button>
+        <h1 class="title title-center" style="font-family: 'Microsoft YaHei'">个人中心</h1>
+    </ion-header-bar>
+    　　
+    <sub-header id="basic_info_manage_subheader">
+        <div class="subheader-item" id="basic_info">
+            <span class="sub-title">基本信息</span>
+        </div>
+        <div class="subheader-item" id="chang_phone">
+            <span class="sub-title">更换关联手机</span>
+        </div>
+        <!--<div class="subheader-item" id="pqs" >-->
+            <!--<span class="sub-title">密保信息</span>-->
+        <!--</div>-->
+    </sub-header>
+    <ion-content padding="true" class="has-subheader">
+        <ng-form name="baseInfoForm"
+                 novalidate class="list"
+                 style="margin-top: 20px"
+                 ng-show="subHeaderInfo.activeEle=='basic_info'">
+            <div class="item item-input block-input">
+                <input type="text" placeholder="真实姓名" ng-model="ctrl.realName" name="realName" required/>
+            </div>
+            <div class="row item" style="margin-bottom: 10px">
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="ctrl.gender==1" ng-click="ctrl.genderSelect($event,1)">
+                    </label>
+                    男
+                </li>
+                <li class="item item-checkbox" style="border: none">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-checked="ctrl.gender==0" ng-click="ctrl.genderSelect($event,0)">
+                    </label>
+                    女
+                </li>
+            </div>
+            <div class="button button-block  defined_bg"
+                 ng-click="ctrl.baseInfoSubmit()">
+                保存
+            </div>
+        </ng-form>
+        <ng-form name="cellphoneResetForm" class="list"
+                 ng-show="subHeaderInfo.activeEle=='chang_phone'">
+            <div class="item item-input block-input">
+                <input type="text"
+                       placeholder="请输入关联手机号"
+                       name="cellphone"
+                       ng-model="ctrl.telephone"
+                       required
+                       pattern="^1\d{10}$"/>
+            </div>
+
+            <div class="row  phone-validate-block">
+                <div style="width: 65%">
+                    <div class="item item-input" >
+                        <input type="text"
+                               placeholder="手机验证码"
+                               name="telVC"
+                               ng-model="ctrl.telVC"
+                               required/>
+                    </div>
+                </div>
+                <div class="button defined_bg" class="flex_1" style="margin-left: 5px"  ng-click="ctrl.getTelVC()"
+                     ng-disabled="ctrl.telVcBtn">{{ctrl.telVcBtnText}}</div>
+            </div>
+            <button class="button button-block defined_bg"
+                    type="submit"
+                    ng-click="ctrl.submitReferCellphone(this.cellphoneResetForm)">
+                提交
+            </button>
+        </ng-form>
+        <ng-form name="securityInfoForm"
+                 class="list"
+                 ng-show="subHeaderInfo.activeEle=='pqs'"
+                 novalidate="novalidate">
+            <div class="list" ng-repeat="item in ctrl.qList"  style="margin-bottom: 5px">
+                <div class="item item-input block-input">
+                    <label>问题{{item.num}}:{{item.q}}?</label>
+                </div>
+                <div class="item item-input block-input">
+                    <input type="text" placeholder="答案" name="{{item.ansName}}" id="{{item.ansName}}" required>
+                </div>
+            </div>
+            <button class="button button-block defined_bg"
+                    type="submit"
+                    ng-click="ctrl.submitSecurityInfo()">
+                保存
+            </button>
+        </ng-form>
+
+    </ion-content>
+</ion-view>

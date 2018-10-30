@@ -1,0 +1,75 @@
+<ion-view id="final-sprint-check">
+    <loading-processing-v2></loading-processing-v2>
+    <ion-header-bar class="bar-balanced check-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">测评结果和薄弱考点</h1>
+    </ion-header-bar>
+    <ion-content padding="false">
+        <div class="check-subtitle">期末全真模拟密卷（{{ctrl.selected_work.name}}）</div>
+        <div class="test-score">
+            <div class="score-box">
+                <div class="score-item">
+                    <div class="item-title">首次测评成绩</div>
+                    <div class="item-score">{{ctrl.resetScoreInfo.firstScore}}<i>分</i></div>
+                </div>
+                <div class="score-item" ng-if="ctrl.resetScoreInfo.modifyScore!==undefined">
+                    <div class="item-title">改错后</div>
+                    <div class="item-score">{{ctrl.resetScoreInfo.modifyScore}}<i>分</i></div>
+                </div>
+            </div>
+            <div class="paper-box">
+                <div class="paper-title">本套密卷分为以下四部分改错</div>
+                <div class="paper-list">
+                    <div class="paper-item" ng-click="ctrl.goToCheckDetail(0)"><span>1</span></div>
+                    <div class="paper-item" ng-click="ctrl.goToCheckDetail(1)"><span>2</span></div>
+                    <div class="paper-item" ng-click="ctrl.goToCheckDetail(2)"><span>3</span></div>
+                    <div class="paper-item" ng-click="ctrl.goToCheckDetail(3)"><span>4</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="data-box">
+            <div class="data-item">本套密卷含<span class="text-blue">{{ctrl.resetScoreInfo.total}}</span>个考点</div>
+            <div class="data-child-box">
+                <div class="data-item">
+                    掌握：<span class="text-blue">{{ctrl.resetScoreInfo.hold}}</span>
+                </div>
+                <div class="data-item">
+                    不牢固：<span class="text-red">{{ctrl.resetScoreInfo.unfirm}}</span>
+                </div>
+                <div class="data-item">
+                    未掌握：<span class="text-red">{{ctrl.resetScoreInfo.unhold}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="test-result">
+            <div class="result-title">
+                以下考点诊断来自你的本次测评和平时作业
+            </div>
+            <div class="unit-header">
+                <span class="header-item">考点</span>
+                <span class="header-item">所属单元</span>
+                <span class="header-item">掌握程度</span>
+            </div>
+            <div class="unit-box">
+                <div class="unit-list">
+                    <div class="list-item" ng-repeat="x in ctrl.resetKnowledgeInfo track by $index">
+                        <div class="item-text" ng-click="ctrl.goToQuesRecord(x)">
+                            考点：<br/> <span>{{x.knowledgeTxt}}</span>
+                        </div>
+                        <div class="item-text item-text2">
+                            {{ctrl.calcUnit(x.unitId)[0]}}<br/> <span>{{ctrl.calcUnit(x.unitId)[1]}}</span>
+                        </div>
+                        <div class="item-progress {{ctrl.dicObj[x.level].class}}" ng-click="ctrl.goToKnowledge()">
+                            <div class="progress-title">{{ctrl.dicObj[x.level].name}}</div>
+                            <div class="progress-box">
+                                <div class="progress-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

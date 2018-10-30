@@ -1,0 +1,91 @@
+<style>
+    .work_detail_for_stat_show .big-q{
+        border: none;
+    }
+    .work_detail_for_stat_show .small-q{
+        border: none;
+        margin: 10px 5px 10px 5px;
+        position: relative;
+        background:#E2FEDA
+    }
+    .work_detail_for_stat_show .item{
+        border: none;
+        background:#FBF7DB ;
+    }
+    .work_detail_for_stat_show .first{
+        margin-top: 10px;
+    }
+    .work_detail_for_stat_show .item-label{
+        padding: 5px;
+    }
+    .work_detail_for_stat_show .two{
+        margin-top: 3px;
+    }
+    .work_detail_for_stat_show .paper-title-box{
+        background-color:#FBF7DB ;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .work_detail_for_stat_show .card{
+        margin: 10px 10px;
+    }
+</style>
+<ion-view title="作业详情" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">作业详情</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false"  class="work_detail_for_stat_show">
+        <div class="paper-title-box">
+            <div class="item  item-label work-paper-title first">
+                <span ng-bind="data.paper.title+'('+data.paper.paperScore+'分)'"></span>
+            </div>
+
+            <div class="item item-label  two">
+                <span style="font-size:16px;">发布班级：<span
+                        ng-bind="wData.currentWork.clazz"></span></span>
+            </div>
+            <div class="item item-label ">
+                  <span style="font-size:16px;">发布时间：<span
+                          ng-bind="wData.currentWork.date"></span></span>
+            </div>
+            <div class="item item-label ">
+                <span style="font-size:16px;">姓名：<span
+                        ng-bind="wData.currentWork.sName"></span></span>
+                <span class="padding-right" style="font-size:16px;">状态：<span
+                        ng-bind="wData.currentWork.statusVo"></span></span>
+            </div>
+        </div>
+
+        <!--showTipType为1 显示整个paper -->
+        <div ng-repeat="bigQ in data.paper.bigQList track by $index" ng-init="bigIndex=$index">
+            <div class="big-q" style="background:#b8cfe4 ">
+                <div>
+                    <label style="font-size: 16px">
+                        {{bigQ.bigQVoIndex}}、{{bigQ.title}}&nbsp;
+                        <span>
+                            <span ng-bind="'('+bigQ.score+'分)'"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <question-list ng-repeat="record in bigQ.qsList track by record.id">
+                <question-item>
+                    <div class="small-q">
+                        <label style="font-size: 15px;width: 100%;padding-right: 80%;">
+                            <span>{{'第'+(record.seqNum+1)+'道题('+record.score+'分)'}}</span>
+                        </label>
+                    </div>
+                    <div compile-html="record.qContext"
+                         current_q_input="record.inputList"></div>
+                </question-item>
+            </question-list>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>
+

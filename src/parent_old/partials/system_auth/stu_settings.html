@@ -1,0 +1,86 @@
+<ion-view title="学生设置" align-title="center" >
+    <ion-content>
+        <auto-box-con row="2" decrease-height="56" style="  margin: 5px;">
+            <auto-box-row column="2">
+                <auto-box-block class="bg-calm" ng-click="editStu()" style="  border-bottom: 5px solid white;">
+                    <div class="block-content">
+                        <img src="pImages/person.ico"/>
+                       <!-- <i class="icon ion-person"></i>-->
+                        <div class="content-title" style="font-size: 20px;">基本信息</div>
+                    </div>
+                </auto-box-block>
+                <auto-box-block class="bg-calm" style="  border-left: 5px solid white;border-bottom: 5px solid white;"
+                                ng-click="delStu()">
+                    <div class="block-content">
+                        <img src="pImages/del.ico"/>
+
+                        <div class="content-title" style="font-size: 20px;">删除账号</div>
+
+                    </div>
+                </auto-box-block>
+            </auto-box-row>
+            <auto-box-row row="1">
+                <auto-box-block class="bg-calm"  ng-click="childClassList()">
+                    <div class="block-content">
+                        <img src="pImages/class.svg"/>
+                        <!--   <img src="pImages/exam-stati.ico"/>-->
+                        <!--<i class="icon ion-person-stalker"></i>-->
+                        <div class="content-title" style="font-size: 20px;">班群管理</div>
+                    </div>
+                </auto-box-block>
+            </auto-box-row>
+        </auto-box-con>
+      <!--  <div class="tool-container" style="background-color: #11c1f3">
+            &lt;!&ndash;  <div class="row">
+                  <div class="col tool-item-stu" ng-click="edit(student)">
+                      <div >
+                          <i class="icon ion-gear-a" ></i>
+                      </div>
+                      <div >
+                          <span >修改信息</span>
+                      </div>
+                  </div>
+                  <div class="col tool-item-stu" ng-click="delStu(student.id,$index)">
+                      <div >
+                          <i class="icon ion-ios-trash-outline" ></i>
+                      </div>
+                      <div >
+                          <span >删除账号</span>
+                      </div>
+
+                  </div>
+              </div>
+              <div class="row" style="margin-top: -1px;" ui-sref="child_class_list({sid:student.id})">
+                  <div class="col tool-item-stu" >
+                      <div >
+                          <i class="icon ion-person-stalker" ></i>
+                      </div>
+                      <div >
+                          <span >班级管理</span>
+                      </div>
+                  </div>
+              </div>&ndash;&gt;
+            <div class="row" style="margin-top: -1px;">
+                <div class="col tool-item-stu"
+                     style="border-top: 5px solid white;border-right: 5px solid white;">
+                    <div style="  margin-top: 40px;">
+                        <i class="icon ion-clipboard" style="color: white;"></i>
+                    </div>
+                    <div style="color: white;">
+                        <span >作业</span>
+                    </div>
+                </div>
+                <div class="col tool-item-stu"
+                     style="border-top: 5px solid white;">
+                    <div style="  margin-top: 40px;">
+                        <i class="icon ion-ios-game-controller-b" style="color: white;"></i>
+                        &lt;!&ndash;<span >游戏管理</span>&ndash;&gt;
+                    </div>
+                    <div style="color: white;">
+                        <span >游戏</span>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </ion-content>
+</ion-view>

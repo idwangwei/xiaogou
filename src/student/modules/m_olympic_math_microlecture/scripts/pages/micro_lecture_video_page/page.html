@@ -1,0 +1,30 @@
+<ion-view hide-nav-bar="true" class="micro-lecture-video-page">
+    <video-item ng-if="ctrl.initCtrl"
+                video-config="ctrl.video"
+                is-unit-step-one-right = "{{ctrl.isUnitStepOneRight}}"
+                state-back="ctrl.back(isEnd)"
+                show-video-popup="ctrl.showVideoPopup()"
+                interaction-over-callback="ctrl.interactionOverCallback(rightNum)">
+
+    </video-item>
+
+    <!--加载视频loading-->
+    <div ng-hide="ctrl.isVideoCanPlay" class="video-data-loading">
+        <img ng-src="{{$root.loadMicrolectureImg('video/m_video_data_loading.gif')}}" alt="">
+    </div>
+
+    <div class="video-back-popup"  ng-show="ctrl.isShowBackPopup">
+        <div class="video-popup-backdrop">
+            <div class="video-popup-box">
+                <div class="video-popup-title"><h3>提示</h3></div>
+                <div class="video-popup-content">是否退出？</div>
+                <div class="video-popup-btn">
+                    <div class="btn-sure" ng-click="ctrl.back(true)">确定</div>
+                    <div class="btn-cancel" ng-click="ctrl.hideVideoPopup()">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-view>
+

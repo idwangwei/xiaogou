@@ -1,0 +1,72 @@
+<ion-view id="live-course-pay">
+    <ion-header-bar class="bar-balanced enter-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">支付</h1>
+    </ion-header-bar>
+    <ion-content padding="false" class="enter-content">
+        <div class="header-box">
+            <div class="list-item">
+                <div class="item-header" ng-if="ctrl.selectCourse.courseId">
+                    <div class="item-title">
+                        <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_type_yellow_'+ctrl.selectCourse.publicClassType+'.png')}}" alt="">
+                        <span>{{ctrl.selectCourse.courseName}}<span></span></span>
+                    </div>
+                    <div class="item-star">
+                        <span>难度：</span>
+                        <img ng-src="{{$root.loadLiveImg('live_home/live_home_course_star.png')}}" alt="" ng-repeat="v1 in ctrl.selectCourse.starArr track by $index">
+                    </div>
+                    <div class="item-time">{{ctrl.selectCourse.showTime}}<span ng-show="!ctrl.selectCourse.fee">开课</span></div>
+                    <div class="item-teacher">
+                        <div class="teacher-box">
+                            <img ng-src="{{ctrl.selectCourse.secondaryTeacherName.liveImageUrl}}" alt="">
+                            <div class="teacher-des">
+                                <p class="teacher-type">授课</p>
+                                <p class="teacher-name">{{ctrl.selectCourse.secondaryTeacherName.teacherName}}</p>
+                            </div>
+                        </div>
+                        <div class="teacher-box">
+                            <img ng-src="{{ctrl.selectCourse.secondaryTeacherName.imageURL}}" alt="">
+                            <div class="teacher-des">
+                                <p class="teacher-type">辅导</p>
+                                <p class="teacher-name">{{ctrl.selectCourse.secondaryTeacherName.teacher}}</p>
+                                <p class="teacher-type">微信号：17780695191</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wxPayContent">
+            <div class="money">
+                <p><span class="moneyAll">合计:</span>
+                    <span class="moneyNum">￥{{ctrl.newFee}}</span></p>
+            </div>
+            <div class="payBtn">
+                <div class="display-flex btn {{ctrl.iscreateAppOrder==false?'clicked':''}}"
+                     ng-click="ctrl.createOrderWxPayApp()">
+                    <img ng-src="{{$root.loadImg('weixin_pay/wechat.ico')}}">
+                    <span> 微信支付（本机）</span>
+                </div>
+                <div class="display-flex btn {{ctrl.iscreateScanOrder==false?'clicked':''}}"
+                     ng-click="ctrl.createOrderWxPayScan()">
+                    <img class="imgQr" ng-src="{{$root.loadImg('weixin_pay/wxqrCode.png')}}">
+                    <span> 微信扫码支付（可找人代付）</span>
+                </div>
+                <div class="protocol">
+                  <span class="checkbox my-checkBox">
+                        <i ng-class="ctrl.btnReadProtocol==true?
+                                    'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"
+                           ng-click="ctrl.toggleReadBtn()">
+                       </i>
+                       <span>购买前我已阅读：</span>
+                      <!--<u ui-sref="weixin_pay_protocol">《用户须知条款》</u>-->
+                       <u ng-click="ctrl.gotoProtocol()">《用户须知条款》</u>
+                  </span>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

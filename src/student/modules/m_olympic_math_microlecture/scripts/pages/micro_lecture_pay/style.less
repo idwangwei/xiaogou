@@ -1,0 +1,256 @@
+.micro-lecture-pay{
+  @header-bar-color:#8058d2;//顶部颜色
+  @main-color: #7d59d2; //定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .pay-bar{
+    background-color: @header-bar-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      //height: 30px;
+      //line-height: 54px;
+      font-weight: bold;
+    }
+    .item-back{
+      //margin-top: 5px;
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+    .item-pay{
+      .display-flex(row,center,center);
+      .pay-water{
+        width: 22px;
+        position: relative;
+        z-index: 50;
+        margin-top: -6px;
+      }
+      span{
+        display: inline-block;
+        width: 46px;
+        height: 20px;
+        line-height: 20px;
+        background: #6042a6;
+        margin-left: -8px;
+        font-size: 14px;
+        color: #f5f30a;
+        font-weight: bold;
+        text-align: center;
+        padding-left: 2px;
+        border-radius: 18px;
+      }
+      .pay-add{
+        width: 22px;
+        margin-left: -2px;
+      }
+    }
+  }
+  .micro-pay-content{
+    background: linear-gradient(to bottom, #8258d2 0%,#b350db 27%);
+    .content-banner{
+      height:160px;
+      position: relative;
+      .display-flex(row,center,center);
+      .banner-middle{
+        width: 174px;
+        position: relative;
+        z-index: 20;
+        margin-top: -36px;
+      }
+      .banner-left{
+        position: absolute;
+        left: -145px;
+        top: 19px;
+        width: 320px;
+        z-index: 10;
+      }
+      .banner-right{
+        position: absolute;
+        right: -23px;
+        top: 74px;
+        width: 120px;
+        z-index: 10;
+      }
+    }
+    .content-gradient{
+      background: linear-gradient(to bottom, #a4e726 0%,#a4e726 40%, #6dc24b 40%,#6dc24b 65%, #ce5f54 65%,#ce5f54 100%);
+      height: 16px;
+      position: relative;
+      z-index: 50;
+    }
+    .pay-box{
+      //background: #e2936c;
+      min-height: 200px;
+      position: relative;
+      z-index: 50;
+      padding-top: 2px;
+      .pay-inner{
+        width: 350px;
+        margin: 0 auto;
+        padding-top: 5px;
+      }
+      .pay-ad{
+        position: relative;
+        //margin-top: 22px;
+        height: 306px;
+        .ad-bg{
+          width: 100%;
+          position: absolute;
+          top:0;
+          left: 0;
+          z-index: 10;
+          height:286px;
+        }
+        .item-box{
+          .display-flex(column,center,center);
+          position: relative;
+          z-index: 20;
+          height: 268px;
+          img{
+            margin: 4px;
+          }
+          .ad-1{
+            height:67.8px;
+          }
+          .ad-2{
+            height: 63.4px;
+            margin-top: -3px;
+          }
+          .ad-3{
+            height: 42.6px;
+          }
+          span{
+            color: #4E2C38;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 6px;
+          }
+        }
+      }
+      .pay-title{
+        .display-flex(row,center,center);
+        height: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .pay-list{
+        .display-flex(row,space-between,center);
+        flex-wrap:wrap;
+        -webkit-flex-wrap:wrap;
+        width: 330px;
+        margin: 0 auto;
+        padding-bottom: 40px;
+        padding-top: 5px;
+        .pay-item{
+          .display-flex(column,flex-end,center);
+          width: 155px;
+          height: 135px;
+          position: relative;
+          margin-bottom: 30px;
+          &.active{
+            height: 150px;
+            .item-content{
+              height: 110px;
+            }
+          }
+          .item-bg{
+            background: url("../../../images/micro_lecture_pay/type-1.png") no-repeat;
+            width: 75px;
+            height: 78px;
+            background-size: 75px 77.5px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -38px;
+            z-index: 10;
+            &.type-2{
+              background-image: url("../../../images/micro_lecture_pay/type-2.png");
+              width: 75px;
+              height: 96px;
+              background-size: 75px 95.5px;
+              top: -16px;
+              margin-left: -38px;
+            }
+            &.type-3{
+              background-image: url("../../../images/micro_lecture_pay/type-3.png");
+              width: 97px;
+              height: 68px;
+              background-size: 97px 68px;
+              top:-5px;
+              margin-left: -48px;
+            }
+          }
+          .item-content{
+            .display-flex(column,center,center);
+            height: 95px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            position: relative;
+            z-index: 20;
+            span{
+              font-size:20px;
+              font-weight: bold;
+              color: #da3a1a;
+              margin-bottom: 8px;
+            }
+            .item-btn{
+              .display-flex(row,center,center);
+              width: 68px;
+              height: 27px;
+              background: url("../../../images/micro_lecture_pay/btn.png") no-repeat center;
+              background-size: 65px 25px;
+              font-size: 16px;
+              color: #fff;
+              text-shadow: 1px 1px 0 #ac3a22;
+            }
+            .discount-old{
+              font-size: 12px;
+              color: #333;
+              text-decoration: line-through;
+              text-decoration-color: red;
+              font-weight: normal;
+              margin-bottom: 2px;
+              margin-top: -4px;
+            }
+            .discount-mark{
+              font-size: 12px;
+              color: red;
+              font-weight: normal;
+              margin-bottom: 5px;
+              margin-top: 3px;
+            }
+          }
+          .item-mark{
+            .display-flex(row,center,center);
+            position: absolute;
+            bottom: 72px;
+            right: -13px;
+            width: 100px;
+            height: 60px;
+            background: url("../../../images/micro_lecture_pay/mark.png") no-repeat center;
+            background-size: 100px 57.5px;
+            font-size: 16px;
+            color: #ffff00;
+            z-index: 30;
+            padding-left: 10px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

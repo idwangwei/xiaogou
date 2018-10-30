@@ -1,0 +1,21 @@
+import "./module";
+import './pages/index';
+// import './services/index';
+import './services/gameGoodsPayServer'
+import './services/gameLevelService'
+import './services/gameMapInfoServer'
+import './directives/index';
+import "./constants/index";
+import './../game_map_music/level_bg_music.mp3';
+import './pages/gameGoodsSelectPage/gameGoodsSelectCtrl';
+import './pages/game_map_level/index';
+import './pages/game_map_scene/index';
+import './pages/game_map_atlas1/index';
+import './pages/game_map_atlas2/index';
+import './pages/game_map_atlas3/index';
+import './pages/game_map_atlas4/index';
+import './pages/game_map_atlas5/index';
+import './pages/game_map_atlas6/index';
+import './pages/game_goods_pay/index';
+import './pages/game_goods_pay_protocol';
+import './pages/game_goods_pay_result/index';

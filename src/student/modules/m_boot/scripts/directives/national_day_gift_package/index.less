@@ -1,0 +1,316 @@
+.national-day-gift-package {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  .gift-package-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgb(74, 74, 74);
+    z-index: 9999;
+  }
+  .gif-package-box-warp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    font-weight: bold;
+    div:first-child {
+      min-height: 200px;
+      width: 80%;
+      max-width: 600px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      -webkit-flex: 1;
+      display: -webkit-flex;
+      -webkit-justify-content: center;
+      -webkit-align-items: flex-end;
+      img {
+        width: 100%;
+      }
+    }
+    div:last-child {
+      color: #fff;
+      flex: 1;
+      -webkit-flex: 1;
+    }
+
+    .gift-package-box-1 {
+      width: 60%;
+      max-width: 450px;
+      margin-top: 50px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: -webkit-flex;
+      -webkit-justify-content: center;
+      -webkit-align-items: center;
+      img {
+        width: 80%;
+      }
+      img:nth-child(2){
+        animation: giftBounce 4s infinite;
+        -webkit-animation: giftBounce 4s infinite;
+      }
+      .box-bg {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        left: 0;
+        top: -20%;
+        animation: rotate-bg 6s linear infinite;
+        -webkit-animation: rotate-bg 6s linear infinite;
+      }
+      .star-bling {
+        position: absolute;
+        z-index: 2;
+      }
+      .star-1 {
+        width: 5%;
+        left: 5%;
+        top: 10%;
+        animation: star-glitter 1.2s linear infinite alternate;
+        -webkit-animation: star-glitter 1.2s linear infinite alternate;
+      }
+      .star-2 {
+        width: 8%;
+        left: 13%;
+        top: 50%;
+        animation: star-glitter 1.7s linear infinite alternate;
+        -webkit-animation: star-glitter 1.7s linear infinite alternate;
+      }
+      .star-3 {
+        width: 11%;
+        left: 80%;
+        top: 60%;
+        animation: star-glitter 2s linear infinite alternate;
+        -webkit-animation: star-glitter 2s linear infinite alternate;
+      }
+      .star-4 {
+        width: 7%;
+        left: 90%;
+        top: 10%;
+        animation: star-glitter 1s linear infinite alternate;
+        -webkit-animation: star-glitter 1s linear infinite alternate;
+      }
+
+    }
+  }
+  .gift-package-box-2 {
+    width: 20%;
+    max-width: 100px;
+    position: absolute;
+    top: 180px;
+    right: 0;
+    z-index: 10;
+    img {
+      width: 100%;
+    }
+    animation: giftBounce 4s infinite;
+    -webkit-animation: giftBounce 4s infinite;
+  }
+  .gift-package-click-show-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 0 3%;
+    .gift-package-pic {
+      img {
+        width: 100%
+      }
+      margin-bottom: 20px;
+      max-width: 360px;
+    }
+    .gift-package-info {
+      color: #fff;
+      text-align: center;
+      margin: 30px 0;
+      p {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      span {
+        color: #fff400;
+        font-size: 20px;
+      }
+    }
+    .gift-package-btn {
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-around;
+      -webkit-justify-content: space-around;
+      color: #fff;
+      div {
+        width: 40%;
+        img {
+          width: 100%
+        }
+        text-align: center;
+        font-size: 18px;
+      }
+      div:last-child {
+        padding-bottom: 10px;
+        align-items: center;
+        -webkit-align-items: center;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+      }
+    }
+
+  }
+
+  @keyframes star-glitter {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+
+  @-webkit-keyframes star-glitter {
+    0% {
+      opacity: 1;
+      -webkit-opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+      -webkit-opacity: 0.6;
+    }
+    100% {
+      opacity: 0.1;
+      -webkit-opacity: 0.1;
+    }
+  }
+
+  @keyframes rotate-bg {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes rotate-bg {
+    0% {
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  
+  @keyframes giftBounce {
+    from, 80%, 84%, 88%, 92%, 96%,to {
+      -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    76%{
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    80% {
+      -webkit-transform: scale3d(.9, .9, .9);
+      transform: scale3d(.9, .9, .9);
+    }
+
+    84% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    88% {
+      -webkit-transform: scale3d(.9, .9, .9);
+      transform: scale3d(.9, .9, .9);
+    }
+
+    92% {
+      -webkit-transform: scale3d(1.03, 1.03, 1.03);
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    96% {
+      -webkit-transform: scale3d(.97, .97, .97);
+      transform: scale3d(.97, .97, .97);
+    }
+
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  @-webkit-keyframes giftBounce {
+    from, 80%, 84%, 88%, 92%, 96%,to {
+      -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    76%{
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    80% {
+      -webkit-transform: scale3d(.9, .9, .9);
+      transform: scale3d(.9, .9, .9);
+    }
+
+    84% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    88% {
+      -webkit-transform: scale3d(.9, .9, .9);
+      transform: scale3d(.9, .9, .9);
+    }
+
+    92% {
+      -webkit-transform: scale3d(1.03, 1.03, 1.03);
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    96% {
+      -webkit-transform: scale3d(.97, .97, .97);
+      transform: scale3d(.97, .97, .97);
+    }
+
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+}
+
+

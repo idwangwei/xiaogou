@@ -1,0 +1,34 @@
+<ion-view align-title="center" hide-nav-bar="true" class="chapter_game_list_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title title-center">布置游戏</h1>
+        <button class="button back-button buttons  button-clear header-item" ng-if="ctrl.isShowRemoveBtn()"
+                ui-sref="game_remove">
+            <i class="icon ion-android-delete"></i>
+        </button>
+    </ion-header-bar>
+
+    <ion-content>
+        <div ng-show="!ctrl.gameList.length && ctrl.retFlag" ng-bind="'该单元游戏还未上架~~'"></div>
+        <div ng-repeat="list in ctrl.gameList" class="game_list" ng-class="{'game_list_first':$first}">
+            <div class="imgList card card-better">
+                <div class="game_img">
+                    <img ng-src="{{$root.loadImg(ctrl.getGameIconUrl(list.levelGuid))}}" alt="" style="width:84px"/>
+                </div>
+                <div class="game_name">
+                    <h4 style="line-height: 28px;">{{list.gameName}}</h4>
+                    <p style="line-height: 16px;">{{list.gameDesc}}</p>
+                </div>
+                <div class="game_btn">
+                    <div ng-click="ctrl.playGame(list)"><img ng-src="{{$root.loadImg('game/play_game2.png')}}" alt="">
+                    </div>
+                    <div ng-click="ctrl.pubGame(list)"><img ng-src="{{$root.loadImg('game/pub_game.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

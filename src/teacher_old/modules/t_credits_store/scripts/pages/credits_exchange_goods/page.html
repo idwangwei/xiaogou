@@ -1,0 +1,60 @@
+<ion-view hide-nav-bar="true" class="credits-exchange-goods">
+    <ion-header-bar>
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+            <span style="color: #4A6B9D!important;">返回</span>
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';font-weight: 800;">商品详情</h1>
+    </ion-header-bar>
+    <div class="sub-header-bar bar bar-subheader subheader-flex">
+        <div class="top-butn">
+            <div class="top-butn-item" ng-click="ctrl.gotoCreditsRecord()">
+                <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                <p style="margin: 0 5px">我的智慧币</p>
+                <p style="margin: 0;color: #fafd05">{{ctrl.currentCredits}}</p>
+            </div>
+        </div>
+    </div>
+    <ion-content class="exchange-goods-content has-subheader">
+        <div class="goods-info">
+            <div class="goods-img-big">
+                <img ng-src="{{ctrl.selectGoods.imgUrl}}">
+            </div>
+            <p class="goods-item" ng-bind="ctrl.selectGoods.name"></p>
+            <div class="goods-item-credits">
+                <img ng-src="{{$root.loadCreditsStoreImg('creditsStoreImg02.png')}}">
+                <p style="margin: 0" ng-bind="'智慧币：'+ctrl.selectGoods.credits"></p>
+            </div>
+            <!--<p ng-bind="'参考价：'+ctrl.selectGoods.price"></p>-->
+
+        </div>
+        <div class="goods-desc">
+            <div class="goods-base-info">
+                <p ng-bind="'商品简介：'+ctrl.selectGoods.detail"></p>
+                <p ng-bind="'商品名称：'+ctrl.selectGoods.name"></p>
+                <p ng-bind="'数量：1'"></p>
+                <p ng-bind="'价格：'+ctrl.selectGoods.credits+'智慧币'"></p>
+            </div>
+            <div class="exchange-explain">
+                <p>说明事项：</p>
+                <p ng-repeat="explain in ctrl.explain track by $index" ng-bind="explain"></p>
+            </div>
+        </div>
+    </ion-content>
+    <div class="goods-exchange-butn">
+        <div class="exchange-butn" ng-if="!!ctrl.goodsInfo.butnStr"
+             ng-click="ctrl.gotoSubmitGoods()">{{ctrl.goodsInfo.butnStr}}
+        </div>
+        <span ng-click="ctrl.gotoCreditsTask()" ng-if="!ctrl.goodsInfo.butnStr">智慧币不足，去赚取更多智慧币></span>
+        <!--<div class="exchange-butn" ng-if="ctrl.canExchange()"
+             ng-click="ctrl.gotoSubmitGoods()">兑换
+        </div>
+        <div class="exchange-butn" ng-if="ctrl.selectGoods.isOrder"
+             ng-click="ctrl.gotoSubmitGoods()">详情
+        </div>
+        <div class="exchange-butn" style="background-color: cornsilk;color: darkseagreen;"
+             ng-if="!ctrl.selectGoods.isOrder&&!ctrl.selectGoods.hasStock">已售罄
+        </div>
+        <span ng-click="ctrl.gotoCreditsTask()" ng-if="ctrl.enoughCredits()">智慧币不足，去赚取更多智慧币></span>-->
+    </div>
+</ion-view>

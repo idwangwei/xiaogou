@@ -1,0 +1,113 @@
+<ion-view hide-nav-bar="true" class="area_evaluation_check">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <!--<h1 class="title" style="font-family: 'Microsoft YaHei'" ng-bind="ctrl.selectPaperInfo.title||ctrl.createPaperName()"></h1>-->
+        <h1 class="title" style="font-family: 'Microsoft YaHei';left: 0 !important;"
+            ng-bind="ctrl.paperName"></h1>
+        <div class="buttons">
+            <img style="height: 30px;" ng-src="{{$root.loadImg('pub_work_type/pub_type_butn01.png')}}"
+                 ng-if="!ctrl.isEditFlag"
+                 ng-click="ctrl.paperEdit('edit')">
+            <img style="height: 30px;" ng-src="{{$root.loadImg('pub_work_type/pub_type_butn02.png')}}"
+                 ng-if="ctrl.isEditFlag"
+                 ng-click="ctrl.paperEdit('done')">
+        </div>
+    </ion-header-bar>
+
+    <div style="" class="knowledge_box_main_top" ng-class="{'set_top_ios':ctrl.isIOS}">
+        <ion-checkbox ng-model="ctrl.isShowKAD">显示考点及能力层次</ion-checkbox>
+    </div>
+
+    <ion-content overflow-scroll="false" class="has-header has-footer set_top_86 ques-list"
+                 ng-class="{'set_top_106':ctrl.isIOS}"
+                 on-scroll="ctrl.getScrollPosition()">
+
+        <!--<div ng-if="!ctrl.isLoadingProcessing && !ctrl.paper" style="padding: 16px">网络状态差，没有获取到作业，请返回重试</div>-->
+        <!--<div ng-repeat="qt in ctrl.paper.qsTitles track by $index" ng-init="idx=$index" class="bigQContainer">-->
+        <div class="bigQContainer" ng-if="ctrl.tempqslist&&ctrl.tempqslist.length>0">
+            <!-- <div class="big-q-setting">
+                 <div class="big-q-title">
+                     <span ng-bind="'本卷总分：'+qt.score+'分'"></span>
+                 </div>
+             </div>-->
+            <!--<div ng-repeat="record in qt.qsList track by $index" class="smallQContainer">-->
+            <div ng-repeat="record in ctrl.tempqslist" class="smallQContainer">
+                <div ng-if="record.chapterName" class="chapter-name">
+                    <p style="margin: 0" ng-bind="record.chapterName"></p>
+                </div>
+                <div class="image-type-question">
+                    <div class="question-content card card-better small_q_bg" style="margin: 15px 10px">
+                        <div class="smallq-title smallq-title-first" style="overflow: hidden">
+                            <div class="text-div-adapt">
+                                <ion-checkbox class="text-div-adapt-ion-checkbox"
+                                              ng-click="ctrl.selectQues(record,$event)"
+                                              ng-model="record.selected">{{'第'+($index+1)+'题'}}
+                                </ion-checkbox>
+                                <div class="text-adapt">
+                                    <span ng-bind="'第'+($index+1)+'题'">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="img-align-right">
+                                <span ng-click="ctrl.goQFeedbackPage($event,record.id)">
+                                   <img ng-src="{{$root.loadImg('other/report.png')}}">
+                                </span>
+                                <span style="background-color: bisque;border-radius: 8px;padding: 2px 5px;text-align: center;"
+                                      ng-if="ctrl.checkQuestionTypeKey(record)"
+                                      ng-click="ctrl.getSubjectiveReferAnswer(record)">
+                                    <!--<img ng-src="{{$root.loadImg('work/savant_ans.png')}}">-->
+                                    学霸解答
+                                </span>
+                            </div>
+                        </div>
+                        <div ng-show="ctrl.isShowKAD" class="question_content_knowledge_text"
+                             ng-bind="ctrl.showKnowledgeAndDifficulty(record,$event)"
+                             style="background-color: #B8E4FC;color:#565555"></div>
+                        <!--<div compile-html="record.qContext" current_q_input="record.inputList"
+                             class="q-context ques-content-input"
+                             style="pointer-events: none"></div>-->
+                        <div ng-if="!record.reload&&record.type.indexOf('vertical')==-1" compile-html="record.qContext"
+                             refer-answers="record.referAns"
+                             class="q-context ques-content-input" style="pointer-events: none">
+                        </div>
+                        <div ng-if="!record.reload&&record.type.indexOf('vertical')>-1"
+                             compile-html="record.qContext" refer-answers="record.referAns"
+                             current-q-input="record.inputList"
+                             class="q-context" style="pointer-events: none">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <!--<loading-processing load-top="200"></loading-processing>-->
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+    <div class="bar bar-footer bg-balanced footer_box_main">
+        <div ng-if="!ctrl.isEditFlag" class="footer_box_main_down">
+            <div ng-click="ctrl.gotoPublishWorkPaper()" class="footer_click_btn">
+                <span style="font-size: 20px">布置</span>
+            </div>
+        </div>
+
+        <div ng-if="ctrl.isEditFlag" class="footer_box_main_down">
+            <div ng-click="ctrl.deleteQues()" class="footer_click_btn">
+                <img ng-src="{{$root.loadImg('pub_work_type/pub_edit_butn01.png')}}">
+                <span>删除</span>
+            </div>
+            <div ng-click="ctrl.changeDifficulty('up')" class="footer_click_btn">
+                <img ng-src="{{$root.loadImg('pub_work_type/pub_edit_butn02.png')}}">
+                <span>提升难度</span>
+            </div>
+            <div ng-click="ctrl.changeDifficulty()" class="footer_click_btn">
+                <img ng-src="{{$root.loadImg('pub_work_type/pub_edit_butn03.png')}}">
+                <span>同类替换</span>
+            </div>
+            <div ng-click="ctrl.changeDifficulty('down')" class="footer_click_btn">
+                <img ng-src="{{$root.loadImg('pub_work_type/pub_edit_butn04.png')}}">
+                <span>减低难度</span>
+            </div>
+        </div>
+    </div>
+</ion-view>

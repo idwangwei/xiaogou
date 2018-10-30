@@ -1,0 +1,297 @@
+<ion-view hide-nav-bar="true" class="winter-camp-home" cache-view="false">
+    <ion-header-bar class="myHeader" align-title="center">
+        <button class="button back-button buttons  button-clear header-item common-back-btn"
+                ng-click="ctrl.back()"
+                style="color: #4a6e94 !important;">
+            <i class="icon ion-ios-arrow-back" style="color: #4a6e94;"></i>返回
+        </button>
+        <h1 class="title"
+            style="color:#4a6e94;font-size: 18px;left: 0px;right: 0px"
+            ng-bind="'假期提前学'">
+        </h1>
+        <div class="vip-pay-entry" ng-click="ctrl.gotoVipSelectPage()">
+            <img class="vip-pay-entry-img"
+                 ng-class="!ctrl.vipInfo?'vip-pay-entry-animation':''"
+                 ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home07.png')}}">
+        </div>
+    </ion-header-bar>
+    <!--<audio loop="loop" src="{{ctrl.audioSrc}}" id="winter-camp-home-bg-video" style="display: none"></audio>-->
+    <winter-camp-reward-prompt show-num="5"></winter-camp-reward-prompt>
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+    <winter-camp-all-courses ng-if="!!ctrl.allCourses.length&&ctrl.reloadAllCourse"
+                             show-all-course-flag="ctrl.showAllCourseFlag"
+                             select-item-obj="ctrl.selectItem"
+                             change-clazz="ctrl.changeClazz()"></winter-camp-all-courses>
+    <div class="winter-camp-content">
+        <div class="top-content">
+            <!--<img class="bg-img01" ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home14.png')}}">
+            <img class="bg-img02" ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home14.png')}}">-->
+            <div class="top-desc">
+                <div class="vip-info">
+                    <p ng-bind="'可使用：'+ctrl.lastVips+'课时'"></p>
+                </div>
+                <!--<p style="margin: 5px;">学习时间：2018.2.5—2018.4.5</p>-->
+            </div>
+            <div class="select-version">
+                <div class="select-input-style select-material" ng-click="ctrl.openTextbookSelectModal()">
+                    <span ng-bind="ctrl.selectedTextbook.text||'请选择教材...'"></span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+                <!-- <div style="margin: 0 auto;text-align: center">
+                     <img class="select-bg"
+                          ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home15.png')}}">
+                 </div>-->
+                <div class="select-input-style select-grade" ng-click="ctrl.openGradesSelectModal()">
+                    <span ng-bind="ctrl.selectedGrade.name||'请选择年级...'"></span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="task-content">-->
+        <div class="clazz-tab">
+            <div class="today-tab tab-days" ng-click="ctrl.selectClazzTab(1)">
+                <p class="today-select-clazz-count" style="font-size: 16px;display: none"
+                   ng-bind="'第'+(ctrl.classCount+1)+'课'"></p>
+                <p ng-bind="(ctrl.lastObj.todayFlag||ctrl.selectedClazzDay==2)?'今日课程':''"></p>
+            </div>
+            <div class="tomorrow-tab tab-days"
+                 ng-show="ctrl.classCount+1<ctrl.allCourses.length
+                 &&(ctrl.lastObj.todayFlag||!ctrl.lastObj.todayFlag&&ctrl.selectedClazzDay==2)"
+                 ng-click="ctrl.selectClazzTab(2)">
+                <p class="tomorrow-select-clazz-count" style="font-size: 16px;display: none"
+                   ng-bind="'第'+(ctrl.classCount+1)+'课'"></p>
+                <p ng-bind="'明日课程'"></p>
+            </div>
+            <div class="clazz-tab-bg">
+                <img ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home06.png')}}">
+            </div>
+            <div class="clazz-tab-more" ng-click="ctrl.showAllCourse()">
+                <span ng-bind="'更多'"></span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+
+        </div>
+        <div class="bar-br"></div>
+        <!--<div style="width: 100%;height: auto;position: relative">-->
+        <ion-content overflow-scroll="true" class="task-content">
+            <div class="selected-task-desc">
+                <img style="left:0px"
+                     ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home17.png')}}">
+                <img style="right:0px"
+                     ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home16.png')}}">
+                <p ng-bind="ctrl.selectCourse.unitName"></p>
+                <p ng-bind="ctrl.selectCourse.className"></p>
+            </div>
+            <div class="task-progress">
+                <div style="z-index: 4;" class="progress-item"
+                     ng-class="ctrl.courseInfo.reward.finish>0?'progress-item-action':''"></div>
+                <div style="z-index: 3;" class="progress-item"
+                     ng-class="ctrl.courseInfo.reward.finish>1?'progress-item-action':''"></div>
+                <div style="z-index: 2;" class="progress-item"
+                     ng-class="ctrl.courseInfo.reward.finish>2?'progress-item-action':''"></div>
+                <div style="z-index: 1;" class="progress-item" ng-show="ctrl.courseInfo.reward.totalStep>3"
+                     ng-class="ctrl.courseInfo.reward.finish>3?'progress-item-action':''"></div>
+                <div class="progress-reward-content"
+                     ng-click="ctrl.getReward()">
+                    <img class="progress-reward" ng-show="!ctrl.courseInfo.reward.award"
+                         ng-class="ctrl.courseInfo.reward.finish != ctrl.courseInfo.reward.totalStep?'progress-reward-butn-filter':'progress-reward-butn-active'"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home28.png')}}">
+                    <img class="progress-reward" ng-show="ctrl.courseInfo.reward.award"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home29.png')}}">
+                    <!--<img class="progress-reward"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home08.png')}}">
+                    <p class="progress-reward progress-reward-word">+5</p>-->
+                </div>
+                <!--<img class="progress-reward-butn" ng-show="!ctrl.courseInfo.reward.award"
+                     ng-class="ctrl.courseInfo.reward.finish != ctrl.courseInfo.reward.totalStep?'progress-reward-butn-filter':''"
+                     ng-click="ctrl.getReward()"
+                     ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home09.png')}}">
+                <span class="progress-reward-butn" style="width: 85px;color: #6f6b6b;top: -5px;right: -95px;"
+                      ng-show="ctrl.courseInfo.reward.award">（已领取）</span>-->
+            </div>
+            <div class="task-list">
+                <div class="task-item task-item01"
+                     ng-if="ctrl.courseInfo&&ctrl.courseInfo.games&&!!ctrl.courseInfo.games.length"
+                     ng-click="ctrl.doTask(ctrl.taskList[0])">
+                    <!--<p class="task-title" ng-bind="ctrl.selectCourse.unitName+':'+ctrl.selectCourse.className"></p>-->
+                    <img class="course-mark"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home22.png')}}">
+                    <div class="task-desc">
+                        <p style="font-size: 16px;font-weight: 800" ng-bind="ctrl.taskList[0].desc[0]"></p>
+                        <p style="font-size: 12px;font-weight: 800" ng-bind="ctrl.taskList[0].desc[1]"></p>
+                    </div>
+                    <div class="task-desc" style="height: 10px"></div>
+                    <div class="task-zan">
+                        <img ng-show="ctrl.gamsScore>0"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.gamsScore>=ctrl.courseInfo.games.length"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.gamsScore>=ctrl.courseInfo.games.length*2"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.gamsScore>=ctrl.courseInfo.games.length*3"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                    </div>
+                    <div class="task-img">
+                        <img ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home04.png')}}">
+                    </div>
+
+                    <img class="task-butn"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home10.png')}}">
+                    <!--<div class="task-mark"></div>-->
+                </div>
+
+                <div class="task-item task-item02"
+                     ng-click="ctrl.doTask(ctrl.taskList[1])">
+                    <!--<p class="task-title" ng-bind="ctrl.selectCourse.unitName+':'+ctrl.selectCourse.className"></p>-->
+                    <img class="course-mark"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home23.png')}}">
+                    <div class="task-desc">
+                        <p style="font-size: 16px;font-weight: 800" ng-bind="ctrl.taskList[1].desc[0]"></p>
+                        <p style="font-size: 12px;font-weight: 800" ng-bind="ctrl.taskList[1].desc[1]"></p>
+                    </div>
+                    <div class="task-desc" style="height: 10px"></div>
+                    <div class="task-zan">
+                        <img ng-show="ctrl.courseInfo.oralCalculationPaper.latestScore/20>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.courseInfo.oralCalculationPaper.latestScore/40>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.courseInfo.oralCalculationPaper.latestScore/80>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.courseInfo.oralCalculationPaper.latestScore/100>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                    </div>
+                    <div class="task-img">
+                        <img ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home02.png')}}">
+                    </div>
+
+                    <img class="task-butn"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home11.png')}}">
+                    <div class="task-mark"
+                         ng-hide="ctrl.gamsScore>0||!ctrl.courseInfo.games||ctrl.courseInfo.games&&!ctrl.courseInfo.games.length||ctrl.courseInfo.oralCalculationPaper.status>3"></div>
+                </div>
+
+                <div class="task-item task-item03"
+                     ng-click="ctrl.doTask(ctrl.taskList[2])">
+                    <!--<p class="task-title" ng-bind="ctrl.selectCourse.unitName+':'+ctrl.selectCourse.className"></p>-->
+                    <img class="course-mark"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home24.png')}}">
+                    <div class="task-desc">
+                        <p style="font-size: 16px;font-weight: 800" style="font-size: 16px;font-weight: 800"
+                           ng-bind="ctrl.taskList[2].desc[0]"></p>
+                        <p style="font-size: 12px;font-weight: 800" style="font-size: 12px;font-weight: 800"
+                           ng-bind="ctrl.taskList[2].desc[1]"></p>
+                    </div>
+                    <div class="task-desc" style="height: 10px"></div>
+                    <div class="task-zan">
+                        <img ng-show="ctrl.courseInfo.paper.latestScore/20>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.courseInfo.paper.latestScore/40>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.courseInfo.paper.latestScore/80>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.courseInfo.paper.latestScore/100>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                    </div>
+                    <div class="task-img">
+                        <img ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home01.png')}}">
+                    </div>
+
+                    <img class="task-butn"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home12.png')}}">
+                    <div class="task-mark"
+                         ng-hide="ctrl.courseInfo.oralCalculationPaper.status>3||ctrl.courseInfo.paper.status>3||!ctrl.courseInfo||!ctrl.courseInfo.paper"></div>
+                </div>
+
+                <div class="task-item task-item04"
+                     ng-click="ctrl.doTask(ctrl.taskList[3])">
+                    <!--<p class="task-title" ng-bind="ctrl.selectCourse.unitName+':'+ctrl.selectCourse.className"></p>-->
+                    <img class="course-mark"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home25.png')}}">
+                    <div class="task-desc">
+                        <p style="font-size: 16px;font-weight: 800" ng-bind="ctrl.taskList[3].desc[0]"></p>
+                        <p style="font-size: 12px;font-weight: 800" ng-bind="ctrl.taskList[3].desc[1]"></p>
+                    </div>
+                    <div class="task-desc" style="height: 10px"></div>
+                    <div class="task-zan">
+                        <img ng-show="ctrl.knowledgeScore/20>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.knowledgeScore/40>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.knowledgeScore/80>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                        <img ng-show="ctrl.knowledgeScore/100>=1"
+                             ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home20.png')}}">
+                    </div>
+                    <div class="task-img">
+                        <img ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home03.png')}}">
+                    </div>
+
+                    <img class="task-butn"
+                         ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home13.png')}}">
+                    <div class="task-mark"
+                         ng-hide="ctrl.courseInfo.paper.status>3||!ctrl.courseInfo||!ctrl.courseInfo.paper"></div>
+                </div>
+                <div class="task-item" style="min-height: 25px !important;"></div>
+            </div>
+        </ion-content>
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+
+    <script id="textbookSelect.html" type="text/ng-template">
+        <ion-modal-view class="diagnose-select-modal" style="{{ctrl.modalStyle}}">
+            <ion-header-bar align-title="center" style="background: #d2f7ef!important;"
+                            class="bar-balanced">
+                <div class="button back-button buttons  button-clear header-item"
+                     ng-click="ctrl.closeTextbookSelectModal()">
+                    <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="color:#4a6b9d;font-weight: bold">请选择教材</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list">
+                    <div ng-repeat="version in ctrl.textbooks">
+                        <li class="item unit_bg"
+                            ng-click="ctrl.diagnoseSelectTextBook(version)">
+                            <span ng-bind="version.openFlag?(version.text+'（暂未开放）'):version.text"></span>
+                        </li>
+                    </div>
+                    <!--<div>-->
+                        <!--<li class="item unit_bg"-->
+                            <!--ng-click="ctrl.diagnoseSelectTextBook({code:'XS'})">-->
+                            <!--<span ng-bind="'西师版（暂未开放）'"></span>-->
+                        <!--</li>-->
+                    <!--</div>-->
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+    <script id="gradesSelect.html" type="text/ng-template">
+        <ion-modal-view class="diagnose-select-modal" style="{{ctrl.modalStyle}}">
+            <ion-header-bar align-title="center" style="background: #d2f7ef!important;"
+                            class="bar-balanced">
+                <div class="button back-button buttons  button-clear header-item"
+                     ng-click="ctrl.closeGradesSelectModal()">
+                    <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="color:#4a6b9d;font-weight: bold">请选择年级</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list">
+                    <div ng-repeat="grade in ctrl.Grades">
+                        <li class="item unit_bg" ng-click="ctrl.diagnoseSelectGrade(grade)">
+                            <span ng-bind="grade.name"></span>
+                            <img ng-src="{{$root.loadImg('diagnose/stu_increase_score_open_icon_2.png')}}"
+                                 ng-if="ctrl.vipKnowledgeGradeArr.indexOf(grade.num)!=-1 && ctrl.isIncreaseScore"
+                                 alt="">
+                        </li>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+</ion-view>

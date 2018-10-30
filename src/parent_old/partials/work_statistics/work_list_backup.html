@@ -1,0 +1,129 @@
+<ion-view title="作业列表 | {{wData.queryParams.sName}}">
+    <ion-content class="has-header">
+        <!--作业列表查询-->
+<!--        <fieldset style="width: 99%;padding: 8px;border:1px solid black;margin: 5px 2px 5px 2px" >
+            &lt;!&ndash;<select-month month="$parent.wData.queryParam.currentMonth"></select-month>&ndash;&gt;
+            <legend class="legend" ng-click="showQuery()">
+                <span >
+                    查询
+                <i ng-class="showQueryFlag==true?'ion ion-ios-arrow-up':'ion ion-ios-arrow-down'"
+                   style="color: green"
+                        >
+                </i>
+                </span>
+                &nbsp;
+            </legend>
+            <div ng-show="showQueryFlag" >
+                <date-picker>
+                    <div class="item item-input block-input " style="height: 30px">
+                        <a  class="button button-clear icon ion-calendar" ng-click="showDateTime('startTime')" ng-blur="closeDateTime(1)"></a>
+                        <i style="margin-right: 10px">从:</i>
+                        <input type="text"
+                               placeholder="开始时间"
+                               ng-model="wData.queryParam.startTime"
+                               name="startTime"
+                               readonly="readonly"
+                               id="startTime"
+                               style="background-color: #fff"
+                                />
+                        <a class="button button-clear icon ion-close" ng-show="wData.queryParam.startTime!=''" ng-click="clearDateTime(1)"></a>
+                    </div>
+                    <div class="item item-input block-input" style="height: 40px">
+                        <a  class="button button-clear icon ion-calendar" ng-click="showDateTime('endTime')" ng-blur="closeDateTime(2)"></a>
+                        <i style="margin-right: 10px">到:</i>
+                        <input type="text"
+                               placeholder="截止时间"
+                               ng-model="wData.queryParam.endTime"
+                               name="endTime"
+                               readonly="readonly"
+                               id="endTime"
+                               style="background-color: #fff"
+                                />
+                        <a class="button button-clear icon ion-close" ng-show="wData.queryParam.endTime!=''" ng-click="clearDateTime(2)"></a>
+                    </div>
+                </date-picker>
+            </div>
+        </fieldset>-->
+        <div class="item item-input block-input" style="height: 40px;" ng-if="wData.workList.length<=0">
+            <input type="text"
+                   ng-model="tip"
+                   readonly="readonly"
+                   id="refreshTimeCount"
+                   style="font-size: 20px;color: red"
+                    />
+        </div>
+        <auto-list-con>
+            <auto-list ng-repeat="paper in wData.workList" >
+                <auto-list-content class="bg-calm list-content_stu" style="min-height: 105px;position: relative;" >
+                    <div class="list-center-stu"  ng-click="showWorkDetail(paper);">
+                        <div  class="left-img">
+                            <div stat-circle
+                                 refer-text="paper.processName+paper.processBar",
+                                 refer-percent="paper.processBar.substr(0,paper.processBar.length - 1)"
+                                 data-width="25"
+                                 data-dimension="95"
+                                 class="thumbnail-left"
+                                 style="width: 100px;height: 100px;float: left"  ng-click="showWorkDetail(paper);"></div>
+                        </div>
+
+                        <div class="center-span">
+                            <div class="second position-set" >
+                                <span ng-bind="'试卷名: '" ></span>
+                                <span style="font-size: 12px" ng-bind="paper.paperName"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 12px" ng-bind="paper.date"></span>
+                            </div>
+                            <div class="second position-set" >
+                                <span style="font-size: 12px" ng-bind="paper.clazz"></span>
+                            </div>
+
+                            <div class="second position-set" >
+                                <span style="font-size: 12px" ng-bind="paper.statusVo"></span>
+                            </div>
+
+                            <!--<div class="second position-set" ng-if="paper.status>=3">
+                                <span style="font-size: 12px" ng-bind="paper.statusVo+ ' ('+paper.score+'分/'+paper.worthScore+'分) ' "></span>
+                            </div>
+                            <div class="second position-set" ng-if="paper.status<3">
+                                <span style="font-size: 12px" ng-bind="paper.statusVo"></span>
+                            </div>-->
+                        </div>
+                    </div>
+<!--
+                    <div stat-circle
+                         refer-text="paper.processName+paper.processBar",
+                         refer-percent="paper.processBar.substr(0,paper.processBar.length - 1)"
+                         data-width="25"
+                         data-dimension="95"
+                         class="thumbnail-left"
+                  <!--       style="width: 100px;height: 100px;float: left"  ng-click="showWorkDetail(paper);"></div>&ndash;&gt;
+                    <div class="first" style="margin-left: 35px"><label>试卷名:&nbsp; <span>{{paper.paperName}}</span>
+                    </label></div>
+                    <div class="first" style="margin-left: 35px"><label><span>{{paper.date}}</span></label>
+                    </div>
+                    <div class="first" style="margin-left: 35px"><label><span>{{paper.clazz}}</span> </label>
+                    </div>
+                    <div class="first" style="margin-left: 35px"><label><span>{{paper.statusVo}}</span>
+                    </label>
+                    </div>-->
+                    <div class="list-right_stu"  >
+                        <div class="tool-bar-item" >
+                            <img ng-src="{{praise.img}}" ng-repeat="praise in paper.encourageImgs" >
+                        </div>
+                    </div>
+                   <a style="position: absolute;bottom: 0;right: 0;text-decoration: underline;color:blue;font-weight:bold;font-size: 14px"
+                            ng-click="praiseStu(paper)" ng-if="paper.status>=3">
+                       家长评价</a>
+                </auto-list-content>
+            </auto-list>
+            <!--<auto-list ng-if="!wData.workList||wData.workList.length==0">
+                无作业
+            </auto-list>-->
+        </auto-list-con>
+    </ion-content>
+
+</ion-view>
+
+
+

@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+/*---------------game_lib---------------*/
+.game-lib-title{
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  font-size: 16px
+}
+.game-lib-select{
+  display: inline-block;
+  padding: 5px;
+  width: 100%;
+}
+.game-lib-grade-list{
+  padding: 5px;
+}
+/*-------------game_pub------------------*/
+.pub-game-list{
+  margin-top: 10px;
+  label{
+    font-size: 14px;
+  }
+  .pub-game-info{
+    border: 1px solid #ddd;
+    min-height: 44px;
+    padding:8px 0 5px 15px;
+    color:#666;
+    width: 100%;
+  }
+  textarea{
+    overflow: hidden;
+    word-break: break-all;
+    resize: none;
+    height: 80px;
+  }
+}
+.pub-game-clazz-list{
+  padding: 5px;
+}
+
+/*--------------------select_game--------------------------*/
+.game-box{
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  .game-box-content{
+    background-color: @calm;
+    min-height: 130px;
+    img{
+      max-height: 80px;
+      max-width: 160px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+    .game-info{
+      position: absolute;
+      left: 100px;
+      top: 60px;
+      min-height: 20px;
+      p:first-child{
+        color: #ffffff;
+        height: 20px;
+      }
+      p{
+        color: #ffffff;
+        height: 40px;
+        width: 170px;
+      }
+    }
+    .select-all{
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 14px;
+      color: #ffffff;
+      height: 20px;
+      i{
+        color: #ffffff;
+        font-size: 24px;
+        display: inline-block;
+      }
+    }
+
+  }
+}
+.pass-list {
+  .pass-block {
+    border: 1px solid #DDDDDD;
+    margin: 3px;
+    .flex_1;
+    min-height: 70px;
+    text-align: center;
+    position: relative;
+    border-radius: 4px;
+    .white-bold(150, 15);
+    padding-top: 15px;
+    padding-bottom: 10px;
+    img{
+      width: 50px;
+      height: 50px;
+    }
+    .noSelect{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: #333;
+      opacity: 0.5;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+.check {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  top: 2px;
+  right: 2px;
+  .icon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    right: -6px;
+    color: #FFF;
+    top: -6px;
+  }
+}
+/*-----------------pub_game_manage--------------------*/
+.game-manage-box{
+  pointer-events:auto;
+  .game-list{
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 0px;
+    .game-manage-checkbox{
+      position: absolute;
+      right: 80px;
+      top: 10px;
+      width: auto;
+      height: 50px;
+      text-align: center;
+      .display-flex;
+      align-items: center;
+      i{
+        color: #ffffff;
+        font-size: 30px;
+        padding: 3px;
+      }
+    }
+  }
+}

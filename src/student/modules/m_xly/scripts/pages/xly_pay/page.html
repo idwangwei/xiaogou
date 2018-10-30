@@ -1,0 +1,115 @@
+<ion-view class="year-card-pay-file">
+    <ion-header-bar align-title="center" class="year-card-pay-header">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">{{ctrl.xlyGoods.selectPlanText}}</h1>
+
+    </ion-header-bar>
+    <ion-content class="year-card-pay-content">
+
+        <div ng-if="!ctrl.isLoadingProcessing && ctrl.hasWrong" style="padding: 20px;text-align: center">
+            获取数据失败，<a ng-click="ctrl.getServerData()">点击刷新</a>试试吧
+        </div>
+
+        <div ng-if="!ctrl.isLoadingProcessing && !ctrl.hasWrong"
+             class="pay-content" ng-class="{'pay-content-ios':ctrl.isIos}">
+            <div class="pay-content-top-warp">
+                <div class="pay-content-top">
+                    <div class="pay-content-info">请勾选您想购买的优惠项目：</div>
+                    <ion-scroll zooming="false" direction="y" class="pay-content-scroll">
+                        <div style="overflow: hidden; padding: 10px">
+                            <div class="desc-title">
+                                <ion-checkbox ng-checked="true" ng-disabled="true">
+                                    <span>{{"督学金：￥"+(ctrl.xlyGoods.saleFee||ctrl.xlyGoods.joinFee)}}</span>
+                                    <span>{{ctrl.isVip ? '已购':''}}</span>
+                                </ion-checkbox>
+                                <p>（通过领“学霸训练奖”或“共同进步奖”抵消）</p>
+                            </div>
+                            <div class="desc-detail" ng-repeat="item in ctrl.xlyGoods.list">
+                                <ion-checkbox ng-model="item.selected"
+                                              ng-class="{'desc-detail-disabled':item.disable}"
+                                              ng-change="ctrl.selectGood(item)"
+                                              ng-disabled="item.disable">
+                                    <span>{{item.name }}</span>
+                                    <span class="desc-detail-prePrice">
+                                        <img ng-src="{{$root.loadImg('weixin_pay/wxpayRedLine.png')}}">
+
+
+                                        {{'￥'+item.originalPrice}}
+                                    </span>
+                                    <span>{{'￥'+item.discountPrice}}</span>
+                                    <span ng-if="item.bought">已购</span>
+                                    <span ng-if="!item.bought">&emsp;&emsp;</span>
+                                </ion-checkbox>
+                            </div>
+                            <div style="padding: 20px 0 20px 60px;">
+                                后续您将享受更多VIP优惠项目
+                            </div>
+
+                        </div>
+                    </ion-scroll>
+                </div>
+            </div>
+
+            <div class="top-price">
+                合计：<span ng-bind="ctrl.needPayPrice"> </span>
+            </div>
+
+            <div class="pay-content-middle" ng-if="!ctrl.isVip">
+                <div class="middle-desc-box">
+                    输入“学霸培养计划”邀请人账号，提前领取部分奖金{{+ctrl.xlyGoods.invitation}}元
+                </div>
+                <div class="middle-input-box">
+                    <input type="text" placeholder="请输入邀请人账号"
+                           ng-change="ctrl.checkInvitees()"
+                           ng-model="ctrl.invite.inviteAccount"/>
+                </div>
+                <div class="middle-check-info" >
+                    <div class="check-info-right" ng-if="ctrl.verifyResult == 1">
+                        <div>账号正确，奖金{{+ctrl.xlyGoods.invitation}}元充抵督学金</div>
+                        <div>
+                            实付：
+                            <span ng-bind="ctrl.actualPayPrice"></span>
+                        </div>
+                    </div>
+                    <div class="check-info-wrong" ng-if="ctrl.verifyResult == 2">
+                        <p>您输入的账号有误，请重新输入</p>
+                        <p>如有疑问，请到微信公众号<span>“智算365”</span>中咨询</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pay-content-bottom">
+                <div style="display: flex;display: -webkit-flex">
+                    <div class="display-flex btn {{ctrl.iscreateAppOrder==false?'clicked':''}}"
+                         style="margin-right: 20px"
+                         ng-click="ctrl.createOrderWxPayApp()">
+                        <img ng-src="{{$root.loadImg('weixin_pay/wechat.ico')}}">
+                        <span> 本机支付</span>
+                    </div>
+                    <div class="display-flex btn {{ctrl.iscreateScanOrder==false?'clicked':''}}"
+                         ng-click="ctrl.createOrderWxPayScan()">
+                        <img class="imgQr" ng-src="{{$root.loadImg('weixin_pay/wxqrCode.png')}}">
+                        <span> 扫码支付</span>
+                    </div>
+                </div>
+
+                <div class="protocol">
+                    <div class="checkbox">
+                        <span ng-click="ctrl.toggleReadBtn()">
+                            <i ng-class="ctrl.btnReadProtocol ? 'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"></i>
+                            <span style="font-size: 12px">购买前我已阅读：</span>
+                        </span>
+
+                        <u style="font-size: 12px" ng-click="ctrl.gotoProtocol()">《用户须知条款》</u>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <loading-processing-v2></loading-processing-v2>
+    </ion-content>
+
+</ion-view>

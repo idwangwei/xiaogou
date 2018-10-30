@@ -1,0 +1,47 @@
+<div class="national-day-gift-package">
+
+    <!--从没有点击过礼包的礼包布局-->
+    <div class="gift-package-backdrop gif-package-box-warp" ng-if="!showFirstGiftBox">
+        <div>
+            <img ng-src="{{$root.loadImg('home/national-day-banner.png')}}" alt="">
+        </div>
+        <div class="gift-package-box-1" ng-click="ctrl.clickGiftPackage()">
+
+            <img class="box-bg" ng-src="{{$root.loadImg('home/rewardPromptBg.png')}}" alt="">
+            <img ng-src="{{$root.loadImg('home/national-day-btn2.png')}}" alt="">
+            <img class="star-bling star-1" ng-src="{{$root.loadImg('home/rewardPromptStar1.png')}}" alt="">
+            <img class="star-bling star-2" ng-src="{{$root.loadImg('home/rewardPromptStar1.png')}}" alt="">
+            <img class="star-bling star-3" ng-src="{{$root.loadImg('home/rewardPromptStar1.png')}}" alt="">
+            <img class="star-bling star-4" ng-src="{{$root.loadImg('home/rewardPromptStar1.png')}}" alt="">
+
+        </div>
+        <div>点击礼盒领取</div>
+    </div>
+
+    <!--已经点击过礼包后的礼包布局-->
+    <div class="gift-package-box-2"  ng-click="ctrl.clickGiftPackage()">
+        <img ng-src="{{$root.loadImg('home/national-day-btn.png')}}" alt="">
+    </div>
+
+    <!--点击礼包后显示的广告页-->
+    <div class="gift-package-backdrop gift-package-click-show-box" ng-if="!ctrl.showPackage">
+        <div class="gift-package-pic">
+            <img ng-src="{{$root.loadImg('home/national-day-pic1.png')}}" alt="">
+        </div>
+        <div class="gift-package-pic">
+            <img ng-src="{{$root.loadImg('home/national-day-pic2.png')}}" alt="">
+        </div>
+        <div class="gift-package-info">
+            <p>优惠券仅限<span>双11期间</span>使用：</p>
+            <p>即日起~2017.11.12</p>   
+        </div>
+        <div class="gift-package-btn">
+            <div ng-click="ctrl.gotoPlanA()">
+                <img ng-src="{{$root.loadImg('home/national-day-btn1.png')}}" alt="">
+            </div>
+            <div ng-click="ctrl.hideAd()">
+                <span>下次再说</span>
+            </div>
+        </div>
+    </div>
+</div>

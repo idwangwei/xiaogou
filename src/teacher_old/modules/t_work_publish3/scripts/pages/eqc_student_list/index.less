@@ -1,0 +1,60 @@
+@charset "UTF-8";
+@import "./../../../../t_boot/less/theme02/include/_mixins";
+.eqc_student_list_file{
+
+  .eqc_student_list_subheader{
+    border-bottom: none;
+  }
+
+  .eqc_sl_content{
+    .list_item_stu_box{
+      .list_item_stu{
+        .display-flex;
+        padding: 5px 10px;
+        img{
+          height: 100%;
+          display: inline-block;
+        }
+
+
+        .list_item_stu_left{
+          margin: 0 10px;
+          .list_item_stu_left_icon{
+            width: 80px;
+            height: 40px;
+            overflow: hidden;
+            text-align: center;
+            .flex_1;
+          }
+          .list_item_stu_left_name{
+            text-align: center;
+            .flex_1;
+          }
+        }
+        .list_item_stu_right{
+          .flex_1;
+          .display-flex-pure;
+          align-items: center;
+          justify-content: space-between;
+          -webkit-justify-content: space-between;
+          -webkit-align-items: center;
+
+          .list_item_stu_right_info{
+            .display-flex-pure;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: center;
+            -webkit-justify-content: center;
+          }
+        }
+      }
+    }
+    .list_item_stu_box.item{padding: 0;border: none;}
+    .list_item_stu_box.item:nth-child(odd) .list_item_stu{
+      background: #E9EDF3;
+    }
+    .list_item_stu.current_click_student{
+      background: #D5D7DF;
+    }
+  }
+}

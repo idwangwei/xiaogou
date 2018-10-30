@@ -1,0 +1,191 @@
+
+<ion-view hide-nav-bar="true" class="pub_game_list">
+    <ion-header-bar align-title="center" class="bar-better">
+        <!--<div class="button button-clear"  ng-click="ctrl.goGameLib()" style="margin-left: 5%;display: flex;display: -webkit-flex;height: 100%;align-items: center;-webkit-align-items: center">-->
+            <!--<div style="height: 26px;display: flex;display: -webkit-flex">-->
+                <!--<img ng-src="{{$root.loadImg('work/pub_work_btn.png')}}" style="display: block;height: 100%;margin: auto"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<h1 class="title">游戏</h1>-->
+        <!--<div class="buttons" style="width:50%">-->
+            <!--<button class="button button-clear icon ion-navicon-round"-->
+                    <!--ng-if="ctrl.pubGames.length>0"-->
+                    <!--ng-click="ctrl.settingToggle()" style="position: absolute;right: 20%;"-->
+                    <!--&gt;-->
+
+            <!--</button>-->
+            <!--游戏没有解锁顺序了。暂时注销掉-->
+            <!--<button class="button button-clear" ng-click="ctrl.answer()" style="position: absolute;right: -3px;">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>-->
+        <!--</div>-->
+        <!--<task-top-bar ng-if="!ctrl.isAdmin"></task-top-bar>-->
+    </ion-header-bar>
+
+
+    <ion-side-menus>
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class=" game_clazz_select" padding="true" style="top:105px!important;padding-bottom: 60px">
+                <div class="work_clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-style="{'margin-bottom':$last?'60px':'0px'}">
+                    <div class="clazz-item" ng-click="ctrl.selectClazz(clazz)">
+                        <img class="game_clazz_select_img" ng-src="{{$root.loadImg('other/class.png')}}">
+                        <div class="clazz-name" ng-bind="clazz.name"></div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+
+        <ion-side-menu-content>
+            <ion-header-bar class = "bar-subheader divHeadBar">
+                <div class = "pub_game_list display-flex divHead">
+                    <!--班级名称-->
+                    <div class = "pub_game_list display-flex className" ng-click="ctrl.showMenu()" >
+                        <span ng-bind="ctrl.selectedClazz.name || '没有班级'"></span>
+                        <span  class="icon ion-ios-arrow-right"></span>
+                    </div>
+                    <!--  &lt;!&ndash;时间&ndash;&gt;
+                      <date-picker select-date-obj="ctrl.selectDateObj">
+                          <div class="pub_game_list display-flex time" >
+                              <span>{{ctrl.selectDateObj.year}}年{{ctrl.selectDateObj.month}}月</span>
+                              <span  class="icon ion-ios-arrow-right"></span>
+                          </div>
+                      </date-picker>-->
+
+                    <!--布置-->
+                    <div  class = "pub_game_list display-flex pub"   ng-click="ctrl.goGameLib()">
+                        <span>布置</span>
+                        <span  class="icon ion-ios-arrow-right"></span>
+                    </div>
+                </div>
+
+            </ion-header-bar>
+
+            <ion-content  overflow-scroll="false" style="top:155px" ng-style="{'top':ctrl.isAdmin?'155px':'155px'}" delegate-handle="mainScroll">
+
+                <!--排行榜-->
+                <div class="game-star-rank-wrap"  ng-click="ctrl.showGameStarRank()">
+                    <div class="game-star-rank">
+                        <div class="game-star-rank-text">
+                            <span style="line-height: 22px">游戏星星榜</span>
+                            <i style="margin-left: 16px;font-size: 16px;" class="icon ion-ios-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!--下拉刷新-->
+                <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()" spinner="ios"></ion-refresher>
+
+                <div ng-if="ctrl.retFlag && !ctrl.clazzList.length" style="padding: 10px 0 0 10px">
+                    您还没有创建班级，请点击下方的“班级”，然后再点击“+”创建班级。
+                </div>
+
+                <div class="item item-input block-input item-input—height"  ng-if="(!ctrl.pubGames||ctrl.pubGames.length == 0) && ctrl.retFlag &&ctrl.clazzList.length !== 0">
+                    <input type="text"
+                           ng-model="ctrl.tip"
+                           readonly="readonly"
+                    />
+                </div>
+                <div style="padding-bottom: 60px">
+                    <ion-list show-delete="ctrl.showSetting" show-reorder="ctrl.showSetting"
+                              ng-if="ctrl.pubGames.length>0 && ctrl.checkData(ctrl.pubGames)">
+                        <div ng-if="ctrl.ifShow($index)" ng-repeat-start="game in ctrl.pubGames"
+                             style="padding:10px 16px;font-weight: bold;font-size: 16px;color: #61646B;background: #E9EDF3">
+                            <span ng-bind="ctrl.getMonth(game) + '月'"></span>
+                        </div>
+                        <ion-item ng-repeat-end
+                                  ng-click="ctrl.showLevels(game.id,game)"
+                                  class="item item-avatar" >
+                            <img ng-src="{{ctrl.getGameIconUrl(game.games[0].gameGuid)}}" alt=""/>
+                            <img ng-src="{{$root.loadImg('other/new-icon.png')}}" class="new-icon" ng-if="game.isNewGame">
+                            <div class="display-flex content-font-color">
+                                <div class="content-left">
+                                    <h2 ng-bind="game.games[0].name"></h2>
+                                    <p style="word-wrap: break-word;white-space: pre-wrap;" ng-bind="game.games[0].gameDesc"></p>
+                                    <p><em ng-bind="game.games[0].passedStudentCount"></em><span ng-bind="'/' + game.games[0].totalStudentCount + '人'"></span></p>
+                                </div>
+                                <div class="content-right">
+                                    <p ng-bind="game.createdTime.substring(11,16)"></p>
+                                    <p ng-bind="game.publishWeek"></p>
+                                    <p ng-bind="game.createdTime.substring(0,11)"></p>
+                                </div>
+                            </div>
+                            <ion-reorder-button class="ion-navicon"
+                                                on-reorder="ctrl.moveGame(game,$fromIndex,$toIndex)">
+                            </ion-reorder-button>
+                            <ion-option-button
+                                    class="button-assertive icon ion-minus-circled"
+                                    ng-click="ctrl.delGame(game.id,$index)">删除</ion-option-button>
+                        </ion-item>
+                    </ion-list>
+                </div>
+                <ion-infinite-scroll on-infinite="ctrl.getPubGames()" spinner="ios"
+                                     distance="10%" ng-if="ctrl.moreFlag" immediate-check="false">
+                </ion-infinite-scroll>
+            </ion-content>
+        </ion-side-menu-content>
+
+    </ion-side-menus>
+
+    <!--作业列表显示的作业奖杯排行榜显示框-->
+    <div class="work-backdrop" ng-if="ctrl.isShowGameStarRank" ng-click="ctrl.closeGameStarRankData($event)">
+        <div class="game_star_rank_data">
+
+            <!--游戏星星榜背景-->
+            <div class="top_bg_wrap bg_wrap_star">
+                <div class="bg_wrap_star_2">
+                    <img ng-src="{{$root.loadImg('msg/msg_game_star_bg_2.png')}}" alt="">
+                </div>
+                <img ng-src="{{$root.loadImg('msg/msg_game_star_icon.png')}}" alt="" class="top_bg_icon">
+            </div>
+
+            <!--星星排行列表-->
+            <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+                <div ng-if="!ctrl.selectedClazz || !ctrl.selectedClazz.id" style="padding: 20px">您还没有申请学校老师的班级!</div>
+                <div class="star_rank_list_box" ng-if="ctrl.selectedClazz && ctrl.selectedClazz.id">
+
+                    <div ng-if="!ctrl.isGameStarLoading&&!ctrl.gameStarRankData.length" class="rank_list_content_none">该班暂时没有游戏星星排行信息</div>
+
+                    <div ng-if="ctrl.isGameStarLoading &&!ctrl.gameStarRankData.length">
+                        <loading-processing></loading-processing>
+                    </div>
+
+                    <div class="item star_rank_list" ng-repeat="item in ctrl.gameStarRankData"
+                         ng-class="{'star_rank_list_user':item.userId == ctrl.user.userId}">
+
+                        <!--排名-->
+                        <div class="gs_content_list_index">
+                            <span ng-bind="item.rank"> </span>
+                        </div>
+
+                        <!--列表信息-->
+                        <div class="gs_content_list_info">
+
+                            <!--头像-->
+                            <div class="game_star_content_left"></div>
+
+                            <!--用户信息-->
+                            <div class="game_star_content_middle">
+                                <div class="gs_cm_student_name">{{item.userName}}</div>
+                            </div>
+
+                            <!--信息信息-->
+                            <div class="game_star_content_right">
+                                <img ng-src="{{$root.loadImg('msg/msg_game_star.png')}}" alt="">
+                                <span>&nbsp;×{{item.starAmount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ion-scroll>
+        </div>
+    </div>
+
+</ion-view>
+

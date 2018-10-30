@@ -1,0 +1,31 @@
+<div class="olympic-change-ad-page" ng-if="$root.showOlypicMathChagneAd" >
+
+    <div class="ad-backdrop" ng-click="hideAd()">
+        <div class="ad-content">
+            <div class="content-top">
+                <img class="top-img-1" ng-src="{{$root. loadOlympicMathImg('olympic_change_top_1.png')}}" alt="">
+                <img class="top-img-2" ng-src="{{$root. loadOlympicMathImg('olympic_change_top_2.png')}}" alt="">
+            </div>
+            <div class="content-middle">
+                <p>
+                    <span>所有</span>
+                    <img ng-src="{{$root. loadOlympicMathImg('olympic_change_word_1.png')}}" alt="">
+                    <span>奥数魔法城的小朋友，智算365都赠送给你价值</span>
+                    <img ng-src="{{$root. loadOlympicMathImg('olympic_change_word_2.png')}}" alt="">
+                    <span>元的魔法药水哟！</span>
+                </p>
+                <p>
+                    <span>快去</span>
+                    <img ng-src="{{$root. loadOlympicMathImg('olympic_change_word_3.png')}}" alt="">
+                    <span>中看看吧~</span>
+                </p>
+                <div class="btn-box">
+                    <img ng-click="gotoMicrolecture($event)" ng-src="{{$root. loadOlympicMathImg('olympic_change_btn.png')}}" alt="">
+                </div>
+            </div>
+            <div class="content-bottom">
+                <img ng-src="{{$root. loadOlympicMathImg('olympic_change_bottom.png')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>

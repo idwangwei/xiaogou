@@ -1,0 +1,115 @@
+<ion-view title="修改学生信息" hide-nav-bar="true" class="edit_child_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">修改孩子信息</h1>
+    </ion-header-bar>
+  <!--  <div class="bar bar-subheader bg-balanced">
+        <button class="button-clear  icon ion-ios-plus-outline not-active" ng-click="handleTabBtnClick($event,1)">基本信息
+        </button>
+        <button class="button-clear  icon ion-ios-plus-outline active" ng-click="handleTabBtnClick($event,2)">修改密码
+        </button>
+    </div>-->
+
+   <!-- <sub-header id="edit_student_subheader">
+        <div class="subheader-item"
+             id="edit_basic_info"
+             ng-click="handleTabBtnClick($event,1)">
+            <span class="sub-title">基本信息</span>
+        </div>
+        <div class="subheader-item"
+             id="edit_pqs"
+             ng-click="handleTabBtnClick($event,2)">
+            <span class="sub-title">重置密码</span>
+        </div>
+    </sub-header>-->
+
+    <ion-content padding="true" >
+        <!--学生信息表单 start-->
+        <ng-form name="studentRegisterForm" class="list" >
+            <div class="card card-better card-adpat">
+                <div class="item item-input block-input line-adapt">
+                    <i class="ion ion-person" style="font-size: 20px;margin-right: 5px"></i>
+                    <input type="text"
+                           placeholder="学生名"
+                           required=""
+                           name="studentName"
+                           ng-model="formData.studentName"/>
+                </div>
+                <!--关系下拉菜单 start-->
+<!--
+                <label class="item item-input item-select line-adapt" style="margin-bottom: 5px" >
+                    <div class="input-label" style="color: #a29f91">
+                        您是学生的
+                    </div>
+                    <select name="relationship" id="relationship" style="height: 50px" ng-model="formData.relationShip">
+                        <option value="0">爸爸</option>
+                        <option value="1">妈妈</option>
+                        <option value="2">爷爷</option>
+                        <option value="3">奶奶</option>
+                        <option value="4">外公</option>
+                        <option value="5">外婆</option>
+                        <option value="6">其他</option>
+                    </select>
+                </label>
+-->
+                <!--关系下拉菜单 end-->
+                <!--性别选择 start-->
+                <div class="row item line-adapt" >
+                    <li class="item item-checkbox" style="border: none">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-checked="formData.gender==1" ng-click="handleGenderSelect(1)" >
+                        </label>
+                        男
+
+                    </li>
+                    <li class="item item-checkbox" style="border: none">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-checked="formData.gender==0" ng-click="handleGenderSelect(0)" >
+                        </label>
+                        女
+                    </li>
+                </div>
+                <!--性别选择 end-->
+                <div class="row img-validate-block row-adapt" >
+                    <input type="text"
+                           placeholder="图形验证码"
+                           required=""
+                           name="vCode"
+                           ng-model="formData.vCode" style="border-radius: 10px;margin: auto 0;padding: 0 5px;"/>
+                    <img src="{{validateImageUrl}}" />
+                    <i class="button icon ion-refresh button-clear"
+                       ng-click="getValidateImage()"></i>
+                </div>
+                <div class="button button-block   btn-adapt"
+                     ng-click="handleSubmit()" style="color: #fff">
+                    保存
+                </div>
+            </div>
+
+        </ng-form>
+        <!--学生信息表单 end-->
+
+        <ng-form novalidate="novalidate" name="resetPassForm" class="list" style="margin-top: 20px" ng-show="pageStatus==2">
+            <div class="card card-better card-adpat">
+                <common-password password-setting="passwordSetting" ></common-password>
+                <common-password password-setting="passwordConfirmSetting"></common-password>
+                <!--<div class="item item-input block-input line-adapt">
+                    <input type="password" placeholder="新密码&nbsp;(限6个字符)" ng-model="formData.newPass" name="newPass"
+                           maxlength="6" required/>
+                </div>
+                <div class="item item-input block-input line-adapt">
+                    <input type="password" placeholder="再次输入密码&nbsp;(限6个字符)" ng-model="formData.confirmPassword" name="confirmPassword" confirm-pass="formData.newPass"
+                           maxlength="6" required=""/>
+                </div>-->
+                <div class="button button-block btn-adapt"
+                     type="submit" ng-click="handlePwd()" style="color: #fff">
+                    保存
+                </div>
+            </div>
+
+        </ng-form>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

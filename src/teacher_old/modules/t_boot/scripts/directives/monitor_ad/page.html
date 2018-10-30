@@ -1,0 +1,36 @@
+<div class="monitor-ad-box">
+  <div class="monitor-ad">
+    <img class="ad-head" ng-src="{{$root.loadImg('monitor_ad/monitor-ad-head.png')}}">
+    <img class="ad-close" ng-click="closeAd()" ng-src="{{$root.loadImg('monitor_ad/monitor-ad-close.png')}}">
+    <ion-scroll padding="false" class="scroll-box-outer">
+      <div class="scroll-box">
+        <div class="monitor-title"><span>监测前准备</span></div>
+        <div class="monitor-normal-text">
+          请至少在赛前3天安装智算365APP--老师注册创建网络班级--邀请学生安装智算365--注册并加入网络班级。
+        </div>
+        <div class="monitor-title"><span>监测流程</span></div>
+        <div class="monitor-build-text">
+          <p><span>1.</span>赛前无需老师布置，教师端作业列表和学生端区域测评版块均可看到监测试卷（未开启状态）。</p>
+          <p><span>2.</span>到达考试时间，试题开启，在规定时间内进入试题均可参加监测。</p>
+          <p><span>3.</span>进入试题后，开始答题倒计时，倒计时结束后没提交的系统将自动回收试题。</p>
+          <p><span>4.</span>监测结束，教研员可随时查看测评数据；监测结束三天后，老师可查看班级专属测评报告。</p>
+        </div>
+        <div class="monitor-title" ng-if="listData.length>0"><span>监测时间</span></div>
+        <div class="monitor-tab">
+          <div class="monitor-tab-item" ng-repeat="v in listData track by $index">
+            <p>{{v.grade}}</p>
+            <p>
+              <span>{{v.timeDis[0]}}</span>
+              <span>{{v.timeDis[1]}}</span>
+            </p>
+            <p>答题限时{{v.limit}}分钟</p>
+          </div>
+        </div>
+        <div class="monitor-notice">
+          如有任何关于监测和智算365使用的问题，请微信搜索“智算365”或扫描下方二维码关注公众号，有指导老师进行回复。
+        </div>
+        <img class="monitor-code" ng-src="{{$root.loadImg('monitor_ad/monitor-code.png')}}">
+      </div>
+    </ion-scroll>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="tea-comp-work" ng-click="goDetail()">
+    <header>竞赛</header>
+    <section>
+        <div class="left-section">
+            <span>{{convertToChinese($root.wlSelectedClazz.grade) + '年级'+competitionType+'试卷'}}</span>
+            <img ng-src="{{scTeacher}}">
+        </div>
+        <div class="right-section">
+            <p>{{$root.competitionSchoolTitle + $root.competitionPaperTitle}}</p>
+            <p ng-if="competition.paper.status.progress == 1">{{competition.paper.startTime}}开启</p>
+            <p ng-if="competition.paper.status.progress == 2">比赛进行中...</p>
+            <p ng-if="competition.paper.status.progress == 3" style="color:#FFE635">比赛结束</p>
+        </div>
+    </section>
+</div>

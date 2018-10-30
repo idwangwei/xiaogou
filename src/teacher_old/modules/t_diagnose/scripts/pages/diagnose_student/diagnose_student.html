@@ -1,0 +1,102 @@
+<ion-view hide-nav-bar="true" class="diagnose_student_file" >
+    <ion-header-bar style="background: #C2EDF8" align-title="center">
+    <button class="button back-button buttons  button-clear header-item common-back-btn"
+            ng-click="ctrl.back()"
+            style="color: #4a6b9d;">
+        <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+    </button>
+    <h1 class="title"
+        style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+        ng-bind="ctrl.diagnose_unit_select_stu.name||'学生'">
+    </h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader" ng-style="{'top':ctrl.isIos?'64px':'44px'}">
+        <div class="top-wrap" ng-if="ctrl.showPieChartFlag&&ctrl.stu_diagnose.totalStatistics.length">
+            <div class="diagnose-top-wrap" >
+                <div class="diagnose-title-wrap">
+                    <div class="diagnose-title" ng-bind="ctrl.selectedUnit.text"></div>
+                   <!-- <div class="diagnose-subtitle" ng-bind="ctrl.diagnose_unit_select_stu.name+'掌握情况'" ng-if="ctrl.diagnose_unit_select_stu.name"></div>-->
+                </div>
+                <div class="pie-chart-wrap">
+                    <pie-chart id="pie" settings="ctrl.stu_diagnose.pieChart.settings" chart="ctrl.pieChart" ng-if="ctrl.showPieChartFlag">
+                    </pie-chart>
+                    <div class="right-text-wrap">
+                        <div class="content">
+                            <p>学习要点共<span ng-bind="ctrl.stu_diagnose.totalKnowledgeNumber"></span>个</p>
+                            <div ng-repeat="row in ctrl.stu_diagnose.totalStatistics" >
+                                <div ng-repeat="col in row" class="row-wrap" >
+                                    <i class="icon ion-record {{col.colorClass}}" ></i>
+                                    <pre>{{col.key+'： '}}</pre> <span ng-bind="col.masterNumber+'个'"  class=""></span>
+                                    <!-- <span ng-bind="col.masterRate*100+'%'"></span>-->
+                                </div>
+                            </div>
+                            <!--<div ng-repeat="row in ctrl.unit_diagnose.totalStatistics" class="display-flex row-wrap">
+                                <div ng-repeat="col in row" class="flex_1 col-wrap">
+                                    <i class="icon ion-record {{col.colorClass}}"></i>{{col.key}}
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="main-content-wrap" ng-if="ctrl.showPieChartFlag">
+            <div class="unit-wrap accordion" ng-repeat="unit in ctrl.stu_diagnose.list track by unit.id"
+                 ng-init="unitIndex=$index;unitLast=$last"
+                 ng-class="unit.showChapCter?'open':''"
+                 ng-style="{'margin-bottom':unitLast?'50px':''}">
+                <div class="unit-bar-wrap display-flex row-link" ng-click="ctrl.showChapter(unit,$event)">
+                    <span ng-bind="unit.content" class="flex_1 unit-bar-text"  ></span>
+                    <div class="right-img-wrap" >
+                        <div class="unit-processing-bar">
+                            <div class="processing-bar level-four-bar"   style="width:{{unit.levelFour}}"></div>
+                            <div class="processing-bar level-three-bar"  style="width:{{unit.levelThree}}"></div>
+                            <div class="processing-bar level-two-bar" style="width:{{unit.levelTwo}}"></div>
+                            <div class="processing-bar level-one-bar" style="width:{{unit.levelOne}}"></div>
+                        </div>
+                    </div>
+                    <i class="row-icon 'icon ion-chevron-down"
+                       ng-click="ctrl.showChapter(unit,$event)">
+                    </i>
+                </div>
+                <div class="chapter-wrap allereAccordion" ng-repeat="chapter in unit.fatherCustomizationDTOList track by chapter.id "
+                     ng-init="chapterIndex=$index;chapterLast=$last" ng-if="unit.showChapCter">
+                    <div class="chapter-bar-wrap display-flex" >
+                        <span ng-bind="chapter.content" class="flex_1"  style="color: #134BA8;"></span>
+                        <!--    <i ng-class="chapter.showKnowledgePoint?'icon ion-chevron-up':'icon ion-chevron-down'"
+                               ng-click="chapter.showKnowledgePoint=!chapter.showKnowledgePoint"
+                               ng-if="chapter.customizationDTOList.length">
+                            </i>-->
+                    </div>
+
+                    <div class="knowledge-point-wrap"
+                         ng-repeat="knowledgePoint in chapter.customizationDTOList track by knowledgePoint.knowledgeId"
+                         ng-init="knowledgeIndex=$index;knowledgeLast=$last"
+                         ng-style="{'margin-bottom':unitLast&&chapterLast&&knowledgeLast?'100px':'','background-color':ctrl.diagnose_unit_select_stu.knowledgePoint.knowledgeId===knowledgePoint.knowledgeId?'#d5d7df':''}">
+                        <div class="display-flex knowledge-point-bar-wrap"
+                             ng-click="ctrl.showKnowledgeStati(knowledgePoint)">
+                            <div >
+                                <i class="icon ion-record level-one left-img-wrap" ng-if="!knowledgePoint.level||knowledgePoint.level===1"></i>
+                                <i class="icon ion-record level-two left-img-wrap" ng-if="knowledgePoint.level===2"></i>
+                                <i class="icon ion-record level-three left-img-wrap" ng-if="knowledgePoint.level===3"></i>
+                                <i class="icon ion-record level-four left-img-wrap" ng-if="knowledgePoint.level===4"></i>
+                            </div>
+                            <div class="left-text-wrap flex_3">
+                                <span ng-bind="knowledgePoint.knowledgeName"></span>
+                            </div>
+                            <div class="right-wrap flex_1" >
+                                <i class="icon ion-chevron-right" ></i>
+                                <!--   <img ng-src="{{$root.loadImg(knowledgePoint.masterDegreeUrl)}}">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+    <loading-processing ></loading-processing>
+</ion-view>

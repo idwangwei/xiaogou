@@ -1,0 +1,474 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+@import "./../include/common";
+
+.system_login_file{
+  background: #dbf9c8!important;
+  .bar{
+    border: none;
+  }
+  .login-img-box{
+    margin: 0px auto;
+    .display-flex;
+    .com_align_item;
+    .com_justify-content;
+    .img-box{
+      max-width: 300px;
+      width: 68%;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+  .card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .parent-login .block-input {
+    border: none;
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 20px;
+  }
+
+  .parent-login .block-input:first-child {
+    margin-top: 20px;
+  }
+
+  .how_do_do {
+    text-align: center;
+    //width: 100%;
+    display: block;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-decoration:none;
+    color: #47b447;
+  }
+
+
+
+
+  .login-bg-color{
+    background: #dbf9c8!important;
+  }
+
+  .app-description{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    background: #dbf9c8!important;
+    color: #47b447;
+  }
+
+
+  .header-title{
+    color: #47b447!important;
+    font-size: 22px;
+  }
+  .select-text-color{
+    color: #47b447!important;
+  }
+  .item{
+    border: none;
+  }
+  .login-name-list-btn{
+    padding: 5px 7px;
+    background-color: #47b447;
+    border-radius: 15px;
+    color: white!important;
+    text-decoration: none!important;
+  }
+  .forget-pass{
+    color: #47b447;
+    text-align: center;
+    /* width: 100%; */
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .login-form{
+
+    .password-bar{
+      .display-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      .com_justify_content_space;
+      .com_align_item;
+      padding: 5px;
+      //font-size: 20px;
+      margin-top: 5px;
+      margin-left: 5%;
+      margin-right: 5%;
+      i{
+        font-size: 20px;
+      }
+      .remenber-pw{
+        .display-flex;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        .com_justify_content_space;
+        .com_align_item;
+      }
+    }
+
+    .register-butn{
+      .display-flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      .com_justify-content;
+      .com_align_item;
+      font-size: 16px;
+      //width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding: 5px;
+      color: #47b447;
+      i{
+        font-size: 16px !important;
+        margin-top:5px;
+      }
+    }
+
+    .row-wrap{
+      position: relative;
+      .row-left{
+        width: 70%;
+      }
+      .right-content-wrap{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%;
+        height: 100%;
+        z-index: 1000;
+        text-align: center;
+        line-height: 44px;
+      }
+    }
+    .row-margin{
+      margin-top:10px ;
+    }
+    .row-better{
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    i{
+      color: #b0b0b0;
+      font-size: 20px;
+      margin-right: 5px
+    }
+    .border-10{
+      border-radius: 10px;
+    }
+    .border-20{
+      border-radius: 20px;
+    }
+    .btn-login{
+      background: #47b447;
+      color: #ffffff;
+    }
+    .btn-register{
+      background: #f19949;
+      color: #ffffff;
+    }
+  }
+  .role-box{
+    margin-bottom: 10px;
+    .cole-role{
+      cursor: pointer;
+      position: relative;
+      .display-flex;
+      .com_justify-content;
+    }
+    .animate-btn{
+      -webkit-animation: scaleout 2s infinite ease-in-out;
+      animation: scaleout 2s infinite ease-in-out;
+    }
+    .role-name{
+      position: absolute;
+      width: 100%;
+      height:100%;
+      top:0;
+      left: 0;
+      cursor: pointer;
+      .display-flex;
+      .com_justify-content;
+    }
+    .circle-btn{
+      font-family: "Microsoft YaHei";
+      font-weight: bold;
+      border-radius: 50%;
+      margin: auto;
+      background: #fff;
+    }
+
+    .circle-btn-out{
+      border-radius: 50%;
+    }
+
+    .circle-btn-out-active{
+      border: 6px solid rgba(68, 239, 95, 0.26);
+      border-radius: 50%;
+    }
+
+
+    .circle-btn-active{
+      font-size: 22px;
+      border: 4px solid #47b447;
+      color: #47b447;
+      box-shadow: 0px 0px 18px #96b493;;
+      height: 70px;
+      width: 70px;
+      line-height:61px;
+    }
+
+    .circle-btn-un-active{
+      font-size: 17px;
+      //border: 1px solid #92A7B4;
+      color: #92A7B4;
+      box-shadow: 0px 0px 18px #69b495;;
+      height: 55px;
+      width: 55px;
+      line-height:55px;
+
+    }
+  }
+  .form-wrap{
+    position: relative;
+    width: 100%;
+    /*.name-pic-wrap{
+      position: absolute;
+      width: 90%;
+      left: 5%;
+      background-color: #87F2F8;
+      opacity: 0.8;
+      z-index: 100;
+      border-radius: 10px;
+      color: #0C1249;
+      @media screen and (max-width: 600px) {
+        height: 128px;
+        top: -129px;
+      }
+      @media screen and (min-width: 600px) {
+        height: 182px;
+        top: -183px;
+      }
+      .name-pic-scroll{
+        width: 100%;
+        height: 100%;
+        .name-pic {
+          .display-flex-pure;
+          padding: 16px 16px 16px 50px;
+          position: relative;
+          border-bottom: 1px solid #736565;
+          margin-top: -1px;
+          .user-name{
+            max-width: 85px;
+            .overflow-ellipsis;
+          }
+          span{
+            .flex_1;
+          }
+          img{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: 10px;
+            top: 19%;
+            border-radius: 50%;
+          }
+        }
+      }
+
+    }*/
+    .name-pic-wrap.ng-enter{
+      nimation: myFlipInX 1s linear ;
+      -webkit-animation: myFlipInX 1s linear ;
+    }
+    .name-pic-wrap.ng-enter.ng-enter-active {
+    }
+    .name-pic-wrap.ng-leave {
+      /*animation: fadeOutDown 0.5s linear;
+      -webkit-animation: fadeOutDown 0.5s linear;*/
+    }
+    @-webkit-keyframes myFlipInX {
+      from {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0;
+      }
+
+      40% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+
+      60% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+      }
+
+      80% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+      }
+
+      to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+      }
+    }
+
+    @keyframes flipInX {
+      from {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0;
+      }
+
+      40% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+
+      60% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+      }
+
+      80% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+      }
+
+      to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+      }
+    }
+
+
+    @-webkit-keyframes fadeOutDown {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    @keyframes fadeOutDown {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+  }
+
+  .login-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    .display-flex;
+    .scroll-wrap{
+      width: 80%;
+      height: 50%;
+      max-width: 370px;
+      max-height: 500px;
+      background-color: white;
+      border-radius: 10px;
+      .name-pic-scroll{
+        width: 100%;
+        height: 100%;
+        .name-pic-title{
+          color: #0C1249;
+          text-align: center;
+          margin-top: 20px;
+        }
+        .name-pic {
+          .display-flex-pure;
+          padding: 16px 16px 16px 50px;
+          position: relative;
+          margin-top: -1px;
+          text-align: center;
+          .user-name{
+            max-width: 70px;
+            .overflow-ellipsis;
+          }
+          span{
+            .flex_1;
+          }
+          img{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: 10px;
+            top: 19%;
+            border-radius: 50%;
+          }
+        }
+        .name-pic-tip-wrap{
+          height: 52px;
+          line-height: 32px;
+          margin: 0;
+          padding: 10px 10px;
+          background-color: #47b447;
+          color: white;
+          text-align: center;
+          .name-pic-tip{
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+  }
+
+  @-webkit-keyframes scaleout {
+    0% { -webkit-transform: scale(1.0) }
+    100% {
+      -webkit-transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+  @keyframes scaleout {
+    0% {
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+    100% {
+      transform: scale(1.5);
+      -webkit-transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+}
+
+
+
+

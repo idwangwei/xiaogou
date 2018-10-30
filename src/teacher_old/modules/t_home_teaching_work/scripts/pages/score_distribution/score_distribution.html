@@ -1,0 +1,55 @@
+<ion-view title="成绩分布" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" >
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">成绩分布</h1>
+    </ion-header-bar>
+    <ion-content overflow-scroll="false" class="score_distribution_file">
+        <!--竞赛试卷标题-->
+        <competition-add-tip-teacher></competition-add-tip-teacher>
+        <!--试卷名称-->
+        <div class="item  item-label work-paper-title score_title" id="paper" ng-if="!ctrl.isCompetitionPaper">
+            <span  ng-bind="ctrl.paperTitle+'('+ctrl.paperScore+'分)'"></span>
+        </div>
+        <div class="item  item-label work-paper-title score_title" >
+         <!--   <span  ng-bind="'已提交人数:'"></span>-->
+            <span >已提交人数:</span>
+            <span  ng-bind="ctrl.wData.totalNum" style="color: #DD2222;"></span>
+            <span  >人</span>
+        </div>
+
+        <div class="card card-better">
+            <div class="table-container">
+                <div class="row table-header">
+                    <div class="col " style="display: inline-block">成绩正确率%</div>
+                    <div class="col " style="display: inline-block" ng-if="!ctrl.isCompetitionPaper">首次做</div>
+                    <div class="col " style="display: inline-block" ng-if="ctrl.isCompetitionPaper">单次做</div>
+                    <div class="col " style="display: inline-block" ng-if="!ctrl.isCompetitionPaper">改错后</div>
+                </div>
+                <div class="row table-row " style="margin-top:-1px " ng-repeat="info in ctrl.wData.scoreDistList"
+                     ng-style="{background:$index%2==0?'#F3F3F3':''}">
+                    <div class="col ">
+                        <div class="row " >
+                            <div class="col" >
+                                <a >{{info.label}}</a>
+                            </div>
+                            <div class="col " ng-class="info.firstNum>0?'can-click':''"
+                                 ng-click="info.firstNum>0?showSectionList(true,info):''">
+                                <a >{{info.firstNum+'人'}}</a>
+                            </div>
+                            <div class="col" ng-class="info.latestNum>0?'can-click':''"
+                                 ng-click="info.latestNum>0?showSectionList(false,info):''"
+                                 ng-if="!isCompetitionPaper">
+                                <a >{{info.latestNum+'人'}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+
+</ion-view>

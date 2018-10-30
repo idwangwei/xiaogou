@@ -1,0 +1,37 @@
+<ion-view hide-nav-bar="true" class="game_remove_file">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()" style="padding: 0 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <h1 class="title">删除已下载游戏</h1>
+    </ion-header-bar>
+    <ion-content padding="true" class="gr_content">
+        <div class="list">
+            <div >
+                <div ng-if="ctrl.listEmpty">您还没有下载任何游戏！</div>
+                <div class="display-flex"
+                     ng-repeat="grade in ctrl.downloadGamePackage"
+                     ng-show="grade.packages.length>0&&!$root.isLoadingProcessing" style="-webkit-flex-direction: column;flex-direction: column">
+
+                    <div class="grade_name_area" style="font-size: 24px; color: #293d69">{{grade.grade}}</div>
+                    <div class="grade_package_area" style="width: 100%; padding: 0 20px">
+                        <div class="grade_package_box card" ng-repeat="package in grade.packages"
+                             style="position: relative;border-radius: 20px;overflow: hidden;">
+                            <div class="grade_package_btn_remove" ng-click="ctrl.removePackage(grade,$index)"
+                                 style="position: absolute; right: 10px; width:32px; z-index: 5">
+                                <img ng-src="{{$root.loadImg('game_remove/game_remove_btn.png')}}" style="width: 100%"/></div>
+                            <div class="grade_package_size"
+                                 style="text-align: center;background-color: #d2f7ef;color: #273a43;height: 32px;line-height: 32px;">已下载游戏包{{package.index}}&nbsp;({{package.size}}MB)</div>
+                            <div class="grade_package_game  item item-divider" style="padding: 0">
+                                <p class="game_name" ng-repeat="gameName in package.gameArr" style="padding-left: 16px">{{gameName}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <div ng-show="ctrl.showLoadingWord" style="position: fixed; top:80px; width: 100%; text-align: center">正在清点文件...</div>
+</ion-view>

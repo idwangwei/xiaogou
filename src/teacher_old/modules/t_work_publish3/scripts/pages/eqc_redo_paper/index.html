@@ -1,0 +1,92 @@
+
+<ion-view title="错题详情" hide-nav-bar="true" class="eqc_redo_paper_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding:0 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+        </div>
+        <h1 class="title eqc_redo_paper_header" >
+            <span ng-bind="ctrl.urlFrom == 'paper' ? ctrl.selectedRedoPaper.name:'错题组卷'"></span>
+        </h1>
+    </ion-header-bar>
+
+
+    <ion-content on-scroll="ctrl.getScrollPosition()" class="has-header has-footer">
+        <!--点击当前X小题: 显示正在被创建的重练试卷中包含的所有小题-->
+        <div class="eqc_redo_paper_content" ng-if="ctrl.urlFrom == 'question'">
+            <!--组卷重练试卷中没有试题-->
+            <div ng-if="!ctrl.creatingRedoPaperQsList || !ctrl.creatingRedoPaperQsList.length" style="padding: 10px;color: #4a6b9d;">
+                请选择课时中错题，加入组卷
+            </div>
+
+            <!--加入试卷的试题列表-->
+            <div ng-repeat="record in ctrl.creatingRedoPaperQsList">
+                <div class="question-content card card-better" >
+                    <div class="question-content-title" >
+                        <div class="question-content-title-left">
+                            <div ng-bind="'第'+($index+1)+'题'"></div>
+                            <div style="margin-left: 15px;color: #c82b2b;" ng-bind="record.score+' 分'"></div>
+                        </div>
+
+                        <div class="question-content-title-right" ng-click="ctrl.removeQuestion(record.questionId)">
+                            <div style="height: 30px;box-shadow: 0 0 8px #3f8cff;border-radius: 50%;"><img ng-src="{{$root.loadImg('other/work_del.png')}}"></div>
+                            <div style="margin: 0 5px;text-shadow: 0 0 8px #3f8cff;" ng-bind="' 删除小题'"></div>
+                        </div>
+                    </div>
+
+                    <div ng-bind="ctrl.showKnowledgeAndDifficulty(record)" class="question_content_knowledge_text"></div>
+
+                    <div compile-html="record.question" current_q_input="record.inputList" class="q-context"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--点击我的重练试卷: 显示指定试卷的内容-->
+        <div class="eqc_redo_paper_content" ng-if="ctrl.urlFrom == 'paper'">
+            <div ng-repeat="qt in ctrl.paper.qsTitles track by $index+qt.id" ng-style="{'margin-bottom':$last?'60px':'0'}">
+                <div class="paper_content_big_q">
+                    <div class="big-q-title">
+                        <span ng-bind="ctrl.getBigQText(qt)+'('+qt.score+'分)'"></span>
+                    </div>
+                </div>
+                <div ng-repeat="record in qt.qsList track by $index+record.id">
+                    <div class="question-content card card-better">
+                        <div class="question-content-title">
+                            <div class="question-content-title-left">
+                                <span ng-bind="'第'+(+record.seqNum+1)+'题'"></span>
+                                <span style="margin-left: 15px;color: #c82b2b;" ng-bind="record.score+' 分'"></span>
+                            </div>
+                        </div>
+
+                        <div class="question_content_knowledge_text" ng-bind="ctrl.showKnowledgeAndDifficultyPaper(record)"></div>
+
+                        <div compile-html="record.qContext"  current-q-input="record.inputList" class="q-context" style="pointer-events: none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+    <!--点击我的重练试卷: 显示指定试卷发布打印按钮-->
+    <ion-footer class="bar bar-footer bg-balanced footer_box_main" ng-if="ctrl.retFlag">
+        <div class="footer_box_main_down">
+            <button ng-click="ctrl.workPub()" class="button footer_click_btn">
+                <span>布置</span>
+            </button>
+            <button ng-click="ctrl.paperPrint()" class="button footer_click_btn"   ng-if="ctrl.urlFrom == 'paper'">
+                <span>打印</span>
+            </button>
+            <button ng-click="ctrl.savePaper()" class="button footer_click_btn"   ng-if="ctrl.urlFrom == 'question'">
+                <span>保存</span>
+            </button>
+
+        </div>
+    </ion-footer>
+
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+    <loading-processing load-top="200" ng-if="ctrl.urlFrom == 'paper' && !ctrl.retFlag"></loading-processing>
+</ion-view>
+
+

@@ -1,0 +1,195 @@
+<style>
+    .me {
+
+    }
+
+    .m-i {
+        font-size: 25px !important;
+        vertical-align: middle;
+        padding-bottom: 3px;
+        margin-right: 5px;
+        color: #387ef5;
+    }
+
+    .person_index .border-radius {
+        border-radius: 10px !important;
+    }
+
+    .me-bg {
+        background: #eff2f5;
+    }
+
+    .person_index .ion-chevron-right {
+        color: #938A8A;
+        font-size: 16px;
+    }
+
+    .platform-android .action-sheet-cancel {
+        display: block !important;
+    }
+
+    .platform-android .action-sheet-group {
+        margin-bottom: 8px;
+        border-radius: 4px;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+    .action-sheet .button {
+        text-align: center !important;
+        display: block;
+        padding: 1px;
+        width: 100%;
+        border-radius: 0;
+        border-color: #f1f2f3 !important;
+        background-color: transparent;
+        color: #007aff !important;
+        font-size: 21px !important;
+    }
+
+    .share-title {
+        text-align: left;
+        font-size: 18px;
+        color: #653131;
+    }
+
+    .share-content {
+        font-size: 16px;
+        padding-left: 36px;
+        color: #653131;
+        text-align: left;
+    }
+
+    .share-qrcode {
+        display: block;
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .weChat-share-img {
+        vertical-align: middle;
+        width: 25px;
+        margin-bottom: 4px;
+        margin-right: 5px;
+    }
+
+    .friend-circle-share-img {
+        vertical-align: middle;
+        width: 25px;
+        margin-bottom: 4px;
+        margin-right: 5px;
+        margin-left: 18px;
+    }
+
+    .qq-share-img {
+        width: 29px;
+        vertical-align: middle;
+        margin-bottom: 3px;
+        margin-left: -10px;
+        margin-right: 3px;
+    }
+</style>
+<ion-view hide-nav-bar="true" class="me">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <h1 class="title">我</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header person_index me-bg">
+        <ul class="list">
+            <a class="item item-avatar border-radius item-icon-right" menu-close ui-sref="basic_info_manage"
+               ng-init="headImg=user.gender=='0'?'person/parent-f.png':'person/parent-m.png'">
+                <img src="{{$root.loadImg(headImg)}}" alt="">
+                <h2 class="name">{{user.name}}</h2>
+                <!--<h2 class="name">家长</h2>-->
+                <p class="loginName">{{user.loginName.toUpperCase()}}</p>
+                <i class="icon ion-chevron-right"></i>
+            </a>
+            <!--   <a  class="item border-radius" menu-close ui-sref="child_index" style="margin-top: 10px">
+                   <span class="icon  m-i ion-happy-outline"></span>&nbsp;我的孩子
+               </a>-->
+            <!--   <a  class="item border-radius item-icon-left item-icon-right" ng-click="goToPromote()" ng-if="isShowInvite()">
+                   <span class="icon m-i ion-android-people" ></span>推广有奖
+                   <i class="icon ion-chevron-right"></i>
+              </a>-->
+           <!-- <a class="item border-radius item-icon-left item-icon-right" ng-click="goToAgencyHome()"
+               ng-if="agencyFlag.canApplyAgency">
+                <span class="icon m-i ion-android-people"></span>申请代理
+                <i class="icon ion-chevron-right"></i>
+            </a>
+            <a class="item border-radius item-icon-left item-icon-right" ng-click="goToAgencyHome()"
+               ng-if="agencyFlag.isAgency">
+                <span class="icon m-i ion-android-people"></span>代理专页
+                <i class="icon ion-chevron-right"></i>
+            </a>-->
+            <a class="item border-radius item-icon-left item-icon-right" ng-click="showInvite()" ng-if="isShowInvite()">
+                <span class="icon m-i ion-ios-redo"></span>去分享
+                <!--<span style="color:#5dc17c;">(送积分)</span>-->
+                <i class="icon ion-chevron-right"></i>
+            </a>
+           <!-- <a class="item border-radius item-icon-left item-icon-right" ui-sref="feedback">
+                <span class="icon m-i ion-chatbox"></span>用户反馈
+                <i class="icon ion-chevron-right"></i>
+            </a>-->
+            <!--<a  class="item " menu-close ng-click="scanQRCode()"><span class="icon m-i ion-qr-scanner"></span>&nbsp;扫一扫</a>-->
+            <!--<a class="item border-radius item-icon-left item-icon-right" ng-click="goXlyPromote()" ng-if="xlyVip">-->
+                <!--<span class="icon m-i ion-person-stalker"></span>智算365VIP代理-->
+                <!--<i class="icon ion-chevron-right"></i>-->
+            <!--</a>-->
+            <a class="item border-radius item-icon-left item-icon-right" ui-sref="about">
+                <span class="icon m-i ion-heart"></span>关于智算365
+                <i class="icon ion-chevron-right"></i>
+            </a>
+
+           <!-- <a class="item border-radius item-icon-left item-icon-right" ui-sref="commonProblem">
+                <span class="icon m-i ion-help"></span><span style="color: red">常见问题</span>
+                <i class="icon ion-chevron-right"></i>
+            </a>-->
+
+            <!--<a class="item border-radius item-icon-left item-icon-right" ui-sref="commonProblem">-->
+                <!--<span class="icon m-i ion-chatbubbles"></span><span>微信客服</span>-->
+                <!--<i class="icon ion-chevron-right"></i>-->
+            <!--</a>-->
+            <!--<a class="item border-radius item-icon-left item-icon-right" ng-click="toProtectEyePage()">-->
+                <!--<span class="icon m-i ion-eye"></span><span>护眼妙招</span>-->
+                <!--<i class="icon ion-chevron-right"></i>-->
+            <!--</a>-->
+            <a class="item border-radius item-icon-left item-icon-right" ng-click="logout(true)">
+                <span class="icon m-i ion-android-exit"></span>退出登录去学生端
+                <i class="icon ion-chevron-right"></i>
+            </a>
+            <a class="item border-radius item-icon-left item-icon-right" ng-click="logout()">
+                <span class="icon m-i ion-android-exit"></span>退出登录
+                <i class="icon ion-chevron-right"></i>
+            </a>
+        </ul>
+    </ion-content>
+</ion-view>
+
+<script id="allowDevice.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar-positive" align-title="center">
+            <button class="button back-button buttons  button-clear header-item" ng-click="Modal.hide()">
+                <i class="icon ion-ios-arrow-back"></i>
+                &nbsp;&nbsp;
+            </button>
+            <h1 class="title" align-title="center">是否允许其他设备登录</h1>
+        </ion-header-bar>
+        <ion-content>
+            <div>
+                <ion-checkbox ng-model="isAllow.no" style="font-weight: normal" ng-click="select(0)">拒绝</ion-checkbox>
+            </div>
+            <div>
+                <ion-checkbox ng-model="isAllow.yes" style="font-weight: normal;" ng-click="select(1)">允许一次
+                </ion-checkbox>
+            </div>
+            <div>
+                <ion-checkbox ng-model="isAllow.always" style="font-weight: normal;" ng-click="select(2)">总是允许
+                </ion-checkbox>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>

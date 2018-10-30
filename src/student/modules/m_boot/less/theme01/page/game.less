@@ -1,0 +1,54 @@
+@charset "UTF-8";
+@import "../include/_mixins";
+.game{
+
+  .pubed_title{
+    height: 50px;
+    border: 1px solid #11c1f3;
+    position: relative;
+    p{
+      font-size: 14px;
+      padding-left: 5px;
+      margin: 0px;
+      text-align: left;
+    }
+  }
+  .list_content{
+    height: 138px;
+    padding-left: 0px;
+    position: relative;
+      .pic{
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        width: 128px;
+          .game_img{
+            margin:0;
+            width: 128px;
+            height: 128px;
+          }
+      }
+       .content{
+         position: absolute;
+         top: 6px;
+         left: 220px;
+          .first{
+            margin-top: 15px;
+          }
+       }
+      .star_count{
+        vertical-align: middle;
+        display: table-cell;
+        margin-right: 5px;
+        height: 45px;
+        width: 200px;
+        position: absolute;
+        top: 45px;
+        right: 85px;
+        img{
+          float: left;
+          width: 45px;
+        }
+      }
+  }
+}

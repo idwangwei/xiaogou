@@ -1,0 +1,240 @@
+.winter-camp-vip-pay-page {
+  .background_change(@color1,@color2) {
+    background: -webkit-linear-gradient(@color1, @color2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(@color1, @color2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(@color1, @color2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(@color1, @color2); /* 标准的语法 */
+  }
+  .weixin_pay_display(@dir) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @dir;
+    -webkit-flex-direction: @dir;
+  }
+  .weixin_pay_display_vc (@vc) {
+    align-items: @vc;
+    -webkit-align-items: @vc;
+  }
+  .weixin_pay_justify_content(@content) {
+    justify-content: @content;
+    -webkit-justify-content: @content;
+  }
+
+  width: 100%;
+  height: 100%;
+  background-color: #52b6f1;
+
+  .myHeader {
+    background: rgba(252, 111, 86, 0) !important;
+    border: none;
+
+    .title, .button i {
+      color: #fff !important;
+    }
+  }
+
+
+  .wxPay-ion-content {
+    top: 10% !important;
+    height: 100%;
+    width: 100%;
+
+    .scroll {
+      width: 100%;
+      height: 100%;
+    }
+
+    .screen-font-size(@font){
+      @media screen and(min-width:768px){
+        font-size:@font;
+      }
+    }
+
+    .wxPayContent {
+      height: 100%;
+      background: rgba(252, 111, 86, 0) !important;
+
+      .productDetails {
+        background: #fff;
+        color: #4d4264;
+        width: 90%;
+        height: 35%;
+        min-height: 230px;
+        margin: 0 5% 4% 5%;
+        //font-size: 16px;
+        border-radius: 7px;
+        padding-top: 10px;
+        .screen-font-size(20px);
+
+        @media screen and(min-width:414px){
+          height: 40%;
+        }
+
+        .weixin_pay_display(column);
+        .weixin_pay_display_vc(center);
+        .weixin_pay_justify_content(center);
+
+        .details_title {
+          font-size: 24px;
+          font-weight: bolder;
+          margin: 0;
+          color: #3c7cc9;
+          .screen-font-size(30px);
+        }
+        .details_sub_title {
+
+        }
+        .details_goods_desc{
+          padding: 10px 20px;
+          @media screen and(min-width:414px)and(max-width:765px){
+            padding: 10px 40px;
+          }
+          @media screen and(min-width:768px){
+            padding: 10px 100px;
+          }
+        }
+        .describe {
+          //width: 90%;
+          //height: 100%;
+          ul {
+            padding-left: 5%;
+          }
+          li {
+            color:  #734E9C;
+            list-style-type: disc;
+            padding-bottom: 1%;
+          }
+
+          span {
+            color: #4d4264;
+            white-space: nowrap;
+          }
+        }
+
+      }
+
+      .money {
+        width: 90%;
+        height: 10%;
+        min-height: 45px;
+        text-align: right;
+        //margin: 3% 2%;
+        margin: 3% 2% 1% 2%;
+        .weixin_pay_display(column);
+        .weixin_pay_justify_content(flex-end);
+        p {
+          margin: 0px;
+        }
+
+        .moneyAll{
+          font-size: 16px;
+          color:#fff;
+          font-weight: bold;
+          .screen-font-size(25px);
+        }
+        .moneyNum {
+          color: #fdec05;
+          font-size: 30px;
+          font-weight: bold;
+          .screen-font-size(35px);
+        }
+      }
+
+      //支付按钮
+      .payBtn {
+        width: 90%;
+        height: 35%;
+        min-height: 150px;
+        max-height: 350px;
+        margin-left: 5%;
+        color: #4d4264;
+        .screen-font-size(20px);
+
+        .display-flex {
+          display: flex;
+          display: -webkit-flex;
+          justify-content: flex-start;
+          -webkit-justify-content: flex-start;
+          -webkit-align-items: center;
+          align-items: center;
+          flex-flow: row;
+          -webkit-flex-flow: row;
+        }
+
+        .clicked {
+          background: #d1cdcd !important;
+        }
+        .btn {
+          font-size: 16px;
+          padding: 8px 0 8px 10%;
+          width: 100%;
+          margin-bottom: 10px;
+          border-radius: 7px;
+          background: #fff;
+
+          span {
+            margin-left: 5px;
+          }
+
+          .imgQr {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        .protocol {
+          color:#fff;
+          text-align: center;
+          font-size: 16px;
+          @media screen and(max-width:320px){
+            font-size: 13px;
+          }
+          .my-checkBox{
+            @media screen and(max-height:500px){
+              padding: 0 !important;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  .wxPay_pay_bg { //广告位
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .wxPay_pay_bg_bottom {
+      position: absolute;
+      bottom: -30px;
+      width: 100%;
+      height: 40%;
+      min-height: 300px;
+      .wxPay_pay_bg_bottom_left {
+        background: url("./../../../images/winter_camp_vip/GTA0005.png") 0px 0px no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        height: 100%;
+        width: 40%;
+        left: 0px;
+        bottom: 0px;
+      }
+      .wxPay_pay_bg_bottom_right {
+        background: url("./../../../images/winter_camp_vip/GTA0006.png") 0px 15px no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        height: 80%;
+        width: 40%;
+        right: 0px;
+        bottom: 0px;
+      }
+
+    }
+  }
+
+}
+
+
+
+
+

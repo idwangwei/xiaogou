@@ -1,0 +1,71 @@
+.platform-ios.platform-cordova:not(.fullscreen){
+  #live-course-iframe{
+    .iframe-content{
+      top:0 !important;
+    }
+    .item-back{
+      top:20px;
+    }
+  }
+}
+
+#live-course-iframe{
+  .scroll{
+    height: 100%;
+  }
+  @main-color: #5bccf7;//定义字体主色
+  @animate-time:2s;
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: #fff;
+  .item-back{
+    i:before{
+      font-size: 28px;
+    }
+    padding-right: 20px;
+    position: fixed;
+    z-index: 50000;
+    left: 0;
+    top: 0;
+    //color: #fff;
+    font-size: 20px;
+  }
+  .iframe-content{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+  }
+  .frame-mark{
+    position: fixed;
+    z-index: 9999999;
+    left: 0;
+    right: 0;
+    top:0;
+    background: transparent;
+    display: none;
+  }
+  .frame-btn{
+    position: fixed;
+    z-index: 9999999;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    width: 76px;
+    height: 30px;
+    display: none;
+  }
+}

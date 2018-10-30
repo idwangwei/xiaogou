@@ -1,0 +1,62 @@
+<ion-view title="游戏布置" class="game_pub_file" hide-nav-bar="true">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">游戏布置</h1>
+        <!--<button class="button button-clear" ng-click="answer()">-->
+        <!--<img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>-->
+        <!--</button>-->
+    </ion-header-bar>
+    <ion-content padding="true" class="pub-content">
+        <div class="game-title-wrap">
+            <span class="game-name padding-better">游戏名称:</span>
+            <span class="game-title overflow-ellipsis" ng-bind="ctrl.game.gameName"></span>
+        </div>
+        <!--<div class="pub-conctroll-wrap">-->
+        <!--<ion-checkbox ng-model="order.first" class="first" ng-click="setOrder(1)">优先玩</ion-checkbox>-->
+        <!--<ion-checkbox ng-model="order.last" class="second" ng-click="setOrder(0)">滞后玩</ion-checkbox>-->
+        <!--</div>-->
+        <div class="pub-list-wrap">
+            <div class="item has-no-clazz" ng-show="!ctrl.clazzList || ctrl.clazzList.length<=0">布置前请先创建班级哦！</div>
+            <div class="pub-clazz-name-wrap padding-better" ng-show="ctrl.clazzList && ctrl.clazzList.length>0">
+                <span>选择布置对象：</span>
+            </div>
+            <div class="card card-better">
+                <ion-checkbox ng-model="clazz.isClicked"
+                              ng-click="clazz.hasPubedSuccess?'':ctrl.selectClazz(clazz)"
+                              class="item"
+                              ng-repeat="clazz in ctrl.clazzList"
+                              ng-class="$odd?'clazz-even':''"
+                              ng-disabled="clazz.hasPubedSuccess?true:false">
+                    {{clazz.name}}
+                    <span style="float: right"
+                          ng-if="clazz.hasPubed&&clazz.msg"
+                          ng-bind="clazz.msg"
+                          ng-style="{color:clazz.code===2?'green':'red'}">
+                        </span>
+                </ion-checkbox>
+
+            </div>
+
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer bg-balanced" ng-show="ctrl.clazzList && ctrl.clazzList.length>0">
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.pubGame()">
+            <i class="icon ion-ios-checkmark">
+            </i>
+            布置
+        </button>
+        <button class="button-clear bg-calm  bar-item"
+                ng-click="ctrl.showShareMenu()"
+                ng-if="$root.platform.isMobile()&&$root.weChatPluginInstalled && ctrl.isShowIosShare()">
+            <!-- ng-if="$root.platform.isMobile()&&$root.platform.IS_ANDROID&&$root.weChatPluginInstalled">-->
+            <i class="icon ion-aperture">
+            </i>
+            通知
+        </button>
+    </div>
+</ion-view>
+

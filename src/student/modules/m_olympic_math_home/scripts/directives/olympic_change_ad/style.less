@@ -1,0 +1,79 @@
+@import "../../../../m_boot/less/theme01/include/_mixins";
+.olympic-change-ad-page{
+
+  .ad-backdrop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    .display-flex;
+
+    .ad-content{
+      position: relative;
+      z-index : 1000;
+      background: #955fe3;
+      border-radius: 6px;
+      .display-flex-pure;
+      .com_flex-direction_column;
+      .com_align_item;
+      width: 85%;
+      max-width: 560px;
+      padding:0 20px 40px 20px;
+      img{
+        display:inline-block;
+      }
+      .content-top{
+        .display-flex;
+        width: 100%;
+        margin-bottom: -10px;
+        position: relative;
+        .top-img-1{
+          margin-bottom: -10%;
+          width: 80%;
+          position: relative;
+          z-index: 2;
+        }
+        .top-img-2{
+          width: 36%;
+          position: relative;
+          margin-top: -10%;
+          margin-left: -20%;
+          z-index: -1;
+        }
+      }
+      .content-middle{
+        border-radius: 6px;
+        padding: 60px 20px 40px 20px;
+        width: 100%;
+        background-color: #fff;
+        font-size: 0.96rem;
+        img{
+          height: 18px;
+          vertical-align: text-bottom;
+        }
+        .btn-box{
+          width: 100%;
+          margin-top: 20px;
+          .display-flex;
+          img{
+            height: 44px;
+          }
+        }
+
+      }
+
+      .content-bottom{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        overflow: hidden;
+        img{
+          width: 40%;
+          margin-bottom: -20px;
+          margin-left: -20px;
+        }
+      }
+    }
+  }
+}

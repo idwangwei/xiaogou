@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import "./../include/_mixins";
+@import "./../include/common";
+auto-list-con {
+  background: gray;
+  width: 100%;
+  auto-list {
+    width: 100%;
+    //background: #84D0B7;
+    //background: #387EF5;
+    position: relative;
+    .com_align_item;
+    box-sizing: border-box;
+    .span-container {
+      min-height: 40px;
+      background-color: #ffffff;
+      border-top: 1px solid #DDDDDD;
+      padding: 0px;
+      position: relative;
+      overflow: auto;
+    }
+    .display-flex;
+    auto-list-content {
+      .flex_1;
+      min-height: 70px;
+      width: 97%;
+      margin: 3px 9px;
+      position: relative;
+      padding-right: 30px;
+      //border: 1px solid #ddd;
+      border: 1px solid #387EF5;
+      background: white;
+      .auto-list-title {
+        .overflow-ellipsis;
+        font-size: 15px;
+        margin: 10px 5px;
+        color: #006699;
+      }
+      .auto-list-info {
+        .overflow-ellipsis;
+        margin: 5px 5px;
+        color: #525050;
+        font-size: 15px;
+      }
+      .auto-list-flex-info {
+        .display-flex;
+
+        margin: 5px 5px;
+        color: #525050;
+        font-size: 15px;
+        .first {
+          border-right: 1px solid #ddd;
+          .flex_1;
+          text-align: left;
+        }
+        .last {
+          .flex_1;
+          text-align: center;
+          color: #525050
+        }
+      }
+      .second {
+        /*.white-bold(140, 13px);*/
+        color:black;
+        .overflow-ellipsis;
+        margin-top: 24px;
+      }
+      .third {
+        .white-bold(140, 11px);
+        .overflow-ellipsis;
+      }
+      .tool-bar-right {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: auto;
+        height: 60px;
+        text-align: center;
+        .display-flex;
+        i {
+          color: #ffffff;
+          font-size: 30px;
+          padding: 3px;
+        }
+      }
+      .span-left {
+        color: #999999;
+        line-height: 40px;
+        height: 40px;
+        position: absolute;
+      }
+      .span-right {
+        color: #000000;
+        min-height: 30px;
+        float: left;
+        margin-left: 90px;
+        margin-top: 10px;
+      }
+    }
+   /* auto-list:nth-child(2n+1) auto-list-content{
+      .ion-item-even;
+    }*/
+  }
+
+}

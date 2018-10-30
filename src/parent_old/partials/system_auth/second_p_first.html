@@ -1,0 +1,28 @@
+<ion-view title="验证手机号码">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear"  ng-click="back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title">验证号码</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <div class="list">
+            <div class="item item-input block-input" style="height: 40px;" >
+                <label style="font-size: 15px;color: red">第一次登录app，需要验证手机号码！</label>
+            </div>
+            <div class="row  phone-validate-block">
+                <div class="item item-input">
+                    <input type="text" placeholder="手机验证码" ng-model="formData.telVC" name="telVC" required/>
+                </div>
+                <button class="button button-positive" ng-click="getTelVC()" ng-disabled="telVcBtn">{{telVcBtnText}}</button>
+            </div>
+            <div class="button button-block  button-bg"
+                 type="submit"
+                 ng-click="checkTelVcSubmit()" >
+                提交
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

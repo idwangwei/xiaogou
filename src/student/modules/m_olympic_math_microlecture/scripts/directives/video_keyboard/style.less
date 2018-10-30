@@ -1,0 +1,84 @@
+@import  './../../../../m_boot/less/theme01/include/_mixins.less';
+.video-keyboard-page{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  background:#8db71d url('./../../../images/video/m_keyboard_bg.png') no-repeat center;
+  background-size: 110%;
+  //transform: scale(0.748);
+  //-webkit-transform: scale(0.748);
+  transform-origin: bottom center;
+  -webkit-transform-origin: bottom center;
+
+  img{
+    display: block;
+  }
+  .video-keyboard-top{
+    .display-flex;
+    padding: 0 8%;
+    .keyboard-top-screen-box{
+      position: relative;
+      width: 48%;
+      img{
+        width: 100%;
+      }
+      .keyboard-top-screen{
+        position: absolute;
+        width: 60%;
+        background-color: #fff;
+        height: 70%;
+        top: 13%;
+        left: 20%;
+        border-radius: 20px;
+        padding: 0 10px;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #fb5031;
+        .display-flex;
+        span{
+          .overflow-ellipsis;
+        }
+      }
+    }
+    .keyboard-top-del-box{
+      width: 20%;
+      padding: 0 20px;
+      img{
+        width: 100%
+      }
+    }
+    .keyboard-bottom-right{
+      height: 100%;
+      width: 20%;
+      padding: 0 20px;
+      img{
+        width: 100%;
+      }
+    }
+
+  }
+  .video-keyboard-bottom{
+    .display-flex;
+    .keyboard-bottom-left{
+      width: 100%;
+      .display-flex-pure;
+      .com_flex-direction_column;
+      .left-common{
+        .display-flex-pure;
+        .com_justify_content_space;
+        .com_align_item;
+        width: 100%;
+        padding: 6px 6%;
+        img{width: 10%}
+      }
+      .left-top{}
+      .left-bottom{}
+    }
+  }
+  .activated.btn-click-bg{
+    filter: hue-rotate(90deg);
+    -webkit-filter: hue-rotate(90deg);
+  }
+}

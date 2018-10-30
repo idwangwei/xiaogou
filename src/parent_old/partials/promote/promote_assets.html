@@ -1,0 +1,60 @@
+<ion-view  hide-nav-bar="true" class = "promote_assets">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button buttons  button-clear header-item" ng-click="back()" style="padding: 0 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">我的资产</h1>
+       <!-- <div class="buttons">
+            <button class="button button-clear" ng-click="help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>-->
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header">
+        <div class = "promote_assets_head">
+            <div class="item item-avatar promote_assets_user">
+                <img ng-src={{user.gender=='0'?$root.loadImg('person/parent-f.png'):$root.loadImg('person/parent-m.png')}}>
+                <span class="userName">{{user.name}}</span>
+                <span>{{user.loginName.toUpperCase()}}</span>
+             <!--   <h2 class="name">{{user.name}}</h2>
+                <p class="loginName">{{user.loginName.toUpperCase()}}</p>-->
+            </div>
+            <div class = "promote_assets_money">
+                <span>余额（元）：{{money}}</span>
+            </div>
+            <div class="promote_assets_get">
+                <button class="promote_common_btn"
+                        ng-class="money == 0 ? 'promote_btn_gray' : ''"
+                        ng-click="clickWithdrawCashBtn()">提现</button>
+            </div>
+        </div>
+        <div class="promote_assets_details">
+            <span class = "details">收益详情</span>
+            <div class = "details_table">
+                <div class="row details_row">
+                    <div class="col details_col col_color1_1">推广方式</div>
+                    <div class="col details_col col_color1_2">注册人数</div>
+                    <div class="col details_col col_color1_1">付费人数</div>
+                    <div class="col details_col col_color1_2">我的提成</div>
+                </div>
+                <div class="row details_row ">
+                    <div class="col details_col col_color2">直接粉丝</div>
+                    <div class="col details_col col_color3">{{firstPromote.registerCount}}人</div>
+                    <div class="col details_col col_color2">{{firstPromote.payCount}}人</div>
+                    <div class="col details_col col_color3">￥{{firstPromote.money}}</div>
+                </div>
+                <div class="row details_row details_top_line">
+                    <div class="col details_col col_color2">间接粉丝</div>
+                    <div class="col details_col col_color3">{{secondPromote.registerCount}}人</div>
+                    <div class="col details_col col_color2">{{secondPromote.payCount}}人</div>
+                    <div class="col details_col col_color3">￥{{secondPromote.money}}</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="promote_details_btn">
+            <button class="promote_common_btn details_btn"
+                    ui-sref="promote_person_direct">详情</button>
+        </div>
+    </ion-content>
+</ion-view>

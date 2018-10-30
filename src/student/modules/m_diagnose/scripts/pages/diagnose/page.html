@@ -1,0 +1,215 @@
+<ion-view hide-nav-bar="true" class="diagnose_file_02">
+    <ion-header-bar align-title="center" class="bar-better">
+        <button ng-click="ctrl.back()" class="button button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 2px">首页</span>
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #4a6b9d;left: 76px;right: 76px;"
+            ng-bind="ctrl.isIncreaseScore?'诊断提分':'学霸驯宠记'"></h1>
+        <div class="rank-btn" ng-click="ctrl.go('training-pets-master',{fromUrl:'home.diagnose02'})" ng-if="!ctrl.isIncreaseScore">
+            <img class="clazz_select_img" ng-src="{{$root.loadImg('trainingPetsMaster/number-0.png')}}">
+            排行榜
+        </div>
+    </ion-header-bar>
+    <diagnose-dialog ng-if="ctrl.showDiaglog"></diagnose-dialog>
+
+    <!--侧边栏-->
+    <ion-side-menus has-header="false">
+
+        <!--左侧隐藏的班级列表-->
+        <ion-side-menu side="left" width="{{ctrl.screenWidth<400?180:275}}" style="margin: 0">
+            <ion-content class="clazz_select" padding="true" style="top:44px!important;padding-bottom: 44px">
+                <div class="col-md-12 col-xs-12 clazz_select_block"
+                     ng-repeat="clazz in ctrl.clazzList"
+                     ng-if="clazz.status==1&&!ctrl.selfStudyClazzList.length">
+                    <div class="clazz-item" ng-click="ctrl.diagnoseSelectClazz(clazz)">
+                        <img class="clazz_select_img" ng-src="{{$root.loadImg('clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 clazz_select_block"
+                     ng-repeat="clazz in ctrl.selfStudyClazzList"
+                     ng-if="clazz.status==1&&ctrl.selfStudyClazzList.length">
+                    <div class="clazz-item" ng-click="ctrl.diagnoseSelectClazz(clazz)">
+                        <img class="clazz_select_img" ng-src="{{$root.loadImg('clazz_select.png')}}">
+                        <div class="clazz-name">{{clazz.name}}</div>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+        <!--试卷列表-->
+        <ion-side-menu-content>
+
+            <ion-content class="has-header diagnose-content" overflow-scroll="true" ng-class="{'diagnose-content-increase-score':ctrl.isIncreaseScore}">
+                <!-- 广告start-->
+                <div class="ad-wrap" ng-click="ctrl.showWinterAd()" ng-if="!ctrl.isIncreaseScore">
+                    <div class="pieces">
+                        <div class="piece piece01"></div>
+                        <div class="piece piece02"></div>
+                        <div class="piece piece03"></div>
+                        <div class="piece piece04"></div>
+                        <div class="piece piece05"></div>
+                    </div>
+                    <div class="left-boy-wrap ">
+                        <img ng-src="{{$root.loadImg('diagnose/boy-trainer.png')}}">
+                    </div>
+                    <div class="middle-text-wrap">
+                        <img ng-src="{{$root.loadImg('diagnose/home-ad-title-new.png')}}">
+                    </div>
+                    <div class="right-girl-wrap">
+                        <img ng-src="{{$root.loadImg('diagnose/girl-trainer.png')}}">
+                    </div>
+                </div>
+                <!-- 广告end-->
+                <div class="select-bar-wrap">
+                    <div class="select-bar select-clazz" ng-click="ctrl.showMenu()">
+                        <span ng-bind="ctrl.initCModal&&ctrl.diagnoseSelectedClazz.name||'没有班级'"></span>
+                        <i class="icon ion-ios-arrow-right position-right"></i>
+                    </div>
+                    <div class="bar-row">
+                        <div class="select-bar select-material" ng-click="ctrl.openTextbookSelectModal()">
+                            <span ng-bind="ctrl.diagnoseSelectedTextbook.text||'请选择教材...'"></span>
+                            <i class="icon ion-ios-arrow-right position-right"></i>
+                        </div>
+                        <div class="select-bar select-grade" ng-click="ctrl.openGradesSelectModal()">
+                            <span ng-bind="ctrl.diagnoseSelectedGrade.name||'请选择年级...'"></span>
+                            <img ng-src="{{$root.loadImg('diagnose/stu_increase_score_open_icon_1.png')}}"
+                                 ng-if="ctrl.currentGradeIsVip2 && ctrl.isIncreaseScore" alt="">
+                            <i class="icon ion-ios-arrow-right position-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="ctrl.initCtrl && !ctrl.selfStudyClazzList.length && !ctrl.clazzList.length" style="padding:20px; font-size: 15px; color: #1E446A">
+                    没有添加班级，无法驯宠。快去家长端添加班级吧！
+                </div>
+
+                <div ng-if="ctrl.isTypeXS && !ctrl.homeDiagnoseList.length" style="color: #1E446A;font-size: 16px;padding: 20px">
+                    {{ctrl.isIncreaseScore ? '西师版诊断提分暂时不开放':'西师版驯宠暂时不开放'}}
+                </div>
+
+                <div class="unit-master-tip" ng-if="ctrl.homeDiagnoseList&&ctrl.homeDiagnoseList.length && !ctrl.isIncreaseScore">
+                    考点掌握情况
+                </div>
+
+                <div class="unit-block-wrap" ng-if="!ctrl.isIncreaseScore">
+                    <div class="unit-block" ng-repeat="item in ctrl.homeDiagnoseList track by item.id">
+                        <div class="col-md-3 col-xs-6 unit-item" id="{{item.id}}" ng-click="ctrl.showKnowledge(item,$index)">
+                            <!-- <img ng-src="{{$root.loadImg('diagnose/diagnose-island.png')}}">-->
+                            <div style="position: relative">
+                                <div class="circle-btn-out-active animate-btn circle-position"
+                                     ng-if="ctrl.glitterUnitId == item.id">
+                                    <div class="circle-btn circle-btn-active"
+                                         style="background-color: rgba(170, 170, 170, 0);">
+                                    </div>
+                                </div>
+                                <img style="position: absolute;z-index: 30;left: 0;right: 0;top: 0;bottom: 0;margin: auto;"
+                                     ng-src="{{$root.loadImg('diagnose/diagnose-island.png')}}" ng-if="ctrl.glitterUnitId == item.id">
+                                <img ng-src="{{$root.loadImg('diagnose/diagnose-island.png')}}" >
+                            </div>
+                            <p class="unit-title" ng-bind="item.content"></p>
+                            <p class="master-wrap">
+                                <span ng-bind="item.masterNumber" class="master"></span><span
+                                    ng-bind="'/'+item.totalMasterNumber" class="total"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="unit-increase-score" ng-if="ctrl.homeDiagnoseList && ctrl.isIncreaseScore">
+                    <div ng-repeat="item in ctrl.homeDiagnoseList" class="increase-score-level-box"
+                         ng-class="{'increase-score-left-warp':$index%2 == 0,'increase-score-right-warp':$index%2 == 1}">
+
+                        <div class="level-table">
+                            <div class="circle-btn-out-active animate-btn circle-position"
+                                 ng-if="ctrl.glitterUnitId == item.id">
+                                <div class="circle-btn circle-btn-active"
+                                     style="background-color: rgba(170, 170, 170, 0);">
+                                </div>
+                            </div>
+                            <img ng-src="{{$root.loadImg('pet_page/increase_score_level.png')}}" alt=""
+                                 ng-click="ctrl.showKnowledge(item,$index)">
+                            <span ng-bind="item.content"></span>
+                        </div>
+                        <div class="line-box" ng-class="{'last-level-line':$last}">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="level-bg">
+                            <img ng-src="{{$root.loadImg('pet_page/increase_score_level_bg'+$index%6+'.png')}}" alt="">
+                        </div>
+                    </div>
+
+                </div>
+
+            </ion-content>
+            <loading-processing load-top="300"></loading-processing>
+            <!--广告语-->
+            <div class="diagnose_bottom_ad_word" ng-if="ctrl.initCtrl && !ctrl.isTypeXS && ctrl.isShowAdWord && !ctrl.isIncreaseScore"
+                 ng-click="ctrl.hideAdWord()">
+                <img ng-src="{{$root.loadImg('diagnose/t_diagnose_bottom_bar.png')}}" alt="">
+            </div>
+
+            <!--驯养移动图标-->
+            <pet-icon has-footer="true" ng-if="ctrl.initCtrl && !ctrl.petEnterGuideFlag && ctrl.isIncreaseScore"></pet-icon>
+
+        </ion-side-menu-content>
+    </ion-side-menus>
+
+
+    <script id="textbookSelect.html" type="text/ng-template">
+        <ion-modal-view class="diagnose-select-modal" style="{{ctrl.modalStyle}}">
+            <ion-header-bar align-title="center" style="background: #d2f7ef!important;"
+                            class="bar-balanced">
+                <div class="button back-button buttons  button-clear header-item"
+                     ng-click="ctrl.closeTextbookSelectModal()">
+                    <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="color:#4a6b9d;font-weight: bold">请选择教材</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list">
+                    <div ng-repeat="version in ctrl.textbooks">
+                        <li class="item unit_bg" ng-click="ctrl.diagnoseSelectTextBook(version)">
+                            <span ng-bind="version.text"></span>
+                        </li>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+    <script id="gradesSelect.html" type="text/ng-template">
+        <ion-modal-view class="diagnose-select-modal" style="{{ctrl.modalStyle}}">
+            <ion-header-bar align-title="center" style="background: #d2f7ef!important;"
+                            class="bar-balanced">
+                <div class="button back-button buttons  button-clear header-item"
+                     ng-click="ctrl.closeGradesSelectModal()">
+                    <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+                    &nbsp;&nbsp;</div>
+                <h1 class="title" style="color:#4a6b9d;font-weight: bold">请选择年级</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content select_unit_content">
+                <ul class="list">
+                    <div ng-repeat="grade in ctrl.Grades">
+                        <li class="item unit_bg" ng-click="ctrl.diagnoseSelectGrade(grade)">
+                            <span ng-bind="grade.name"></span>
+                            <img ng-src="{{$root.loadImg('diagnose/stu_increase_score_open_icon_2.png')}}"
+                                 ng-if="ctrl.vipKnowledgeGradeArr.indexOf(grade.num)!=-1 && ctrl.isIncreaseScore" alt="">
+                        </li>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+
+    <!--查找薄弱环节-->
+    <diagnose-find-weak click-find-btn="ctrl.clickFindBtn()"></diagnose-find-weak>
+    <!--宠物养成引导-->
+    <pet-icon-guide></pet-icon-guide>
+</ion-view>

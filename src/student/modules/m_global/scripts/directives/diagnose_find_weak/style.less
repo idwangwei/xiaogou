@@ -1,0 +1,148 @@
+.diagnose-find-weak-unit-backdrop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+
+  //使用flex布局
+  .display-flex {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+  }
+
+  .com_flex-direction_column {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+
+  .diagnose-find-weak-unit-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .display-flex;
+
+    .diagnose-find-weak-unit-btn {
+      .display-flex;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      img {
+        width: 150px;
+      }
+    }
+
+    .diagnose-find-weak-unit-processing {
+      width: 100%;
+
+      .diagnose-find-weak-unit-processing-content {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        position: absolute;
+        .display-flex;
+        img {
+          width: 130px;
+          @media screen and(min-width:450px){
+            width: 200px;
+          }
+        }
+      }
+      .diagnose-find-weak-figure-area {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 200px;
+        width: 100%;
+        @media screen and(min-width:450px){
+          height: 300px;
+        }
+        .diagnose-find-weak-figure {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          width: 50px;
+          top: -30px;
+          @media screen and(min-width:450px){
+            width: 90px;
+            top: -65px;
+          }
+        }
+
+        .diagnose-find-weak-tip {
+          position: absolute;
+          bottom: 0;
+          color: #fff;
+          font-weight: 700;
+          width: 100%;
+          text-align: center;
+          font-size: 17px;
+          @media screen and(min-width:450px){
+            font-size: 20px;
+          }
+        }
+      }
+
+      .diagnose-find-weak-unit-processing-back {
+
+      }
+
+      .diagnose-find-weak-unit-processing-bar {
+        -webkit-animation: find_processing 1.5s linear infinite;
+      }
+      @keyframes find_processing {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @-moz-keyframes find_processing /*Firefox*/
+      {
+        0% {
+          transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+          -moz-transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+        }
+      }
+
+      @-webkit-keyframes find_processing /*Safari and Chrome*/
+      {
+        0% {
+          transform: rotate(0deg);
+          -webkit-transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
+        }
+      }
+    }
+
+  }
+
+}
+

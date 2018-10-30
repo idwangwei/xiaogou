@@ -1,0 +1,50 @@
+<ion-view hide-nav-bar="true" class="oralc_assemble_preview">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';"
+            ng-bind="ctrl.paperName.substr(0,ctrl.paperName.length-3)"></h1>
+       <!-- <div class="buttons">
+            <img style="height: 30px;" ng-src="{{$root.loadImg('pub_work_type/pub_type_butn01.png')}}"
+                 ng-if="!ctrl.isEditFlag"
+                 ng-click="ctrl.paperEdit('edit')">
+            <img style="height: 30px;" ng-src="{{$root.loadImg('pub_work_type/pub_type_butn02.png')}}"
+                 ng-if="ctrl.isEditFlag"
+                 ng-click="ctrl.paperEdit('done')">
+        </div>-->
+    </ion-header-bar>
+    <ion-content overflow-scroll="false" class="has-header has-footer ques-list" on-scroll="ctrl.getScrollPosition()">
+        <div class="bigQContainer">
+            <div class="smallQContainer" ng-repeat="item in ctrl.periodQuestionMapItems track by $index">
+                <p class="item-title" ng-bind="item.periodTagName"></p>
+                <div class="item-ques-list">
+                    <oral-calculation-list big-q-list="ctrl.bigQList[$index]" ng-if="ctrl.showOralList"
+                                           style="width: 100%;"></oral-calculation-list>
+                    <!--<div class="checkbox-content">
+                        <div class="checkbox-item {{record.id}}" ng-repeat="record in item.qsList track by $index"
+                             ng-click="ctrl.selectQues(record,$event)">
+                            <i class="ion-ios-circle-outline unselected"></i>
+                            <i class="ion-ios-circle-filled selected"></i>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+    <div class="bar bar-footer bg-balanced footer_box_main">
+        <div ng-if="!ctrl.isEditFlag" class="footer_box_main_down">
+            <div ng-click="ctrl.gotoPublishWorkPaper()" class="footer_click_btn">
+                <span style="font-size: 20px">布置</span>
+            </div>
+        </div>
+
+        <div ng-if="ctrl.isEditFlag" class="footer_box_main_down">
+            <div ng-click="ctrl.deleteQues()" class="footer_click_btn">
+                <img ng-src="{{$root.loadImg('pub_work_type/pub_edit_butn01.png')}}">
+                <span>删除</span>
+            </div>
+        </div>
+    </div>
+</ion-view>

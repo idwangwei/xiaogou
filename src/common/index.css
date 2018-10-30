@@ -1,0 +1,17 @@
+.systemSelectContainer{
+    position: fixed;
+    z-index: 4000;
+    bottom: 30px;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+.systemItem {
+    display: inline-block;
+    background: yellowgreen;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+}

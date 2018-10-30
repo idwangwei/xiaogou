@@ -1,0 +1,48 @@
+@charset "UTF-8";
+@import "../../../../t_boot/less/theme02/include/_mixins";
+.eqc_do_question_info_file{
+
+  .image-type-question{
+    background: #daf5fe;
+    img {
+      vertical-align: middle;
+    }
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .eqc_dqi_paper_name{
+    margin: 10px;
+    font-size: 18px;
+    color: #4a6b9d;
+  }
+  .eqc_dqi_error_cell{
+    .display-flex-pure;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    background: #a2c6f7;
+    margin-bottom: 1px;
+    .eqc_dqi_error_cell_bar{
+      .display-flex-pure;
+      .flex_1;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      padding: 5px 16px;
+      align-items: center;
+      font-size: 16px;
+      color: #4c4c4c;
+      .eqc_dqi_error_cell_bar_img{
+        .display-flex;
+        width: 30px;
+        img{
+          width: 100%;
+        }
+      }
+    }
+  }
+  .eqc_dqi_error_redo{
+    background: #a2def7!important;
+  }
+
+}

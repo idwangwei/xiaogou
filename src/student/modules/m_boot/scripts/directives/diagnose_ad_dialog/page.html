@@ -1,0 +1,48 @@
+<div class="diagnose-ad-dialog"
+     ng-if="$root.showDiagnoseAdDialogFlag||$root.showGameAdDialogFlag||false">
+    <!--<div class="diagnose-ad-dialog"
+     ng-if="($root.showDiagnoseAdDialogFlag||$root.showGameAdDialogFlag||$root.showXLYAdDialogFlag)&&$root.firstShowDignoseAdDialog">-->
+    <div class="diagnose-ad-dialog-backdrop" ng-click="hideDiagnoseDialog($event)">
+        <div class="diagnose-ad-dialog-content">
+            <div class="credits-dialog-head">
+                <img ng-src="{{$root.loadImg('diagnose/diagnose-ad-dialog-img.png')}}">
+            </div>
+            <!--<div class="credits-dialog-desc" ng-if="$root.showDiagnoseAdDialogFlag">
+                <h3 style="color: #892525;"> 暑假来啦！</h3>
+                <p style="margin-top: 14px;">用<em style="font-weight: bold;margin-right: 5px">“学霸驯宠记”</em>查一下你还有哪些考点未掌握？
+                </p>
+                <p style="font-size: 15px;color: #24246F;width: 100%">去驯服<em style="font-weight: bold">未掌握</em>的考点，查漏补缺！
+                </p>
+            </div>-->
+            <div class="credits-dialog-desc" ng-if="$root.showDiagnoseAdDialogFlag">
+                <!--<h3 style="color: #892525;font-size: 20px;font-weight: 600;">驯宠霸主，舍我其谁！</h3>-->
+                <h3 style="color: #892525;font-size: 20px;font-weight: 600;">期末来啦~</h3>
+                <p style="margin-top: 14px;">
+                    <!--用<em style="font-weight: bold;margin-right: 5px">“学霸驯宠记”</em>查一下你还有哪些考点未掌握？-->
+                    快来<em style="font-weight: bold;margin-right: 5px">“诊断提分”</em>查看还有哪些考点未掌握？
+                </p>
+                <p style="font-size: 15px;color: #24246F;width: 100%">
+                    <!--去驯服<em style="font-weight: bold">未掌握</em>的考点，争当霸主！-->
+                    将薄弱考点各个击破，查漏补缺，快速提分！
+                </p>
+            </div>
+            <div class="credits-dialog-desc" ng-if="$root.showGameAdDialogFlag">
+                <h3 style="color: #892525;font-size: 20px;font-weight: bold;"> 魔力闯关—自学神器</h3>
+                <p style="margin-top: 14px;">快去<em style="font-weight: bold;margin-right: 5px">“魔力闯关”</em>领取自学课程。</p>
+                <p style="font-size: 15px;color: #24246F;width: 100%;text-align: center">趣味闯关，训练自学能力！</p>
+            </div>
+
+            <div class="credits-dialog-desc" ng-if="$root.showXLYAdDialogFlag">
+                <h3 style="color: #892525;font-size: 16px;font-weight: bold;">7月31日前加入“学霸训练营”</h3>
+                <p style="margin-top: 14px;font-size: 16px;"> 0元领走超千元学霸功能和特权</p>
+                <p style="font-size: 14px;color: #24246F;width: 100%;text-align: center">“学霸训练营”，获取超值VIP资格！</p>
+            </div>
+            <div class="credits-dialog-btn">
+                <div class="dialog-btn" ng-click="gotoDiagnose($event)">
+                    <img ng-src="{{$root.loadImg('diagnose/diagnose_ad_dialog_butn.png')}}">
+                </div>
+                <a ng-click="hideDiagnoseDialog($event)">下次再说</a>
+            </div>
+        </div>
+    </div>
+</div>

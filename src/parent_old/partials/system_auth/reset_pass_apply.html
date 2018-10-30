@@ -1,0 +1,124 @@
+<ion-view title="重置密码申请" hide-nav-bar="true" class="reset_pass_apply_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">重置密码申请</h1>
+    </ion-header-bar>
+
+
+    <!--<sub-header  id="reset_pass_subheader">-->
+        <!--<div class="subheader-item"-->
+             <!--id="telSet" ><span class="sub-title">手机重置</span></div>-->
+        <!--&lt;!&ndash;<div class="subheader-item"&ndash;&gt;-->
+             <!--&lt;!&ndash;id="secrtSet" ><span class="sub-title">密保重置</span></div>&ndash;&gt;-->
+    <!--</sub-header>-->
+    <ion-content padding="true" class="">
+        <!--<ng-form name="CellPhoneConfirmForm" class="list" novalidate="novalidate"-->
+                 <!--ng-show="subHeaderInfo.activeEle=='telSet'&&pageStatus!=3">-->
+            <!--<p >-->
+                <!--该账号<span ng-bind="loginName"></span>所关联的手机号码为<span ng-bind="phone"></span>,-->
+                <!--点击确定后,我们将发送短信验证码到该手机上！-->
+            <!--</p>-->
+            <!--<button class="button button-block button-bg"-->
+                    <!--type="submit"-->
+                    <!--ng-click="submitCellPhoneConfirmForm()" style="color: #fff">-->
+                <!--确定-->
+            <!--</button>-->
+        <!--</ng-form>-->
+        <ng-form novalidate="novalidate" name="resetPassByVCodeForm" class="list" style="margin-top: 20px">
+                 <!--ng-if="subHeaderInfo.activeEle=='telSet'&&pageStatus==3">-->
+            <common-password password-setting="passwordByPhoneSetting" ></common-password>
+            <common-password password-setting="passwordConfirmByPhoneSetting" ></common-password>
+            <div class="reset-stu-div">
+                <p class="reset-stu-ass-tip" ng-bind="'同时重置孩子的密码，请勾选：'"></p>
+                <div class="check-box-stu-pass-wrap"
+                     ng-repeat="student in data.pStudentList"
+                     ng-click="student.selected=!student.selected" >
+                    <i ng-class="student.selected==true?
+                                'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"
+                       class="check-box">
+                    </i>
+                    <span ng-bind="student.name" class="check-box-text"></span>
+                </div>
+            </div>
+            <div style="padding-left: 10px;padding-top: 10px">短信验证码将发送到：<span ng-bind="phone"></span></div>
+
+            <div class="item item-input block-input" >
+                <input type="text"
+                       placeholder="请输入手机验证码"
+                       name="telVC"
+                       ng-model="formData.telVC"
+                       required style="width: 65%"/>
+                <div class="button button-positive"
+                     class="flex_1" style="margin-left: 5px"
+                     ng-click="getTelVCByLoginName()"
+                     ng-disabled="telVcBtn">{{telVcBtnText}}</div>
+            </div>
+            <p style="margin: 24px 0 1px 0"> 如果<span style="color:red;">长时间没有收到手机验证码短信</span>，请检查：</p>
+            <p style="margin: 0 0 1px 0">1. 你的手机号码 {{phone}} 是否正确</p>
+            <p style="margin: 0 0 1px 0">2. 你的手机是否设置了拦截陌生短信功能</p>
+            <p style="margin: 0 0 1px 0">还有可能是通信运营商的问题，请您多次尝试</p>
+            <div class="button button-block  button-bg"
+                 type="submit" ng-click="submitResetPassByVCodeForm()" style="color: #fff">
+                重置
+            </div>
+        </ng-form>
+
+
+        <!--<ng-form name="SecurityForm"   novalidate="novalidate"-->
+                 <!--ng-if="subHeaderInfo.activeEle=='secrtSet'&&pageStatus!=5">-->
+
+            <!--<div>如果您之前设置过密保问题，回答正确就可重置密码</div>-->
+            <!--<div class="list" ng-repeat="item in qList" style="margin-bottom: 5px">-->
+                <!--<div class="item item-input block-input button-bg" style="color: #fff">-->
+                    <!--<label >问题{{item.num}}:{{item.question}}?</label>-->
+                <!--</div>-->
+                <!--<div class="item item-input block-input">-->
+                    <!--<input type="text" placeholder="答案"  ng-model="item.answer"  required>-->
+                <!--</div>-->
+            <!--</div>-->
+           <!--&lt;!&ndash; <div class="row  img-validate-block">-->
+                <!--<div class="item item-input">-->
+                    <!--<input type="text"-->
+                           <!--placeholder="图形验证码"-->
+                           <!--name="vCode"-->
+                           <!--ng-model="securityFormData.vCode"-->
+                           <!--ng-blur="validateImageVCode(securityFormData.vCode)"-->
+                           <!--required/>-->
+                <!--</div>-->
+                <!--<img src="{{validateImageUrl2}}"/>-->
+                <!--<i class="button icon ion-refresh button-clear"-->
+                   <!--ng-click="getValidateImage(2)">-->
+                <!--</i>-->
+            <!--</div>&ndash;&gt;-->
+            <!--<button class="button button-block button-bg"-->
+                    <!--type="submit"-->
+                    <!--ng-click="submitSecurityForm()" style="color: #fff">-->
+                <!--提交-->
+            <!--</button>-->
+        <!--</ng-form>-->
+        <!--<ng-form novalidate="novalidate" name="resetPassBySecurityForm" class="list" style="margin-top: 20px"-->
+                 <!--ng-if="subHeaderInfo.activeEle=='secrtSet'&&pageStatus==5">-->
+            <!--<common-password password-setting="passwordBySecuritySetting" ></common-password>-->
+            <!--<common-password password-setting="passwordConfirmBySecuritySetting" ></common-password>-->
+            <!--<div class="reset-stu-div">-->
+                <!--<p class="reset-stu-ass-tip" ng-bind="'同时重置孩子的密码，请勾选：'"></p>-->
+                <!--<div class="check-box-stu-pass-wrap"-->
+                     <!--ng-repeat="student in data.pStudentList"-->
+                     <!--ng-click="student.selected=!student.selected" >-->
+                    <!--<i ng-class="student.selected==true?-->
+                                <!--'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"-->
+                       <!--class="check-box">-->
+                    <!--</i>-->
+                    <!--<span ng-bind="student.name" class="check-box-text"></span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="button button-block  button-bg"-->
+                 <!--type="submit" ng-click="submitResetPassBySecurityForm()" style="color: #fff">-->
+                <!--重置-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

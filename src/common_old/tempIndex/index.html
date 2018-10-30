@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+        var currentLocation=window.location.href;
+        var currentLocationArray=currentLocation.split('#')[0].split('/');
+        var currentPath=currentLocationArray.splice(0,currentLocationArray.length-1).join('/');
+        window.location.href=currentPath+'/build/index.html';
+    };
+</script>
+</html>

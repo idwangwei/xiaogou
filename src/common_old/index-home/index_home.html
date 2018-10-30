@@ -1,0 +1,225 @@
+<style type="text/css">
+    .index-home .ion-slide-box{
+        height: 100%
+    }
+    .index-home .box {
+        height: 100%;
+        color: white;
+    }
+    .index-home .box-one {
+        background-color: #8BE7FA;
+    }
+    .index-home .box-two {
+        background-color: #F9DB9D;
+    }
+    .index-home .box-three {
+        background-color: #CEF7AA;
+    }
+    .index-home .box-four {
+        background-color: #CAF7ED;
+    }
+    .index-home .display-center {
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        -webkit-justify-content: center;
+    }
+    .index-home .content-box {
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+        height: 100%;
+    }
+    .index-home .content-box .top-title{
+        height:15%;
+        min-height: 80px;
+        padding-top: 5%;
+    }
+    .index-home .content-box .top-title .title-img{
+        width: 60px;
+        vertical-align: bottom;
+        margin-right: 3px;
+    }
+
+    .index-home .content-box .middle-img{
+        height:75%;
+    }
+    .index-home .content-box .middle-img img{
+        height:100%;
+    }
+
+    .index-home .content-box .top-title h4{
+        font-size: 23px;
+        font-weight: bold;
+    }
+
+    .index-home .box-one .content-box .top-title h4{
+        color: #4F6DCA;
+    }
+    .index-home .box-two .content-box .top-title h4{
+        color: #E15B5B;
+    }
+    .index-home .box-three .content-box .top-title h4{
+        color: #3EAA61;
+    }
+
+    .index-home .content-box .top-title h4:nth-of-type(2){
+        margin-top: -8px;
+    }
+
+    .index-home .register-btn {
+        border-radius: 50px;
+        padding: 22px 12px;
+        margin: 20px auto;
+        color: white;
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+    }
+    .index-home .register-btn p{
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+    .index-home .register-btn p:nth-of-type(1){
+        font-size: 24px;
+    }
+    .index-home .login-btn{
+        text-align: center;
+        margin-top: 40px;
+    }
+    .index-home .login-btn span{
+        text-decoration: underline;
+        color: #586A94;
+        font-size: 19px;
+    }
+
+    @media screen and (max-width: 320px){
+        .index-home .content-box .top-title h4{
+            font-size: 20px!important;
+        }
+
+        .index-home .register-btn p:nth-of-type(1) {
+            font-size: 20px!important;
+        }
+
+        .index-home .register-btn p {
+            font-size: 19px!important;
+        }
+    }
+    @media screen and (min-width: 321px) and ( max-width: 767px){
+        .index-home .register-btn p:nth-of-type(1) {
+            font-size: 20px!important;
+        }
+
+        .index-home .register-btn p {
+            font-size: 20px!important;
+        }
+    }
+    @media screen and (min-width: 768px){
+        .index-home .content-box .top-title h4{
+            font-size: 30px!important;
+        }
+        .index-home .content-box .top-title .title-img{
+            width: 85px;
+        }
+    }
+    @media screen and (max-width: 768px) and (orientation : landscape) {
+        .index-home .content-box .top-title {
+             padding-top: 0%!important;
+        }
+        .index-home .content-box .middle-img img {
+            height: 85%!important;
+            margin-top: 4%!important;
+            width: auto!important;
+        }
+        .index-home .content-box-four{
+            height: 90% !important;
+        }
+        .index-home .register-btn p:nth-of-type(1) {
+            font-size: 20px!important;
+        }
+
+        .index-home .register-btn p {
+            font-size: 19px!important;
+            margin-bottom: 6px!important;
+        }
+
+        .index-home .login-btn {
+            margin-top: 3px!important;
+        }
+
+    }
+</style>
+<ion-view class="index-home">
+    <ion-slide-box on-slide-changed=""
+                   delegate-handle="index-slidebox"
+                   does-continue="false"
+                   show-pager="true"
+                   class="ion-slide-box"
+                   ng-if="!currentSystemStr">
+        <ion-slide >
+            <div class="box display-center box-one" >
+                <div class="content-box">
+                    <div class="top-title">
+                        <h4> <img ng-src="{{titleOneImg}}" class="title-img">批改解题过程</h4>
+                        <h4>与真实作业一致</h4>
+                    </div>
+                    <div class="middle-img">
+                        <img ng-src="{{one}}">
+                    </div>
+
+                </div>
+            </div>
+        </ion-slide>
+        <ion-slide  >
+            <div class="box display-center box-two" >
+                <div class="content-box">
+                    <div class="top-title">
+                        <h4><img ng-src="{{titleTwoImg}}" class="title-img">诊断薄弱考点</h4>
+                        <h4>针对性引导改进</h4>
+                    </div>
+                    <div class="middle-img">
+                        <img ng-src="{{two}}" style="width: 110%;margin-left: -5%">
+                    </div>
+                </div>
+            </div>
+        </ion-slide>
+        <ion-slide >
+            <div class="box display-center box-three" >
+                <div class="content-box">
+                    <div class="top-title">
+                        <h4><img ng-src="{{titleThreeImg}}" class="title-img">引导自主学习</h4>
+                        <h4>激发探索思考</h4>
+                    </div>
+                    <div class="middle-img">
+                        <img ng-src="{{three}}">
+                    </div>
+                </div>
+            </div>
+        </ion-slide>
+        <ion-slide >
+            <div class="box display-center box-four" >
+                <div class="content-box content-box-four" style="height: 60%">
+                    <div class="row" >
+                        <div class="register-btn" style="background-color: #44AEEE;" ng-click="handleSelect('teacher',true)">
+                         <!--<p>我是老师</p>-->
+                            <p>注册教师帐号</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="register-btn" style="background-color: #9F5CE9;" ng-click="handleSelect('parent',true)">
+                          <!--<p>我是家长</p>-->
+                            <p>一键注册学生和家长账号</p>
+                        </div>
+                    </div>
+                    <div class="login-btn" ng-click="goToLogin()">
+                        <span>已有帐号，去登录>></span>
+                    </div>
+                 </div>
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+</ion-view>

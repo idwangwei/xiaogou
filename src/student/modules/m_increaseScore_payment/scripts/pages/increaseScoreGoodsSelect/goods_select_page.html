@@ -1,0 +1,61 @@
+<ion-view hide-nav-bar="true" class="increase-score-pay-select">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+        <hi class="title">诊断提分</hi>
+    </ion-header-bar>
+    <ion-content overflow-scroll="true" class="increase-score-pay-select-content">
+        <div class="content-warp">
+            <div class="content-title">
+                <img ng-src="{{$root.loadImg('diagnose/stu_increase_score_select_goods_pic1.png')}}" alt="">
+            </div>
+            <div class="diagnose-content">
+                <div class="goods-desc-caricature">
+                    <img ng-src="{{$root.loadImg('diagnose/stu_increase_score_select_goods_pic2.png')}}" alt="">
+                </div>
+                <div class="diagnose-content-scroll-guide">
+                    向上滑动 <i class="icon ion-android-arrow-up"></i>
+                </div>
+            </div>
+            <div class="goods-content">
+                <div class="goods-item" ng-repeat="item in ctrl.goodsList"
+                     ng-class="{'goods-item-selected':item.selected,'goods-has-bought':item.hasBought}"
+                     ng-click="ctrl.selectGoods(item)">
+
+                    <div class="goods-item-content">
+                        <div class="goods-item-content-left" >
+                            <div class="goods-item-title" >
+                                <span ng-bind="item.desc.title"></span>
+                                <span ng-if="item.hasBought" style="font-size: 14px;color: #eb6932;">（已购）</span>
+                            </div>
+                            <div ng-show="item.desc.grade == 0" ng-bind="item.desc.goodsDesc"></div>
+                        </div>
+                        <div class="discount-mark" ng-if="item.desc.promoteBeforeMarkPrice">{{item.desc.discountPercent}}：￥{{item.desc.fee}}</div>
+                        <div class="goods-item-content-right active" ng-if="item.desc.promoteBeforeMarkPrice">
+                            <i class="icon ion-social-yen"></i>
+                            <span class="content-right-price">{{item.desc.promoteBeforeMarkPrice/100}}</span>
+                            <i class="icon "
+                               ng-class="item.selected ? 'ion-ios-checkmark':'ion-ios-circle-outline'"
+                               style="font-size: 24px;margin-left: 16px;"></i>
+                        </div>
+                        <div class="goods-item-content-right" ng-if="!item.desc.promoteBeforeMarkPrice">
+                            <i class="icon ion-social-yen"></i>
+                            <span class="content-right-price"  ng-bind="item.desc.fee"></span>
+                            <i class="icon "
+                               ng-class="item.selected ? 'ion-ios-checkmark':'ion-ios-circle-outline'"
+                               style="font-size: 24px;margin-left: 16px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar class="page_footer">
+        <div class="submit_button" ng-click="ctrl.gotoPay()">
+            <img ng-src="{{$root.loadImg('weixin_pay/payButton.png')}}" alt="">
+        </div>
+    </ion-footer-bar>
+
+</ion-view>

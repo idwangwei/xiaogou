@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+.reset-padding() {
+  padding: 0;
+}
+
+.reset-margin() {
+  margin: 0;
+}
+
+//文字白色，可指定大小和weight
+.white-bold(@font-weight,@font-size,@color:white) {
+  color: @color;
+  font-size: @font-size;
+  font-weight: @font-weight;
+  font-family: "Microsoft YaHei";
+}
+
+;
+//使用flex布局
+.display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+}
+
+.display-flex-pure {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+
+}
+
+.com_justify_content_space{
+  justify-content: space-between;
+  -webkit-justify-content:space-between;
+}
+
+//文本溢出时显示省略号
+.overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.flex_1{
+  flex: 1;
+  -webkit-flex:1;
+}
+.flex_2{
+  flex: 2;
+  -webkit-flex:2;
+}
+.flex_3{
+  flex: 3;
+  -webkit-flex:3;
+}
+.flex_4{
+  flex: 4;
+  -webkit-flex:4;
+}
+.flex_5{
+  flex: 5;
+  -webkit-flex:5;
+}
+.flex_6{
+  flex: 6;
+  -webkit-flex:6;
+}
+
+.com_align_item{
+  align-items: center;
+  -webkit-align-items:center;
+}
+.com_justify-content{
+  justify-content: center;
+  -webkit-justify-content:center;
+}
+.com_flex-direction_column{
+  flex-direction: column;
+  -webkit-flex-direction:column;
+}
+.com_align_item_end{
+  align-items: flex-end;;
+  -webkit-align-items: flex-end;;
+}
+
+h1,h2,h3,h4,h5,h6,button,body{
+  font-family: 'microsoft yahei';
+}
+
+body{
+  line-height: 1.42857143; //和出题端一致
+}

@@ -1,0 +1,168 @@
+
+#live-course-verify{
+  @main-color: #ca75ea;//定义字体主色
+  /*弹性函数*/
+  .display-flex(@direction,@justify,@align) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    align-items: @align;
+    -webkit-align-items: @align;
+    justify-content: @justify;
+    -webkit-justify-content: @justify;
+  }
+  background-color: @main-color;
+  .enter-bar{
+    background-color: @main-color !important;
+    //height: 30px;
+    border: none !important;
+    .title{
+      font-weight: bold;
+    }
+    .item-back{
+      padding-right: 20px;//增大点击面积
+      i:before{
+        font-size: 28px;
+      }
+    }
+    .item-call{
+      img{
+        width: 70px;
+      }
+    }
+  }
+  .enter-content{
+  .display-flex(column,flex-start,center);
+    .scroll{
+      width: 100%;
+    }
+    .banner{
+      height:160px;
+      width:100%;
+      background: #fceb4e url("../../../images/live_home/live_home_banner_bg.png") no-repeat center/cover;
+      overflow: hidden;
+    .display-flex(column,flex-end,center);
+      span{
+        font-size: 18px;
+        color: #df4e2f;
+        font-weight: bold;
+        position: relative;
+        bottom: -30px;
+      }
+      img{
+        width: 270px;
+        position: relative;
+        bottom: -40px;
+      }
+    }
+    .form{
+      padding-top: 10px;
+      width: 80%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-bottom: 50px;
+      .form-ctrl{
+        margin-top: 20px;
+        .ctrl-label{
+          font-size: 14px;
+          color: #fff;
+          padding-left: 20px;
+          margin-bottom: 10px;
+        }
+        .input-box{
+        .display-flex(row,center,center);
+          width: 100%;
+          height: 45px;
+          border-radius: 22px;
+          overflow: hidden;
+          padding: 0 20px;
+          background: #fff;
+          box-sizing: border-box;
+          input{
+            flex: 1;
+            height: 30px;
+            border: none;
+            background: transparent;
+          }
+          &.code{
+            padding: 0 0 0 20px;
+            span{
+              text-align: center;
+              display: block;
+              height: 45px;
+              line-height: 45px;
+              width: 110px;
+              background: #6ad7ee;
+              font-size: 14px;
+              color: #fff;
+              &.active{
+                opacity: .8;
+              }
+            }
+          }
+        }
+      }
+    }
+    .enter-btn{
+      width: 180px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .success-modal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    margin: auto;
+    background: rgba(0,0,0,.5);
+    .modal-inner{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top:0;
+      margin: auto;
+      width: 94%;
+      max-width: 400px;
+      height: 290px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px 0 10px;
+    .display-flex(column,space-between,center);
+    }
+    .modal-title{
+      font-size: 20px;
+      color: #2eaf58;
+      font-weight: bold;
+    }
+    .modal-text-box{
+      padding:0  40px;
+      font-size: 14px;
+      color: #726c8c;
+      .title{
+        font-weight: bold;
+      }
+      p{
+        line-height: 20px;
+      }
+    }
+    .modal-btn{
+      width: 160px;
+    }
+  }
+}
+.live_course_phone{
+  font-size: 14px;
+  color: #ccc;
+  padding: 15px 55px;
+  text-decoration: none;
+  span{
+    color: red;
+    font-size: 16px;
+
+  }
+}

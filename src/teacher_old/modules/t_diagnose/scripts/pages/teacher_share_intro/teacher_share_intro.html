@@ -1,0 +1,36 @@
+<ion-view hide-nav-bar=true class="teacher-share-intro-file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+            &nbsp;&nbsp;
+        </button>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="share-intro-top-warp">
+            <div class="share-intro-top"></div>
+        </div>
+
+        <div class="share-intro-middle-warp">
+            <div class="middle-warp-title">
+                成功邀请1位老师使用智算365，所有学生即可免费领取“学霸驯宠记”使用特权。
+            </div>
+            <div class="middle-warp-content">
+                <img ng-src="{{$root.loadImg('share/share_content_1.png')}}" alt="">
+            </div>
+
+            <div class="middle-warp-footer">
+                学霸驯宠记是智算365里面的增值付费功能，全面诊断学生的薄弱考点，智能推送习题，学生通过针对性练习，最终达到每个考点举一反三。
+            </div>
+        </div>
+        <div class="share-intro-btn-warp">
+            <div class="share-intro-btn" ng-click="ctrl.gotoShare()">立即分享</div>
+        </div>
+        <div class="share-intro-bottom-warp">
+            <p>分享规则：</p>
+            <p>1.在“我”里点“邀请老师”，分享智算365链接。其他老师通过链接下载，注册并使用智算365，则你班上所有学生都会立即获赠2个月“学霸驯宠记”使用特权。</p>
+            <p>2.首次邀请成功，班级可获得2个月使用特权，多邀请1位老师，则特权使用期增加1个月，最多可叠加5次。</p>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,206 @@
+<ion-view title="班级学情" hide-nav-bar="true" class="clazz-study-statistics-file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" >
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">班级学情</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.answer()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content  >
+
+        <div>
+            <ion-checkbox data-ng-checked="ctrl.levelFlag" ng-click="ctrl.showLevel()" class="item-checkbox-left" style="margin-top: 0px">
+                <span class = "option_word name" >显示分层</span>
+            </ion-checkbox>
+        </div>
+
+        <div class="select-wrap">
+            <!--详情见 directives - form - select-->
+            <!--default-option默认的选项-->
+            <form-select options="ctrl.timeOptions"
+                         default-option="ctrl.selectedTimeIndex" value="ctrl.selectedTime"
+                         on-change="ctrl.handleTimeTypeOnChange" ng-if="ctrl.initFlag.show"></form-select>
+            <form-select options="ctrl.typeOptions"
+                         default-option="ctrl.selectedType" value="ctrl.selectedType"
+                         on-change="ctrl.handleTypeOnChange" ng-if="ctrl.initFlag.show"></form-select>
+        </div>
+
+        <div class="count-tip" ng-if="ctrl.levelFlag">
+            <span ng-bind="ctrl.selectedClazz.name"></span>
+            <!--<span  ng-bind="'布置作业次数:'"></span>-->
+            <span  ng-bind=""></span>
+            <div class="work-num-warp">
+                <span ng-repeat="info in ctrl.studyStatisData.workNum"
+                      class="work-num">
+                        <span  ng-bind="info.name + '：'"></span>
+                        <span ng-bind="info.num" class="outstanding"></span>
+                        <span ng-bind="'次'"></span>
+                </span>
+            </div>
+        </div>
+
+
+
+        <div class="card card-better" style="margin-top: 10px">
+            <div class="table-container">
+                <div class="row table-header" ng-if="ctrl.smallScreen">
+                    <div class="col flex_2 class-slice"  ng-click="ctrl.sort.levelDown=!ctrl.sort.levelDown;ctrl.sortList('level',ctrl.sort.levelDown)">
+                        <span   ng-bind="'姓名'" style="visibility: hidden"></span>
+                        <i class="icon ion-arrow-down-c"  style="visibility: hidden"></i>
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.unSubDown=!ctrl.sort.unSubDown;ctrl.sortList('unSubNum',ctrl.sort.unSubDown)">
+                        没交
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.unMistakeDown=!ctrl.sort.unMistakeDown;ctrl.sortList('unMistakeNum',ctrl.sort.unMistakeDown)">
+                        未完成
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.completeCorrectDown=!ctrl.sort.completeCorrectDown;ctrl.sortList('fullMarksNum',ctrl.sort.completeCorrectDown)">
+                        完成
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.firstFullMarksDown=!ctrl.sort.firstFullMarksDown;ctrl.sortList('firstFullMarksNum',ctrl.sort.firstFullMarksDown)">
+                        首次
+                    </div>
+                </div>
+                <div class="row table-header" style="margin-top: -10px;" ng-if="ctrl.smallScreen">
+                    <div class="col flex_2 class-slice"  ng-click="ctrl.sort.levelDown=!ctrl.sort.levelDown;ctrl.sortList('level',ctrl.sort.levelDown)">
+                        <span   ng-bind="'姓名'"></span>
+                        <i ng-class="ctrl.sort.levelDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='level'" >
+                        </i>
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.unSubDown=!ctrl.sort.unSubDown;ctrl.sortList('unSubNum',ctrl.sort.unSubDown)">
+                        作业
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.unMistakeDown=!ctrl.sort.unMistakeDown;ctrl.sortList('unMistakeNum',ctrl.sort.unMistakeDown)">
+                        改错
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.completeCorrectDown=!ctrl.sort.completeCorrectDown;ctrl.sortList('fullMarksNum',ctrl.sort.completeCorrectDown)">
+                        改错
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.firstFullMarksDown=!ctrl.sort.firstFullMarksDown;ctrl.sortList('firstFullMarksNum',ctrl.sort.firstFullMarksDown)">
+                        满分
+                    </div>
+                </div>
+                <div class="row table-header" style="margin-top: -10px;" ng-if="ctrl.smallScreen">
+                    <div class="col flex_2 class-slice"  ng-click="ctrl.sort.levelDown=!ctrl.sort.levelDown;ctrl.sortList('level',ctrl.sort.levelDown)">
+                        <span   ng-bind="'姓名'" style="visibility: hidden"></span>
+                        <i class="icon ion-arrow-down-c"  style="visibility: hidden"></i>
+                    </div>
+                    <div class="col " ng-click="ctrl.sort.unSubDown=!ctrl.sort.unSubDown;ctrl.sortList('unSubNum',ctrl.sort.unSubDown)">
+                        次数
+                        <i ng-class="ctrl.sort.unSubDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='unSubNum'">
+                        </i>
+
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.unMistakeDown=!ctrl.sort.unMistakeDown;ctrl.sortList('unMistakeNum',ctrl.sort.unMistakeDown)">
+                        次数
+                        <i ng-class="ctrl.sort.unMistakeDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='unMistakeNum'">
+                        </i>
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.completeCorrectDown=!ctrl.sort.completeCorrectDown;ctrl.sortList('fullMarksNum',ctrl.sort.completeCorrectDown)">
+                        次数
+                        <i ng-class="ctrl.sort.completeCorrectDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='fullMarksNum'" >
+                        </i>
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.firstFullMarksDown=!ctrl.sort.firstFullMarksDown;ctrl.sortList('firstFullMarksNum',ctrl.sort.firstFullMarksDown)">
+                        次数
+                        <i ng-class="ctrl.sort.firstFullMarksDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='firstFullMarksNum'" >
+                        </i>
+                    </div>
+                </div>
+
+                <div class="row table-header"  ng-if="!ctrl.smallScreen">
+                    <div class="col flex_2 class-slice"  ng-click="ctrl.sort.levelDown=!ctrl.sort.levelDown;ctrl.sortList('level',ctrl.sort.levelDown)">
+                        <span  ng-bind="'姓名'"></span>
+                        <i ng-class="ctrl.sort.levelDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='level'" >
+                        </i>
+                    </div>
+                    <div class="col "  ng-click="unSubDown=!unSubDown;ctrl.sortList('unSubNum',unSubDown)">
+                        没交作业次数
+                        <i ng-class="unSubDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='unSubNum'">
+                        </i>
+
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.unMistakeDown=!ctrl.sort.unMistakeDown;crtl.sortList('unMistakeNum',ctrl.sort.unMistakeDown)">
+                        未完成改错次数
+                        <i ng-class="ctrl.sort.unMistakeDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='unMistakeNum'">
+                        </i>
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.completeCorrectDown=!ctrl.sort.completeCorrectDown;crtl.sortList('fullMarksNum',ctrl.sort.completeCorrectDown)">
+                        完成改错次数
+                        <i ng-class="ctrl.sort.completeCorrectDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='fullMarksNum'" >
+                        </i>
+                    </div>
+                    <div class="col "  ng-click="ctrl.sort.firstFullMarksDown=!ctrl.sort.firstFullMarksDown;crtl.sortList('firstFullMarksNum',ctrl.sort.firstFullMarksDown)">
+                        首次满分次数
+                        <i ng-class="ctrl.sort.firstFullMarksDown==true?
+                                      'icon ion-arrow-down-c':'ion-arrow-up-c'"
+                           style="color:#232DA9;"
+                           ng-if="ctrl.studyStatisData.currentSortName==='firstFullMarksNum'" >
+                        </i>
+                    </div>
+                </div>
+                <div class="row table-row" style="margin-top:-1px " ng-repeat="item in ctrl.studyStatisData.studentStudyList"
+                     ng-style="{background:$index%2==1?'':'#F3F3F3'}">
+                    <div class="col">
+                        <div class="row " >
+                            <div class="col flex_2 class-slice" ng-click="item.flag?'': ctrl.startAnswer()">
+                                <a class="name" ng-bind="item.studentName"></a>
+                                <a class="level" ng-bind="'('+item.level+')'" ng-if="ctrl.levelFlag"></a>
+                                <i class="icon ion-asterisk unusual-num" ng-if="!item.flag&&ctrl.levelFlag" style="float: right"></i>
+                            </div>
+                            <div class="col">
+                                <a ng-bind="item.unSubNum" class="outstanding"></a>
+                            </div>
+                            <div class="col " >
+                                <a ng-bind="item.unMistakeNum" class="outstanding"></a>
+                            </div>
+                            <div class="col " >
+                                <a ng-bind="item.fullMarksNum" class="outstanding"></a>
+                            </div>
+                            <div class="col " >
+                                <a ng-bind="item.firstFullMarksNum" class="outstanding"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="color:#377AE6;margin-top: 20px;margin-left: 20px;" ng-if="ctrl.levelFlag">
+            若列表中出现*，请点击右上角的“?”看解释。
+        </p>
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>

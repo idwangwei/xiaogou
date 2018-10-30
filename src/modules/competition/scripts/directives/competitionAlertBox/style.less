@@ -1,0 +1,77 @@
+/*广告提示框*/
+.display-flex {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+
+.con_flex-align-direction(@dir){
+  align-items: @dir;
+  -webkit-align-items: @dir;
+}
+
+.con_flex-justify-direction(@dir){
+  justify-content: @dir;
+  -webkit-justify-content: @dir;
+}
+
+.com_flex-direction (@direction){
+  flex-direction: @direction;
+  -webkit-flex-direction:@direction;
+}
+
+.title-font-color{
+  color:#fff;
+}
+
+.content-font-color{
+  color:#A73661;
+}
+
+.font-bold{
+  font-weight: 500;
+}
+
+.font-bolder{
+  font-weight:700;
+}
+
+.competition-alert-box{
+  .competition-alert-box-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    .display-flex;
+
+    .alert-box-content{
+      z-index:1000;
+      width: 70%;
+      max-width: 300px;
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      .display-flex;
+      .com_flex-direction(column);
+
+      .box-title{
+        font-size: 19px;
+      }
+      
+      .box-btn{
+        width: 130px;
+        padding: 20px 10px 0;
+        text-align: center;
+      }
+
+      .box-btn-know{
+
+      }
+    }
+  }
+
+}

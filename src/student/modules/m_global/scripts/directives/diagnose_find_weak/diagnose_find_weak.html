@@ -1,0 +1,25 @@
+<div class="diagnose-find-weak-unit-backdrop" ng-if="$root.showFindWeakFlag">
+    <div class="diagnose-find-weak-unit-area">
+        <div class="diagnose-find-weak-unit-btn" ng-if="!clickFindBtnFlag">
+            <img ng-src="{{$root.loadImg('diagnose/find_weak_btn.png')}}" ng-click="clickBtn()">
+            <p style="width:100%;text-align: center; color: #ffffff;font-size: 18px;">每征服1个考点，涨5点经验</p>
+        </div>
+        <div class="diagnose-find-weak-unit-processing" ng-if="clickFindBtnFlag">
+            <div style="position: relative">
+                <div class="diagnose-find-weak-figure-area">
+                    <img class="diagnose-find-weak-figure" ng-src="{{$root.loadImg('diagnose/diagnose_xiaogou.png')}}">
+                    <span class="diagnose-find-weak-tip">正在定位关键提分章节...</span>
+                </div>
+            </div>
+            <div class="diagnose-find-weak-unit-processing-content">
+                <img ng-src="{{$root.loadImg('diagnose/find_weak_btn_processing3.png')}}"
+                     class="diagnose-find-weak-unit-processing-back">
+            </div>
+            <div class="diagnose-find-weak-unit-processing-content">
+                <img ng-src="{{$root.loadImg('diagnose/find_weak_btn_processing2.png')}}"
+                     class="diagnose-find-weak-unit-processing-bar">
+            </div>
+
+        </div>
+    </div>
+</div>

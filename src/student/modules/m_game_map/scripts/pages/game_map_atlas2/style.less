@@ -1,0 +1,232 @@
+.display-flex {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+
+}
+
+.con_flex-align-direction(@dir) {
+  align-items: @dir;
+  -webkit-align-items: @dir;
+}
+
+.con_flex-justify-direction(@dir) {
+  justify-content: @dir;
+  -webkit-justify-content: @dir;
+}
+
+.com_flex-direction (@direction) {
+  flex-direction: @direction;
+  -webkit-flex-direction: @direction;
+}
+
+.flex_num(@num) {
+  flex: @num;
+  -webkit-flex: @num;
+}
+
+.avator-filter(@num) {
+  filter: brightness(@num);
+  -webkit-filter: brightness(@num);
+}
+
+.avator-filter-light{
+  .avator-filter(1);
+}
+
+.avator-filter-gray{
+  .avator-filter(0.18);
+}
+
+.game-map-atlas2-backdrop {
+  background-image: linear-gradient(to top, #95F6F7, #83CEF4);
+  .game-map-atlas2-area {
+    background-image: linear-gradient(to top, #95F6F7, #83CEF4);
+    width: 100%;
+    height: 100%;
+    @media all and (orientation: landscape) {
+      .game-map-atlas-area-win;
+    }
+    overflow: hidden;
+    position: relative;
+    left:0;
+    right:0;
+    margin:auto;
+
+
+    .atlas-title{
+      pointer-events: none;
+      z-index:120;
+      position: relative;
+      height: 30px;
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+
+      img{
+        width:120px;
+        @media screen and(min-width: 768px){
+          width:170px;
+        }
+      }
+    }
+
+
+    .game-map-atlas2-bg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      img {
+        position: absolute;
+      }
+      .atlas2-bg-img1 {
+        width: 35%;
+        right: 23%;
+        top: -7%;
+      }
+
+      .atlas2-bg-img2 {
+        right: 5px;
+        width: 80%;
+        bottom: 43%;
+        left: -42%;
+      }
+      .atlas2-bg-img3 {
+        bottom: 9.5%;
+        right: -5%;
+        width: 40%;
+        z-index: 101;
+      }
+
+      .atlas2-bg-img4{
+        width: 30%;
+        bottom: 5%;
+        left: -5%;
+        z-index: 102;
+      }
+      .atlas2-bg-img5{
+        bottom: 52%;
+        width: 60%;
+        right: -11%;
+      }
+
+      .atlas2-bg-img6{
+        bottom: 24%;
+        width: 90%;
+        left: 7%;
+        @media all and (orientation: landscape) and(max-height:414px) {
+          bottom: 30%;
+        }
+      }
+
+      .atlas2-grassland{
+        position: absolute;
+        width: 100%;
+        height: 55%;
+        background: #87D658;
+        bottom: 0;
+      }
+    }
+    .game-map-atlas2-animal {
+      position: absolute;
+      z-index: 10;
+      bottom: 0;
+      width: 100%;
+      max-width:600px;
+      height: 80%;
+      margin: auto;
+      left: 0;
+      right: 0;
+
+      @media all and(max-width:320px) {
+        bottom:-2%;
+      }
+      @media all and(min-height:1100px) {
+        height: 64%;
+        bottom:7%;
+      }
+      @media all and (orientation: landscape) and(max-height:414px) {
+        height: 70%;
+        bottom: -2%;
+      }
+
+      img {
+        width: 30%;
+        position: absolute;
+        transition: filter 2s;
+      }
+
+      .atlas-img2-1 {
+        z-index: 26;
+        bottom: 23%;
+        left: -2%;
+        width: 38%;
+      }
+      .atlas-img2-2 {
+        z-index: 23;
+        left: 31%;
+        bottom: 58%;
+        width: 46%;
+      }
+      .atlas-img2-3 {
+        z-index: 27;
+        left: 68%;
+        bottom: 99%;
+        width: 26%;
+      }
+      .atlas-img2-4 {
+        z-index: 28;
+        left: 66%;
+        bottom: 24%;
+        width: 32%;
+      }
+      .atlas-img2-5 {
+        z-index: 29;
+        left: 21%;
+        bottom: 21%;
+        width: 55%;
+      }
+      .atlas-img2-6 {
+        z-index: 24;
+        left: 22%;
+        bottom: 28%;
+        width: 55%;
+      }
+      .atlas-img2-7 {
+        z-index: 25;
+        bottom: 32%;
+        left: 0;
+        width: 48%;
+      }
+      .atlas-img2-8 {
+        z-index: 21;
+        bottom: 53%;
+        left: 11%;
+        width: 33%;
+      }
+      .atlas-img2-9 {
+        z-index: 20;
+        bottom: 38%;
+        left: 70%;
+        width: 40%;
+      }
+      .atlas-img2-10 {
+        z-index: 22;
+        bottom: 62%;
+        left: 46%;
+        width: 42%;
+      }
+    }
+  }
+}
+
+.game-map-atlas-backdrop-win{
+  background: #072333 !important;
+}
+
+.game-map-atlas-area-win{
+  width: 50%;
+}

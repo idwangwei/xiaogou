@@ -1,0 +1,166 @@
+<ion-view hide-nav-bar="true" class="growing-pub">
+    <ion-header-bar class="bar-balanced growing-pub-header" align-title="center"> <!--ng-style="{'height':ctrl.isIos()?'60px ':'43px'}">-->
+        <a class="button back-button buttons  button-clear header-item common-back-btn"
+           style="color: #ffffff !important"
+           ng-click="ctrl.back()" nav-direction="back">
+            取消&nbsp;&nbsp;
+        </a>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">我的发布</h1>
+        <a class="button back-button buttons  button-clear header-item common-back-btn"
+           style="color: #ffffff !important"  nav-direction="back" ng-click="ctrl.submitData()">
+            发布&nbsp;&nbsp;
+        </a>
+    </ion-header-bar>
+
+   <!-- <ion-header-bar class="bar-balanced growing-pub-header" align-title="center" ng-if="ctrl.isIos()" style="height: 60px !important;">
+        <a class="button back-button buttons  button-clear header-item common-back-btn"
+           style="color: #ffffff !important; margin-top: 8px !important;"
+           ui-sref="home.growing" nav-direction="back">
+            取消&nbsp;&nbsp;
+        </a>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'; top:8px !important;" >我的发布</h1>
+        <a class="button back-button buttons  button-clear header-item common-back-btn"
+           style="color: #ffffff !important; top:12px !important;"
+           nav-direction="back" ng-click="ctrl.submitData()">
+            发布&nbsp;&nbsp;
+        </a>
+    </ion-header-bar>-->
+
+    <span style="position: absolute;  padding: 6px 10px; color:#444; top:64px !important;" ng-if="ctrl.isIos()">记录成长中的闪光点：</span>
+    <span style="position: absolute;  padding: 6px 10px; color:#444; top:44px !important;" ng-if="!ctrl.isIos()">记录成长中的闪光点：</span>
+
+    <ion-content ng-class = "ctrl.getContentTop()" ng-style="{'top':ctrl.isIos()?'95px !important':'75px !important'}"><!--class="auth-content" ng-style="{'top':ctrl.isIos()?'95px':'75px'}">-->
+        <canvas id="myCanvas" style="opacity: 0;position: absolute;width:0;height: 0;"></canvas>
+        <form name="growing_pub_form" method="post" enctype="multipart/form-data">
+           <div class="pub_content_eidt">
+                <textarea class="content_text_eidt" placeholder="说点什么吧..."
+                          id="explainText" rows="8" cols="50"
+                          ng-model="ctrl.recordExplain"></textarea>
+                          <!--ng-change="ctrl.checkWordNum()"-->
+               <div class="add-img">
+                   <div class="imgDiv" ng-repeat="imgSrc in ctrl.displayImgList">
+                       <img  ng-if="ctrl.isIos()"
+                             ng-src="{{imgSrc.src}}" alt="" name="growingShowImg"
+                             ng-class="ctrl.resetImgSize($index)"
+                             ng-click = "ctrl.rotateSelectImg($index,$event)"
+                             img-load="imgSrc.loadFlag ? ctrl.imgOnLoad($event,$index) : ''">
+                       <img ng-if="!ctrl.isIos()"
+                            ng-src="{{imgSrc.src}}" alt="" name="growingShowImg"
+                            ng-class="ctrl.resetImgSize($index)">
+
+                          <!--  ng-style = "{'margin-top':ctrl.styleList[$index].top, 'margin-left':ctrl.styleList[$index].left}">-->
+                       <span class="button button-clear button-small icon ion-close delete-button deleteBtn" ng-click="ctrl.deleteImg(imgSrc.id)"></span>
+                   </div>
+                   <div class="imgDiv add-btn-div" ng-show="!ctrl.isMobile() && ctrl.displayImgList.length < 3">
+                       <div>
+                           <button class="add-btn">+</button>
+                           <input type="file" accept="image/*" id="uploadImg1" multiple class="input-img">
+                       </div>
+                       <span>添加相片</span>
+                   </div>
+                   <div class="imgDiv add-btn-div" ng-show="ctrl.isMobile() && ctrl.displayImgList.length < 3" ng-click="ctrl.browsePhoto()">
+                       <div>
+                           <button class="add-btn">+</button>
+                       </div>
+                       <span>添加相片</span>
+                   </div>
+               </div>
+           </div>
+
+            <div class="pub_visible_status">
+                <div class="left_part">
+                    <span>类别：</span>
+                </div>
+                <div class="right_part">
+                    <div class="checkbox-style" ng-if="!ctrl.selectedLabel"
+                         ng-click="ctrl.toggleRecordLabel()">
+                        <span>请选择 >></span>
+                    </div>
+                    <div class="selected-type-list">
+                        <div class="checkbox-style" ng-if="ctrl.selectedLabel" ng-click="ctrl.toggleRecordLabel()">
+                            <span class="typeText" >{{ctrl.selectedLabel.name}}&nbsp;>></span>
+                        </div>
+                        <div class="checkbox-style" ng-if="ctrl.selectedUpType" ng-click="ctrl.toggleRecordType()">
+                            <span class="typeText" >{{ctrl.selectedUpType.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub_visible_status">
+                <div class="left_part">
+                    <span>谁能看见：</span>
+                </div>
+                <div class="right_part">
+                    <div ng-repeat="statusType in ctrl.recordStatusList">
+                        <ion-checkbox ng-click="ctrl.selectStatusType(statusType)"
+                                      ng-model="statusType.selected"
+                                      class="checkbox-style">
+                            {{statusType.explain}}
+                        </ion-checkbox>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub_visible_status" >
+                <div class="left_part">
+                    <span>上传班级：</span>
+                </div>
+                <div class="right_part" ng-show="ctrl.clazzList.length>1">
+                    <div ng-repeat="clazz in ctrl.clazzList">
+                        <ion-checkbox ng-click="ctrl.selectPubClazz(clazz)"
+                                      ng-model="clazz.selected"
+                                      class="checkbox-style">
+                            {{clazz.name}}
+                        </ion-checkbox>
+                    </div>
+                </div>
+                <div class="right_part" ng-show="ctrl.clazzList.length==1" style="padding: 7px;">
+                   <span>{{ctrl.clazzList[0].name}}</span>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
+<div class="growing_record_backdrop" ng-if="ctrl.isShowRecordLabelFlag" ng-click="ctrl.toggleRecordLabel()">
+    <div class="record-select-board record-label">
+        <div class="record-title">
+           <!-- <span>核心素养类型</span>-->
+        </div>
+        <div class="record-content">
+            <div class="growing-select-cel big-cell" ng-repeat="recordLabel in ctrl.recordLabelList"
+                 ng-class="recordLabel.selected ? 'growing-select-cel-selected': ''"
+                 ng-click="ctrl.selectLabel(recordLabel,$event)">
+                <span>{{recordLabel.name}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="growing_record_backdrop" ng-if="ctrl.isShowRecordTypeFlag" ng-click="ctrl.toggleRecordType()">
+    <div class="record-select-board" style="padding:20px 5px 20px 5px;">
+
+        <div class="record-title">
+            <a class="button back-button buttons  button-clear header-item common-back-btn record-back-btn"
+               ng-click="ctrl.goBackToSelectLabel()"
+               nav-direction="back">
+                <i class="icon ion-ios-arrow-back" style="color:rgba(0, 0, 0, 0.4);"></i>
+                &nbsp;&nbsp;
+            </a>
+            <span>请选择</span>
+        </div>
+        <div class="record-content">
+            <div class="growing-select-cel small-cel" ng-repeat="recordType in ctrl.recordTypeList"
+                 style="margin: 5px 10px; padding: 10px 15px;"
+                 ng-class="recordType.selected ? 'growing-select-cel-selected': ''"
+                 ng-click="ctrl.selectType(recordType,$event)">
+                <span>{{recordType.name}}</span>
+            </div>
+        </div>
+        <div><button class="record-ok-btn"
+                     ng-click="ctrl.toggleRecordType()">确定</button></div>
+    </div>
+</div>
+
+

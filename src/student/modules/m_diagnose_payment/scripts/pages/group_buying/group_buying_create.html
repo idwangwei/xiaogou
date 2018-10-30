@@ -1,0 +1,389 @@
+<ion-view hide-nav-bar="true" class="group_buying_create_ios" ng-if="ctrl.isIos">
+    <div class="group_create_content_title">
+        <div class="myHeaderBack" align-title="center">
+            <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+                <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+            </button>
+        </div>
+        <div class="group_create_content_title_bg">
+            <img class="group_create_content_title_word" src="{{$root.loadImg('weixin_pay/groupBuy05.png')}}"/>
+
+            <div class="group_create_content_title_top">
+            </div>
+            <div class="group_create_content_title_bottom">
+                <div class="group_create_content_title_bottom_left"></div>
+                <div class="group_create_content_title_bottom_right"></div>
+            </div>
+        </div>
+    </div>
+    <div style="overflow: scroll;"
+         ng-style="{'height':ctrl.contentHeight+'px'}">
+        <div class="group_create_content_body">
+            <div class="group_create_content_body_type">
+                <span>我要组</span>
+                <div class="group_create_content_type" ng-if="ctrl.groupTypeList.length>0&&ctrl.defaultOption!='none'">
+                    <!-- <form-select options="ctrl.groupTypeList" default-option="ctrl.defaultOption"
+                                  value="ctrl.groupMemberNum"
+                                  on-change="ctrl.createMemberList()">
+                     </form-select>-->
+                    <div class="select-bar">
+                        <div class="ui-select">
+                            <span ng-bind="ctrl.groupMemberNum"></span>
+                            <i class="icon ion-arrow-down-b select-time-icon"></i>
+                            <select ng-model="ctrl.groupMemberNum"
+                                    ng-options="item for item in ctrl.groupTypeList"
+                                    ng-change="ctrl.createMemberList()" class="select-options">
+                                <!--<option value='' ng-selected='1'>-请选择-</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <span>人/团</span>
+
+            </div>
+            <div class="group_create_content_body_asd">
+                <p>
+                    注：超过25人，可考虑组多个团，获取更多优惠。
+                </p>
+            </div>
+            <div class="group_create_content_body_planner">
+                <div class="leader_table_header">
+                    <div class="table_col table_col_01">团主账号</div>
+                    <div class="table_col table_col_02">学生姓名</div>
+                    <div class="table_col table_col_03">选择版本</div>
+                    <div class="table_col table_col_04">优惠价</div>
+                </div>
+                <div class="leader_table_content">
+
+                    <div class="table_col table_col_01"
+                         style="overflow:inherit !important;position: relative !important;">
+                        <div class="leader_list"
+                             ng-if="ctrl.leader.showInputHelpFlag">
+                            <div class="scroll-wrap">
+                                <ion-scroll direction="y" delegate-handle="namePicScroll"
+                                            class="name-pic-scroll">
+                                    <div class="name-pic" ng-repeat="person in ctrl.userList"
+                                         ng-click="ctrl.autoCompleteName(ctrl.leader,person)">
+                                    <span class="user-name"
+                                          ng-bind="person.hasOwnProperty('gender')?person.name:''"></span>
+                                        <span class="login-name"
+                                              ng-bind="person.hasOwnProperty('gender')?person.loginName:person"></span>
+                                    </div>
+                                </ion-scroll>
+                            </div>
+                        </div>
+                        <input type="text" ng-model="ctrl.leader.name"
+                               ng-blur="ctrl.checkUserName(ctrl.leader,'leader')"
+                               ng-focus="ctrl.showInputHelp('leader')"
+                               ng-change="ctrl.showInputHelp('leader')"/>
+                        <p class="errorType" ng-if="ctrl.leader.isWrong">账号有误</p>
+                    </div>
+                    <div class="table_col table_col_02">
+                        <span>{{ctrl.leader.loginName}}</span>
+                    </div>
+                    <div class="table_col table_col_03 form_select_type"
+                         ng-if="ctrl.productTypeList.length>0">
+                        <!--<form-select options="ctrl.productTypeList" default-option="ctrl.leader.defaultType"-->
+                        <!--value="ctrl.leader.type"-->
+                        <!--on-change="ctrl.leaderPriceQuery()">-->
+                        <!--</form-select>-->
+                        <div class="select-bar">
+                            <div class="ui-select">
+                                <span ng-bind="ctrl.leader.type"></span>
+                                <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                <select ng-model="ctrl.leader.type"
+                                        ng-options="item for item in ctrl.productTypeListIndex"
+                                        ng-change="ctrl.leaderPriceQuery()" class="select-options">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table_col table_col_04">
+                        <span>{{!ctrl.leader.price&&ctrl.leader.price!==0?'--':'￥'+ctrl.leader.price/100}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="group_create_content_body_member" ng-if="ctrl.memberList.length>0">
+                <div class="member_table_header">
+                    <div class="table_col table_col_01">团员账号</div>
+                    <div class="table_col table_col_02">学生姓名</div>
+                    <div class="table_col table_col_03">选择版本</div>
+                    <div class="table_col table_col_04">优惠价</div>
+                </div>
+                <div class="member_table_content">
+                    <div class="member_table_content_list" ng-repeat="item in ctrl.memberList">
+                        <div class="table_col table_col_01">
+                            <div class="member_user_list"
+                                 ng-style="{'top':'35px'}"
+                                 ng-if="item.showInputHelpFlag">
+                                <div class="scroll-wrap">
+                                    <ion-scroll direction="y" delegate-handle="namePicScroll"
+                                                class="name-pic-scroll">
+                                        <div class="name-pic" ng-repeat="person in ctrl.userList"
+                                             ng-click="ctrl.autoCompleteName(item,person)">
+                                    <span class="user-name"
+                                          ng-bind="person.hasOwnProperty('gender')?person.name:''"></span>
+                                            <span class="login-name"
+                                                  ng-bind="person.hasOwnProperty('gender')?person.loginName:person"></span>
+                                        </div>
+                                    </ion-scroll>
+                                </div>
+                            </div>
+                            <div class="member_input_name">
+                                <input type="text" ng-model="item.name"
+                                       ng-blur="ctrl.checkUserName(item)"
+                                       ng-focus="ctrl.showInputHelp($index)"
+                                       ng-change="ctrl.showInputHelp($index)"/>
+                                <p class="errorType" ng-if="item.isWrong">账号有误</p>
+
+                            </div>
+
+
+                        </div>
+                        <div class="table_col table_col_02">
+                            <span>{{!item.loginName?"":item.loginName}}</span>
+                        </div>
+                        <div class="table_col table_col_03 form_select_type" ng-if="ctrl.productTypeList.length>0">
+                            <!-- <form-select options="ctrl.productTypeList" default-option="item.defaultType"
+                                          value="item.type"
+                                          on-change="ctrl.memberPriceQuery(item)">
+                             </form-select>-->
+                            <div class="select-bar">
+                                <div class="ui-select">
+                                    <span ng-bind="item.type"></span>
+                                    <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                    <select ng-model="item.type"
+                                            ng-options="item for item in ctrl.productTypeListIndex"
+                                            ng-change="ctrl.memberPriceQuery(item)" class="select-options">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table_col table_col_04">
+                            <span style="color:#8E91A4">{{!item.price||!item.name?'--':'￥'+item.price/100}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="member_table_totle">
+                <div class="totle_left"></div>
+                <div class="totle_right">
+                    <span style="font-size: 16px;color: #4e4f53;">总金额：</span>
+                    <span>￥{{ctrl.totalPrice/100}}</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="foot_div">
+        <button class="button button-energized submit_button" ng-click="ctrl.submitOrder()">
+        </button>
+    </div>
+
+</ion-view>
+
+
+<ion-view hide-nav-bar="true" class="group_buying_create" ng-if="!ctrl.isIos">
+    <div class="myHeaderBack" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+    </div>
+    <div class="group_create_content_title">
+        <div class="group_create_content_title_bg">
+            <img class="group_create_content_title_word" src="{{$root.loadImg('weixin_pay/groupBuy05.png')}}"/>
+
+            <div class="group_create_content_title_top">
+            </div>
+            <div class="group_create_content_title_bottom">
+                <div class="group_create_content_title_bottom_left"></div>
+                <div class="group_create_content_title_bottom_right"></div>
+            </div>
+        </div>
+    </div>
+    <ion-content class="group_create_content">
+
+        <div class="group_create_content_body">
+            <div class="group_create_content_body_type">
+                <span>我要组</span>
+                <div class="group_create_content_type" ng-if="ctrl.groupTypeList.length>0">
+                    <!--<form-select options="ctrl.groupTypeList" default-option="ctrl.defaultOption"-->
+                    <!--value="ctrl.groupMemberNum"-->
+                    <!--on-change="ctrl.createMemberList()">-->
+                    <!--</form-select>-->
+                    <!-- <div class="select-bar">
+                         <div class="ui-select">
+                             <span ng-bind="ctrl.termData.nowTerm"></span>
+                             <i class="icon ion-arrow-down-b select-time-icon"></i>
+                             <select ng-model="ctrl.termData.nowTerm"
+                                     ng-options="item for item in ctrl.termData.terms"
+                                     ng-change="ctrl.getTrophyRankData()" class="select-options">
+                             </select>
+                         </div>
+                     </div>-->
+                    <div class="select-bar">
+                        <div class="ui-select">
+                            <span ng-bind="ctrl.groupMemberNum"></span>
+                            <i class="icon ion-arrow-down-b select-time-icon"></i>
+                            <select ng-model="ctrl.groupMemberNum"
+                                    ng-options="item for item in ctrl.groupTypeList"
+                                    ng-change="ctrl.createMemberList()" class="select-options">
+                                <!--<option value='' ng-selected='1'>-请选择-</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <span>人/团</span>
+
+            </div>
+            <div class="group_create_content_body_asd">
+                <p>
+                    注：超过25人，可考虑组多个团，获取更多优惠。
+                </p>
+            </div>
+            <div class="group_create_content_body_planner">
+                <div class="leader_table_header">
+                    <div class="table_col table_col_01">团主账号</div>
+                    <div class="table_col table_col_02">学生姓名</div>
+                    <div class="table_col table_col_03">选择版本</div>
+                    <div class="table_col table_col_04">优惠价</div>
+                </div>
+                <div class="leader_table_content">
+
+                    <div class="table_col table_col_01"
+                         style="overflow:inherit !important;position: relative !important;">
+                        <div class="leader_list"
+                             ng-if="ctrl.leader.showInputHelpFlag">
+                            <div class="scroll-wrap">
+                                <ion-scroll direction="y" delegate-handle="namePicScroll"
+                                            class="name-pic-scroll">
+                                    <div class="name-pic" ng-repeat="person in ctrl.userList"
+                                         ng-click="ctrl.autoCompleteName(ctrl.leader,person)">
+                                    <span class="user-name"
+                                          ng-bind="person.hasOwnProperty('gender')?person.name:''"></span>
+                                        <span class="login-name"
+                                              ng-bind="person.hasOwnProperty('gender')?person.loginName:person"></span>
+                                    </div>
+                                </ion-scroll>
+                            </div>
+                        </div>
+                        <input type="text" ng-model="ctrl.leader.name"
+                               ng-blur="ctrl.checkUserName(ctrl.leader,'leader')"
+                               ng-focus="ctrl.showInputHelp('leader')"
+                               ng-change="ctrl.showInputHelp('leader')"/>
+                        <p class="errorType" ng-if="ctrl.leader.isWrong">账号有误</p>
+                    </div>
+                    <div class="table_col table_col_02">
+                        <span>{{ctrl.leader.loginName}}</span>
+                    </div>
+                    <div class="table_col table_col_03 form_select_type" ng-if="ctrl.productTypeList.length>0">
+                        <!--<form-select options="ctrl.productTypeList" default-option="ctrl.leader.defaultType"-->
+                        <!--value="ctrl.leader.type"-->
+                        <!--on-change="ctrl.leaderPriceQuery()">-->
+                        <!--</form-select>-->
+                        <div class="select-bar">
+                            <div class="ui-select">
+                                <span ng-bind="ctrl.leader.type"></span>
+                                <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                <select ng-model="ctrl.leader.type"
+                                        ng-options="item for item in ctrl.productTypeListIndex"
+                                        ng-change="ctrl.leaderPriceQuery()" class="select-options"
+                                        ng-selected="$index==0">
+                                    <!--<option value="" selected>-请选择-</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table_col table_col_04">
+                        <span>{{!ctrl.leader.price&&ctrl.leader.price!==0?'--':'￥'+ctrl.leader.price/100}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="group_create_content_body_member" ng-if="ctrl.memberList.length!=0">
+                <div class="member_table_header">
+                    <div class="table_col table_col_01">团员账号</div>
+                    <div class="table_col table_col_02">学生姓名</div>
+                    <div class="table_col table_col_03">选择版本</div>
+                    <div class="table_col table_col_04">优惠价</div>
+                </div>
+                <div class="member_table_content">
+                    <div class="member_table_content_list" ng-repeat="item in ctrl.memberList">
+                        <div class="table_col table_col_01">
+                            <div class="member_input_name">
+                                <div class="member_user_list"
+                                     ng-style="{'top':'30px'}"
+                                     ng-if="item.showInputHelpFlag">
+                                    <div class="scroll-wrap">
+                                        <ion-scroll direction="y" delegate-handle="namePicScroll"
+                                                    class="name-pic-scroll">
+                                            <div class="name-pic" ng-repeat="person in ctrl.userList"
+                                                 ng-click="ctrl.autoCompleteName(item,person)">
+                                    <span class="user-name"
+                                          ng-bind="person.hasOwnProperty('gender')?person.name:''"></span>
+                                                <span class="login-name"
+                                                      ng-bind="person.hasOwnProperty('gender')?person.loginName:person"></span>
+                                            </div>
+                                        </ion-scroll>
+                                    </div>
+                                </div>
+
+                                <input type="text" ng-model="item.name"
+                                       ng-blur="ctrl.checkUserName(item)"
+                                       ng-focus="ctrl.showInputHelp($index)"
+                                       ng-change="ctrl.showInputHelp($index)"/>
+                                <p class="errorType" ng-if="item.isWrong">账号有误</p>
+                            </div>
+
+                        </div>
+                        <div class="table_col table_col_02">
+                            <span>{{!item.loginName?"":item.loginName}}</span>
+                        </div>
+                        <div class="table_col table_col_03 form_select_type" ng-if="ctrl.productTypeList.length>0">
+                            <!--<form-select options="ctrl.productTypeList" default-option="item.defaultType"-->
+                            <!--value="item.type"-->
+                            <!--on-change="ctrl.memberPriceQuery(item)">-->
+                            <!--</form-select>-->
+
+                            <div class="select-bar">
+                                <div class="ui-select">
+                                    <span ng-bind="item.type"></span>
+                                    <i class="icon ion-arrow-down-b select-time-icon"></i>
+                                    <select ng-model="item.type"
+                                            ng-options="item for item in ctrl.productTypeListIndex"
+                                            ng-change="ctrl.memberPriceQuery(item)" class="select-options"
+                                            ng-selected="$index==0">
+                                        <!--<option value="" selected>-请选择-</option>-->
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="table_col table_col_04">
+                            <span style="color:#8E91A4">{{!item.price||!item.name?'--':'￥'+item.price/100}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="member_table_totle">
+                    <div class="totle_left"></div>
+                    <div class="totle_right">
+                        <span style="font-size: 16px;color: #202122;">总金额：</span>
+                        <span>￥{{ctrl.totalPrice/100}}</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+    <ion-footer-bar class="group_create_content_foot">
+        <div class="foot_div">
+            <button class="button button-energized submit_button" ng-click="ctrl.submitOrder()">
+            </button>
+        </div>
+    </ion-footer-bar>
+
+</ion-view>

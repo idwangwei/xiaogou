@@ -1,0 +1,18 @@
+<div class="oral-calculation-equation" id="{{quesId}}">
+    <div class="title">{{quesIndex}}、</div>
+    <div class="content">
+        <span class="equation-item" ng-repeat="item in exprList track by $index"
+              ng-style="{display:checkItem(item) == exprType.LINE_BREAK?'block':''}">
+            <unit ng-init="uuid = uuid4.generate()"
+                  id="{{uuid}}" ng-if="checkItem(item) == exprType.MATHJAX" mathjax-parser
+                  value='{{item}}' ng-bind="item">{{item}}
+            </unit>
+            <unit ng-init="uuid = uuid4.generate()"
+                  id="{{uuid}}" ng-if="checkItem(item) == exprType.COMMON"
+                  value='{{item}}' ng-bind="item">{{item}}
+            </unit>
+
+            <equation-input ng-if="checkItem(item) == exprType.BLANK" input-id="{{getId(item)}}"></equation-input>
+        </span>
+    </div>
+</div>

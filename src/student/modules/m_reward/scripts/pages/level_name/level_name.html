@@ -1,0 +1,107 @@
+<ion-view class="level-name">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #1E446A"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #1E446A">称号</h1>
+       <!-- <button class="button buttons button-clear header-item button-change" ng-if="ctrl.rewardBase.title==2"
+                ng-click="ctrl.exchangeClick()">
+            切换成魔法系列
+        </button>
+        <button class="button buttons button-clear header-item button-change"
+                ng-if="ctrl.rewardBase.title==1||!ctrl.rewardBase.title" ng-click="ctrl.exchangeClick()">
+            切换成驯宠系列
+        </button>-->
+        <div class="rank-btn" ng-click="ctrl.go('reward_level_name_rank_list')">
+            <img class="" ng-src="{{$root.loadImg('levelName/number_0.png')}}">
+            排行榜
+        </div>
+
+    </ion-header-bar>
+    <div class="bg-star" ng-style="{'top':ctrl.isIos()?'64px':'44px'}">
+        <div class="bg-content">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 4px;position: absolute;left: 20%;top:5%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 2px;position: absolute;left: 5%;top:20%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 2px;position: absolute;left: 18%;top:35%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 3px;position: absolute;left: 25%;top:25%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 3px;position: absolute;right: 5%;top:5%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 4px;position: absolute;right: 20%;top:16%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 2px;position: absolute;right: 30%;top:26%">
+            <img ng-src="{{ctrl.bgStar}}" style="width: 2px;position: absolute;right: 8%;top:40%">
+        </div>
+    </div>
+    <ion-content ng-class="ctrl.rewardBase.title==2?'bg-group2':'bg-group1'" style="padding: 10px 0;">
+    <!--<ion-content padding="true" ng-class="ctrl.currentGroup==2?'bg-group2':'bg-group1'">-->
+       <!-- <div class="level-list">
+            <ion-list class="list-item-style">
+                <ion-item class="item item-avatar item-content" ng-repeat="item in ctrl.levelData"
+                          style="background-color: inherit !important;">
+                    <div class="item-img">
+                        <img ng-src="{{ctrl.loadLevelNameImg(item.status,$index)}}" class="level-img"
+                             ng-class="item.status?'':'level-img-filter'">
+                        &lt;!&ndash;  <img ng-src="{{$root.loadImg('levelName/'+'group'+(!ctrl.rewardBase.title?'1':ctrl.rewardBase.title)+'LevelName'+ctrl.rewardBase.currenLevelImgIndex+'.png')}}"
+                               class="level-img" ng-class="item.status?'':'level-img-filter'">&ndash;&gt;
+                    </div>
+                    <div class="item-name">
+                        <p>{{item.name}}</p>
+                        <label class="get-mark" ng-if="item.status">(已获得)</label>
+                    </div>
+
+                    <div class="level-progress">
+                        <label>Lv.{{item.startLevel}}</label>
+                        <div class="level-progress-bar">
+                            <div class="level-done-bar"
+                                 ng-style="{'width': ctrl.getWidth(item)+ '%'}">
+                            </div>
+                        </div>
+                        <label>Lv.{{item.endLevel}}</label>
+                    </div>
+                    <hr>
+
+                </ion-item>
+            </ion-list>
+
+        </div>-->
+
+        <div class="level-list">
+            <ion-list class="list-item-style">
+                <ion-item class="item item-content" ng-repeat="item in ctrl.levelData"
+                          style="background-color: inherit !important;"
+                          ng-class = "item.status == 1 && item.isShowBg ? 'item-content-img': ''">
+                    <div class="item-content-area">
+                        <div class="item-left">
+                            <img ng-src="{{ctrl.loadLevelNameImg(item.status,$index)}}" class="level-img"
+                                 ng-class="item.status == 1 ?'':'level-img-filter'">
+                        </div>
+                        <div class="item-middle"  ng-click="ctrl.clickLevelName(item, $index)">
+                            <div class="item-name" ng-bind="item.name"></div>
+                            <div class="level-progress" ng-if="item.status == '2'">
+                                <label>Lv.{{item.startLevel}}</label>
+                                <div class="level-progress-bar">
+                                    <div class="level-done-bar"
+                                         ng-style="{'width': ctrl.getWidth(item)+ '%'}">
+                                    </div>
+                                </div>
+                                <label>Lv.{{item.endLevel}}</label>
+                            </div>
+                            <div ng-bind="'解锁条件：到达Lv.'+item.endLevel"
+                                 class="level-need"
+                                 ng-if="item.status == '3'">
+                            </div>
+                        </div>
+                        <div class="item-right">
+                            <img ng-src="{{ctrl.getStatusImg(item.status)}}">
+                        </div>
+                    </div>
+                    <div class="item-content-bar" ng-if="!item.isShowBg">
+                        <hr>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+
+    </ion-content>
+    <reward-level-name-alert level-info="ctrl.currentClickedLevelName"></reward-level-name-alert>
+</ion-view>
+
+

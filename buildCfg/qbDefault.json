@@ -1,0 +1,9 @@
+{
+  "teacher": "allereEClassForTeacher/branches/eclass_teacher_application/app",
+  "student": "allereEClassForStudent/branches/branch-for-answer/app",
+  "parent": "allereEClassForParent/branches/branch-for-application/app",
+  "base": "allereEClassCodeBase/branches/code_base_dev",
+  "backend":"192.168.0.161:9090/door",
+  "cloud_backend":"192.168.0.161:9090/door",
+  "img_server":"192.168.0.161"
+}

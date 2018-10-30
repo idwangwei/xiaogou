@@ -1,0 +1,33 @@
+<div class="microlecture-ad-page">
+
+    <div class="ad-backdrop ">
+        <ion-scroll class="ad-content">
+            <i class="icon ion-ios-arrow-back" ng-click="hideAd()"><span>返回</span></i>
+            <div class="content-top">
+                <img class="top-img-1" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_title.png')}}" alt="">
+                <img class="top-img-2" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_title_2.png')}}" alt="">
+            </div>
+            <div class="content-middle">
+                <div class="content-bottom-layer content-bottom-layer-1">
+                    <img class="ad_word" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_word_1.png')}}" alt="">
+                    <p>名师出题，例题匹配思路导航</p>
+                    <img class="ad_img" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_1.png')}}" alt="">
+                </div>
+                <div class="content-bottom-layer content-bottom-layer-2">
+                    <img class="ad_word" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_word_2.png')}}" alt="">
+                    <p>一对一交互辅导，精准攻克重难点</p>
+                    <img class="ad_img" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_2.png')}}" alt="">
+                </div>
+                <div class="content-bottom-layer content-bottom-layer-3">
+                    <img class="ad_word" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_word_3.png')}}" alt="">
+                    <p>难度层层递进，达到举一反三</p>
+                    <img class="ad_img" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_3.png')}}" alt="">
+                </div>
+                <img ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_end.png')}}" alt="" class="content-end">
+            </div>
+        </ion-scroll>
+        <div class="content-bottom">
+            <img ng-click="gotoMicroUnitList($event)" ng-src="{{$root.loadMicrolectureImg('micro_ad/microlecture_ad_btn.png')}}" alt="" src="images/winter_camp_ad_btn.png">
+        </div>
+    </div>
+</div>

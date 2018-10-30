@@ -1,0 +1,5 @@
+<div class="video-option-page" ng-click="clickOptionPage($event)">
+    <div ng-repeat="item in optionArr.option" ng-click="btnClick($event,$index)">
+        <img ng-src="{{$root.loadMicrolectureImg('video/m_option_'+item+'.png')}}" alt="">
+    </div>
+</div>

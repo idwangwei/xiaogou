@@ -1,0 +1,35 @@
+<div class="winter-camp-all-courses" ng-if="showAllCourseFlag" ng-click="hideAllCourseDiagnose($event)">
+    <div class="all-courses" ng-click="stopEvent($event)">
+        <div class="list-title">
+            <div class="list-title-word">
+                <p>更多</p>
+                <img class="list-title-img"
+                     ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home18.png')}}">
+            </div>
+        </div>
+        <div class="reward-desc">
+            <p ng-bind="'完成每日任务，可得5能量~'"></p>
+            <p ng-bind="'连续学习7天，得20能量哟~'"></p>
+        </div>
+        <div class="course-list">
+            <div class="course-list-content">
+                <div class="course-item-content">
+                    <div class="course-list-tab" ng-repeat="listObj in courseLists track by $index">
+                        <p class="course-list-tab-title" ng-bind="'第'+listObj.unitIndex+'单元:'+listObj.unitName"></p>
+                        <div class="course-item" ng-repeat="course in listObj.list track by $index"
+                             ng-click="selectClazz(course)">
+                            <p ng-bind="'第'+course.classIndex+'课'"></p>
+                            <div class="course-item-desc">
+                                <!--<p ng-bind="course.unitName"></p>-->
+                                <p ng-bind="course.className"></p>
+                                <img class="study_mark_{{course.finish}}"
+                                     ng-src="{{$root.loadWinterCampImg('winter_camp_home/winter_camp_home27.png')}}">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

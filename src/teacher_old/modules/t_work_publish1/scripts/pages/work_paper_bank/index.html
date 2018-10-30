@@ -1,0 +1,116 @@
+<ion-view hide-nav-bar="true" class="work_paper_bank ">
+
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" ng-bind="'课时作业'"></h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="ctrl.hideAllData()">
+                <img ng-src="{{$root.loadImg('work/fold.png')}}" alt="" class="common-help"/>
+            </button>
+            <button class="button button-clear" ng-click="ctrl.help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>
+
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="true" class="">
+        <div class="bank_content">
+            <div class="list" ng-show="ctrl.textbook || (ctrl.guideFlag && !ctrl.guideFlag.hasPubedSimulationWork)" style="padding-bottom: 40px">
+                <div class="item item-divider item-for-img" ng-click="ctrl.openModal('标签',1)">
+                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                    <span ng-bind="ctrl.guideFlag && !ctrl.guideFlag.hasPubedSimulationWork ? '人教版' : ctrl.textbook.name " class="first-text"></span>
+                    <span style="margin-left: 5px;" class="icon ion-ios-arrow-right"></span>
+                </div>
+
+                <!--模拟课作业列表，引导动画结束后隐藏-->
+                <div ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.hasPubedSimulationWork">
+                    <li class="item unit_bg" ng-click="ctrl.clickUnit(ctrl.simulationPaper,$event,$index)">
+                        <span class="icon "
+                              ng-class="ctrl.simulationPaper.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{ctrl.simulationPaper.text}}
+                    </li>
+
+                    <div class="list" style="margin-left: 10px;" ng-show="ctrl.simulationPaper.isOpened">
+                        <li class="item lesson_bg" ng-show="!ctrl.simulationPaper.subTags.length">本单元课时即将开放！</li>
+
+                        <div ng-repeat="unit in ctrl.simulationPaper.subTags">
+                            <li ng-click="ctrl.showDetailUnit(ctrl.simulationPaper, unit)" class="item lesson_bg">
+                                <span class="icon ion-chevron-right" style="font-weight: bold;margin-right: 5px"></span>
+                                {{unit.text}}
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-repeat="chapter in ctrl.textbook.subTags">
+                    <li class="item unit_bg" ng-click="ctrl.clickUnit(chapter,$event,$index)">
+                        <span class="icon "
+                              ng-class="chapter.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{chapter.text}}
+                    </li>
+
+                    <div class="list" style="margin-left: 10px;" ng-show="chapter.isOpened">
+                        <li class="item lesson_bg" ng-show="!chapter.subTags.length">本单元课时即将开放！</li>
+
+                        <div ng-repeat="unit in chapter.subTags">
+                            <li ng-click="ctrl.showDetailUnit(chapter, unit)" class="item lesson_bg">
+                                <span class="icon ion-chevron-right" style="font-weight: bold;margin-right: 5px"></span>
+                                {{unit.text}}
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <loading-processing></loading-processing>
+    <script id="textbookSelect.html" type="text/ng-template">
+        <ion-modal-view class="work_paper_bank">
+            <ion-header-bar class="bar-balanced" align-title="center">
+                <button class="button buttons  button-clear header-item" ng-click="ctrl.closeModal()">
+                    <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>
+                    &nbsp;&nbsp;
+                </button>
+                <h1 class="title" align-title="center">请选择教材</h1>
+            </ion-header-bar>
+            <ion-content class="bank_content" overflow-scroll="true" >
+                <ul class="list">
+                    <div ng-repeat="version in ctrl.textbooks" >
+                        <li class="item unit_bg" ng-click="version.isOpened = !version.isOpened">
+                        <span class="icon"
+                              ng-class="version.isOpened?'ion-chevron-down':'ion-chevron-right'"
+                              style="font-weight: bold;margin-right: 5px">
+                        </span>{{version.text}}
+                        </li>
+
+                        <div class="list" style="margin-left: 10px;" ng-show="version.isOpened">
+                            <div ng-repeat="book in version.subTags | filter:search ">
+                                <li ng-click="ctrl.selectCurrentTextbook(book)" class="item lesson_bg item-for-img">
+                                    <img ng-src="{{$root.loadImg('work/work_material.png')}}">
+                                    <span class="first-text" style="font-weight: bold;margin-right: 5px"></span>
+                                    {{book.text}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ion-content>
+            <loading-processing></loading-processing>
+        </ion-modal-view>
+    </script>
+
+    <teaching-guide  ng-if="ctrl.guideFlag && ctrl.guideFlag.isSameUser && !ctrl.guideFlag.hasPubedSimulationWork"
+            current-show-ele = "ctrl.currentShowEle"
+            step-count="2"
+            current-step="ctrl.currentStep"
+            get-high-light-ele="ctrl.getHighLightEle()">
+    </teaching-guide>
+</ion-view>
+

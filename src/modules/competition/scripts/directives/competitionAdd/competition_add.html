@@ -1,0 +1,44 @@
+<div class="directive_competition_ad" ng-if="$root.showCompetitionAdFlag && $root.hasCompetition" ng-click="hideCompetitionAd()">
+    <div class="directive_competition_ad_backdrop">
+        <div class="directive_competition_ad_content">
+            <i class="icon ion-close competition_close" ng-click="hideCompetitionAd()"></i>
+            <div class="competition_ad_title">
+                <span class="title1 font-bold">{{$root.competitionSchoolTitle}}</span>
+                <span class="title2 font-bolder">{{$root.competitionPaperTitle}}</span>
+            </div>
+            <div style="height: 100%;">
+                <ion-scroll zooming="true" direction="y" style="width: 100%; margin-bottom: 10px;"
+                            ng-class="$root.isShowSeeBtnFlag ? 'ad-scroll-content-style1' : 'ad-scroll-content-style2'">
+                    <div class="competition_ad_content">
+                        <div class="ad-content-tip">
+                            <span class="ad-content-title font-bolder">赛前准备</span>
+                            <span ng-repeat="info in student.prepare"  ng-if="$root.currentSystem == 'student'">{{info}}</span>
+                            <span ng-repeat="info in teacher.prepare" ng-if="$root.currentSystem == 'teacher'">{{info}}</span>
+                        </div>
+                        <span class="ad-content-title font-bolder">比赛时间</span>
+                        <div class="ad-content-details" ng-if="competition_details.length>0">
+                            <span class="ad-details-time">在以下时间段内均可以获取试卷进行答题！</span>
+                            <div class="ad-details" ng-repeat="details in competition_details">
+                                <span class="font-bolder">{{details.grade}}{{competitionType}}时间：</span>
+                                <span class="ad-details-time"> {{details.startTime}} - {{details.endTime}}</span>
+                            </div>
+                        </div>
+                        <div class="ad-content-details" ng-if="competition_details.length == 0" style="text-align: center;">
+                            <span>暂无时间安排</span>
+                        </div>
+                        <div class="ad-content-tip">
+                            <span class="ad-content-title font-bolder">参赛流程</span>
+                            <span ng-repeat="tip in student.introduce" ng-if="$root.currentSystem == 'student'">{{tip}}</span>
+                            <span ng-repeat="tip in teacher.introduce" ng-if="$root.currentSystem == 'teacher'">{{tip}}</span>
+                        </div>
+                    </div>
+                </ion-scroll>
+                <div class="ad-content-see-btn" ng-if="$root.isShowSeeBtnFlag">
+                    <img ng-src={{btnSee}} ng-click="goToWorkList()">
+                </div>
+            </div>
+    </div>
+
+    </div>
+
+</div>

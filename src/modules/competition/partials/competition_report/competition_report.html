@@ -1,0 +1,66 @@
+<ion-view class="competition_report">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #000000"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #000000">比赛报告</h1>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <div class="report-content" ng-if="ctrl.retFlag&&!ctrl.hasReport" style="padding: 20px 0; text-align: center;color: #c25c5f;">
+            系统还未生成报告，请稍后再试
+        </div>
+        <div class="report-content" ng-if="ctrl.retFlag&&ctrl.hasReport">
+            <div class="paper-info">
+                <div class="title">{{ctrl.paperInfo.paperName}}</div>
+                <div>分数：<span>{{ctrl.paperInfo.score}}</span></div>
+                <div>用时：{{ctrl.paperInfo.wasteTime}}</div>
+                <div>恭喜你超越了全区<span>{{ctrl.paperInfo.overPercent}}</span>的学生</div>
+            </div>
+            <hr>
+            <div class="competition-info">
+                <div class="title">区竞赛整体情况对比</div>
+                <div class="table-head">
+                    <div class="cell_01">学区</div>
+                    <div class="cell_02">平均分</div>
+                    <div class="cell_03">参赛人数</div>
+                </div>
+                <div class="competition-data">
+                    <div class="cell_01">{{ctrl.competitionResult.district}}</div>
+                    <div class="cell_02"><span>{{ctrl.competitionResult.avgScore}}</span></div>
+                    <div class="cell_03">{{ctrl.competitionResult.personNumber}}人</div>
+                </div>
+            </div>
+            <hr>
+            <div class="result-analyze">
+                <div class="title">{{ctrl.name}}掌握情况</div>
+                <div class="subtitle">以下数据来自本次考试和平时作业：</div>
+                <div class="analyze-data">
+                    <pie-chart ng-if="ctrl.analyzeFlag" id="pie" settings="ctrl.pieChartSettings"
+                               chart="ctrl.pieChart">
+                    </pie-chart>
+                    <div class="info">
+                        <div>此试卷有{{ctrl.analyzeInfo.totalKnowledgeNumber}}个考点</div>
+                        <div ng-repeat="item in ctrl.analyzeInfo.masterList">
+                            <i class="icon ion-record" ng-style="{'color':item.color}"></i>
+                            <pre>{{item.key}}：{{item.masterNumber}}个</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="diagnose-entry">
+            <div class="diagnose_add">
+                <p>温故知新，学海无涯</p>
+                <p>驯服萌宠，进步不止</p>
+                <div class="mybutton" ng-click="ctrl.dredgeDiagnose()"></div>
+
+            </div>
+            <div class="diagnose-pic-content">
+                <div class="diagnose-pic"></div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

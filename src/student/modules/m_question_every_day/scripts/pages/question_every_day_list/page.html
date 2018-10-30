@@ -1,0 +1,86 @@
+<ion-view hide-nav-bar="true" class="question-every-day-list-file">
+    <ion-header-bar align-title="center" class="bar-positive bar-better">
+        <div class="buttons">
+            <button ng-click="ctrl.back()" class="button button-clear">
+                <i class="icon ion-ios-arrow-back"></i><span style="padding-left: 10px">首页</span>
+            </button>
+        </div>
+        <h1 class="title">每日一题</h1>
+        <div class="buttons">
+            <button class="button button-clear qed-header-right" ng-click="ctrl.openPopover($event)">
+                <img ng-src="{{$root.loadQEDImg('qed_list_page/qed_date_icon.png')}}" alt="">
+                <span style="padding: 2px">{{ctrl.timeStr}}</span>
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <div class="bar bar-subheader question-list-tags">
+        <span ng-class="{'span-selected':ctrl.selectedTag == 'all'}"
+              ng-click="ctrl.selectedTagHandler('all')">每日一题</span>
+        <span ng-class="{'span-selected':ctrl.selectedTag == 'todo'}"
+              ng-click="ctrl.selectedTagHandler('todo')">未做</span>
+        <span ng-class="{'span-selected':ctrl.selectedTag == 'redo'}"
+              ng-click="ctrl.selectedTagHandler('redo')">可改错</span>
+        <span ng-class="{'span-selected':ctrl.selectedTag == 'error'}"
+              ng-click="ctrl.selectedTagHandler('error')">错题集</span>
+    </div>
+
+    <ion-content class="has-subheader question-every-day-list-content" overflow-scroll="false">
+
+        <!--下拉刷新-->
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="ctrl.pullRefresh()"></ion-refresher>
+
+        <!--没有班级提示-->
+        <div class="item item-input block-input item-input—height" style="width: 100%"
+             ng-if="ctrl.clazzList && ctrl.clazzList.length == 0">
+        </div>
+
+        <!--没有作业提示-->
+        <div class="item-input"
+             ng-if="ctrl.retFlag && ctrl.selectedClazz && !ctrl.workList.length">
+            <span>{{ctrl.timeStr}}还没有每日作业！</span>
+        </div>
+
+        <!--作业列表-->
+        <div class="work-list-wrap" ng-if="ctrl.retFlag && ctrl.workList.length">
+            <div ng-repeat="listItem in ctrl.workList track by $index" class="list-item-box"
+                 ng-if="ctrl.ifShow(listItem)"
+                 ng-click="ctrl.gotoQuestionDetail(listItem)"
+                 ng-class="">
+                <div class="list-item-left">
+                    <span>{{listItem.timeStr}}</span>
+                </div>
+                <div class="list-item-middle">
+                    <span>{{listItem.questionTrunk}}</span>
+                    <span>{{listItem.grade}}</span>
+                </div>
+                <div class="list-item-right">
+                    <span>{{listItem.stateStr}}</span>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+    <script id="year-month-choose-popover.html" type="text/ng-template">
+        <ion-popover-view class="year-month-choose-popover">
+            <ion-header-bar>
+                <h1 class="title">选择月份</h1>
+            </ion-header-bar>
+            <ion-content class="popover-content">
+                <div class="popover-content-left">
+                    <button class="button-clear operation-btn" ng-click="ctrl.reduceNum(0)">-</button>
+                    <div>{{ctrl.popoverTimeStr.split('-')[0]}}</div>
+                    <button class="button-clear operation-btn" ng-click="ctrl.addNum(0)">+</button>
+                </div>
+                <div class="popover-content-middle">-</div>
+                <div class="popover-content-right">
+                    <button class="button-clear operation-btn" ng-click="ctrl.reduceNum(1)">-</button>
+                    <div>{{ctrl.popoverTimeStr.split('-')[1]}}</div>
+                    <button class="button-clear operation-btn" ng-click="ctrl.addNum(1)">+</button>
+                </div>
+            </ion-content>
+        </ion-popover-view>
+    </script>
+
+</ion-view>

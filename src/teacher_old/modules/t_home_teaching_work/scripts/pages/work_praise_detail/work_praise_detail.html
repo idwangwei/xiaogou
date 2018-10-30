@@ -1,0 +1,83 @@
+<style type="text/css">
+    .work_praise_detail_file .clazz-list {
+        border-color: #D7AD97;
+    }
+
+    .work_praise_detail_file .card {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        box-shadow: 0 1px 3px #D7AD97;
+    }
+</style>
+
+<ion-view title="评价反馈" hide-nav-bar="true"  ng-init="correctedStu=ctrl.data.correctedPraise.correctedStu">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>
+            &nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'"
+                ng-bind="'评价反馈'"></h1>
+    </ion-header-bar>
+    <ion-content  class="work_praise_detail_file" overflow-scroll="true" style="height: auto!important;">
+        <div class="bg-box">
+            <img ng-src="{{$root.loadImg('work_praise/work_praise_bg_inner.png')}}" width="100%"  height="100%">
+            <div class="bg-inner-box">
+                <div class="bg-inner-box1">
+                    <img ng-src="{{$root.loadImg('work_praise/work_praise_bg.png')}}"  width="100%">
+                </div>
+            </div>
+        </div>
+        <!--学生反馈情况 -->
+        <div ng-if="ctrl.data.correctedPraise.showType==1">
+            <div class="message_content"
+                 ng-repeat="stuMsg in ctrl.data.correctedPraise.stuMsgList"
+                 ng-class="stuMsg.gender?'man-color':'woman-color'">
+                <div class="name"
+                     ng-bind="stuMsg.stuName">
+                </div>
+                <div class="face">
+                    <img ng-src="{{$root.loadImg(stuMsg.headImg)}}"/>
+                </div>
+                <div class="message">
+                    <label ng-bind="stuMsg.message||''"></label>
+                </div>
+            </div>
+        </div>
+        <!--家长反馈情况 -->
+        <div ng-if="ctrl.data.correctedPraise.showType==3">
+
+            <div class="praise-content" ng-if="ctrl.correctedStu.parentPraise.type<10&&ctrl.correctedStu.parentPraise.type>=7">
+                <div class="praise-logo">
+                    <img ng-src="{{$root.loadImg('praise/praise_logo.png')}}" alt=""/>
+                </div>
+                <div class="praise-main">
+                    <div class="praise-title">
+                        <span ng-bind="'家长给予'+ctrl.correctedStu.name+'的奖励'"></span>
+                    </div>
+                    <div class="praise-img-div">
+                        <img ng-src="{{$root.loadImg(ctrl.correctedStu.parentPraise.img)}}">
+                        <span style="border: none" ng-bind="ctrl.correctedStu.parentPraise.text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message_content"
+                 ng-class="pMsg.gender?'man-color':'woman-color'"
+                 ng-repeat="pMsg in ctrl.data.correctedPraise.parentMsgList">
+                <div class="name"
+                     ng-bind="pMsg.pName">
+                </div>
+                <div class="face">
+                    <img ng-src="{{$root.loadImg(pMsg.headImg)}}"/>
+                </div>
+                <div class="message">
+                    <label ng-bind="pMsg.message||''"></label>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+    <loading-processing load-top="100"></loading-processing>
+</ion-view>
+

@@ -1,0 +1,50 @@
+<ion-view class="score_store">
+    <reward-prompt type="diagnose" show-num="{{ctrl.vipDays}}"></reward-prompt>
+
+    <div class="store-head" ng-class="ctrl.isIos()?'store-head-height-ios':'store-head-height'">
+        <button class="button buttons button-clear header-item back-butn"
+                ng-click="ctrl.back()"
+                ng-style="{'top':ctrl.isIos()?'20px':'5px'}">
+            <i class="icon ion-ios-arrow-back" style="font-size: 26px"></i>&nbsp;&nbsp;
+        </button>
+        <img ng-src="{{ctrl.loadStoreImg('scoreStore/reward_store.png')}}">
+        <div class="total-score">
+            <!--<i class="ion-heart" style="color: #f6f906;font-size: 18px;"></i>-->
+            <label>我的能量</label>
+            <img ng-src="{{ctrl.loadStoreImg('reward_money.png')}}"
+                 style="width: 20px;height: 20px">
+            <p>{{ctrl.currentCredits}}</p>
+        </div>
+    </div>
+
+    <ion-content padding="true" class="store-list-content" has-header="false">
+        <div class="store-content">
+            <div ng-if="ctrl.warningStr">{{ctrl.warningStr}}</div>
+            <div class="store-list" ng-repeat="item in ctrl.storeGoods">
+
+                <div class="good-img" ng-class="{'good-img-food':item.isFood}">
+                    <img ng-src="{{ctrl.loadStoreImg(item.imgSrc ? item.imgSrc: 'scoreStore/reward_vip.png')}}">
+                </div>
+                <div class="good-info" ng-if="!item.isFood">
+                    <label class="desc">学霸驯宠记使用券</label>
+                    <label class="sub-desc">3天使用权</label>
+                </div>
+                <div class="good-info" ng-if="item.isFood">
+                    <label class="desc" ng-bind="item.goodName"></label>
+                </div>
+
+                <div class="good-exchange">
+                    <div ng-if="item.isFood" ng-bind="'每日可购买'+item.buyLimit"></div>
+                    <div class="exchange-btn" ng-class="{'buy-all':!item.canBuy}" ng-click="ctrl.exchange(item,$index)">
+                        <img ng-src="{{ctrl.loadStoreImg('reward_money.png')}}"
+                             style="width: 20px;height: 20px">
+                        <p>{{item.costScore}}</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </ion-content>
+
+    <pet-get-food food-type="ctrl.buyFoodType" show-food="ctrl.buyFoodSuccess"></pet-get-food>
+</ion-view>

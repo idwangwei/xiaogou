@@ -1,0 +1,37 @@
+<div class="video-keyboard-page" ng-click="clickKeyboard($event)">
+    <div class="video-keyboard-top">
+        <div class="keyboard-top-screen-box">
+            <img ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_input_bg.png')}}">
+            <div class="keyboard-top-screen">
+                <span ng-bind="inputStr"></span>
+            </div>
+        </div>
+        <div class="keyboard-top-del-box">
+            <img class="btn-click-bg" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_del.png')}}"
+                 ng-click="btnClick($event,'del')">
+        </div>
+        <div class="keyboard-bottom-right">
+            <img class="btn-click-bg" ng-click="btnClick($event,'sure')"
+                 ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_sure.png')}}">
+        </div>
+    </div>
+    <div class="video-keyboard-bottom">
+        <div class="keyboard-bottom-left">
+            <div class="left-common left-top">
+                <img class="btn-click-bg" ng-click="btnClick($event,0)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_0.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,1)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_1.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,2)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_2.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,3)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_3.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,4)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_4.png')}}">
+            <!--</div>-->
+            <!--<div class="left-common left-bottom">-->
+                <img class="btn-click-bg" ng-click="btnClick($event,5)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_5.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,6)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_6.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,7)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_7.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,8)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_8.png')}}">
+                <img class="btn-click-bg" ng-click="btnClick($event,9)" ng-src="{{$root.loadMicrolectureImg('video/m_keyboard_btn_9.png')}}">
+            </div>
+        </div>
+
+    </div>
+</div>

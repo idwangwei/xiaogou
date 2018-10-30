@@ -1,0 +1,88 @@
+<ion-view class="xly_vip_v2_file">
+    <ion-content class="year-card-pay-content" overflow-scroll="true">
+        <div class="year-card-pay-header" ng-class="{'year-card-pay-header-ios':ctrl.isIos}">
+            <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+                <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;首页
+            </button>
+        </div>
+
+        <div ng-if="!ctrl.isLoadingProcessing && ctrl.hasWrong" style="padding: 60px 0 0 0;text-align: center">
+            获取数据失败，<a ng-click="ctrl.getServerData()">点击刷新</a>试试吧
+        </div>
+
+        <div ng-if="!ctrl.isLoadingProcessing && !ctrl.hasWrong"
+             class="pay-content" ng-class="{'pay-content-ios':ctrl.isIos}">
+            <div class="banner-img-box">
+                <img ng-src="{{$root.loadImg('xly/xly_vip_banner.png')}}" alt="">
+            </div>
+            <div class="pay-content-top-warp">
+                <div class="pay-content-top">
+                    <div class="pay-content-info">
+                        <img ng-src="{{$root.loadImg('xly/xly_vip_text_info.png')}}" alt="">
+                    </div>
+                    <ion-scroll zooming="false" direction="y" class="pay-content-scroll">
+                        <div style="overflow: hidden; padding: 10px">
+                            <div>优惠内容包含：</div>
+                            <div class="desc-detail" ng-repeat="item in ctrl.xlyGoods.discountGoodsList">
+                                <div class="display-flex-pure com_justify_content_space">
+                                    <span class="flex_1">{{$index +1 +". "+item.goodsName }}</span>
+                                    <span class="desc-detail-prePrice">
+                                        {{'￥'+item.originalPrice}}
+                                    </span>
+                                    <span class="" style="margin-left: 16px;width: 40px;">{{'￥'+item.discountPrice}}</span>
+                                </div>
+                                <!--<ion-checkbox ng-model="item.selected"-->
+                                              <!--ng-disabled="item.disable">-->
+                                    <!--<span>{{item.goodsName }}</span>-->
+                                    <!--<span class="desc-detail-prePrice">-->
+                                        <!--{{'￥'+item.originalPrice}}-->
+                                    <!--</span>-->
+                                    <!--<span>{{'￥'+item.discountPrice}}</span>-->
+                                <!--</ion-checkbox>-->
+                            </div>
+                        </div>
+                    </ion-scroll>
+                </div>
+            </div>
+
+            <div class="top-price">
+                合计：<span ng-bind="ctrl.xlyGoods.totalFee"> </span>
+            </div>
+
+            <div class="pay-content-bottom"  ng-if="!ctrl.isSVIP">
+                <div style="display: flex;display: -webkit-flex">
+                    <div class="display-flex btn {{ctrl.iscreateAppOrder==false?'clicked':''}}"
+                         style="margin-right: 20px"
+                         ng-click="ctrl.createOrderWxPayApp()">
+                        <img ng-src="{{$root.loadImg('weixin_pay/wechat.ico')}}">
+                        <span> 本机支付</span>
+                    </div>
+                    <div class="display-flex btn {{ctrl.iscreateScanOrder==false?'clicked':''}}"
+                         ng-click="ctrl.createOrderWxPayScan()">
+                        <img class="imgQr" ng-src="{{$root.loadImg('weixin_pay/wxqrCode.png')}}">
+                        <span> 扫码支付</span>
+                    </div>
+                </div>
+
+
+
+                <div class="protocol">
+                    <div class="checkbox">
+                        <span ng-click="ctrl.toggleReadBtn()">
+                            <i ng-class="ctrl.btnReadProtocol ? 'icon ion-android-checkbox-outline':'ion-android-checkbox-outline-blank'"></i>
+                            <span style="font-size: 12px">购买前我已阅读：</span>
+                        </span>
+
+                        <u style="font-size: 12px" ng-click="ctrl.gotoProtocol()">《用户须知条款》</u>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pay-content-bottom display-flex" ng-if="ctrl.isSVIP" style="padding: 16px">
+                <img ng-src="{{$root.loadImg('weixin_pay/has_pay_btn.png')}}" alt="" style="height: 44px">
+            </div>
+        </div>
+        <loading-processing-v2></loading-processing-v2>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,171 @@
+.teaching-guide-area {
+  .display-flex {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+  }
+
+  .con_flex-align-direction(@dir) {
+    align-items: @dir;
+    -webkit-align-items: @dir;
+  }
+
+  .con_flex-justify-direction(@dir) {
+    justify-content: @dir;
+    -webkit-justify-content: @dir;
+  }
+
+  .com_flex-direction (@direction) {
+    flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+  }
+
+  .teaching-area-area-div {
+    background: #000;
+    opacity: 0.5;
+    z-index: 1001;
+    position: absolute;
+  }
+
+  .guide-img {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    @media screen and(min-width: 768px) {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .guide-span {
+    color: #fff;
+    position: absolute;
+    font-size: 18px;
+
+    @media screen and(min-width: 768px) {
+      font-size: 25px
+    }
+  }
+
+  .teaching-guide-area-top {
+    width: 100%;
+    top: 0;
+  }
+  .teaching-guide-area-left {
+    left: 0;
+  }
+  .teaching-guide-area-right {
+    right: 0
+  }
+  .teaching-guide-area-bottom {
+    width: 100%;
+    bottom: 0;
+  }
+
+  .guide-content-area {
+    z-index: 1020;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    height: 70px;
+
+    @media screen and(min-width: 768px) {
+      height: 100px;
+    }
+
+    .guide-content {
+      z-index: 1021;
+      width: 90%;
+      height: 90%;
+      background: #fff;
+      border-radius: 15px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      .display-flex;
+      span {
+        width: 90%;
+        @media screen and(min-width: 768px) {
+          width: 80%;
+        }
+        text-align: left;
+      }
+    }
+
+    .guide-figure {
+      opacity: 0;
+      z-index: 1022;
+      width: 65px;
+      position: absolute;
+      top: -35px;
+      right: -600px;
+      transition: right 1s;
+      @media screen and(min-width: 768px) {
+        width: 100px;
+        top: -50px;
+      }
+
+    }
+  }
+
+  .teaching-guide-hand {
+    pointer-events:none;
+    opacity:0;
+    z-index: 1021;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background-size: 100% 100% !important;
+    -webkit-animation: handMove 0.5s infinite; /*Safari and Chrome*/
+    //animation: handMove 0.5s infinite;
+    //-moz-animation: handMove 0.5s infinite; /*Firefox*/
+
+    @keyframes handMove {
+      from {
+        background:  url("./../../../tImages/guide_hand1.png")100% 100%  no-repeat;
+        background-size: 100% 100%;
+      }
+      to {
+        background: url("./../../../tImages/guide_hand2.png")100% 100%  no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
+    @-moz-keyframes handMove /*Firefox*/
+    {
+      from {
+        background:  url("./../../../tImages/guide_hand1.png") 100% 100% no-repeat;
+        background-size: 100% 100%;
+      }
+      to {
+        background:  url("./../../../tImages/guide_hand2.png") 100% 100% no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+
+    @-webkit-keyframes handMove /*Safari and Chrome*/
+    {
+      from {
+        background: url("./../../../tImages/guide_hand1.png")100% 100%  no-repeat;
+        background-size: 100% 100%;
+      }
+      to {
+        background:  url("./../../../tImages/guide_hand2.png") 100% 100% no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  }
+
+  .teaching-guide-hand-ios{
+    pointer-events:none;
+    opacity:0;
+    z-index: 1021;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background-size: 100% 100% !important;
+    background:  url("./../../../tImages/guide_hand1.png")100% 100%  no-repeat;
+  }
+}

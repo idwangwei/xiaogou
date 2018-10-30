@@ -1,0 +1,28 @@
+<ion-view id="bargain_index">
+    <ion-header-bar class="bar-balanced title-bar" align-title="center">
+        <button class="button buttons button-clear item-back" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"></i>
+        </button>
+        <!--<h1 class="title">砍价活动</h1>-->
+    </ion-header-bar>
+    <ion-content padding="false">
+        <div class="content-box">
+            <img ng-src="{{$root.loadImg('bargain/bargain_index_banner1.png')}}" alt="" class="banner1">
+            <div class="content-middle">
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_banner2.png')}}" alt="" class="banner2">
+                <div class="price-box">
+                    <img ng-src="{{$root.loadImg('bargain/bargain_index_banner3.png')}}" alt="" class="banner3">
+                    <span>{{ctrl.params.maxDis}}</span>
+                </div>
+            </div>
+            <div class="content-foot">
+                <div class="title">活动规则</div>
+                <div class="des">1.点击下面的“<span>砍价请分享</span>”到朋友圈或微信群，请朋友帮忙砍价。</div>
+                <div class="des">2.尽可能多邀请朋友来帮助，人数越多，砍掉的金额越高，总价最高可省<span>￥{{ctrl.params.maxDis}}</span>。</div>
+                <div class="des">3.每分享1次，<span>24小时</span>之内有效。时间截止，则砍价活动结束。</div>
+                <div class="des">4.分享链接之后，返回点击“<span>砍价进度</span>”，可以查看哪些朋友帮您砍价了哦！</div>
+                <img ng-src="{{$root.loadImg('bargain/bargain_index_banner_btn.png')}}" alt="" class="bargain-btn" ng-click="ctrl.showShare()">
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

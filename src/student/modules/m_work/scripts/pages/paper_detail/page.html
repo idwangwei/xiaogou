@@ -1,0 +1,64 @@
+<ion-view hide-nav-bar="true" class="work_paper_detail_file">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()" style="padding-left: 10px">
+            <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color:#4A6B9D;" ng-bind="ctrl.title"></h1>
+        <div class="buttons">
+           <!-- <button class="button button-clear" ng-click="ctrl.help()">
+                <img ng-src="{{$root.loadImg('trainingPetsMaster/help_icon.png')}}" alt=""  class="common-help"/>
+            </button>-->
+        </div>
+    </ion-header-bar>
+
+    <ion-content overflow-scroll="false" class="has-header" style="padding-top: 10px;"
+                 on-scroll="ctrl.getScrollPosition()">
+
+        <div ng-if="ctrl.retflag && ctrl.paper.length == 0" style="padding: 16px">很抱歉，没有获取到题目！</div>
+        <div ng-repeat="qt in ctrl.paper track by $index" ng-init="idx=$index" >
+            <!--<div class="big-q-setting">
+                <div class="big-q-title">
+                    <span ng-bind="ctrl.getBigQText(qt)+'('+qt.score+'分)'"></span>
+                </div>
+            </div>-->
+            <div>
+                <div class="image-type-question">
+                    <div class="question-content card card-better small_q_bg" >
+                        <div class="smallq-title smallq-title-first" >
+                            <div class="text-div-adapt" style="padding: 5px;">
+                                <label class="text-adapt">
+                                    <span ng-bind="'第'+($index+1)+'题'">
+                                    </span>
+                                   <!-- <span class="actual-score" ng-bind="qt.basic.typeName"></span>-->
+                                    <span class="score-text" ng-bind="qt.basic.typeName" style="padding-left: 5px;"></span>
+                                </label>
+                            </div>
+                            <!--<div ng-bind="ctrl.showKnowledgeAndDifficulty(record)" ng-show="ctrl.isShowKAD" class="smallq-title-first_knowledge"-->
+                            <!--ng-bind="showFlag=false" ng-click="showFlag =!showFlag"></div>-->
+                            <!-- -->
+                            <!-- -->
+                            <!--<div class="img-align-right" >
+                                <span ng-click="ctrl.goQFeedbackPage(record.id)">
+                                   <img ng-src="{{$root.loadImg('other/report.png')}}">
+                                </span>
+
+                                <span q-correct-ans paper-id="ctrl.paper.basic.id" big-q="qt" small-q="record">
+                                    <img ng-src="{{$root.loadImg('other/ans1.png')}}">
+                                </span>
+                            </div>-->
+                        </div>
+                        <div ng-show="ctrl.isShowKAD" class="question_content_knowledge_text"
+                             ng-bind="qt.basic.difficultyName"
+                             style="background-color: #B8E4FC;color:#565555;padding-left: 5px;"></div>
+                        <div compile-html="qt.question"  current_q_input="qt.inputList" class="q-context" style="pointer-events: none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="ctrl.pullUpRefresh()" spinner="ios"
+                             distance="10%" ng-if="ctrl.moreFlag" immediate-check="false">
+        </ion-infinite-scroll>
+    </ion-content>
+    <loading-processing load-top="200"></loading-processing>
+    <div class="scrollToTop" ng-click="ctrl.scrollTop()"></div>
+</ion-view>

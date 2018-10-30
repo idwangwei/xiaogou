@@ -1,0 +1,33 @@
+<ion-view class="score-details">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px;color: #ffffff"></i>&nbsp;&nbsp;
+        </button>
+        <h1 class="title" style="font-family: 'Microsoft YaHei';color: #ffffff">积分详情</h1>
+        <div class="button-details">
+            <img ng-src="{{ctrl.loadImage('ques_mark.png')}}" ng-click="ctrl.explainClick()">
+            <div ng-click="ctrl.explainClick()"><label>说明</label></div>
+        </div>
+    </ion-header-bar>
+    <ion-content padding="true">
+        <div class="detail-content">
+            <div class="task-details" ng-repeat="item in ctrl.details">
+                <div class="time-mark"></div>
+                <div class="task-time">{{item.time}}</div>
+                <div class="task-list" ng-repeat="cell in item.detailsList">
+                    <div class="cell-content">
+                        <label>{{cell.taskName}}</label>
+                        <label>+{{cell.score}}积分</label>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar style="padding: 0px">
+        <div class="foot-desc">
+            近三个月获得{{ctrl.getScore}},使用了{{ctrl.useScore}}积分
+        </div>
+    </ion-footer-bar>
+</ion-view>

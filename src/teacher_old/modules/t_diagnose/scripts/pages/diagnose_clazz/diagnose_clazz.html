@@ -1,0 +1,57 @@
+<ion-view hide-nav-bar="true" class="diagnose_clazz_file" >
+    <ion-header-bar " style="background: #C2EDF8" align-title="center">
+    <button class="button back-button buttons  button-clear header-item common-back-btn"
+            ng-click="ctrl.back()"
+            style="color: #4a6b9d;">
+        <i class="icon ion-ios-arrow-back" style="color: #4a6b9d;"></i>
+    </button>
+    <h1 class="title"
+        style="color:#4a6b9d;font-weight: bold;font-size: 20px;"
+        ng-bind="ctrl.diagnoseSelectedClazz.name+' | 学生列表'">
+    </h1>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-subheader"  overflow-scroll="true">
+        <div class="knowledge-title-wrap">
+            <span ng-bind="ctrl.unitSelectKnowledge.knowledgeName"></span>
+           <!-- <div class="img-legend-wrap">
+                <div ng-repeat="row in ctrl.unitSelectKnowledge.showImgMap" class="img-legend-row">
+                    <div ng-repeat="col in row" class="img-legend-col" ng-class="$first?'img-legend-col-left':'img-legend-col-right'">
+                        <i class="icon ion-record {{col.colorClass}}" ></i>
+                        <span ng-bind="col.key"></span>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+        <ion-list class="list">
+            <div ng-repeat="item in ctrl.knowledgeWithDiagnose.list" class="accordion"
+                 ng-class="item.showFlag?'open':''">
+                <div class="stu-group-wrap"
+                     ng-class="item.sort===4?'bar-level-four':(item.sort===3?'bar-level-three':(item.sort===2?'bar-level-two':'bar-level-one'))"
+                     ng-click="ctrl.showStu(item)"
+                >
+                    <span ng-bind="item.key+': '"></span>
+                    <i class="row-icon icon ion-chevron-down"
+                       ng-click="ctrl.showStu(item)">
+                    </i>
+                </div>
+                <ion-item class="item item-avatar item-icon-right "
+                          ng-repeat="stu in item.stuList"
+                          ng-class="$even?'item-bg':''"
+                          ng-init="stu.stuImg=(stu.gender=='-1'?'person/delete-student.png':(stu.gender=='0'?'person/student-f.png':'person/student-m.png'))"
+                          ng-if="item.showFlag"
+                          ng-click="ctrl.showQRecords(stu)">
+                    <img ng-src="{{$root.loadImg(stu.stuImg)}}">
+                    <h2 ng-bind="stu.name"></h2>
+                    <i class="icon ion-record level-one" ng-if="!stu.level||stu.level===1"></i>
+                    <i class="icon ion-record level-two" ng-if="stu.level===2"></i>
+                    <i class="icon ion-record level-three" ng-if="stu.level===3"></i>
+                    <i class="icon ion-record level-four" ng-if="stu.level===4"></i>
+                    <i class="icon ion-chevron-right"></i>
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-content>
+    <loading-processing ></loading-processing>
+</ion-view>

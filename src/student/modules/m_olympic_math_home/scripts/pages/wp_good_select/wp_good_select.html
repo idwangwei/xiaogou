@@ -1,0 +1,121 @@
+<ion-view hide-nav-bar="true" class="wp_good_select">
+    <ion-header-bar class="bar-balanced myHeader" align-title="center">
+        <button class="button buttons  button-clear header-item" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back" style="padding-left: 10px"></i>&nbsp;&nbsp;
+        </button>
+    </ion-header-bar>
+    <!--<div class="wp_good_select_bg">
+        <div class="bg-content">
+            &lt;!&ndash;<div class="bg-content_top">
+            </div>&ndash;&gt;
+            <div class="bg-content_bottom">
+                <div class="bg-content_bottom_left"></div>
+                <div class="bg-content_bottom_right"></div>
+            </div>
+        </div>
+    </div>-->
+    <ion-content class="wp_select_content">
+        <div class="select_content">
+            <div class="wp_select_pet_content">
+                <div class="ad_img">
+
+                </div>
+
+            </div>
+
+            <div class="productDetails">
+                <p>开通魔法特权可拥有以下功能：</p>
+                <div class="describe">
+                    <ul>
+                        <li ng-repeat="item in ctrl.goodsDescription">
+                            <span>{{item}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="selectGrade">
+
+                <div class="selectGradeDiv">
+                    <!--<span>选择年级:</span>-->
+                    <div class="scroll-wrap" ng-show="ctrl.isShowSelect" ng-mouseleave="ctrl.hideSelectList()">
+                        <ion-scroll direction="y" delegate-handle="namePicScroll" class="name-pic-scroll">
+                            <div class="name-pic" ng-repeat="item in ctrl.grades"
+                                 ng-click="ctrl.clickSelectGrade(item)">
+                                <span>{{item.name}}</span>
+                            </div>
+
+                        </ion-scroll>
+                    </div>
+                    <div class="mySelect" ng-click="ctrl.showSelectGrade()">
+
+                        <span></span>
+                        <!--<div ng-click="ctrl.showSelectGrade()">-->
+                        <span>{{!ctrl.selectGrade?'-请选年级-':ctrl.selectGrade}}</span>
+
+                        <!--</div>-->
+                        <span><i class="ion-ios-arrow-right"></i></span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="wp_select_good_content">
+                <!-- <span class="reLoading" ng-if="!ctrl.isLoadingProcessing&& ctrl.goodsMenusList.length==0">
+                     商品加载失败，点击
+                     <label ng-click="ctrl.reFfetchGoodsList()">这里</label>
+                     重新加载
+                 </span>-->
+                <div class="wp_select_goods" ng-repeat="item in ctrl.goodsMenusList">
+
+                    <div class="item_version {{item.selected==true?'version_color1':'version_color'}}"
+                         ng-style="{'background-color':item.available?'#8D8D8D':'#CEB4B4'}"
+                         ng-click="ctrl.selectGoodClick($index)"
+                         ng-show="item.available">
+
+                        <div class="version_content">
+                            <div class="version_content_left">
+                                <!-- <div class="{{item.desc.title=='提高版'?'version_content_title_198':item.desc.title=='进阶版'?'version_content_title_298':'version_content_title_498'}}">
+                                 </div>-->
+                                <div class="title">{{item.desc.title}}</div>
+                                <div class="subTitle">
+                                    ({{item.desc.subTitle}})
+                                </div>
+                            </div>
+                            <div class="version_content_right submit_button">
+
+                                <div ng-if="item.desc.saleFee" style="color: #feff3e">
+                                    {{item.desc.saleMsg+'：'}}
+                                    <i class="ion-social-yen"></i>
+                                    <span>{{item.desc.saleFee}}</span>
+                                </div>
+                                <div style="display: flex;display: -webkit-flex">
+                                    <div class="price" style="position: relative;">
+                                        <img ng-if="item.desc.saleFee" style="position: absolute;width: 100%;height: 100%"
+                                             ng-src="{{$root.loadImg('weixin_pay/wxpayRedLine.png')}}">
+
+                                        <i class="ion-social-yen"></i>
+                                        <span>{{item.desc.fee}}</span>
+                                    </div>
+                                    <i class="{{item.selected==true?'ion-checkmark-circled balanced white':'ion-record stable'}}"></i>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div camp-packs-connect back-url="wp_good_select" class="wp_select_goods"-->
+                     <!--style="text-align: center">-->
+                    <!--<img style=" width: 100%"-->
+                         <!--ng-src="{{$root.loadImg('xly/join_xly_connect_img01.png')}}">-->
+                <!--</div>-->
+            </div>
+            <div class="wp_select_foot" ng-show="ctrl.goodsMenusList.length>0">
+                <button class="button button-energized submit_button" ng-click="ctrl.selectGood()">
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

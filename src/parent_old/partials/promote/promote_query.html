@@ -1,0 +1,56 @@
+<ion-view  hide-nav-bar="true" class = "promote_assets">
+    <ion-header-bar align-title="center" class="bar-balanced">
+        <div class="button buttons  button-clear header-item" ng-click="back()" style="padding: 0 10px">
+            <i class="icon ion-ios-arrow-back"></i>
+            &nbsp;&nbsp;</div>
+        <h1 class="title">查询</h1>
+      <!--  <div class="buttons">
+            <button class="button button-clear" ng-click="help()">
+                <img ng-src="{{$root.loadImg('common/help_icon.png')}}" alt="" class="common-help"/>
+            </button>
+        </div>-->
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header">
+        <div>
+            <div class="promote_query">
+                <input  type="text" id="personId"  class="promote_query_input" placeholder="输入粉丝账号（扫你二维码的人）"
+                        ng-model="queriedPersonId"
+                        ng-change = "queryAccountChange()"/>
+                <button class="promote_query_btn"
+                        ng-click="queryOtherPersonAssets()"
+                        ng-class="queriedPersonId ? '': 'promote_btn_gray'">查询</button>
+            </div>
+            <div class = "promote_assets_head" ng-if="retFlag">
+                <div class="promote_assets_user"  style="padding-bottom: 20px;text-align: center;">
+                    <span>{{ personName|| 'TA'}}的资产</span>
+                </div>
+                <div class = "promote_assets_money">
+                    <span>余额（元）：{{money}}</span>
+                </div>
+            </div>
+            <div class="promote_assets_details" ng-if="retFlag">
+                <span class = "details">收益详情</span>
+                <div class = "details_table">
+                    <div class="row details_row">
+                        <div class="col details_col col_color1_1">推广方式</div>
+                        <div class="col details_col col_color1_2">注册人数</div>
+                        <div class="col details_col col_color1_1">付费人数</div>
+                        <div class="col details_col col_color1_2">TA的提成</div>
+                    </div>
+                    <div class="row details_row ">
+                        <div class="col details_col col_color2">直接推广</div>
+                        <div class="col details_col col_color3">{{firstPromote.registerCount}}人</div>
+                        <div class="col details_col col_color2">{{firstPromote.payCount}}人</div>
+                        <div class="col details_col col_color3">￥{{firstPromote.money}}</div>
+                    </div>
+                    <div class="row details_row details_top_line">
+                        <div class="col details_col col_color2">间接推广</div>
+                        <div class="col details_col col_color3">{{secondPromote.registerCount}}人</div>
+                        <div class="col details_col col_color2">{{secondPromote.payCount}}人</div>
+                        <div class="col details_col col_color3">￥{{secondPromote.money}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

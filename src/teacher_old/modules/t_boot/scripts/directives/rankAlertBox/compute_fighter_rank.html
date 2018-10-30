@@ -1,0 +1,79 @@
+<div class="work-backdrop" ng-if="$root.isShowComputeFighterRank" ng-click="closeComputeFighterRankData($event)">
+    <div class="compute_fighter_rank_data">
+        <!--速算斗士榜背景-->
+        <div class="top_bg_wrap bg_wrap_fighter">
+            <div class="bg_wrap_fighter_layer_2">
+                <img ng-src="{{$root.loadImg('msg/msg_fighter_bg2.png')}}" alt="" class="top_bg_fighter_left">
+                <img ng-src="{{$root.loadImg('msg/msg_fighter_bg3.png')}}" alt="" class="top_bg_fighter_right">
+            </div>
+            <div class="bg_wrap_fighter_layer_1">
+                <img ng-src="{{$root.loadImg('msg/msg_fighter_icon.png')}}" alt="" class="top_bg_fighter_middle">
+            </div>
+        </div>
+
+        <!--斗士排行列表表头-->
+        <div class="fighter_rank_header">
+            <div class="fighter_rank_header_left"></div>
+            <div class="fighter_rank_header_right">
+                <div class="frh_right_div frh_right_1">
+                    <!--<img ng-src="{{$root.loadImg('msg/msg_medal_gold_2.png')}}" alt="">-->
+                    击败<br>高手
+                </div>
+                <div class="frh_right_div frh_right_2">
+                    <!--<img ng-src="{{$root.loadImg('msg/msg_medal_silver_2.png')}}" alt="">-->
+                    击败<br>熟手
+                </div>
+                <div class="frh_right_div frh_right_3">
+                    <!--<img ng-src="{{$root.loadImg('msg/msg_medal_copper_2.png')}}" alt="">-->
+                    击败<br>新手
+                </div>
+                <div class="frh_right_div frh_right_4">
+                    <div style="width: 100%;max-width: 40px">击败总数</div>
+                </div>
+            </div>
+        </div>
+
+        <!--斗士排行列表-->
+        <ion-scroll zooming="true" direction="y" class="flex_1" style="width: 100%;margin-bottom: 10px;">
+            <div ng-if="!currentClazz||!currentClazz.id" style="padding: 20px">您还没有申请班级！</div>
+
+            <div class="fighter_rank_list_box" ng-if="currentClazz && currentClazz.id">
+
+                <div ng-if="!isFighterLoading && !fighterRankData.length" class="rank_list_content_none">该班暂时没有速算斗士排行信息</div>
+                <div ng-if="isFighterLoading && !fighterRankData.length">
+                    <loading-processing></loading-processing>
+                </div>
+
+                <!--具体列表信息-->
+                <div class="item fighter_rank_list" ng-repeat="item in fighterRankData"
+                     ng-class="{'fighter_rank_list_user':item.userId == user.userId}">
+
+
+                    <!--左边学生信息-->
+                    <div class="fighter_rank_list_left">
+                        <!--排名-->
+                        <div class="fr_list_index">
+                            <span ng-bind="item.rank"> </span>
+                        </div>
+
+                        <!--用户信息-->
+                        <div class="fr_list_info">
+                            <div class="fr_list_student_name">{{item.userName}}</div>
+                        </div>
+                    </div>
+
+                    <!--右侧数量信息-->
+                    <div class="fighter_rank_list_right">
+                        <div class="fr_list_num" ng-bind="item.goldMedal"></div>
+                        <div class="fr_list_num" ng-bind="item.sliverMedal"></div>
+                        <div class="fr_list_num" ng-bind="item.copperMedal"></div>
+                        <div class="fr_list_num" ng-bind="item.defeatPeopleAmount"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </ion-scroll>
+    </div>
+</div>

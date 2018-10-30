@@ -1,0 +1,151 @@
+<ion-view hide-nav-bar="true" class="holiday_do_question_file" cache-view="false">
+
+    <div class="bar bar-header " style="background: #d2f7ef!important;">
+        <button ng-click="doCtrl.back(true)" class="button buttons  button-clear common-back-btn">
+            <i class="icon ion-ios-arrow-back"></i>&nbsp;总览
+        </button>
+        <h1 class="title"
+            style="font-family: 'Microsoft YaHei';margin-left: 72px;margin-right: 72px;"
+            ng-if="doCtrl.showNormalTitle()"
+            ng-bind="doCtrl.title">
+        </h1>
+        <h1 class="title "
+            style="margin-left: 72px;margin-right: 72px;color: #4a6b9d;font-weight: bold;">
+            <span ng-bind="doCtrl.countDownStr"
+                  ng-if="doCtrl.selectedWork.publishType===doCtrl.finalData.WORK_TYPE.MATCH_WORK"></span>
+        </h1>
+
+        <div class="title header-bar" ng-if="doCtrl.isOralWork()">
+            <img ng-if="doCtrl.limitTime>=0 && doCtrl.redoFlag === 'false'" ng-src="{{$root.loadImg('do_question/timeCountClock.png')}}"
+                 style="height: 65%;margin-right: 5px">
+            <span ng-if="doCtrl.limitTime>=0 && doCtrl.redoFlag === 'false' && doCtrl.startTimeFlag" alr-count-down
+                  seconds="{{doCtrl.getCountDownStartTime()}}" pattern="ms2"
+                  count-down-timer="doCtrl.stopTimer"
+                  time-end-call-back="doCtrl.timeEndCallBack()"
+                  time-rest-call-back="doCtrl.timeRestCallback"
+                  time-count-call-back="doCtrl.timeCountCallBack()">
+            </span>
+        </div>
+
+        <div class="button button-clear dqf_draft"
+             ng-if="doCtrl.showNormalTitle()"
+             ng-click="doCtrl.handleDraft()">
+
+            <div ng-if="!doCtrl.draftShow" style="width: 55px;">
+                <img ng-src="{{$root.loadImg('do_question/draft.png')}}" alt="" style="width: 40px">
+                <p style="font-size: 13px; line-height: 16px; margin-top: -6px">草稿</p>
+            </div>
+
+            <div ng-if="doCtrl.draftShow"
+                 style="font-size: 17px;display: -webkit-flex;display: flex;-webkit-align-items:center;align-items: center;">
+                <i>草稿&nbsp;</i>
+                <img ng-src="{{$root.loadImg('do_question/close_draft.png')}}" alt="" style="width: 20px;height: 20px">
+            </div>
+        </div>
+    </div>
+    <div class="keyboard" style="z-index: 5000"></div>
+
+    <draft style="position: relative;"></draft>
+
+    <ion-slide-box on-slide-changed="doCtrl.slideChange($index)"
+                   ng-if="doCtrl.slideBoxDataList.length"
+                   does-continue="true"
+                   show-pager="false"
+                   class="">
+
+        <ion-slide ng-repeat="currentQ in doCtrl.slideBoxDataList track by $index" auto-height="30"
+                   slideBoxCurrentIndex="{{doCtrl.solidBoxInfo.currentIndex}}" ng-c>
+            <ion-content  class="do_question_content"
+                          ng-style="{top:(doCtrl.getScope().$root.platform.IS_IPHONE||doCtrl.getScope().$root.platform.IS_IPAD)?'20px':0}">
+
+                <div class="edit-section do-question-area">
+                    <loading-processing load-top="100"></loading-processing>
+                    <!--大题小题题干-->
+                    <div class="big_q_title">
+                        <img ng-src="{{$root.loadImg('do_question/q_title_bg.png')}}" alt=""/>
+                        <div class="big_q_title_text">
+                            <div class="title_left">
+                                <span style="font-family: 'Microsoft YaHei'" ng-if="currentQ"
+                                      ng-bind="doCtrl.commonService.convertToChinese(+currentQ.displayData.bigQseqNum+1)+'、'+currentQ.displayData.bigQTitle"></span>
+                            </div>
+                            <div class="title_right">
+                                <span style="font-family: 'Microsoft YaHei'" ng-if="currentQ"
+                                      ng-bind="' | 第'+(+currentQ.displayData.seqNum+1)+'小题'"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="error-q-records-wrap"
+                         error-q-records
+                         small-q="doCtrl.currentSmallQ"
+                         instance-id="doCtrl.instanceId"
+                         ng-click="doCtrl.saveCurrentQAns()"
+                         ng-if="doCtrl.redoFlag==='true'&&!doCtrl.comeFromOlympicMathS">
+                        <img ng-src="{{$root.loadImg('do_question/do-q-error-records.png')}}" alt=""/>
+                        <span>查看出错记录</span>
+                        <i class="icon ion-chevron-right"></i>
+                    </div>
+                    <!--show-type:展示类型为=> 做题:'doQuestion', 批改:'correct', 其他:undefined   -->
+                    <div class="editor for-content do_question_text"
+                         ng-style="{marginTop:(doCtrl.getScope().$root.platform.IS_IPAD)?'40px':0}"
+                         ng-show="!doCtrl.getScope().$root.isLoadingProcessing"
+                         compile-html="currentQ.displayData.qContext"
+                         current_q_input="currentQ.displayData.inputList"
+                         possible-units="currentQ.displayData.possibleUnits"
+                         question="currentQ.displayData"
+                         show-type="doQuestion">
+                    </div>
+                    <div class="place-holder"></div>
+                    <!--
+                         on-touch="doCtrl.onTouch($event)"
+                         on-drag="doCtrl.onDrag($event);"
+
+
+                    -->
+
+                </div>
+            </ion-content>
+
+        </ion-slide>
+    </ion-slide-box>
+
+    <div class="button button-primary do_question_check_over"
+         ng-if="doCtrl.from=='select' && doCtrl.isCurrentQuestionStatusNotChecked()"
+         ng-click="doCtrl.checkAnswer()">
+        <img ng-src="{{$root.loadImg('do_question/check_over.png')}}" alt=""/>
+    </div>
+
+    <div class="bar bar-footer " style="font-size: 20px;z-index: 2000;background: #e6e9ec">
+        <button class="button-clear flex_1"
+                ng-click="doCtrl.currentSmallQ.isFirstOfAllQ?'':doCtrl.previousQuestion()"
+                ng-style="{color: doCtrl.currentSmallQ.isFirstOfAllQ?'#33cd5f !important':' #4a6b9d'}">
+            <i class="icon   ion-arrow-left-b "></i>
+            <span ng-if="doCtrl.redoFlag === 'false'">上一题</span>
+            <span ng-if="doCtrl.redoFlag === 'true'">上一错题</span>
+        </button>
+        <div class="flex_1" style="color: #4a6b9d;text-align: center;line-height: 35px;"
+             ng-if="doCtrl.selectedWork.publishType===doCtrl.finalData.WORK_TYPE.MATCH_WORK">
+            <span ng-bind="doCtrl.currentQInArrayShow()"></span>
+        </div>
+        <button class="button-clear flex_1"
+                ng-click="doCtrl.currentSmallQ.isLastOfAllQ ? doCtrl.back(): doCtrl.goNextQuestion()"
+                style="color:#4a6b9d">
+            <span ng-if="doCtrl.redoFlag === 'false' && !doCtrl.currentSmallQ.isLastOfAllQ">下一题</span>
+            <span ng-if="doCtrl.redoFlag === 'true' && !doCtrl.currentSmallQ.isLastOfAllQ">下一错题</span>
+            <span ng-if="doCtrl.currentSmallQ.isLastOfAllQ">总览.提交</span>
+            <i class="icon  ion-arrow-right-b"></i>
+        </button>
+    </div>
+    <div class="back-modal" ng-if="doCtrl.isBackModalShow">
+        <div class="back-modal-content diagnose-popup-bounce" ng-if="doCtrl.isBackModalShowFlag">
+            <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/back-modal-header.png')}}" alt="" class="modal-content-header">
+            <div class="text-box">
+                <p>本套题为《期末全真模拟密卷》</p>
+                <p>，请认真作答！</p>
+            </div>
+            <div class="btn-box">
+                <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/back-modal-btn1.png')}}" alt="" ng-click="doCtrl.closeBackModal()">
+                <img ng-src="{{$root.loadFinalSprintImg('final_sprint_home/back-modal-btn2.png')}}" alt="" ng-click="doCtrl.back()">
+            </div>
+        </div>
+    </div>
+</ion-view>

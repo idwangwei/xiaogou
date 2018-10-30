@@ -1,0 +1,50 @@
+<ion-view title="布置作业" hide-nav-bar="false" class="area_evaluation_list">
+    <ion-header-bar class="bar-balanced" align-title="center">
+        <div class="button button-clear" ng-click="ctrl.back()">
+            <i class="icon ion-ios-arrow-back"> </i>&nbsp;&nbsp;
+        </div>
+        <h1 class="title" style="font-family: 'Microsoft YaHei'">布置作业</h1>
+    </ion-header-bar>
+    <div class="sub-title">共 <span>{{ctrl.paperList.length}}套</span>测评试卷</div>
+    <ion-content padding="false" class="area-list-content">
+        <ion-refresher
+                pulling-text="下拉刷新..."
+                on-refresh="ctrl.getEvaluationList()">
+        </ion-refresher>
+        <div class="area-evaluation-list">
+            <div class="area-evaluation-item" ng-repeat="item in ctrl.paperList" ng-click="ctrl.goDetail(item)">
+                <img src="{{$root.loadImg('pub_work_type/evaluation-list-icon.png')}}" class="ae-item-left">
+                <div class="ae-item-middle">
+                    <span class="title">{{item.subjects[0].subjectSymbol}}</span>
+                    <span class="type">参与测评：{{item.gradeName}}年级</span>
+                    <span class="des">共{{item.questionCount}}题，限时{{item.limitTime}}分钟</span>
+                </div>
+                <div class="ae-item-right" ng-if="item.isStart">
+                    <span>{{item.f1}}</span>
+                    <span>{{item.f2}}</span>
+                    <span>{{item.f3}}</span>
+                </div>
+                <div class="ae-item-right" ng-if="!item.isStart">
+                    <span>评测将于</span>
+                    <span>{{item.f3}}</span>
+                    <span>{{item.f1}}</span>
+                    <span>开启</span>
+                </div>
+            </div>
+<!--            <div class="area-evaluation-item">
+                <img src="{{$root.loadImg('pub_work_type/evaluation-list-icon.png')}}" class="ae-item-left">
+                <div class="ae-item-middle">
+                    <span class="title">六年级思维检测1</span>
+                    <span class="type">参与测评：四年级（2013级）</span>
+                    <span class="des">共20题，限时60分钟</span>
+                </div>
+                <div class="ae-item-right">
+                    <span>18:00</span>
+                    <span>星期日</span>
+                    <span>2017-12-29</span>
+                </div>
+            </div>-->
+        </div>
+    </ion-content>
+
+</ion-view>

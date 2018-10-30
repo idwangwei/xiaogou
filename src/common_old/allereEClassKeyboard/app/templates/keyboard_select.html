@@ -1,0 +1,17 @@
+<div class="keyboardUnit">
+    <div class="left">
+        <div class="itemRow" ng-repeat="itemRow in keyboardStatus.selectInputDataList">
+            <div class="item" ng-click="handleClickNum($event)" ng-repeat="item in itemRow" value="{{item}}" unit>
+                <span mathjax-parser value="{{item}}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="item greenItem" style="flex:1;-webkit-flex:1" ng-click="handleDel($event)">
+            <img src="images/del.png" width="35px" alt=""/>
+        </div>
+        <div class="item greenItem" style="flex:1;-webkit-flex:1;font-size: 15px;" ng-click="findNextInput($event)" style="color: #fe6948;" ng-if="showFindNextInputFlag">
+            <span style="display: block;width: 35px;color:white;margin-left: -8px">обр╩©у</span>
+        </div>
+    </div>
+</div>
